@@ -1,0 +1,325 @@
+{
+  "source_audit_passed": true,
+  "unchanged_native_code": [
+    {
+      "package": "cuthbert",
+      "path": "cuthbert/smc/particle_filter.py",
+      "symbol": null,
+      "upstream_line": 1,
+      "candidate_line": 1,
+      "sha256": "d6078d8245b52596f6697891f55decfb4a3390a9dd99651bd5482db2de7666e2",
+      "exact_text_equal": true
+    },
+    {
+      "package": "cuthbert",
+      "path": "cuthbertlib/resampling/multinomial.py",
+      "symbol": null,
+      "upstream_line": 1,
+      "candidate_line": 1,
+      "sha256": "0b51d0547fdc36e9257db5ea948b8e82a171c8bf7882c153ace3ca6f88125239",
+      "exact_text_equal": true
+    },
+    {
+      "package": "cuthbert",
+      "path": "cuthbertlib/resampling/systematic.py",
+      "symbol": null,
+      "upstream_line": 1,
+      "candidate_line": 1,
+      "sha256": "d35559ad3679450a925fac03444bb03696d758483c8df170ce84e93b9ce45e53",
+      "exact_text_equal": true
+    },
+    {
+      "package": "cuthbert",
+      "path": "cuthbertlib/resampling/autodiff.py",
+      "symbol": "stop_gradient_decorator",
+      "upstream_line": 21,
+      "candidate_line": 63,
+      "sha256": "992d9408394d44d8204cf72201b9246882c017141eff48dfa42a9e9a7411ed3b",
+      "exact_text_equal": true
+    },
+    {
+      "package": "pfjax",
+      "path": "src/pfjax/particle_filter.py",
+      "symbol": "particle_filter.filter_step",
+      "upstream_line": 175,
+      "candidate_line": 194,
+      "sha256": "e921587c1e17c276005c312db4c3b8d37a847d33a0990fb1783cc087cbddfeec",
+      "exact_text_equal": true
+    },
+    {
+      "package": "pfjax",
+      "path": "src/pfjax/particle_filter.py",
+      "symbol": "particle_filter_rb",
+      "upstream_line": 296,
+      "candidate_line": 318,
+      "sha256": "3295304cba72350d6ccde6885f189a0c3f6734b3c34a4bb8d19ee237f0eca140",
+      "exact_text_equal": true
+    },
+    {
+      "package": "pfjax",
+      "path": "src/pfjax/particle_resamplers.py",
+      "symbol": null,
+      "upstream_line": 1,
+      "candidate_line": 1,
+      "sha256": "6c444bf4c22aeb67c1fc5ed3bb6b089dfbbcfd9f265aee8b152a6d65ae35361a",
+      "exact_text_equal": true
+    },
+    {
+      "package": "pydpf",
+      "path": "pydpf/pydpf/filtering.py",
+      "symbol": "SIS",
+      "upstream_line": 20,
+      "candidate_line": 20,
+      "sha256": "8cafb867185deb2bdd5a1947e188a84e68666764a482d1534e9b49c2fe51a2b0",
+      "exact_text_equal": true
+    },
+    {
+      "package": "pydpf",
+      "path": "pydpf/pydpf/filtering.py",
+      "symbol": "ParticleFilter",
+      "upstream_line": 189,
+      "candidate_line": 189,
+      "sha256": "355aa30392f586dd7c92068cf4ec8e9168ffcba85c2556a5f01fb6da4a985690",
+      "exact_text_equal": true
+    },
+    {
+      "package": "pydpf",
+      "path": "pydpf/pydpf/model_based_api.py",
+      "symbol": null,
+      "upstream_line": 1,
+      "candidate_line": 1,
+      "sha256": "91ee942d51d6f65b950abadbca767ee9016affc1cf107b048fec64c583ba4006",
+      "exact_text_equal": true
+    },
+    {
+      "package": "pydpf",
+      "path": "pydpf/pydpf/utils.py",
+      "symbol": null,
+      "upstream_line": 1,
+      "candidate_line": 1,
+      "sha256": "d8464995d5aa9b788afa179cf698e41bd3f99da736056f1d0cafc15ee618020b",
+      "exact_text_equal": true
+    },
+    {
+      "package": "tfp",
+      "path": "tensorflow_probability/python/experimental/mcmc/weighted_resampling.py",
+      "symbol": null,
+      "upstream_line": 1,
+      "candidate_line": 1,
+      "sha256": "f26d4bf72409342af2fcf5494240957f7b257c259d3b982aaa5d35563185fdfc",
+      "exact_text_equal": true
+    },
+    {
+      "package": "particles",
+      "path": "particles/core.py",
+      "symbol": null,
+      "upstream_line": 1,
+      "candidate_line": 1,
+      "sha256": "1c99eb9884fc49a45c7e02e24d0d897c92e2300111385160628b97fe313ffb3c",
+      "exact_text_equal": true
+    },
+    {
+      "package": "particles",
+      "path": "particles/state_space_models.py",
+      "symbol": null,
+      "upstream_line": 1,
+      "candidate_line": 1,
+      "sha256": "ad4d554ce73f52b19aa355f6888c23b3159d5d1f38dc6244b5ce843d5329d7bc",
+      "exact_text_equal": true
+    },
+    {
+      "package": "particles",
+      "path": "particles/resampling.py",
+      "symbol": null,
+      "upstream_line": 1,
+      "candidate_line": 1,
+      "sha256": "6657f40f1a7cafecdfe958bdd0fb2403b3f06cc31ced294abc1eebcfc0f24e18",
+      "exact_text_equal": true
+    }
+  ],
+  "call_sites": [
+    {
+      "package": "cuthbert",
+      "path": "packages/cuthbert/candidate/cuthbert/smc/iterated_filtering.py",
+      "line": 115,
+      "source": "obj = pf.build_filter(",
+      "file_sha256": "b0a34c33133ca607d42fe88629b1494277bffa298d520f455a5227f5f036e10f"
+    },
+    {
+      "package": "cuthbert",
+      "path": "packages/cuthbert/candidate/cuthbert/smc/iterated_filtering.py",
+      "line": 126,
+      "source": "final = util.scan_final(obj, inputs, start, filter_key, checkpoint=False)",
+      "file_sha256": "b0a34c33133ca607d42fe88629b1494277bffa298d520f455a5227f5f036e10f"
+    },
+    {
+      "package": "cuthbert",
+      "path": "packages/cuthbert/candidate/cuthbert/smc/_estimation.py",
+      "line": 150,
+      "source": "state = filter_obj.filter_combine(previous, prepared)",
+      "file_sha256": "413e1043bcec32052f1c5a3b7b964a0430683d8b5641b21dc70966f363c70a2c"
+    },
+    {
+      "package": "cuthbert",
+      "path": "packages/cuthbert/candidate/cuthbert/smc/dmop.py",
+      "line": 76,
+      "source": "obj = particle_filter.build_filter(",
+      "file_sha256": "63f3252a690aa3c5a39685fe873d2be60e3efb79ba18cd7f1ac9ae43a511ce4a"
+    },
+    {
+      "package": "cuthbert",
+      "path": "packages/cuthbert/candidate/cuthbertlib/resampling/autodiff.py",
+      "line": 49,
+      "source": "return stop_gradient_decorator(func)",
+      "file_sha256": "3855bdd584e3ecd0f413933ef437388ccd11396ef8a2d16aa050e48052778956"
+    },
+    {
+      "package": "cuthbert",
+      "path": "experiments/public_interfaces/snapshot_20261031/cuthbert_formal_v3/run.py",
+      "line": 57,
+      "source": "def warm_fn(p,key):return iterated_filtering.fit(m.factory,p,data,key=key,n_particles=J,n_iterations=N,perturbation_scale=m.PROCESS_SCALE,initial_perturbation_scale=m.INITIAL_SCALE,cooling_rate=.5**(1/50),resampling='multinomial')",
+      "file_sha256": "63b7971b98e4f3d17505328c0c2214a24c67df19cebb7fc60f917448402f0fe2"
+    },
+    {
+      "package": "cuthbert",
+      "path": "experiments/public_interfaces/snapshot_20261031/cuthbert_formal_v3/run.py",
+      "line": 58,
+      "source": "def obj(alpha):return lambda q,k: -dmop.log_likelihood(m.factory,q,data,key=k,n_particles=J,alpha=alpha,resampling='multinomial',checkpoint=False)/600",
+      "file_sha256": "63b7971b98e4f3d17505328c0c2214a24c67df19cebb7fc60f917448402f0fe2"
+    },
+    {
+      "package": "pfjax",
+      "path": "packages/pfjax/candidate/src/pfjax/iterated_filter.py",
+      "line": 129,
+      "source": "result = particle_filter(",
+      "file_sha256": "cf340e3310012ea810b7a51f6239a206367e77a7fff92b0d15a74a275fbc602f"
+    },
+    {
+      "package": "pfjax",
+      "path": "packages/pfjax/candidate/src/pfjax/particle_filter_mop.py",
+      "line": 77,
+      "source": "result = particle_filter(",
+      "file_sha256": "2637c5cd3a345c549d530bd685716dc5f411bec1a1a20f5ea8d6749637ecaf45"
+    },
+    {
+      "package": "pfjax",
+      "path": "experiments/public_interfaces/snapshot_20261031/jax_formal_v2/run.py",
+      "line": 67,
+      "source": "def one(s,k,i):return pf.iterated_filter_step(model,k,data,s,m.PROCESS_SCALE,initial_scale=m.INITIAL_SCALE,iteration=i,cooling_rate=.5,cooling_interval=50.,within_pass_cooling=True)",
+      "file_sha256": "aedfa6334ec6d84f6822cce28caea70f84677bf8aaef4cfb32e1e018486bcacf"
+    },
+    {
+      "package": "pfjax",
+      "path": "experiments/public_interfaces/snapshot_20261031/jax_formal_v2/run.py",
+      "line": 68,
+      "source": "def obj(alpha):return lambda q,k:-pf.particle_filter_mop(model,k,data,q,J,alpha=alpha)['loglik']/600",
+      "file_sha256": "aedfa6334ec6d84f6822cce28caea70f84677bf8aaef4cfb32e1e018486bcacf"
+    },
+    {
+      "package": "pfjax",
+      "path": "reports/native_pf_audit_20261031/evidence/pfjax_old_bridge.py",
+      "line": 123,
+      "source": "(swarm,_,key), ll = jax.lax.scan(month,(swarm,states,key),(jnp.arange(T),data))",
+      "file_sha256": "d8c6a57b7aff60d1c9d72b807b994d5432e96d7c17f5f830ef39d1a32d37ad08"
+    },
+    {
+      "package": "pydpf",
+      "path": "packages/pydpf/candidate/pydpf/pydpf/iterated_filtering.py",
+      "line": 225,
+      "source": "pf = ParticleFilter(resampler=resampler_type(self.generator), SSM=ssm)",
+      "file_sha256": "a679101c80eb66afa66835df8ab637c4de59aeb25f38f833bab1c6d69f228efe"
+    },
+    {
+      "package": "pydpf",
+      "path": "experiments/public_interfaces/snapshot_20261031/pydpf/formal_v1/api_adapter.py",
+      "line": 35,
+      "source": "pf=package.StopGradientDPF(SSM=factory(model,parameters,package),resampling_generator=model.generator,**kw)",
+      "file_sha256": "3373f7ea980f545dbdd18fb3fd6345f827d949dbabeece3cb6fa254015ae91c2"
+    },
+    {
+      "package": "pydpf",
+      "path": "experiments/public_interfaces/snapshot_20261031/pydpf/formal_v1/api_adapter.py",
+      "line": 43,
+      "source": "return pydpf.IteratedFiltering(lambda p:factory(model,p),generator=model.generator,",
+      "file_sha256": "3373f7ea980f545dbdd18fb3fd6345f827d949dbabeece3cb6fa254015ae91c2"
+    },
+    {
+      "package": "tfp",
+      "path": "packages/tfp/candidate/tensorflow_probability/python/experimental/mcmc/iterated_filter.py",
+      "line": 160,
+      "source": "final, log_likelihood = pf.sequential_monte_carlo(",
+      "file_sha256": "383dcc407e350360783f4e56d4035b3550c56b2e06d5f10b806919ef9f359dd5"
+    },
+    {
+      "package": "tfp",
+      "path": "reports/native_pf_audit_20261031/evidence/tfp_public_api.py",
+      "line": 27,
+      "source": "function = pristine_pf() if pristine else tfp.experimental.mcmc.particle_filter",
+      "file_sha256": "007992e4dfbbe67ed05a820bc732298dd45e174adb4a0544e2f3b52c3678da33"
+    },
+    {
+      "package": "tfp",
+      "path": "reports/native_pf_audit_20261031/evidence/tfp_public_api.py",
+      "line": 58,
+      "source": "return tfp.experimental.mcmc.iterated_filter_step(",
+      "file_sha256": "007992e4dfbbe67ed05a820bc732298dd45e174adb4a0544e2f3b52c3678da33"
+    },
+    {
+      "package": "tfp",
+      "path": "reports/native_pf_audit_20261031/evidence/tfp_keyed.py",
+      "line": 27,
+      "source": "values=tf.map_fn(lambda pair:tfp.experimental.mcmc.resample_systematic(",
+      "file_sha256": "0aa6fff1a0a7427560d53e698725cac7ecea84bc2194f3c6e3fe21a1337d5136"
+    },
+    {
+      "package": "particles",
+      "path": "packages/particles/candidate/particles/iterated_filtering.py",
+      "line": 158,
+      "source": "pf = SMC(fk=fk, N=len(theta), resampling=resampling, collect=\"off\")",
+      "file_sha256": "8a3094cae24f4715f0a79c622f4a185b0331f75e70c2b2e12e5f60af41864a83"
+    },
+    {
+      "package": "particles",
+      "path": "packages/particles/candidate/particles/iterated_filtering.py",
+      "line": 159,
+      "source": "pf.run()  # original time loop, selection, normalization and logLt accumulation",
+      "file_sha256": "8a3094cae24f4715f0a79c622f4a185b0331f75e70c2b2e12e5f60af41864a83"
+    },
+    {
+      "package": "particles",
+      "path": "experiments/public_interfaces/snapshot_20261031/particles/model.py",
+      "line": 95,
+      "source": "alg = particles.SMC(fk=Bootstrap(ssm=factory(p,inp),data=inp['ys']),N=J,",
+      "file_sha256": "82276f390f5517edd6b89754e5e2b96519477e6a7f0966d2eaa71fbb1d5f8004"
+    },
+    {
+      "package": "particles",
+      "path": "reports/native_pf_audit_20261031/evidence/particles_fit.py",
+      "line": 4,
+      "source": "the candidate public if2_step(vectorized=True), carrying the full particle",
+      "file_sha256": "f29a8c4ecdb65bf9c75d3f6ce7b9eb1c094ca6fec07dbf9eb5153a6a1d710a55"
+    },
+    {
+      "package": "pypfilt",
+      "path": "packages/pypfilt/experiment_code/adapter/bench_pypfilt.py",
+      "line": 121,
+      "source": "pypfilt.fit(ctx, filename=None)",
+      "file_sha256": "2c9e70d47a830f86bd95f2cfbc2af51e583e970695a9a863b359d46ca6c67cf3"
+    },
+    {
+      "package": "pypfilt",
+      "path": "reports/native_pf_audit_20261031/evidence/pypfilt/__init__.py",
+      "line": 526,
+      "source": "result = pfilter.run(ctx, start, until, ctx.data['obs'])",
+      "file_sha256": "3f3aedeecb84191902486af53717e671277788b8cf9780d84390e156f4d6990e"
+    }
+  ],
+  "evidence_sources_checked": 12,
+  "legacy_pfjax_if2_uses_local_time_loop": true,
+  "current_cuthbert_uses_local_time_loop_over_native_updates": true,
+  "current_pfjax_alpha1_gradient_correction_added_locally": true,
+  "numerical_tests_run": false,
+  "gpu_tests_run": false,
+  "optimizations_run": false,
+  "limitation": "Static source and exact-code comparison only. GPU correctness and optimization remain separately assessed."
+}

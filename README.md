@@ -6,6 +6,8 @@ Local code and evidence for comparisons of particle-filter implementations and p
 
 This repository follows Ed's proposal to keep the comparison code, package changes and reports together. It has no remote. No material has been sent to package authors or submitted as a pull request.
 
+For a local file and diff browser, run `python3 scripts/browse.py` and open `http://127.0.0.1:8765/`. See [browsing instructions](docs/browsing.md). The [31 October source audit](reports/native_pf_audit_20261031/report_CN.md) distinguishes native PF time loops, native update kernels, and locally added gradient code; [source locations](reports/native_pf_audit_20261031/source_locations.md) link to the inspected calls.
+
 ## Packages
 
 | Package | Code and review | Available experiments |

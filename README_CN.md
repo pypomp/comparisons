@@ -4,6 +4,8 @@
 
 先看 [各包实际调用和新增代码](docs/package_calls.md)，再看 [当前证据与未完成工作](reports/status.md)。英文入口是 [README.md](README.md)。
 
+可运行 `python3 scripts/browse.py`，在浏览器打开 `http://127.0.0.1:8765/`，按目录查看文件、行号和红绿补丁。[浏览说明](docs/browsing.md)包含启动方式；[最新源码复核](reports/native_pf_audit_20261031/report_CN.md)区分完整原 PF 循环、原更新内核与新增梯度代码。
+
 | 内容 | 位置 |
 |---|---|
 | Cuthbert、PFJAX、PyDPF、TFP、particles 的候选代码、对应原代码、完整补丁、测试和验证记录 | [`packages/`](packages/) |
