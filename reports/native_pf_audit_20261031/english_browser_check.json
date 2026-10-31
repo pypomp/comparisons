@@ -1,0 +1,24 @@
+{
+  "checked_utc": "2026-10-31T23:39:05.570044+00:00",
+  "primary_language": "English",
+  "default_home": "README.md",
+  "primary_audit": "reports/native_pf_audit_20261031/report.md",
+  "browser_checks_passed": true,
+  "checks": [
+    "html lang=en",
+    "English default homepage, navigation and controls",
+    "English audit opened from sidebar",
+    "source links and highlighted line",
+    "English diff controls",
+    "file search",
+    "read-only restrictions"
+  ],
+  "browser_page_errors": [],
+  "visually_checked": [
+    "English homepage",
+    "English audit table and full report",
+    "English patch view"
+  ],
+  "supplementary_chinese_documents_retained": true,
+  "frozen_sources_and_experiment_records_edited": false
+}

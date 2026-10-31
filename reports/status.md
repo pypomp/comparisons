@@ -1,6 +1,6 @@
 # Evidence included in the 31 October 2026 snapshot
 
-**Source audit added, 31 October 2026:** [Native PF reuse](native_pf_audit_20261031/report_CN.md) was rechecked against the candidate sources, corresponding original code and experiment drivers. This audit records 15 exact-code comparisons and 25 call locations; it adds no GPU correctness or optimization evidence. In particular, current Cuthbert uses an added time scan over original update functions, and historical PFJAX IF2 used a local PF loop while the new interface calls the original full PF.
+**Source audit added, 31 October 2026:** [Native PF reuse](native_pf_audit_20261031/report.md) was rechecked against the candidate sources, corresponding original code and experiment drivers. This audit records 15 exact-code comparisons and 25 call locations; it adds no GPU correctness or optimization evidence. In particular, current Cuthbert uses an added time scan over original update functions, and historical PFJAX IF2 used a local PF loop while the new interface calls the original full PF.
 
 **Scope update, 31 October 2026:** Dynamax is excluded from the main comparison at the user's request. No further Dynamax work is planned. The old 968-row report and its figures are retained unchanged as historical evidence and still contain its 36 records. They are not the current main comparison; future main tables, figures and conclusions omit Dynamax.
 

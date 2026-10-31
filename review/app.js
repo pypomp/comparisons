@@ -5,7 +5,7 @@ const route = (p, line='') => '/?path=' + encodeURIComponent(p) + (line ? '#L'+l
 const raw = p => '/raw?path='+encodeURIComponent(p);
 const path = new URLSearchParams(location.search).get('path') || '';
 let activeFile, requestSequence=0;
-async function api(endpoint, params={}) {const r=await fetch('/api/'+endpoint+'?'+new URLSearchParams(params));if(!r.ok)throw new Error('无法读取该路径');return r.json();}
+async function api(endpoint, params={}) {const r=await fetch('/api/'+endpoint+'?'+new URLSearchParams(params));if(!r.ok)throw new Error('Unable to read this path');return r.json();}
 function link(url, base) {
   if (/^https?:\/\//i.test(url)) return url;
   if (/^[a-z][a-z0-9+.-]*:/i.test(url) || url.startsWith('//') || url.startsWith('/')) return '#';
@@ -40,24 +40,24 @@ function markdown(text, base) {
 }
 function source(text, patch=false){const lines=text.split('\n');let added=0,removed=0;
   const html=lines.map((s,i)=>{let cls='';if(patch){if(s.startsWith('diff --git'))cls='file-head';else if(s.startsWith('@@'))cls='hunk';else if(s.startsWith('+')&&!s.startsWith('+++')){cls='add';added++;}else if(s.startsWith('-')&&!s.startsWith('---')){cls='del';removed++;}}return '<div id="L'+(i+1)+'" class="code-line '+cls+'"><a class="ln" href="#L'+(i+1)+'">'+(i+1)+'</a><span class="code-text">'+esc(s)+'</span></div>';}).join('');
-  return (patch?'<div class="diff-summary">补丁 · 新增 '+added+' 行 · 删除 '+removed+' 行。绿色为新增，红色为删除。</div>':'')+'<div class="source">'+html+'</div>';
+  return (patch?'<div class="diff-summary">Diff · '+added+' addition'+(added===1?'':'s')+' · '+removed+' deletion'+(removed===1?'':'s')+'. Green: additions. Red: deletions.</div>':'')+'<div class="source">'+html+'</div>';
 }
 function breadcrumbs(name){const parts=name.split('/').filter(Boolean);let p='';$('breadcrumbs').innerHTML='<a href="/">comparisons</a>'+parts.map(s=>{p+=(p?'/':'')+s;return ' / <a href="'+route(p)+'">'+esc(s)+'</a>';}).join('');}
 function renderFile(f, asSource=false){activeFile=f;const isMD=f.suffix==='.md',patch=f.suffix==='.patch';
-  $('actions').innerHTML='<span>'+f.size.toLocaleString()+' bytes</span>'+((isMD&&f.text!==null)?'<button id="toggle">'+(asSource?'阅读文档':'查看源码')+'</button>':'')+'<a class="button" href="'+raw(f.path)+'">下载原文件</a><button id="copy">复制路径</button>';
-  $('copy').onclick=()=>navigator.clipboard.writeText(f.path).then(()=>{$('copy').textContent='已复制';});
+  $('actions').innerHTML='<span>'+f.size.toLocaleString()+' bytes</span>'+((isMD&&f.text!==null)?'<button id="toggle">'+(asSource?'Preview':'Source')+'</button>':'')+'<a class="button" href="'+raw(f.path)+'">Download</a><button id="copy">Copy path</button>';
+  $('copy').onclick=()=>navigator.clipboard.writeText(f.path).then(()=>{$('copy').textContent='Copied';});
   if($('toggle'))$('toggle').onclick=()=>renderFile(f,!asSource);
   if(f.text!==null)$('content').innerHTML=isMD&&!asSource?markdown(f.text,f.path):source(f.text,patch);
   else if(/\.(png|jpe?g)$/i.test(f.path))$('content').innerHTML='<img class="image-preview" src="'+raw(f.path)+'" alt="'+esc(f.path)+'">';
-  else $('content').innerHTML='<div class="notice">二进制文件或文件超过 2 MB，请下载原文件查看。来源与校验值见 manifests 目录。</div>';
+  else $('content').innerHTML='<div class="notice">Binary file or file larger than 2 MB. Download the original to inspect it. Sources and checksums are recorded in manifests/.</div>';
   highlightLine();
 }
 function highlightLine(){document.querySelectorAll('.code-line.selected').forEach(e=>e.classList.remove('selected'));if(location.hash){const element=document.getElementById(location.hash.slice(1));if(element){element.classList.add('selected');element.scrollIntoView({block:'center'});}}}
 window.addEventListener('hashchange',highlightLine);
-async function directory(name){const list=await api('tree',{path:name});$('actions').innerHTML='';$('content').innerHTML='<div class="tree">'+(name?'<a class="tree-row" href="'+route(name.split('/').slice(0,-1).join('/'))+'">↰ 上一级</a>':'')+list.map(x=>'<a class="tree-row" href="'+route(x.path)+'"><span class="icon '+(x.directory?'directory':'')+'">'+(x.directory?'▣':'▤')+'</span>'+esc(x.name)+'</a>').join('')+'</div>';
-  const readme=list.find(x=>x.name==='README_CN.md')||list.find(x=>x.name==='README.md');if(readme){const f=await api('file',{path:readme.path});if(f.text)$('content').insertAdjacentHTML('beforeend',markdown(f.text,readme.path));}}
+async function directory(name){const list=await api('tree',{path:name});$('actions').innerHTML='';$('content').innerHTML='<div class="tree">'+(name?'<a class="tree-row" href="'+route(name.split('/').slice(0,-1).join('/'))+'">↰ Parent directory</a>':'')+list.map(x=>'<a class="tree-row" href="'+route(x.path)+'"><span class="icon '+(x.directory?'directory':'')+'">'+(x.directory?'▣':'▤')+'</span>'+esc(x.name)+'</a>').join('')+'</div>';
+  const readme=list.find(x=>x.name==='README.md')||list.find(x=>x.name==='README_CN.md');if(readme){const f=await api('file',{path:readme.path});if(f.text)$('content').insertAdjacentHTML('beforeend',markdown(f.text,readme.path));}}
 async function load(){breadcrumbs(path);try{if(!path)await directory('');else{try{renderFile(await api('file',{path}),!!location.hash);}catch(e){await directory(path);}}}catch(e){$('content').innerHTML='<div class="notice">'+esc(e.message)+'</div>';}}
-for(const name of ['cuthbert','pfjax','pydpf','tfp','particles','pypomp','pypfilt']){const div=document.createElement('div');div.className='pkg';div.innerHTML='<a href="'+route('packages/'+name)+'">'+esc(name)+'</a>'+(!['pypomp','pypfilt'].includes(name)?'<a href="'+route('packages/'+name+'/review/full.patch')+'">补丁</a>':'');$('packages').appendChild(div);}
-api('meta').then(m=>{$('revision').textContent=m.branch+' · '+m.commit;$('count').textContent=m.files.toLocaleString()+' 个文件';});
-let timer;$('search').addEventListener('input',()=>{clearTimeout(timer);const q=$('search').value;const sequence=++requestSequence;timer=setTimeout(async()=>{if(!q){load();return;}const found=await api('search',{q});if(sequence!==requestSequence)return;$('breadcrumbs').textContent='文件搜索 · '+q;$('actions').textContent=found.total+' 个匹配，最多显示 150 个';$('content').innerHTML='<div class="tree">'+found.paths.map(p=>'<a class="tree-row result-path" href="'+route(p)+'">'+esc(p)+'</a>').join('')+'</div>';},180);});
+for(const name of ['cuthbert','pfjax','pydpf','tfp','particles','pypomp','pypfilt']){const div=document.createElement('div');div.className='pkg';div.innerHTML='<a href="'+route('packages/'+name)+'">'+esc(name)+'</a>'+(!['pypomp','pypfilt'].includes(name)?'<a href="'+route('packages/'+name+'/review/full.patch')+'">Diff</a>':'');$('packages').appendChild(div);}
+api('meta').then(m=>{$('revision').textContent=m.branch+' · '+m.commit;$('count').textContent=m.files.toLocaleString()+' files';});
+let timer;$('search').addEventListener('input',()=>{clearTimeout(timer);const q=$('search').value;const sequence=++requestSequence;timer=setTimeout(async()=>{if(!q){load();return;}const found=await api('search',{q});if(sequence!==requestSequence)return;$('breadcrumbs').textContent='File search · '+q;$('actions').textContent=found.total+' matches; showing up to 150';$('content').innerHTML='<div class="tree">'+found.paths.map(p=>'<a class="tree-row result-path" href="'+route(p)+'">'+esc(p)+'</a>').join('')+'</div>';},180);});
 load();

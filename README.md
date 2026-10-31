@@ -2,11 +2,13 @@
 
 Local code and evidence for comparisons of particle-filter implementations and parameter estimation on the original Dacca cholera model.
 
-[中文说明](README_CN.md) · [Package calls and additions](docs/package_calls.md) · [Current evidence](reports/status.md) · [Reproduction](docs/reproduction.md) · [Meeting decisions](docs/meeting_decisions.md)
+[Chinese notes](README_CN.md) · [Package calls and additions](docs/package_calls.md) · [Current evidence](reports/status.md) · [Reproduction](docs/reproduction.md) · [Meeting decisions](docs/meeting_decisions.md)
+
+English is the primary language for review documents and this browser. Chinese notes are supplementary; frozen sources and historical evidence retain their recorded language.
 
 This repository follows Ed's proposal to keep the comparison code, package changes and reports together. It has no remote. No material has been sent to package authors or submitted as a pull request.
 
-For a local file and diff browser, run `python3 scripts/browse.py` and open `http://127.0.0.1:8765/`. See [browsing instructions](docs/browsing.md). The [31 October source audit](reports/native_pf_audit_20261031/report_CN.md) distinguishes native PF time loops, native update kernels, and locally added gradient code; [source locations](reports/native_pf_audit_20261031/source_locations.md) link to the inspected calls.
+For a local file and diff browser, run `python3 scripts/browse.py` and open `http://127.0.0.1:8765/`. See [browsing instructions](docs/browsing.md). The [31 October source audit](reports/native_pf_audit_20261031/report.md) distinguishes native PF time loops, native update kernels, and locally added gradient code; [source locations](reports/native_pf_audit_20261031/source_locations.md) link to the inspected calls.
 
 ## Packages
 
@@ -24,7 +26,7 @@ Dynamax is excluded from the main comparison at the user's request on 31 October
 
 ## Experiments
 
-- [Earlier completed Dacca results](reports/legacy_dacca/report_CN.txt): the unchanged historical archive has 968 endpoint records, including the now-excluded Dynamax experiment. Each result retains the code that actually produced it. This is not the current comparison scope or evidence validating later public interfaces.
+- [Earlier completed Dacca results (Chinese historical report)](reports/legacy_dacca/report_CN.txt): the unchanged historical archive has 968 endpoint records, including the now-excluded Dynamax experiment. Each result retains the code that actually produced it. This is not the current comparison scope or evidence validating later public interfaces.
 - [New public-interface comparison](experiments/public_interfaces/README.md): correctness, native PF timing and optimization are separate questions. The four GPU comparisons have no optimization endpoints in this snapshot. The new particles comparison has 24 audited endpoints.
 - [Earlier Cuthbert probes](experiments/history/README.md): retained separately, including earlier source revisions and superseded evidence.
 - [Historical all-point figures](reports/legacy_dacca/figures_all/) and [historical 1.5-IQR display figures](reports/legacy_dacca/figures_iqr/): these unchanged earlier figures include Dynamax. They are retained as history, not current main-comparison figures. Future main tables, figures and conclusions exclude Dynamax.

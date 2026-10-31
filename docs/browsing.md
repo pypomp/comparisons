@@ -1,16 +1,18 @@
-# 在本机浏览 comparisons
+# Browse comparisons locally
 
-在终端运行：
+Run the following in a terminal:
 
 ```bash
 cd /Users/mac/Documents/Codex/2026-10-22/cloud-gl/comparisons
 python3 scripts/browse.py
 ```
 
-浏览器打开 [http://127.0.0.1:8765/](http://127.0.0.1:8765/)。页面提供目录、文件搜索、Markdown 阅读、带行号的源码、红绿补丁、图像预览和原文件下载。左侧每个候选包都有“补丁”入口。
+Open [http://127.0.0.1:8765/](http://127.0.0.1:8765/) in a browser. The page provides directory navigation, file search, Markdown previews, source line numbers, colored diffs, image previews and original-file downloads. Each candidate package has a **Diff** link in the sidebar.
 
-建议先看“各包实际调用”和“原生 PF 源码复核”，再打开对应包的 `review/full.patch`。`upstream/` 是对应原代码，`candidate/` 是含新增接口的候选代码，`validation/` 是验证记录。实验结果在 `experiments/` 和 `reports/`；旧实验与新接口分开。
+Start with **Package calls and additions** and **Native PF source audit**, then open the package's `review/full.patch`. The `upstream/` directory contains the corresponding original code; `candidate/` contains the code with our additions; `validation/` contains validation programs and records. Experiments and reports are under `experiments/` and `reports/`, with earlier experiments separate from the new interfaces.
 
-这是本地只读浏览器，只监听 `127.0.0.1`，没有 GitHub 远程仓库或发布功能。停止服务可在启动它的终端按 Ctrl+C；之后重新运行上面的命令即可。复制 Git 仓库到别的电脑时，另需复制 `artifacts/` 中的原始压缩包，清单见 `manifests/archives.json`。
+English is the default for the browser and review documents. Chinese notes remain available as supplementary documents. Original sources, logs and historical reports retain their recorded language.
 
-浏览器不运行实验，也不更新调度状态。目录索引在启动时生成；新增文件后重新启动即可显示。
+The browser is read only and listens on `127.0.0.1`. It has no remote repository or publication function. Press Ctrl+C in its terminal to stop it; run the command again to restart. When copying the Git repository to another computer, also copy the original archives under `artifacts/`, listed in `manifests/archives.json`.
+
+The browser does not run experiments or refresh scheduler state. Its file index is built at startup; restart it after adding files.

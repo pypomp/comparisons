@@ -2,6 +2,8 @@
 
 This is a local comparison repository. Preserve imported evidence and its SHA256 records.
 
+- English is the primary language for the browser, README files and documents intended for package authors. Keep Chinese notes as explicitly identified supplementary documents. Preserve the language and bytes of frozen sources and historical evidence.
+
 - Start with README.md, reports/status.md and the dated experiment status. Old job records are history; use the active workspace jobs.json and a real scheduler query before taking cluster actions.
 - Keep correctness, native PF runtime and optimization outcomes separate. Old driver results do not validate later public interfaces.
 - State the original package function, added code and external optimizer explicitly. Added public APIs are not upstream-native methods.
