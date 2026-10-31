@@ -2,6 +2,8 @@
 
 This is a local comparison repository. Preserve imported evidence and its SHA256 records.
 
+- Write plain technical English. Name the package function, code change, test or measured quantity. Avoid vague labels such as "evidence bundle", "implementation boundary" or "release gate" in review prose. Preserve exact function names and filenames.
+- When attributing a requirement to a meeting, cite the speaker and transcript time. Distinguish meeting proposals from later experiment settings and user decisions.
 - English is the primary language for the browser, README files and documents intended for package authors. Keep Chinese notes as explicitly identified supplementary documents. Preserve the language and bytes of frozen sources and historical evidence.
 
 - Start with README.md, reports/status.md and the dated experiment status. Old job records are history; use the active workspace jobs.json and a real scheduler query before taking cluster actions.

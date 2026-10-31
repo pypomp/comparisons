@@ -1,21 +1,27 @@
 # particles
 
-Public interface v1. This is a local candidate change, not a claim that the original package already provides these methods or that upstream has accepted them.
+Local revision 1, based on the original version recorded in [source details](../../manifests/packages.json). The changes have not been submitted upstream.
 
-The added iterated_filtering and _PerturbedBootstrap provide joint state/parameter particles to the original SMC.run loop and Bootstrap model calls. They add perturbation, cooling and full parameter-swarm propagation. Existing Python source files remain unchanged. The optimizer used by the Dacca experiment is external SciPy Nelder–Mead.
+The new `iterated_filtering` and `_PerturbedBootstrap` give joint state and parameter particles to the original `SMC.run` loop and `Bootstrap` model calls. They add parameter perturbations, cooling and retention of the parameter population between IF2 passes. Existing Python source files are unchanged.
+
+The experiment uses external SciPy Nelder-Mead. Method A runs it for 1,800 seconds. Method B uses IF2 for the first 900 seconds and then Nelder-Mead for the remaining time. This is not a differentiable-PF experiment.
+
+## Code and tests
 
 - [Original source](upstream/)
-- [Candidate source](candidate/)
-- [Complete patch](review/full.patch)
-- [Exact calls and explanation](review/call_chain.txt)
+- [Modified source](candidate/)
+- [Complete diff](review/full.patch)
+- [Function descriptions](review/call_chain.txt)
 - [Function locations](review/function_locations.json)
-- [Original review manifest](review/review_manifest.json)
-- [Validation programs](validation/) and [preserved review results](review/)
+- [Source versions and file hashes](review/review_manifest.json)
+- [Test programs](validation/) and [test and source records](review/)
 - [Earlier completed experiment](../../experiments/legacy_dacca/particles/)
-- [New experiment and GPU/CPU evidence](../../experiments/public_interfaces/README.md)
+- [New experiment and tests](../../experiments/public_interfaces/README.md)
 
-Current evidence in this repository snapshot: The CPU forward PF matched likelihood, states, weights and RNG in nine pairs. Public IF2 checks passed. The new comparison has 24 audited endpoints with 21 precision passes; three low-precision A endpoints are retained. Final new-comparison figures and release packaging remain pending.
+## Included results
 
-The earlier completed experiment used its own frozen driver. Its final scores do not validate this newer interface. Read the archive's own source/protocol when interpreting those earlier results. Reproduction archives and code-review ZIPs are physically preserved under `artifacts/`; the [archive catalog](../../manifests/archives.json) gives their paths and hashes.
+Nine paired CPU PF runs matched likelihoods, states, weights and random-number state. The added IF2 tests passed. All 24 new fits and independent scores have been checked; 21 meet the precision requirement. Three A scores remain below it at 288 repeats. Final figures and the reproducibility archive are pending.
 
-The patch is checked against the source copied here by `python3 scripts/verify.py` from the repository root. Numerical validation and native PF timing are different checks; see [the status report](../../reports/status.md).
+[Results and tests](../../reports/status.md) gives the dates, measured PF times and remaining work. Earlier experiments used their own saved drivers. Their results do not validate this code revision.
+
+The [archive list](../../manifests/archives.json) identifies the original source and raw-result archives under `artifacts/`. From the repository root, `python3 scripts/verify.py` checks that the diff applied to the copied original source produces the modified source exactly. Numerical tests are recorded separately.

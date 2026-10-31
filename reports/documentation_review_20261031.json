@@ -1,0 +1,55 @@
+{
+  "reviewed_at_utc": "2026-10-31T23:50:14.045438+00:00",
+  "changed_documentation": [
+    "AGENTS.md",
+    "README.md",
+    "docs/browsing.md",
+    "docs/meeting_decisions.md",
+    "docs/package_calls.md",
+    "experiments/public_interfaces/README.md",
+    "packages/cuthbert/README.md",
+    "packages/particles/README.md",
+    "packages/pfjax/README.md",
+    "packages/pydpf/README.md",
+    "packages/pypfilt/README.md",
+    "packages/pypomp/README.md",
+    "packages/tfp/README.md",
+    "reports/native_pf_audit_20261031/report.md",
+    "reports/status.md",
+    "review/index.html",
+    "reports/dacca_comparison.md",
+    "docs/meeting_review_20261031.json"
+  ],
+  "meeting_excerpts_checked": 24,
+  "private_transcript_copied": false,
+  "relative_document_links_passed": true,
+  "reported_particles_medians_checked_against_saved_CSV": true,
+  "browser_pages_checked": [
+    "home",
+    "Dacca report",
+    "meeting notes",
+    "checked excerpts",
+    "package functions",
+    "package source review",
+    "source link",
+    "Cuthbert diff"
+  ],
+  "browser_javascript_errors": [],
+  "visual_review": {
+    "passed": true,
+    "pages": [
+      "home",
+      "meeting notes",
+      "Dacca report"
+    ],
+    "checks": [
+      "English headings and prose",
+      "readable tables",
+      "no clipped text or overlapping elements"
+    ]
+  },
+  "imported_files_modified": 0,
+  "scientific_code_modified": false,
+  "numerical_experiments_rerun": false,
+  "remote_actions": false
+}

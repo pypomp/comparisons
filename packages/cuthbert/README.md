@@ -1,21 +1,29 @@
 # Cuthbert
 
-Public interface v3. This is a local candidate change, not a claim that the original package already provides these methods or that upstream has accepted them.
+Local revision 3, based on the original version recorded in [source details](../../manifests/packages.json). The changes have not been submitted upstream.
 
-The added IF2 interface uses particle_filter.build_filter and the original PF updates and resamplers. Parameter and state particles share ancestor selection. Full parameter swarms, perturbations, cooling and outer iterations are added. Alpha=1 calls the unchanged original stop_gradient_decorator; alpha<1 uses the added discounted decorator. The experiment driver calls iterated_filtering.fit and dmop.log_likelihood with external Optax scale_by_adam, rather than complete ifad.fit.
+The new IF2 and DMOP functions call `particle_filter.build_filter` and use the original `filter_prepare` and `filter_combine` updates. Our `scan_final` function loops over observation times and returns the final filter state. It does not call the top-level `cuthbert.filter`.
+
+IF2 adds a parameter vector to each state particle, applies random-walk perturbations, and selects state and parameter ancestors together. It retains the parameter population between IF2 passes and reduces perturbations according to the cooling schedule. At α=1, the gradient calculation calls the unchanged original `stop_gradient_decorator`. At α<1, it uses the discounted decorator we added.
+
+The planned A/B/C experiment calls `iterated_filtering.fit` and `dmop.log_likelihood`, with external Optax `scale_by_adam` for parameter updates. It does not call the combined `ifad.fit` function.
+
+## Code and tests
 
 - [Original source](upstream/)
-- [Candidate source](candidate/)
-- [Complete patch](review/full.patch)
-- [Exact calls and explanation](review/README_EN.txt)
+- [Modified source](candidate/)
+- [Complete diff](review/full.patch)
+- [Function descriptions](review/README_EN.txt)
 - [Function locations](review/function_locations.json)
-- [Original review manifest](review/review_manifest.json)
-- [Validation programs](validation/) and [preserved review results](review/)
+- [Source versions and file hashes](review/review_manifest.json)
+- [Test programs](validation/) and [test and source records](review/)
 - [Earlier completed experiment](../../experiments/legacy_dacca/paper_cuthbert_pypomp/)
-- [New experiment and GPU/CPU evidence](../../experiments/public_interfaces/README.md)
+- [New experiment and tests](../../experiments/public_interfaces/README.md)
 
-Current evidence in this repository snapshot: The revised CPU checks passed. The full earlier GPU suite timed out with three failures. Original/candidate GPU diagnosis 65144329 and revised gate 65144479 were pending at 2026-10-31 22:09:39 UTC. No v3 A/B/C optimization result exists in this snapshot.
+## Included results
 
-The earlier completed experiment used its own frozen driver. Its final scores do not validate this newer interface. Read the archive's own source/protocol when interpreting those earlier results. Reproduction archives and code-review ZIPs are physically preserved under `artifacts/`; the [archive catalog](../../manifests/archives.json) gives their paths and hashes.
+The revised CPU checks passed. The earlier full GPU test run timed out with three failures. Jobs 65144329 and 65144479, which compare the original code and test the revision, were pending at the included scheduler query on 31 October 2026, 22:09:39 UTC. No v3 A/B/C optimization results are included.
 
-The patch is checked against the source copied here by `python3 scripts/verify.py` from the repository root. Numerical validation and native PF timing are different checks; see [the status report](../../reports/status.md).
+[Results and tests](../../reports/status.md) gives the dates, measured PF times and remaining work. Earlier experiments used their own saved drivers. Their results do not validate this code revision.
+
+The [archive list](../../manifests/archives.json) identifies the original source and raw-result archives under `artifacts/`. From the repository root, `python3 scripts/verify.py` checks that the diff applied to the copied original source produces the modified source exactly. Numerical tests are recorded separately.

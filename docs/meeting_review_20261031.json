@@ -1,0 +1,215 @@
+{
+  "review_date": "2026-10-31",
+  "source_filename": "dmop etc transcript_2026-10-29_16.02.38.txt",
+  "source_sha256": "a78fbae9f0718988cebe40dedbc654255a8782449d9937854c996b9612c5f9c6",
+  "source_lines": 1875,
+  "source": "User-supplied private Zoom transcript; full text not redistributed.",
+  "timestamp_note": "Times are transcript labels, not inferred from the filename.",
+  "speaker_note": "Some replies by Kunyang are labelled Edward Ionides. Use clear questions and continuous discussion; do not attribute mixed-speaker replies to Ed.",
+  "excerpts": [
+    {
+      "speaker_label": "Edward Ionides",
+      "transcript_time": "15:20:13",
+      "speaker_line": 634,
+      "excerpt": "a meaningful pull request for that package",
+      "topic": "A useful contribution to the target package",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Edward Ionides",
+      "transcript_time": "15:21:03",
+      "speaker_line": 655,
+      "excerpt": "what does it mean to do IF2 in Cuthbert rather than just in JAX?",
+      "topic": "Actual use of the package PF",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Edward Ionides",
+      "transcript_time": "15:27:20",
+      "speaker_line": 868,
+      "excerpt": "in the style of that package",
+      "topic": "Follow the target package structure",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Edward Ionides",
+      "transcript_time": "15:27:43",
+      "speaker_line": 880,
+      "excerpt": "add a random walk argument",
+      "topic": "Parameter perturbations",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Edward Ionides",
+      "transcript_time": "15:28:34",
+      "speaker_line": 910,
+      "excerpt": "adding the alpha exponent to their ADPF",
+      "topic": "Extend the existing ADPF",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Edward Ionides",
+      "transcript_time": "15:28:52",
+      "speaker_line": 916,
+      "excerpt": "you don't want to have to hack every model",
+      "topic": "Reusable IF2 code",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Giles Hooker",
+      "transcript_time": "15:29:17",
+      "speaker_line": 925,
+      "excerpt": "we take their code and make the minimal change",
+      "topic": "Changes to original package code",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Giles Hooker",
+      "transcript_time": "15:29:41",
+      "speaker_line": 940,
+      "excerpt": "diff with their code",
+      "topic": "Show the diff",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Giles Hooker",
+      "transcript_time": "15:29:54",
+      "speaker_line": 949,
+      "excerpt": "a fairly intelligible diff",
+      "topic": "Readable code changes",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Kevin Tan",
+      "transcript_time": "15:22:47",
+      "speaker_line": 709,
+      "excerpt": "label it as ADPF",
+      "topic": "Name the method actually used",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Kevin Tan",
+      "transcript_time": "15:23:10",
+      "speaker_line": 727,
+      "excerpt": "One is runtime, the second is correctness, the third is likelihood performance.",
+      "topic": "Separate the three questions",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Kevin Tan",
+      "transcript_time": "15:23:18",
+      "speaker_line": 733,
+      "excerpt": "that study is best done with the particle filter",
+      "topic": "Time ordinary PF calls",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Edward Ionides",
+      "transcript_time": "15:32:32",
+      "speaker_line": 1033,
+      "excerpt": "not really a PFJAX estimate",
+      "topic": "Identify the origin of the gradient",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Edward Ionides",
+      "transcript_time": "15:47:51",
+      "speaker_line": 1411,
+      "excerpt": "took their particle filter and stuck it into Nelder-Mead",
+      "topic": "External optimizer",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Giles Hooker",
+      "transcript_time": "15:52:30",
+      "speaker_line": 1567,
+      "excerpt": "something in the architecture that prevented that?",
+      "topic": "Check why IF2 is absent",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Edward Ionides",
+      "transcript_time": "15:53:44",
+      "speaker_line": 1609,
+      "excerpt": "their method plus IAF2, and our method",
+      "topic": "Within-package method comparison",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Edward Ionides",
+      "transcript_time": "15:54:28",
+      "speaker_line": 1627,
+      "excerpt": "a new repo called comparisons",
+      "topic": "Repository proposal",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Edward Ionides",
+      "transcript_time": "15:54:52",
+      "speaker_line": 1639,
+      "excerpt": "the Git repo where all the code for the report is",
+      "topic": "Report and corresponding code",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Giles Hooker",
+      "transcript_time": "15:56:36",
+      "speaker_line": 1690,
+      "excerpt": "how far are we gonna go?",
+      "topic": "Limit the extension work",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Giles Hooker",
+      "transcript_time": "15:56:49",
+      "speaker_line": 1702,
+      "excerpt": "here is the setup, the model.",
+      "topic": "Report setup and model",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Giles Hooker",
+      "transcript_time": "15:56:56",
+      "speaker_line": 1705,
+      "excerpt": "the results.",
+      "topic": "Report results",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Edward Ionides",
+      "transcript_time": "15:57:16",
+      "speaker_line": 1717,
+      "excerpt": "somewhat preliminary results",
+      "topic": "Preliminary interpretation",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Edward Ionides",
+      "transcript_time": "15:58:03",
+      "speaker_line": 1738,
+      "excerpt": "a separate repo would be good",
+      "topic": "Separate repository preference",
+      "exact_excerpt_checked": true
+    },
+    {
+      "speaker_label": "Edward Ionides",
+      "transcript_time": "15:58:16",
+      "speaker_line": 1744,
+      "excerpt": "all the code too",
+      "topic": "Include modified source",
+      "exact_excerpt_checked": true
+    }
+  ],
+  "later_decisions_not_attributed_to_meeting": [
+    "Exact A/B/C starts, particles, iteration counts, pairing and scoring rules",
+    "Local original and modified source copies instead of a settled fork/submodule arrangement",
+    "English as the primary repository language",
+    "Excluding Dynamax from the main comparison on 31 October"
+  ],
+  "unsettled_discussion": [
+    "Forks, submodules and hosting",
+    "Fixed-seed Nelder-Mead as a general rule",
+    "How far to extend each package"
+  ],
+  "related_document": "docs/meeting_decisions.md"
+}

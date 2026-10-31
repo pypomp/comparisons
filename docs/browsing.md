@@ -7,9 +7,9 @@ cd /Users/mac/Documents/Codex/2026-10-22/cloud-gl/comparisons
 python3 scripts/browse.py
 ```
 
-Open [http://127.0.0.1:8765/](http://127.0.0.1:8765/) in a browser. The page provides directory navigation, file search, Markdown previews, source line numbers, colored diffs, image previews and original-file downloads. Each candidate package has a **Diff** link in the sidebar.
+Open [http://127.0.0.1:8765/](http://127.0.0.1:8765/) in a browser. The page provides directory navigation, file search, Markdown previews, source line numbers, colored diffs, image previews and original-file downloads. Each modified package has a **Diff** link in the sidebar.
 
-Start with **Package calls and additions** and **Native PF source audit**, then open the package's `review/full.patch`. The `upstream/` directory contains the corresponding original code; `candidate/` contains the code with our additions; `validation/` contains validation programs and records. Experiments and reports are under `experiments/` and `reports/`, with earlier experiments separate from the new interfaces.
+Start with **Dacca report**, **Package functions** and **How each package is used**, then open the package's `review/full.patch`. The `upstream/` directory contains the corresponding original code; `candidate/` contains the code with our additions; `validation/` contains validation programs and records. Experiments and reports are under `experiments/` and `reports/`, with earlier experiments separate from the new interfaces.
 
 English is the default for the browser and review documents. Chinese notes remain available as supplementary documents. Original sources, logs and historical reports retain their recorded language.
 
