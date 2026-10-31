@@ -1,5 +1,7 @@
 # Evidence included in the 31 October 2026 snapshot
 
+**Scope update, 31 October 2026:** Dynamax is excluded from the main comparison at the user's request. No further Dynamax work is planned. The old 968-row report and its figures are retained unchanged as historical evidence and still contain its 36 records. They are not the current main comparison; future main tables, figures and conclusions omit Dynamax.
+
 This report describes the files imported into this local repository. It is not a live scheduler view. The latest included successful scheduler query is **2026-10-31 22:09:39 UTC**. See the [original campaign status](../experiments/public_interfaces/snapshot_20261031/status.json), [job records](../experiments/public_interfaces/snapshot_20261031/) and [recovered GPU audit](../experiments/public_interfaces/snapshot_20261031/recovery_20261031/GPU_audit.json).
 
 ## Correctness

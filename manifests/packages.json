@@ -46,7 +46,11 @@
   },
   "dynamax": {
     "new_public_interface": false,
-    "source_and_raw_archive": "artifacts/experiments/legacy_dacca/dynamax/reproduction.tar.gz"
+    "source_and_raw_archive": "artifacts/experiments/legacy_dacca/dynamax/reproduction.tar.gz",
+    "included_in_main_comparison": false,
+    "status": "historical_records_only",
+    "further_work_planned": false,
+    "reason": "The experiment used a locally written Dacca PF; Dynamax supplied SSM.fit_sgd."
   },
   "pypfilt": {
     "new_public_interface": false,

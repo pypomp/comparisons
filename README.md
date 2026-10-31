@@ -16,15 +16,16 @@ This repository follows Ed's proposal to keep the comparison code, package chang
 | TensorFlow Probability | [v1 source, patch and checks](packages/tfp/README.md) | Completed earlier comparison; new GPU check unresolved and full local upstream testing incomplete |
 | particles | [v1 source, patch and checks](packages/particles/README.md) | Earlier comparison complete; new 24 endpoints and scores audited, final figures/package pending |
 | PyPOMP | [Reference source](packages/pypomp/README.md) | Paper comparator and independent endpoint evaluator |
-| Dynamax | [Earlier experiment code](packages/dynamax/README.md) | Completed earlier comparison; no further locally written PF planned |
 | pypfilt | [Earlier experiment code](packages/pypfilt/README.md) | Completed earlier native-PF comparison with external Nelder–Mead |
+
+Dynamax is excluded from the main comparison at the user's request on 31 October 2026. Its earlier experiment used a locally written PF with `SSM.fit_sgd`, so it does not answer the comparison of package PF implementations. Its code and results remain [historical records](packages/dynamax/README.md); no further Dynamax work is planned.
 
 ## Experiments
 
-- [Earlier completed Dacca results](reports/legacy_dacca/report_CN.txt): 968 endpoint records, including the 800-endpoint Cuthbert/PyPOMP paper experiment and six additional packages. Each result retains the code that actually produced it. These results do not validate the later public interfaces.
+- [Earlier completed Dacca results](reports/legacy_dacca/report_CN.txt): the unchanged historical archive has 968 endpoint records, including the now-excluded Dynamax experiment. Each result retains the code that actually produced it. This is not the current comparison scope or evidence validating later public interfaces.
 - [New public-interface comparison](experiments/public_interfaces/README.md): correctness, native PF timing and optimization are separate questions. The four GPU comparisons have no optimization endpoints in this snapshot. The new particles comparison has 24 audited endpoints.
 - [Earlier Cuthbert probes](experiments/history/README.md): retained separately, including earlier source revisions and superseded evidence.
-- [All-point figures](reports/legacy_dacca/figures_all/) and [1.5-IQR display figures](reports/legacy_dacca/figures_iqr/): existing figures, with all raw values and statistics retained. No new optimization figure is inferred from a correctness check.
+- [Historical all-point figures](reports/legacy_dacca/figures_all/) and [historical 1.5-IQR display figures](reports/legacy_dacca/figures_iqr/): these unchanged earlier figures include Dynamax. They are retained as history, not current main-comparison figures. Future main tables, figures and conclusions exclude Dynamax.
 
 The original Dacca benchmark uses 600 monthly observations and 20 Euler steps per month with Gaussian process noise. Particle counts, starts, iteration counts and budgets belong to each recorded protocol. CPU and GPU costs, older J=1024 probes and later J=5000 comparisons must remain distinguishable.
 

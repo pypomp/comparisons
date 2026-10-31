@@ -2,6 +2,8 @@
 
 下表描述 `packages/` 中的当前公共接口候选版本。它与旧实验驱动不同。旧实验的逐项调用见 [旧实验调用核对](../reports/package_calls_legacy/table_CN.txt)；旧结果所用的完整源代码在相应复现包中。
 
+Dynamax 已按用户决定从主比较中移除，不再进行后续实现或实验。旧调用表仍含其历史记录，不代表当前范围。
+
 | 包 | 原包已有、实际复用的函数 | 我们新增或修改的代码 | 优化如何执行 |
 |---|---|---|---|
 | Cuthbert v3 | `particle_filter.build_filter` 产生的原 PF 更新函数；原重采样函数；α=1 时原 `stop_gradient_decorator` | 新 `iterated_filtering.fit` 给每个粒子携带参数，调用原 PF 更新函数完成每轮滤波，保留末端完整参数集合，添加扰动与冷却；新 `dmop.log_likelihood`；α<1 的 `discounted_stop_gradient_decorator`；终态扫描及通用训练接口 | 正式驱动调用新 IF2 和 `dmop.log_likelihood`，外接 Optax `scale_by_adam`；没有调用完整 `ifad.fit` |
@@ -10,7 +12,6 @@
 | TFP v1 | 原 `sequential_monte_carlo`、`SequentialMonteCarlo.one_step`、`WeightedParticles` 和重采样；原可微 `particle_filter` | 新 `iterated_filter` 包装参数化模型，在原 SMC 时间循环外重复滤波；沿 `particle_filter` → SMC 传递新增 `gradient_discount`，在权重导数中应用折扣 | 外部 Keras Adam 循环；没有加入虚构的月度转移密度 |
 | particles v1 | 原 `SMC.run` 的时间循环、`Bootstrap` 的模型调用、重采样和 `logLt` | 新 `iterated_filtering` 和 `_PerturbedBootstrap` 让粒子携带状态与参数，加入扰动、冷却、整组参数传递；原有 Python 文件保持不变 | 新实验 A 是原 PF + 外部 SciPy Nelder–Mead；B 先调用新 IF2 再用同一个外部优化器 |
 | PyPOMP | 旧论文实验调用 `functional.mif`、`functional.train` 及其 Adam；终点评分调用固定原始 PF | 模型、参数设置和实验编排；本仓库不宣称新增 PyPOMP 公共接口 | 包内优化与独立 PF 评分分别记录 |
-| Dynamax | 旧实验梯度阶段调用 `SSM.fit_sgd` | 旧实验的 Dacca PF、重采样、IF2 和梯度处理由我们编写 | 旧结果保留；后续不继续添加自写 PF，不把它作为 Dynamax 原生 PF 比较 |
 | pypfilt | 旧实验通过 `pypfilt.fit` 执行原生 PF | Dacca 模型回调、likelihood 增量累计、外部优化和记录 | 外部 SciPy Nelder–Mead；本次没有原生 IF2、IFAD 或 MLE 比较 |
 
 “新增公共接口”指本地候选代码提供的函数，不表示原版本已经自带，也不表示上游已接受。每个包目录包含完整补丁、函数位置和原有代码保持不变的核验记录。

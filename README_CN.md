@@ -7,12 +7,14 @@
 | 内容 | 位置 |
 |---|---|
 | Cuthbert、PFJAX、PyDPF、TFP、particles 的候选代码、对应原代码、完整补丁、测试和验证记录 | [`packages/`](packages/) |
-| PyPOMP 参考代码，Dynamax、pypfilt 的旧实验代码及说明 | [`packages/`](packages/) |
-| 已完成的旧 Dacca 比较，包括论文两包的 800 个终点及其他六包 | [`experiments/legacy_dacca/`](experiments/legacy_dacca/)、[总报告](reports/legacy_dacca/report_CN.txt) |
+| PyPOMP 参考代码、pypfilt 的旧实验代码及说明 | [`packages/`](packages/) |
+| 已完成的旧 Dacca 比较历史归档，包含现已排除的 Dynamax | [`experiments/legacy_dacca/`](experiments/legacy_dacca/)、[旧总报告](reports/legacy_dacca/report_CN.txt) |
 | 新公共接口的协议、驱动、作业记录、失败日志、particles 的 24 个终点 | [`experiments/public_interfaces/`](experiments/public_interfaces/) |
-| 已完成结果的总图、按包分图及隐藏 1.5×IQR 离群点的版本 | [`reports/legacy_dacca/`](reports/legacy_dacca/) |
+| 旧实验图的历史副本，仍含 Dynamax，不作为当前主比较图 | [`reports/legacy_dacca/`](reports/legacy_dacca/) |
 | 完整原始记录和复现压缩包 | [`artifacts/`](artifacts/)，文件实际在本地仓库内，未纳入 Git |
 | 每个文件的来源及 SHA256 | [`manifests/`](manifests/) |
+
+按用户 2026-10-31 的决定，Dynamax 已移出主比较表，后续不再做相关实现或实验，主图、主表和结论不再纳入它。原因是该实验的 PF 由我们编写，Dynamax 主要提供 `SSM.fit_sgd`，不能回答原包 PF 的比较问题。[已有代码和结果](packages/dynamax/README.md)仅作历史记录保留。
 
 旧实验保留当时实际运行的代码。五包新公共接口单独组织，不能用旧实验的优化结果证明新接口已经验证成功。原包自带函数、我们新增的函数、外部优化器也分别写明。
 
