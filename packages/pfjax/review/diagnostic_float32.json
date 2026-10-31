@@ -1,0 +1,54 @@
+{
+  "dtype": "<class 'jax.numpy.float32'>",
+  "rows": [
+    {
+      "seed": 20261030,
+      "pass_index": 0,
+      "new_reference_parameters_max": 0.0,
+      "new_reference_loglik_abs": 0.0,
+      "original_reference_parameters_max": 1.1920928955078125e-07,
+      "original_reference_loglik_abs": 0.0009765625
+    },
+    {
+      "seed": 20261030,
+      "pass_index": 1,
+      "new_reference_parameters_max": 0.0,
+      "new_reference_loglik_abs": 0.0,
+      "original_reference_parameters_max": 5.960464477539063e-08,
+      "original_reference_loglik_abs": 0.0
+    },
+    {
+      "seed": 20261031,
+      "pass_index": 0,
+      "new_reference_parameters_max": 0.0,
+      "new_reference_loglik_abs": 0.0,
+      "original_reference_parameters_max": 0.0,
+      "original_reference_loglik_abs": 0.0
+    },
+    {
+      "seed": 20261031,
+      "pass_index": 1,
+      "new_reference_parameters_max": 0.0,
+      "new_reference_loglik_abs": 0.0,
+      "original_reference_parameters_max": 5.960464477539063e-08,
+      "original_reference_loglik_abs": 0.0
+    },
+    {
+      "seed": 20261101,
+      "pass_index": 0,
+      "new_reference_parameters_max": 0.0,
+      "new_reference_loglik_abs": 0.0,
+      "original_reference_parameters_max": 0.0,
+      "original_reference_loglik_abs": 0.00244140625
+    },
+    {
+      "seed": 20261101,
+      "pass_index": 1,
+      "new_reference_parameters_max": 0.0,
+      "new_reference_loglik_abs": 0.0,
+      "original_reference_parameters_max": 5.960464477539063e-08,
+      "original_reference_loglik_abs": 0.0
+    }
+  ],
+  "compiled_independent_reference_exact": true
+}

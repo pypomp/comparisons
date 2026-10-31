@@ -1,0 +1,38 @@
+模型实现、梯度和参数优化的区别
+
+本次核对依据冻结源代码与已完成的正式报告；没有重新拟合或重新评分。
+
+1. 本次 Dacca 比较统一了什么
+
+科学模型与最终评价统一：全部600个月、每月20个Euler步、Gaussian过程噪声、23个自由坐标。最终参数由独立的原始PyPOMP PF评价。没有为了使用某个包的接口而把月度转移替换为Gaussian矩匹配近似，也没有构造不存在的月度转移密度。
+
+同名IF2/IFAD的主要设置按冻结协议对齐，但各包代码和数值运算并非逐步完全相同。PyPOMP/Cuthbert论文比较中的梯度阶段共用PyPOMP Adam和学习率生成逻辑，是较接近“同一算法的不同实现”的一组。新增GPU包的IFAD同为175次IF2后400次alpha=.97梯度更新；直接ADPF同为从原始起点425次alpha=1 Adam更新。两者初始化与迭代数不同，差异不能单独归因于alpha。
+
+2. 没有统一成同一份代码的部分
+
+粒子滤波、重采样的梯度处理与更新接口分别实现。TFP和PyDPF的ADPF使用各自包提供的可微PF；PFJAX梯度阶段调用包内particle_filter，并使用我们添加的corrected_resampler；IF2由我们编写循环并调用包内resample_multinomial，Adam使用optax.scale_by_adam。因此，IF2/IFAD/梯度修正属于本次扩展，但PFJAX的前向PF并不是整套由我们重写；Dynamax提供SSM.fit_sgd优化接口，Dacca PF、IF2、IFAD由本次实现。
+
+PFJAX用optax.scale_by_adam，PyDPF用torch.optim.Adam，TFP用tf.keras.optimizers.Adam，Dynamax通过SSM.fit_sgd使用Optax Adam。虽然beta和学习率计划大体对齐，不能因此断言更新公式与浮点行为完全相同。例如TFP冻结说明明确保留Keras epsilon_hat约定。CPU两包使用SciPy Nelder-Mead，优化过程本来就不同。
+
+IF2在拟合中使用参数扰动；IFAD使用折扣梯度处理；直接ADPF使用alpha=1的可微PF梯度。统一最终评价并不意味着这些拟合阶段的随机计算或更新方向相同。一个参数点的前向likelihood一致性检查也不等价于完整梯度或优化过程等价证明。
+
+因此，本图比较的是这些明确配置下得到的参数、失败情况及计算成本。它不是所有包开箱即用原生算法的统一排名，也不是只改变软件实现、其他细节均严格不变的性能实验。
+
+3. 之前Ditlevsen–Samson (2019)讨论中的两个问题
+
+原论文在部分观测情形下使用SAEM。此前DS19扩展的部分模型使用平均score后做Adam更新。这与SAEM不是同一更新规则：SAEM对加权完整数据目标Q(theta)做最大化；平均score方法则平均在不同历史参数theta_r上计算的梯度，再做Adam更新。一般情况下，平均历史梯度不等于当前参数处的Q梯度。
+
+其次，当时Dhaka/Daphnia扩展用由局部order-1.5矩合成的Gaussian转移近似拟合，最终却用原始Euler模型评价。这里既有目标模型差异，也可能有优化器差异。原有Dhaka score/数值SAEM对照保持Gaussian拟合模型不变，因此不能用该对照单独判断Gaussian近似误差。将Daphnia梯度适配器接到Kevin既有Gaussian模型也不等于更换科学模型；适配器本身仍需检查梯度是否正确。
+
+本轮检查的证据：
+- 当前最终报告：../final_comparison/report_CN.txt，实际评估的算法与接入边界。
+- work/cuthbert-dacca-paper/kernels.py：cuthbert_train与native_train均构造pp.Adam。
+- work/competitor-estimation/pydpf/formal_v1/sessions.py：AdamSession。
+- work/competitor-estimation/tfp/formal_v2/source/batch_engine.py：Keras Adam；formal_v2_final/source/README.txt注明epsilon_hat约定。
+- work/competitor-estimation/dynamax/dacca/formal_fixed_v1/bridge.py：local_pf、DaccaSGD、paper_optimizer。
+- 此前本地SI：/Users/mac/Documents/Codex/2026-10-11/hi-kevin-personally-i-m-inclined/work/source/dmop/si.tex，表tab:ds19-models与SAEM and averaged-score updates小节。
+- 原论文：https://arxiv.org/abs/1707.04235。
+
+绘图说明：本目录按每包×方法的1.5×IQR规则隐藏69个有限评分，只改变显示。箱体、须、中位数、失败计数与成本仍来自全部结果；原数据和包含全部点的图均保留。
+
+图中标注：总图F分别列出“调用的包内函数”和“添加的代码/外部优化器”；分包图的每个面板下直接注明实际函数。源码核对及SHA见package_usage_audit.json。

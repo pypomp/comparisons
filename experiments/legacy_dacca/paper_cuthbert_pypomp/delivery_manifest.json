@@ -1,0 +1,31 @@
+{
+  "sha256": {
+    "REPRODUCE.txt": "e255ac0db70407246a54fd39f69c22a1d9f7e5ab14547af5aa2d83cc0571e432",
+    "audit.json": "363816c59324efc6fcc7c38d5c9759bd543a0e0584bb3d50c2355289408f8390",
+    "bundle_verification.json": "9579d1edafb2a347b5aca88c42b6767f9fecc81e3407d46c68a667d5ea8bea4c",
+    "endpoints.csv": "575db1ba21402ffb2f36d6561530581a6c2112731df294d26a90638e8e5b0777",
+    "likelihood.png": "c9bd7067009f1c73078f52edf068c7473ec1a2bce3e2222cf989b4989b83981f",
+    "likelihood.svg": "99109414b668d944820d9339a8d9fd90cb203648a61f7f37ec49d8e72e795844",
+    "likelihood_full_range.png": "82c68ce76a299d1f9366a892dcbb007d354353462a7fd7b7317bd6f17df5fdde",
+    "likelihood_full_range.svg": "5298685ec5a7d217d70f7c5bd72379a9f669748b63e5c263ceeb5e84fbb53b35",
+    "randomness_audit.json": "0230fee194b8a67871633326444758dd4d8bd80b2c552be7669c8ac392c7867f",
+    "reproduction.tar.gz": "239ee17ad6ca20adb353455a398ffb9c946019f5eca1c17b1f8d7edfb4d913d4",
+    "results_CN.txt": "5c71b306018fdc2c58797cd8281f84ec381c4301c1ec751fceaf2231438e078b",
+    "runtime.png": "b28135c287abb3e48001c9d9613d50b564f80ee1bd04a3954631cac7a118847a",
+    "runtime.svg": "6df184dfb3e57dfffa2c3eb7e1e1e34e37f489596edf16daea15d4a387dbc8b5",
+    "second_review.json": "848bc1ed12de5267d207f1e5e9dd66163d2e0235884d82495c67d50bae35513b",
+    "second_review.txt": "c33c009354647ab28cb94b946e792a607417f78a11b4508f46e4a5b18f14febe",
+    "summary.csv": "2c6da84117552256c1bbf52292901afca517fe69e842d43826de17d5e3c9e8e7",
+    "visual_check.json": "a4d439afbae0b761832a47b7198b85342b92aa354c919fc321d8a3dd54cd8097"
+  },
+  "audit_passed": true,
+  "all_800_endpoints_present": true,
+  "all_three_slurm_jobs_completed": true,
+  "visual_review_required": false,
+  "visual_review_passed": true,
+  "visual_check": "visual_check.json",
+  "release_ready": true,
+  "independent_second_review_passed": true,
+  "bundle_verified": true,
+  "delivered_at_UTC": "2026-10-29T09:06:43.023636+00:00"
+}

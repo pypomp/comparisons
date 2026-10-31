@@ -1,0 +1,100 @@
+{
+  "status": "frozen",
+  "package": "particles",
+  "device": "CPU",
+  "dtype": "float64",
+  "T": 600,
+  "J": 5000,
+  "euler_steps_per_month": 20,
+  "free_coordinates": 23,
+  "starts": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "repeats": 2,
+  "methods": [
+    "A",
+    "B"
+  ],
+  "definitions": {
+    "A": "native particles PF + external SciPy Nelder-Mead",
+    "B": "new particles.iterated_filtering.if2_step initialization + same external SciPy Nelder-Mead"
+  },
+  "native_optimizer": false,
+  "budget_seconds": 1800,
+  "IF2_prefix_seconds": 900,
+  "IF2_cooling50": 0.5,
+  "IF2_RWSD": 0.02,
+  "IF2_IVP_SD": 0.16,
+  "IF2_IVP_first_observation_only": true,
+  "IF2_resampling": "multinomial every observation and terminal",
+  "full_swarm": true,
+  "IF2_endpoint": "mean of last accepted complete pass; not best perturbed likelihood",
+  "native_PF_resampling": "systematic ESSrmin1",
+  "train_root": 24981000,
+  "train_keys": "Disjoint uint32 blocks: 24981000+100000*task_id+50000*stage+call, task_id=(start*2+rep)*2+arm; A0/B1; stage0 IF2 single seed followed by continuous RNG, stage1 NM fresh seed per call; assert call<50000. All future possible blocks separated from scoring root94981000.",
+  "external_NM": {
+    "xatol": 0.01,
+    "fatol": 0.0001,
+    "adaptive": false,
+    "maxiter": 1000000,
+    "maxfev": 1000000,
+    "initial_simplex": "SciPy default, identical rule for A/B"
+  },
+  "late_calls": "fully charged, never accept late parameter/cloud; IF2 overshoot reduces remaining total NM budget",
+  "failure": "save traceback/full cloud/RNG/last finite parameter and cost; no retry; independent score retains failure flag",
+  "endpoint_selection": "best native PF training objective finished by total deadline; independent scores never consulted",
+  "allocation": {
+    "CPU_tasks": 24,
+    "CPU_seconds_each": 2700,
+    "CPU_hours_cap": 18,
+    "CPU_fit_budget_hours": 12,
+    "preflight_separate": true,
+    "concurrency": 6
+  },
+  "independent_score": {
+    "backend": "original PyPOMP 17f8798e7d944977335c81b8525353fa90e14be9",
+    "seed": 94981000,
+    "J": 5000,
+    "stages": [
+      36,
+      72,
+      144,
+      288
+    ],
+    "chunk_size": 36,
+    "MCSE_max": 1,
+    "likelihood_ESS_min": 10,
+    "device": "A40",
+    "maximum_GPU_seconds": 1800,
+    "separate_from_CPU_fitting_cost": true,
+    "selection": false
+  },
+  "source_preflight_manifest_sha256": "7468c5f9278cbafed1d666aa09e71f3e755a372290334fb896099fc2454833d5",
+  "not_paper_fixed_iterations": true,
+  "gate": {
+    "job_id": "65096908",
+    "audit_sha256": "351e5a2249a0b06993adb5e5177db2c9e99f47b760992935c05bccbaba617c8a",
+    "PF_median_seconds": {
+      "upstream": 5.4967085579410195,
+      "candidate": 5.5268151154741645
+    },
+    "IF2_pass_seconds": [
+      11.168434866704047,
+      11.281056836247444
+    ],
+    "expected_IF2_passes_in_900_seconds": 79.77975938461613,
+    "not_a_convergence_or_quality_estimate": true
+  },
+  "expected_versions": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "numba": "0.68.0",
+    "joblib": "1.6.0",
+    "jax": "0.12.0.1"
+  }
+}

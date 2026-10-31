@@ -1,0 +1,27 @@
+{
+  "release_ready": true,
+  "created_at_UTC": "2026-10-29T17:39:15.799761+00:00",
+  "source_results_sha256": "e7e86a4f6429007ebac0a0f6c50d17fc4f282fcd3b2c4ced56ad2fba7a208d5f",
+  "source_manifest_sha256": "8cf8e4cc086e2ad3cc4f931b358480c3794b83fbd53ce230c3749e3039803666",
+  "numeric_audit_passed": true,
+  "visual_review_passed": true,
+  "fit_calls": 0,
+  "PF_calls": 0,
+  "files": {
+    "README_CN.txt": "3ee44364a488d8bebd0ecaa1fea00180facdbac927f573451f4dd082f28fa6a2",
+    "dacca_all_endpoints.pdf": "e323a5f0e23ea6b4ea9b53c783605e67ed9d2944f5ca5415e88656f33bef26b1",
+    "dacca_all_endpoints.png": "a872311218d025ca032237cd3e96f1cce3b7a1d30b32ddceac398dbcee1f2124",
+    "dacca_all_endpoints.svg": "3f1fdb135f7ccf5171f045985d3b17d5f85b3c7a08e09a679430abeaf459e155",
+    "dacca_all_endpoints_preview.png": "aa3b88162447d1a5dc7382037b668b28484fd22e6933fffcf709bc32217c730a",
+    "dacca_overview.pdf": "f47e5cf1cc338de30f4c0f3293077a882033ee438908bbac6d08479e58d0aaec",
+    "dacca_overview.png": "58f82d91f1ae4066a0b16834ea8abaa1c5cc0f0d97d0f0af87df60c4f46b15ec",
+    "dacca_overview.svg": "df5b129039138ee43ec8f3874bf6e5ef642b4157ee0303c737047dbc2ef7c3d1",
+    "dacca_overview_preview.png": "379c3996280d38778b88fdd41b1d22bee5f56f64cccb5871b96917aed521a5a9",
+    "method_names.json": "04e53b00dc7526a803a96ab358698fecde5bafb800c155877b85a84813d9b4ea",
+    "numeric_audit.json": "014df0b7e8c58a86c3bc2e2397f8d4a0559b6da71eda7942bad32f0607f39f67",
+    "plot_overview.py": "d3daf753005aaabce7ed33a6c72a15945d71198fea8d20bbfc8d06589d9cd948",
+    "visual_check.json": "575e7aeb438226d281d38e0309790938bf54ee022cf6f9014948312e1f244e46"
+  },
+  "updated_at_UTC": "2026-10-29T17:58:06.383151+00:00",
+  "change_scope": "Method names and implementation attribution"
+}

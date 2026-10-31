@@ -1,0 +1,23 @@
+......s.....s.....................s.....................s............... [ 19%]
+......s.....................s.....................s..................... [ 39%]
+s.....................s.....................s.....................s..... [ 59%]
+......................s................................................. [ 78%]
+........................................................................ [ 98%]
+.....s                                                                   [100%]
+=============================== warnings summary ===============================
+tensorflow_probability/python/bijectors/masked_autoregressive_test.py::AutoregressiveNetworkTest::test_doc_string_2_eager_no_tf_function
+tensorflow_probability/python/bijectors/masked_autoregressive_test.py::AutoregressiveNetworkTest::test_doc_string_eager_no_tf_function
+tensorflow_probability/python/bijectors/masked_autoregressive_test.py::AutoregressiveNetworkTest::test_doc_string_images_case_1_eager_no_tf_function
+tensorflow_probability/python/bijectors/masked_autoregressive_test.py::AutoregressiveNetworkTest::test_doc_string_images_case_2_eager_no_tf_function
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/data/ops/structured_function.py:258: UserWarning: Even though the `tf.config.experimental_run_functions_eagerly` option is set, this option does not apply to tf.data functions. To force eager execution of tf.data functions, please use `tf.data.experimental.enable_debug_mode()`.
+    warnings.warn(
+
+tensorflow_probability/python/bijectors/masked_autoregressive_test.py::AutoregressiveNetworkTest::test_layer_v2_kernel_initializer_eager
+tensorflow_probability/python/bijectors/masked_autoregressive_test.py::AutoregressiveNetworkTest::test_layer_v2_kernel_initializer_eager_no_tf_function
+tensorflow_probability/python/bijectors/masked_autoregressive_test.py::AutoregressiveNetworkTest::test_layer_v2_kernel_initializer_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/initializers/initializers.py:121: UserWarning: The initializer GlorotNormal is unseeded and being called multiple times, which will return identical values each time (even if the initializer is unseeded). Please update your code to provide a seed to the initializer, or avoid using the same initializer instance more than once.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__bijectors__masked_autoregressive_test/candidate.xml -
+353 passed, 13 skipped, 7 warnings in 36.43s

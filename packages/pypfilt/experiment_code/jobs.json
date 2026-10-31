@@ -1,0 +1,27 @@
+{
+  "array_job_id": 64991521,
+  "array_tasks": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "concurrency": 3,
+  "remote_root": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/competitor_estimation_20261028/pypfilt/formal_v1",
+  "cpus_per_task": 1,
+  "mem_per_task": "8G",
+  "walltime_seconds_per_task": 3000,
+  "maximum_cpu_hours": 10,
+  "manifest_sha256": "1ec91439174bbd41466a849a7349fe294d1be68989f9dd693e26d8fb696e321e",
+  "submitted_at": "2026-10-29T02:20:24.975803+00:00",
+  "collection_owner": "parent heartbeat dacca; no persistent collector",
+  "source_preflight_job": 64981180
+}

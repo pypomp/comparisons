@@ -1,0 +1,11 @@
+{
+  "phase": "completed_and_delivered",
+  "array_job_id": 64991521,
+  "endpoints": 12,
+  "scores_finished": 12,
+  "precision_passed": 7,
+  "failed_PF_calls": 0,
+  "report": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/outputs/competitor_estimation/pypfilt/formal_v1/report_zh.txt",
+  "archive_sha256": "dbede637e5553718b194beb0ab430c9dcbd2ff49952dedbf7a31c746cb92cfe2",
+  "updated_at_UTC": "2026-10-29T05:26:29.942285+00:00"
+}

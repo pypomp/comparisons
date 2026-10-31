@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "reviewer": "root",
+  "checked_UTC": "2026-10-29T12:38:37.375746+00:00",
+  "figure_sha256": {
+    "likelihood.png": "7b79d38037ada036932e685d547686c5711d92fdf9859b0d0a6083c9915c363b",
+    "likelihood.pdf": "daade55fc3c983b65f88e411f66a4f7eb936fc7a7bb2d506849229fd8335143e",
+    "runtime.png": "75522b1e37ff0968707c9b174738fd932513a4bb80915942d7a32bf25bc14fc8",
+    "runtime.pdf": "1d674a1fdbb89cc99477a47f352459201da671bc1883937533482d28c729857e"
+  },
+  "visually_inspected": [
+    "likelihood.png",
+    "runtime.png"
+  ],
+  "PDF_note": "PDF companions exported from the same Matplotlib figures; hashes verified, PNG renders visually inspected.",
+  "checks": [
+    "All36 endpoints shown in full-range likelihood panel; poorer IFAD and ADPF endpoints retained.",
+    "Expanded panel clearly limited to the same IF2 and IFAD endpoints; full range remains available.",
+    "Start colors, repetition shapes, MCSE bars and method iteration/prefix settings legible.",
+    "Actual per-job allocation stack sums to measured total, batch12 time counted once.",
+    "No overlapping method labels, clipped data, axis labels, legend or footnotes."
+  ]
+}

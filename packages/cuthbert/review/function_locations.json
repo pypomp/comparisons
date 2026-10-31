@@ -1,0 +1,137 @@
+[
+  {
+    "path": "cuthbert/filtering.py",
+    "name": "filter",
+    "line": 14
+  },
+  {
+    "path": "cuthbert/smc/particle_filter.py",
+    "name": "ParticleFilterState",
+    "line": 20
+  },
+  {
+    "path": "cuthbert/smc/particle_filter.py",
+    "name": "build_filter",
+    "line": 36
+  },
+  {
+    "path": "cuthbert/smc/particle_filter.py",
+    "name": "init_prepare",
+    "line": 80
+  },
+  {
+    "path": "cuthbert/smc/particle_filter.py",
+    "name": "filter_prepare",
+    "line": 124
+  },
+  {
+    "path": "cuthbert/smc/particle_filter.py",
+    "name": "filter_combine",
+    "line": 165
+  },
+  {
+    "path": "cuthbertlib/resampling/autodiff.py",
+    "name": "discounted_stop_gradient_decorator",
+    "line": 22
+  },
+  {
+    "path": "cuthbertlib/resampling/autodiff.py",
+    "name": "stop_gradient_decorator",
+    "line": 63
+  },
+  {
+    "path": "cuthbert/smc/_estimation.py",
+    "name": "ModelFactory",
+    "line": 17
+  },
+  {
+    "path": "cuthbert/smc/_estimation.py",
+    "name": "Optimizer",
+    "line": 33
+  },
+  {
+    "path": "cuthbert/smc/_estimation.py",
+    "name": "positive_int",
+    "line": 45
+  },
+  {
+    "path": "cuthbert/smc/_estimation.py",
+    "name": "scalar_range",
+    "line": 52
+  },
+  {
+    "path": "cuthbert/smc/_estimation.py",
+    "name": "parameters_tree",
+    "line": 57
+  },
+  {
+    "path": "cuthbert/smc/_estimation.py",
+    "name": "inputs_tree",
+    "line": 67
+  },
+  {
+    "path": "cuthbert/smc/_estimation.py",
+    "name": "broadcast_tree",
+    "line": 78
+  },
+  {
+    "path": "cuthbert/smc/_estimation.py",
+    "name": "resampler",
+    "line": 106
+  },
+  {
+    "path": "cuthbert/smc/_estimation.py",
+    "name": "all_finite",
+    "line": 114
+  },
+  {
+    "path": "cuthbert/smc/_estimation.py",
+    "name": "select_tree",
+    "line": 121
+  },
+  {
+    "path": "cuthbert/smc/_estimation.py",
+    "name": "perturb",
+    "line": 125
+  },
+  {
+    "path": "cuthbert/smc/_estimation.py",
+    "name": "scan_final",
+    "line": 141
+  },
+  {
+    "path": "cuthbert/smc/iterated_filtering.py",
+    "name": "IteratedFilteringResult",
+    "line": 18
+  },
+  {
+    "path": "cuthbert/smc/iterated_filtering.py",
+    "name": "fit",
+    "line": 36
+  },
+  {
+    "path": "cuthbert/smc/dmop.py",
+    "name": "GradientFitResult",
+    "line": 19
+  },
+  {
+    "path": "cuthbert/smc/dmop.py",
+    "name": "log_likelihood",
+    "line": 37
+  },
+  {
+    "path": "cuthbert/smc/dmop.py",
+    "name": "fit",
+    "line": 86
+  },
+  {
+    "path": "cuthbert/smc/ifad.py",
+    "name": "IFADResult",
+    "line": 13
+  },
+  {
+    "path": "cuthbert/smc/ifad.py",
+    "name": "fit",
+    "line": 29
+  }
+]

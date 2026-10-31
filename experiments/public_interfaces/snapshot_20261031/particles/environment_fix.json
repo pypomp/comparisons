@@ -1,0 +1,10 @@
+{
+  "reason": "Original deployment omitted numba dependency directory from PYTHONPATH; failure occurred before algorithm execution",
+  "old_job": "65096422",
+  "old_exit_code": "1:0",
+  "old_elapsed_seconds": 4,
+  "old_manifest_sha256": "2cf8b378f7c74f995eefb2edb4e2a65b0fbc3cbf04574739c9b32e48846bd212",
+  "model_and_test_settings_unchanged": true,
+  "replacement_max_seconds": 1740,
+  "cumulative_cap_seconds": 1800
+}

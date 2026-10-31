@@ -1,0 +1,41 @@
+原 TFP 0.25.0 的实际调用
+particle_filter
+  -> _particle_filter_initial_weighted_particles：prior.sample、初始观测 log_prob
+  -> _particle_filter_propose_and_update_log_weights_fn：transition.sample、观测权重
+  -> sequential_monte_carlo
+  -> loop_util.trace_scan
+  -> SequentialMonteCarlo.one_step
+  -> 原 log_softmax、likelihood 增量与重采样判定
+  -> weighted_resampling.resample
+  -> 原 resample_systematic 等、祖先索引及粒子选择
+
+新增梯度折扣的调用
+particle_filter(..., gradient_discount=alpha)
+  -> sequential_monte_carlo(..., gradient_discount=alpha)
+  -> SequentialMonteCarlo(..., gradient_discount=alpha)
+  -> 原 one_step 的 target_log_weights 处缩放导数
+默认 alpha=1 使用原表达式。weighted_resampling.py 本身不改，不临时替换全局函数。
+每步折扣需每步重采样；ESS 条件下只在实际重采样时折扣。
+
+新增 IF2 的调用
+iterated_filter
+  -> TensorFlow while_loop 重复 iterated_filter_step
+  -> 初始参数扰动和参数化 prior.sample
+  -> 原 _compute_observation_log_weights
+  -> 原 WeightedParticles({'state':..., 'parameters':...}, log_weights)
+  -> 原 sequential_monte_carlo 时间循环
+       propose 回调：通用参数扰动 -> 模型 transition.sample -> 原观测 log_prob 辅助函数
+       原 SMC：归一化 -> likelihood -> 原重采样 -> 状态/参数共同祖先
+  -> 完整等权末端参数集合进入下一轮
+
+模型仍需提供按粒子参数化的正常分布。通用 IF2 不重写 Dacca 状态方程，
+也没有替用户提供未知的月度 transition.log_prob。
+
+IFAD 示例
+新 IF2 -> 末端参数均值 -> 外部 Keras Adam 循环
+  -> 原 particle_filter 加 gradient_discount=.97
+  -> 独立种子的终点评分
+Keras Adam 不是 TFP 自带 MLE。正式 benchmark 的最终评分来自原 PyPOMP，
+本次小型 API 示例/接入检查的评分来自原 TFP；二者目的和目录不同。
+
+具体修改位置、未改原函数和 SHA：function_locations.json、review_manifest.json。

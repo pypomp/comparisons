@@ -1,0 +1,43 @@
+.................................s............s..................s...... [ 50%]
+.........ss.ss.ss.ss.ss.sss.ss.ss.ss...................s...............  [100%]
+=============================== warnings summary ===============================
+tensorflow_probability/python/experimental/mcmc/particle_filter_test.py::ParticleFilterTestFloat32::test_warns_if_transition_distribution_has_unexpected_shape_eager
+tensorflow_probability/python/experimental/mcmc/particle_filter_test.py::ParticleFilterTestFloat32::test_warns_if_transition_distribution_has_unexpected_shape_eager_no_tf_function
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/internal/vectorization_util.py:87: UserWarning: Saw Tensor seed [1652531828  -49633517], implying stateless sampling. Autovectorized functions that use stateless sampling may be quite slow because the current implementation falls back to an explicit loop. This will be fixed in the future. For now, you will likely see better performance from stateful sampling, which you can invoke by passing a Python `int` seed.
+    warnings.warn(
+
+tensorflow_probability/python/experimental/mcmc/particle_filter_test.py::ParticleFilterTestFloat32::test_warns_if_transition_distribution_has_unexpected_shape_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/internal/vectorization_util.py:87: UserWarning: Saw Tensor seed Tensor("split_seed/unstack:0", shape=(2,), dtype=int32), implying stateless sampling. Autovectorized functions that use stateless sampling may be quite slow because the current implementation falls back to an explicit loop. This will be fixed in the future. For now, you will likely see better performance from stateful sampling, which you can invoke by passing a Python `int` seed.
+    warnings.warn(
+
+tensorflow_probability/python/experimental/mcmc/particle_filter_test.py::ParticleFilterTestFloat32::test_warns_if_transition_distribution_has_unexpected_shape_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/internal/vectorization_util.py:87: UserWarning: Saw Tensor seed Tensor("split_seed_1/unstack:0", shape=(2,), dtype=int32), implying stateless sampling. Autovectorized functions that use stateless sampling may be quite slow because the current implementation falls back to an explicit loop. This will be fixed in the future. For now, you will likely see better performance from stateful sampling, which you can invoke by passing a Python `int` seed.
+    warnings.warn(
+
+tensorflow_probability/python/experimental/mcmc/particle_filter_test.py::ParticleFilterTestFloat32::test_warns_if_transition_distribution_has_unexpected_shape_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/internal/vectorization_util.py:87: UserWarning: Saw Tensor seed Tensor("split_seed_2/unstack:0", shape=(2,), dtype=int32), implying stateless sampling. Autovectorized functions that use stateless sampling may be quite slow because the current implementation falls back to an explicit loop. This will be fixed in the future. For now, you will likely see better performance from stateful sampling, which you can invoke by passing a Python `int` seed.
+    warnings.warn(
+
+tensorflow_probability/python/experimental/mcmc/particle_filter_test.py::ParticleFilterTestFloat32::test_warns_if_transition_distribution_has_unexpected_shape_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/internal/vectorization_util.py:87: UserWarning: Saw Tensor seed Tensor("split_seed_3/unstack:0", shape=(2,), dtype=int32), implying stateless sampling. Autovectorized functions that use stateless sampling may be quite slow because the current implementation falls back to an explicit loop. This will be fixed in the future. For now, you will likely see better performance from stateful sampling, which you can invoke by passing a Python `int` seed.
+    warnings.warn(
+
+tensorflow_probability/python/experimental/mcmc/particle_filter_test.py::ParticleFilterTestFloat32::test_warns_if_transition_distribution_has_unexpected_shape_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/internal/vectorization_util.py:87: UserWarning: Saw Tensor seed Tensor("split_seed_4/unstack:0", shape=(2,), dtype=int32), implying stateless sampling. Autovectorized functions that use stateless sampling may be quite slow because the current implementation falls back to an explicit loop. This will be fixed in the future. For now, you will likely see better performance from stateful sampling, which you can invoke by passing a Python `int` seed.
+    warnings.warn(
+
+tensorflow_probability/python/experimental/mcmc/particle_filter_test.py::ParticleFilterTestFloat32::test_warns_if_transition_distribution_has_unexpected_shape_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/internal/vectorization_util.py:87: UserWarning: Saw Tensor seed Tensor("split_seed_5/unstack:0", shape=(2,), dtype=int32), implying stateless sampling. Autovectorized functions that use stateless sampling may be quite slow because the current implementation falls back to an explicit loop. This will be fixed in the future. For now, you will likely see better performance from stateful sampling, which you can invoke by passing a Python `int` seed.
+    warnings.warn(
+
+tensorflow_probability/python/experimental/mcmc/particle_filter_test.py::ParticleFilterTestFloat32::test_warns_if_transition_distribution_has_unexpected_shape_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/internal/vectorization_util.py:87: UserWarning: Saw Tensor seed Tensor("split_seed_6/unstack:0", shape=(2,), dtype=int32), implying stateless sampling. Autovectorized functions that use stateless sampling may be quite slow because the current implementation falls back to an explicit loop. This will be fixed in the future. For now, you will likely see better performance from stateful sampling, which you can invoke by passing a Python `int` seed.
+    warnings.warn(
+
+tensorflow_probability/python/experimental/mcmc/particle_filter_test.py::ParticleFilterTestFloat32::test_warns_if_transition_distribution_has_unexpected_shape_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/internal/vectorization_util.py:87: UserWarning: Saw Tensor seed Tensor("split_seed_7/unstack:0", shape=(2,), dtype=int32), implying stateless sampling. Autovectorized functions that use stateless sampling may be quite slow because the current implementation falls back to an explicit loop. This will be fixed in the future. For now, you will likely see better performance from stateful sampling, which you can invoke by passing a Python `int` seed.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/official_PF_tests_module_binding/original.xml -
+120 passed, 23 skipped, 10 warnings in 72.07s (0:01:12)

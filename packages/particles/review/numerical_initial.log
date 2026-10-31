@@ -1,0 +1,444 @@
+FFFFFFFFFF.........................                                      [100%]
+=================================== FAILURES ===================================
+________________ test_independent_recursion[multinomial-False] _________________
+
+vectorized = False, scheme = 'multinomial'
+
+    @pytest.mark.parametrize("vectorized", [False, True])
+    @pytest.mark.parametrize("scheme", ["multinomial", "systematic", "stratified", "residual", "ssp"])
+    def test_independent_recursion(vectorized, scheme):
+        expected, loglik = reference(105, CLOUD, SCALES, 3, 0.6, scheme)
+        np.random.seed(105)
+        got = iterated_filtering(Gaussian, DATA, CLOUD, SCALES, 3, cooling=0.6,
+                                vectorized=vectorized, resampling=scheme)
+>       assert_array_equal(got.theta_particles, expected)
+
+work/particles-implementation-v1/candidate/tests/test_iterated_filtering.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (<built-in function eq>, array([[ 0.31510409, -0.02470866],
+       [ 0.27870764, -0.02470866],
+       [ 0.27870764, -0...0.06327781],
+       [ 0.33353987,  0.06327781],
+       [ 0.15538251, -0.1381454 ],
+       [ 0.15538251, -0.1381454 ]]))
+kwds = {'err_msg': '', 'header': 'Arrays are not equal', 'strict': False, 'verbose': True}
+
+    @wraps(func)
+    def inner(*args, **kwds):
+        with self._recreate_cm():
+>           return func(*args, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^
+E           AssertionError: 
+E           Arrays are not equal
+E           
+E           Mismatched elements: 7 / 24 (29.2%)
+E           Max absolute difference: 5.55111512e-17
+E           Max relative difference: 5.61656774e-16
+E            x: array([[ 0.315104, -0.024709],
+E                  [ 0.278708, -0.024709],
+E                  [ 0.278708, -0.024709],...
+E            y: array([[ 0.315104, -0.024709],
+E                  [ 0.278708, -0.024709],
+E                  [ 0.278708, -0.024709],...
+
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:81: AssertionError
+_________________ test_independent_recursion[multinomial-True] _________________
+
+vectorized = True, scheme = 'multinomial'
+
+    @pytest.mark.parametrize("vectorized", [False, True])
+    @pytest.mark.parametrize("scheme", ["multinomial", "systematic", "stratified", "residual", "ssp"])
+    def test_independent_recursion(vectorized, scheme):
+        expected, loglik = reference(105, CLOUD, SCALES, 3, 0.6, scheme)
+        np.random.seed(105)
+        got = iterated_filtering(Gaussian, DATA, CLOUD, SCALES, 3, cooling=0.6,
+                                vectorized=vectorized, resampling=scheme)
+>       assert_array_equal(got.theta_particles, expected)
+
+work/particles-implementation-v1/candidate/tests/test_iterated_filtering.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (<built-in function eq>, array([[ 0.31510409, -0.02470866],
+       [ 0.27870764, -0.02470866],
+       [ 0.27870764, -0...0.06327781],
+       [ 0.33353987,  0.06327781],
+       [ 0.15538251, -0.1381454 ],
+       [ 0.15538251, -0.1381454 ]]))
+kwds = {'err_msg': '', 'header': 'Arrays are not equal', 'strict': False, 'verbose': True}
+
+    @wraps(func)
+    def inner(*args, **kwds):
+        with self._recreate_cm():
+>           return func(*args, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^
+E           AssertionError: 
+E           Arrays are not equal
+E           
+E           Mismatched elements: 7 / 24 (29.2%)
+E           Max absolute difference: 5.55111512e-17
+E           Max relative difference: 5.61656774e-16
+E            x: array([[ 0.315104, -0.024709],
+E                  [ 0.278708, -0.024709],
+E                  [ 0.278708, -0.024709],...
+E            y: array([[ 0.315104, -0.024709],
+E                  [ 0.278708, -0.024709],
+E                  [ 0.278708, -0.024709],...
+
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:81: AssertionError
+_________________ test_independent_recursion[systematic-False] _________________
+
+vectorized = False, scheme = 'systematic'
+
+    @pytest.mark.parametrize("vectorized", [False, True])
+    @pytest.mark.parametrize("scheme", ["multinomial", "systematic", "stratified", "residual", "ssp"])
+    def test_independent_recursion(vectorized, scheme):
+        expected, loglik = reference(105, CLOUD, SCALES, 3, 0.6, scheme)
+        np.random.seed(105)
+        got = iterated_filtering(Gaussian, DATA, CLOUD, SCALES, 3, cooling=0.6,
+                                vectorized=vectorized, resampling=scheme)
+>       assert_array_equal(got.theta_particles, expected)
+
+work/particles-implementation-v1/candidate/tests/test_iterated_filtering.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (<built-in function eq>, array([[ 0.19098587, -0.0216803 ],
+       [-0.04305535,  0.27037487],
+       [-0.04305535,  0...0.02625221],
+       [ 0.31772629, -0.13223041],
+       [ 0.31572892, -0.13223041],
+       [ 0.31572892, -0.13223041]]))
+kwds = {'err_msg': '', 'header': 'Arrays are not equal', 'strict': False, 'verbose': True}
+
+    @wraps(func)
+    def inner(*args, **kwds):
+        with self._recreate_cm():
+>           return func(*args, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^
+E           AssertionError: 
+E           Arrays are not equal
+E           
+E           Mismatched elements: 7 / 24 (29.2%)
+E           Max absolute difference: 1.38777878e-17
+E           Max relative difference: 5.28633148e-16
+E            x: array([[ 0.190986, -0.02168 ],
+E                  [-0.043055,  0.270375],
+E                  [-0.043055,  0.270375],...
+E            y: array([[ 0.190986, -0.02168 ],
+E                  [-0.043055,  0.270375],
+E                  [-0.043055,  0.270375],...
+
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:81: AssertionError
+_________________ test_independent_recursion[systematic-True] __________________
+
+vectorized = True, scheme = 'systematic'
+
+    @pytest.mark.parametrize("vectorized", [False, True])
+    @pytest.mark.parametrize("scheme", ["multinomial", "systematic", "stratified", "residual", "ssp"])
+    def test_independent_recursion(vectorized, scheme):
+        expected, loglik = reference(105, CLOUD, SCALES, 3, 0.6, scheme)
+        np.random.seed(105)
+        got = iterated_filtering(Gaussian, DATA, CLOUD, SCALES, 3, cooling=0.6,
+                                vectorized=vectorized, resampling=scheme)
+>       assert_array_equal(got.theta_particles, expected)
+
+work/particles-implementation-v1/candidate/tests/test_iterated_filtering.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (<built-in function eq>, array([[ 0.19098587, -0.0216803 ],
+       [-0.04305535,  0.27037487],
+       [-0.04305535,  0...0.02625221],
+       [ 0.31772629, -0.13223041],
+       [ 0.31572892, -0.13223041],
+       [ 0.31572892, -0.13223041]]))
+kwds = {'err_msg': '', 'header': 'Arrays are not equal', 'strict': False, 'verbose': True}
+
+    @wraps(func)
+    def inner(*args, **kwds):
+        with self._recreate_cm():
+>           return func(*args, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^
+E           AssertionError: 
+E           Arrays are not equal
+E           
+E           Mismatched elements: 7 / 24 (29.2%)
+E           Max absolute difference: 1.38777878e-17
+E           Max relative difference: 5.28633148e-16
+E            x: array([[ 0.190986, -0.02168 ],
+E                  [-0.043055,  0.270375],
+E                  [-0.043055,  0.270375],...
+E            y: array([[ 0.190986, -0.02168 ],
+E                  [-0.043055,  0.270375],
+E                  [-0.043055,  0.270375],...
+
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:81: AssertionError
+_________________ test_independent_recursion[stratified-False] _________________
+
+vectorized = False, scheme = 'stratified'
+
+    @pytest.mark.parametrize("vectorized", [False, True])
+    @pytest.mark.parametrize("scheme", ["multinomial", "systematic", "stratified", "residual", "ssp"])
+    def test_independent_recursion(vectorized, scheme):
+        expected, loglik = reference(105, CLOUD, SCALES, 3, 0.6, scheme)
+        np.random.seed(105)
+        got = iterated_filtering(Gaussian, DATA, CLOUD, SCALES, 3, cooling=0.6,
+                                vectorized=vectorized, resampling=scheme)
+>       assert_array_equal(got.theta_particles, expected)
+
+work/particles-implementation-v1/candidate/tests/test_iterated_filtering.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (<built-in function eq>, array([[ 0.02356334,  0.1036963 ],
+       [ 0.02356334,  0.1036963 ],
+       [ 0.00886326,  0...0.18316128],
+       [ 0.27939697, -0.01531322],
+       [ 0.27939697, -0.01531322],
+       [ 0.28491356, -0.01531322]]))
+kwds = {'err_msg': '', 'header': 'Arrays are not equal', 'strict': False, 'verbose': True}
+
+    @wraps(func)
+    def inner(*args, **kwds):
+        with self._recreate_cm():
+>           return func(*args, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^
+E           AssertionError: 
+E           Arrays are not equal
+E           
+E           Mismatched elements: 9 / 24 (37.5%)
+E           Max absolute difference: 5.55111512e-17
+E           Max relative difference: 9.06262038e-16
+E            x: array([[ 0.023563,  0.103696],
+E                  [ 0.023563,  0.103696],
+E                  [ 0.008863,  0.189914],...
+E            y: array([[ 0.023563,  0.103696],
+E                  [ 0.023563,  0.103696],
+E                  [ 0.008863,  0.189914],...
+
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:81: AssertionError
+_________________ test_independent_recursion[stratified-True] __________________
+
+vectorized = True, scheme = 'stratified'
+
+    @pytest.mark.parametrize("vectorized", [False, True])
+    @pytest.mark.parametrize("scheme", ["multinomial", "systematic", "stratified", "residual", "ssp"])
+    def test_independent_recursion(vectorized, scheme):
+        expected, loglik = reference(105, CLOUD, SCALES, 3, 0.6, scheme)
+        np.random.seed(105)
+        got = iterated_filtering(Gaussian, DATA, CLOUD, SCALES, 3, cooling=0.6,
+                                vectorized=vectorized, resampling=scheme)
+>       assert_array_equal(got.theta_particles, expected)
+
+work/particles-implementation-v1/candidate/tests/test_iterated_filtering.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (<built-in function eq>, array([[ 0.02356334,  0.1036963 ],
+       [ 0.02356334,  0.1036963 ],
+       [ 0.00886326,  0...0.18316128],
+       [ 0.27939697, -0.01531322],
+       [ 0.27939697, -0.01531322],
+       [ 0.28491356, -0.01531322]]))
+kwds = {'err_msg': '', 'header': 'Arrays are not equal', 'strict': False, 'verbose': True}
+
+    @wraps(func)
+    def inner(*args, **kwds):
+        with self._recreate_cm():
+>           return func(*args, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^
+E           AssertionError: 
+E           Arrays are not equal
+E           
+E           Mismatched elements: 9 / 24 (37.5%)
+E           Max absolute difference: 5.55111512e-17
+E           Max relative difference: 9.06262038e-16
+E            x: array([[ 0.023563,  0.103696],
+E                  [ 0.023563,  0.103696],
+E                  [ 0.008863,  0.189914],...
+E            y: array([[ 0.023563,  0.103696],
+E                  [ 0.023563,  0.103696],
+E                  [ 0.008863,  0.189914],...
+
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:81: AssertionError
+__________________ test_independent_recursion[residual-False] __________________
+
+vectorized = False, scheme = 'residual'
+
+    @pytest.mark.parametrize("vectorized", [False, True])
+    @pytest.mark.parametrize("scheme", ["multinomial", "systematic", "stratified", "residual", "ssp"])
+    def test_independent_recursion(vectorized, scheme):
+        expected, loglik = reference(105, CLOUD, SCALES, 3, 0.6, scheme)
+        np.random.seed(105)
+        got = iterated_filtering(Gaussian, DATA, CLOUD, SCALES, 3, cooling=0.6,
+                                vectorized=vectorized, resampling=scheme)
+>       assert_array_equal(got.theta_particles, expected)
+
+work/particles-implementation-v1/candidate/tests/test_iterated_filtering.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (<built-in function eq>, array([[ 0.21546247,  0.42586846],
+       [ 0.25373047,  0.23601922],
+       [ 0.16823907,  0...0.24718673],
+       [ 0.26274412,  0.09963869],
+       [ 0.26274412,  0.09963869],
+       [ 0.25684194,  0.09963869]]))
+kwds = {'err_msg': '', 'header': 'Arrays are not equal', 'strict': False, 'verbose': True}
+
+    @wraps(func)
+    def inner(*args, **kwds):
+        with self._recreate_cm():
+>           return func(*args, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^
+E           AssertionError: 
+E           Arrays are not equal
+E           
+E           Mismatched elements: 8 / 24 (33.3%)
+E           Max absolute difference: 2.77555756e-17
+E           Max relative difference: 1.57485475e-16
+E            x: array([[ 0.215462,  0.425868],
+E                  [ 0.25373 ,  0.236019],
+E                  [ 0.168239,  0.099978],...
+E            y: array([[ 0.215462,  0.425868],
+E                  [ 0.25373 ,  0.236019],
+E                  [ 0.168239,  0.099978],...
+
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:81: AssertionError
+__________________ test_independent_recursion[residual-True] ___________________
+
+vectorized = True, scheme = 'residual'
+
+    @pytest.mark.parametrize("vectorized", [False, True])
+    @pytest.mark.parametrize("scheme", ["multinomial", "systematic", "stratified", "residual", "ssp"])
+    def test_independent_recursion(vectorized, scheme):
+        expected, loglik = reference(105, CLOUD, SCALES, 3, 0.6, scheme)
+        np.random.seed(105)
+        got = iterated_filtering(Gaussian, DATA, CLOUD, SCALES, 3, cooling=0.6,
+                                vectorized=vectorized, resampling=scheme)
+>       assert_array_equal(got.theta_particles, expected)
+
+work/particles-implementation-v1/candidate/tests/test_iterated_filtering.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (<built-in function eq>, array([[ 0.21546247,  0.42586846],
+       [ 0.25373047,  0.23601922],
+       [ 0.16823907,  0...0.24718673],
+       [ 0.26274412,  0.09963869],
+       [ 0.26274412,  0.09963869],
+       [ 0.25684194,  0.09963869]]))
+kwds = {'err_msg': '', 'header': 'Arrays are not equal', 'strict': False, 'verbose': True}
+
+    @wraps(func)
+    def inner(*args, **kwds):
+        with self._recreate_cm():
+>           return func(*args, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^
+E           AssertionError: 
+E           Arrays are not equal
+E           
+E           Mismatched elements: 8 / 24 (33.3%)
+E           Max absolute difference: 2.77555756e-17
+E           Max relative difference: 1.57485475e-16
+E            x: array([[ 0.215462,  0.425868],
+E                  [ 0.25373 ,  0.236019],
+E                  [ 0.168239,  0.099978],...
+E            y: array([[ 0.215462,  0.425868],
+E                  [ 0.25373 ,  0.236019],
+E                  [ 0.168239,  0.099978],...
+
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:81: AssertionError
+____________________ test_independent_recursion[ssp-False] _____________________
+
+vectorized = False, scheme = 'ssp'
+
+    @pytest.mark.parametrize("vectorized", [False, True])
+    @pytest.mark.parametrize("scheme", ["multinomial", "systematic", "stratified", "residual", "ssp"])
+    def test_independent_recursion(vectorized, scheme):
+        expected, loglik = reference(105, CLOUD, SCALES, 3, 0.6, scheme)
+        np.random.seed(105)
+        got = iterated_filtering(Gaussian, DATA, CLOUD, SCALES, 3, cooling=0.6,
+                                vectorized=vectorized, resampling=scheme)
+>       assert_array_equal(got.theta_particles, expected)
+
+work/particles-implementation-v1/candidate/tests/test_iterated_filtering.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (<built-in function eq>, array([[-0.17779479,  0.07723193],
+       [-0.17947262,  0.07723193],
+       [ 0.26296912, -0...0.29138361],
+       [ 0.30622456, -0.30053044],
+       [ 0.30940279, -0.30053044],
+       [ 0.30940279, -0.30053044]]))
+kwds = {'err_msg': '', 'header': 'Arrays are not equal', 'strict': False, 'verbose': True}
+
+    @wraps(func)
+    def inner(*args, **kwds):
+        with self._recreate_cm():
+>           return func(*args, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^
+E           AssertionError: 
+E           Arrays are not equal
+E           
+E           Mismatched elements: 24 / 24 (100%)
+E           Max absolute difference: 0.64460483
+E           Max relative difference: 2.75344645
+E            x: array([[-0.177795,  0.077232],
+E                  [-0.179473,  0.077232],
+E                  [ 0.262969, -0.180812],...
+E            y: array([[-0.08981 ,  0.306038],
+E                  [-0.08981 ,  0.306038],
+E                  [ 0.251879,  0.463793],...
+
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:81: AssertionError
+_____________________ test_independent_recursion[ssp-True] _____________________
+
+vectorized = True, scheme = 'ssp'
+
+    @pytest.mark.parametrize("vectorized", [False, True])
+    @pytest.mark.parametrize("scheme", ["multinomial", "systematic", "stratified", "residual", "ssp"])
+    def test_independent_recursion(vectorized, scheme):
+        expected, loglik = reference(105, CLOUD, SCALES, 3, 0.6, scheme)
+        np.random.seed(105)
+        got = iterated_filtering(Gaussian, DATA, CLOUD, SCALES, 3, cooling=0.6,
+                                vectorized=vectorized, resampling=scheme)
+>       assert_array_equal(got.theta_particles, expected)
+
+work/particles-implementation-v1/candidate/tests/test_iterated_filtering.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (<built-in function eq>, array([[ 0.02442345,  0.12827084],
+       [-0.20158128,  0.23739695],
+       [ 0.00670531,  0...0.18266152],
+       [ 0.25605177,  0.18266152],
+       [ 0.25605177,  0.18266152],
+       [-0.046562  ,  0.08454605]]))
+kwds = {'err_msg': '', 'header': 'Arrays are not equal', 'strict': False, 'verbose': True}
+
+    @wraps(func)
+    def inner(*args, **kwds):
+        with self._recreate_cm():
+>           return func(*args, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^
+E           AssertionError: 
+E           Arrays are not equal
+E           
+E           Mismatched elements: 24 / 24 (100%)
+E           Max absolute difference: 0.31235876
+E           Max relative difference: 42.24724176
+E            x: array([[ 0.024423,  0.128271],
+E                  [-0.201581,  0.237397],
+E                  [ 0.006705,  0.271404],...
+E            y: array([[ 0.004887,  0.183769],
+E                  [ 0.004887,  0.183769],
+E                  [ 0.003209,  0.183769],...
+
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:81: AssertionError
+=========================== short test summary info ============================
+FAILED work/particles-implementation-v1/candidate/tests/test_iterated_filtering.py::test_independent_recursion[multinomial-False]
+FAILED work/particles-implementation-v1/candidate/tests/test_iterated_filtering.py::test_independent_recursion[multinomial-True]
+FAILED work/particles-implementation-v1/candidate/tests/test_iterated_filtering.py::test_independent_recursion[systematic-False]
+FAILED work/particles-implementation-v1/candidate/tests/test_iterated_filtering.py::test_independent_recursion[systematic-True]
+FAILED work/particles-implementation-v1/candidate/tests/test_iterated_filtering.py::test_independent_recursion[stratified-False]
+FAILED work/particles-implementation-v1/candidate/tests/test_iterated_filtering.py::test_independent_recursion[stratified-True]
+FAILED work/particles-implementation-v1/candidate/tests/test_iterated_filtering.py::test_independent_recursion[residual-False]
+FAILED work/particles-implementation-v1/candidate/tests/test_iterated_filtering.py::test_independent_recursion[residual-True]
+FAILED work/particles-implementation-v1/candidate/tests/test_iterated_filtering.py::test_independent_recursion[ssp-False]
+FAILED work/particles-implementation-v1/candidate/tests/test_iterated_filtering.py::test_independent_recursion[ssp-True]
+10 failed, 25 passed in 1.33s

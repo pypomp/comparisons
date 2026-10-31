@@ -1,0 +1,44 @@
+{
+  "purpose": "public-interface GPU correctness and native forward PF timing; no formal optimization submitted",
+  "T": 600,
+  "Euler_steps": 20,
+  "noise": "Gaussian",
+  "J": 5000,
+  "dtype": "float32",
+  "gpu": "A40",
+  "GPU_required": true,
+  "PF_timing": {
+    "fixed_point": "published Dacca parameters",
+    "batch": 1,
+    "warmups": 2,
+    "synchronized_timed_repetitions": 7,
+    "scope": "native original API versus candidate alpha1 API; every-step systematic resampling, not default ESS criterion"
+  },
+  "gradient_alphas": [
+    1.0,
+    0.97
+  ],
+  "IF2_throughput_batches": [
+    1,
+    12
+  ],
+  "gradient_throughput_batches": [
+    1,
+    12
+  ],
+  "formal_plan_not_submitted": {
+    "A": "direct alpha1 Adam400",
+    "B": "175 IF2 then alpha1 Adam400",
+    "C": "same175 IF2 endpoint then alpha.97 Adam400",
+    "cases": "first6 paper starts x2 independent replicates",
+    "IF2_failure_isolation": "B1 per case due public global finite assertions",
+    "train_root": 24881000,
+    "evaluation_root": 94881000,
+    "shared_BC_gradient_stream": true,
+    "same_total_cost_A_B_claimed": false,
+    "formal_allocation_cap_GPUh": 20
+  },
+  "validation_allocation_cap_GPUh": 1,
+  "failed_validation_calls_not_retried": true,
+  "old_sources_and_results_modified": false
+}

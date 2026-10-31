@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "reviewed_at_UTC": "2026-10-29T13:10:17.449482+00:00",
+  "summary_sha256": "d3c1ccea5b2a5082d13424e540032ac9d5fc535ff8ef41b4e7db27c59bbeace3",
+  "source_files_verified": 339,
+  "terminal_files_verified": 300,
+  "raw_scores_recomputed": 1800,
+  "all36_parameters_initials_and_checkpoints_verified": true,
+  "task_audit_sha256": {
+    "0": "b8ab9325b5fbbaab96cf9b629b6da09793001279e3a74bf95e1068a8a38bfcb5",
+    "1": "903391666656ac00c66f6a5c93f92cbdcdc27f85f690eb78d01c65abec8944f0",
+    "2": "dc912b0d44d6a943d517db68a667d4deb0a8761b01c77dfb6d7a33c54a806ee0",
+    "3": "c0fbe64e8e84f5282346065f75cf87c0f19874d5bdc692e1ffb74a5225a3db77",
+    "4": "3aca7cea8dabea433f2cd3d5c8cfa6e1076c8c095a32306d01616f0da6fd6f94",
+    "5": "9b91751812cfbfbd6137e279c69fb3467fbda980b7e6caad3f8e4c0fcccdcce7",
+    "6": "5f2010d4c539f06a396e647eb4f1d5125f17cdee2e20421df3af2830edf29696",
+    "7": "d8a44ec1026c0395c8125ff9216f0f4f7249a3566a7607e30793869f86709282",
+    "8": "4a51c227e9168790498ab8177cb7a4e34e15f22671ccaa844096b71adc94436d",
+    "9": "d3c9c3e05c5663954cffb2fc571e9f854f887ea30b250d7e84a95c4bf0d8a002",
+    "10": "2116fc29a543f23f6951b074b4391012ea77fc37486b0919b312c9bd20038b0d",
+    "11": "6a0a843e7267547fb3a13e9ab8e8472b0139554243befdee2c479739cc8654ac"
+  },
+  "score_extension_rules_verified": true,
+  "fit_failures": 1,
+  "low_precision": 1,
+  "floor_saturated": 1,
+  "allocation_seconds": 28905,
+  "fit_calls": 0,
+  "PF_calls": 0,
+  "random_stream_scope": "Actual outer keys verified in task/cumulative audits; root reconciles counts. Inner particle keys not exhaustively enumerated."
+}

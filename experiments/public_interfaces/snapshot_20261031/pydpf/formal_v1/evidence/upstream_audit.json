@@ -1,0 +1,18 @@
+{
+  "observed_at_UTC": "2026-10-30T20:16:53.289625+00:00",
+  "source": {
+    "url": "https://codeload.github.com/John-JoB/pydpf/tar.gz/a7487ce1c344c70e1a244e75725b950deb15e146",
+    "sha256": "9b9f5c4472e13959d4b9df9d2b66b7dfe276cdf9c55a4dfb5980bb7370dbe19b",
+    "bytes": 144835,
+    "test_files": 0
+  },
+  "upstream_commit": "a7487ce1c344c70e1a244e75725b950deb15e146",
+  "files": 51,
+  "test_files": [],
+  "CI_configs": [],
+  "python_pytest_configs": false,
+  "note": "Complete pinned upstream archive has no automated test suite/CI configuration; test_trajectory.csv is data, not a test. Added candidate tests are separately identified, not passed off as upstream tests.",
+  "candidate_cpu_test_file": "candidate/tests/test_estimation_extension.py",
+  "gpu_adaptation": "gpu_tests/test_estimation_extension_cuda.py",
+  "original_dacca_model_sha256": "b9280b9c911742793f88d234ae62252f38381ff489fc09320ba381b909d62e7e"
+}

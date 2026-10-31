@@ -1,0 +1,62 @@
+Matplotlib created a temporary cache directory at /var/folders/9s/48bt52k12jl4fk0kt9_pbl6r0000gn/T/matplotlib-8zc8b9gs because the default path (/Users/mac/.matplotlib) is not a writable directory; it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+t=0, ESS=4.96
+t=1, Metropolis acc. rate (over 4 steps): 0.291, ESS=2.97
+t=2, Metropolis acc. rate (over 4 steps): 0.381, ESS=44.57
+t=3, Metropolis acc. rate (over 4 steps): 0.638, ESS=32.16
+t=4, Metropolis acc. rate (over 4 steps): 0.666, ESS=455.48
+t=5, ESS=277.07
+t=6, ESS=121.34
+t=7, Metropolis acc. rate (over 4 steps): 0.598, ESS=468.93
+t=8, ESS=231.23
+t=9, Metropolis acc. rate (over 4 steps): 0.663, ESS=499.05
+t=10, ESS=496.90
+t=11, ESS=484.47
+t=12, ESS=207.68
+t=13, Metropolis acc. rate (over 4 steps): 0.675, ESS=491.03
+t=14, ESS=475.64
+t=15, ESS=404.56
+t=16, ESS=439.20
+t=17, ESS=450.86
+t=18, ESS=444.48
+t=19, ESS=376.79
+t=20, ESS=370.69
+t=21, ESS=305.39
+t=22, ESS=287.08
+t=23, ESS=343.71
+t=24, ESS=357.09
+t=25, ESS=345.40
+t=26, ESS=351.07
+t=27, ESS=341.91
+t=28, ESS=340.26
+t=29, ESS=337.95
+t=0, ESS=6.81
+t=1, Metropolis acc. rate (over 4 steps): 0.442, ESS=4.65
+t=2, Metropolis acc. rate (over 4 steps): 0.728, ESS=134.88
+t=3, Metropolis acc. rate (over 4 steps): 0.488, ESS=185.22
+t=4, Metropolis acc. rate (over 4 steps): 0.489, ESS=452.91
+t=5, ESS=330.00
+t=6, ESS=95.70
+t=7, Metropolis acc. rate (over 4 steps): 0.444, ESS=448.45
+t=8, ESS=252.04
+t=9, ESS=223.09
+t=10, Metropolis acc. rate (over 4 steps): 0.384, ESS=310.08
+t=11, ESS=234.45
+t=12, Metropolis acc. rate (over 4 steps): 0.338, ESS=396.36
+t=13, ESS=386.41
+t=14, ESS=352.19
+t=15, ESS=287.80
+t=16, ESS=159.61
+t=17, Metropolis acc. rate (over 4 steps): 0.313, ESS=456.98
+t=18, ESS=267.59
+t=19, ESS=253.80
+t=20, ESS=367.66
+t=21, ESS=370.17
+t=22, ESS=348.04
+t=23, ESS=344.19
+t=24, ESS=265.48
+t=25, ESS=317.60
+t=26, ESS=258.55
+t=27, ESS=281.79
+t=28, ESS=274.70
+t=29, ESS=279.33
+RECORD={"passed": true, "syntax_checked_files": 66, "syntax_only_not_executed": ["book/filtering/adaptive_resampling.py", "book/filtering/comparing_bootstrap_guided_apf_lingauss.py", "book/filtering/comparing_bootstrap_guided_apf_stochvol.py", "book/filtering/neurodecoding.py", "book/kalman/check_kalman.py", "book/mcmc/compare_mcmc_samplers_stochvol.py", "book/mle/compare_smc_sqmc_malik_and_pitt.py", "book/mle/contour_loglik_ecological.py", "book/mle/contour_loglik_stochvol.py", "book/mle/hurzeler_kunsch.py", "book/mle/if2_stochvol.py", "book/mle/malikpitt_interpolation.py", "book/mle/mle_neuro.py", "book/mle/variability_loglik_estimates.py", "book/pmcmc/pgibbs_ecological.py", "book/pmcmc/pmmh_biased_lingauss.py", "book/pmcmc/pmmh_cost.py", "book/pmcmc/pmmh_lingauss.py", "book/pmcmc/pmmh_lingauss_varying_scale.py", "book/resampling/compare_cpu_time_resampling.py", "book/resampling/compare_tv_distance_resampling.py", "book/smc2/smc2_stochvol_leverage.py", "book/smc_samplers/logistic_reg.py", "book/smoothing/offline_smoothing.py", "book/smoothing/online_smoothing.py", "book/smoothing/plot_genealogy.py", "book/sqmc/sqmc_as_dim_grows.py", "book/sqmc/sqmc_gordon.py", "docs/source/conf.py", "papers/binarySMC/bar_plots.py", "papers/binarySMC/boston.py", "papers/binarySMC/concrete.py", "papers/binarySMC/lost_time.py", "papers/binarySMC/toy.py", "papers/complexity_smoothing/ffbs_cox_model.py", "papers/complexity_smoothing/hybrid_paris.py", "papers/complexity_smoothing/mle_neuro.py", "papers/complexity_smoothing/mle_neuro_nrsteps.py", "papers/complexity_smoothing/nr_mcmc_steps.py", "papers/nested/tempering_vs_nested_logistic.py", "papers/nested/vanilla_nested_logistic.py", "papers/wastefreeSMC/logistic.py", "papers/wastefreeSMC/variance_estimates_ibis.py", "papers/wastefreeSMC/variance_estimates_tempering.py", "particles/__init__.py", "particles/binary_smc.py", "particles/collectors.py", "particles/core.py", "particles/datasets.py", "particles/distributions.py", "particles/hilbert.py", "particles/hmm.py", "particles/iterated_filtering.py", "particles/kalman.py", "particles/mcmc.py", "particles/nested.py", "particles/resampling.py", "particles/rqmc.py", "particles/smc_samplers.py", "particles/smoothing.py", "particles/state_space_models.py", "particles/utils.py", "particles/variance_estimators.py", "particles/variance_mcmc.py", "tests/smc_samplers/linear_reg.py", "tests/test_iterated_filtering.py"], "pytest_collected": 0, "full_upstream_suite_passed_claim": false, "original_algorithm_controls": {"Bootstrap": {"loglik": -5.0340940859118115, "states": [-1.3401104119522471, -1.44021108867759, -1.7788291597984403, -0.31594466703977425, 0.033969627544799444, -1.6314261371621916, -1.4446989459349233, -0.013738485258129499, -1.4088311538933653, -1.0499210835152444, -0.4681459645210535, -1.0798639560974368, -1.7695274493573458, -1.8816411382996525, -1.8335882525178284, -0.9158123198238813, -1.6634030114891918, -1.5642088917663468, -1.6110302501984592, -1.4493026264714133, -1.0223471362191145, -1.4222015632252392, -0.19297006367652114, -1.1512609923771433, -1.0684901490302217, -0.8158227597360443, -1.547763602693641, -0.6733030978807537, -0.6896611631709986, -0.6378696319770388, -1.2133437323917888, -0.8816599825360371], "weights": [0.03860047193607557, 0.03581616292998859, 0.024409927476866423, 0.03613852701658802, 0.005365615191380271, 0.041910910141093036, 0.03850924075854566, 0.00977732851695738, 0.04201717115273992, 0.037353560735050396, 0.022526599730521367, 0.06495548306138096, 0.023577211729683335, 0.01577740164297454, 0.01679994243818724, 0.040109262376472485, 0.03515446113129592, 0.032864196278623296, 0.01156750219112201, 0.022690603342335983, 0.02160121159890031, 0.029662806223600385, 0.02756441493954222, 0.032824237070478754, 0.013638893280932889, 0.03239066710108515, 0.05391867336901432, 0.02652488975851864, 0.030539454364327177, 0.02948082080099957, 0.04999635290147231, 0.055935998813245784], "rng_sha256": "8505dd33bdd6222f78e2f7a09e91aaf15d4654f36ec52b87ff28b6ac54207585", "rng_position": 532}, "GuidedPF": {"loglik": -5.38750022495884, "states": [-0.6465864997512418, -0.29343940970284, -0.4565615668673613, -0.8487443486801034, -0.8503106578810564, -1.2793529158667423, -0.8028208972351225, -1.0124108045153652, -0.819835475507189, -0.21984854695796113, -1.0671623059354267, -1.3252102085259305, -0.6065576739839327, -0.8493278195572354, -1.8009677836832367, -1.3890937660450602, -1.620694899412419, -0.876958784291496, -1.2084740210826668, -1.4303759000983938, -0.02973719107144418, -0.63332373926558, -1.1356209851705013, -0.1414018923777365, -1.5504555101663535, -0.4418450830649337, -1.3252274588639659, -1.6127425052408346, -0.8898685854836754, 0.3574019707098206, -0.35778819025168135, -0.9023249737606333], "weights": [0.027993546533264132, 0.022146070539502884, 0.036084373981527855, 0.02038455142879023, 0.04645372633355024, 0.0408628989730829, 0.04601426862808868, 0.028813149345488752, 0.028581340600288045, 0.014949760496724826, 0.03177005802480783, 0.030964944057767067, 0.04253983250095211, 0.032143142051635945, 0.011814366011574706, 0.026086426509948656, 0.035661003312784635, 0.048072526755854425, 0.02144169371624458, 0.027775891819269042, 0.03241480212030568, 0.0385787070875098, 0.031685581933812434, 0.01886202787992836, 0.027303397303885042, 0.04573735002153589, 0.032471531032841595, 0.026444979539894137, 0.04179011320167996, 0.013480125255075803, 0.035623480736627904, 0.035054332265755855], "rng_sha256": "8505dd33bdd6222f78e2f7a09e91aaf15d4654f36ec52b87ff28b6ac54207585", "rng_position": 530}, "AuxiliaryPF": {"loglik": -5.414737798884127, "states": [-0.6465864997512418, -0.29343940970284, -0.4565615668673613, -1.6698483185829442, -0.8503106578810564, -1.2793529158667423, -0.8028208972351225, -1.0124108045153652, -0.819835475507189, -1.057018164626818, -1.0671623059354267, -1.3252102085259305, -0.6065576739839327, -0.8493278195572354, -1.8009677836832367, -1.3890937660450602, -1.620694899412419, -0.876958784291496, -1.2084740210826668, -1.4303759000983938, -0.02973719107144418, -0.63332373926558, -1.1356209851705013, 0.37381876795768954, -1.5504555101663535, -0.4418450830649337, -1.3252274588639659, -1.6127425052408346, -0.8898685854836754, 0.3574019707098206, -0.35778819025168135, -0.9023249737606333], "weights": [0.03226762259763089, 0.027161119133755886, 0.038559015180206366, 0.02271465839544651, 0.0411654872202741, 0.036211113256697, 0.04077605687774067, 0.03231336914867694, 0.033422270800088937, 0.02978299424453949, 0.03215552517719145, 0.031038132094066723, 0.04264037867986504, 0.03569089009870605, 0.010458836407266251, 0.023093381993619218, 0.03156941298432668, 0.04255689154465231, 0.022633215045164287, 0.02931940643012051, 0.03591312304256474, 0.039607807324673124, 0.03253080569439055, 0.013176471805484063, 0.023016381034685916, 0.03855594466490357, 0.02737304529224883, 0.022292746897766735, 0.035228479380317236, 0.019228615489844492, 0.03898585628571804, 0.038560945777367316], "rng_sha256": "8505dd33bdd6222f78e2f7a09e91aaf15d4654f36ec52b87ff28b6ac54207585", "rng_position": 530}}, "actual_upstream_linear_reg": {"source_sha256": "6a45439e8c3718870ccf8b6ea1a4c757f511251e918f1246cc682dc7a40d099e", "overrides": {"N": 100, "lc": 5, "nruns": 2}, "upstream_default": {"N": 10000, "lc": 50, "nruns": 1000}, "loglik": [8.310400156011873, -17.97086664065624], "means": [[0.25754929153646916, 1.0139874121408348, -0.21845047882819119], [0.197612418620148, 0.9513024252804443, -0.23023102732344036]], "purpose": "bounded execution of original script, not posterior accuracy benchmark"}, "other_upstream_examples": "inventoried and syntax compiled, not all executed"}

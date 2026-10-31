@@ -1,0 +1,45 @@
+.F.F.F.F.Fs                                                              [100%]
+=================================== FAILURES ===================================
+____________________________ VMTest.testConstantTF _____________________________
+tensorflow_probability/python/experimental/auto_batching/virtual_machine_test.py:110: in testConstantTF
+    self._tfTestHelper(_asserts_fn, _constant_execute)
+tensorflow_probability/python/experimental/auto_batching/virtual_machine_test.py:83: in _tfTestHelper
+    if 'cpu' in FLAGS.test_device.lower():
+                ^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'lower'
+____________________________ VMTest.testFibonacciTF ____________________________
+tensorflow_probability/python/experimental/auto_batching/virtual_machine_test.py:154: in testFibonacciTF
+    self._tfTestHelper(_asserts_fn, _fibonacci_execute)
+tensorflow_probability/python/experimental/auto_batching/virtual_machine_test.py:83: in _tfTestHelper
+    if 'cpu' in FLAGS.test_device.lower():
+                ^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'lower'
+_____________________________ VMTest.testPeaNutsTF _____________________________
+tensorflow_probability/python/experimental/auto_batching/virtual_machine_test.py:200: in testPeaNutsTF
+    self._tfTestHelper(_asserts_fn, execute)
+tensorflow_probability/python/experimental/auto_batching/virtual_machine_test.py:83: in _tfTestHelper
+    if 'cpu' in FLAGS.test_device.lower():
+                ^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'lower'
+__________________________ VMTest.testProductTypesTF ___________________________
+tensorflow_probability/python/experimental/auto_batching/virtual_machine_test.py:139: in testProductTypesTF
+    self._tfTestHelper(_asserts_fn, _product_type_execute)
+tensorflow_probability/python/experimental/auto_batching/virtual_machine_test.py:83: in _tfTestHelper
+    if 'cpu' in FLAGS.test_device.lower():
+                ^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'lower'
+____________________________ VMTest.testSingleIfTF _____________________________
+tensorflow_probability/python/experimental/auto_batching/virtual_machine_test.py:129: in testSingleIfTF
+    self._tfTestHelper(_asserts_fn, _single_if_execute)
+tensorflow_probability/python/experimental/auto_batching/virtual_machine_test.py:83: in _tfTestHelper
+    if 'cpu' in FLAGS.test_device.lower():
+                ^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'lower'
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__experimental__auto_batching__virtual_machine_test/candidate.xml -
+=========================== short test summary info ============================
+FAILED tensorflow_probability/python/experimental/auto_batching/virtual_machine_test.py::VMTest::testConstantTF
+FAILED tensorflow_probability/python/experimental/auto_batching/virtual_machine_test.py::VMTest::testFibonacciTF
+FAILED tensorflow_probability/python/experimental/auto_batching/virtual_machine_test.py::VMTest::testPeaNutsTF
+FAILED tensorflow_probability/python/experimental/auto_batching/virtual_machine_test.py::VMTest::testProductTypesTF
+FAILED tensorflow_probability/python/experimental/auto_batching/virtual_machine_test.py::VMTest::testSingleIfTF
+5 failed, 5 passed, 1 skipped in 13.97s

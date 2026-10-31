@@ -1,0 +1,391 @@
+{
+  "captured_at_utc": "2026-10-30T20:48:27.862108+00:00",
+  "job_records": {
+    "jax_gate_v2/jobs.json": {
+      "job_id": "65097220",
+      "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/jax_gate_v2",
+      "submitted_at_utc": "2026-10-30T20:31:10.852286+00:00",
+      "time_limit_seconds": 3600,
+      "GPU": "A40",
+      "prior_job": "65096175",
+      "prior_seconds": 73,
+      "source_manifest_sha256": "a7230485e25ad8623e27b2af24f32e0e9f01e3657dcb1229809766af1f00d9a2"
+    },
+    "jax_formal_v2/jobs.json": {
+      "dependency": "afterok:65097220",
+      "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/jax_formal_v2",
+      "source_manifest_sha256": "50a612f57bd81288def1e47f006e91ea25c00daed5ff8b2beb4619786db7a407",
+      "allocation_upper_bound_GPU_hours": 23.6,
+      "case_array": "0-11%3",
+      "time_limit_seconds_per_case": 3540,
+      "superseded_before_start": [
+        "65097712",
+        "65097713"
+      ],
+      "reason": "Reject nonfinite natural-scale parameters even when estimation coordinates and Adam state remain finite",
+      "jobs": [
+        {
+          "package": "cuthbert",
+          "job_id": "65097906",
+          "submitted_at_utc": "2026-10-30T20:38:04.567936+00:00"
+        },
+        {
+          "package": "pfjax",
+          "job_id": "65097907",
+          "submitted_at_utc": "2026-10-30T20:38:06.240652+00:00"
+        }
+      ]
+    },
+    "tfp/jobs.json": {
+      "validation": {
+        "job_id": 65096288,
+        "allocation_gpu_hours": 1,
+        "submitted": true,
+        "submitted_utc": "2026-10-30T20:23:14.646897+00:00"
+      },
+      "remote_root": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/tfp",
+      "manifest_sha256": "17b13421347c1558824ff041d9de871ef09e2a94f918d664bc492f953ba0c846",
+      "formal_submitted": true,
+      "formal_version": "formal_v2",
+      "formal": {
+        "jobs_file": "formal_v2/jobs.json",
+        "manifest_sha256": "e315f3a76cf8a79e6eabbca7b8741b099550c3fc0b1618c090951ab64eb5825f",
+        "methods": {
+          "prefix": 65098962,
+          "A": 65098963,
+          "B": 65098964,
+          "C": 65098965
+        },
+        "total_allocation_gpu_hours": 20
+      },
+      "superseded": {
+        "formal_v1": [
+          65098423,
+          65098424,
+          65098425,
+          65098426
+        ],
+        "all_cancelled_before_start": true,
+        "elapsed_GPU_seconds": 0,
+        "evidence": "formal_v1/CANCELLED_BEFORE_EXECUTION.json"
+      }
+    },
+    "tfp/formal_v2/jobs.json": {
+      "gate_job_id": 65096288,
+      "remote_root": "/gpfs/accounts/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/tfp/formal_v2",
+      "manifest_sha256": "e315f3a76cf8a79e6eabbca7b8741b099550c3fc0b1618c090951ab64eb5825f",
+      "submitted": true,
+      "requested_total_GPU_hours": 20,
+      "methods": {
+        "prefix": {
+          "job_id": 65098962,
+          "time_limit_hours": 8,
+          "dependency_afterok": [
+            65096288
+          ],
+          "command": [
+            "sbatch",
+            "--parsable",
+            "--job-name=tfp-public-prefix",
+            "--time=8:00:00",
+            "--dependency=afterok:65096288",
+            "formal.sbatch",
+            "prefix"
+          ],
+          "submitted_unix": 1793393117.2455575
+        },
+        "A": {
+          "job_id": 65098963,
+          "time_limit_hours": 4,
+          "dependency_afterok": [
+            65096288
+          ],
+          "command": [
+            "sbatch",
+            "--parsable",
+            "--job-name=tfp-public-A",
+            "--time=4:00:00",
+            "--dependency=afterok:65096288",
+            "formal.sbatch",
+            "A"
+          ],
+          "submitted_unix": 1793393117.300902
+        },
+        "B": {
+          "job_id": 65098964,
+          "time_limit_hours": 4,
+          "dependency_afterok": [
+            65096288,
+            65098962
+          ],
+          "command": [
+            "sbatch",
+            "--parsable",
+            "--job-name=tfp-public-B",
+            "--time=4:00:00",
+            "--dependency=afterok:65096288:65098962",
+            "formal.sbatch",
+            "B"
+          ],
+          "submitted_unix": 1793393117.3270788
+        },
+        "C": {
+          "job_id": 65098965,
+          "time_limit_hours": 4,
+          "dependency_afterok": [
+            65096288,
+            65098962
+          ],
+          "command": [
+            "sbatch",
+            "--parsable",
+            "--job-name=tfp-public-C",
+            "--time=4:00:00",
+            "--dependency=afterok:65096288:65098962",
+            "formal.sbatch",
+            "C"
+          ],
+          "submitted_unix": 1793393117.3527246
+        }
+      },
+      "started_unix": 1793393117.1591449
+    },
+    "pydpf/jobs.json": {
+      "state": "repair_preflight_submitted",
+      "recorded_at_UTC": "2026-10-30T20:33:07.248804+00:00",
+      "remote_root": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/pydpf/repair_v2",
+      "source_manifest_sha256": "9b7334df9d44e0b80cd9c8f63fb7dbb4f90114cf10c7e6ffadb0ea6358cc0756",
+      "preflight_GPU_hour_cap": 0.9833333333333333,
+      "formal_submitted": true,
+      "sbatch_returncode": 0,
+      "sbatch_stdout": "65096176\n",
+      "sbatch_stderr": "",
+      "preflight_job": 65097403,
+      "job_history": [
+        {
+          "job_id": 65096176,
+          "state": "FAILED",
+          "exit_code": "1:0",
+          "elapsed_seconds": 234,
+          "raw_archive": "preflight_65096176_raw.tar.gz",
+          "source_manifest_sha256": "e2daa9841576dfbdd24352665e10258d15f3684d08ddef0f8f9b95c68af5afb0"
+        }
+      ],
+      "repair_preflight_cap_seconds": 3300,
+      "total_preflight_with_previous_actual_seconds_max": 3534,
+      "formal_jobs": {
+        "warm": {
+          "job_id": 65098862,
+          "depends_afterok": 65097403,
+          "allocation_seconds": 24300,
+          "GPUs": 1,
+          "GPU_model": "A40"
+        },
+        "A": {
+          "job_id": 65098863,
+          "depends_afterok": 65097403,
+          "allocation_seconds": 27900,
+          "GPUs": 1,
+          "GPU_model": "A40"
+        },
+        "B": {
+          "job_id": 65098864,
+          "depends_afterok": 65098862,
+          "allocation_seconds": 27900,
+          "GPUs": 1,
+          "GPU_model": "A40"
+        },
+        "C": {
+          "job_id": 65098865,
+          "depends_afterok": 65098862,
+          "allocation_seconds": 27900,
+          "GPUs": 1,
+          "GPU_model": "A40"
+        }
+      },
+      "formal_jobs_path": "formal_v1/jobs.json",
+      "formal_source_manifest_sha256": "5d7de6e4964eda73201f4a67b65855f75005b2260f02717a824f2691ed781f9d",
+      "formal_allocation_seconds": 108000
+    },
+    "pydpf/formal_v1/jobs.json": {
+      "state": "submitted_waiting_GPU_gate",
+      "recorded_at_UTC": "2026-10-30T20:43:49.427097+00:00",
+      "GPU_gate_job": 65097403,
+      "formal_allocation_seconds": 108000,
+      "source_manifest_sha256": "5d7de6e4964eda73201f4a67b65855f75005b2260f02717a824f2691ed781f9d",
+      "remote_root": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/pydpf/formal_v1",
+      "jobs": {
+        "warm": {
+          "job_id": 65098862,
+          "depends_afterok": 65097403,
+          "allocation_seconds": 24300,
+          "GPUs": 1,
+          "GPU_model": "A40"
+        },
+        "A": {
+          "job_id": 65098863,
+          "depends_afterok": 65097403,
+          "allocation_seconds": 27900,
+          "GPUs": 1,
+          "GPU_model": "A40"
+        },
+        "B": {
+          "job_id": 65098864,
+          "depends_afterok": 65098862,
+          "allocation_seconds": 27900,
+          "GPUs": 1,
+          "GPU_model": "A40"
+        },
+        "C": {
+          "job_id": 65098865,
+          "depends_afterok": 65098862,
+          "allocation_seconds": 27900,
+          "GPUs": 1,
+          "GPU_model": "A40"
+        }
+      },
+      "submission_attempts": [
+        {
+          "phase": "warm",
+          "command": [
+            "sbatch",
+            "--parsable",
+            "--job-name=pydpf-api-warm",
+            "--time=06:45:00",
+            "--dependency=afterok:65097403",
+            "--export=ALL,PYDPF_PHASE=warm",
+            "formal.sbatch"
+          ],
+          "exit_code": 0,
+          "stdout": "65098862\n",
+          "stderr": ""
+        },
+        {
+          "phase": "A",
+          "command": [
+            "sbatch",
+            "--parsable",
+            "--job-name=pydpf-api-A",
+            "--time=07:45:00",
+            "--dependency=afterok:65097403",
+            "--export=ALL,PYDPF_PHASE=A",
+            "formal.sbatch"
+          ],
+          "exit_code": 0,
+          "stdout": "65098863\n",
+          "stderr": ""
+        },
+        {
+          "phase": "B",
+          "command": [
+            "sbatch",
+            "--parsable",
+            "--job-name=pydpf-api-B",
+            "--time=07:45:00",
+            "--dependency=afterok:65098862",
+            "--export=ALL,PYDPF_PHASE=B",
+            "formal.sbatch"
+          ],
+          "exit_code": 0,
+          "stdout": "65098864\n",
+          "stderr": ""
+        },
+        {
+          "phase": "C",
+          "command": [
+            "sbatch",
+            "--parsable",
+            "--job-name=pydpf-api-C",
+            "--time=07:45:00",
+            "--dependency=afterok:65098862",
+            "--export=ALL,PYDPF_PHASE=C",
+            "formal.sbatch"
+          ],
+          "exit_code": 0,
+          "stdout": "65098865\n",
+          "stderr": ""
+        }
+      ]
+    },
+    "particles/formal_v1/jobs.json": {
+      "submitted_at_utc": "2026-10-30T20:38:23.336543+00:00",
+      "fit_job": "65097887",
+      "score_job": "65097888",
+      "score_dependency": "afterany:65097887",
+      "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/particles/formal_v1",
+      "source_manifest_sha256": "4589d67c3539860cd190f024869e365eaf855f38f260ca0a57dec2adb3de5acf",
+      "source_files": 357,
+      "fit": {
+        "task_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "array_concurrency": 6,
+        "CPUs_per_task": 1,
+        "maximum_seconds_per_task": 2700,
+        "CPU_hours_maximum": 18,
+        "scientific_fitting_budget_CPU_hours": 12
+      },
+      "score": {
+        "GPU": "A40",
+        "maximum_seconds": 1800,
+        "CPUs": 4,
+        "seed": 94981000,
+        "assembler_requires_all_24_terminal_manifests": true
+      },
+      "preflight_costs": {
+        "successful_job": "65096908",
+        "successful_seconds": 151,
+        "failed_deployment_job": "65096422",
+        "failed_deployment_seconds": 4
+      },
+      "actual_runtime_imports_passed": true,
+      "history": []
+    }
+  },
+  "job_ids": [
+    "65096175",
+    "65096288",
+    "65096422",
+    "65096908",
+    "65097220",
+    "65097403",
+    "65097887",
+    "65097888",
+    "65097906",
+    "65097907",
+    "65098862",
+    "65098863",
+    "65098864",
+    "65098865",
+    "65098962",
+    "65098963",
+    "65098964",
+    "65098965"
+  ],
+  "ssh_returncode": 0,
+  "scheduler_output": "65096288|PENDING|0:00||(Priority)\n65097220|PENDING|0:00||(Priority)\n65097403|PENDING|0:00||(Priority)\n65098965|PENDING|0:00||(Dependency)\n65098964|PENDING|0:00||(Dependency)\n65098963|PENDING|0:00||(Dependency)\n65098962|PENDING|0:00||(Dependency)\n65098865|PENDING|0:00||(Dependency)\n65098864|PENDING|0:00||(Dependency)\n65098863|PENDING|0:00||(Dependency)\n65098862|PENDING|0:00||(Dependency)\n65097907_[0-11%3]|PENDING|0:00||(Dependency)\n65097906_[0-11%3]|PENDING|0:00||(Dependency)\n65097888|PENDING|0:00||(Dependency)\n65097887_[6-23]|PENDING|0:00||(JobArrayTaskLimit)\n65097887_0|RUNNING|10:11|gl3143|gl3143\n65097887_1|RUNNING|10:11|gl3146|gl3146\n65097887_2|RUNNING|10:11|gl3191|gl3191\n65097887_3|RUNNING|10:11|gl3193|gl3193\n65097887_4|RUNNING|10:11|gl3281|gl3281\n65097887_5|RUNNING|10:11|gl3386|gl3386\n65096175|FAILED|1:0|73|gl1508|billing=30131,cpu=4,gres/gpu=1,mem=80G,node=1\n65096288|PENDING|0:0|0|None assigned|\n65096422|FAILED|1:0|4|gl3151|billing=2862,cpu=1,mem=8G,node=1\n65096908|COMPLETED|0:0|151|gl3120|billing=2862,cpu=1,mem=8G,node=1\n65097220|PENDING|0:0|0|None assigned|\n65097403|PENDING|0:0|0|None assigned|\n65097888|PENDING|0:0|0|None assigned|\n65097887_0|RUNNING|0:0|611|gl3143|billing=2862,cpu=1,mem=8G,node=1\n65097887_1|RUNNING|0:0|611|gl3146|billing=2862,cpu=1,mem=8G,node=1\n65097887_2|RUNNING|0:0|611|gl3191|billing=2862,cpu=1,mem=8G,node=1\n65097887_3|RUNNING|0:0|611|gl3193|billing=2862,cpu=1,mem=8G,node=1\n65097887_4|RUNNING|0:0|611|gl3281|billing=2862,cpu=1,mem=8G,node=1\n65097887_5|RUNNING|0:0|611|gl3386|billing=2862,cpu=1,mem=8G,node=1\n65097887_[10-23%6]|PENDING|0:0|0|None assigned|\n65097906_[0-11%3]|PENDING|0:0|0|None assigned|\n65097907_[0-11%3]|PENDING|0:0|0|None assigned|\n65098862|PENDING|0:0|0|None assigned|\n65098863|PENDING|0:0|0|None assigned|\n65098864|PENDING|0:0|0|None assigned|\n65098865|PENDING|0:0|0|None assigned|\n65098962|PENDING|0:0|0|None assigned|\n65098963|PENDING|0:0|0|None assigned|\n65098964|PENDING|0:0|0|None assigned|\n65098965|PENDING|0:0|0|None assigned|\n",
+  "ssh_stderr": ""
+}

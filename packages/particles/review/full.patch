@@ -1,0 +1,579 @@
+diff --git a/book/mle/if2_stochvol.py b/book/mle/if2_stochvol.py
+new file mode 100644
+--- /dev/null
++++ b/book/mle/if2_stochvol.py
+@@ -0,0 +1,44 @@
++"""Short executable IF2 example, not an optimization-quality comparison.
++
++Run from a checkout with that checkout on PYTHONPATH. The original StochVol
++class and its PX0/PX/PY methods are used without changes. All parameters below
++are in estimation coordinates (mu, atanh(rho), log(sigma)).
++"""
++import json
++
++import numpy as np
++import particles
++from particles import state_space_models as ssms
++from particles.iterated_filtering import iterated_filtering
++
++
++def model_factory(theta):
++    return ssms.StochVol(mu=theta[..., 0], rho=np.tanh(theta[..., 1]),
++                        sigma=np.exp(theta[..., 2]))
++
++
++def main():
++    np.random.seed(30)
++    _, data = ssms.StochVol().simulate(50)
++    theta = np.array([-0.5, np.arctanh(0.7), np.log(0.3)])
++    np.random.seed(31)
++    result = iterated_filtering(model_factory, data, np.tile(theta, (100, 1)),
++                                scales=[0.1, 0.05, 0.05], niter=3, cooling=0.9,
++                                vectorized=True)
++    # Fresh, unperturbed PF calls. These two individual values do not establish
++    # precision or improvement and are not used to choose the fitted endpoint.
++    scores = []
++    for seed, point in [(32, theta), (33, result.means[-1])]:
++        np.random.seed(seed)
++        pf = particles.SMC(fk=ssms.Bootstrap(ssm=model_factory(point), data=data),
++                           N=200, collect="off")
++        pf.run()
++        scores.append(float(pf.logLt))
++    print(json.dumps({"completed": True, "niter": 3, "T": 50, "N": 100,
++        "parameters": result.means.tolist(), "perturbed_loglik": result.loglik.tolist(),
++        "single_unperturbed_PF_values": scores,
++        "optimization_quality_or_speed_claimed": False}))
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/docs/source/index.rst b/docs/source/index.rst
+--- a/docs/source/index.rst
++++ b/docs/source/index.rst
+@@ -30,4 +30,5 @@
+    overview
+    installation    
+    structure
++   iterated_filtering
+ 
+diff --git a/docs/source/iterated_filtering.rst b/docs/source/iterated_filtering.rst
+new file mode 100644
+--- /dev/null
++++ b/docs/source/iterated_filtering.rst
+@@ -0,0 +1,102 @@
++Iterated filtering
++==================
++
++This proposed extension adds IF2 parameter perturbations to the existing
++bootstrap particle filter. It is not an automatic differentiation method.
++The implementation uses ``Bootstrap.M0``, ``Bootstrap.M`` and ``Bootstrap.logG``
++inside the original ``SMC.run``. The SMC core, distributions and resamplers are
++unchanged. The extra Feynman--Kac callbacks store state and parameter coordinates
++in the same structured particle, so native ancestor indexing selects both.
++
++Model interface
++---------------
++
++A factory takes a parameter vector and returns a normal ``StateSpaceModel``.
++The model must implement ``PX0().rvs``, ``PX(t,xp).rvs`` and
++``PY(t,xp,x).logpdf``. No transition ``logpdf`` or inverse CDF is needed.
++Parameters are perturbed on the coordinate scale chosen by the caller; use
++log/logit transforms in the factory for constrained parameters. There is no
++automatic clipping, rejection or constraint transformation.
++
++For example, the existing ``StochVol`` class needs no changes::
++
++    import numpy as np
++    from particles import state_space_models as ssms
++    from particles.iterated_filtering import iterated_filtering
++
++    def model_factory(theta):
++        return ssms.StochVol(mu=theta[..., 0],
++                            rho=np.tanh(theta[..., 1]),
++                            sigma=np.exp(theta[..., 2]))
++
++    theta0 = np.array([-0.5, np.arctanh(0.7), np.log(0.3)])
++    np.random.seed(31)
++    result = iterated_filtering(
++        model_factory, data, np.tile(theta0, (100, 1)),
++        scales=[0.1, 0.05, 0.05], niter=3, cooling=0.9,
++        vectorized=True)
++
++``vectorized=False`` (the default) constructs a scalar-parameter model for each
++particle. It supports models that do not accept parameter arrays, but Python
++loops and repeated model construction may be expensive. ``vectorized=True``
++passes an ``(N,P)`` array; the factory must return a model whose distributions
++correctly broadcast particle-specific parameters. Not all existing models
++support this. Constructors and factories must not sample or mutate inputs.
++States must be numeric arrays with leading particle axis; scalar and vector
++states are supported, arbitrary nested objects are not.
++
++Perturbations and repeated passes
++--------------------------------
++
++The initial input is the complete ``(N,P)`` equal-weight parameter cloud.
++``scales`` is either ``(P,)`` or ``(T,P)``. Row zero controls perturbations
++before ``PX0``; row t controls perturbations before ``PX(t, ...)``.
++``PX0`` samples the state for the first observation, following the original
++Bootstrap convention. For initial-value parameters, set their later rows to
++zero. Setting an entire coordinate's scale to zero freezes perturbations, but
++ancestor selection can still select among different initial values.
++
++On pass m, every scale is multiplied by ``cooling**m``. Parameters perform
++independent Gaussian random walks. Native resampling runs at every transition,
++even with exactly uniform weights. Final native resampling returns the entire
++equal-weight parameter cloud to the next pass, which reinitializes latent
++states. The cloud is never replaced by copies of its mean. The reported mean
++is in estimation coordinates; transform it explicitly to obtain model parameters.
++
++``result.loglik`` contains perturbed-model normalizers. It is not the likelihood
++of the mean parameter. For an unperturbed score, use a fresh ordinary
++``Bootstrap`` and ``SMC`` at a fixed parameter, with separate random numbers.
++The short executable example in ``book/mle/if2_stochvol.py`` does this, but its
++three passes and two single scores do not establish optimization quality.
++
++Continuation and limitations
++----------------------------
++
++To continue, retain ``result.theta_particles``, NumPy's complete RNG state,
++and the iteration index. Restore the RNG and pass ``start_iteration`` to
++continue the cooling schedule. This is an in-memory continuation interface,
++not a checkpoint file format. If a model uses other random generators, the
++caller must separately preserve their state. Models used in the example use
++NumPy's global RNG. Concurrent threads sharing this RNG are not supported.
++
++Supported resamplers are multinomial (default), systematic, stratified and
++residual. SSP is excluded because its Numba-compiled sampler uses a separate
++RNG. SQMC, guided/auxiliary filters, differentiation, Adam and IFAD are not
++implemented by this module. Nonfinite parameters/states, NaN or positive
++infinite weights, and all-negative-infinite weights raise exceptions. Individual
++zero-weight particles are allowed. There is no automatic retry, best-iterate
++selection, per-particle failure recovery or convergence claim.
++
++Relationship to existing estimation methods
++------------------------------------------
++
++``mcmc.PMMH`` and ``smc_samplers.SMC2`` provide Bayesian parameter inference
++using particle-filter likelihood estimates and a prior. ``mcmc.ParticleGibbs``
++also requires a model-specific ``update_theta`` method. They estimate posterior
++distributions and should not be relabeled as maximum-likelihood optimizers.
++The book's ``mle_neuro.py`` contains model-specific EM and score formulas and
++an example using external ``scipy.optimize.minimize(method='Nelder-Mead')``.
++This IF2 module neither replaces those methods nor makes them differentiable.
++
++.. automodule:: particles.iterated_filtering
++   :members: if2_step, iterated_filtering, IF2Step, IF2Result
+diff --git a/particles/iterated_filtering.py b/particles/iterated_filtering.py
+new file mode 100644
+--- /dev/null
++++ b/particles/iterated_filtering.py
+@@ -0,0 +1,192 @@
++"""Iterated filtering with the existing Bootstrap and SMC implementations.
++
++This module adds IF2; it does not add an automatic differentiation method.
++Model parameters are perturbed in user-chosen estimation coordinates. The
++factory maps those coordinates to a normal StateSpaceModel (including any
++log/logit transforms). No transition density is required.
++"""
++
++from collections import namedtuple
++from numbers import Integral
++
++import numpy as np
++
++from particles import FeynmanKac, SMC
++from particles import resampling as rs
++from particles.state_space_models import Bootstrap
++
++
++IF2Step = namedtuple("IF2Step", "theta_particles theta_mean loglik smc")
++IF2Result = namedtuple("IF2Result", "theta_particles means loglik")
++
++
++def _inputs(data, theta_particles, scales):
++    theta = np.array(theta_particles, dtype=float, copy=True)
++    if theta.ndim != 2 or min(theta.shape) == 0 or not np.isfinite(theta).all():
++        raise ValueError("theta_particles must be a finite, nonempty (N, P) array")
++    if len(data) == 0:
++        raise ValueError("data must contain at least one observation")
++    scale = np.asarray(scales, dtype=float)
++    if scale.shape not in [(theta.shape[1],), (len(data), theta.shape[1])]:
++        raise ValueError("scales must have shape (P,) or (T, P)")
++    if not np.isfinite(scale).all() or np.any(scale < 0):
++        raise ValueError("scales must be finite and nonnegative")
++    return theta, np.broadcast_to(scale, (len(data), theta.shape[1])).copy()
++
++
++def _perturb(theta, scale):
++    # Do not consume random numbers for coordinates whose scale is zero.
++    result = theta.copy()
++    active = scale > 0
++    if np.any(active):
++        result[:, active] += np.random.normal(size=(len(theta), active.sum())) * scale[active]
++    if not np.isfinite(result).all():
++        raise FloatingPointError("nonfinite perturbed parameter")
++    return result
++
++
++def _pack(theta, x):
++    x = np.asarray(x)
++    if x.ndim < 1 or len(x) != len(theta) or x.dtype.kind not in "fiu":
++        raise ValueError("model states must be numeric arrays with first axis N")
++    if not np.isfinite(x).all():
++        raise FloatingPointError("nonfinite model state")
++    out = np.empty(len(theta), dtype=[("theta", float, (theta.shape[1],)),
++                                     ("x", x.dtype, x.shape[1:])])
++    out["theta"], out["x"] = theta, x
++    return out
++
++
++class _PerturbedBootstrap(FeynmanKac):
++    """Augment particles through FK callbacks, without replacing the SMC loop."""
++
++    def __init__(self, model_factory, data, theta, scales, vectorized):
++        super().__init__(T=len(data))
++        self.model_factory, self.data = model_factory, data
++        self.theta, self.scales, self.vectorized = theta, scales, vectorized
++
++    def _apply(self, method, theta, t=None, xp=None, x=None):
++        def call(th, previous, current, n):
++            fk = Bootstrap(ssm=self.model_factory(th), data=self.data)
++            if method == "M0":
++                return np.asarray(fk.M0(n))
++            if method == "M":
++                return np.asarray(fk.M(t, previous))
++            return np.broadcast_to(fk.logG(t, previous, current), (n,)).copy()
++
++        if self.vectorized:
++            return call(theta, xp, x, len(theta))
++        # Scalar factory support lets existing models be used without rewriting
++        # their distributions for particle-specific parameter arrays.
++        parts = []
++        for i, th in enumerate(theta):
++            previous = None if xp is None else xp[i:i + 1]
++            current = None if x is None else x[i:i + 1]
++            parts.append(call(th.copy(), previous, current, 1))
++        return np.concatenate(parts, axis=0)
++
++    def M0(self, N):
++        theta = _perturb(self.theta, self.scales[0])
++        return _pack(theta, self._apply("M0", theta))
++
++    def M(self, t, xp):
++        theta = _perturb(xp["theta"], self.scales[t])
++        return _pack(theta, self._apply("M", theta, t=t, xp=xp["x"]))
++
++    def logG(self, t, xp, x):
++        previous = None if xp is None else xp["x"]
++        lw = self._apply("logG", x["theta"], t=t, xp=previous, x=x["x"])
++        # An impossible particle (-inf) is allowed, an impossible whole cloud
++        # or undefined measurement is not silently converted to usable weights.
++        if np.isnan(lw).any() or np.isposinf(lw).any() or not np.isfinite(lw).any():
++            raise FloatingPointError("invalid or all -inf observation log weights")
++        return lw
++
++    def time_to_resample(self, smc):
++        # IF2 here always selects ancestors between observations, including
++        # exactly uniform weights. ESSrmin=1 alone does not ensure this.
++        return True
++
++
++def if2_step(model_factory, data, theta_particles, scales, *,
++             vectorized=False, resampling="multinomial"):
++    """Run one perturbed bootstrap filter and return an equal-weight cloud.
++
++    Parameters
++    ----------
++    model_factory : callable
++        Takes a (P,) estimation-coordinate vector and returns an ordinary
++        StateSpaceModel with PX0, PX, PY. With vectorized=True it instead takes
++        (N,P); its distributions must return N particle-specific values. The
++        factory and distribution constructors must not sample or mutate inputs.
++    data : list-like
++        Nonempty observations. PX0 samples the state of data[0], as in Bootstrap.
++    theta_particles : array, shape (N,P)
++        Complete equal-weight parameter cloud, not just its mean.
++    scales : array, shape (P,) or (T,P)
++        Gaussian random-walk standard deviations. Row 0 is applied before PX0;
++        row t before PX(t,...). Zero means no perturbation. For initial-value
++        parameters set rows 1: to zero, and row 0 to their initial scale.
++    vectorized : bool
++        False uses an unchanged scalar-parameter model per particle (potentially
++        slow). True requires a factory supporting particle-specific parameters.
++    resampling : str
++        Multinomial, systematic, stratified or residual; used at every observation
++        transition and once after the last observation. No SQMC, guided PF or
++        APF here. SSP uses a separate Numba RNG and is excluded from this API's
++        NumPy-state continuation contract.
++
++    Returns
++    -------
++    IF2Step
++        theta_particles is the complete resampled terminal cloud; theta_mean
++        is its arithmetic mean in estimation coordinates. loglik is from the
++        *perturbed* model, not a likelihood evaluation of theta_mean. smc is the
++        original SMC object, including weighted particles and normalizers.
++
++    Notes
++    -----
++    Uses NumPy's global RNG, as the original package does. Set np.random.seed
++    outside the function for reproducibility; preserve RNG state as well as the
++    cloud for continuation. Do not share this RNG across concurrent threads.
++    Invalid parameters, states or weights raise; failed runs are not retried.
++    """
++    theta, scale = _inputs(data, theta_particles, scales)
++    if resampling not in ("multinomial", "systematic", "stratified", "residual"):
++        raise ValueError("unsupported native resampling scheme")
++    fk = _PerturbedBootstrap(model_factory, data, theta, scale, vectorized)
++    pf = SMC(fk=fk, N=len(theta), resampling=resampling, collect="off")
++    pf.run()  # original time loop, selection, normalization and logLt accumulation
++    if not np.isfinite(pf.logLt) or not np.isfinite(pf.W).all():
++        raise FloatingPointError("nonfinite filter result")
++    indices = rs.resampling(resampling, pf.W, M=len(theta))
++    terminal = pf.X["theta"][indices].copy()
++    return IF2Step(terminal, terminal.mean(axis=0), float(pf.logLt), pf)
++
++
++def iterated_filtering(model_factory, data, theta_particles, scales, niter, *,
++                       cooling=0.9, start_iteration=0, vectorized=False,
++                       resampling="multinomial"):
++    """Repeat if2_step, carrying the whole cloud between passes.
++
++    Pass m uses scales * cooling**m, with m starting at start_iteration.
++    Cooling must lie in (0,1]. States are freshly initialized each pass; parameter
++    particles continue from the previous final resampling. No centering around a
++    point estimate, best-iterate selection, optimizer or final scoring is added.
++    means includes the initial mean followed by each resampled terminal mean.
++    niter=0 returns an unchanged copy and an empty loglik array.
++    """
++    for name, value in [("niter", niter), ("start_iteration", start_iteration)]:
++        if isinstance(value, bool) or not isinstance(value, Integral) or value < 0:
++            raise ValueError(name + " must be a nonnegative integer")
++    if not np.isscalar(cooling) or not np.isfinite(cooling) or not 0 < cooling <= 1:
++        raise ValueError("cooling must lie in (0,1]")
++    theta, scale = _inputs(data, theta_particles, scales)
++    means, loglik = [theta.mean(axis=0)], []
++    for m in range(start_iteration, start_iteration + niter):
++        step = if2_step(model_factory, data, theta, scale * cooling**m,
++                        vectorized=vectorized, resampling=resampling)
++        theta = step.theta_particles
++        means.append(step.theta_mean)
++        loglik.append(step.loglik)
++    return IF2Result(theta, np.asarray(means), np.asarray(loglik))
+diff --git a/tests/test_iterated_filtering.py b/tests/test_iterated_filtering.py
+new file mode 100644
+--- /dev/null
++++ b/tests/test_iterated_filtering.py
+@@ -0,0 +1,212 @@
++import numpy as np
++import pytest
++from numpy.testing import assert_allclose, assert_array_equal
++from scipy.special import logsumexp
++
++import particles
++from particles import distributions as dists, resampling as rs
++from particles import state_space_models as ssms
++from particles.iterated_filtering import if2_step, iterated_filtering
++
++
++class Gaussian(ssms.StateSpaceModel):
++    def __init__(self, theta):
++        self.theta = theta
++
++    def PX0(self):
++        return dists.Normal(loc=self.theta[..., 0], scale=0.4)
++
++    def PX(self, t, xp):
++        return dists.Normal(loc=0.6 * xp + self.theta[..., 0], scale=0.4)
++
++    def PY(self, t, xp, x):
++        previous = 0.0 if xp is None else xp
++        return dists.Normal(loc=x + 0.2 * previous + self.theta[..., 1], scale=0.7)
++
++
++DATA = np.array([0.2, -0.4, 0.7, 1.1])
++CLOUD = np.arange(24).reshape(12, 2) / 100
++SCALES = np.array([[0.1, 0.2], [0.05, 0], [0.02, 0], [0.01, 0]])
++
++
++def reference(seed, cloud, scales, niter=1, cooling=1.0, resampling="multinomial"):
++    """Explicit Gaussian recursion; no wrapper, Bootstrap or SMC time loop."""
++    np.random.seed(seed)
++    theta = cloud.copy()
++    records = []
++    for m in range(niter):
++        total = 0
++        for t, y in enumerate(DATA):
++            if t:
++                ancestors = rs.resampling(resampling, weights, M=len(theta))
++                theta, previous = theta[ancestors], x[ancestors]
++            else:
++                previous = 0
++            active = scales[t] > 0
++            current_scale = scales[t, active] * cooling**m
++            theta[:, active] += (np.random.normal(size=(len(theta), active.sum()))
++                                  * current_scale)
++            loc = theta[:, 0] + (0.6 * previous if t else 0)
++            x = loc + 0.4 * np.random.normal(size=len(theta))
++            mu = x + 0.2 * previous + theta[:, 1]
++            logw = -0.5 * ((y - mu) / 0.7)**2 - np.log(0.7) - 0.5 * np.log(2*np.pi)
++            total += logsumexp(logw) - np.log(len(theta))
++            weights = np.exp(logw - logsumexp(logw))
++        theta = theta[rs.resampling(resampling, weights, M=len(theta))].copy()
++        records.append(total)
++    return theta, np.array(records)
++
++
++@pytest.mark.parametrize("vectorized", [False, True])
++@pytest.mark.parametrize("scheme", ["multinomial", "systematic", "stratified", "residual"])
++def test_independent_recursion(vectorized, scheme):
++    expected, loglik = reference(105, CLOUD, SCALES, 3, 0.6, scheme)
++    np.random.seed(105)
++    got = iterated_filtering(Gaussian, DATA, CLOUD, SCALES, 3, cooling=0.6,
++                            vectorized=vectorized, resampling=scheme)
++    assert_array_equal(got.theta_particles, expected)
++    assert_allclose(got.loglik, loglik, rtol=0, atol=2e-14)
++    assert_array_equal(got.means[-1], expected.mean(axis=0))
++    assert_array_equal(CLOUD, np.arange(24).reshape(12, 2) / 100)
++
++
++class AlwaysBootstrap(ssms.Bootstrap):
++    def time_to_resample(self, smc):
++        return True
++
++
++@pytest.mark.parametrize("vectorized", [False, True])
++def test_zero_perturbation_native_model_and_smc(vectorized, monkeypatch):
++    theta = np.array([-1.0, 0.7, np.log(0.2)])
++    def factory(p):
++        return ssms.StochVol(mu=p[..., 0], rho=p[..., 1], sigma=np.exp(p[..., 2]))
++    np.random.seed(17)
++    native = particles.SMC(fk=AlwaysBootstrap(ssm=factory(theta), data=DATA),
++                           N=12, resampling="multinomial", collect="off")
++    native.run()
++    calls = []
++    old = particles.SMC.run
++    def record(self):
++        calls.append(type(self))
++        return old(self)
++    monkeypatch.setattr(particles.SMC, "run", record)
++    np.random.seed(17)
++    got = if2_step(factory, DATA, np.tile(theta, (12, 1)), np.zeros(3),
++                   vectorized=vectorized)
++    assert calls == [particles.SMC]
++    assert_array_equal(got.smc.X["x"], native.X)
++    assert_array_equal(got.smc.W, native.W)
++    assert got.loglik == native.logLt
++    assert_array_equal(got.theta_particles, np.tile(theta, (12, 1)))
++
++
++def test_split_continuation_preserves_cloud_and_rng():
++    np.random.seed(88)
++    whole = iterated_filtering(Gaussian, DATA, CLOUD, SCALES, 4, cooling=0.8)
++    final_rng = np.random.get_state()
++    np.random.seed(88)
++    first = iterated_filtering(Gaussian, DATA, CLOUD, SCALES, 2, cooling=0.8)
++    checkpoint = first.theta_particles.copy(), np.random.get_state()
++    np.random.normal(size=99)
++    np.random.set_state(checkpoint[1])
++    second = iterated_filtering(Gaussian, DATA, checkpoint[0], SCALES, 2,
++                                start_iteration=2, cooling=0.8)
++    assert_array_equal(second.theta_particles, whole.theta_particles)
++    assert_array_equal(np.r_[first.loglik, second.loglik], whole.loglik)
++    assert_array_equal(np.random.get_state()[1], final_rng[1])
++    assert np.random.get_state()[2:] == final_rng[2:]
++
++
++def test_fixed_coordinate_and_initial_only_perturbations():
++    # With distinct original values, verify inheritance rather than a false
++    # assertion that row identities must survive ancestor selection.
++    scales = SCALES.copy()
++    scales[:, 1] = 0
++    np.random.seed(94)
++    got = if2_step(Gaussian, DATA, CLOUD, scales)
++    assert set(got.theta_particles[:, 1]) <= set(CLOUD[:, 1])
++    expected, _ = reference(94, CLOUD, scales)
++    assert_array_equal(got.theta_particles, expected)
++
++
++class VectorGaussian(ssms.StateSpaceModel):
++    def __init__(self, theta):
++        self.theta = theta
++    def PX0(self):
++        return dists.MvNormal(loc=np.array([self.theta[0], 0]), cov=np.eye(2))
++    def PX(self, t, xp):
++        return dists.MvNormal(loc=0.5*xp, cov=np.eye(2))
++    def PY(self, t, xp, x):
++        return dists.Normal(loc=x[:, 0], scale=1)
++
++
++def test_vector_state_and_one_observation():
++    got = if2_step(VectorGaussian, [0.2], np.zeros((5, 1)), [0.1])
++    assert got.smc.X["x"].shape == (5, 2)
++    assert got.theta_particles.shape == (5, 1)
++    assert np.isfinite(got.loglik)
++
++
++def test_zero_passes_does_not_sample_or_alias():
++    np.random.seed(63)
++    before = np.random.get_state()
++    got = iterated_filtering(Gaussian, DATA, CLOUD, SCALES, 0)
++    assert_array_equal(got.theta_particles, CLOUD)
++    assert not np.shares_memory(got.theta_particles, CLOUD)
++    assert got.loglik.shape == (0,)
++    assert_array_equal(np.random.get_state()[1], before[1])
++    assert np.random.get_state()[2:] == before[2:]
++
++
++class BadObservation(Gaussian):
++    value = np.nan
++    def PY(self, t, xp, x):
++        value = self.value
++        class Law:
++            def logpdf(self, y):
++                return np.full(len(x), value)
++        return Law()
++
++
++@pytest.mark.parametrize("value", [np.nan, np.inf, -np.inf])
++def test_bad_weights_raise(value):
++    class Model(BadObservation):
++        pass
++    Model.value = value
++    with pytest.raises(FloatingPointError):
++        if2_step(Model, DATA, CLOUD, SCALES)
++
++
++def test_some_impossible_particles_are_allowed():
++    class Model(Gaussian):
++        def PY(self, t, xp, x):
++            class Law:
++                def logpdf(self, y):
++                    return np.where(x < 0, -np.inf, 0.0)
++            return Law()
++    np.random.seed(1)
++    got = if2_step(Model, [0], CLOUD, [0, 0], vectorized=True)
++    assert np.isfinite(got.loglik)
++
++
++@pytest.mark.parametrize("kwargs", [dict(niter=-1), dict(niter=1.5), dict(niter=True),
++    dict(start_iteration=-1), dict(cooling=0), dict(cooling=np.nan), dict(cooling=1.1),
++    dict(scales=[-1, 0]), dict(scales=[np.nan, 0]), dict(scales=[0]),
++    dict(data=[]), dict(theta_particles=[[np.nan, 0]]), dict(theta_particles=[0, 0]),
++    dict(resampling="unknown"), dict(resampling="ssp")])
++def test_invalid_inputs(kwargs):
++    arguments = dict(model_factory=Gaussian, data=DATA, theta_particles=CLOUD,
++                     scales=SCALES, niter=1)
++    arguments.update(kwargs)
++    with pytest.raises(ValueError):
++        iterated_filtering(**arguments)
++
++
++def test_uniform_weights_still_resample_every_transition():
++    class Model(BadObservation):
++        value = 0.0
++    np.random.seed(2)
++    got = if2_step(Model, DATA, CLOUD, [0, 0])
++    assert got.smc.rs_flag
++    assert not np.array_equal(got.smc.A, np.arange(len(CLOUD)))
++    assert got.loglik == 0.0

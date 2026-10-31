@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "reviewed_UTC": "2026-10-29T12:38:11.531065+00:00",
+  "summary_sha256": "fd3a4bd8580a8630de2ae483e470e9c5e966e35b212ce8fd2e9bbfa7ed7a554f",
+  "method_audit_sha256": {
+    "IF2": "b84f9207f98c0ec552b7ff4635db10bd2a4310074164275857b43489426d3c0e",
+    "IFAD": "811829da1156bfd3632369bcd35ccbac49f97635c708771a4bf4c8eb3c2d2b0e",
+    "ADPF": "318e036c5709991d6c8f2c7d31f503ca42387eb02e6bc5bf840b71f80e664bf7"
+  },
+  "collection_file_hashes_verified": 159,
+  "raw_scores_independently_recomputed": 1440,
+  "raw_repetitions_by_method": {
+    "IF2": 468,
+    "IFAD": 468,
+    "ADPF": 504
+  },
+  "endpoint_count": 36,
+  "parameters_sha_verified": 36,
+  "total_allocation_seconds": 26230,
+  "fit_failures": 0,
+  "score_failures": 0,
+  "low_precision": 0,
+  "floor_saturated": 0,
+  "all_retained_adverse_scores_verified": true,
+  "fits_rerun": 0,
+  "scores_rerun": 0,
+  "scope": "Root independently verified all36 original parameters,1440 raw scores and stopping rules,159 collected SHA and allocation totals. New ADPF425 calls and final23 Adam counters verified. Optional gradient XLA failures and checkpoint provenance limits retained."
+}

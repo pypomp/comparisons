@@ -1,0 +1,29 @@
+....s.....FF......s....                                                  [100%]
+=================================== FAILURES ===================================
+________ ImportanceResampleTest.test_log_prob_independence_per_x_eager _________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/experimental/distributions/importance_resample_test.py:278: in test_log_prob_independence_per_x
+    aucs.append(np.trapz(
+                ^^^^^^^^
+../../test-science-deps/numpy/__init__.py:769: in __getattr__
+    raise AttributeError(f"module {__name__!r} has no attribute {attr!r}")
+E   AttributeError: module 'numpy' has no attribute 'trapz'. Did you mean: 'trace'?
+________ ImportanceResampleTest.test_log_prob_independence_per_x_graph _________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/experimental/distributions/importance_resample_test.py:278: in test_log_prob_independence_per_x
+    aucs.append(np.trapz(
+                ^^^^^^^^
+../../test-science-deps/numpy/__init__.py:769: in __getattr__
+    raise AttributeError(f"module {__name__!r} has no attribute {attr!r}")
+E   AttributeError: module 'numpy' has no attribute 'trapz'. Did you mean: 'trace'?
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__experimental__distributions__importance_resample_test/candidate.xml -
+=========================== short test summary info ============================
+FAILED tensorflow_probability/python/experimental/distributions/importance_resample_test.py::ImportanceResampleTest::test_log_prob_independence_per_x_eager
+FAILED tensorflow_probability/python/experimental/distributions/importance_resample_test.py::ImportanceResampleTest::test_log_prob_independence_per_x_graph
+2 failed, 19 passed, 2 skipped in 17.02s

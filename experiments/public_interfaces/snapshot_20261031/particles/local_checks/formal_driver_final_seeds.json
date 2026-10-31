@@ -1,0 +1,6 @@
+{
+  "exit_code": 0,
+  "seconds": 5.047192292,
+  "command": "import sys,runpy;sys.path.append('/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/lib/python3.12/site-packages');sys.argv=['/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/particles/formal_v1/check_driver.py'];sys.path.insert(0,'/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/particles');runpy.run_path(sys.argv[0],run_name=\"__main__\")",
+  "variant": "candidate"
+}

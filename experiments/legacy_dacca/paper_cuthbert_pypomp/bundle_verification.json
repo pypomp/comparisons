@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "verified_at_UTC": "2026-10-29T09:06:42.972527+00:00",
+  "archive_sha256": "239ee17ad6ca20adb353455a398ffb9c946019f5eca1c17b1f8d7edfb4d913d4",
+  "archive_bytes": 67390429,
+  "archive_regular_files": 1134,
+  "experiment_files_verified": 1111,
+  "endpoints": 800,
+  "raw_scores_independently_recomputed_from_archive": 28548,
+  "contains_second_review": true,
+  "contains_visual_check": true,
+  "verification_note": "Nonfinite fits correctly remain unscored; raw score field may be absent. No experimental data modified."
+}

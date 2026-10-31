@@ -1,0 +1,56 @@
+{
+  "local_review_completed": true,
+  "upstream_acceptance": "not_requested",
+  "new_benchmark_submitted": false,
+  "tests": {
+    "passed": 119,
+    "extension_cases": 31,
+    "upstream_cases": 88,
+    "deselected": 60,
+    "exit_code": 0,
+    "log": "tests_after_fix.log"
+  },
+  "executable_example": {
+    "passed": 1,
+    "deselected": 9,
+    "exit_code": 0,
+    "log": "example.log"
+  },
+  "dacca_integration": {
+    "passed": true,
+    "exit_code": 0,
+    "report": "dacca_api_check.json",
+    "benchmark_or_precision_validation": false
+  },
+  "lint": {
+    "passed": true,
+    "log": "lint.log"
+  },
+  "format": {
+    "passed": true,
+    "handwritten_python_files": 7,
+    "log": "format.log"
+  },
+  "types": {
+    "passed": true,
+    "log": "types.log"
+  },
+  "tangle": {
+    "passed": true,
+    "log": "tangle.log"
+  },
+  "documentation": {
+    "passed": true,
+    "exit_code": 0,
+    "log": "docs.log",
+    "remaining_warnings": "4 links in unchanged factorial_football example"
+  },
+  "remaining_limitations": [
+    "not all upstream tests were run",
+    "public API integration is not a full Dacca fitting replication",
+    "float32 native PF compilation variants differed at identical parameters and keys",
+    "public API and supported scope have not been approved by upstream maintainers"
+  ],
+  "validation_script_sha256": "404fd26c1105f62e63a969418387f7a31895fd5faa3a363d11ad29b45e532c5e",
+  "documentation_only_change_after_numerical_checks": "dmop.log_likelihood return annotation"
+}

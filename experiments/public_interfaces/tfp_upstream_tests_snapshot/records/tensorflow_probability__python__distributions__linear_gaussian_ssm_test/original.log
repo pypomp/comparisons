@@ -1,0 +1,38 @@
+..s..s..s.......s.......s...s...s.....s.....s...s...s...s............... [ 48%]
+............s...........................s............s............s....s [ 96%]
+....s                                                                    [100%]
+=============================== warnings summary ===============================
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::SanityChecksParallel::testExcessiveConcretizationOfParams
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::SanityChecksParallel::testTimeVaryingOperators
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::SanityChecksParallel::testWhenNumTimestepsIsOne
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::SanityChecksParallel::test_deterministic_system
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::BatchTestParallel::testBroadcastBatchShape
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::BatchTestParallel::testConstantBatchShape
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::BatchTestParallel::testLatentsToObservationsWorksWithBatchShape
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/distributions/linear_gaussian_ssm.py:1235: UserWarning: Parallelization of prior mean is not yet implemented; using sequential implementation.
+    warnings.warn('Parallelization of prior mean is not yet implemented; '
+
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::SanityChecksParallel::testExcessiveConcretizationOfParams
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::SanityChecksParallel::testTimeVaryingNoise
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::SanityChecksParallel::testVariance
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::SanityChecksParallel::testWhenNumTimestepsIsOne
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::BatchTestParallel::testBroadcastBatchShape
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::BatchTestParallel::testConstantBatchShape
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::BatchTestParallel::testLatentsToObservationsWorksWithBatchShape
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/distributions/linear_gaussian_ssm.py:1296: UserWarning: Parallelization of prior covariance is not yet implemented; using sequential implementation.
+    warnings.warn('Parallelization of prior covariance is not yet '
+
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::SanityChecksParallel::test_docstring_example
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::BatchTestParallel::testBroadcastBatchShape
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::BatchTestParallel::testConstantBatchShape
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::MissingObservationsTestsParallel::testForwardFilterWithDynamicShapeMask
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::MissingObservationsTestsParallel::testInitSetsDefaultMask
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::KalmanSmootherTestParallel::testKalmanSmoother
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::KalmanSmootherTestParallel::testPosteriorSample_stateful
+tensorflow_probability/python/distributions/linear_gaussian_ssm_test.py::KalmanSmootherTestParallel::testPosteriorSample_stateless
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/distributions/linear_gaussian_ssm.py:571: UserWarning: Backwards pass parallelization is not yet implemented; using sequential implementation.
+    warnings.warn('Backwards pass parallelization is not yet implemented; '
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__distributions__linear_gaussian_ssm_test/original.xml -
+131 passed, 18 skipped, 22 warnings in 60.19s (0:01:00)

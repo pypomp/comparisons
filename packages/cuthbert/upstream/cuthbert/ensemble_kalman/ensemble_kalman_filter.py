@@ -1,0 +1,331 @@
+"""Implements the high-level Ensemble Kalman Filter (EnKF).
+
+See Algorithm 10.2, [Sanz-Alonso et al., Inverse Problems and Data Assimilation](https://arxiv.org/abs/1810.06191).
+Based in part on the [CD-Dynamax implementation](https://github.com/hd-UQ/cd_dynamax/blob/public/cd_dynamax/src/continuous_discrete_nonlinear_gaussian_ssm/inference_enkf.py).
+"""
+
+from functools import partial
+from typing import NamedTuple
+
+import jax
+import jax.numpy as jnp
+from jax import random, tree
+
+from cuthbert.ensemble_kalman.types import (
+    ConstructCholInnovationCovariance,
+    GetEnKFDynamics,
+    GetEnKFObservations,
+    InitSample,
+    ModifyCrossCovariance,
+)
+from cuthbert.inference import Filter
+from cuthbert.utils import dummy_tree_like
+from cuthbertlib import ensemble_kalman as enkf_lib
+from cuthbertlib.linalg import tria
+from cuthbertlib.types import Array, ArrayTree, ArrayTreeLike, KeyArray, ScalarArray
+
+
+def no_covariance_modifier(
+    cross_covariance: Array, model_inputs: ArrayTreeLike
+) -> Array:
+    """Return an empirical covariance unchanged."""
+    return cross_covariance
+
+
+class EnKFState(NamedTuple):
+    """Ensemble Kalman filter state."""
+
+    key: KeyArray
+    ensemble: Array
+    model_inputs: ArrayTree
+    log_normalizing_constant: ScalarArray
+    predicted_ensemble: Array | None = None
+
+    @property
+    def n_particles(self) -> int:
+        """Number of particles."""
+        return self.ensemble.shape[-2]
+
+    @property
+    def mean(self) -> Array:
+        """Ensemble mean."""
+        return jnp.mean(self.ensemble, axis=-2)
+
+    @property
+    def chol_cov(self) -> Array:
+        """Generalised Cholesky factor of the ensemble sample covariance."""
+        mean = self.mean
+        # Handle both single state (..., N, x_dim) and batched (T, N, x_dim)
+        dev = self.ensemble - mean[..., None, :]
+        n_minus_1 = jnp.asarray(self.n_particles - 1, dtype=dev.dtype)
+        scaled_dev_t = jnp.swapaxes(dev, -1, -2) / jnp.sqrt(n_minus_1)
+
+        if scaled_dev_t.ndim == 2:
+            return tria(scaled_dev_t)
+
+        return jax.lax.map(tria, scaled_dev_t)
+
+
+def build_filter(
+    init_sample: InitSample,
+    get_dynamics: GetEnKFDynamics,
+    get_observations: GetEnKFObservations,
+    n_particles: int,
+    inflation: float = 0.0,
+    perturbed_obs: bool = True,
+    store_predicted_ensemble: bool = False,
+    modify_cross_covariance: ModifyCrossCovariance = no_covariance_modifier,
+    construct_chol_innovation_covariance: ConstructCholInnovationCovariance
+    | None = None,
+    ensemble_subspace: bool = False,
+) -> Filter:
+    """Builds an Ensemble Kalman Filter object.
+
+    Args:
+        init_sample: Function of a JAX random key only, generates a single sample from
+            the initial distribution.
+        get_dynamics: Function to get dynamics function (x_t, key) -> x_{t+1} ~ p(x_{t+1} | x_t) from model inputs.
+        get_observations: Function to get observation function, chol_R, and y from model inputs.
+        n_particles: Number of particles.
+        inflation: Multiplicative inflation factor for ensemble deviations, applied in the predict step.
+        perturbed_obs: If True, use perturbed observations (stochastic EnKF).
+        store_predicted_ensemble: Whether to store the incoming forecast ensemble
+            in each filter state, as required by the EnRTS smoother.
+        modify_cross_covariance: Function that modifies the empirical
+            state-observation cross-covariance in the update step. Defaults to
+            the identity.
+        construct_chol_innovation_covariance: Optional function that
+            constructs a generalized Cholesky factor of the localized innovation
+            covariance matrix. ``None`` (default) uses the standard, unlocalized
+            form of the ensemble Kalman update.
+        ensemble_subspace: If True, perform the analysis in the n_particles-dimensional
+            ensemble subspace. Algebraically exact, and cheaper in the state dimension
+            whenever ``n_particles`` is much smaller than the observation dimension. It
+            is incompatible with both localization arguments above, and permits a scalar
+            or 1D ``chol_R``. Defaults to False.
+
+            When using it, prefer to have ``get_observations`` return a scalar or 1D
+            ``chol_R`` wherever the observation noise allows. A dense 2D factor is
+            applied by triangular solve rather than by scaling, which restores a
+            quadratic dependence on the observation dimension and requires storing
+            the factor densely; both are avoided entirely by the structured forms.
+            A dense factor is also refactored at cubic cost in the observation
+            dimension at every step with missing observations.
+
+    Returns:
+        Filter object for the EnKF.
+
+    Raises:
+        ValueError: If ``n_particles`` is less than 2, or if ``ensemble_subspace`` is
+            combined with either localization argument.
+    """
+    if n_particles < 2:
+        raise ValueError("n_particles must be at least 2 for EnKF.")
+
+    if ensemble_subspace:
+        if modify_cross_covariance is not no_covariance_modifier:
+            raise ValueError(
+                "ensemble_subspace=True is incompatible with modify_cross_covariance."
+            )
+        if construct_chol_innovation_covariance is not None:
+            raise ValueError(
+                "ensemble_subspace=True is incompatible with "
+                "construct_chol_innovation_covariance."
+            )
+
+    return Filter(
+        init_prepare=partial(
+            init_prepare,
+            init_sample=init_sample,
+            n_particles=n_particles,
+            store_predicted_ensemble=store_predicted_ensemble,
+        ),
+        filter_prepare=partial(
+            filter_prepare,
+            init_sample=init_sample,
+            n_particles=n_particles,
+            store_predicted_ensemble=store_predicted_ensemble,
+        ),
+        filter_combine=partial(
+            filter_combine,
+            get_dynamics=get_dynamics,
+            get_observations=get_observations,
+            inflation=inflation,
+            perturbed_obs=perturbed_obs,
+            store_predicted_ensemble=store_predicted_ensemble,
+            modify_cross_covariance=modify_cross_covariance,
+            construct_chol_innovation_covariance=(construct_chol_innovation_covariance),
+            ensemble_subspace=ensemble_subspace,
+        ),
+        associative=False,
+    )
+
+
+def init_prepare(
+    init_sample: InitSample,
+    n_particles: int,
+    store_predicted_ensemble: bool = False,
+    key: KeyArray | None = None,
+) -> EnKFState:
+    """Prepare the initial state for the EnKF.
+
+    Args:
+        init_sample: Function of a JAX random key only, generates a single sample from
+            the initial distribution.
+        n_particles: Number of particles.
+        store_predicted_ensemble: Whether to store incoming forecast ensembles.
+        key: JAX random key.
+
+    Returns:
+        Initial EnKF state.
+
+    Raises:
+        ValueError: If key is None.
+    """
+    if key is None:
+        raise ValueError("A JAX PRNG key must be provided.")
+
+    # Sample ensemble from initial distribution
+    keys = random.split(key, n_particles)
+    ensemble = jax.vmap(init_sample)(keys)
+    predicted_ensemble = dummy_tree_like(ensemble) if store_predicted_ensemble else None
+
+    return EnKFState(
+        key=key,
+        ensemble=ensemble,
+        model_inputs=None,
+        log_normalizing_constant=jnp.array(0.0),
+        predicted_ensemble=predicted_ensemble,
+    )
+
+
+def filter_prepare(
+    model_inputs: ArrayTreeLike,
+    init_sample: InitSample,
+    n_particles: int,
+    store_predicted_ensemble: bool = False,
+    key: KeyArray | None = None,
+) -> EnKFState:
+    """Prepare a state for an EnKF step.
+
+    Args:
+        model_inputs: Model inputs.
+        init_sample: Function of a JAX random key only, sampling from the initial
+            distribution. Bind initial parameters when building the filter.
+        n_particles: Number of particles.
+        store_predicted_ensemble: Whether to store incoming forecast ensembles.
+        key: JAX random key.
+
+    Returns:
+        Prepared EnKF state with dummy ensemble.
+
+    Raises:
+        ValueError: If key is None.
+    """
+    model_inputs = tree.map(lambda x: jnp.asarray(x), model_inputs)
+    if key is None:
+        raise ValueError("A JAX PRNG key must be provided.")
+
+    # Infer state shape from init_sample
+    dummy_particle = jax.eval_shape(init_sample, key)
+    x_dim = dummy_particle.shape[0]
+    ensemble = dummy_tree_like(
+        jax.ShapeDtypeStruct((n_particles, x_dim), dummy_particle.dtype)
+    )
+    predicted_ensemble = ensemble if store_predicted_ensemble else None
+
+    return EnKFState(
+        key=key,
+        ensemble=ensemble,
+        model_inputs=model_inputs,
+        log_normalizing_constant=jnp.array(0.0),
+        predicted_ensemble=predicted_ensemble,
+    )
+
+
+def filter_combine(
+    state_1: EnKFState,
+    state_2: EnKFState,
+    get_dynamics: GetEnKFDynamics,
+    get_observations: GetEnKFObservations,
+    inflation: float = 0.0,
+    perturbed_obs: bool = True,
+    store_predicted_ensemble: bool = False,
+    modify_cross_covariance: ModifyCrossCovariance = no_covariance_modifier,
+    construct_chol_innovation_covariance: ConstructCholInnovationCovariance
+    | None = None,
+    ensemble_subspace: bool = False,
+) -> EnKFState:
+    """Combine previous EnKF state with prepared state for current step.
+
+    Implements the EnKF predict + update cycle.
+
+    Args:
+        state_1: EnKF state from the previous time step.
+        state_2: EnKF state prepared for the current step.
+        get_dynamics: Function to get dynamics function and chol_Q from model inputs.
+        get_observations: Function to get observation function, chol_R, and y from model inputs.
+        inflation: Multiplicative inflation factor.
+        perturbed_obs: If True, use perturbed observations.
+        store_predicted_ensemble: Whether to store the incoming forecast ensemble.
+        modify_cross_covariance: Function that modifies the empirical
+            state-observation cross-covariance using the current model inputs.
+            Defaults to the identity.
+        construct_chol_innovation_covariance: Optional function that
+            constructs a generalized Cholesky factor of the localized innovation
+            covariance matrix. ``None`` (default) uses the standard, unlocalized
+            form of the ensemble Kalman update.
+        ensemble_subspace: If True, perform the analysis in the ensemble subspace.
+
+    Returns:
+        Updated EnKF state.
+    """
+    key_pred, key_update, key_next = random.split(state_1.key, 3)
+
+    # Predict
+    dynamics_fn = get_dynamics(state_2.model_inputs)
+    predicted = enkf_lib.predict(
+        key_pred,
+        state_1.ensemble,
+        dynamics_fn,
+        inflation,
+    )
+
+    # Update
+    observation_fn, chol_R, y = get_observations(state_2.model_inputs)
+    # The ensemble-subspace path rejects any non-default modifier by identity, so pass
+    # the library default straight through rather than a partial that merely wraps it.
+    # `build_filter` has already checked that no real modifier was supplied.
+    cross_covariance_modifier = (
+        enkf_lib.no_covariance_modifier
+        if ensemble_subspace
+        else partial(modify_cross_covariance, model_inputs=state_2.model_inputs)
+    )
+    construct_chol_S = (
+        None
+        if construct_chol_innovation_covariance is None
+        else partial(
+            construct_chol_innovation_covariance,
+            model_inputs=state_2.model_inputs,
+        )
+    )
+
+    updated, ll = enkf_lib.filter_update(
+        key_update,
+        predicted,
+        observation_fn,
+        chol_R,
+        y,
+        perturbed_obs,
+        cross_covariance_modifier=cross_covariance_modifier,
+        construct_chol_innovation_covariance=construct_chol_S,
+        ensemble_subspace=ensemble_subspace,
+    )
+
+    return EnKFState(
+        key=key_next,
+        ensemble=updated,
+        model_inputs=state_2.model_inputs,
+        log_normalizing_constant=state_1.log_normalizing_constant + ll,
+        predicted_ensemble=predicted if store_predicted_ensemble else None,
+    )

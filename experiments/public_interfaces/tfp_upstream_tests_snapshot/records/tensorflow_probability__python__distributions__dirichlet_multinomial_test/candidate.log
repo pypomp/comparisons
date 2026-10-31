@@ -1,0 +1,10 @@
+...........................sss.......................................... [ 69%]
+...............................s                                         [100%]
+=============================== warnings summary ===============================
+tensorflow_probability/python/distributions/dirichlet_multinomial_test.py::DirichletMultinomialTest::test_session
+  /opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py:690: DeprecationWarning: It is deprecated to return a value that is not None from a test case (<bound method TensorFlowTestCase.test_session of <tensorflow_probability.python.distributions.dirichlet_multinomial_test.DirichletMultinomialTest testMethod=test_session>>)
+    return self.run(*args, **kwds)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__distributions__dirichlet_multinomial_test/candidate.xml -
+100 passed, 4 skipped, 1 warning in 19.41s

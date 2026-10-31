@@ -1,0 +1,73 @@
+PFJAX candidate reproduction
+
+1. Inspect provenance and apply the patch
+
+Unzip review_bundle.zip into a new empty directory. Run:
+    python3 verify_bundle.py
+This uses the Python standard library (3.9+) and git to check all included
+file hashes, extract the pristine source, apply full.patch in a temporary
+directory and compare every resulting file. It does not execute numeric tests.
+
+To inspect or run manually, extract upstream.tar.gz into two sibling folders
+named upstream and candidate. From candidate:
+    git apply --check ../full.patch
+    git apply ../full.patch
+Keep validation as a sibling of candidate and upstream. Do not apply
+initial_particles.patch after full.patch: it is a subset for inspection.
+
+2. Runtime
+
+Use Python 3.12 and the versions in environment.json. Dependencies are not
+bundled. PFJAX's pyproject.toml supplies normal package dependencies; tests
+also use pytest/pandas, and the example and Dacca check use Optax. The exact
+executed JAX version was 0.12.0.1 on CPU. A standard PyPI environment may
+resolve a different JAX build; record any such difference. No claim of a
+fully reproducible GPU environment is made.
+
+From candidate, with dependencies installed:
+    JAX_ENABLE_X64=True PYTHONPATH=src python -m pytest -q -o addopts='' tests/test_iterated_filter.py
+    JAX_ENABLE_X64=False PYTHONPATH=src python -m pytest -q -o addopts='' tests/test_iterated_filter.py
+    JAX_ENABLE_X64=True PYTHONPATH=src python -m pytest -q -o addopts='' tests/test_particle_filter.py tests/test_particle_filter_rb.py -k bm
+    JAX_ENABLE_X64=True PYTHONPATH=src python examples/iterated_filter.py
+    JAX_ENABLE_X64=False PYTHONPATH=src python ../validation/check_dacca.py --output ../new_dacca_check.json
+
+The new test compares with the pristine sibling upstream source. The original
+suite has an env config entry from pytest-env; when that plugin is absent,
+pytest warns about the unknown setting. These commands explicitly set x64.
+
+3. Exact local workspace invocation
+
+Working directory:
+/Users/mac/Documents/Codex/2026-10-22/cloud-gl
+
+Python:
+work/panel-cute-cpu/bin/python
+PYTHONPATH:
+work/pfjax-implementation-v1/candidate/src:work/competitor-estimation/pfjax/deps:work/cuthbert-probe-deps
+
+The local directory uses external dependency folders; those folders and the
+old vendor/pfjax implementation are not copied into the candidate. The old
+vendor is not on PYTHONPATH in the commands used for this candidate.
+
+Run paths relative to the workspace:
+    work/pfjax-implementation-v1/candidate/tests/test_iterated_filter.py
+    work/pfjax-implementation-v1/candidate/examples/iterated_filter.py
+    work/pfjax-implementation-v1/validation/check_dacca.py
+The first is executed with python -m pytest; the others are scripts.
+The Dacca script requires --output with the desired JSON path.
+
+4. Scope
+
+The new IF2 uses a different random assignment from historical formal IF2.
+The Dacca independent-loop comparison follows the new documented assignment.
+The old Dacca gradient wrapper is preserved verbatim for comparison, running
+through the current pristine-core PF. This does not rerun a historical fit.
+
+The two raw Dacca evaluation draws and the short Brownian example are only
+execution checks. No formal benchmark, score-precision claim or GPU timing
+follows from them. Historical OT failure evidence is separately labeled and
+was not rerun. Formal result files are untouched.
+
+build_review.py rebuilds the archive from this task's local work/output paths.
+It is a packaging source record, not a portable build system. verify_bundle.py
+and the commands above are the standalone archive verification/run path.

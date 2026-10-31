@@ -1,0 +1,86 @@
+{
+  "checked_at_utc": "2026-10-29T21:16:55.465975+00:00",
+  "base_sha": "c737efe3098b2b5ecaa7d8b976e7cea246998b17",
+  "scope": "Read-only implementation and meeting-criteria audit. No new numerical runs or experiment/source modifications.",
+  "patch_files": [
+    {
+      "path": "cuthbert/smc/README.md",
+      "matches_recorded_patch": true
+    },
+    {
+      "path": "cuthbert/smc/_estimation.py",
+      "matches_recorded_patch": true
+    },
+    {
+      "path": "cuthbert/smc/dmop.py",
+      "matches_recorded_patch": true
+    },
+    {
+      "path": "cuthbert/smc/ifad.py",
+      "matches_recorded_patch": true
+    },
+    {
+      "path": "cuthbert/smc/iterated_filtering.py",
+      "matches_recorded_patch": true
+    },
+    {
+      "path": "cuthbertlib/resampling/README.md",
+      "matches_recorded_patch": true
+    },
+    {
+      "path": "cuthbertlib/resampling/__init__.py",
+      "matches_recorded_patch": true
+    },
+    {
+      "path": "cuthbertlib/resampling/autodiff.py",
+      "matches_recorded_patch": true
+    },
+    {
+      "path": "docs/api_cuthbert/smc/dmop.md",
+      "matches_recorded_patch": true
+    },
+    {
+      "path": "docs/api_cuthbert/smc/ifad.md",
+      "matches_recorded_patch": true
+    },
+    {
+      "path": "docs/api_cuthbert/smc/index.md",
+      "matches_recorded_patch": true
+    },
+    {
+      "path": "docs/api_cuthbert/smc/iterated_filtering.md",
+      "matches_recorded_patch": true
+    },
+    {
+      "path": "docs/examples/index.md",
+      "matches_recorded_patch": true
+    },
+    {
+      "path": "docs/examples/parameter_estimation_ifad.md",
+      "matches_recorded_patch": true
+    },
+    {
+      "path": "pkg/cuthbert/pyproject.toml",
+      "matches_recorded_patch": true
+    },
+    {
+      "path": "tests/cuthbert/smc/test_parameter_estimation.py",
+      "matches_recorded_patch": true
+    },
+    {
+      "path": "zensical.toml",
+      "matches_recorded_patch": true
+    }
+  ],
+  "original_core_files": [
+    {
+      "path": "cuthbert/smc/particle_filter.py",
+      "unchanged_from_base": true
+    },
+    {
+      "path": "cuthbertlib/resampling/systematic.py",
+      "unchanged_from_base": true
+    }
+  ],
+  "report_sha256": "665e9ad19a9e667a7f5612852bdfc0c059f825043257049d613b939ba5d14a4d"
+}

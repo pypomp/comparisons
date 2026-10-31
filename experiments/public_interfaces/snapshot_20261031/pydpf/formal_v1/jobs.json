@@ -1,0 +1,100 @@
+{
+  "state": "submitted_waiting_GPU_gate",
+  "recorded_at_UTC": "2026-10-30T20:43:49.427097+00:00",
+  "GPU_gate_job": 65097403,
+  "formal_allocation_seconds": 108000,
+  "source_manifest_sha256": "5d7de6e4964eda73201f4a67b65855f75005b2260f02717a824f2691ed781f9d",
+  "remote_root": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/pydpf/formal_v1",
+  "jobs": {
+    "warm": {
+      "job_id": 65098862,
+      "depends_afterok": 65097403,
+      "allocation_seconds": 24300,
+      "GPUs": 1,
+      "GPU_model": "A40"
+    },
+    "A": {
+      "job_id": 65098863,
+      "depends_afterok": 65097403,
+      "allocation_seconds": 27900,
+      "GPUs": 1,
+      "GPU_model": "A40"
+    },
+    "B": {
+      "job_id": 65098864,
+      "depends_afterok": 65098862,
+      "allocation_seconds": 27900,
+      "GPUs": 1,
+      "GPU_model": "A40"
+    },
+    "C": {
+      "job_id": 65098865,
+      "depends_afterok": 65098862,
+      "allocation_seconds": 27900,
+      "GPUs": 1,
+      "GPU_model": "A40"
+    }
+  },
+  "submission_attempts": [
+    {
+      "phase": "warm",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=pydpf-api-warm",
+        "--time=06:45:00",
+        "--dependency=afterok:65097403",
+        "--export=ALL,PYDPF_PHASE=warm",
+        "formal.sbatch"
+      ],
+      "exit_code": 0,
+      "stdout": "65098862\n",
+      "stderr": ""
+    },
+    {
+      "phase": "A",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=pydpf-api-A",
+        "--time=07:45:00",
+        "--dependency=afterok:65097403",
+        "--export=ALL,PYDPF_PHASE=A",
+        "formal.sbatch"
+      ],
+      "exit_code": 0,
+      "stdout": "65098863\n",
+      "stderr": ""
+    },
+    {
+      "phase": "B",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=pydpf-api-B",
+        "--time=07:45:00",
+        "--dependency=afterok:65098862",
+        "--export=ALL,PYDPF_PHASE=B",
+        "formal.sbatch"
+      ],
+      "exit_code": 0,
+      "stdout": "65098864\n",
+      "stderr": ""
+    },
+    {
+      "phase": "C",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=pydpf-api-C",
+        "--time=07:45:00",
+        "--dependency=afterok:65098862",
+        "--export=ALL,PYDPF_PHASE=C",
+        "formal.sbatch"
+      ],
+      "exit_code": 0,
+      "stdout": "65098865\n",
+      "stderr": ""
+    }
+  ]
+}

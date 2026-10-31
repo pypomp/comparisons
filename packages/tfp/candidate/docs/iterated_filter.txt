@@ -1,0 +1,101 @@
+IF2 and resampling gradient discount: local TFP 0.25 candidate
+
+These additions are under tensorflow_probability.python.experimental.mcmc.
+They are not part of the original 0.25 release. Only the TensorFlow backend
+is changed; the NumPy and JAX substrates are unchanged and not supported by
+this patch. API names and scope still require maintainer discussion.
+
+Original facilities retained
+
+particle_filter constructs initial weights, samples transition distributions,
+and computes observation log probabilities. sequential_monte_carlo uses the
+original SequentialMonteCarlo.one_step and trace_scan loop. WeightedParticles,
+normalization, ancestral indices and the original resampling algorithms remain.
+The original particle filter does not include an MLE optimizer. The example
+uses an external tf.keras.optimizers.Adam loop with its own persistent state.
+
+Gradient discount
+
+particle_filter(..., unbiased_gradients=True, gradient_discount=.97)
+
+The optional keyword travels through sequential_monte_carlo to the original
+SequentialMonteCarlo class. At the existing call to weighted_resampling.resample,
+the normalized target log weights are replaced with
+
+  stop_gradient(w) + alpha * (w - stop_gradient(w)).
+
+The values are unchanged and their derivatives are multiplied by alpha. State
+pathwise derivatives are retained. Default alpha=1 uses the original expression.
+The parameter is a fixed Python real in [0,1], not a trainable Tensor. Nondefault
+values require unbiased_gradients=True and enabled resampling. The public PF
+currently rejects proposals and rejuvenation for nondefault discounts; this
+scope does not establish correctness for every supported PF variant.
+
+With ESS-based resampling, this modifies the derivative only on resampling
+steps. To implement the every-observation discount used in our Dacca DMOP
+comparison, pass an explicit criterion that returns True at every step. In this
+pinned code criterion=None disables resampling, despite wording in its docstring.
+The patch does not change that historical behavior.
+No global function replacement is needed to build different-discount graphs.
+The infer_trajectories and smc_squared public wrappers were not extended.
+
+IF2
+
+iterated_filter_step(parameter_particles, observations,
+                     initial_state_prior_fn, transition_fn, observation_fn,
+                     perturbation_scale, ..., seed=...)
+
+The three model functions return regular TFP distributions. They take parameter
+tensors with shape [J, batch..., P]. initial_state_prior_fn(parameters) returns
+a distribution with batch shape [J, batch...]; transition_fn(step, state,
+parameters) advances the state, and observation_fn(step, state, parameters)
+returns an observation distribution. Each model reads its particle's parameter
+values but does not implement parameter perturbations. Transition sampling
+requires no fabricated transition log density. State can be a Tensor or a
+nested structure supported by the returned distribution and TFP's resampler.
+
+The initial scale is added before the prior, on each pass. Process noise in
+parameter coordinates is added before each later transition; coordinates with
+initial-only noise use zero process scale. At observation zero, the initial
+state is weighted exactly as in the original PF. A model with its first real
+observation after a transition may explicitly supply an uninformative time-zero
+observation. The library does not silently invent or discard an observation.
+
+The callback in the original SMC loop samples the transition and adds the
+observation log weight. TFP performs normalization and resampling at each step,
+including the final step, so the returned whole parameter cloud is equally
+weighted. This cloud is retained for the next pass. Its mean is an estimate and
+history entry, not a replacement cloud. Perturbed-model likelihoods are not
+endpoint evaluation scores.
+
+iterated_filter(initial_parameters, ..., num_particles, num_iterations, ...)
+runs passes in a TensorFlow while_loop and returns means, the final cloud,
+parameter history and perturbed likelihoods. No best iterate is selected.
+A stateless root is folded with the pass number; within a pass the noise and
+SMC seeds are split explicitly. An optional normal_sample_fn and the original
+resample_fn permit a caller's per-member RNG layout. The default does not promise
+batch-size-independent draws. Pure model constructors must not consume random
+numbers or mutate external state.
+
+Scope
+
+Bootstrap model, particle axis zero, floating parameter Tensor with a known
+last dimension, and one observation Tensor with a static time length >=2.
+One transition connects successive observations. Distributions must support
+per-particle parameters. Guided proposals, arbitrary parameter Variables,
+SMC-squared and automatic model rewriting are outside this implementation.
+Scales are nonnegative, finite and broadcast over the parameter batch shape.
+Nonfinite/invalid passes raise InvalidArgumentError for the whole call; there
+is no retry, per-row failure isolation, checkpointing or job-resume policy.
+The frozen formal driver retains its separate recovery and accounting logic.
+
+Usage and verification
+
+See examples/if2_and_discount.py for three IF2 passes, three Keras Adam updates,
+and independently seeded endpoint PF evaluations. Four evaluations are an API
+example, not a precision assessment. Run tests/test_extensions.py with unittest.
+The review material includes a frozen Dacca model and a 600-month, J8 integration
+check. Default float32 graph optimization can change arithmetic ordering between
+the old model-specific IF2 and the new generic interface. The recorded default
+and controlled-graph comparisons are distinct; small-model tests do not establish
+bitwise replay of the historical GPU optimization trajectories.

@@ -1,0 +1,281 @@
+{
+  "file": "tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py",
+  "results": [
+    {
+      "kind": "original",
+      "file": "tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py",
+      "command": [
+        "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/bin/python",
+        "-m",
+        "pytest",
+        "tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py",
+        "-q",
+        "--tb=short",
+        "--continue-on-collection-errors",
+        "--junitxml=/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__experimental__mcmc__windowed_sampling_test/original.xml"
+      ],
+      "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original",
+      "timeout_seconds": 180,
+      "exit_code": 1,
+      "state": "finished",
+      "elapsed_seconds": 166.18493687501177,
+      "pytest_counts": {
+        "tests": 87,
+        "failures": 22,
+        "errors": 0,
+        "skipped": 15
+      },
+      "failed_tests": [
+        {
+          "name": "test_batch_of_problems_autobatched_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batch_of_problems_autobatched_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batch_of_problems_named_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batch_of_problems_named_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_hmc_3_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_hmc_3_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_hmc_[2, 1]_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_hmc_[2, 1]_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_hmc_[2, 2, 2]_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_hmc_[2, 2, 2]_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_hmc_[]_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_hmc_[]_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_nuts_3_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_nuts_3_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_nuts_[2, 1]_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_nuts_[2, 1]_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_nuts_[2, 2, 2]_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_nuts_[2, 2, 2]_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_nuts_[]_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_nuts_[]_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_bijector_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_bijector_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        }
+      ]
+    },
+    {
+      "kind": "candidate",
+      "file": "tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py",
+      "command": [
+        "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/bin/python",
+        "-m",
+        "pytest",
+        "tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py",
+        "-q",
+        "--tb=short",
+        "--continue-on-collection-errors",
+        "--junitxml=/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__experimental__mcmc__windowed_sampling_test/candidate.xml"
+      ],
+      "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate",
+      "timeout_seconds": 180,
+      "exit_code": 1,
+      "state": "finished",
+      "elapsed_seconds": 164.70498704200145,
+      "pytest_counts": {
+        "tests": 87,
+        "failures": 22,
+        "errors": 0,
+        "skipped": 15
+      },
+      "failed_tests": [
+        {
+          "name": "test_batch_of_problems_autobatched_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batch_of_problems_autobatched_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batch_of_problems_named_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batch_of_problems_named_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_hmc_3_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_hmc_3_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_hmc_[2, 1]_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_hmc_[2, 1]_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_hmc_[2, 2, 2]_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_hmc_[2, 2, 2]_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_hmc_[]_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_hmc_[]_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_nuts_3_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_nuts_3_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_nuts_[2, 1]_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_nuts_[2, 1]_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_nuts_[2, 2, 2]_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_nuts_[2, 2, 2]_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_nuts_[]_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_batches_of_chains_nuts_[]_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_bijector_eager",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "test_bijector_graph",
+          "class": "tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        }
+      ]
+    }
+  ],
+  "same_exit_status": true,
+  "candidate_only_failure": false
+}

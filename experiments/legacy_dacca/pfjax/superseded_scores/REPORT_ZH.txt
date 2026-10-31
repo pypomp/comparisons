@@ -1,0 +1,16 @@
+PFJAX 原始 Dacca 正式比较
+模型600个月、每月20Euler步、Gaussian过程噪声；J5000，6共同起点×2重复。
+全部三组为本地扩展；原生OT完整序列梯度失败，保留其预检失败，不冒称原生方法。
+最终likelihood为独立原始PyPOMP PF的log(mean likelihood)，不是训练loss。
+计时为一块A40上整批12条搜索；不能再乘12或当作单条延迟。
+
+IF2: n=12, median loglik=-3767.381555727167, fit=1009.019s, compile=2.471s, preparation=0.000s, score=4.317s, failures=0, low precision=0
+IFAD: n=12, median loglik=-3744.7008400073905, fit=831.462s, compile=7.551s, preparation=1.919s, score=4.672s, failures=0, low precision=0
+ADPF_extension: n=12, median loglik=-3799.437352767577, fit=777.964s, compile=4.963s, preparation=1.853s, score=5.032s, failures=0, low precision=0
+
+执行总墙钟=2670.475s；Slurm总占用=2724s；评分编译另记=0.526s。
+IFAD是175 IF2+400 Adam；ADPF扩展是从原始起点直接425 Adam，不能把差异全归因于alpha。
+各终点、原始评分、MCSE/ESS和失败标记保留在endpoints.csv和原始results。
+冻结protocol的comparison字段遗留了共同前缀的描述；实际执行、arms和scope_notes均为上述三组，报告按代码与实际记录解释。
+IFAD减IF2：配对差中位数22.7807，12/12为正；各点Monte Carlo误差不代表跨数据集或全局收敛保证。
+IFAD减ADPF_extension：配对差中位数54.4904，12/12为正；各点Monte Carlo误差不代表跨数据集或全局收敛保证。

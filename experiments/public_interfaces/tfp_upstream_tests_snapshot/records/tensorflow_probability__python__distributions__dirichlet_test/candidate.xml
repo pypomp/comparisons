@@ -1,0 +1,976 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="27" skipped="3" tests="132" time="17.704" timestamp="2026-10-30T17:22:23.124555-04:00" hostname="appledeMacBook-Pro-43.local"><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testComplexShapes_eager" time="0.007" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testComplexShapes_eager_no_tf_function" time="0.001" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testComplexShapes_graph" time="0.004" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testConcentrationProperty_eager" time="0.001" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testConcentrationProperty_eager_no_tf_function" time="0.001" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testConcentrationProperty_graph" time="0.001" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testCovarianceFromSampling_eager" time="0.281" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testCovarianceFromSampling_eager_no_tf_function" time="0.128" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testCovarianceFromSampling_graph" time="0.246" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testDegenerateAlignedStridedSlice_eager" time="0.005" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testDegenerateAlignedStridedSlice_eager_no_tf_function" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testDegenerateAlignedStridedSlice_graph" time="0.005" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testDirichletDirichletKL_eager" time="0.177" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testDirichletDirichletKL_eager_no_tf_function" time="0.037" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testDirichletDirichletKL_graph" time="0.183" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testDirichletFullyReparameterized_eager" time="0.175" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testDirichletFullyReparameterized_eager_no_tf_function" time="0.049" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testDirichletFullyReparameterized_graph" time="0.153" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testEntropy_eager" time="0.004" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testEntropy_eager_no_tf_function" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testEntropy_graph" time="0.008" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testLogPdfOnBoundaryIsFiniteWhenAlphaIsOne_eager" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testLogPdfOnBoundaryIsFiniteWhenAlphaIsOne_eager_no_tf_function" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testLogPdfOnBoundaryIsFiniteWhenAlphaIsOne_graph" time="0.023" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testMean_eager" time="0.001" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testMean_eager_no_tf_function" time="0.001" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testMean_graph" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testModeEnableAllowNanStats_eager" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testModeEnableAllowNanStats_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testModeEnableAllowNanStats_graph" time="0.006" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testModeInvalid_eager" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testModeInvalid_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testModeInvalid_graph" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testMode_eager" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testMode_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testMode_graph" time="0.007" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfAlphaStretchedInBroadcastWhenLowerRank_eager" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfAlphaStretchedInBroadcastWhenLowerRank_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfAlphaStretchedInBroadcastWhenLowerRank_graph" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfAlphaStretchedInBroadcastWhenSameRank_eager" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfAlphaStretchedInBroadcastWhenSameRank_eager_no_tf_function" time="0.001" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfAlphaStretchedInBroadcastWhenSameRank_graph" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfOnBoundaryWhenAlphaGreaterThanOne_eager" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfOnBoundaryWhenAlphaGreaterThanOne_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfOnBoundaryWhenAlphaGreaterThanOne_graph" time="0.008" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfOutsideSupport_eager" time="0.008" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfOutsideSupport_eager_no_tf_function" time="0.009" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfOutsideSupport_graph" time="0.038" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfUniformZeroBatches_eager" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfUniformZeroBatches_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfUniformZeroBatches_graph" time="0.004" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfXProper_eager" time="0.005" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfXProper_eager_no_tf_function" time="0.004" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfXProper_graph" time="0.050" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfXStretchedInBroadcastWhenLowerRank_eager" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfXStretchedInBroadcastWhenLowerRank_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfXStretchedInBroadcastWhenLowerRank_graph" time="0.004" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfXStretchedInBroadcastWhenSameRank_eager" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfXStretchedInBroadcastWhenSameRank_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfXStretchedInBroadcastWhenSameRank_graph" time="0.005" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfZeroBatchesNontrivialX_eager" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfZeroBatchesNontrivialX_eager_no_tf_function" time="0.001" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfZeroBatchesNontrivialX_graph" time="0.004" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfZeroBatches_eager" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfZeroBatches_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testPdfZeroBatches_graph" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testSample_eager" time="0.126" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testSample_eager_no_tf_function" time="0.046" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testSample_graph" time="0.154" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testSimpleShapes_eager" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testSimpleShapes_eager_no_tf_function" time="0.001" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testSimpleShapes_graph" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testSupportBijectorOutsideRange_eager" time="0.001"><failure message="AssertionError: Exception of type &lt;class 'TypeError'&gt;: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_util.py:251: in assertRaisesWithPredicateMatch
+    yield
+tensorflow_probability/python/internal/test_util.py:262: in assertRaisesOpError
+    yield
+tensorflow_probability/python/distributions/dirichlet_test.py:299: in testSupportBijectorOutsideRange
+    self.evaluate(dist.experimental_default_event_space_bijector(
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet.py:316: in _default_event_space_bijector
+    return softmax_centered_bijector.SoftmaxCentered(
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/dirichlet_test.py:298: in testSupportBijectorOutsideRange
+    with self.assertRaisesOpError('must sum to `1`'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:261: in assertRaisesOpError
+    with super(TestCase, self).assertRaisesOpError(msg):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:255: in assertRaisesWithPredicateMatch
+    raise AssertionError('Exception of type %s: %s' %
+E   AssertionError: Exception of type &lt;class 'TypeError'&gt;: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testSupportBijectorOutsideRange_eager_no_tf_function" time="0.001"><failure message="AssertionError: Exception of type &lt;class 'TypeError'&gt;: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_util.py:251: in assertRaisesWithPredicateMatch
+    yield
+tensorflow_probability/python/internal/test_util.py:262: in assertRaisesOpError
+    yield
+tensorflow_probability/python/distributions/dirichlet_test.py:299: in testSupportBijectorOutsideRange
+    self.evaluate(dist.experimental_default_event_space_bijector(
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet.py:316: in _default_event_space_bijector
+    return softmax_centered_bijector.SoftmaxCentered(
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/dirichlet_test.py:298: in testSupportBijectorOutsideRange
+    with self.assertRaisesOpError('must sum to `1`'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:261: in assertRaisesOpError
+    with super(TestCase, self).assertRaisesOpError(msg):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:255: in assertRaisesWithPredicateMatch
+    raise AssertionError('Exception of type %s: %s' %
+E   AssertionError: Exception of type &lt;class 'TypeError'&gt;: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testSupportBijectorOutsideRange_graph" time="0.003"><failure message="AssertionError: Exception of type &lt;class 'TypeError'&gt;: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_util.py:251: in assertRaisesWithPredicateMatch
+    yield
+tensorflow_probability/python/internal/test_util.py:262: in assertRaisesOpError
+    yield
+tensorflow_probability/python/distributions/dirichlet_test.py:299: in testSupportBijectorOutsideRange
+    self.evaluate(dist.experimental_default_event_space_bijector(
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet.py:316: in _default_event_space_bijector
+    return softmax_centered_bijector.SoftmaxCentered(
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/dirichlet_test.py:298: in testSupportBijectorOutsideRange
+    with self.assertRaisesOpError('must sum to `1`'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:261: in assertRaisesOpError
+    with super(TestCase, self).assertRaisesOpError(msg):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:255: in assertRaisesWithPredicateMatch
+    raise AssertionError('Exception of type %s: %s' %
+E   AssertionError: Exception of type &lt;class 'TypeError'&gt;: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testVariance_eager" time="0.004" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testVariance_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="testVariance_graph" time="0.007" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletTest" name="test_session" time="0.000"><skipped type="pytest.skip" message="Not a test.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/test_util.py:2981: Not a test.</skipped></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletFromVariableTest" name="testAssertions_eager" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletFromVariableTest" name="testAssertions_eager_no_tf_function" time="0.001" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletFromVariableTest" name="testAssertions_graph" time="0.001" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletFromVariableTest" name="testGradients_eager" time="0.008" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletFromVariableTest" name="testGradients_eager_no_tf_function" time="0.006" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletFromVariableTest" name="testGradients_graph" time="0.014" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.DirichletFromVariableTest" name="test_session" time="0.000"><skipped type="pytest.skip" message="Not a test.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/test_util.py:2981: Not a test.</skipped></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProbOutsideSupport_eager" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProbOutsideSupport_eager_no_tf_function" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProbOutsideSupport_graph" time="0.005" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProbSameAsDirichlet0_eager" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProbSameAsDirichlet0_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProbSameAsDirichlet0_graph" time="0.005" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProbSameAsDirichlet1_eager" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProbSameAsDirichlet1_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProbSameAsDirichlet1_graph" time="0.005" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProbSameAsDirichlet2_eager" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProbSameAsDirichlet2_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProbSameAsDirichlet2_graph" time="0.005" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProbSameAsDirichlet3_eager" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProbSameAsDirichlet3_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProbSameAsDirichlet3_graph" time="0.005" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProbSameAsDirichlet4_eager" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProbSameAsDirichlet4_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProbSameAsDirichlet4_graph" time="0.005" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProb_eager" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProb_eager_no_tf_function" time="0.001" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testLogProb_graph" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSampleMoments_eager" time="0.002"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/dirichlet_test.py:382: in testSampleMoments
+    samples = fd.sample(1000, seed=test_util.test_seed())
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSampleMoments_eager_no_tf_function" time="0.002"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/dirichlet_test.py:382: in testSampleMoments
+    samples = fd.sample(1000, seed=test_util.test_seed())
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSampleMoments_graph" time="0.002"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/dirichlet_test.py:382: in testSampleMoments
+    samples = fd.sample(1000, seed=test_util.test_seed())
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSampleNJits_eager" time="0.076"><failure message="ValueError: in user code:&#10;&#10;    File &quot;/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/dirichlet_test.py&quot;, line 375, in f  *&#10;        sample = fd.sample(1, seed=test_util.test_seed())&#10;    File &quot;/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/distribution.py&quot;, line 1205, in sample  **&#10;        return self._call_sample_n(sample_shape, seed, **kwargs)&#10;    File &quot;/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/distribution.py&quot;, line 1182, in _call_sample_n&#10;        samples = self._sample_n(&#10;    File &quot;/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/dirichlet.py&quot;, line 548, in _sample_n&#10;        rand_shape = ps.tensor_scatter_nd_sub(&#10;    File &quot;/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py&quot;, line 247, in fun&#10;        return caller(func, *(extras + args), **kw)&#10;    File &quot;/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/prefer_static.py&quot;, line 74, in wrap&#10;        return static_fn(*args_, **kwargs_)&#10;    File &quot;/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/backend/numpy/_utils.py&quot;, line 62, in wrap&#10;        return new_fn(*args, **kwargs)&#10;    File &quot;/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/backend/numpy/misc.py&quot;, line 148, in _tensor_scatter_nd_sub&#10;        tensor[indices] -= updates&#10;&#10;    ValueError: setting an array element with a sequence.">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/dirichlet_test.py:378: in testSampleNJits
+    self.assertAllEqual([1, 5], f(0.1).shape)
+                                ^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:833: in __call__
+    result = self._call(*args, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:889: in _call
+    self._initialize(args, kwds, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/autograph_util.py:52: in autograph_handler
+    raise e.ag_error_metadata.to_exception(e)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/autograph_util.py:41: in autograph_handler
+    return api.converted_call(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:439: in converted_call
+    result = converted_f(*effective_args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/var/folders/9s/48bt52k12jl4fk0kt9_pbl6r0000gn/T/__autograph_generated_filezbtb2iaz.py:11: in tf__f
+    sample = ag__.converted_call(ag__.ld(fd).sample, (1,), dict(seed=ag__.converted_call(ag__.ld(test_util).test_seed, (), None, fscope)), fscope)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:377: in converted_call
+    return _call_unconverted(f, args, kwargs, options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:459: in _call_unconverted
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: in user code:
+E   
+E       File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/dirichlet_test.py", line 375, in f  *
+E           sample = fd.sample(1, seed=test_util.test_seed())
+E       File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/distribution.py", line 1205, in sample  **
+E           return self._call_sample_n(sample_shape, seed, **kwargs)
+E       File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/distribution.py", line 1182, in _call_sample_n
+E           samples = self._sample_n(
+E       File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/dirichlet.py", line 548, in _sample_n
+E           rand_shape = ps.tensor_scatter_nd_sub(
+E       File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py", line 247, in fun
+E           return caller(func, *(extras + args), **kw)
+E       File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/prefer_static.py", line 74, in wrap
+E           return static_fn(*args_, **kwargs_)
+E       File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/backend/numpy/_utils.py", line 62, in wrap
+E           return new_fn(*args, **kwargs)
+E       File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/backend/numpy/misc.py", line 148, in _tensor_scatter_nd_sub
+E           tensor[indices] -= updates
+E   
+E       ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSampleNJits_eager_no_tf_function" time="0.002"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/dirichlet_test.py:378: in testSampleNJits
+    self.assertAllEqual([1, 5], f(0.1).shape)
+                                ^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:810: in __call__
+    return self._python_function(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet_test.py:375: in f
+    sample = fd.sample(1, seed=test_util.test_seed())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSampleNJits_graph" time="0.003"><failure message="ValueError: in user code:&#10;&#10;    File &quot;/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/dirichlet_test.py&quot;, line 375, in f  *&#10;        sample = fd.sample(1, seed=test_util.test_seed())&#10;    File &quot;/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/distribution.py&quot;, line 1205, in sample  **&#10;        return self._call_sample_n(sample_shape, seed, **kwargs)&#10;    File &quot;/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/distribution.py&quot;, line 1182, in _call_sample_n&#10;        samples = self._sample_n(&#10;    File &quot;/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/dirichlet.py&quot;, line 548, in _sample_n&#10;        rand_shape = ps.tensor_scatter_nd_sub(&#10;    File &quot;/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py&quot;, line 247, in fun&#10;        return caller(func, *(extras + args), **kw)&#10;    File &quot;/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/prefer_static.py&quot;, line 74, in wrap&#10;        return static_fn(*args_, **kwargs_)&#10;    File &quot;/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/backend/numpy/_utils.py&quot;, line 62, in wrap&#10;        return new_fn(*args, **kwargs)&#10;    File &quot;/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/backend/numpy/misc.py&quot;, line 148, in _tensor_scatter_nd_sub&#10;        tensor[indices] -= updates&#10;&#10;    ValueError: setting an array element with a sequence.">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/dirichlet_test.py:378: in testSampleNJits
+    self.assertAllEqual([1, 5], f(0.1).shape)
+                                ^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:833: in __call__
+    result = self._call(*args, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:889: in _call
+    self._initialize(args, kwds, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/autograph_util.py:52: in autograph_handler
+    raise e.ag_error_metadata.to_exception(e)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/autograph_util.py:41: in autograph_handler
+    return api.converted_call(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:439: in converted_call
+    result = converted_f(*effective_args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/var/folders/9s/48bt52k12jl4fk0kt9_pbl6r0000gn/T/__autograph_generated_filezbtb2iaz.py:11: in tf__f
+    sample = ag__.converted_call(ag__.ld(fd).sample, (1,), dict(seed=ag__.converted_call(ag__.ld(test_util).test_seed, (), None, fscope)), fscope)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:331: in converted_call
+    return _call_unconverted(f, args, kwargs, options, False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:459: in _call_unconverted
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: in user code:
+E   
+E       File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/dirichlet_test.py", line 375, in f  *
+E           sample = fd.sample(1, seed=test_util.test_seed())
+E       File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/distribution.py", line 1205, in sample  **
+E           return self._call_sample_n(sample_shape, seed, **kwargs)
+E       File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/distribution.py", line 1182, in _call_sample_n
+E           samples = self._sample_n(
+E       File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/dirichlet.py", line 548, in _sample_n
+E           rand_shape = ps.tensor_scatter_nd_sub(
+E       File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py", line 247, in fun
+E           return caller(func, *(extras + args), **kw)
+E       File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/prefer_static.py", line 74, in wrap
+E           return static_fn(*args_, **kwargs_)
+E       File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/backend/numpy/_utils.py", line 62, in wrap
+E           return new_fn(*args, **kwargs)
+E       File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/backend/numpy/misc.py", line 148, in _tensor_scatter_nd_sub
+E           tensor[indices] -= updates
+E   
+E       ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSamplesHaveRightShape0_eager" time="0.002"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet_test.py:352: in testSamplesHaveRightShape
+    sample = fd.sample(1, seed=test_util.test_seed())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSamplesHaveRightShape0_eager_no_tf_function" time="0.002"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet_test.py:352: in testSamplesHaveRightShape
+    sample = fd.sample(1, seed=test_util.test_seed())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSamplesHaveRightShape0_graph" time="0.002"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet_test.py:352: in testSamplesHaveRightShape
+    sample = fd.sample(1, seed=test_util.test_seed())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSamplesHaveRightShape1_eager" time="0.002"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet_test.py:352: in testSamplesHaveRightShape
+    sample = fd.sample(1, seed=test_util.test_seed())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSamplesHaveRightShape1_eager_no_tf_function" time="0.002"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet_test.py:352: in testSamplesHaveRightShape
+    sample = fd.sample(1, seed=test_util.test_seed())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSamplesHaveRightShape1_graph" time="0.002"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet_test.py:352: in testSamplesHaveRightShape
+    sample = fd.sample(1, seed=test_util.test_seed())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSamplesHaveRightShape2_eager" time="0.002"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet_test.py:352: in testSamplesHaveRightShape
+    sample = fd.sample(1, seed=test_util.test_seed())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSamplesHaveRightShape2_eager_no_tf_function" time="0.002"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet_test.py:352: in testSamplesHaveRightShape
+    sample = fd.sample(1, seed=test_util.test_seed())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSamplesHaveRightShape2_graph" time="0.002"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet_test.py:352: in testSamplesHaveRightShape
+    sample = fd.sample(1, seed=test_util.test_seed())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSamplesSumToOne0_eager" time="0.002"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet_test.py:362: in testSamplesSumToOne
+    sample = fd.sample(1, seed=test_util.test_seed())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSamplesSumToOne0_eager_no_tf_function" time="0.002"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet_test.py:362: in testSamplesSumToOne
+    sample = fd.sample(1, seed=test_util.test_seed())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSamplesSumToOne0_graph" time="0.001"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet_test.py:362: in testSamplesSumToOne
+    sample = fd.sample(1, seed=test_util.test_seed())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSamplesSumToOne1_eager" time="0.002"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet_test.py:362: in testSamplesSumToOne
+    sample = fd.sample(1, seed=test_util.test_seed())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSamplesSumToOne1_eager_no_tf_function" time="0.002"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet_test.py:362: in testSamplesSumToOne
+    sample = fd.sample(1, seed=test_util.test_seed())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSamplesSumToOne1_graph" time="0.002"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet_test.py:362: in testSamplesSumToOne
+    sample = fd.sample(1, seed=test_util.test_seed())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSamplesSumToOne2_eager" time="0.002"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet_test.py:362: in testSamplesSumToOne
+    sample = fd.sample(1, seed=test_util.test_seed())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSamplesSumToOne2_eager_no_tf_function" time="0.002"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet_test.py:362: in testSamplesSumToOne
+    sample = fd.sample(1, seed=test_util.test_seed())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="testSamplesSumToOne2_graph" time="0.001"><failure message="ValueError: setting an array element with a sequence.">TypeError: only 0-dimensional arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet_test.py:362: in testSamplesSumToOne
+    sample = fd.sample(1, seed=test_util.test_seed())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1182: in _call_sample_n
+    samples = self._sample_n(
+tensorflow_probability/python/distributions/dirichlet.py:548: in _sample_n
+    rand_shape = ps.tensor_scatter_nd_sub(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/decorator/__init__.py:247: in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/prefer_static.py:74: in wrap
+    return static_fn(*args_, **kwargs_)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/_utils.py:62: in wrap
+    return new_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/backend/numpy/misc.py:148: in _tensor_scatter_nd_sub
+    tensor[indices] -= updates
+    ^^^^^^^^^^^^^^^
+E   ValueError: setting an array element with a sequence.</failure></testcase><testcase classname="tensorflow_probability.python.distributions.dirichlet_test.FlatDirichletTest" name="test_session" time="0.000"><skipped type="pytest.skip" message="Not a test.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/test_util.py:2981: Not a test.</skipped></testcase></testsuite></testsuites>

@@ -1,0 +1,75 @@
+TFP：第三个包的实现审查与候选修改
+2026-10-29
+
+结论
+已准备独立的 TFP 候选补丁：把梯度折扣加入原 SequentialMonteCarlo 内核，并由原 particle_filter 传入；新增通用 IF2，复用原 SMC 时间循环、归一化和重采样。默认折扣为 1 时保留原方法。优化继续由外部 Keras Adam 完成。
+本次没有修改已完成实验的冻结源或结果，没有重新提交正式实验，也没有向维护者提交。候选目录为 work/tfp-implementation-v1/candidate。
+
+版本和来源
+运行使用 TensorFlow 2.20.0、TFP 0.25.0，实际环境见 environment.json。1537 个基础包文件逐一与本机 wheel 的 RECORD 核对；其中 particle_filter.py、sequential_monte_carlo_kernel.py、weighted_resampling.py 也与正式实验冻结的源码 SHA 一致。
+历史 source_versions.json 记录 TFP v0.25.0 对应 9709569d9c1159dc54154044f679edc4a15bd26b。本次实际基础是经校验的 wheel 源码，不声称重新从该 Git 提交导出了整个仓库。
+只扩展 TensorFlow 后端；wheel 内的 NumPy/JAX substrates 原样保留，本次没有为它们加入同一 API。
+本次没有上游完整开发仓库的 Bazel BUILD 和后端代码生成配置，因此尚未核验源码构建接入。提交正式 PR 前还需补查这些文件；当前包可以重建并运行本地候选接口，不等于上游构建已通过。
+
+原包已有的功能
+particle_filter 调用原初始化函数、原 transition Distribution.sample、原 observation Distribution.log_prob，创建原 WeightedParticles，再通过 sequential_monte_carlo 和 SequentialMonteCarlo.one_step 完成滤波。
+原 one_step 负责权重归一化、likelihood 增量、重采样判定及祖先索引。weighted_resampling.resample 和原 resample_systematic/resample_independent 执行重采样。
+unbiased_gradients=True 在原 resample 调用中提供可微 target_log_weights，补偿离散祖先选择丢失的权重梯度。这是原包 ADPF 功能；外部 Keras Adam 和完整最大似然训练循环不是 TFP particle_filter 自带的方法。
+
+旧正式实现的具体边界
+formal_v2/source/keyed.py 的 IF2 调用原 sequential_monte_carlo，没有重写其时间循环；但参数维数 23、IVP 名称、Dacca 状态传播和扰动代码写在同一文件中。
+原 model.discounted_weights 在建图时临时替换 weighted_resampling.resample，只缩放 target_log_weights 的导数，退出后恢复。它明确只适用于单一建图线程，不宜作为通用包 API。
+keyed.py 还为每个独立重复分配随机流，并包装原 systematic 重采样。batch_engine.py 的逐行失败、恢复、优化器持久状态和实验成本管理有其用途，不能与数学算法的改动混成一项。
+
+本次修改
+
+1. 原梯度设施：两个文件。
+SequentialMonteCarlo 增加 gradient_discount，默认 1。原 one_step 只在既有 target_log_weights 处使用：
+  stop_gradient(w) + alpha * (w - stop_gradient(w))。
+前向权重不变，继承的权重导数乘以 alpha，状态路径导数保留。alpha=1 直接沿用原表达式。
+原 sequential_monte_carlo 与 particle_filter 增加末尾仅限关键字的同名参数，并向原内核传递。原位置参数不移动。无需替换全局函数，各个调用可以分别指定折扣。
+非默认折扣要求 unbiased_gradients=True。当前公开 PF 只开放 bootstrap、无 proposal/rejuvenation 的折扣用法；infer_trajectories 和 smc_squared 的公开包装没有扩展。
+
+2. 通用 IF2：新增 iterated_filter.py。
+模型提供 initial_state_prior_fn(parameters)、transition_fn(step,state,parameters)、observation_fn(step,state,parameters)，各自返回普通 TFP Distribution。模型需读取逐粒子参数，但不需要实现参数扰动和 IF2 循环。
+iterated_filter_step 对完整参数集合加入初始扰动，采样初始状态；之后每次状态转移前加入过程扰动，并调用正常模型分布。观测权重使用原 _compute_observation_log_weights。原 SMC 仍负责整个时间循环、归一化、重采样、祖先与 likelihood 累计。
+状态与参数放在同一个 WeightedParticles 结构中，由同一祖先索引一起选择。每步及末端重采样后得到等权参数集合，整个集合进入下一轮，不把均值复制成新集合。
+iterated_filter 用 TensorFlow while_loop 重复上述过程，返回末端参数、完整集合、参数历史和扰动模型 likelihood；不选取训练 likelihood 最好的中间点。
+模块不包含 Dacca 的 8/23、参数名、20 Euler 步或论文学习率。零轮时直接保留原始参数，避免对重复副本求均值引入额外浮点舍入。
+
+3. 优化示例和测试。
+examples/if2_and_discount.py 实际执行通用 IF2、原 PF 加折扣、外部 tf.keras.optimizers.Adam 和新随机种子的终点评分。优化器状态由 Keras 管理，不新增一个宣称原生 MLE 的 fit 接口。
+调用位置见 function_locations.json。gradient_discount.patch 单独展示原梯度设施的改动，full.patch 包括新增 IF2、示例、测试和文档。
+
+两个必须写清的接口问题
+
+重采样：原 TFP 默认按 ESS 阈值决定是否重采样。此补丁只在实际重采样时折扣；若有不重采样的时刻，就不是每个观测都折扣的同一种 DMOP 递推。原 Dacca 比较明确每步重采样，新示例也如此。固定 TFP 0.25 的 criterion=None 实际关闭重采样，本次保留此行为，没有将 None 当作每步重采样。
+
+初始时间：TFP 的观测 0 对初始状态加权；IF2 初始扰动在 prior 前，过程扰动在后续转移前。Dacca 明确保留一个 log probability 为 0 的时间零观测，所以共有 601 个观测位置、600 个真实月份。通用模块不会偷偷增加、丢弃或移动真实观测。
+
+模型和运行范围
+参数张量为 [particles, batch..., parameters]，粒子轴固定为 0；观测目前是一个时间长度静态已知且至少为 2 的 Tensor，每两个观测间一次转移。状态可为 TFP 分布与原重采样支持的 Tensor 或嵌套结构。
+参数变换、约束和正常状态方程仍属于模型。原本只读取全局 Variable 的模型，需要先支持逐粒子参数；不能说任意已有模型不改代码即可使用。
+默认使用 TFP/TF 的随机布局；调用者可提供 normal_sample_fn 及原 resample_fn 接口保持特定的逐重复随机流。默认不承诺批大小改变后逐位重放相同随机数。
+非法或非有限的 IF2 pass 抛出 InvalidArgumentError，停止整个调用；不自动重试，也不包含逐行隔离、作业恢复和成本管理。正式实验原驱动仍原样保留，不能直接用此接口替换全部运行功能。
+
+实际验证及限制
+
+7 个 unittest 测试组通过，内部含多组参数化对照：
+- 默认/显式折扣 1 与独立加载的未修改源码对照。覆盖 float32/64、systematic/independent、eager/graph，以及每步、ESS 阈值、关闭重采样，共 24 种配置。粒子、权重、祖先索引、likelihood、梯度逐位一致。
+- alpha=0/.5/.97/1 的梯度与独立逐时刻递推比较；分别覆盖每步重采样与同时走过重采样/不重采样分支的判定。后者还明确断言两个分支都执行。alpha=0 保留状态路径导数。
+- IF2 与不调用 IF2/SMC 时间循环的独立计算比较，覆盖 1 维线性、3 维非线性模型、两种重采样、轮内/轮间冷却、两轮完整参数集合、likelihood 和冻结坐标。
+- TensorFlow 多轮循环、零轮、非法输入、非有限失败、无 batch 维度和嵌套状态。
+这些是候选补丁的定向检查，不是完整上游测试集。测试导入的 pristine PF 模块单独绑定 pristine SMC；没有替换已安装包或候选包的全局函数。
+可执行示例完成 3 轮 IF2、3 次 Keras Adam 和 4 次独立评分。Ruff 定向错误检查通过；没有运行上游文档构建或 GPU 验证。
+
+原始 Dacca 接入检查：600 个月、每月 20 Euler 步、23 参数，CPU float32，J8，2 轮 IF2、1 次 Adam、2 次独立原 PF 评分。学习率 1e-6，仅检查接口衔接；不衡量优化质量或 MCSE。
+默认图优化下，新旧 IF2 不是逐位相同：两轮最大参数差分别 7.1526e-7、9.5367e-7；扰动 likelihood 差分别约 0.0004883、0.0063477。最初逐位断言失败的日志完整保留。
+随后只在独立诊断进程关闭 arithmetic_optimization 与 remapping，两轮参数集合和扰动 likelihood 都逐位一致。仅去掉分布采样的额外维度并未消除原差异。因此证据支持图优化相关的浮点差异，不能声称默认设置或历史 GPU 轨迹已逐位重放。候选包本身不改变任何全局优化设置。
+两种图设置下 alpha=0/.97/1 的所有前向增量与独立原 PF 一致，alpha=1 梯度逐位一致。旧临时包装的 loss 梯度与新 log-likelihood 梯度在事后除以 -600 后仍有浮点差异，最大约 2.48e-5/1.43e-5；后者的缩放位置不同，此处只报告实际值，未声称完全相同。
+默认图和受控图结果分别存于 dacca_check_default_graph.json、dacca_check_controlled_graph.json。passed 表示有限输出与接口检查通过；是否逐位一致单独由 IF2_bitwise_identity_to_frozen 记录，默认图是 false。
+
+与会议要求的对应
+已做到：沿原 ADPF 内核增加折扣；IF2 直接复用本包 SMC；模型不再各写一遍扰动；原方法默认行为对照；完整 diff、可执行示例、来源和失败记录可查。
+仍需维护者讨论：参数函数接口、experimental.mcmc 中的放置与命名、是否扩大到 guided proposals/其他后端、失败处理范围。
+本次完成的是可审查的第一版代码。已有正式 Dacca 结果仍对应冻结旧驱动，不能把它们说成直接由新通用接口生成。

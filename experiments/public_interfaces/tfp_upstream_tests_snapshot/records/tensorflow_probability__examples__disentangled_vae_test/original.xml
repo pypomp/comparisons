@@ -1,0 +1,1653 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="31" skipped="0" tests="52" time="22.416" timestamp="2026-10-30T16:52:35.679741-04:00" hostname="appledeMacBook-Pro-43.local"><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledVAEComponentsTest" name="testCompressorClassNoSampleShape" time="0.113" /><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledVAEComponentsTest" name="testCompressorClassWithSampleShape" time="0.150" /><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledVAEComponentsTest" name="testDecoderClassNoSampleShape" time="0.109" /><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledVAEComponentsTest" name="testDecoderClassWithSampleShape" time="0.158" /><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledVAEComponentsTest" name="testEncoderDynamicFactorizedClassNoSamples" time="0.020" /><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledVAEComponentsTest" name="testEncoderDynamicFactorizedClassSamples" time="0.018" /><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledVAEComponentsTest" name="testEncoderDynamicFullClassBothSamples" time="0.303" /><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledVAEComponentsTest" name="testEncoderDynamicFullClassComplexStaticSampleShape" time="0.230" /><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledVAEComponentsTest" name="testEncoderDynamicFullClassInputSamples" time="0.220" /><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledVAEComponentsTest" name="testEncoderDynamicFullClassNoSamples" time="0.236" /><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledVAEComponentsTest" name="testEncoderDynamicFullClassStaticSamples" time="0.234" /><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledVAEComponentsTest" name="testEncoderStaticClassNoSamples" time="0.271" /><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledVAEComponentsTest" name="testEncoderStaticClassSamples" time="0.195" /><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledVAEComponentsTest" name="testLearnableMultivariateNormalDiagCellClassBatch" time="0.824" /><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledVAEComponentsTest" name="testLearnableMultivariateNormalDiagCellClassNoBatch" time="0.011"><failure message="ValueError: Shape must be rank 2 but is rank 1 for '{{node learnable_multivariate_normal_diag_cell_1_1/lstm_cell_1/MatMul}} = MatMul[T=DT_FLOAT, grad_a=false, grad_b=false, transpose_a=false, transpose_b=false](zeros_5, learnable_multivariate_normal_diag_cell_1_1/lstm_cell_1/split)' with input shapes: [5], [5,6].">../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:1078: in _create_c_op
+    c_op = pywrap_tf_session.TF_FinishOperation(op_desc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   tensorflow.python.framework.errors_impl.InvalidArgumentError: Shape must be rank 2 but is rank 1 for '{{node learnable_multivariate_normal_diag_cell_1_1/lstm_cell_1/MatMul}} = MatMul[T=DT_FLOAT, grad_a=false, grad_b=false, transpose_a=false, transpose_b=false](zeros_5, learnable_multivariate_normal_diag_cell_1_1/lstm_cell_1/split)' with input shapes: [5], [5,6].
+
+During handling of the above exception, another exception occurred:
+tensorflow_probability/examples/disentangled_vae_test.py:64: in testLearnableMultivariateNormalDiagCellClassNoBatch
+    dist_z1, state_z1 = prior(dynamic_previous_output, state)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/training.py:588: in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/base_layer_v1.py:853: in __call__
+    outputs = call_fn(cast_inputs, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:690: in wrapper
+    return converted_call(f, args, kwargs, options=options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:331: in converted_call
+    return _call_unconverted(f, args, kwargs, options, False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:459: in _call_unconverted
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:305: in call
+    out, state = self.lstm_cell(inputs, state)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/base_layer_v1.py:853: in __call__
+    outputs = call_fn(cast_inputs, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/layers/rnn/lstm.py:298: in call
+    x_i = backend.dot(inputs_i, k_i)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/backend.py:2465: in dot
+    out = tf.matmul(x, y)
+          ^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/weak_tensor_ops.py:142: in wrapper
+    return op(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/math_ops.py:3700: in matmul
+    return gen_math_ops.mat_mul(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_math_ops.py:6257: in mat_mul
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:796: in _apply_op_helper
+    op = g._create_op_internal(op_type_name, inputs, dtypes=None,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:2726: in _create_op_internal
+    ret = Operation.from_node_def(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:1221: in from_node_def
+    c_op = _create_c_op(g, node_def, inputs, control_input_ops, op_def=op_def)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:1081: in _create_c_op
+    raise ValueError(e.message)
+E   ValueError: Shape must be rank 2 but is rank 1 for '{{node learnable_multivariate_normal_diag_cell_1_1/lstm_cell_1/MatMul}} = MatMul[T=DT_FLOAT, grad_a=false, grad_b=false, transpose_a=false, transpose_b=false](zeros_5, learnable_multivariate_normal_diag_cell_1_1/lstm_cell_1/split)' with input shapes: [5], [5,6].</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledVAEComponentsTest" name="testLearnableMultivariateNormalDiagClass" time="0.010" /><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledVAEComponentsTest" name="test_session" time="0.000" /><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testGenerateFactorizedFixBoth" time="0.026"><failure message="RuntimeError: Exception encountered when calling layer 'learnable_multivariate_normal_diag_1' (type LearnableMultivariateNormalDiag).&#10;&#10;resource: Attempting to capture an EagerTensor without building a function.&#10;&#10;Call arguments received by layer 'learnable_multivariate_normal_diag_1' (type LearnableMultivariateNormalDiag):&#10;  • inputs=tf.Tensor(shape=(10,), dtype=float32)">tensorflow_probability/examples/disentangled_vae_test.py:309: in testGenerateFactorizedFixBoth
+    dist = self.model_factorized.generate(self.batch_size, self.length,
+tensorflow_probability/examples/disentangled_vae.py:779: in generate
+    static_sample, _ = self.sample_static_prior(samples, batch_size, fix_static)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:859: in sample_static_prior
+    dist = self.static_prior()
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:211: in __call__
+    return super(LearnableMultivariateNormalDiag, self).__call__(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/training.py:588: in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/base_layer.py:1155: in __call__
+    outputs = call_fn(inputs, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:155: in error_handler
+    raise new_e.with_traceback(e.__traceback__) from None
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:96: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:690: in wrapper
+    return converted_call(f, args, kwargs, options=options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:331: in converted_call
+    return _call_unconverted(f, args, kwargs, options, False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:459: in _call_unconverted
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:227: in call
+    return tfd.MultivariateNormalDiag(self.loc, self.scale_diag)
+                                                ^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:237: in scale_diag
+    return tf1.nn.softplus(self._untransformed_stddev) + 1e-5  # keep &gt; 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/math_ops.py:653: in softplus
+    return gen_nn_ops.softplus(features, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_nn_ops.py:12141: in softplus
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:778: in _apply_op_helper
+    _ExtractInputsAndAttrs(op_type_name, op_def, allowed_list_attr_map,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:551: in _ExtractInputsAndAttrs
+    values = ops.convert_to_tensor(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:234: in convert
+    ret = conversion_func(value, dtype=dtype, name=name, as_ref=as_ref)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:2378: in _dense_var_to_tensor
+    return var._dense_var_to_tensor(dtype=dtype, name=name, as_ref=as_ref)  # pylint: disable=protected-access
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:1624: in _dense_var_to_tensor
+    return self.value()
+           ^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:658: in value
+    return self._read_variable_op()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:843: in _read_variable_op
+    result = read_and_set_handle(no_copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:833: in read_and_set_handle
+    result = gen_resource_variable_ops.read_variable_op(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_resource_variable_ops.py:548: in read_variable_op
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:778: in _apply_op_helper
+    _ExtractInputsAndAttrs(op_type_name, op_def, allowed_list_attr_map,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:551: in _ExtractInputsAndAttrs
+    values = ops.convert_to_tensor(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Exception encountered when calling layer 'learnable_multivariate_normal_diag_1' (type LearnableMultivariateNormalDiag).
+E   
+E   resource: Attempting to capture an EagerTensor without building a function.
+E   
+E   Call arguments received by layer 'learnable_multivariate_normal_diag_1' (type LearnableMultivariateNormalDiag):
+E     • inputs=tf.Tensor(shape=(10,), dtype=float32)</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testGenerateFactorizedFixDynamic" time="0.022"><failure message="RuntimeError: Exception encountered when calling layer 'learnable_multivariate_normal_diag_3' (type LearnableMultivariateNormalDiag).&#10;&#10;resource: Attempting to capture an EagerTensor without building a function.&#10;&#10;Call arguments received by layer 'learnable_multivariate_normal_diag_3' (type LearnableMultivariateNormalDiag):&#10;  • inputs=tf.Tensor(shape=(10,), dtype=float32)">tensorflow_probability/examples/disentangled_vae_test.py:296: in testGenerateFactorizedFixDynamic
+    dist = self.model_factorized.generate(self.batch_size, self.length,
+tensorflow_probability/examples/disentangled_vae.py:779: in generate
+    static_sample, _ = self.sample_static_prior(samples, batch_size, fix_static)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:859: in sample_static_prior
+    dist = self.static_prior()
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:211: in __call__
+    return super(LearnableMultivariateNormalDiag, self).__call__(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/training.py:588: in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/base_layer.py:1155: in __call__
+    outputs = call_fn(inputs, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:155: in error_handler
+    raise new_e.with_traceback(e.__traceback__) from None
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:96: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:690: in wrapper
+    return converted_call(f, args, kwargs, options=options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:331: in converted_call
+    return _call_unconverted(f, args, kwargs, options, False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:459: in _call_unconverted
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:227: in call
+    return tfd.MultivariateNormalDiag(self.loc, self.scale_diag)
+                                                ^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:237: in scale_diag
+    return tf1.nn.softplus(self._untransformed_stddev) + 1e-5  # keep &gt; 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/math_ops.py:653: in softplus
+    return gen_nn_ops.softplus(features, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_nn_ops.py:12141: in softplus
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:778: in _apply_op_helper
+    _ExtractInputsAndAttrs(op_type_name, op_def, allowed_list_attr_map,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:551: in _ExtractInputsAndAttrs
+    values = ops.convert_to_tensor(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:234: in convert
+    ret = conversion_func(value, dtype=dtype, name=name, as_ref=as_ref)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:2378: in _dense_var_to_tensor
+    return var._dense_var_to_tensor(dtype=dtype, name=name, as_ref=as_ref)  # pylint: disable=protected-access
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:1624: in _dense_var_to_tensor
+    return self.value()
+           ^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:658: in value
+    return self._read_variable_op()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:843: in _read_variable_op
+    result = read_and_set_handle(no_copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:833: in read_and_set_handle
+    result = gen_resource_variable_ops.read_variable_op(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_resource_variable_ops.py:548: in read_variable_op
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:778: in _apply_op_helper
+    _ExtractInputsAndAttrs(op_type_name, op_def, allowed_list_attr_map,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:551: in _ExtractInputsAndAttrs
+    values = ops.convert_to_tensor(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Exception encountered when calling layer 'learnable_multivariate_normal_diag_3' (type LearnableMultivariateNormalDiag).
+E   
+E   resource: Attempting to capture an EagerTensor without building a function.
+E   
+E   Call arguments received by layer 'learnable_multivariate_normal_diag_3' (type LearnableMultivariateNormalDiag):
+E     • inputs=tf.Tensor(shape=(10,), dtype=float32)</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testGenerateFactorizedFixStatic" time="0.023"><failure message="RuntimeError: Exception encountered when calling layer 'learnable_multivariate_normal_diag_5' (type LearnableMultivariateNormalDiag).&#10;&#10;resource: Attempting to capture an EagerTensor without building a function.&#10;&#10;Call arguments received by layer 'learnable_multivariate_normal_diag_5' (type LearnableMultivariateNormalDiag):&#10;  • inputs=tf.Tensor(shape=(10,), dtype=float32)">tensorflow_probability/examples/disentangled_vae_test.py:284: in testGenerateFactorizedFixStatic
+    dist = self.model_factorized.generate(self.batch_size, self.length,
+tensorflow_probability/examples/disentangled_vae.py:779: in generate
+    static_sample, _ = self.sample_static_prior(samples, batch_size, fix_static)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:859: in sample_static_prior
+    dist = self.static_prior()
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:211: in __call__
+    return super(LearnableMultivariateNormalDiag, self).__call__(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/training.py:588: in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/base_layer.py:1155: in __call__
+    outputs = call_fn(inputs, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:155: in error_handler
+    raise new_e.with_traceback(e.__traceback__) from None
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:96: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:690: in wrapper
+    return converted_call(f, args, kwargs, options=options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:331: in converted_call
+    return _call_unconverted(f, args, kwargs, options, False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:459: in _call_unconverted
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:227: in call
+    return tfd.MultivariateNormalDiag(self.loc, self.scale_diag)
+                                                ^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:237: in scale_diag
+    return tf1.nn.softplus(self._untransformed_stddev) + 1e-5  # keep &gt; 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/math_ops.py:653: in softplus
+    return gen_nn_ops.softplus(features, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_nn_ops.py:12141: in softplus
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:778: in _apply_op_helper
+    _ExtractInputsAndAttrs(op_type_name, op_def, allowed_list_attr_map,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:551: in _ExtractInputsAndAttrs
+    values = ops.convert_to_tensor(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:234: in convert
+    ret = conversion_func(value, dtype=dtype, name=name, as_ref=as_ref)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:2378: in _dense_var_to_tensor
+    return var._dense_var_to_tensor(dtype=dtype, name=name, as_ref=as_ref)  # pylint: disable=protected-access
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:1624: in _dense_var_to_tensor
+    return self.value()
+           ^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:658: in value
+    return self._read_variable_op()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:843: in _read_variable_op
+    result = read_and_set_handle(no_copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:833: in read_and_set_handle
+    result = gen_resource_variable_ops.read_variable_op(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_resource_variable_ops.py:548: in read_variable_op
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:778: in _apply_op_helper
+    _ExtractInputsAndAttrs(op_type_name, op_def, allowed_list_attr_map,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:551: in _ExtractInputsAndAttrs
+    values = ops.convert_to_tensor(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Exception encountered when calling layer 'learnable_multivariate_normal_diag_5' (type LearnableMultivariateNormalDiag).
+E   
+E   resource: Attempting to capture an EagerTensor without building a function.
+E   
+E   Call arguments received by layer 'learnable_multivariate_normal_diag_5' (type LearnableMultivariateNormalDiag):
+E     • inputs=tf.Tensor(shape=(10,), dtype=float32)</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testGenerateFullFixBoth" time="0.023"><failure message="RuntimeError: Exception encountered when calling layer 'learnable_multivariate_normal_diag_8' (type LearnableMultivariateNormalDiag).&#10;&#10;resource: Attempting to capture an EagerTensor without building a function.&#10;&#10;Call arguments received by layer 'learnable_multivariate_normal_diag_8' (type LearnableMultivariateNormalDiag):&#10;  • inputs=tf.Tensor(shape=(10,), dtype=float32)">tensorflow_probability/examples/disentangled_vae_test.py:316: in testGenerateFullFixBoth
+    dist = self.model_full.generate(self.batch_size, self.length,
+tensorflow_probability/examples/disentangled_vae.py:779: in generate
+    static_sample, _ = self.sample_static_prior(samples, batch_size, fix_static)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:859: in sample_static_prior
+    dist = self.static_prior()
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:211: in __call__
+    return super(LearnableMultivariateNormalDiag, self).__call__(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/training.py:588: in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/base_layer.py:1155: in __call__
+    outputs = call_fn(inputs, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:155: in error_handler
+    raise new_e.with_traceback(e.__traceback__) from None
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:96: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:690: in wrapper
+    return converted_call(f, args, kwargs, options=options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:331: in converted_call
+    return _call_unconverted(f, args, kwargs, options, False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:459: in _call_unconverted
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:227: in call
+    return tfd.MultivariateNormalDiag(self.loc, self.scale_diag)
+                                                ^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:237: in scale_diag
+    return tf1.nn.softplus(self._untransformed_stddev) + 1e-5  # keep &gt; 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/math_ops.py:653: in softplus
+    return gen_nn_ops.softplus(features, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_nn_ops.py:12141: in softplus
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:778: in _apply_op_helper
+    _ExtractInputsAndAttrs(op_type_name, op_def, allowed_list_attr_map,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:551: in _ExtractInputsAndAttrs
+    values = ops.convert_to_tensor(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:234: in convert
+    ret = conversion_func(value, dtype=dtype, name=name, as_ref=as_ref)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:2378: in _dense_var_to_tensor
+    return var._dense_var_to_tensor(dtype=dtype, name=name, as_ref=as_ref)  # pylint: disable=protected-access
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:1624: in _dense_var_to_tensor
+    return self.value()
+           ^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:658: in value
+    return self._read_variable_op()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:843: in _read_variable_op
+    result = read_and_set_handle(no_copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:833: in read_and_set_handle
+    result = gen_resource_variable_ops.read_variable_op(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_resource_variable_ops.py:548: in read_variable_op
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:778: in _apply_op_helper
+    _ExtractInputsAndAttrs(op_type_name, op_def, allowed_list_attr_map,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:551: in _ExtractInputsAndAttrs
+    values = ops.convert_to_tensor(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Exception encountered when calling layer 'learnable_multivariate_normal_diag_8' (type LearnableMultivariateNormalDiag).
+E   
+E   resource: Attempting to capture an EagerTensor without building a function.
+E   
+E   Call arguments received by layer 'learnable_multivariate_normal_diag_8' (type LearnableMultivariateNormalDiag):
+E     • inputs=tf.Tensor(shape=(10,), dtype=float32)</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testGenerateFullFixDynamic" time="0.023"><failure message="RuntimeError: Exception encountered when calling layer 'learnable_multivariate_normal_diag_10' (type LearnableMultivariateNormalDiag).&#10;&#10;resource: Attempting to capture an EagerTensor without building a function.&#10;&#10;Call arguments received by layer 'learnable_multivariate_normal_diag_10' (type LearnableMultivariateNormalDiag):&#10;  • inputs=tf.Tensor(shape=(10,), dtype=float32)">tensorflow_probability/examples/disentangled_vae_test.py:303: in testGenerateFullFixDynamic
+    dist = self.model_full.generate(self.batch_size, self.length,
+tensorflow_probability/examples/disentangled_vae.py:779: in generate
+    static_sample, _ = self.sample_static_prior(samples, batch_size, fix_static)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:859: in sample_static_prior
+    dist = self.static_prior()
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:211: in __call__
+    return super(LearnableMultivariateNormalDiag, self).__call__(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/training.py:588: in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/base_layer.py:1155: in __call__
+    outputs = call_fn(inputs, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:155: in error_handler
+    raise new_e.with_traceback(e.__traceback__) from None
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:96: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:690: in wrapper
+    return converted_call(f, args, kwargs, options=options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:331: in converted_call
+    return _call_unconverted(f, args, kwargs, options, False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:459: in _call_unconverted
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:227: in call
+    return tfd.MultivariateNormalDiag(self.loc, self.scale_diag)
+                                                ^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:237: in scale_diag
+    return tf1.nn.softplus(self._untransformed_stddev) + 1e-5  # keep &gt; 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/math_ops.py:653: in softplus
+    return gen_nn_ops.softplus(features, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_nn_ops.py:12141: in softplus
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:778: in _apply_op_helper
+    _ExtractInputsAndAttrs(op_type_name, op_def, allowed_list_attr_map,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:551: in _ExtractInputsAndAttrs
+    values = ops.convert_to_tensor(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:234: in convert
+    ret = conversion_func(value, dtype=dtype, name=name, as_ref=as_ref)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:2378: in _dense_var_to_tensor
+    return var._dense_var_to_tensor(dtype=dtype, name=name, as_ref=as_ref)  # pylint: disable=protected-access
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:1624: in _dense_var_to_tensor
+    return self.value()
+           ^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:658: in value
+    return self._read_variable_op()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:843: in _read_variable_op
+    result = read_and_set_handle(no_copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:833: in read_and_set_handle
+    result = gen_resource_variable_ops.read_variable_op(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_resource_variable_ops.py:548: in read_variable_op
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:778: in _apply_op_helper
+    _ExtractInputsAndAttrs(op_type_name, op_def, allowed_list_attr_map,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:551: in _ExtractInputsAndAttrs
+    values = ops.convert_to_tensor(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Exception encountered when calling layer 'learnable_multivariate_normal_diag_10' (type LearnableMultivariateNormalDiag).
+E   
+E   resource: Attempting to capture an EagerTensor without building a function.
+E   
+E   Call arguments received by layer 'learnable_multivariate_normal_diag_10' (type LearnableMultivariateNormalDiag):
+E     • inputs=tf.Tensor(shape=(10,), dtype=float32)</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testGenerateFullFixStatic" time="0.022"><failure message="RuntimeError: Exception encountered when calling layer 'learnable_multivariate_normal_diag_12' (type LearnableMultivariateNormalDiag).&#10;&#10;resource: Attempting to capture an EagerTensor without building a function.&#10;&#10;Call arguments received by layer 'learnable_multivariate_normal_diag_12' (type LearnableMultivariateNormalDiag):&#10;  • inputs=tf.Tensor(shape=(10,), dtype=float32)">tensorflow_probability/examples/disentangled_vae_test.py:290: in testGenerateFullFixStatic
+    dist = self.model_full.generate(self.batch_size, self.length,
+tensorflow_probability/examples/disentangled_vae.py:779: in generate
+    static_sample, _ = self.sample_static_prior(samples, batch_size, fix_static)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:859: in sample_static_prior
+    dist = self.static_prior()
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:211: in __call__
+    return super(LearnableMultivariateNormalDiag, self).__call__(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/training.py:588: in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/base_layer.py:1155: in __call__
+    outputs = call_fn(inputs, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:155: in error_handler
+    raise new_e.with_traceback(e.__traceback__) from None
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:96: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:690: in wrapper
+    return converted_call(f, args, kwargs, options=options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:331: in converted_call
+    return _call_unconverted(f, args, kwargs, options, False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:459: in _call_unconverted
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:227: in call
+    return tfd.MultivariateNormalDiag(self.loc, self.scale_diag)
+                                                ^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:237: in scale_diag
+    return tf1.nn.softplus(self._untransformed_stddev) + 1e-5  # keep &gt; 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/math_ops.py:653: in softplus
+    return gen_nn_ops.softplus(features, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_nn_ops.py:12141: in softplus
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:778: in _apply_op_helper
+    _ExtractInputsAndAttrs(op_type_name, op_def, allowed_list_attr_map,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:551: in _ExtractInputsAndAttrs
+    values = ops.convert_to_tensor(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:234: in convert
+    ret = conversion_func(value, dtype=dtype, name=name, as_ref=as_ref)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:2378: in _dense_var_to_tensor
+    return var._dense_var_to_tensor(dtype=dtype, name=name, as_ref=as_ref)  # pylint: disable=protected-access
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:1624: in _dense_var_to_tensor
+    return self.value()
+           ^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:658: in value
+    return self._read_variable_op()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:843: in _read_variable_op
+    result = read_and_set_handle(no_copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:833: in read_and_set_handle
+    result = gen_resource_variable_ops.read_variable_op(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_resource_variable_ops.py:548: in read_variable_op
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:778: in _apply_op_helper
+    _ExtractInputsAndAttrs(op_type_name, op_def, allowed_list_attr_map,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:551: in _ExtractInputsAndAttrs
+    values = ops.convert_to_tensor(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Exception encountered when calling layer 'learnable_multivariate_normal_diag_12' (type LearnableMultivariateNormalDiag).
+E   
+E   resource: Attempting to capture an EagerTensor without building a function.
+E   
+E   Call arguments received by layer 'learnable_multivariate_normal_diag_12' (type LearnableMultivariateNormalDiag):
+E     • inputs=tf.Tensor(shape=(10,), dtype=float32)</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testReconstructFactorized" time="0.023"><failure message="RuntimeError: Attempting to capture an EagerTensor without building a function.">tensorflow_probability/examples/disentangled_vae_test.py:323: in testReconstructFactorized
+    dist = self.model_factorized.reconstruct(self.inputs, self.samples)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:817: in reconstruct
+    batch_size = tf1.shape(input=inputs)[-5]
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:687: in shape
+    return shape_internal(input, name, optimize=True, out_type=out_type)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:717: in shape_internal
+    input = ops.convert_to_tensor(input)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Attempting to capture an EagerTensor without building a function.</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testReconstructFactorizedSampleBoth" time="0.022"><failure message="RuntimeError: Attempting to capture an EagerTensor without building a function.">tensorflow_probability/examples/disentangled_vae_test.py:383: in testReconstructFactorizedSampleBoth
+    dist = self.model_factorized.reconstruct(self.inputs, self.samples,
+tensorflow_probability/examples/disentangled_vae.py:817: in reconstruct
+    batch_size = tf1.shape(input=inputs)[-5]
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:687: in shape
+    return shape_internal(input, name, optimize=True, out_type=out_type)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:717: in shape_internal
+    input = ops.convert_to_tensor(input)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Attempting to capture an EagerTensor without building a function.</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testReconstructFactorizedSampleDynamic" time="0.024"><failure message="RuntimeError: Attempting to capture an EagerTensor without building a function.">tensorflow_probability/examples/disentangled_vae_test.py:358: in testReconstructFactorizedSampleDynamic
+    dist = self.model_factorized.reconstruct(self.inputs, self.samples,
+tensorflow_probability/examples/disentangled_vae.py:817: in reconstruct
+    batch_size = tf1.shape(input=inputs)[-5]
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:687: in shape
+    return shape_internal(input, name, optimize=True, out_type=out_type)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:717: in shape_internal
+    input = ops.convert_to_tensor(input)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Attempting to capture an EagerTensor without building a function.</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testReconstructFactorizedSampleDynamicFixed" time="0.024"><failure message="RuntimeError: Attempting to capture an EagerTensor without building a function.">tensorflow_probability/examples/disentangled_vae_test.py:370: in testReconstructFactorizedSampleDynamicFixed
+    dist = self.model_factorized.reconstruct(self.inputs, self.samples,
+tensorflow_probability/examples/disentangled_vae.py:817: in reconstruct
+    batch_size = tf1.shape(input=inputs)[-5]
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:687: in shape
+    return shape_internal(input, name, optimize=True, out_type=out_type)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:717: in shape_internal
+    input = ops.convert_to_tensor(input)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Attempting to capture an EagerTensor without building a function.</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testReconstructFactorizedSampleStatic" time="0.023"><failure message="RuntimeError: Attempting to capture an EagerTensor without building a function.">tensorflow_probability/examples/disentangled_vae_test.py:333: in testReconstructFactorizedSampleStatic
+    dist = self.model_factorized.reconstruct(self.inputs, self.samples,
+tensorflow_probability/examples/disentangled_vae.py:817: in reconstruct
+    batch_size = tf1.shape(input=inputs)[-5]
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:687: in shape
+    return shape_internal(input, name, optimize=True, out_type=out_type)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:717: in shape_internal
+    input = ops.convert_to_tensor(input)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Attempting to capture an EagerTensor without building a function.</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testReconstructFactorizedSampleStaticFixed" time="0.024"><failure message="RuntimeError: Attempting to capture an EagerTensor without building a function.">tensorflow_probability/examples/disentangled_vae_test.py:345: in testReconstructFactorizedSampleStaticFixed
+    dist = self.model_factorized.reconstruct(self.inputs, self.samples,
+tensorflow_probability/examples/disentangled_vae.py:817: in reconstruct
+    batch_size = tf1.shape(input=inputs)[-5]
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:687: in shape
+    return shape_internal(input, name, optimize=True, out_type=out_type)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:717: in shape_internal
+    input = ops.convert_to_tensor(input)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Attempting to capture an EagerTensor without building a function.</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testReconstructFactorizedSwapDynamic" time="0.031"><failure message="RuntimeError: Attempting to capture an EagerTensor without building a function.">tensorflow_probability/examples/disentangled_vae_test.py:408: in testReconstructFactorizedSwapDynamic
+    dist = self.model_factorized.reconstruct(self.inputs, self.samples,
+tensorflow_probability/examples/disentangled_vae.py:817: in reconstruct
+    batch_size = tf1.shape(input=inputs)[-5]
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:687: in shape
+    return shape_internal(input, name, optimize=True, out_type=out_type)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:717: in shape_internal
+    input = ops.convert_to_tensor(input)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Attempting to capture an EagerTensor without building a function.</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testReconstructFactorizedSwapStatic" time="0.024"><failure message="RuntimeError: Attempting to capture an EagerTensor without building a function.">tensorflow_probability/examples/disentangled_vae_test.py:396: in testReconstructFactorizedSwapStatic
+    dist = self.model_factorized.reconstruct(self.inputs, self.samples,
+tensorflow_probability/examples/disentangled_vae.py:817: in reconstruct
+    batch_size = tf1.shape(input=inputs)[-5]
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:687: in shape
+    return shape_internal(input, name, optimize=True, out_type=out_type)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:717: in shape_internal
+    input = ops.convert_to_tensor(input)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Attempting to capture an EagerTensor without building a function.</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testReconstructFull" time="0.024"><failure message="RuntimeError: Attempting to capture an EagerTensor without building a function.">tensorflow_probability/examples/disentangled_vae_test.py:328: in testReconstructFull
+    dist = self.model_full.reconstruct(self.inputs, self.samples)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:817: in reconstruct
+    batch_size = tf1.shape(input=inputs)[-5]
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:687: in shape
+    return shape_internal(input, name, optimize=True, out_type=out_type)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:717: in shape_internal
+    input = ops.convert_to_tensor(input)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Attempting to capture an EagerTensor without building a function.</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testReconstructFullSampleBoth" time="0.023"><failure message="RuntimeError: Attempting to capture an EagerTensor without building a function.">tensorflow_probability/examples/disentangled_vae_test.py:390: in testReconstructFullSampleBoth
+    dist = self.model_full.reconstruct(self.inputs, self.samples,
+tensorflow_probability/examples/disentangled_vae.py:817: in reconstruct
+    batch_size = tf1.shape(input=inputs)[-5]
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:687: in shape
+    return shape_internal(input, name, optimize=True, out_type=out_type)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:717: in shape_internal
+    input = ops.convert_to_tensor(input)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Attempting to capture an EagerTensor without building a function.</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testReconstructFullSampleDynamic" time="0.024"><failure message="RuntimeError: Attempting to capture an EagerTensor without building a function.">tensorflow_probability/examples/disentangled_vae_test.py:364: in testReconstructFullSampleDynamic
+    dist = self.model_full.reconstruct(self.inputs, self.samples,
+tensorflow_probability/examples/disentangled_vae.py:817: in reconstruct
+    batch_size = tf1.shape(input=inputs)[-5]
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:687: in shape
+    return shape_internal(input, name, optimize=True, out_type=out_type)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:717: in shape_internal
+    input = ops.convert_to_tensor(input)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Attempting to capture an EagerTensor without building a function.</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testReconstructFullSampleDynamicFixed" time="0.024"><failure message="RuntimeError: Attempting to capture an EagerTensor without building a function.">tensorflow_probability/examples/disentangled_vae_test.py:377: in testReconstructFullSampleDynamicFixed
+    dist = self.model_full.reconstruct(self.inputs, self.samples,
+tensorflow_probability/examples/disentangled_vae.py:817: in reconstruct
+    batch_size = tf1.shape(input=inputs)[-5]
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:687: in shape
+    return shape_internal(input, name, optimize=True, out_type=out_type)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:717: in shape_internal
+    input = ops.convert_to_tensor(input)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Attempting to capture an EagerTensor without building a function.</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testReconstructFullSampleStatic" time="0.023"><failure message="RuntimeError: Attempting to capture an EagerTensor without building a function.">tensorflow_probability/examples/disentangled_vae_test.py:339: in testReconstructFullSampleStatic
+    dist = self.model_full.reconstruct(self.inputs, self.samples,
+tensorflow_probability/examples/disentangled_vae.py:817: in reconstruct
+    batch_size = tf1.shape(input=inputs)[-5]
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:687: in shape
+    return shape_internal(input, name, optimize=True, out_type=out_type)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:717: in shape_internal
+    input = ops.convert_to_tensor(input)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Attempting to capture an EagerTensor without building a function.</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testReconstructFullSampleStaticFixed" time="0.022"><failure message="RuntimeError: Attempting to capture an EagerTensor without building a function.">tensorflow_probability/examples/disentangled_vae_test.py:352: in testReconstructFullSampleStaticFixed
+    dist = self.model_full.reconstruct(self.inputs, self.samples,
+tensorflow_probability/examples/disentangled_vae.py:817: in reconstruct
+    batch_size = tf1.shape(input=inputs)[-5]
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:687: in shape
+    return shape_internal(input, name, optimize=True, out_type=out_type)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:717: in shape_internal
+    input = ops.convert_to_tensor(input)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Attempting to capture an EagerTensor without building a function.</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testReconstructFullSwapDynamic" time="0.022"><failure message="RuntimeError: Attempting to capture an EagerTensor without building a function.">tensorflow_probability/examples/disentangled_vae_test.py:414: in testReconstructFullSwapDynamic
+    dist = self.model_full.reconstruct(self.inputs, self.samples,
+tensorflow_probability/examples/disentangled_vae.py:817: in reconstruct
+    batch_size = tf1.shape(input=inputs)[-5]
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:687: in shape
+    return shape_internal(input, name, optimize=True, out_type=out_type)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:717: in shape_internal
+    input = ops.convert_to_tensor(input)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Attempting to capture an EagerTensor without building a function.</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testReconstructFullSwapStatic" time="0.023"><failure message="RuntimeError: Attempting to capture an EagerTensor without building a function.">tensorflow_probability/examples/disentangled_vae_test.py:402: in testReconstructFullSwapStatic
+    dist = self.model_full.reconstruct(self.inputs, self.samples,
+tensorflow_probability/examples/disentangled_vae.py:817: in reconstruct
+    batch_size = tf1.shape(input=inputs)[-5]
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:687: in shape
+    return shape_internal(input, name, optimize=True, out_type=out_type)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/array_ops.py:717: in shape_internal
+    input = ops.convert_to_tensor(input)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Attempting to capture an EagerTensor without building a function.</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testSampleDynamicPosteriorFactorized" time="0.028"><failure message="RuntimeError: Attempting to capture an EagerTensor without building a function.">tensorflow_probability/examples/disentangled_vae_test.py:496: in testSampleDynamicPosteriorFactorized
+    features = self.model_factorized.compressor(self.inputs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/training.py:588: in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/base_layer.py:1077: in __call__
+    inputs = tf.nest.map_structure(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/nest.py:628: in map_structure
+    return nest_util.map_structure(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/nest_util.py:1065: in map_structure
+    return _tf_core_map_structure(func, *structure, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/nest_util.py:1105: in _tf_core_map_structure
+    [func(*x) for x in entries],
+     ^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/base_layer.py:3861: in _convert_numpy_or_python_types
+    return tf.convert_to_tensor(x)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion.py:161: in convert_to_tensor_v2_with_dispatch
+    return convert_to_tensor_v2(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion.py:171: in convert_to_tensor_v2
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Attempting to capture an EagerTensor without building a function.</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testSampleDynamicPosteriorFull" time="0.022"><failure message="RuntimeError: Attempting to capture an EagerTensor without building a function.">tensorflow_probability/examples/disentangled_vae_test.py:505: in testSampleDynamicPosteriorFull
+    features = self.model_full.compressor(self.inputs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/training.py:588: in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/base_layer.py:1077: in __call__
+    inputs = tf.nest.map_structure(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/nest.py:628: in map_structure
+    return nest_util.map_structure(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/nest_util.py:1065: in map_structure
+    return _tf_core_map_structure(func, *structure, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/nest_util.py:1105: in _tf_core_map_structure
+    [func(*x) for x in entries],
+     ^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/base_layer.py:3861: in _convert_numpy_or_python_types
+    return tf.convert_to_tensor(x)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion.py:161: in convert_to_tensor_v2_with_dispatch
+    return convert_to_tensor_v2(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion.py:171: in convert_to_tensor_v2
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Attempting to capture an EagerTensor without building a function.</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testSampleDynamicPriorFactorized" time="0.163" /><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testSampleDynamicPriorFactorizedFixed" time="0.174" /><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testSampleDynamicPriorFull" time="0.246" /><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testSampleDynamicPriorFullFixed" time="0.167" /><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testSampleStaticPosteriorFactorized" time="0.024"><failure message="RuntimeError: Attempting to capture an EagerTensor without building a function.">tensorflow_probability/examples/disentangled_vae_test.py:448: in testSampleStaticPosteriorFactorized
+    features = self.model_factorized.compressor(self.inputs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/training.py:588: in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/base_layer.py:1077: in __call__
+    inputs = tf.nest.map_structure(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/nest.py:628: in map_structure
+    return nest_util.map_structure(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/nest_util.py:1065: in map_structure
+    return _tf_core_map_structure(func, *structure, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/nest_util.py:1105: in _tf_core_map_structure
+    [func(*x) for x in entries],
+     ^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/base_layer.py:3861: in _convert_numpy_or_python_types
+    return tf.convert_to_tensor(x)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion.py:161: in convert_to_tensor_v2_with_dispatch
+    return convert_to_tensor_v2(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion.py:171: in convert_to_tensor_v2
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Attempting to capture an EagerTensor without building a function.</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testSampleStaticPosteriorFull" time="0.022"><failure message="RuntimeError: Attempting to capture an EagerTensor without building a function.">tensorflow_probability/examples/disentangled_vae_test.py:456: in testSampleStaticPosteriorFull
+    features = self.model_full.compressor(self.inputs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/training.py:588: in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/base_layer.py:1077: in __call__
+    inputs = tf.nest.map_structure(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/nest.py:628: in map_structure
+    return nest_util.map_structure(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/nest_util.py:1065: in map_structure
+    return _tf_core_map_structure(func, *structure, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/nest_util.py:1105: in _tf_core_map_structure
+    [func(*x) for x in entries],
+     ^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/base_layer.py:3861: in _convert_numpy_or_python_types
+    return tf.convert_to_tensor(x)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion.py:161: in convert_to_tensor_v2_with_dispatch
+    return convert_to_tensor_v2(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion.py:171: in convert_to_tensor_v2
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Attempting to capture an EagerTensor without building a function.</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testSampleStaticPriorFactorized" time="0.022"><failure message="RuntimeError: Exception encountered when calling layer 'learnable_multivariate_normal_diag_61' (type LearnableMultivariateNormalDiag).&#10;&#10;resource: Attempting to capture an EagerTensor without building a function.&#10;&#10;Call arguments received by layer 'learnable_multivariate_normal_diag_61' (type LearnableMultivariateNormalDiag):&#10;  • inputs=tf.Tensor(shape=(10,), dtype=float32)">tensorflow_probability/examples/disentangled_vae_test.py:420: in testSampleStaticPriorFactorized
+    sample, dist = self.model_factorized.sample_static_prior(self.samples,
+tensorflow_probability/examples/disentangled_vae.py:859: in sample_static_prior
+    dist = self.static_prior()
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:211: in __call__
+    return super(LearnableMultivariateNormalDiag, self).__call__(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/training.py:588: in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/base_layer.py:1155: in __call__
+    outputs = call_fn(inputs, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:155: in error_handler
+    raise new_e.with_traceback(e.__traceback__) from None
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:96: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:690: in wrapper
+    return converted_call(f, args, kwargs, options=options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:331: in converted_call
+    return _call_unconverted(f, args, kwargs, options, False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:459: in _call_unconverted
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:227: in call
+    return tfd.MultivariateNormalDiag(self.loc, self.scale_diag)
+                                                ^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:237: in scale_diag
+    return tf1.nn.softplus(self._untransformed_stddev) + 1e-5  # keep &gt; 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/math_ops.py:653: in softplus
+    return gen_nn_ops.softplus(features, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_nn_ops.py:12141: in softplus
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:778: in _apply_op_helper
+    _ExtractInputsAndAttrs(op_type_name, op_def, allowed_list_attr_map,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:551: in _ExtractInputsAndAttrs
+    values = ops.convert_to_tensor(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:234: in convert
+    ret = conversion_func(value, dtype=dtype, name=name, as_ref=as_ref)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:2378: in _dense_var_to_tensor
+    return var._dense_var_to_tensor(dtype=dtype, name=name, as_ref=as_ref)  # pylint: disable=protected-access
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:1624: in _dense_var_to_tensor
+    return self.value()
+           ^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:658: in value
+    return self._read_variable_op()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:843: in _read_variable_op
+    result = read_and_set_handle(no_copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:833: in read_and_set_handle
+    result = gen_resource_variable_ops.read_variable_op(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_resource_variable_ops.py:548: in read_variable_op
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:778: in _apply_op_helper
+    _ExtractInputsAndAttrs(op_type_name, op_def, allowed_list_attr_map,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:551: in _ExtractInputsAndAttrs
+    values = ops.convert_to_tensor(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Exception encountered when calling layer 'learnable_multivariate_normal_diag_61' (type LearnableMultivariateNormalDiag).
+E   
+E   resource: Attempting to capture an EagerTensor without building a function.
+E   
+E   Call arguments received by layer 'learnable_multivariate_normal_diag_61' (type LearnableMultivariateNormalDiag):
+E     • inputs=tf.Tensor(shape=(10,), dtype=float32)</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testSampleStaticPriorFactorizedFixed" time="0.023"><failure message="RuntimeError: Exception encountered when calling layer 'learnable_multivariate_normal_diag_63' (type LearnableMultivariateNormalDiag).&#10;&#10;resource: Attempting to capture an EagerTensor without building a function.&#10;&#10;Call arguments received by layer 'learnable_multivariate_normal_diag_63' (type LearnableMultivariateNormalDiag):&#10;  • inputs=tf.Tensor(shape=(10,), dtype=float32)">tensorflow_probability/examples/disentangled_vae_test.py:434: in testSampleStaticPriorFactorizedFixed
+    sample, dist = self.model_factorized.sample_static_prior(
+tensorflow_probability/examples/disentangled_vae.py:859: in sample_static_prior
+    dist = self.static_prior()
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:211: in __call__
+    return super(LearnableMultivariateNormalDiag, self).__call__(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/training.py:588: in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/base_layer.py:1155: in __call__
+    outputs = call_fn(inputs, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:155: in error_handler
+    raise new_e.with_traceback(e.__traceback__) from None
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:96: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:690: in wrapper
+    return converted_call(f, args, kwargs, options=options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:331: in converted_call
+    return _call_unconverted(f, args, kwargs, options, False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:459: in _call_unconverted
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:227: in call
+    return tfd.MultivariateNormalDiag(self.loc, self.scale_diag)
+                                                ^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:237: in scale_diag
+    return tf1.nn.softplus(self._untransformed_stddev) + 1e-5  # keep &gt; 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/math_ops.py:653: in softplus
+    return gen_nn_ops.softplus(features, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_nn_ops.py:12141: in softplus
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:778: in _apply_op_helper
+    _ExtractInputsAndAttrs(op_type_name, op_def, allowed_list_attr_map,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:551: in _ExtractInputsAndAttrs
+    values = ops.convert_to_tensor(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:234: in convert
+    ret = conversion_func(value, dtype=dtype, name=name, as_ref=as_ref)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:2378: in _dense_var_to_tensor
+    return var._dense_var_to_tensor(dtype=dtype, name=name, as_ref=as_ref)  # pylint: disable=protected-access
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:1624: in _dense_var_to_tensor
+    return self.value()
+           ^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:658: in value
+    return self._read_variable_op()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:843: in _read_variable_op
+    result = read_and_set_handle(no_copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:833: in read_and_set_handle
+    result = gen_resource_variable_ops.read_variable_op(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_resource_variable_ops.py:548: in read_variable_op
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:778: in _apply_op_helper
+    _ExtractInputsAndAttrs(op_type_name, op_def, allowed_list_attr_map,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:551: in _ExtractInputsAndAttrs
+    values = ops.convert_to_tensor(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Exception encountered when calling layer 'learnable_multivariate_normal_diag_63' (type LearnableMultivariateNormalDiag).
+E   
+E   resource: Attempting to capture an EagerTensor without building a function.
+E   
+E   Call arguments received by layer 'learnable_multivariate_normal_diag_63' (type LearnableMultivariateNormalDiag):
+E     • inputs=tf.Tensor(shape=(10,), dtype=float32)</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testSampleStaticPriorFull" time="0.101"><failure message="RuntimeError: Exception encountered when calling layer 'learnable_multivariate_normal_diag_66' (type LearnableMultivariateNormalDiag).&#10;&#10;resource: Attempting to capture an EagerTensor without building a function.&#10;&#10;Call arguments received by layer 'learnable_multivariate_normal_diag_66' (type LearnableMultivariateNormalDiag):&#10;  • inputs=tf.Tensor(shape=(10,), dtype=float32)">tensorflow_probability/examples/disentangled_vae_test.py:427: in testSampleStaticPriorFull
+    sample, dist = self.model_full.sample_static_prior(self.samples,
+tensorflow_probability/examples/disentangled_vae.py:859: in sample_static_prior
+    dist = self.static_prior()
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:211: in __call__
+    return super(LearnableMultivariateNormalDiag, self).__call__(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/training.py:588: in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/base_layer.py:1155: in __call__
+    outputs = call_fn(inputs, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:155: in error_handler
+    raise new_e.with_traceback(e.__traceback__) from None
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:96: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:690: in wrapper
+    return converted_call(f, args, kwargs, options=options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:331: in converted_call
+    return _call_unconverted(f, args, kwargs, options, False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:459: in _call_unconverted
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:227: in call
+    return tfd.MultivariateNormalDiag(self.loc, self.scale_diag)
+                                                ^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:237: in scale_diag
+    return tf1.nn.softplus(self._untransformed_stddev) + 1e-5  # keep &gt; 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/math_ops.py:653: in softplus
+    return gen_nn_ops.softplus(features, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_nn_ops.py:12141: in softplus
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:778: in _apply_op_helper
+    _ExtractInputsAndAttrs(op_type_name, op_def, allowed_list_attr_map,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:551: in _ExtractInputsAndAttrs
+    values = ops.convert_to_tensor(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:234: in convert
+    ret = conversion_func(value, dtype=dtype, name=name, as_ref=as_ref)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:2378: in _dense_var_to_tensor
+    return var._dense_var_to_tensor(dtype=dtype, name=name, as_ref=as_ref)  # pylint: disable=protected-access
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:1624: in _dense_var_to_tensor
+    return self.value()
+           ^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:658: in value
+    return self._read_variable_op()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:843: in _read_variable_op
+    result = read_and_set_handle(no_copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:833: in read_and_set_handle
+    result = gen_resource_variable_ops.read_variable_op(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_resource_variable_ops.py:548: in read_variable_op
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:778: in _apply_op_helper
+    _ExtractInputsAndAttrs(op_type_name, op_def, allowed_list_attr_map,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:551: in _ExtractInputsAndAttrs
+    values = ops.convert_to_tensor(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Exception encountered when calling layer 'learnable_multivariate_normal_diag_66' (type LearnableMultivariateNormalDiag).
+E   
+E   resource: Attempting to capture an EagerTensor without building a function.
+E   
+E   Call arguments received by layer 'learnable_multivariate_normal_diag_66' (type LearnableMultivariateNormalDiag):
+E     • inputs=tf.Tensor(shape=(10,), dtype=float32)</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="testSampleStaticPriorFullFixed" time="0.024"><failure message="RuntimeError: Exception encountered when calling layer 'learnable_multivariate_normal_diag_68' (type LearnableMultivariateNormalDiag).&#10;&#10;resource: Attempting to capture an EagerTensor without building a function.&#10;&#10;Call arguments received by layer 'learnable_multivariate_normal_diag_68' (type LearnableMultivariateNormalDiag):&#10;  • inputs=tf.Tensor(shape=(10,), dtype=float32)">tensorflow_probability/examples/disentangled_vae_test.py:441: in testSampleStaticPriorFullFixed
+    sample, dist = self.model_full.sample_static_prior(
+tensorflow_probability/examples/disentangled_vae.py:859: in sample_static_prior
+    dist = self.static_prior()
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:211: in __call__
+    return super(LearnableMultivariateNormalDiag, self).__call__(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/training.py:588: in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:61: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/engine/base_layer.py:1155: in __call__
+    outputs = call_fn(inputs, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:155: in error_handler
+    raise new_e.with_traceback(e.__traceback__) from None
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tf_keras/src/utils/traceback_utils.py:96: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:690: in wrapper
+    return converted_call(f, args, kwargs, options=options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:331: in converted_call
+    return _call_unconverted(f, args, kwargs, options, False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/autograph/impl/api.py:459: in _call_unconverted
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:227: in call
+    return tfd.MultivariateNormalDiag(self.loc, self.scale_diag)
+                                                ^^^^^^^^^^^^^^^
+tensorflow_probability/examples/disentangled_vae.py:237: in scale_diag
+    return tf1.nn.softplus(self._untransformed_stddev) + 1e-5  # keep &gt; 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/dispatch.py:1264: in op_dispatch_handler
+    return dispatch_target(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/math_ops.py:653: in softplus
+    return gen_nn_ops.softplus(features, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_nn_ops.py:12141: in softplus
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:778: in _apply_op_helper
+    _ExtractInputsAndAttrs(op_type_name, op_def, allowed_list_attr_map,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:551: in _ExtractInputsAndAttrs
+    values = ops.convert_to_tensor(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:234: in convert
+    ret = conversion_func(value, dtype=dtype, name=name, as_ref=as_ref)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:2378: in _dense_var_to_tensor
+    return var._dense_var_to_tensor(dtype=dtype, name=name, as_ref=as_ref)  # pylint: disable=protected-access
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:1624: in _dense_var_to_tensor
+    return self.value()
+           ^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:658: in value
+    return self._read_variable_op()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:843: in _read_variable_op
+    result = read_and_set_handle(no_copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/resource_variable_ops.py:833: in read_and_set_handle
+    result = gen_resource_variable_ops.read_variable_op(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/ops/gen_resource_variable_ops.py:548: in read_variable_op
+    _, _, _op, _outputs = _op_def_library._apply_op_helper(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:778: in _apply_op_helper
+    _ExtractInputsAndAttrs(op_type_name, op_def, allowed_list_attr_map,
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/op_def_library.py:551: in _ExtractInputsAndAttrs
+    values = ops.convert_to_tensor(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/profiler/trace.py:183: in wrapped
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:757: in convert_to_tensor
+    return tensor_conversion_registry.convert(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_conversion_registry.py:209: in convert
+    return overload(dtype, name)  #  pylint: disable=not-callable
+           ^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/ops.py:646: in __tf_tensor__
+    raise RuntimeError(
+E   RuntimeError: Exception encountered when calling layer 'learnable_multivariate_normal_diag_68' (type LearnableMultivariateNormalDiag).
+E   
+E   resource: Attempting to capture an EagerTensor without building a function.
+E   
+E   Call arguments received by layer 'learnable_multivariate_normal_diag_68' (type LearnableMultivariateNormalDiag):
+E     • inputs=tf.Tensor(shape=(10,), dtype=float32)</failure></testcase><testcase classname="tensorflow_probability.examples.disentangled_vae_test.DisentangledSequentialVAETest" name="test_session" time="0.022" /></testsuite></testsuites>

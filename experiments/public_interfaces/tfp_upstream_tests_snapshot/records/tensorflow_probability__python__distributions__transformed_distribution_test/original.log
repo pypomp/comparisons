@@ -1,0 +1,55 @@
+............................................................FFF......... [ 47%]
+...s...............ss.......ss..........sss....s...s...s................ [ 94%]
+........                                                                 [100%]
+=================================== FAILURES ===================================
+_________ TransformedDistributionTest.testShapeChangingBijector_eager __________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/transformed_distribution_test.py:365: in testShapeChangingBijector
+    softmax = softmax_centered.SoftmaxCentered()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+__ TransformedDistributionTest.testShapeChangingBijector_eager_no_tf_function __
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/transformed_distribution_test.py:365: in testShapeChangingBijector
+    softmax = softmax_centered.SoftmaxCentered()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_________ TransformedDistributionTest.testShapeChangingBijector_graph __________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/transformed_distribution_test.py:365: in testShapeChangingBijector
+    softmax = softmax_centered.SoftmaxCentered()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__distributions__transformed_distribution_test/original.xml -
+=========================== short test summary info ============================
+FAILED tensorflow_probability/python/distributions/transformed_distribution_test.py::TransformedDistributionTest::testShapeChangingBijector_eager
+FAILED tensorflow_probability/python/distributions/transformed_distribution_test.py::TransformedDistributionTest::testShapeChangingBijector_eager_no_tf_function
+FAILED tensorflow_probability/python/distributions/transformed_distribution_test.py::TransformedDistributionTest::testShapeChangingBijector_graph
+3 failed, 138 passed, 11 skipped in 22.47s

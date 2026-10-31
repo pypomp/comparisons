@@ -1,0 +1,22 @@
+PFJAX v2：修复 IF2 轮内冷却的精度
+
+本轮发现并修复一个实际问题。v1 用 int32 时间索引直接计算 t/n_obs，JAX 因而用 float32 计算该比值，再将冷却系数用于 float64 参数。参数虽然保留 float64 类型，冷却系数已损失精度。
+
+v2 先将 t 转成参数数组的 dtype，再除以 n_obs。算法公式、参数扰动尺度、随机流、原 particle_filter、重采样和优化器都未改变。float32 路径不变；float64 路径有有意的数值修正。不能将 v1 的 float64 轨迹称为 v2 的轨迹。
+
+证据：
+- 新增 7 个观测的 float64 回归测试，参数误差容差 5e-14、likelihood 容差 5e-13。修复前失败，修复后通过；没有放宽原测试容差。
+- float64：28 项测试通过；float32：27 项通过、只跳过需要 float64 的新增用例。
+- 5 项原 Brownian PF/RB 测试、原 BMModel 接口示例、完整 Dacca J8 接入检查通过。
+- 独立递推不调用 candidate 的 particle_filter/iterated_filter。精度和编译边界匹配后，三个预先选定种子 × 两轮 IF2，在 float32 和 float64 下均与候选实现的完整参数集合及扰动 likelihood 逐位一致。
+- 另保留原 Python 外层参考的全部差异；其部分尺度乘法和累加在 JIT 外执行，不能当成完全相同的浮点运算。没有删除原失败记录。
+
+会议要求：
+IF2 继续调用原 PF 时间循环、模型 pf_init/pf_step 及原 multinomial 重采样；我们提供通用参数扰动、冷却和完整参数集合跨轮续接。particle_filter_mop 的权重导数修正仍是新增方法，包括 alpha=1；不是原包的 OT 或 score/RB 方法。完整 diff 和仅本轮 diff 分别提供。
+
+Kevin 的三个问题分别回答：
+正确性：以上是本轮直接验证的范围，GPU、其他 JAX 版本和全部上游测试未据此验证。
+运行时间：不使用这些测试或示例的总耗时做排名。独立前向 PF 计时保存在 implementation_validation_20261030/runtime，不包含 IF2 或 Adam，也不是 J5000 的 GPU 正式比较。
+优化效果：没有新增正式优化结果。历史 PFJAX formal_v1/evaluation_v2 对应旧冻结驱动；保留全部拟合失败、原始评分和成本，不将其冒充 v2 公共接口的优化验证。
+
+阅读 full.patch、changes_from_v1.patch、regression_before_fix.log、diagnostic_float32.json、diagnostic_float64.json、executed_checks.json。

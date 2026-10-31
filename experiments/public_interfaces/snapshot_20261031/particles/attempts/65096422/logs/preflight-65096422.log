@@ -1,0 +1,26 @@
+Verified 337 source/input hashes
+{"phase": "failed", "time": 1793391847.641132, "error": "PackageNotFoundError('numba')", "traceback": "Traceback (most recent call last):\n  File \"/usr/lib64/python3.12/importlib/metadata/__init__.py\", line 397, in from_name\n    return next(cls.discover(name=name))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nStopIteration\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/gpfs/accounts/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/particles/preflight.py\", line 68, in <module>\n    try:main()\n        ^^^^^^\n  File \"/gpfs/accounts/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/particles/preflight.py\", line 15, in main\n    versions={n:importlib.metadata.version(n) for n in ['numpy','scipy','numba','joblib','jax']},\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib64/python3.12/importlib/metadata/__init__.py\", line 889, in version\n    return distribution(distribution_name).version\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib64/python3.12/importlib/metadata/__init__.py\", line 862, in distribution\n    return Distribution.from_name(distribution_name)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib64/python3.12/importlib/metadata/__init__.py\", line 399, in from_name\n    raise PackageNotFoundError(name)\nimportlib.metadata.PackageNotFoundError: No package metadata was found for numba\n"}
+Traceback (most recent call last):
+  File "/usr/lib64/python3.12/importlib/metadata/__init__.py", line 397, in from_name
+    return next(cls.discover(name=name))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/gpfs/accounts/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/particles/preflight.py", line 68, in <module>
+    try:main()
+        ^^^^^^
+  File "/gpfs/accounts/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/particles/preflight.py", line 15, in main
+    versions={n:importlib.metadata.version(n) for n in ['numpy','scipy','numba','joblib','jax']},
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/importlib/metadata/__init__.py", line 889, in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/importlib/metadata/__init__.py", line 862, in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.12/importlib/metadata/__init__.py", line 399, in from_name
+    raise PackageNotFoundError(name)
+importlib.metadata.PackageNotFoundError: No package metadata was found for numba

@@ -1,0 +1,10 @@
+................................................s....................... [ 73%]
+.........................s                                               [100%]
+=============================== warnings summary ===============================
+tensorflow_probability/python/distributions/skellam_test.py: 100 warnings
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/math/bessel.py:173: DeprecationWarning: Bitwise inversion '~' on bool is deprecated and will be removed in Python 3.16. This returns the bitwise inversion of the underlying int object and is usually not what you expect from negating a bool. Use the 'not' operator for boolean negation or ~int(x) if you really want the bitwise inversion of the underlying int.
+    cond=lambda stop, *_: ~stop,
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__distributions__skellam_test/original.xml -
+96 passed, 2 skipped, 100 warnings in 41.13s

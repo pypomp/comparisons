@@ -1,0 +1,98 @@
+{
+  "updated_at_UTC": "2026-10-30T20:37:29.718855+00:00",
+  "upstream_commit": "a7487ce1c344c70e1a244e75725b950deb15e146",
+  "original_candidate_modified": false,
+  "upstream_test_inventory": "No automated tests or CI in the full fixed upstream archive; not a passing test suite",
+  "first_preflight": {
+    "job_id": 65096176,
+    "state": "FAILED",
+    "exit_code": "1:0",
+    "allocation_elapsed_seconds": 234,
+    "node": "gl1508",
+    "GPU": "NVIDIA A40",
+    "all_source_hashes_verified_before_and_after": 595,
+    "archive_sha256": "898cd6fa2b4f7975596d4559f878952ed63bf97d2fa83434fde93b617b891e4c",
+    "failures": [
+      "pytest bootstrap missing pure Python py.py",
+      "public IF2 raises device mismatch with cuda device call sites; cuda:0 replacement is pending GPU validation"
+    ]
+  },
+  "native_PF_timing": {
+    "complete": true,
+    "source_job": 65096176,
+    "T": 600,
+    "J": 5000,
+    "B": 1,
+    "point": "frozen published",
+    "warmups": 2,
+    "measured_calls_per_package": 7,
+    "median_original_seconds": 8.576096266508102,
+    "median_candidate_seconds": 8.565341708250344,
+    "original_divided_by_candidate": 1.0012555901006728,
+    "same_seed_all_600_increments_exact": true,
+    "interpretation": "Effectively the same native PF cost in this one-A40 fixed-point check; no claimed optimizer speedup"
+  },
+  "CPU_added_tests": {
+    "passed": 34,
+    "not_GPU": true
+  },
+  "formal_driver_CPU_regression": {
+    "passed": true,
+    "device": "cpu",
+    "formal": false,
+    "T": 12,
+    "J": 32,
+    "rows": 2,
+    "gradient_steps": 3,
+    "full_optimizer_resume_exact": true,
+    "BC_initial_parameters_and_empty_Adam_hash_identical": true,
+    "BC_per_iteration_rng_identical": true,
+    "forced_failure_preserves_other_row_and_rng": true,
+    "failed_row_last_valid_parameters_and_optimizer_retained": true,
+    "swarm_reset": false
+  },
+  "repair": {
+    "job": 65097403,
+    "state_last_observed": "PENDING",
+    "time_limit_seconds": 3300,
+    "combined_actual_first_plus_second_cap_seconds": 3534,
+    "source_manifest_sha256": "9b7334df9d44e0b80cd9c8f63fb7dbb4f90114cf10c7e6ffadb0ea6358cc0756",
+    "source_files": 600,
+    "remote_pytest_import_validated": true,
+    "native_PF_not_repeated": true
+  },
+  "formal_submitted": true,
+  "formal_driver_path": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/pydpf/formal_v1/runtime/driver.py",
+  "formal_gate": "Queued dependencies only; fitting requires successful CUDA correctness, measured cost within30h, and new CUDA optimizer-overflow driver tests",
+  "formal_execution_started": false,
+  "formal_jobs": {
+    "warm": {
+      "job_id": 65098862,
+      "depends_afterok": 65097403,
+      "allocation_seconds": 24300,
+      "GPUs": 1,
+      "GPU_model": "A40"
+    },
+    "A": {
+      "job_id": 65098863,
+      "depends_afterok": 65097403,
+      "allocation_seconds": 27900,
+      "GPUs": 1,
+      "GPU_model": "A40"
+    },
+    "B": {
+      "job_id": 65098864,
+      "depends_afterok": 65098862,
+      "allocation_seconds": 27900,
+      "GPUs": 1,
+      "GPU_model": "A40"
+    },
+    "C": {
+      "job_id": 65098865,
+      "depends_afterok": 65098862,
+      "allocation_seconds": 27900,
+      "GPUs": 1,
+      "GPU_model": "A40"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "local_review_completed": true,
+  "files_in_archive": 39,
+  "all_archive_sha256_verified": true,
+  "archive": "review_bundle.zip",
+  "sha256": "fb3a14a2b6ef0d5a50cf6cd9f22cb16e0995fad0919b7da95315dba4cde4abf8",
+  "bytes": 4198770,
+  "review_manifest_sha256": "393218cda4a9c650f41e864d4bedbdc38e5267debb92d1c3a163c5986588d00f",
+  "numerical_limitations_retained": true
+}

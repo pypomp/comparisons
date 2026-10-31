@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v3/validation/check_dacca_api.py", line 259, in <module>
+    main()
+  File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v3/validation/check_dacca_api.py", line 75, in main
+    np.testing.assert_allclose(
+  File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/lib/python3.12/site-packages/numpy/testing/_private/utils.py", line 1780, in assert_allclose
+    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),
+  File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/lib/python3.12/site-packages/numpy/testing/_private/utils.py", line 988, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError: 
+Not equal to tolerance rtol=1e-05, atol=0.0001
+
+Mismatched elements: 1 / 23 (4.35%)
+Mismatch at index:
+ [0]: 8.770370483398438 (ACTUAL), 8.769608497619629 (DESIRED)
+Max absolute difference among violations: 0.00076199
+Max relative difference among violations: 8.688937e-05
+ ACTUAL: array([ 8.770370e+00,  1.873107e+00,  6.216329e+01,  7.822054e+01,
+       -8.327467e+01, -1.261811e+02, -7.828442e+00,  2.516051e+01,
+       -1.235284e+02, -1.207343e+02,  2.574471e+02,  1.202986e+02,...
+ DESIRED: array([ 8.769608e+00,  1.873090e+00,  6.216326e+01,  7.822035e+01,
+       -8.327434e+01, -1.261808e+02, -7.828401e+00,  2.516052e+01,
+       -1.235280e+02, -1.207339e+02,  2.574465e+02,  1.202984e+02,...

@@ -1,0 +1,54 @@
+{
+  "checked_at_utc": "2026-10-31T15:22:50.370551+00:00",
+  "heartbeat_trigger_utc": "2026-10-31T12:18:58.745Z",
+  "existing_SSH_socket_exists": false,
+  "SSH_retry_performed": false,
+  "reason_no_SSH_retry": "previous authentication failure already notified and control socket still absent",
+  "remote_job_states_currently_verified": false,
+  "runner_alive": true,
+  "runner_pid": 95022,
+  "runner_ps": "  PID  ELAPSED STAT COMMAND\n95022 18:56:52 Ss   /opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/Resources/Python.app/Contents/MacOS/Python /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/run_upstream_pairs_with_deps.py\n",
+  "tfp_test_summary": {
+    "completed_file_pairs": 209,
+    "expected_file_pairs": 515,
+    "all_files_attempted": false,
+    "candidate_only_failing_files": [],
+    "candidate_additional_failed_tests_including_common_failing_files": [],
+    "side_summary": {
+      "original": {
+        "exit_code_counts": {
+          "1": 69,
+          "5": 2,
+          "0": 135,
+          "124": 3
+        },
+        "finished_pytest_counts": {
+          "tests": 9495,
+          "errors": 42,
+          "failures": 360,
+          "skipped": 403
+        },
+        "timeouts": 3,
+        "note": "XML counts include only processes that emitted XML; timeout or abort partial progress is not a pass"
+      },
+      "candidate": {
+        "exit_code_counts": {
+          "1": 69,
+          "5": 2,
+          "0": 135,
+          "124": 3
+        },
+        "finished_pytest_counts": {
+          "tests": 9495,
+          "errors": 42,
+          "failures": 360,
+          "skipped": 403
+        },
+        "timeouts": 3,
+        "note": "XML counts include only processes that emitted XML; timeout or abort partial progress is not a pass"
+      }
+    }
+  },
+  "new_submissions": false,
+  "notification": "DONT_NOTIFY: existing authentication issue already reported; local tests progressing with no candidate-only failures"
+}

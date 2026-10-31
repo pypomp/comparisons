@@ -1,0 +1,21 @@
+{
+  "iteration": 1,
+  "seed": 1605419347,
+  "seconds": 0.15323425002861768,
+  "alpha": 1.0,
+  "active_before": [
+    true,
+    true
+  ],
+  "accepted": [
+    true,
+    false
+  ],
+  "training_loss": [
+    6.060186862945557,
+    6.0878682136535645
+  ],
+  "batch_slots": 2,
+  "generator_after_sha256": "30c6dac742c8b9d793a9fcbb0b540359e236b5bfac7b9a8d4e8e3247093852b0",
+  "fallback": false
+}

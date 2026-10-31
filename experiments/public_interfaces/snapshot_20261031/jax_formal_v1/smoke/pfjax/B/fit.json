@@ -1,0 +1,22 @@
+{
+  "method": "B",
+  "alpha": 1.0,
+  "fit_failed": false,
+  "failure_reason": null,
+  "iterations_requested": 2,
+  "iterations_completed": 2,
+  "initial_parameter_sha256": "4b6c69263da8b867f054ae52f6b38ff679b6730b6af934e5e523a1fd54dbe56e",
+  "initial_adam_sha256": "9a1a2c5b189d4e251afc4288a687446e6a543b0cd35b9b26d13ebebcbe57dea2",
+  "gradient_key": [
+    2022272094,
+    4197065971
+  ],
+  "gradient_seconds": 0.04820112488232553,
+  "gradient_compile_seconds_attributed_to_first_use": 0.0,
+  "IF2_seconds_attributed": 0.027103292057290673,
+  "IF2_compile_seconds_attributed": 0.7409402090124786,
+  "logical_fit_seconds": 0.0753044169396162,
+  "B1_individual_latency": true,
+  "initialization_computation_physically_shared_B_C": true,
+  "terminal_estimation_sha256": "08d2fa872ca6b2d376358bfaa4671e4b91d5b32f99481862c207e5e1b09b7d26"
+}

@@ -1,0 +1,51 @@
+Cuthbert实现与2026-10-29会议要求的对应
+
+结论
+Cuthbert的核心算法扩展符合Ed/Giles在会议中描述的方向：实际使用包内PF更新与重采样，在通用代码中处理参数扰动，在原ADPF重采样机制上增加梯度折扣。已有独立补丁、公共fit接口、测试和示例。
+尚不能把实验完成说成全部代码交付要求已满足。Dacca实验保留了另外的IF2单步和训练循环，与通用fit实现存在重复；补丁也需要按算法修改、支持代码、测试和文档分别说明，才能让人判断是否为必要改动。
+本结论是本轮源码和会议记录核对，不是Ed/Giles或维护者已经认可现有补丁，也不是本轮重新运行数值测试。
+
+会议依据
+15:20:13、15:20:40—15:21:40：Ed问是否有对该包有意义的贡献，IF2/IFAD是否真正使用它的PF和接口。
+15:27:20：按该包的框架和写法实现，是他们希望的方向。
+15:28:06—15:28:52：模型层可以容纳参数扰动，但IF2最好由通用代码处理，避免每个模型单独修改；DMOP是在已有ADPF上增加折扣。
+15:29:17—15:29:59：Giles要求从对方代码出发做必要修改，并能给出可读的diff。
+这些发言没有规定必须直接改particle_filter.py，也没有规定通用函数名称或行数上限。
+
+已做到
+1. 真正复用原PF。
+   iterated_filtering.py:115和dmop.py:74调用particle_filter.build_filter。
+   _estimation.py:139的scan_final逐步调用原filter_prepare/filter_combine；原filter_combine负责重采样、传播、权重和likelihood累计。
+   原particle_filter.py和systematic.py与固定基线逐字节相同。
+   scan_final自行写了时间循环，只返回终态并支持checkpoint；它不等于重新实现PF更新，但也不能说完全直接调用原有高层cuthbert.filter。
+2. IF2是通用模块中的扩展。
+   iterated_filtering.fit接收model_factory、参数PyTree和扰动设置，在模块内部构造state/parameters粒子以及传播/观测包装，保留整个参数集合进入下一轮。
+   用户仍需提供参数到原包三个模型回调的model_factory；不需为每个模型手写随机游走或IF2循环。适用范围是当前实现支持的bootstrap模型，不能泛称支持全部Cuthbert模型。
+3. DMOP沿用原ADPF机制。
+   autodiff.py:22新增discounted_stop_gradient_decorator，调用原resampler，再把alpha*(selected-stop_gradient(selected))加到输出log权重。
+   前向修正为零；折扣加入继承的权重导数。原stop_gradient_decorator保留，未替换原PF实现。
+4. 不是只有Dacca专用脚本。
+   iterated_filtering.fit、dmop.fit、ifad.fit已经存在；示例parameter_estimation_ifad.md:99实际调用ifad.fit。
+   核心新增模块没有导入PyPOMP；优化器通过兼容Optax的init/update接口传入。
+   既有测试日志记录29个新增测试、88个选定回归测试通过；本轮未重跑，不能当本轮数值验证结果。
+
+还需整理或修改的代码问题
+1. 通用接口和Dacca实验没有完全共用实现。
+   早期work/cuthbert-dacca/kernels.py:18另写if2_step；:53另写gradient_step，以支持计时停止及保存状态。
+   后来work/cuthbert-dacca-paper/kernels.py:18另写cuthbert_mif，包含论文的轮内冷却；:51另写cuthbert_train，使用PyPOMP Adam匹配论文配置。
+   两条Dacca路径确实复用原PF和新增dmop.log_likelihood，但都没有直接用通用iterated_filtering.fit/dmop.fit/ifad.fit完成整段训练。
+   因此，A/B/C完成证明的是对应实验实现已经执行，不能自动证明拟交付公共接口已在Dacca上执行了同样的完整流程。
+2. 需要说明哪些新增代码是必要的。
+   现有补丁17文件、1495新增行含测试文档；这个总数本身既不能证明改动很小，也不能证明改动过大。
+   梯度折扣位置清楚；外层循环、终态滤波、输入检查、失败处理和评分应逐项说明用途，评估能否复用已有接口。
+   scan_final避免高层filter保存全部时间历史，不能不考虑内存和checkpoint就机械替换。
+3. 公共接口的范围需要明确。
+   当前只支持相应连续bootstrap模型、逐观测重采样等约束；公共API是否被维护者接受尚未确认。
+
+建议的下一步（待逐项判断必要性，不是会议规定的具体函数设计）
+先判断各驱动与通用实现的差异是否必要。若确认重复且适合共用，可在独立开发代码中把IF2的一轮计算和梯度的一次更新整理为可共用的函数；通用fit与实验驱动调用同一份实现，状态、冷却及优化器设置仍可明确配置。
+用固定输入和随机数的针对性测试核对重构前后参数、完整参数集合、优化器状态及失败处理；这是实现验证，无需重新跑大规模参数估计实验。
+整理可读diff，并分别列出原函数修改、新增算法、支持代码、测试和文档。示例直接执行拟交付接口，清楚标出模型接入和优化器来源。
+现有冻结源码、结果、历史图和成本保留。当前尚未执行上述重构，也未提交新实验或向外发送材料。
+
+后续要求澄清：以implementation_requirements_20261029.txt为准。公共fit与实验驱动存在差异本身不构成不符合会议要求的证据；需要说明差异理由与对结果、复用的影响。

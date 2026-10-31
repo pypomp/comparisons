@@ -1,0 +1,63 @@
+PFJAX：原包调用、IF2 与梯度修正的候选实现
+2026-10-30
+
+结论
+本轮已将 IF2 改成调用完整的 PFJAX particle_filter；逐月滤波循环不再由 Dacca 实验代码另写。参数扰动、冷却和重复滤波放在可复用函数中，模型继续提供原有 pf_init/pf_step。另将旧 Dacca 专用的梯度修正提取为通用 particle_filter_mop，通过原包的模型与重采样回调实现。
+这是本地候选修改，尚未获得维护者认可。原有正式实验和分数未改动。本次没有运行新的正式比较。
+
+原包是什么
+固定源码为 97652aa1bdff73a92c0286549b010e99cc6f7264，项目元数据版本 0.0.3rc1；本地 Git 源树的 192 个受控文件与基线一致。
+particle_filter 使用模型的 pf_init 和 pf_step，内部执行 vmap、lax.scan、likelihood 累加和指定重采样。原生 resample_multinomial 支持状态 PyTree。
+原生 score=True 和 particle_filter_rb(score=True) 是 Poyiadjis 等的两种 score 估计。官方 stochopt_tutorial.qmd 推荐 RB score，示例优化器来自 Optax。
+原生 resample_ot 用 OTT 做最优传输重采样，改变有限粒子的前向滤波；它不是我们新增的 alpha=1 修正。
+
+为什么需要增加一个原 PF 参数
+原 particle_filter 只会用同一个 theta 分别调用 pf_init，无法按给定顺序接收 J 个已有参数粒子。IF2 必须把上一轮的整组参数带入下一轮；将它们替换为均值或再次随机抽取都改变了算法。
+因此加入 keyword-only 的 initial_particles=(x_particles, logw)。它仅替代 y_meas[0] 的初始化结果；原始 key 拆分仍被消耗，后面的随机数位置不变。它不是断点恢复接口，不接续旧的累计 likelihood；与 score/fisher 同时使用会报错。
+原 filter_step、逐时 scan、logsumexp 累加、重采样和 RB 函数未修改。不传此参数时保留原行为。
+本候选没有合并历史实验中的 key 数组切片性能补丁，也没有宣称大 J 下的编译效率已改进。
+
+新增 IF2 具体做什么
+iterated_filter_step 接收 (J,P) 的整组参数，初始扰动后逐粒子调用原模型 pf_init；包装后的状态包含原状态、参数和时间索引。
+调用原 particle_filter 时传入上述初始化。每次原 PF 调用包装后的 pf_step，先扰动该粒子的参数，再调用原模型 pf_step；原包按同一祖先选择状态与参数。
+每个观测的归一化和 likelihood 累积由原 PF 完成。最后再调用原 resample_multinomial 得到等权的完整参数集合，交给下一轮。
+iterated_filter 只负责重复这些完整滤波；没有用均值重新生成参数集合。返回均值用于查看或后续优化，完整参数集合另行保留。
+支持不同 P、状态 PyTree、观测 PyTree、零扰动坐标、初始值参数只在初始化扰动、轮内冷却、JIT 和分段运行。
+第一条观测的处理遵守模型 pf_init；如果需要在此时扰动普通参数，必须设置其 initial_scale。Dacca 的 pf_init 自己包含第一个月的传播。这些约定已写入接口文档。
+
+新增梯度具体做什么
+particle_filter_mop 不修改原来的 score/RB 或 OT，也没有另写一个 PF 循环。包装模型在粒子中增加一个值为零的 correction；包装重采样调用原 resample_multinomial，保留祖先索引。
+若选中祖先的 log 权重为 l，构造 c=alpha*(l-stop_gradient(l))，再减去 logmeanexp(c)，加入下一次原模型返回的 log 权重。分母项避免原 PF 累计 log-normalizer 时重复计入导数。状态导数继续通过祖先状态传播。
+alpha=0 对应原 PF 直接求导；alpha=1 是我们增加的权重梯度修正；0<alpha<1 加入折扣。不能将 alpha=1 写成 PFJAX 原有 ADPF，也不能把这个方法叫作 OT 的修改版。
+此接口要求明确声明 bootstrap、可重参数化的状态采样、无 pf_aux；不支持一般 proposal、OT 或 Fisher。这个声明需要模型作者保证，代码无法自动证明采样器满足条件。
+
+模型与优化器的边界
+普通模型只需原来的逐粒子 theta 接口；参数变换仍由模型定义。新增 IF2 不需要 state_lpdf。
+示例直接使用未改的 PFJAX BMModel，真实执行三种调用：原 RB score + Optax Adam；IF2 后接同一 RB score + Optax Adam；IF2 后接新增折扣梯度 + Optax Adam。三个示例各只有三次更新，不能作为方法优劣比较。
+没有新增一个冒充原生功能的 Adam。Optax 是示例依赖，新增包内模块本身不导入 Optax。
+
+与历史 Dacca 代码的关系
+旧 IF2 在 bridge.py 中自写逐月 scan，只调用原包重采样。新 IF2 使用原包完整 PF，参数初始扰动及随机数分配已有明确新约定，不宣称重放旧正式 IF2 轨迹。
+旧梯度使用 CorrectedDacca 和 corrected_resampler。新接口对任何满足上述条件的原 PFJAX 模型作相同包装，不再要求为每个模型编写一个 CorrectedModel 子类。
+完整 Dacca 检查中的旧包装来自逐字节复制的冻结 bridge.py；它与新包装均在当前原 PF 上执行，比较的不是重新运行历史 GPU 拟合。
+formal_v1 的 592 个 manifest 条目及 evaluation_v2 的 10 个条目核验不变。这是各 manifest 的条目数，不能相加当作互不重合的唯一文件数。
+
+实际检查
+27 项新增测试分别在 float64 和 float32 运行，全部通过；另有 5 项原包 Brownian PF/RB 测试通过，4 项非 Brownian 测试未在该次选取中运行。
+包括：与独立加载的原 PF 逐位对照；预先初始化与普通初始化对照；独立 Python 时间循环核对 IF2；整组参数分段续接；固定坐标；非法配置；非有限 likelihood；嵌套状态与观测；alpha=0/.5/.97/1 的独立状态切向量与权重导数递推。
+这些导数检查没有用前向值的有限差分冒充 stop-gradient 检查，也没有声称验证了二阶导数或有限粒子下无偏的 log-likelihood 梯度。
+原 BMModel 示例已实际执行完成，并保存全部短例结果，包括不利结果，不作拟合质量结论。
+完整 Dacca：600 个月、每月 20 Euler 步、23 参数、J8、CPU float32。执行两轮 IF2、一次外部 Optax Adam 和两次独立原 PF 评分。
+两轮 IF2 与独立逐步计算的参数最大差分别 1.1920929e-7、5.9604645e-8；扰动 loglik 差分别 0.0009765625、0。使用事先在检查代码中写明的容差，不声称逐位一致。
+在发布参数处，alpha=0/.97/1 的前向 likelihood 与原 PF 的差均为 0；与冻结梯度包装的梯度最大差均为 0。两次最终 PF 值仅确认接口可执行，不声明 MCSE 或评分精度通过。
+测试使用 JAX 0.12.0.1、OTT 0.6.0、Optax 0.2.8、本地 CPU。保留 pytest-env 未安装的配置警告；x64 由每条命令的环境变量明确指定。另保留上游 JAXopt 弃用警告。
+
+原有方法的限制仍保留
+原始 Dacca 当前只提供 20 步 Euler 模拟，没有可直接求值的月度 state_lpdf，因此原生 score/RB 接口仍不适用。没有人为补造该密度。
+历史 GPU 的完整 Dacca T600/J64 检查中，默认 OT 隐式梯度失败；固定 100 次 Sinkhorn 直接展开的梯度也含非有限值。原记录随审查包保存。本轮没有调参、重试，也不能据此断言 PFJAX 的 OT 在所有模型中不可用。
+
+当前支持范围与待讨论项
+IF2 限定参数向量、单粒子轴、multinomial、无辅助 PF。模型参数转换及正确的 proposal 权重由模型负责。valid 标记检查终态和设置，不是统计收敛判断；无逐行恢复、失败重试或 checkpoint 写入器。所有请求的轮次都会执行，调用者须检查每轮 valid。
+MOP 只支持上述 bootstrap 条件，原生 score/RB/OT 保持可用并单列。
+GPU、上游全部测试、文档构建、打包安装和性能尚未验证。维护者仍需决定 initial_particles 接口及新增功能应放置的位置，不能将本地测试通过说成已可合并。
+完整补丁、仅原 PF 初始化入口的子补丁、基线源码、真实检查日志、示例、Dacca 接入脚本和文件校验均已备好。打包校验只检查文件与补丁应用，不冒充数值检查。

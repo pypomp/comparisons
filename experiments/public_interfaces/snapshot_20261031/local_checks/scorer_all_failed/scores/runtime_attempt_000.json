@@ -1,0 +1,9 @@
+{
+  "compile_seconds": 0.5868647909956053,
+  "jax": "0.12.0.1",
+  "device": "cpu:0",
+  "device_kind": "cpu",
+  "node": null,
+  "job": null,
+  "started_at_utc": "2026-10-30T20:32:13.707101+00:00"
+}

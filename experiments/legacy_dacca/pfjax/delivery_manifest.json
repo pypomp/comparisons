@@ -1,0 +1,26 @@
+{
+  "visual_check_pending": false,
+  "files": {
+    "audit.json": "c91e1374c094fa6f33587918d3d9fb52f0cbe8681a296c346bc370ac5acb2cad",
+    "REPORT_ZH.txt": "9cd1a95bf7617c7edad364de2575cb9f3ec1028272bdfa18ef142c2a915de02a",
+    "comparison.png": "6366623d0992f3a2f57fb200b6e1c968cfe649f5277e7dbc287a89435a4f6ada",
+    "comparison.pdf": "32b97a8a7d68ade7e2c752a60a3287e7aa65ab6cb3ae98250c1cc43e9bf10d16",
+    "reproduction.tar.gz": "27033e0a37005b901eb14d97efb99a2cf8c26986c992fb853e44bb0e8b362274",
+    "endpoints.csv": "851cd47b6e1f85a2a41d8bcf235f9a0b11365b18591a60f8509cd2514ce81318",
+    "endpoints.json": "94763c116819d0ad84692162e0ae27916b815667ffb44542000277e74734f767",
+    "visual_check.json": "720ae93c12b795de8d10e6bc6bde3f60b33d861b0288ba7ad48c866bef16cbab"
+  },
+  "visual_check": {
+    "checked_UTC": "2026-10-29T04:27:18.964130+00:00",
+    "passed": true,
+    "checked_file": "comparison.png",
+    "checks": [
+      "all36 endpoints shown",
+      "loglikelihood and batch fit time separately labelled",
+      "same A40 batch12 timing",
+      "local extensions and native OT limitation visible",
+      "no clipped labels or footer overlap"
+    ],
+    "image_sha256": "6366623d0992f3a2f57fb200b6e1c968cfe649f5277e7dbc287a89435a4f6ada"
+  }
+}

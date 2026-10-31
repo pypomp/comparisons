@@ -1,0 +1,95 @@
+{
+  "audited_at_utc": "2026-10-31T21:40:35.599253+00:00",
+  "artifact_integrity_passed": true,
+  "all_GPU_correctness_gates_passed": false,
+  "gate_actual_GPU_seconds": {
+    "jax": 1803,
+    "tfp": 432,
+    "pydpf": 1411
+  },
+  "prior_failed_deployment_GPU_seconds": {
+    "jax": 73,
+    "pydpf": 234
+  },
+  "formal_GPU_jobs_cancelled_before_start": true,
+  "formal_GPU_fit_endpoints": 0,
+  "cancellation_reason_in_sacct": "None; dependency declarations and cancellation times retained, actor not established",
+  "failures": {
+    "cuthbert": {
+      "GPU_Dacca_check_passed": true,
+      "Dacca_J": 32,
+      "full_GPU_suite_passed": false,
+      "suite_timeout_seconds": 1200,
+      "failures_visible_before_timeout": 3,
+      "failure_test_names_available": false,
+      "public_cost_measurement_run": false,
+      "next_check": "Identify each failing test and run unchanged upstream and candidate tests under identical GPU settings; retain timeout as incomplete coverage."
+    },
+    "pfjax": {
+      "configured_GPU_suite_passed": 72,
+      "GPU_Dacca_check_passed": false,
+      "failed_comparison": "public gradient versus historical implementation",
+      "violating_coordinate": 1,
+      "absolute_difference": 0.0006084442138671875,
+      "rtol": 2e-05,
+      "atol": 0.0002,
+      "public_cost_measurement_run": false,
+      "next_check": "Compare repeated original controls and per-step traces under the same compilation and input treatment; keep existing tolerances."
+    },
+    "pydpf": {
+      "GPU_extension_tests_passed": 33,
+      "GPU_extension_tests_failed": 1,
+      "GPU_Dacca_check_passed": true,
+      "Dacca_J": 8,
+      "driver_GPU_check_passed": true,
+      "failed_comparison": "float32 multinomial original versus default/alpha1 exact equality",
+      "maximum_difference": 2.384185791015625e-07,
+      "rtol": 0,
+      "atol": 0,
+      "next_check": "Repeat original-versus-original GPU control and isolate which compared tensor differs; diagnose CUDA determinism before changing implementation."
+    },
+    "tfp": {
+      "GPU_Dacca_gradient_check_passed": false,
+      "native_forward_same_seed_exact": true,
+      "failed_comparison": "alpha1 gradient versus original exact equality",
+      "mismatched_coordinates": 22,
+      "total_coordinates": 23,
+      "maximum_difference": 1.4156103e-07,
+      "rtol": 0,
+      "atol": 0,
+      "next_check": "Repeat original controls and compare identical graph construction and reduction paths; keep exact-equality failure visible."
+    }
+  },
+  "native_PF_timing": {
+    "cuthbert": {
+      "native_PF_median_seconds": 0.39352622209116817,
+      "compile_seconds": 3.1201662740204483,
+      "batch": 1,
+      "GPU": "A40",
+      "node": "gl1524",
+      "measured_calls": 7,
+      "not_an_optimization_result": true
+    },
+    "pfjax": {
+      "native_PF_median_seconds": 0.2204158480744809,
+      "compile_seconds": 4.8646311309421435,
+      "batch": 1,
+      "GPU": "A40",
+      "node": "gl1524",
+      "measured_calls": 7,
+      "not_an_optimization_result": true
+    },
+    "tfp": {
+      "native_PF_median_seconds": 6.278311971575022,
+      "candidate_forward_median_seconds": 6.2133698938414454,
+      "batch": 1,
+      "GPU": "A40",
+      "node": "gl1511",
+      "measured_calls": 7,
+      "not_an_optimization_result": true
+    }
+  },
+  "tolerance_changes": false,
+  "new_submissions": false,
+  "transfer_manifest_note": "JAX has original terminal manifest, also checked. PyDPF and TFP transfer hashes were created at collection; not represented as runner terminal manifests."
+}

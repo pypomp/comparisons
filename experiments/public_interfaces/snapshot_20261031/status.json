@@ -1,0 +1,361 @@
+{
+  "updated_utc": "2026-10-31T22:09:39.163065+00:00",
+  "campaign": "Original Dacca new public interfaces, 2026-10-30",
+  "state": "Cuthbert_prioritized_new_GPU_checks_queued_formal_comparison_prepared",
+  "not_a_completed_optimization_comparison": true,
+  "authoritative_job_records": [
+    "jax_gate_v2/jobs.json",
+    "jax_formal_v2/jobs.json",
+    "tfp/jobs.json",
+    "tfp/formal_v2/jobs.json",
+    "pydpf/jobs.json",
+    "pydpf/formal_v1/jobs.json",
+    "particles/formal_v1/jobs.json",
+    "cuthbert_gpu_diagnosis_v1/jobs.json",
+    "cuthbert_gate_v3/jobs.json"
+  ],
+  "packages": {
+    "cuthbert": {
+      "validation_job": 65144479,
+      "expected_endpoints": 36,
+      "formal_GPU_hours_upper_bound": 11.8,
+      "state": "revised_GPU_check_PENDING_Priority_formal_prepared_not_submitted",
+      "formal_endpoints": 0,
+      "validation_failure": {
+        "GPU_Dacca_check_passed": true,
+        "Dacca_J": 32,
+        "full_GPU_suite_passed": false,
+        "suite_timeout_seconds": 1200,
+        "failures_visible_before_timeout": 3,
+        "failure_test_names_available": true,
+        "public_cost_measurement_run": false,
+        "next_check": "Identify each failing test and run unchanged upstream and candidate tests under identical GPU settings; retain timeout as incomplete coverage.",
+        "failure_test_names": [
+          "test_gaussian_taper_log_likelihood_gradient",
+          "test_smoother[0-3-1-25]",
+          "test_smoother[0-3-2-25]"
+        ],
+        "GPU_Dacca_check_resampling": "systematic only in old gate",
+        "upstream_failure_explanation_confirmed": false
+      },
+      "scheduler_last_verified_utc": "2026-10-31T22:09:39.163065+00:00",
+      "prior_validation_job": 65097220,
+      "diagnostic_job": 65144329,
+      "prior_formal_array": 65097906,
+      "formal_revision": "cuthbert_formal_v3",
+      "formal_job_submitted": false,
+      "source_revision": "work/cuthbert-implementation-v3",
+      "review_draft": "outputs/competitor_estimation/cuthbert_implementation_v3_draft",
+      "release_ready": false,
+      "revision_changes": [
+        "alpha1 uses original stop_gradient_decorator unchanged",
+        "checkpoint=False default and explicit in all ABC gradient arms"
+      ],
+      "CPU_multinomial_diagnosis": {
+        "old_rematerialized_gradient_failed": true,
+        "violating_coordinates": [
+          0
+        ],
+        "absolute_difference": 0.0007619857788085938,
+        "rtol": 1e-05,
+        "atol": 0.0001,
+        "original_ADPF_with_rematerialization_reproduces_same_difference": true,
+        "without_rematerialization_gradients_bitwise_equal": true,
+        "tolerance_changes": false,
+        "evidence": "work/cuthbert-implementation-v3/validation_results/multinomial_gradient_original_control/diagnostic.json"
+      },
+      "v3_CPU_checks": {
+        "public_tests_passed": 32,
+        "T600_J32_systematic_passed": true,
+        "T600_J32_multinomial_passed": true,
+        "planned_start_pairs_J32_passed": 12,
+        "GPU_evidence": false
+      },
+      "budget": {
+        "new_GPU_check_hours_upper": 0.4666666666666667,
+        "formal_allocation_hours_upper": 11.2,
+        "combined_hours_upper": 11.666666666666666,
+        "original_formal_budget_hours": 11.8,
+        "formal_case_time_seconds": 3360,
+        "scientific_iterations_unchanged": true
+      },
+      "next_actions": [
+        "Collect stopped checks once with collect_cuthbert_checks.py",
+        "Review three original/candidate failures and all v3 core checks including J5000 gradients/memory/runtime",
+        "Only after successful audit create release_approval.json binding actual gate and driver SHA; submit_cuthbert_formal_v3.py then submits once",
+        "Audit all36 endpoints and independent raw scores; complete figures and final reviewer bundle"
+      ],
+      "current_GPU_jobs": {
+        "65144329": {
+          "state": "PENDING",
+          "reason": "Priority",
+          "elapsed_seconds": 0,
+          "node": null
+        },
+        "65144479": {
+          "state": "PENDING",
+          "reason": "Priority",
+          "elapsed_seconds": 0,
+          "node": null
+        }
+      },
+      "continue_after_validation_authorized": true,
+      "requires_further_user_confirmation_for_ABC": false
+    },
+    "pfjax": {
+      "validation_job": 65097220,
+      "formal_array": 65097907,
+      "expected_endpoints": 36,
+      "formal_GPU_hours_upper_bound": 11.8,
+      "state": "GPU_validation_failed_formal_jobs_cancelled_before_start",
+      "formal_endpoints": 0,
+      "validation_failure": {
+        "configured_GPU_suite_passed": 72,
+        "GPU_Dacca_check_passed": false,
+        "failed_comparison": "public gradient versus historical implementation",
+        "violating_coordinate": 1,
+        "absolute_difference": 0.0006084442138671875,
+        "rtol": 2e-05,
+        "atol": 0.0002,
+        "public_cost_measurement_run": false,
+        "next_check": "Compare repeated original controls and per-step traces under the same compilation and input treatment; keep existing tolerances."
+      },
+      "scheduler_last_verified_utc": "2026-10-31T21:34:41.612283+00:00"
+    },
+    "pydpf": {
+      "validation_job": 65097403,
+      "formal_jobs": {
+        "warm": 65098862,
+        "A": 65098863,
+        "B": 65098864,
+        "C": 65098865
+      },
+      "expected_endpoints": 36,
+      "formal_GPU_hours_upper_bound": 30,
+      "state": "GPU_validation_failed_formal_jobs_cancelled_before_start",
+      "formal_endpoints": 0,
+      "validation_failure": {
+        "GPU_extension_tests_passed": 33,
+        "GPU_extension_tests_failed": 1,
+        "GPU_Dacca_check_passed": true,
+        "Dacca_J": 8,
+        "driver_GPU_check_passed": true,
+        "failed_comparison": "float32 multinomial original versus default/alpha1 exact equality",
+        "maximum_difference": 2.384185791015625e-07,
+        "rtol": 0,
+        "atol": 0,
+        "next_check": "Repeat original-versus-original GPU control and isolate which compared tensor differs; diagnose CUDA determinism before changing implementation."
+      },
+      "scheduler_last_verified_utc": "2026-10-31T21:34:41.612283+00:00"
+    },
+    "tfp": {
+      "validation_job": 65096288,
+      "formal_jobs": {
+        "prefix": 65098962,
+        "A": 65098963,
+        "B": 65098964,
+        "C": 65098965
+      },
+      "expected_endpoints": 36,
+      "formal_GPU_hours_upper_bound": 20,
+      "state": "GPU_validation_failed_formal_jobs_cancelled_before_start",
+      "formal_endpoints": 0,
+      "validation_failure": {
+        "GPU_Dacca_gradient_check_passed": false,
+        "native_forward_same_seed_exact": true,
+        "failed_comparison": "alpha1 gradient versus original exact equality",
+        "mismatched_coordinates": 22,
+        "total_coordinates": 23,
+        "maximum_difference": 1.4156103e-07,
+        "rtol": 0,
+        "atol": 0,
+        "next_check": "Repeat original controls and compare identical graph construction and reduction paths; keep exact-equality failure visible."
+      },
+      "scheduler_last_verified_utc": "2026-10-31T21:34:41.612283+00:00"
+    },
+    "particles": {
+      "validation_job": 65096908,
+      "fit_array": 65097887,
+      "score_job": 65097888,
+      "expected_endpoints": 24,
+      "formal_CPU_hours_upper_bound": 18,
+      "nominal_fitting_CPU_hours": 12,
+      "scoring_GPU_hours_upper_bound": 0.5,
+      "state": "24_fits_and_independent_scores_completed_and_audited_final_figures_archive_pending",
+      "scheduler_completed_tasks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "running_tasks": [],
+      "pending_tasks": [],
+      "completed_tasks_fit_success_audit": "passed all24; independent score audit passed; low precision retained",
+      "independent_scored_endpoints": 24,
+      "completed_fit_task_elapsed_seconds": [
+        1825,
+        1830,
+        1823,
+        1830,
+        1823,
+        1824
+      ],
+      "partial_audit": "particles/formal_v1/partial_audit/tasks0_1_2_3_4_5_audit.json",
+      "audited_fit_endpoints": 24,
+      "audited_fit_failures": 0,
+      "score_precision_passed": 21,
+      "low_precision_tasks": [
+        0,
+        2,
+        12
+      ],
+      "complete_audit": "recovery_20261031/particles/audit.json",
+      "actual_fit_CPU_seconds": 43647,
+      "actual_score_GPU_seconds": 96,
+      "scheduler_last_verified_utc": "2026-10-31T21:34:41.612283+00:00"
+    }
+  },
+  "design": {
+    "data": "original Dacca, T600, 20 Gaussian Euler steps/month, J5000, 23 free coordinates",
+    "starts": "6 common paper starts x 2 repeats",
+    "GPU_A": "direct alpha1 + Adam400",
+    "GPU_B": "public IF2 175 + alpha1 + Adam400",
+    "GPU_C": "same IF2 endpoint as B + alpha.97 + Adam400",
+    "B_C_pairing": "same parameters, initial zero Adam state, learning rates and training random stream",
+    "A_B_equal_total_compute": false,
+    "particles_A": "native PF + external SciPy Nelder-Mead 1800 seconds",
+    "particles_B": "public IF2 for first900 seconds + same NM to total1800 seconds"
+  },
+  "scoring": {
+    "implementation": "frozen original PyPOMP PF",
+    "J": 5000,
+    "R": [
+      36,
+      72,
+      144,
+      288
+    ],
+    "summary": "log mean likelihood",
+    "MCSE_max": 1,
+    "likelihood_ESS_min": 10,
+    "failures_and_floor_saturation_retained": true,
+    "scorer_sha256": "8aec1ba02982a1ad9bff227b300806eaafa972a1e9fd00b71bef2c5f0ebdc508"
+  },
+  "completed_evidence": {
+    "cuthbert_local_full_suite": "1548 unique tests eventually passed after dependency/network repairs; not a single clean full-suite run",
+    "pfjax_local_full_suite": "72 passed; configured deprecated/interactive exclusions remain",
+    "tfp_official_PF_tests": "original and candidate each120 passed23 skipped after explicit test module binding; original common failure retained",
+    "tfp_full_upstream_suite": {
+      "completed_file_pairs": 234,
+      "expected_file_pairs": 515,
+      "finished": false,
+      "all_upstream_tests_passed": false,
+      "candidate_only_failing_files": [],
+      "additional_candidate_failed_tests": [],
+      "live_runner_pid": 95022,
+      "details": "tfp/test_summary.json"
+    },
+    "pydpf_native_PF_GPU": "9 paired runs, all600 LL increments exact; upstream median8.57610s, candidate8.56534s",
+    "particles_native_PF_CPU": "2warmup+7timed each; upstream5.496708558s, candidate5.526815115s; LL/state/weight/RNG exact",
+    "pydpf_particles_upstream_test_suite": "pinned upstream has no pytest suite; do not claim full-suite passes",
+    "recovered_GPU_checks": "recovery_20261031/GPU_audit.json",
+    "native_PF_timing_new_GPU_records": {
+      "cuthbert": {
+        "native_PF_median_seconds": 0.39352622209116817,
+        "compile_seconds": 3.1201662740204483,
+        "batch": 1,
+        "GPU": "A40",
+        "node": "gl1524",
+        "measured_calls": 7,
+        "not_an_optimization_result": true
+      },
+      "pfjax": {
+        "native_PF_median_seconds": 0.2204158480744809,
+        "compile_seconds": 4.8646311309421435,
+        "batch": 1,
+        "GPU": "A40",
+        "node": "gl1524",
+        "measured_calls": 7,
+        "not_an_optimization_result": true
+      },
+      "tfp": {
+        "native_PF_median_seconds": 6.278311971575022,
+        "candidate_forward_median_seconds": 6.2133698938414454,
+        "batch": 1,
+        "GPU": "A40",
+        "node": "gl1511",
+        "measured_calls": 7,
+        "not_an_optimization_result": true
+      }
+    },
+    "TFP_upstream_progress_20261031": {
+      "completed_file_pairs": 251,
+      "expected_file_pairs": 515,
+      "finished": false,
+      "runner_pid": 95022,
+      "runner_verified_running": true
+    }
+  },
+  "known_limitations": [
+    "cross-package IF2 implementations differ in first-interval perturbation and cooling; B/C are matched within each package",
+    "PFJAX alpha1 gradient correction is added, not native OT/score",
+    "root synchronized-call times exclude host checks and checkpoint I/O; use complete allocation costs too",
+    "A/B share compilation and B/C share physical IF2 prefix; physical total cost counted once and per-method logical costs disclose the shared work",
+    "GPU formal optimization has zero endpoints because correctness gates failed and dependent jobs were cancelled before start",
+    "particles24 endpoints audited;3 low precision scores retained;final figures and reproduction archive pending"
+  ],
+  "monitoring": {
+    "automation_id": "dacca",
+    "status": "ACTIVE",
+    "interval_minutes": 30,
+    "quiet_when_healthy_or_unchanged": true,
+    "one_shot_helper": "capture_state.py",
+    "latest_decision": "DONT_NOTIFY: both Cuthbert checks remain PENDING Priority; no new result or action required."
+  },
+  "preservation": {
+    "old_results_unchanged": true,
+    "no_resubmission_of_existing_jobs": true,
+    "frozen_sources_must_not_change": true,
+    "failures_and_all_costs_retained": true
+  },
+  "last_scheduler_snapshot": "scheduler_20261031T220939.json",
+  "last_scheduler_capture_utc": "2026-10-31T22:09:39.163065+00:00",
+  "scheduler_ssh_returncode": 0,
+  "last_successful_scheduler_snapshot": "scheduler_20261031T220939.json",
+  "last_successful_scheduler_capture_utc": "2026-10-31T22:09:39.163065+00:00",
+  "last_scheduler_attempt_snapshot": "scheduler_20261031T220939.json",
+  "last_scheduler_attempt_utc": "2026-10-31T22:09:39.163065+00:00",
+  "remote_connection": {
+    "state": "restored",
+    "error": null,
+    "existing_control_socket": "/tmp/greatlakes-codex-login2.sock",
+    "requires_user_action": null,
+    "experiment_failure_inferred": false,
+    "new_job_submission": false,
+    "last_control_socket_check_utc": "2026-10-31T21:43:45.993295+00:00",
+    "control_socket_exists": true
+  },
+  "last_local_check": "heartbeat_20261031T2126.json",
+  "last_recovery_report": "recovery_20261031/GPU_audit.json",
+  "active_priority": "Cuthbert GPU correctness, new public ABC, reviewable source and result bundle"
+}

@@ -1,0 +1,153 @@
+{
+  "base_commit": "a7487ce1c344c70e1a244e75725b950deb15e146",
+  "baseline_scope": "pydpf/ subtree, root README/LICENSE, native tutorial; not full repository",
+  "baseline_verified_files": 26,
+  "candidate_files": {
+    "LICENSE": "94fd8bf877576eb636b5511d6be65bb5aa63ba98dafe15c12a1d566bc3d17146",
+    "README.rst": "03142a9d2189784dceadf4d003b3a1794868d4c1f273ad25bf25420c7a7cd0b5",
+    "docs/source/iterated_filtering.rst": "00b1b71df8f71d0d6b8f69d0972ba9a80f83880057d21ecea9c8c1020eab27cd",
+    "docs/source/tutorial.rst": "51a47625b8adac0e4cc1a083d10e9c83041b656dab1f9607d8ff2f3a5e7086da",
+    "examples/if2_and_discount.py": "2b101c5899376d71f66d19796cdb1899724651b28c41a96e112d9834f2cfc058",
+    "pydpf/LICENSE": "94fd8bf877576eb636b5511d6be65bb5aa63ba98dafe15c12a1d566bc3d17146",
+    "pydpf/MANIFEST.in": "14a20a7c138eff055fcf4bf8fa8fb614f0ddb3870f113ae102c0bd6d96fbc763",
+    "pydpf/README.rst": "b81d526439c817db2ea58e0508b168296758288b66a7859ed867f34ba5c8653a",
+    "pydpf/pydpf/Kalman.py": "aefdcc2336755f321ad0bc364351ab15cff0f82c9bd2ebce93af09929d04f748",
+    "pydpf/pydpf/__init__.py": "6f74e2c703f210784529cb4f1a89bf4a7244034d9afa5cf1e1ed35a4f07809a1",
+    "pydpf/pydpf/base.py": "1e6d3ec40df6eeed56653c9eb6d29cc02237434d5c00aac4a2998202823f6e22",
+    "pydpf/pydpf/conditional_resampling.py": "42bbc8c8ca5308e40935ccbbd3d71f6c75397873c0315b72e20c1a19c54c1707",
+    "pydpf/pydpf/datautils.py": "3541686e8b50bbd4f2d9914ba1f58691cd054d0f8bd388843f738c3630cd4477",
+    "pydpf/pydpf/deserialisation.py": "7a67d1e0c751e5d5ec7d90ef50cb19765820876d25fe59084328bfd0d8eec60c",
+    "pydpf/pydpf/distributions/Gaussian.py": "5c5e8bb623a394de2d88bfc86b05e10c5a83d0f90d91d8fe4139c7fd1631708b",
+    "pydpf/pydpf/distributions/__init__.py": "5bc1b17871b818520d68a143be743818159dbd1af00c13889ffdf786dc8faa7e",
+    "pydpf/pydpf/distributions/base.py": "655984d2c3bd0f16730f9cbdc035fec3eb81a3089451a7cf5ee338b517e4cb3d",
+    "pydpf/pydpf/distributions/kde.py": "bb74260fb69414f2c26af236f54bb153290c1a39b89c37c6165e52e9cb4f1a10",
+    "pydpf/pydpf/distributions/vonMises.py": "25c51f56dafd295551b2f0f046ccf309c1950f7d2cd6cb4321bfb6842daa497e",
+    "pydpf/pydpf/filtering.py": "c251165f1e67ee919c48894c29c880f9298dc773fb609644ad3fdbd556e81293",
+    "pydpf/pydpf/gradient_regularisation.py": "dc26489564412b0eaf198acc4fa9822621be14e9999f9bd5a97ad7aef1809007",
+    "pydpf/pydpf/iterated_filtering.py": "a679101c80eb66afa66835df8ab637c4de59aeb25f38f833bab1c6d69f228efe",
+    "pydpf/pydpf/model_based_api.py": "91ee942d51d6f65b950abadbca767ee9016affc1cf107b048fec64c583ba4006",
+    "pydpf/pydpf/optimal_transport.py": "e340904eda5ae87229adeb8fb8629b09fb895d3239b0cdc901a447c5ae1d53a5",
+    "pydpf/pydpf/outputs.py": "86fb331a19a85ba5d80352b17ca1aeb32762fb5303540eb68e368039d0f467df",
+    "pydpf/pydpf/resampling.py": "df3855c4d43f22686588190627ffe26dc103b27597fafce533a75fe87f8b6d96",
+    "pydpf/pydpf/utils.py": "d8464995d5aa9b788afa179cf698e41bd3f99da736056f1d0cafc15ee618020b",
+    "pydpf/pyproject.toml": "6e528250c842f59734a4fa777a098ead26fad53e515be12dc444af9e5ae4946e",
+    "pydpf/requirements.txt": "a34137bd88c7f1480b0d59b28184e477c2561c668a18e238fd3a9fa66c2ddc68",
+    "tests/test_estimation_extension.py": "38fc96615fd9a87b7f536cca746519e6e394b3d94e6c165d7ca78a8254137044"
+  },
+  "changes": [
+    {
+      "path": "docs/source/iterated_filtering.rst",
+      "new_file": true,
+      "before_sha256": null,
+      "after_sha256": "00b1b71df8f71d0d6b8f69d0972ba9a80f83880057d21ecea9c8c1020eab27cd",
+      "added_lines": 104,
+      "removed_lines": 0,
+      "category": "documentation"
+    },
+    {
+      "path": "docs/source/tutorial.rst",
+      "new_file": false,
+      "before_sha256": "c38ed2701e88721f248d58e5908f3ca623cfdfb82c8959ba56a6af0e76032223",
+      "after_sha256": "51a47625b8adac0e4cc1a083d10e9c83041b656dab1f9607d8ff2f3a5e7086da",
+      "added_lines": 4,
+      "removed_lines": 1,
+      "category": "documentation"
+    },
+    {
+      "path": "examples/if2_and_discount.py",
+      "new_file": true,
+      "before_sha256": null,
+      "after_sha256": "2b101c5899376d71f66d19796cdb1899724651b28c41a96e112d9834f2cfc058",
+      "added_lines": 118,
+      "removed_lines": 0,
+      "category": "example"
+    },
+    {
+      "path": "pydpf/pydpf/__init__.py",
+      "new_file": false,
+      "before_sha256": "84b578f3c9ddf555aebc76085a8eb5058299a79adfc3038b3be44dec82442b16",
+      "after_sha256": "6f74e2c703f210784529cb4f1a89bf4a7244034d9afa5cf1e1ed35a4f07809a1",
+      "added_lines": 2,
+      "removed_lines": 1,
+      "category": "package code"
+    },
+    {
+      "path": "pydpf/pydpf/filtering.py",
+      "new_file": false,
+      "before_sha256": "4d0a1f5e12304556a6ffd7589c4b3154da6d32b68aab311c4877aa7746364f5e",
+      "after_sha256": "c251165f1e67ee919c48894c29c880f9298dc773fb609644ad3fdbd556e81293",
+      "added_lines": 11,
+      "removed_lines": 2,
+      "category": "package code"
+    },
+    {
+      "path": "pydpf/pydpf/iterated_filtering.py",
+      "new_file": true,
+      "before_sha256": null,
+      "after_sha256": "a679101c80eb66afa66835df8ab637c4de59aeb25f38f833bab1c6d69f228efe",
+      "added_lines": 268,
+      "removed_lines": 0,
+      "category": "package code"
+    },
+    {
+      "path": "pydpf/pydpf/resampling.py",
+      "new_file": false,
+      "before_sha256": "652b098522ab6fc7f275613b6be96f106ee257b68fa92c460f26344756de1c96",
+      "after_sha256": "df3855c4d43f22686588190627ffe26dc103b27597fafce533a75fe87f8b6d96",
+      "added_lines": 20,
+      "removed_lines": 6,
+      "category": "package code"
+    },
+    {
+      "path": "tests/test_estimation_extension.py",
+      "new_file": true,
+      "before_sha256": null,
+      "after_sha256": "38fc96615fd9a87b7f536cca746519e6e394b3d94e6c165d7ca78a8254137044",
+      "added_lines": 338,
+      "removed_lines": 0,
+      "category": "tests"
+    }
+  ],
+  "original_classes_unchanged": {
+    "SIS": {
+      "file": "pydpf/pydpf/filtering.py",
+      "source_text_identical": true,
+      "sha256": "8cafb867185deb2bdd5a1947e188a84e68666764a482d1534e9b49c2fe51a2b0"
+    },
+    "ParticleFilter": {
+      "file": "pydpf/pydpf/filtering.py",
+      "source_text_identical": true,
+      "sha256": "355aa30392f586dd7c92068cf4ec8e9168ffcba85c2556a5f01fb6da4a985690"
+    },
+    "SystematicResampler": {
+      "file": "pydpf/pydpf/resampling.py",
+      "source_text_identical": true,
+      "sha256": "d83375c1fc700b7eed2232ae0d4bca1f0bfd19c6e46a6b3bca9a47460a947766"
+    },
+    "MultinomialResampler": {
+      "file": "pydpf/pydpf/resampling.py",
+      "source_text_identical": true,
+      "sha256": "2d5f9f7e33736c9af249989a0936f38325121fe64ad71275190e9cedf7c63aa2"
+    }
+  },
+  "full_patch_application": {
+    "git_apply_check": true,
+    "git_apply": true,
+    "all_file_hashes_match": true,
+    "files": 30
+  },
+  "discount_patch_application": {
+    "git_apply_check": true,
+    "git_apply": true,
+    "all_file_hashes_match": true,
+    "files": 26
+  },
+  "frozen_manifest_sha256": "6837b2b49a758e9261d49353d68aa066b1a309929b1b25e1ebc27c09bc526a03",
+  "frozen_files_unchanged": 246,
+  "validation_copies_unchanged": {
+    "sessions.py": "4bb236f6d9744727c1da667f025ee25bad54170f3826cca58a80527a2a1105ba",
+    "dacca_model.py": "b9280b9c911742793f88d234ae62252f38381ff489fc09320ba381b909d62e7e",
+    "input/frozen.npz": "2fbe1f58a93d1e4370c6ece29647990a15981747eb61561ae0767e444aa18942"
+  },
+  "no_formal_fit_or_score_rerun": true
+}

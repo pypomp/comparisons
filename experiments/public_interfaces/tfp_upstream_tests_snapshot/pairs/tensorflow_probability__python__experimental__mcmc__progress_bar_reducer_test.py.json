@@ -1,0 +1,71 @@
+{
+  "file": "tensorflow_probability/python/experimental/mcmc/progress_bar_reducer_test.py",
+  "results": [
+    {
+      "kind": "original",
+      "file": "tensorflow_probability/python/experimental/mcmc/progress_bar_reducer_test.py",
+      "command": [
+        "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/bin/python",
+        "-m",
+        "pytest",
+        "tensorflow_probability/python/experimental/mcmc/progress_bar_reducer_test.py",
+        "-q",
+        "--tb=short",
+        "--continue-on-collection-errors",
+        "--junitxml=/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__experimental__mcmc__progress_bar_reducer_test/original.xml"
+      ],
+      "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original",
+      "timeout_seconds": 180,
+      "exit_code": 1,
+      "state": "finished",
+      "elapsed_seconds": 15.473866124986671,
+      "pytest_counts": {
+        "tests": 11,
+        "failures": 0,
+        "errors": 1,
+        "skipped": 1
+      },
+      "failed_tests": [
+        {
+          "name": "test_progress_bar_fn",
+          "class": "tensorflow_probability.python.experimental.mcmc.progress_bar_reducer_test",
+          "message": "failed on setup with \"file /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/experimental/mcmc/progress_bar_reducer_test.py, line 25\n  def test_progress_bar_fn(num_steps):\nE       fixture 'num_steps' not found\n>       available fixtures: cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/experimental/mcmc/progress_bar_reducer_test.py:25\""
+        }
+      ]
+    },
+    {
+      "kind": "candidate",
+      "file": "tensorflow_probability/python/experimental/mcmc/progress_bar_reducer_test.py",
+      "command": [
+        "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/bin/python",
+        "-m",
+        "pytest",
+        "tensorflow_probability/python/experimental/mcmc/progress_bar_reducer_test.py",
+        "-q",
+        "--tb=short",
+        "--continue-on-collection-errors",
+        "--junitxml=/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__experimental__mcmc__progress_bar_reducer_test/candidate.xml"
+      ],
+      "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate",
+      "timeout_seconds": 180,
+      "exit_code": 1,
+      "state": "finished",
+      "elapsed_seconds": 14.695581500069238,
+      "pytest_counts": {
+        "tests": 11,
+        "failures": 0,
+        "errors": 1,
+        "skipped": 1
+      },
+      "failed_tests": [
+        {
+          "name": "test_progress_bar_fn",
+          "class": "tensorflow_probability.python.experimental.mcmc.progress_bar_reducer_test",
+          "message": "failed on setup with \"file /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/experimental/mcmc/progress_bar_reducer_test.py, line 25\n  def test_progress_bar_fn(num_steps):\nE       fixture 'num_steps' not found\n>       available fixtures: cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory\n>       use 'pytest --fixtures [testpath]' for help on them.\n\n/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/experimental/mcmc/progress_bar_reducer_test.py:25\""
+        }
+      ]
+    }
+  ],
+  "same_exit_status": true,
+  "candidate_only_failure": false
+}

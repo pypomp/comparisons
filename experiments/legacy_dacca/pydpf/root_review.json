@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "reviewed_at_UTC": "2026-10-29T13:01:40.264671+00:00",
+  "summary_sha256": "fa85d9445fd12eb8d3f0339a8299bab26593f27910d192ff188c8564425abaea",
+  "method_audit_sha256": {
+    "IF2": "e23be9c941505313fd07581515e24549d924b913a7f574f0af931ef9afe213f4",
+    "IFAD": "4396f40419dd107a3cf45776df6d26df16c8ae946d8b14aec371dd26218e4cb4",
+    "ADPF": "a1d347d13b58bbe40f18c01b4d7b0dc6a8122aedb0465e47fe03f8f62bc4d68f"
+  },
+  "prior_method_root_reviews": {
+    "IF2": "af967b79ae0eb10fc003215991652f477956e44ad00c3adaaa7e3abd1944391f",
+    "IFAD": "b0782e6e1470d06f74bf06ad797bc2470abc3442ef65428fb36736783bceccf5"
+  },
+  "ADPF_source_files_verified": 246,
+  "ADPF_completed_collection_files_verified": 485,
+  "ADPF_checkpoint_and_425_updates_verified": true,
+  "raw_scores_recomputed": 1548,
+  "raw_by_method": {
+    "IF2": 432,
+    "IFAD": 432,
+    "ADPF": 684
+  },
+  "all36_parameters_and_initial_starts_verified": true,
+  "score_batch_seeds_unique": true,
+  "all_failed_and_low_precision_rows_retained": true,
+  "failed_IFAD_moments_limitation_explicit": true,
+  "total_allocation_seconds": 64377,
+  "medians": {
+    "IF2": {
+      "all_retained": -3756.1210300976245,
+      "complete_fits": -3756.1210300976245
+    },
+    "IFAD": {
+      "all_retained": -3744.512039723556,
+      "complete_fits": -3744.3462400411963
+    },
+    "ADPF": {
+      "all_retained": -3788.197670804403,
+      "complete_fits": -3788.197670804403
+    }
+  },
+  "fit_calls": 0,
+  "PF_calls": 0
+}

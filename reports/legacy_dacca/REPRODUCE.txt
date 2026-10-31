@@ -1,0 +1,35 @@
+Final original-Dacca comparison index
+
+The seven experiment reproduction archives are listed with exact SHA256 values
+in index_manifest.json and results.json. Keep the separate100-start paper and
+6-start x2-repeat experiments distinct. Native/local algorithm attribution,
+failures, precision, score floors and nested costs are retained in results.json.
+
+The package reports, all final PNG/PDF figures, frozen data/source, checkpoints,
+raw scoring repetitions, runtime evidence and independent/visual reviews live
+in those seven archives. Refer to each archive README for its own offline
+verification and figure rebuilding commands. Rebuilding a report does not
+require rerunning fitting or PF scoring.
+
+This directory contains the full968-row index, both all-finite and explicitly
+conditional medians, measured costs, and root/independent integration reviews.
+R preserves the original recorded field. The7 nonfinite paper fits retain
+planned R36 but have raw_repetitions=0 and an explicit skipped-evaluation flag.
+Only raw_repetitions counts actual final PF draws; the total is37584.
+Superseded PFJAX scores remain in their historical archive and are not selected
+into this index. All mandatory repair costs are preserved.
+
+reproduction_sources/ preserves the exact local index-generation scripts.
+In a workspace with the seven completed deliveries at their recorded relative
+outputs/ paths, restore these scripts under work/competitor-estimation and run:
+  python3 work/competitor-estimation/build_final_index.py
+This uses the Python3.12 standard library, performs local data/hash checks,
+and neither submits jobs nor executes a model. All required package release,
+root-review, visual-review and SHA gates must pass before output is generated.
+The accompanying current-report script is retained as provenance; regenerating
+that historical progress report also requires its workspace monitoring records.
+
+The index integrates independently audited experiment outputs. It does not
+claim universal optimizer superiority, equal walltime budgets, convergence,
+or a CPU/GPU hardware speed ranking. Previous preflight/efficiency/LGSSM and
+oldJ1024 experiments are separately preserved and not pooled into this index.

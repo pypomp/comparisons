@@ -1,0 +1,20 @@
+{
+  "dependency": "afterok:65097220",
+  "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/jax_formal_v1",
+  "source_manifest_sha256": "8b84dc150ed0bb2f3f4814bd1775a876058ee2d731b15445248ce46b56e5c146",
+  "allocation_upper_bound_GPU_hours": 23.6,
+  "case_array": "0-11%3",
+  "time_limit_seconds_per_case": 3540,
+  "jobs": [
+    {
+      "package": "cuthbert",
+      "job_id": "65097712",
+      "submitted_at_utc": "2026-10-30T20:35:57.994387+00:00"
+    },
+    {
+      "package": "pfjax",
+      "job_id": "65097713",
+      "submitted_at_utc": "2026-10-30T20:35:59.710956+00:00"
+    }
+  ]
+}

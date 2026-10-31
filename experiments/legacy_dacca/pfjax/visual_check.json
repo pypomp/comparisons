@@ -1,0 +1,13 @@
+{
+  "checked_UTC": "2026-10-29T04:27:18.964130+00:00",
+  "passed": true,
+  "checked_file": "comparison.png",
+  "checks": [
+    "all36 endpoints shown",
+    "loglikelihood and batch fit time separately labelled",
+    "same A40 batch12 timing",
+    "local extensions and native OT limitation visible",
+    "no clipped labels or footer overlap"
+  ],
+  "image_sha256": "6366623d0992f3a2f57fb200b6e1c968cfe649f5277e7dbc287a89435a4f6ada"
+}

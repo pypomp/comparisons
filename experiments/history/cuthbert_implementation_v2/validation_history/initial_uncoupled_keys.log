@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v2/candidate/../validation/check_dacca_api.py", line 189, in <module>
+    main()
+  File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v2/candidate/../validation/check_dacca_api.py", line 101, in main
+    np.testing.assert_allclose(
+  File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/lib/python3.12/site-packages/numpy/testing/_private/utils.py", line 1780, in assert_allclose
+    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),
+  File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/lib/python3.12/site-packages/numpy/testing/_private/utils.py", line 988, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError: 
+Not equal to tolerance rtol=1e-05, atol=0.0001
+
+Mismatched elements: 1 / 1 (100%)
+Max absolute difference among violations: 33.883545
+Max relative difference among violations: 0.00890761
+ ACTUAL: array(-3837.7693, dtype=float32)
+ DESIRED: array(-3803.8857, dtype=float32)

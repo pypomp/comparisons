@@ -1,0 +1,164 @@
+diff --git a/tensorflow_probability/python/experimental/mcmc/particle_filter.py b/tensorflow_probability/python/experimental/mcmc/particle_filter.py
+--- a/tensorflow_probability/python/experimental/mcmc/particle_filter.py
++++ b/tensorflow_probability/python/experimental/mcmc/particle_filter.py
+@@ -297,6 +297,8 @@
+     static_trace_allocation_size=None,
+     seed=None,
+     name=None,
++    *,
++    gradient_discount=1.,
+ ):
+   """Run Sequential Monte Carlo.
+ 
+@@ -375,6 +377,11 @@
+       It is primarily intended for contexts where static shapes are required,
+       such as in XLA-compiled code.
+       Default value: `None`.
++    gradient_discount: Python real in [0, 1]. Multiplies the inherited
++      log-weight derivative on resampling steps; the default 1 preserves
++      the original correction. Different from 1 requires unbiased gradients.
++      For discounting at every observation, explicitly resample at every step.
++      Adaptive resampling discounts only when resampling occurs.
+     seed: PRNG seed; see `tfp.random.sanitize_seed` for details.
+     name: Python `str` name for ops created by this method.
+       Default value: `None` (i.e., `'particle_filter'`).
+@@ -398,7 +405,8 @@
+         resample_fn=resample_fn,
+         resample_criterion_fn=resample_criterion_fn,
+         particles_dim=particles_dim,
+-        unbiased_gradients=unbiased_gradients)
++        unbiased_gradients=unbiased_gradients,
++        gradient_discount=gradient_discount)
+ 
+     # If trace criterion is `None`, we'll return only the final results.
+     never_trace = lambda *_: False
+@@ -456,7 +464,9 @@
+                     static_trace_allocation_size=None,
+                     parallel_iterations=1,
+                     seed=None,
+-                    name=None):  # pylint: disable=g-doc-args
++                    name=None,
++                    *,
++                    gradient_discount=1.):  # pylint: disable=g-doc-args
+   """Samples a series of particles representing filtered latent states.
+ 
+   The particle filter samples from the sequence of "filtering" distributions
+@@ -490,6 +500,11 @@
+       Default value: `None`.
+     parallel_iterations: Passed to the internal `tf.while_loop`.
+       Default value: `1`.
++    gradient_discount: Python real in [0, 1]. Multiplies the inherited
++      log-weight derivative on resampling steps; the default 1 preserves
++      the original correction. Different from 1 requires unbiased gradients.
++      For discounting at every observation, explicitly resample at every step.
++      Adaptive resampling discounts only when resampling occurs.
+     seed: PRNG seed; see `tfp.random.sanitize_seed` for details.
+     name: Python `str` name for ops created by this method.
+       Default value: `None` (i.e., `'particle_filter'`).
+@@ -506,6 +521,11 @@
+       arXiv:2106.10314_, 2021. https://arxiv.org/abs/2106.10314
+   """
+ 
++  if gradient_discount != 1 and (initial_state_proposal is not None or
++                                 proposal_fn is not None or
++                                 rejuvenation_kernel_fn is not None):
++    raise ValueError('Discounted particle_filter currently supports bootstrap '
++                     'models without rejuvenation only')
+   init_seed, loop_seed = samplers.split_seed(seed, salt='particle_filter')
+   with tf.name_scope(name or 'particle_filter'):
+     num_observation_steps = ps.size0(tf.nest.flatten(observations)[0])
+@@ -541,6 +561,7 @@
+         trace_criterion_fn=trace_criterion_fn,
+         trace_fn=trace_fn,
+         unbiased_gradients=unbiased_gradients,
++        gradient_discount=gradient_discount,
+         seed=loop_seed)
+ 
+ 
+diff --git a/tensorflow_probability/python/experimental/mcmc/sequential_monte_carlo_kernel.py b/tensorflow_probability/python/experimental/mcmc/sequential_monte_carlo_kernel.py
+--- a/tensorflow_probability/python/experimental/mcmc/sequential_monte_carlo_kernel.py
++++ b/tensorflow_probability/python/experimental/mcmc/sequential_monte_carlo_kernel.py
+@@ -15,6 +15,8 @@
+ """Sequential Monte Carlo."""
+ 
+ import collections
++import math
++import numbers
+ 
+ import tensorflow.compat.v2 as tf
+ from tensorflow_probability.python.experimental.mcmc import weighted_resampling
+@@ -157,7 +159,9 @@
+                resample_criterion_fn=ess_below_threshold,
+                unbiased_gradients=True,
+                particles_dim=0,
+-               name=None):
++               name=None,
++               *,
++               gradient_discount=1.):
+     """Initializes a sequential Monte Carlo transition kernel.
+ 
+     Args:
+@@ -207,6 +211,12 @@
+         kernel operates.
+         Default value: `0`.
+       name: Python `str` name for ops created by this kernel.
++      gradient_discount: Python real in [0, 1]. Scales only the inherited
++        log-weight derivative on steps that resample. Requires
++        `unbiased_gradients=True` when different from 1. State derivatives
++        are preserved. With adaptive resampling this is a discount per
++        resampling event, not per observation. Default 1 preserves the
++        original gradient correction.
+ 
+     #### References
+ 
+@@ -214,6 +224,15 @@
+         Filtering without Modifying the Forward Pass. _arXiv preprint
+         arXiv:2106.10314_, 2021. https://arxiv.org/abs/2106.10314
+     """
++    if (isinstance(gradient_discount, bool) or
++        not isinstance(gradient_discount, numbers.Real) or
++        not math.isfinite(gradient_discount) or not 0 <= gradient_discount <= 1):
++      raise ValueError('gradient_discount must be a finite Python real in [0, 1]')
++    if gradient_discount != 1 and not unbiased_gradients:
++      raise ValueError('gradient_discount requires unbiased_gradients=True')
++    if gradient_discount != 1 and resample_criterion_fn is None:
++      raise ValueError('gradient_discount requires resampling to be enabled')
++    self._gradient_discount = gradient_discount
+     self._propose_and_update_log_weights_fn = propose_and_update_log_weights_fn
+     self._resample_fn = resample_fn
+     self._resample_criterion_fn = resample_criterion_fn
+@@ -244,6 +263,10 @@
+   @property
+   def unbiased_gradients(self):
+     return self._unbiased_gradients
++
++  @property
++  def gradient_discount(self):
++    return self._gradient_discount
+ 
+   @property
+   def particles_dim(self):
+@@ -310,6 +333,13 @@
+           # not needed -- but we're ultimately interested in adaptive resampling
+           # for statistical (not computational) purposes, so this isn't a
+           # dealbreaker.
++          target_log_weights = None
++          if self.unbiased_gradients:
++            target_log_weights = normalized_log_weights
++            if self.gradient_discount != 1:
++              stopped = tf.stop_gradient(target_log_weights)
++              target_log_weights = stopped + self.gradient_discount * (
++                  target_log_weights - stopped)
+           [
+               resampled_particles,
+               resample_indices,
+@@ -322,8 +352,7 @@
+               # in Scibior, Masrani, and Wood (2021).
+               log_weights=tf.stop_gradient(state.log_weights),
+               resample_fn=self.resample_fn,
+-              target_log_weights=(normalized_log_weights
+-                                  if self.unbiased_gradients else None),
++              target_log_weights=target_log_weights,
+               particles_dim=self.particles_dim,
+               seed=resample_seed)
+           (resampled_particles,

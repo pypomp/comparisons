@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "all_original_python_files_byte_identical": true,
+  "original_files": 103,
+  "changed_original_files": [
+    "docs/source/index.rst"
+  ],
+  "upstream_pytest_collected": 0,
+  "upstream_pytest_exit_code": 5,
+  "candidate_tests_passed": 34,
+  "original_controls_exact": true,
+  "bounded_linear_reg_exact": true,
+  "scope": "Three original PF algorithms plus actual original linear_reg script with N100/lc5/nruns2. Other upstream Python files syntax compiled only; no full upstream tests claim.",
+  "adapter_initial_failure": "local_checks/adapter.log: float32 input dt/covariates caused discrepancy; corrected to original float64 conversions without relaxing tolerances",
+  "adapter_fixed": "local_checks/adapter_float64.log"
+}

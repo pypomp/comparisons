@@ -1,0 +1,89 @@
+diff --git a/pydpf/pydpf/filtering.py b/pydpf/pydpf/filtering.py
+--- a/pydpf/pydpf/filtering.py
++++ b/pydpf/pydpf/filtering.py
+@@ -685,6 +685,11 @@
+     use_REINFORCE_for_initial_proposal: bool. Default False.
+         Whether to use the REINFORCE estimator for the gradient due to the initial particle proposal process.
+ 
++    alpha: float. Default 1.
++        Discount inherited weight derivatives. Values below one are currently
++        supported only for pathwise bootstrap filtering with resampling at every
++        observation. This does not add an optimizer.
++
+     Notes
+     -----
+     See [1]_. If ``use_REINFORCE_for_proposal`` is ``True`` then this DPF is as described in [1]_ and the proposal model cannot be learned. Otherwise, it is as in [2]_.
+@@ -701,10 +706,14 @@
+                  multinomial:bool = False,
+                  *,
+                  use_REINFORCE_for_proposal: bool = False,
+-                 use_REINFORCE_for_initial_proposal: bool = False
++                 use_REINFORCE_for_initial_proposal: bool = False,
++                 alpha: float = 1.0
+                  ) -> None:
++        if alpha != 1 and (use_REINFORCE_for_proposal or use_REINFORCE_for_initial_proposal
++                           or SSM is None or SSM.has_proposal or SSM.has_initial_proposal):
++            raise ValueError('Discounting currently requires a pathwise bootstrap FilteringModel')
+         base_resampler = MultinomialResampler(resampling_generator) if multinomial else SystematicResampler(resampling_generator)
+-        resampler = StopGradientResampler(base_resampler)
++        resampler = StopGradientResampler(base_resampler, alpha=alpha)
+         super().__init__(resampler, SSM, use_REINFORCE_for_proposal=use_REINFORCE_for_proposal, use_REINFORCE_for_initial_proposal=use_REINFORCE_for_initial_proposal)
+ 
+ class MarginalStopGradientDPF(MarginalParticleFilter):
+diff --git a/pydpf/pydpf/resampling.py b/pydpf/pydpf/resampling.py
+--- a/pydpf/pydpf/resampling.py
++++ b/pydpf/pydpf/resampling.py
+@@ -8,7 +8,7 @@
+ from .utils import batched_select, multiple_unsqueeze, normalise
+ from .base import Module
+ from . import optimal_transport
+-from math import sqrt, log
++from math import sqrt, log, isfinite
+ from .distributions.Gaussian import  StandardGaussian
+ 
+ 
+@@ -158,8 +158,12 @@
+ 
+     Parameters
+     ----------
+-    generator: torch.Generator
+-        The generator to track the random state of the resampling process.
++    base_resampler: Module
++        The underlying resampling module.
++    alpha: float. Default 1.
++        Discount inherited log-weight derivatives. The default retains the existing
++        estimator. Values below one require unconditional systematic or multinomial
++        resampling at every observation; they do not remove pathwise state derivatives.
+ 
+     Notes
+     -----
+@@ -172,8 +176,13 @@
+     ----------
+     .. [1] Scibior A, Wood F (2021). “Differentiable particle filtering without modifying the forward pass.” arXiv:2106.10314
+     '''
+-    def __init__(self, base_resampler:Module):
+-        super().__init__()
++    def __init__(self, base_resampler:Module, *, alpha:float = 1.0):
++        super().__init__()
++        if not isfinite(alpha) or not 0 <= alpha <= 1:
++            raise ValueError('alpha must be finite and in [0, 1]')
++        if alpha != 1 and type(base_resampler) not in (SystematicResampler, MultinomialResampler):
++            raise ValueError('Discounting requires unconditional systematic or multinomial resampling')
++        self.alpha = float(alpha)
+         self.cache = {}
+         self.base_resampler = base_resampler
+         self._need_weight_output = True
+@@ -187,7 +196,12 @@
+             resampled_weight = batched_select(self.base_resampler.cache['used_weight'], self.base_resampler.cache['sampled_indices'])
+             self.cache = self.base_resampler.cache
+             self.cache['used_weight'] = self.cache['used_weight'].detach()
+-            return state, new_weight + resampled_weight - resampled_weight.detach()
++            corrected_weight = new_weight + resampled_weight - resampled_weight.detach()
++            if self.alpha == 1:
++                return state, corrected_weight
++            # Keep the original forward rounding; discount only inherited weight derivatives.
++            correction = resampled_weight - resampled_weight.detach()
++            return state, corrected_weight.detach() + self.alpha * correction
+ 
+         if self._need_weight_output:
+             self.base_resampler._need_weight_output = True

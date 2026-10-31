@@ -1,0 +1,373 @@
+...........................FFFFFFFFF......sss...sss...sss............... [ 46%]
+............ss.......................................................... [ 93%]
+...s......                                                               [100%]
+=================================== FAILURES ===================================
+_ JointDistributionAutoBatchedTest.test_default_event_space_bijector_coroutine_eager _
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py:897: in test_default_event_space_bijector
+    joint_bijector = joint.experimental_default_event_space_bijector()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1109: in _default_event_space_bijector
+    return _DefaultJointBijectorAutoBatched(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1426: in __init__
+    self._joint_bijector = _DefaultJointBijector(
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in <genexpr>
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in <lambda>
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/deterministic.py:171: in _default_event_space_bijector
+    pad_zero = pad.Pad([(1, 0)])
+               ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_ JointDistributionAutoBatchedTest.test_default_event_space_bijector_coroutine_eager_no_tf_function _
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py:897: in test_default_event_space_bijector
+    joint_bijector = joint.experimental_default_event_space_bijector()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1109: in _default_event_space_bijector
+    return _DefaultJointBijectorAutoBatched(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1426: in __init__
+    self._joint_bijector = _DefaultJointBijector(
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in <genexpr>
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in <lambda>
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/deterministic.py:171: in _default_event_space_bijector
+    pad_zero = pad.Pad([(1, 0)])
+               ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_ JointDistributionAutoBatchedTest.test_default_event_space_bijector_coroutine_graph _
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py:897: in test_default_event_space_bijector
+    joint_bijector = joint.experimental_default_event_space_bijector()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1109: in _default_event_space_bijector
+    return _DefaultJointBijectorAutoBatched(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1426: in __init__
+    self._joint_bijector = _DefaultJointBijector(
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in <genexpr>
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in <lambda>
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/deterministic.py:171: in _default_event_space_bijector
+    pad_zero = pad.Pad([(1, 0)])
+               ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_ JointDistributionAutoBatchedTest.test_default_event_space_bijector_named_eager _
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py:897: in test_default_event_space_bijector
+    joint_bijector = joint.experimental_default_event_space_bijector()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1109: in _default_event_space_bijector
+    return _DefaultJointBijectorAutoBatched(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1426: in __init__
+    self._joint_bijector = _DefaultJointBijector(
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in <genexpr>
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in <lambda>
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/deterministic.py:171: in _default_event_space_bijector
+    pad_zero = pad.Pad([(1, 0)])
+               ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_ JointDistributionAutoBatchedTest.test_default_event_space_bijector_named_eager_no_tf_function _
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py:897: in test_default_event_space_bijector
+    joint_bijector = joint.experimental_default_event_space_bijector()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1109: in _default_event_space_bijector
+    return _DefaultJointBijectorAutoBatched(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1426: in __init__
+    self._joint_bijector = _DefaultJointBijector(
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in <genexpr>
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in <lambda>
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/deterministic.py:171: in _default_event_space_bijector
+    pad_zero = pad.Pad([(1, 0)])
+               ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_ JointDistributionAutoBatchedTest.test_default_event_space_bijector_named_graph _
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py:897: in test_default_event_space_bijector
+    joint_bijector = joint.experimental_default_event_space_bijector()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1109: in _default_event_space_bijector
+    return _DefaultJointBijectorAutoBatched(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1426: in __init__
+    self._joint_bijector = _DefaultJointBijector(
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in <genexpr>
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in <lambda>
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/deterministic.py:171: in _default_event_space_bijector
+    pad_zero = pad.Pad([(1, 0)])
+               ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_ JointDistributionAutoBatchedTest.test_default_event_space_bijector_sequential_eager _
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py:897: in test_default_event_space_bijector
+    joint_bijector = joint.experimental_default_event_space_bijector()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1109: in _default_event_space_bijector
+    return _DefaultJointBijectorAutoBatched(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1426: in __init__
+    self._joint_bijector = _DefaultJointBijector(
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in <genexpr>
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in <lambda>
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/deterministic.py:171: in _default_event_space_bijector
+    pad_zero = pad.Pad([(1, 0)])
+               ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_ JointDistributionAutoBatchedTest.test_default_event_space_bijector_sequential_eager_no_tf_function _
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py:897: in test_default_event_space_bijector
+    joint_bijector = joint.experimental_default_event_space_bijector()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1109: in _default_event_space_bijector
+    return _DefaultJointBijectorAutoBatched(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1426: in __init__
+    self._joint_bijector = _DefaultJointBijector(
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in <genexpr>
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in <lambda>
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/deterministic.py:171: in _default_event_space_bijector
+    pad_zero = pad.Pad([(1, 0)])
+               ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_ JointDistributionAutoBatchedTest.test_default_event_space_bijector_sequential_graph _
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py:897: in test_default_event_space_bijector
+    joint_bijector = joint.experimental_default_event_space_bijector()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1109: in _default_event_space_bijector
+    return _DefaultJointBijectorAutoBatched(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1426: in __init__
+    self._joint_bijector = _DefaultJointBijector(
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in <genexpr>
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in <lambda>
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/deterministic.py:171: in _default_event_space_bijector
+    pad_zero = pad.Pad([(1, 0)])
+               ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+=============================== warnings summary ===============================
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py::JointDistributionAutoBatchedTest::test_model_with_dynamic_batch_ndims_graph
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py::JointDistributionAutoBatchedTest::test_model_with_nontrivial_batch_shape_CoroutineStateless_graph
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py::JointDistributionAutoBatchedTest::test_model_with_nontrivial_batch_shape_NamedStateless_graph
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py::JointDistributionAutoBatchedTest::test_model_with_nontrivial_batch_shape_SequentialStateless_graph
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py::JointDistributionAutoBatchedTest::test_sample_and_log_prob_coroutine_graph
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py::JointDistributionAutoBatchedTest::test_sample_and_log_prob_named_graph
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py::JointDistributionAutoBatchedTest::test_sample_and_log_prob_sequential_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/vectorization_util.py:87: UserWarning: Saw Tensor seed Tensor("Bitcast:0", shape=(2,), dtype=int32), implying stateless sampling. Autovectorized functions that use stateless sampling may be quite slow because the current implementation falls back to an explicit loop. This will be fixed in the future. For now, you will likely see better performance from stateful sampling, which you can invoke by passing a Python `int` seed.
+    warnings.warn(
+
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py: 14 warnings
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/vectorization_util.py:87: UserWarning: Saw Tensor seed [ 0 17], implying stateless sampling. Autovectorized functions that use stateless sampling may be quite slow because the current implementation falls back to an explicit loop. This will be fixed in the future. For now, you will likely see better performance from stateful sampling, which you can invoke by passing a Python `int` seed.
+    warnings.warn(
+
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py::JointDistributionAutoBatchedTest::test_sample_with_partially_specified_value_stateless_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/vectorization_util.py:87: UserWarning: Saw Tensor seed Tensor("Bitcast_1:0", shape=(2,), dtype=int32), implying stateless sampling. Autovectorized functions that use stateless sampling may be quite slow because the current implementation falls back to an explicit loop. This will be fixed in the future. For now, you will likely see better performance from stateful sampling, which you can invoke by passing a Python `int` seed.
+    warnings.warn(
+
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py::JointDistributionAutoBatchedTest::test_sample_with_partially_specified_value_stateless_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/vectorization_util.py:87: UserWarning: Saw Tensor seed Tensor("Bitcast_2:0", shape=(2,), dtype=int32), implying stateless sampling. Autovectorized functions that use stateless sampling may be quite slow because the current implementation falls back to an explicit loop. This will be fixed in the future. For now, you will likely see better performance from stateful sampling, which you can invoke by passing a Python `int` seed.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__distributions__joint_distribution_auto_batched_test/candidate.xml -
+=========================== short test summary info ============================
+FAILED tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py::JointDistributionAutoBatchedTest::test_default_event_space_bijector_coroutine_eager
+FAILED tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py::JointDistributionAutoBatchedTest::test_default_event_space_bijector_coroutine_eager_no_tf_function
+FAILED tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py::JointDistributionAutoBatchedTest::test_default_event_space_bijector_coroutine_graph
+FAILED tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py::JointDistributionAutoBatchedTest::test_default_event_space_bijector_named_eager
+FAILED tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py::JointDistributionAutoBatchedTest::test_default_event_space_bijector_named_eager_no_tf_function
+FAILED tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py::JointDistributionAutoBatchedTest::test_default_event_space_bijector_named_graph
+FAILED tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py::JointDistributionAutoBatchedTest::test_default_event_space_bijector_sequential_eager
+FAILED tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py::JointDistributionAutoBatchedTest::test_default_event_space_bijector_sequential_eager_no_tf_function
+FAILED tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py::JointDistributionAutoBatchedTest::test_default_event_space_bijector_sequential_graph
+9 failed, 133 passed, 12 skipped, 23 warnings in 131.72s (0:02:11)

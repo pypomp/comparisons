@@ -1,0 +1,7 @@
+........................................................................ [ 24%]
+....s................................................................... [ 48%]
+.........sss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss [ 72%]
+.ss.ss.ss.sss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss.ss.s [ 96%]
+s.ss.ss.ss.s                                                             [100%]
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__experimental__linalg__linear_operator_interpolated_psd_kernel_test/candidate.xml -
+200 passed, 100 skipped in 118.18s (0:01:58)

@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "reviewed_at_UTC": "2026-10-29T13:13:42.907620+00:00",
+  "review_method": "Root visually inspected all three final PNG images through view_image after enlarged/full-range titles and repeat legend were added",
+  "figure_sha256": {
+    "likelihood.png": "3111898ed98f476248af23ed948235ba47d3affa099a67ad399d450f36301400",
+    "likelihood_full_range.png": "b9fb552646643155b3e2f8c2554f44abc96b6ca3747ba930909fdf98b27691e9",
+    "runtime.png": "c7ff52c53d7f07c54ac6629fdb6828b248b38d8f36af1ce8d16d22b177512418"
+  },
+  "checks": [
+    "Explicit enlarged/full range titles and repeat marker legend are readable",
+    "All points retained; zoom below-range triangles and counts agree with full-range floor and low-ESS points",
+    "Failed IFAD and floor red cross visible, low precision hollow marker retained",
+    "No clipped labels or legend overlap",
+    "Runtime states twelve separate scalar fits and includes internal SGD compilation and failed-fit cost"
+  ]
+}

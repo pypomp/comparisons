@@ -1,0 +1,18 @@
+{
+  "collected_at_utc": "2026-10-31T21:36:41.214909+00:00",
+  "package": "tfp",
+  "job_ids": [
+    "65096288"
+  ],
+  "source_manifest_sha256": "17b13421347c1558824ff041d9de871ef09e2a94f918d664bc492f953ba0c846",
+  "source_files": 3093,
+  "source_mismatches": [],
+  "transferred_files": 5,
+  "transferred_bytes": 505375,
+  "transfer_before_after_and_local_hashes_match": true,
+  "transfer_manifest_created_at_collection": true,
+  "fitting_run": false,
+  "scoring_run": false,
+  "archive_sha256": "8895e845d55805502c01040d2b3887a2e24c89ef1f128d0b5743da54a6d33e37",
+  "missing_optional_outputs": []
+}

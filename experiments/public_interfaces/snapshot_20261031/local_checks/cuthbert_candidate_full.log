@@ -1,0 +1,283 @@
+........................................................................ [  4%]
+........................................................................ [  9%]
+........................................................................ [ 13%]
+........................................................................ [ 18%]
+........................................................................ [ 23%]
+........................................................................ [ 27%]
+........................................................................ [ 32%]
+........................................................................ [ 37%]
+........................................................................ [ 41%]
+........................................................................ [ 46%]
+........................................................................ [ 51%]
+........................................................................ [ 55%]
+........................................................................ [ 60%]
+........................................................................ [ 65%]
+........................................................................ [ 69%]
+........................................................................ [ 74%]
+........................................................................ [ 79%]
+........................................................................ [ 83%]
+........................................................................ [ 88%]
+........................................................................ [ 93%]
+........................................................................ [ 97%]
+..........................FFFFFFF..F                                     [100%]
+=================================== FAILURES ===================================
+_______ test_example_scripts[examples_scripts/enkf_localization_l96.py] ________
+
+script = 'examples_scripts/enkf_localization_l96.py'
+
+    @pytest.mark.examples
+    @pytest.mark.parametrize("script", glob.glob(f"{EXAMPLES_DIR}/*.py"))
+    def test_example_scripts(script):
+        """Run each tangled example script to ensure it runs without error."""
+>       runpy.run_path(script)
+
+tests/test_examples_scripts.py:13: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+<frozen runpy>:287: in run_path
+    ???
+<frozen runpy>:98: in _run_module_code
+    ???
+<frozen runpy>:88: in _run_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    # ~/~ begin <<docs/examples/enkf_localization_l96.md#examples_scripts/enkf_localization_l96.py>>[init]
+    # ~/~ begin <<docs/examples/enkf_localization_l96.md#enkf-localization-l96-imports>>[init]
+    import jax
+    import jax.numpy as jnp
+>   import matplotlib.pyplot as plt
+E   ModuleNotFoundError: No module named 'matplotlib'
+
+examples_scripts/enkf_localization_l96.py:5: ModuleNotFoundError
+__________ test_example_scripts[examples_scripts/enkf_comparison.py] ___________
+
+script = 'examples_scripts/enkf_comparison.py'
+
+    @pytest.mark.examples
+    @pytest.mark.parametrize("script", glob.glob(f"{EXAMPLES_DIR}/*.py"))
+    def test_example_scripts(script):
+        """Run each tangled example script to ensure it runs without error."""
+>       runpy.run_path(script)
+
+tests/test_examples_scripts.py:13: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+<frozen runpy>:287: in run_path
+    ???
+<frozen runpy>:98: in _run_module_code
+    ???
+<frozen runpy>:88: in _run_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    # ~/~ begin <<docs/examples/enkf_comparison.md#examples_scripts/enkf_comparison.py>>[init]
+    # ~/~ begin <<docs/examples/enkf_comparison.md#enkf-comparison-imports>>[init]
+    import time
+    
+    import jax
+    import jax.numpy as jnp
+>   import matplotlib.pyplot as plt
+E   ModuleNotFoundError: No module named 'matplotlib'
+
+examples_scripts/enkf_comparison.py:7: ModuleNotFoundError
+_________ test_example_scripts[examples_scripts/diff_pf_resampling.py] _________
+
+script = 'examples_scripts/diff_pf_resampling.py'
+
+    @pytest.mark.examples
+    @pytest.mark.parametrize("script", glob.glob(f"{EXAMPLES_DIR}/*.py"))
+    def test_example_scripts(script):
+        """Run each tangled example script to ensure it runs without error."""
+>       runpy.run_path(script)
+
+tests/test_examples_scripts.py:13: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+<frozen runpy>:287: in run_path
+    ???
+<frozen runpy>:98: in _run_module_code
+    ???
+<frozen runpy>:88: in _run_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    # ~/~ begin <<docs/examples/diff_pf_resampling.md#examples_scripts/diff_pf_resampling.py>>[init]
+    # ~/~ begin <<docs/examples/diff_pf_resampling.md#pf_grad_bias-imports>>[init]
+    import jax
+    import jax.numpy as jnp
+    from jax import random
+    
+>   import matplotlib.pyplot as plt
+E   ModuleNotFoundError: No module named 'matplotlib'
+
+examples_scripts/diff_pf_resampling.py:7: ModuleNotFoundError
+__________ test_example_scripts[examples_scripts/kalman_tracking.py] ___________
+
+script = 'examples_scripts/kalman_tracking.py'
+
+    @pytest.mark.examples
+    @pytest.mark.parametrize("script", glob.glob(f"{EXAMPLES_DIR}/*.py"))
+    def test_example_scripts(script):
+        """Run each tangled example script to ensure it runs without error."""
+>       runpy.run_path(script)
+
+tests/test_examples_scripts.py:13: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+<frozen runpy>:287: in run_path
+    ???
+<frozen runpy>:98: in _run_module_code
+    ???
+<frozen runpy>:88: in _run_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    # ~/~ begin <<docs/examples/kalman_tracking.md#examples_scripts/kalman_tracking.py>>[init]
+    # ~/~ begin <<docs/examples/kalman_tracking.md#kalman-imports>>[init]
+    from jax import random, jit, numpy as jnp
+>   import matplotlib.pyplot as plt
+E   ModuleNotFoundError: No module named 'matplotlib'
+
+examples_scripts/kalman_tracking.py:4: ModuleNotFoundError
+__________ test_example_scripts[examples_scripts/online_stoch_vol.py] __________
+
+script = 'examples_scripts/online_stoch_vol.py'
+
+    @pytest.mark.examples
+    @pytest.mark.parametrize("script", glob.glob(f"{EXAMPLES_DIR}/*.py"))
+    def test_example_scripts(script):
+        """Run each tangled example script to ensure it runs without error."""
+>       runpy.run_path(script)
+
+tests/test_examples_scripts.py:13: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+<frozen runpy>:287: in run_path
+    ???
+<frozen runpy>:98: in _run_module_code
+    ???
+<frozen runpy>:88: in _run_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    # ~/~ begin <<docs/examples/online_stoch_vol.md#examples_scripts/online_stoch_vol.py>>[init]
+    # ~/~ begin <<docs/examples/online_stoch_vol.md#online-stoch-vol-setup>>[init]
+    from typing import NamedTuple
+>   import matplotlib.pyplot as plt
+E   ModuleNotFoundError: No module named 'matplotlib'
+
+examples_scripts/online_stoch_vol.py:4: ModuleNotFoundError
+______ test_example_scripts[examples_scripts/parameter_estimation_em.py] _______
+
+script = 'examples_scripts/parameter_estimation_em.py'
+
+    @pytest.mark.examples
+    @pytest.mark.parametrize("script", glob.glob(f"{EXAMPLES_DIR}/*.py"))
+    def test_example_scripts(script):
+        """Run each tangled example script to ensure it runs without error."""
+>       runpy.run_path(script)
+
+tests/test_examples_scripts.py:13: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+<frozen runpy>:287: in run_path
+    ???
+<frozen runpy>:98: in _run_module_code
+    ???
+<frozen runpy>:88: in _run_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    # ~/~ begin <<docs/examples/parameter_estimation_em.md#examples_scripts/parameter_estimation_em.py>>[init]
+    # ~/~ begin <<docs/examples/parameter_estimation_em.md#em-imports>>[init]
+    from typing import NamedTuple
+    
+    import jax.numpy as jnp
+>   import matplotlib.pyplot as plt
+E   ModuleNotFoundError: No module named 'matplotlib'
+
+examples_scripts/parameter_estimation_em.py:6: ModuleNotFoundError
+_________ test_example_scripts[examples_scripts/factorial_football.py] _________
+
+script = 'examples_scripts/factorial_football.py'
+
+    @pytest.mark.examples
+    @pytest.mark.parametrize("script", glob.glob(f"{EXAMPLES_DIR}/*.py"))
+    def test_example_scripts(script):
+        """Run each tangled example script to ensure it runs without error."""
+>       runpy.run_path(script)
+
+tests/test_examples_scripts.py:13: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+<frozen runpy>:287: in run_path
+    ???
+<frozen runpy>:98: in _run_module_code
+    ???
+<frozen runpy>:88: in _run_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    # ~/~ begin <<docs/examples/factorial_football.md#examples_scripts/factorial_football.py>>[init]
+    # ~/~ begin <<docs/examples/factorial_football.md#factorial-football-imports>>[init]
+    from typing import NamedTuple
+    from functools import partial
+    
+>   import matplotlib.pyplot as plt
+E   ModuleNotFoundError: No module named 'matplotlib'
+
+examples_scripts/factorial_football.py:6: ModuleNotFoundError
+________ test_example_scripts[examples_scripts/dynamax_integration.py] _________
+
+script = 'examples_scripts/dynamax_integration.py'
+
+    @pytest.mark.examples
+    @pytest.mark.parametrize("script", glob.glob(f"{EXAMPLES_DIR}/*.py"))
+    def test_example_scripts(script):
+        """Run each tangled example script to ensure it runs without error."""
+>       runpy.run_path(script)
+
+tests/test_examples_scripts.py:13: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+<frozen runpy>:287: in run_path
+    ???
+<frozen runpy>:98: in _run_module_code
+    ???
+<frozen runpy>:88: in _run_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    # ~/~ begin <<docs/examples/dynamax_integration.md#examples_scripts/dynamax_integration.py>>[init]
+    # ~/~ begin <<docs/examples/dynamax_integration.md#dynamax-imports>>[init]
+    import jax.numpy as jnp
+    import jax.random as jr
+>   from dynamax.linear_gaussian_ssm import LinearGaussianSSM, lgssm_filter
+E   ModuleNotFoundError: No module named 'dynamax'
+
+examples_scripts/dynamax_integration.py:5: ModuleNotFoundError
+=============================== warnings summary ===============================
+tests/cuthbertlib/resampling/test_resamplings.py:79
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v2/candidate/tests/cuthbertlib/resampling/test_resamplings.py:79: PytestUnknownMarkWarning: Unknown pytest.mark.xdist_group - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.xdist_group(name="resampling")  # Serialize to avoid OOM
+
+tests/cuthbertlib/resampling/test_resamplings.py:103
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v2/candidate/tests/cuthbertlib/resampling/test_resamplings.py:103: PytestUnknownMarkWarning: Unknown pytest.mark.xdist_group - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.xdist_group(name="resampling")  # Serialize to avoid OOM
+
+tests/cuthbertlib/resampling/test_resamplings.py:130
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v2/candidate/tests/cuthbertlib/resampling/test_resamplings.py:130: PytestUnknownMarkWarning: Unknown pytest.mark.xdist_group - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.xdist_group(name="resampling")  # Serialize to avoid OOM
+
+tests/cuthbertlib/resampling/test_utils.py:25
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v2/candidate/tests/cuthbertlib/resampling/test_utils.py:25: PytestUnknownMarkWarning: Unknown pytest.mark.xdist_group - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.xdist_group(name="inverse_cdf")  # Serialize to avoid OOM
+
+tests/cuthbertlib/resampling/test_utils.py:50
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v2/candidate/tests/cuthbertlib/resampling/test_utils.py:50: PytestUnknownMarkWarning: Unknown pytest.mark.xdist_group - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.xdist_group(name="inverse_cdf")  # Serialize to avoid OOM
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_examples_scripts.py::test_example_scripts[examples_scripts/enkf_localization_l96.py]
+FAILED tests/test_examples_scripts.py::test_example_scripts[examples_scripts/enkf_comparison.py]
+FAILED tests/test_examples_scripts.py::test_example_scripts[examples_scripts/diff_pf_resampling.py]
+FAILED tests/test_examples_scripts.py::test_example_scripts[examples_scripts/kalman_tracking.py]
+FAILED tests/test_examples_scripts.py::test_example_scripts[examples_scripts/online_stoch_vol.py]
+FAILED tests/test_examples_scripts.py::test_example_scripts[examples_scripts/parameter_estimation_em.py]
+FAILED tests/test_examples_scripts.py::test_example_scripts[examples_scripts/factorial_football.py]
+FAILED tests/test_examples_scripts.py::test_example_scripts[examples_scripts/dynamax_integration.py]
+8 failed, 1540 passed, 5 warnings in 321.68s (0:05:21)

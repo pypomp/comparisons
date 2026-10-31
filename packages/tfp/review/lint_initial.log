@@ -1,0 +1,470 @@
+E702 Multiple statements on one line (semicolon)
+   --> work/tfp-implementation-v1/candidate/tests/test_extensions.py:108:67
+    |
+106 | …                     criterion = (lambda s, particles_dim=0: tf.reduce_mean(s.particles) > .08) if adaptive else always_resample
+107 | …                     kernel = smc.SequentialMonteCarlo(proposal,resample_criterion_fn=criterion,gradient_discount=alpha)
+108 | …                     result=kernel.bootstrap_results(state);total=tf.zeros([],theta.dtype)
+    |                                                             ^
+109 | …                     for i in range(4):
+110 | …                         key=tf.constant([407,i])
+    |
+
+E701 Multiple statements on one line (colon)
+   --> work/tfp-implementation-v1/candidate/tests/test_extensions.py:112:41
+    |
+110 | …                     key=tf.constant([407,i])
+111 | …                     if manual:
+112 | …                         if i:state=proposal(i-1,state,None)
+    |                               ^
+113 | …                         norm=tf.nn.log_softmax(state.log_weights,axis=0)
+114 | …                         total += state.log_weights[0]-norm[0]
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> work/tfp-implementation-v1/candidate/tests/test_extensions.py:135:63
+    |
+133 |                     with self.subTest(dimension=dimension, within=within, sampler=resampler.__name__):
+134 |                         p=tf.constant([[.2,.1,2.],[.4,-.1,3.]],tf.float64)
+135 |                         cloud=tf.broadcast_to(p[None],[7,2,3]);y=tf.constant([[.1,.2],[.2,.5],[.4,.3],[.6,.1]],tf.float64)
+    |                                                               ^
+136 |                         prior,transition,obs=model_functions(dimension,nonlinear)
+137 |                         process=tf.constant([.05,.03,0.],tf.float64);initial=tf.constant([.1,0.,0.],tf.float64)
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> work/tfp-implementation-v1/candidate/tests/test_extensions.py:137:69
+    |
+135 | …     cloud=tf.broadcast_to(p[None],[7,2,3]);y=tf.constant([[.1,.2],[.2,.5],[.4,.3],[.6,.1]],tf.float64)
+136 | …     prior,transition,obs=model_functions(dimension,nonlinear)
+137 | …     process=tf.constant([.05,.03,0.],tf.float64);initial=tf.constant([.1,0.,0.],tf.float64)
+    |                                                   ^
+138 | …     for i in range(2):
+139 | …         key=tf.constant([800,i]);kwargs=dict(initial_scale=initial,iteration=float(i),cooling_rate=.7,cooling_interval=3.,within_pa…
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> work/tfp-implementation-v1/candidate/tests/test_extensions.py:139:53
+    |
+137 | …     process=tf.constant([.05,.03,0.],tf.float64);initial=tf.constant([.1,0.,0.],tf.float64)
+138 | …     for i in range(2):
+139 | …         key=tf.constant([800,i]);kwargs=dict(initial_scale=initial,iteration=float(i),cooling_rate=.7,cooling_interval=3.,within_pa…
+    |                                   ^
+140 | …         actual=tfp.experimental.mcmc.iterated_filter_step(cloud,y,prior,transition,obs,process,**kwargs)
+141 | …         expected=manual_pass(cloud,y,prior,transition,obs,process,initial,float(i),.7,3.,within,resampler,key)
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> work/tfp-implementation-v1/candidate/tests/test_extensions.py:147:59
+    |
+146 |     def test_multi_pass_graph_and_frozen_coordinates(self):
+147 |         p=tf.constant([[.2,.1,2.],[.4,-.1,3.]],tf.float32);y=tf.zeros([4,2]);prior,trans,obs=model_functions()
+    |                                                           ^
+148 |         root=tf.constant([900,1])
+149 |         def run(p):return tfp.experimental.mcmc.iterated_filter(p,y,prior,trans,obs,7,3,[.05,.03,0.],initial_scale=[.1,0.,0.],seed=ro…
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> work/tfp-implementation-v1/candidate/tests/test_extensions.py:147:77
+    |
+146 |     def test_multi_pass_graph_and_frozen_coordinates(self):
+147 |         p=tf.constant([[.2,.1,2.],[.4,-.1,3.]],tf.float32);y=tf.zeros([4,2]);prior,trans,obs=model_functions()
+    |                                                                             ^
+148 |         root=tf.constant([900,1])
+149 |         def run(p):return tfp.experimental.mcmc.iterated_filter(p,y,prior,trans,obs,7,3,[.05,.03,0.],initial_scale=[.1,0.,0.],seed=ro…
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> work/tfp-implementation-v1/candidate/tests/test_extensions.py:151:47
+    |
+149 | …     def run(p):return tfp.experimental.mcmc.iterated_filter(p,y,prior,trans,obs,7,3,[.05,.03,0.],initial_scale=[.1,0.,0.],seed=root)
+150 | …     result=tf.function(run,autograph=False)(p)
+151 | …     cloud=tf.broadcast_to(p[None],[7,2,3]);history=[p];ll=[]
+    |                                             ^
+152 | …     for i in range(3):
+153 | …         cloud,score=tfp.experimental.mcmc.iterated_filter_step(cloud,y,prior,trans,obs,[.05,.03,0.],initial_scale=[.1,0.,0.],iterat…
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> work/tfp-implementation-v1/candidate/tests/test_extensions.py:151:59
+    |
+149 | …     def run(p):return tfp.experimental.mcmc.iterated_filter(p,y,prior,trans,obs,7,3,[.05,.03,0.],initial_scale=[.1,0.,0.],seed=root)
+150 | …     result=tf.function(run,autograph=False)(p)
+151 | …     cloud=tf.broadcast_to(p[None],[7,2,3]);history=[p];ll=[]
+    |                                                         ^
+152 | …     for i in range(3):
+153 | …         cloud,score=tfp.experimental.mcmc.iterated_filter_step(cloud,y,prior,trans,obs,[.05,.03,0.],initial_scale=[.1,0.,0.],iterat…
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> work/tfp-implementation-v1/candidate/tests/test_extensions.py:154:52
+    |
+152 | …     for i in range(3):
+153 | …         cloud,score=tfp.experimental.mcmc.iterated_filter_step(cloud,y,prior,trans,obs,[.05,.03,0.],initial_scale=[.1,0.,0.],iterat…
+154 | …         history.append(tf.reduce_mean(cloud,0));ll.append(score)
+    |                                                  ^
+155 | …     # Eager-vs-graph kernels can differ by float32 rounding.
+156 | …     self.check_same(result.parameter_particles,cloud,atol=2e-6)
+    |
+
+E701 Multiple statements on one line (colon)
+   --> work/tfp-implementation-v1/candidate/tests/test_extensions.py:164:43
+    |
+162 |             with self.subTest(alpha=alpha),self.assertRaises(ValueError):
+163 |                 smc.SequentialMonteCarlo(lambda *a:None,gradient_discount=alpha)
+164 |         with self.assertRaises(ValueError):smc.SequentialMonteCarlo(lambda *a:None,gradient_discount=.9,unbiased_gradients=False)
+    |                                           ^
+165 |         with self.assertRaises(ValueError):smc.SequentialMonteCarlo(lambda *a:None,gradient_discount=.9,resample_criterion_fn=None)
+166 |         prior,trans,obs=model_functions();cloud=tf.ones([4,2,2]);y=tf.zeros([3,2])
+    |
+
+E701 Multiple statements on one line (colon)
+   --> work/tfp-implementation-v1/candidate/tests/test_extensions.py:165:43
+    |
+163 |                 smc.SequentialMonteCarlo(lambda *a:None,gradient_discount=alpha)
+164 |         with self.assertRaises(ValueError):smc.SequentialMonteCarlo(lambda *a:None,gradient_discount=.9,unbiased_gradients=False)
+165 |         with self.assertRaises(ValueError):smc.SequentialMonteCarlo(lambda *a:None,gradient_discount=.9,resample_criterion_fn=None)
+    |                                           ^
+166 |         prior,trans,obs=model_functions();cloud=tf.ones([4,2,2]);y=tf.zeros([3,2])
+167 |         for scale in (-.1,float('nan')):
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> work/tfp-implementation-v1/candidate/tests/test_extensions.py:166:42
+    |
+164 |         with self.assertRaises(ValueError):smc.SequentialMonteCarlo(lambda *a:None,gradient_discount=.9,unbiased_gradients=False)
+165 |         with self.assertRaises(ValueError):smc.SequentialMonteCarlo(lambda *a:None,gradient_discount=.9,resample_criterion_fn=None)
+166 |         prior,trans,obs=model_functions();cloud=tf.ones([4,2,2]);y=tf.zeros([3,2])
+    |                                          ^
+167 |         for scale in (-.1,float('nan')):
+168 |             with self.subTest(scale=scale),self.assertRaises(tf.errors.InvalidArgumentError):
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> work/tfp-implementation-v1/candidate/tests/test_extensions.py:166:65
+    |
+164 |         with self.assertRaises(ValueError):smc.SequentialMonteCarlo(lambda *a:None,gradient_discount=.9,unbiased_gradients=False)
+165 |         with self.assertRaises(ValueError):smc.SequentialMonteCarlo(lambda *a:None,gradient_discount=.9,resample_criterion_fn=None)
+166 |         prior,trans,obs=model_functions();cloud=tf.ones([4,2,2]);y=tf.zeros([3,2])
+    |                                                                 ^
+167 |         for scale in (-.1,float('nan')):
+168 |             with self.subTest(scale=scale),self.assertRaises(tf.errors.InvalidArgumentError):
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> work/tfp-implementation-v1/candidate/tests/test_extensions.py:176:42
+    |
+175 |     def test_zero_passes(self):
+176 |         prior,trans,obs=model_functions();p=tf.constant([[.1234567,.3],[.7,.1]])
+    |                                          ^
+177 |         result=tfp.experimental.mcmc.iterated_filter(p,tf.zeros([3,2]),prior,trans,obs,7,0,.1,seed=[3,1])
+178 |         self.check_same(result.parameters,p)
+    |
+
+E731 Do not assign a `lambda` expression, use a `def`
+   --> work/tfp-implementation-v1/candidate/tests/test_extensions.py:183:9
+    |
+181 |       def test_nested_state_and_no_batch_dimension(self):
+182 |           tfd = tfp.distributions
+183 | /         prior = lambda p: tfd.JointDistributionNamed({
+184 | |             'a': tfd.Normal(p[..., 0], tf.cast(.1, p.dtype)),
+185 | |             'b': tfd.Normal(p[..., 1], tf.cast(.2, p.dtype))})
+    | |______________________________________________________________^
+186 |           transition = lambda t, x, p: tfd.JointDistributionNamed({
+187 |               'a': tfd.Normal(.6*x['a']+p[..., 0], tf.cast(.2, p.dtype)),
+    |
+help: Rewrite `prior` as a `def`
+
+E731 Do not assign a `lambda` expression, use a `def`
+   --> work/tfp-implementation-v1/candidate/tests/test_extensions.py:186:9
+    |
+184 |               'a': tfd.Normal(p[..., 0], tf.cast(.1, p.dtype)),
+185 |               'b': tfd.Normal(p[..., 1], tf.cast(.2, p.dtype))})
+186 | /         transition = lambda t, x, p: tfd.JointDistributionNamed({
+187 | |             'a': tfd.Normal(.6*x['a']+p[..., 0], tf.cast(.2, p.dtype)),
+188 | |             'b': tfd.Normal(.4*x['b']+p[..., 1], tf.cast(.1, p.dtype))})
+    | |________________________________________________________________________^
+189 |           observation = lambda t, x, p: tfd.Normal(x['a']+x['b'], tf.cast(.7, p.dtype))
+190 |           cloud = tf.broadcast_to(tf.constant([[.2, .1]], tf.float64), [5, 2])
+    |
+help: Rewrite `transition` as a `def`
+
+E731 Do not assign a `lambda` expression, use a `def`
+   --> work/tfp-implementation-v1/candidate/tests/test_extensions.py:189:9
+    |
+187 |             'a': tfd.Normal(.6*x['a']+p[..., 0], tf.cast(.2, p.dtype)),
+188 |             'b': tfd.Normal(.4*x['b']+p[..., 1], tf.cast(.1, p.dtype))})
+189 |         observation = lambda t, x, p: tfd.Normal(x['a']+x['b'], tf.cast(.7, p.dtype))
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+190 |         cloud = tf.broadcast_to(tf.constant([[.2, .1]], tf.float64), [5, 2])
+191 |         y = tf.constant([.3, .1, -.2], tf.float64)
+    |
+help: Rewrite `observation` as a `def`
+
+E701 Multiple statements on one line (colon)
+   --> work/tfp-implementation-v1/candidate/tests/test_extensions.py:206:24
+    |
+206 | if __name__=='__main__':unittest.main(verbosity=2)
+    |                        ^
+    |
+
+E702 Multiple statements on one line (semicolon)
+  --> work/tfp-implementation-v1/validation/check_dacca.py:24:49
+   |
+22 |     p=ROOT/'upstream/tensorflow_probability/python/experimental/mcmc'/filename
+23 |     spec=importlib.util.spec_from_file_location(name,p)
+24 |     module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+   |                                                 ^
+25 |     return module
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> work/tfp-implementation-v1/validation/check_dacca.py:29:37
+   |
+28 | def main():
+29 |     parser=argparse.ArgumentParser();parser.add_argument('--disable-graph-rewrites',action='store_true');args=parser.parse_args()
+   |                                     ^
+30 |     if args.disable_graph_rewrites:
+31 |         tf.config.optimizer.set_experimental_options({'arithmetic_optimization':False,'remapping':False})
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> work/tfp-implementation-v1/validation/check_dacca.py:29:105
+   |
+28 | def main():
+29 |     parser=argparse.ArgumentParser();parser.add_argument('--disable-graph-rewrites',action='store_true');args=parser.parse_args()
+   |                                                                                                         ^
+30 |     if args.disable_graph_rewrites:
+31 |         tf.config.optimizer.set_experimental_options({'arithmetic_optimization':False,'remapping':False})
+   |
+
+E701 Multiple statements on one line (colon)
+  --> work/tfp-implementation-v1/validation/check_dacca.py:38:29
+   |
+36 |     model=keyed.Dacca(T=600,recompute=True)
+37 |     initial=tf.constant(m.to_est(m.DATA['theta_published']),tf.float32)
+38 |     if initial.shape.rank==1:initial=initial[None]
+   |                             ^
+39 |     J=8;members=tf.constant([[0,0]],tf.int32)
+40 |     init_scale=tf.constant([.16 if n in m.IVPS else 0. for n in m.FREE])
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> work/tfp-implementation-v1/validation/check_dacca.py:39:8
+   |
+37 |     initial=tf.constant(m.to_est(m.DATA['theta_published']),tf.float32)
+38 |     if initial.shape.rank==1:initial=initial[None]
+39 |     J=8;members=tf.constant([[0,0]],tf.int32)
+   |        ^
+40 |     init_scale=tf.constant([.16 if n in m.IVPS else 0. for n in m.FREE])
+41 |     process=tf.constant([0. if n in m.IVPS else .02 for n in m.FREE])
+   |
+
+E731 Do not assign a `lambda` expression, use a `def`
+  --> work/tfp-implementation-v1/validation/check_dacca.py:43:5
+   |
+41 |     process=tf.constant([0. if n in m.IVPS else .02 for n in m.FREE])
+42 |     observations=tf.broadcast_to(model.y[:,None],[601,1])
+43 |     prior=lambda p:tfd.Independent(tfd.Deterministic(model.initial(m.natural(p))),1)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+44 |     transition=lambda t,x,p:keyed.Transition(model,x,m.natural(p),t,members)
+45 |     observation=lambda t,x,p:m.Observation(model,x,m.natural(p),t)
+   |
+help: Rewrite `prior` as a `def`
+
+E731 Do not assign a `lambda` expression, use a `def`
+  --> work/tfp-implementation-v1/validation/check_dacca.py:44:5
+   |
+42 |     observations=tf.broadcast_to(model.y[:,None],[601,1])
+43 |     prior=lambda p:tfd.Independent(tfd.Deterministic(model.initial(m.natural(p))),1)
+44 |     transition=lambda t,x,p:keyed.Transition(model,x,m.natural(p),t,members)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+45 |     observation=lambda t,x,p:m.Observation(model,x,m.natural(p),t)
+46 |     old_if2=keyed.if2_step(model,J,.5,False,return_cloud=True)
+   |
+help: Rewrite `transition` as a `def`
+
+E731 Do not assign a `lambda` expression, use a `def`
+  --> work/tfp-implementation-v1/validation/check_dacca.py:45:5
+   |
+43 |     prior=lambda p:tfd.Independent(tfd.Deterministic(model.initial(m.natural(p))),1)
+44 |     transition=lambda t,x,p:keyed.Transition(model,x,m.natural(p),t,members)
+45 |     observation=lambda t,x,p:m.Observation(model,x,m.natural(p),t)
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+46 |     old_if2=keyed.if2_step(model,J,.5,False,return_cloud=True)
+47 |     @tf.function(autograph=False)
+   |
+help: Rewrite `observation` as a `def`
+
+E702 Multiple statements on one line (semicolon)
+  --> work/tfp-implementation-v1/validation/check_dacca.py:55:50
+   |
+53 |             normal_sample_fn=lambda p,k:keyed.keyed_normal(p,k,members,23),
+54 |             resample_fn=keyed.resampler(members),seed=key)
+55 |     cloud=tf.broadcast_to(initial[None],[J,1,23]);old_cloud=cloud
+   |                                                  ^
+56 |     comparisons=[]
+57 |     for i in range(2):
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> work/tfp-implementation-v1/validation/check_dacca.py:58:38
+   |
+56 |     comparisons=[]
+57 |     for i in range(2):
+58 |         key=tf.constant([20261101,i]);idx=tf.constant(float(i))
+   |                                      ^
+59 |         expected,old_ll=old_if2(old_cloud,idx,key,members)
+60 |         actual,new_ll=new_if2(cloud,idx,key)
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> work/tfp-implementation-v1/validation/check_dacca.py:79:30
+   |
+77 |         def run(p,key):
+78 |             with tf.GradientTape() as tape:
+79 |                 tape.watch(p);theta=m.natural(p)
+   |                              ^
+80 |                 kwargs={} if discount is None else {'gradient_discount':discount}
+81 |                 inc=function(observations,tfd.Independent(tfd.Deterministic(model.initial(theta)),1),
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> work/tfp-implementation-v1/validation/check_dacca.py:90:34
+   |
+88 |             return inc,tape.gradient(total,p)
+89 |         return run
+90 |     key=tf.constant([20261102,0]);baseline=kernel(pristine_pf.particle_filter)(initial,key)
+   |                                  ^
+91 |     gradients={}
+92 |     for alpha in [0.,.97,1.]:
+   |
+
+E701 Multiple statements on one line (colon)
+  --> work/tfp-implementation-v1/validation/check_dacca.py:96:20
+   |
+94 |         np.testing.assert_array_equal(inc.numpy(),baseline[0].numpy())
+95 |         tf.debugging.assert_all_finite(g,'nonfinite gradient')
+96 |         if alpha==1:np.testing.assert_array_equal(g.numpy(),baseline[1].numpy())
+   |                    ^
+97 |         gradients[str(alpha)]={'forward_exact':True,'gradient_finite':True,
+98 |                                'max_gradient_difference_from_alpha1':float(tf.reduce_max(tf.abs(g-baseline[1])))}
+   |
+
+E701 Multiple statements on one line (colon)
+   --> work/tfp-implementation-v1/validation/check_dacca.py:99:22
+    |
+ 97 |         gradients[str(alpha)]={'forward_exact':True,'gradient_finite':True,
+ 98 |                                'max_gradient_difference_from_alpha1':float(tf.reduce_max(tf.abs(g-baseline[1])))}
+ 99 |         if alpha==.97:discounted=kernel(tfp.experimental.mcmc.particle_filter,alpha)
+    |                      ^
+100 |         print('alpha',alpha,'checked',flush=True)
+101 |     # Compare the previous temporary-wrapper mechanism at one fixed point.
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> work/tfp-implementation-v1/validation/check_dacca.py:107:52
+    |
+105 |     old_diff=float(tf.reduce_max(tf.abs(old_g+new_g/600.)))
+106 |     np.testing.assert_allclose(old_g.numpy(),(-new_g/600.).numpy(),rtol=2e-5,atol=1e-5)
+107 |     parameters=tf.Variable(tf.reduce_mean(cloud,0));optimizer=tf.keras.optimizers.Adam(1e-6)
+    |                                                    ^
+108 |     before=parameters.numpy().copy()
+109 |     # The GradientTape is inside the PF function; use its returned gradient.
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> work/tfp-implementation-v1/validation/check_dacca.py:135:85
+    |
+133 |             'candidate_path':tfp.__file__,
+134 |             'frozen_copy_hashes':{n:hashlib.sha256((HERE/n).read_bytes()).hexdigest() for n in ['model.py','keyed.py','input/frozen.n…
+135 |     (OUT/('dacca_check_'+mode+'.json')).write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
+    |                                                                                     ^
+    |
+
+E701 Multiple statements on one line (colon)
+   --> work/tfp-implementation-v1/validation/check_dacca.py:138:24
+    |
+138 | if __name__=='__main__':main()
+    |                        ^
+    |
+
+E701 Multiple statements on one line (colon)
+  --> work/tfp-implementation-v1/validation/diagnose_if2.py:14:25
+   |
+12 |  tf.config.optimizer.set_experimental_options({'arithmetic_optimization':False,'remapping':False})
+13 | initial=tf.constant(m.to_est(m.DATA['theta_published']),tf.float32)
+14 | if initial.shape.rank==1:initial=initial[None]
+   |                         ^
+15 | members=tf.constant([[0,0]],tf.int32);J=8
+16 | init_scale=tf.constant([.16 if n in m.IVPS else 0. for n in m.FREE])
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> work/tfp-implementation-v1/validation/diagnose_if2.py:15:38
+   |
+13 | initial=tf.constant(m.to_est(m.DATA['theta_published']),tf.float32)
+14 | if initial.shape.rank==1:initial=initial[None]
+15 | members=tf.constant([[0,0]],tf.int32);J=8
+   |                                      ^
+16 | init_scale=tf.constant([.16 if n in m.IVPS else 0. for n in m.FREE])
+17 | process=tf.constant([0. if n in m.IVPS else .02 for n in m.FREE])
+   |
+
+E731 Do not assign a `lambda` expression, use a `def`
+  --> work/tfp-implementation-v1/validation/diagnose_if2.py:27:2
+   |
+25 |    value=self.model._interval(self.state,self.theta,noise,tf.gather(self.model.cov,self.t),tf.gather(self.model.dt,self.t))
+26 |    return value[None]
+27 |  prior=lambda p:tfp.distributions.Independent(tfp.distributions.Deterministic(model.initial(m.natural(p))),1)
+   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+28 |  observation=lambda t,x,p:m.Observation(model,x,m.natural(p),t)
+29 |  cloud=tf.broadcast_to(initial[None],[J,1,23]);key=tf.constant([20261101,0]);idx=tf.constant(0.)
+   |
+help: Rewrite `prior` as a `def`
+
+E731 Do not assign a `lambda` expression, use a `def`
+  --> work/tfp-implementation-v1/validation/diagnose_if2.py:28:2
+   |
+26 |    return value[None]
+27 |  prior=lambda p:tfp.distributions.Independent(tfp.distributions.Deterministic(model.initial(m.natural(p))),1)
+28 |  observation=lambda t,x,p:m.Observation(model,x,m.natural(p),t)
+   |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+29 |  cloud=tf.broadcast_to(initial[None],[J,1,23]);key=tf.constant([20261101,0]);idx=tf.constant(0.)
+30 |  old=keyed.if2_step(model,J,.5,False,return_cloud=True)(cloud,idx,key,members)
+   |
+help: Rewrite `observation` as a `def`
+
+E702 Multiple statements on one line (semicolon)
+  --> work/tfp-implementation-v1/validation/diagnose_if2.py:29:47
+   |
+27 |  prior=lambda p:tfp.distributions.Independent(tfp.distributions.Deterministic(model.initial(m.natural(p))),1)
+28 |  observation=lambda t,x,p:m.Observation(model,x,m.natural(p),t)
+29 |  cloud=tf.broadcast_to(initial[None],[J,1,23]);key=tf.constant([20261101,0]);idx=tf.constant(0.)
+   |                                               ^
+30 |  old=keyed.if2_step(model,J,.5,False,return_cloud=True)(cloud,idx,key,members)
+31 |  for cls in [keyed.Transition,SameShapeTransition]:
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> work/tfp-implementation-v1/validation/diagnose_if2.py:29:77
+   |
+27 |  prior=lambda p:tfp.distributions.Independent(tfp.distributions.Deterministic(model.initial(m.natural(p))),1)
+28 |  observation=lambda t,x,p:m.Observation(model,x,m.natural(p),t)
+29 |  cloud=tf.broadcast_to(initial[None],[J,1,23]);key=tf.constant([20261101,0]);idx=tf.constant(0.)
+   |                                                                             ^
+30 |  old=keyed.if2_step(model,J,.5,False,return_cloud=True)(cloud,idx,key,members)
+31 |  for cls in [keyed.Transition,SameShapeTransition]:
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> work/tfp-implementation-v1/validation/diagnose_if2.py:40:19
+   |
+38 |   actual=new(cloud,idx,key)
+39 |   row={'T':T,'distribution':cls.__name__,'max_parameter_diff':float(tf.reduce_max(tf.abs(actual[0]-old[0]))),'max_likelihood_diff':flo…
+40 |   rows.append(row);print(row,flush=True)
+   |                   ^
+41 | Path(__file__).with_name('if2_diagnostic_no_arithmetic.json' if os.environ.get('TFP_DIAGNOSTIC_NO_ARITHMETIC')=='1' else 'if2_diagnost…
+   |
+
+Found 43 errors.
+No fixes available (8 hidden fixes can be enabled with the `--unsafe-fixes` option).

@@ -1,0 +1,169 @@
+原始 Dacca 参数估计比较：最终交付索引
+
+论文两包800条终点记录和六个新增包168条终点记录均已交付。失败、低精度和观测底值饱和结果完整保留。
+最终采用的原始PF评分共37584次。论文7条非有限拟合未执行终点评分；原记录R=36是计划重复数，表中另列raw_repetitions=0及跳过原因。历史被替换的评分另存原包，不混入此计数。
+以下按实验范围和包分别报告。共同模型不意味着初始化、迭代预算、算法接口和硬件相同，不能合并成统一速度或优化器排名。
+
+实际评估的算法与接入边界
+包 | 原生部分 | 本次评估/本地扩展
+PFJAX | PFJAX模型/接口作为接入基础 | IF2、IFAD和直接ADPF三主组均为本地扩展
+  原生OT重采样没有通过完整Dacca梯度门槛，不包含在本次三组结果中；不能把本地ADPF称为PFJAX原生OT结果。
+PyDPF | 直接alpha1使用原生StopGradientDPF与torch.optim.Adam | IF2扰动/冷却和alpha=.97折扣接入为本地扩展，底层PF与重采样使用PyDPF
+  直接ADPF从原始起点开始，IFAD含175次IF2；差异不能单独归因于alpha。
+TFP | 直接alpha1使用原生particle_filter的unbiased_gradients=True与原生Keras Adam | IF2参数扰动和alpha=.97梯度折扣为本地扩展；PF/SMC及systematic重采样接口来自TFP
+  每步重采样为明确配置，不是默认ESS自适应选项；梯度XLA失败后采用普通TF GPU图，未换成别包实现。
+Dynamax | 原生SSM.fit_sgd优化接口 | 接入本地Dacca粒子滤波、IF2和IFAD扩展
+  不是Dynamax原生通用PF或EM比较；正式结果使用独立标量调用，非12-filter批量核。
+pypfilt | 原生粒子滤波 | 外部SciPy Nelder-Mead参数搜索
+  这是CPU预算实验，不是原生梯度优化器或EM结果。
+particles | 原生粒子滤波 | 外部SciPy Nelder-Mead参数搜索
+  这是CPU预算实验，不是原生梯度优化器或EM结果。
+Paper/Cuthbert | Cuthbert粒子滤波和systematic重采样 | 本地IF2/DMOP/IFAD扩展；论文比较训练循环复用PyPOMP Adam
+  这些扩展并非Cuthbert开箱即有的参数估计设施，也不是其EM基线。
+Paper/PyPOMP | 冻结PyPOMP functional.mif、functional.train与Adam | 论文固定迭代和冷却/学习率设置下的IF2与IFAD
+  100起点论文实验与新增包6起点×2重复实验分别统计。
+
+paper100 common starts
+包/方法 | 有限保留中位likelihood | 有限/总数 | 完整拟合且评分无失败的有限数 | 拟合失败 | 评分失败 | 有限低精度 | 底值饱和
+cuthbert/IF2 | -3755.079531 | 100/100 | 100 | 0 | 0 | 1/100 | 0
+  完整拟合且评分无失败的有限子集：100/100，条件中位数-3755.079531；此子集仍保留低精度和底值点。
+cuthbert/IFAD_0 | -3751.861184 | 100/100 | 100 | 0 | 0 | 0/100 | 1
+  完整拟合且评分无失败的有限子集：100/100，条件中位数-3751.861184；此子集仍保留低精度和底值点。
+cuthbert/IFAD_097 | -3744.318462 | 100/100 | 100 | 0 | 0 | 0/100 | 0
+  完整拟合且评分无失败的有限子集：100/100，条件中位数-3744.318462；此子集仍保留低精度和底值点。
+cuthbert/IFAD_1 | -3746.880802 | 97/100 | 97 | 3 | 0 | 3/97 | 0
+  完整拟合且评分无失败的有限子集：97/100，条件中位数-3746.880802；此子集仍保留低精度和底值点。
+pypomp/IF2 | -3755.386228 | 100/100 | 100 | 0 | 0 | 1/100 | 1
+  完整拟合且评分无失败的有限子集：100/100，条件中位数-3755.386228；此子集仍保留低精度和底值点。
+pypomp/IFAD_0 | -3751.883361 | 100/100 | 100 | 0 | 0 | 0/100 | 0
+  完整拟合且评分无失败的有限子集：100/100，条件中位数-3751.883361；此子集仍保留低精度和底值点。
+pypomp/IFAD_097 | -3744.388222 | 98/100 | 98 | 2 | 0 | 1/98 | 0
+  完整拟合且评分无失败的有限子集：98/100，条件中位数-3744.388222；此子集仍保留低精度和底值点。
+pypomp/IFAD_1 | -3747.167178 | 98/100 | 98 | 2 | 0 | 3/98 | 0
+  完整拟合且评分无失败的有限子集：98/100，条件中位数-3747.167178；此子集仍保留低精度和底值点。
+
+six common starts x two repeats
+包/方法 | 有限保留中位likelihood | 有限/总数 | 完整拟合且评分无失败的有限数 | 拟合失败 | 评分失败 | 有限低精度 | 底值饱和
+Dynamax/IF2 | -3756.137038 | 12/12 | 12 | 0 | 0 | 0/12 | 0
+  完整拟合且评分无失败的有限子集：12/12，条件中位数-3756.137038；此子集仍保留低精度和底值点。
+Dynamax/IFAD_097 | -3744.582752 | 12/12 | 11 | 1 | 0 | 0/12 | 1
+  完整拟合且评分无失败的有限子集：11/12，条件中位数-3744.564954；此子集仍保留低精度和底值点。
+Dynamax/SGD_alpha1 | -3803.834844 | 12/12 | 12 | 0 | 0 | 1/12 | 0
+  完整拟合且评分无失败的有限子集：12/12，条件中位数-3803.834844；此子集仍保留低精度和底值点。
+PFJAX/ADPF_extension | -3799.437936 | 12/12 | 12 | 0 | 0 | 0/12 | 0
+  完整拟合且评分无失败的有限子集：12/12，条件中位数-3799.437936；此子集仍保留低精度和底值点。
+PFJAX/IF2 | -3767.385475 | 12/12 | 12 | 0 | 0 | 0/12 | 0
+  完整拟合且评分无失败的有限子集：12/12，条件中位数-3767.385475；此子集仍保留低精度和底值点。
+PFJAX/IFAD | -3744.625298 | 12/12 | 12 | 0 | 0 | 0/12 | 0
+  完整拟合且评分无失败的有限子集：12/12，条件中位数-3744.625298；此子集仍保留低精度和底值点。
+PyDPF/ADPF | -3788.197671 | 12/12 | 12 | 0 | 0 | 1/12 | 0
+  完整拟合且评分无失败的有限子集：12/12，条件中位数-3788.197671；此子集仍保留低精度和底值点。
+PyDPF/IF2 | -3756.121030 | 12/12 | 12 | 0 | 0 | 0/12 | 0
+  完整拟合且评分无失败的有限子集：12/12，条件中位数-3756.121030；此子集仍保留低精度和底值点。
+PyDPF/IFAD | -3744.512040 | 12/12 | 11 | 1 | 0 | 0/12 | 1
+  完整拟合且评分无失败的有限子集：11/12，条件中位数-3744.346240；此子集仍保留低精度和底值点。
+TFP/ADPF | -3794.678585 | 12/12 | 12 | 0 | 0 | 0/12 | 0
+  完整拟合且评分无失败的有限子集：12/12，条件中位数-3794.678585；此子集仍保留低精度和底值点。
+TFP/IF2 | -3757.150551 | 12/12 | 12 | 0 | 0 | 0/12 | 0
+  完整拟合且评分无失败的有限子集：12/12，条件中位数-3757.150551；此子集仍保留低精度和底值点。
+TFP/IFAD | -3744.416673 | 12/12 | 12 | 0 | 0 | 0/12 | 0
+  完整拟合且评分无失败的有限子集：12/12，条件中位数-3744.416673；此子集仍保留低精度和底值点。
+particles/PF + external Nelder-Mead | -4247.232199 | 12/12 | 12 | 0 | 0 | 1/12 | 0
+  完整拟合且评分无失败的有限子集：12/12，条件中位数-4247.232199；此子集仍保留低精度和底值点。
+pypfilt/PF + external Nelder-Mead | -4654.881178 | 12/12 | 12 | 0 | 0 | 5/12 | 0
+  完整拟合且评分无失败的有限子集：12/12，条件中位数-4654.881178；此子集仍保留低精度和底值点。
+
+GPU占用（GPU秒）
+实验/包 | 正式作业实际占用 | 必要重评分追加 | 正式与重评分合计
+PyDPF | 64377 | 0 | 64377
+  方法 | 拟合秒 | 单独拟合编译秒 | 评分执行秒 | 评分编译秒 | 评分进程秒
+  ADPF | 24628.607 | 未单独测量 | 6.896 | 2.708 | 15.625
+    Unique whole-batch fitting wall time, including failure attempts; synchronized subset retained separately。No isolated fitting compile timer is reported. Score process wall contains its preparation/compile/execution; do not add nested fields.
+  IF2 | 17870.262 | 未单独测量 | 4.396 | 2.264 | 9.263
+    Unique whole-batch fitting wall time, including failure attempts; synchronized subset retained separately。No isolated fitting compile timer is reported. Score process wall contains its preparation/compile/execution; do not add nested fields.
+  IFAD | 21236.343 | 未单独测量 | 4.376 | 1.881 | 8.387
+    Unique whole-batch fitting wall time, including failure attempts; synchronized subset retained separately。No isolated fitting compile timer is reported. Score process wall contains its preparation/compile/execution; do not add nested fields.
+  总计时范围：Actual unique batch times, not per-row multiplied times. All three use one A40 on different nodes. Fixed iteration configurations are not equal-time budgets. IFAD includes its complete IF2 prefix and failed attempt.
+TFP | 26230 | 0 | 26230
+  方法 | 拟合秒 | 单独拟合编译秒 | 评分执行秒 | 评分编译秒 | 评分进程秒
+  ADPF | 11126.707 | 未单独测量 | 4.964 | 1.949 | 223.563
+    Synchronized whole batch of12; excludes separate preparation/control/scoring/I/O。Pure fitting compile time is not separable from first discarded execution; detailed graph-build/first-call times are retained in raw_timing.
+  IF2 | 3431.483 | 未单独测量 | 4.637 | 1.895 | 61.416
+    Synchronized whole batch of12; excludes separate preparation/control/scoring/I/O。Pure fitting compile time is not separable from first discarded execution; detailed graph-build/first-call times are retained in raw_timing.
+  IFAD | 10616.709 | 未单独测量 | 4.647 | 2.702 | 30.333
+    Synchronized whole batch of12; excludes separate preparation/control/scoring/I/O。Pure fitting compile time is not separable from first discarded execution; detailed graph-build/first-call times are retained in raw_timing.
+  总计时范围：Each synchronized call updates the whole batch of12 filters at T600/J5000. IF2=1950 passes, IFAD=175IF2+400Adam, native ADPF=425Adam from raw starts. Different fixed iteration counts, not equal wall time. Slurm occupation includes probe, graph preparation, imports, control PF, fitting, IO, final PF scoring and process overhead. Nested timing scopes must not be added twice. No prefix is physically shared between the IF2 arm and the IFAD arm.
+Dynamax | 28905 | 0 | 28905
+  此前单独记录的部署/预检/效率成本：1137 GPU秒，未混入本表正式作业。
+  方法 | 拟合秒 | 单独拟合编译秒 | 评分执行秒 | 评分编译秒 | 评分进程秒
+  IF2 | 6358.074 | 未单独测量 | 4.440 | 8.190 | 未单独测量
+    Sum of12 separate scalar fits; native SGD internal compilation stays inside fitting。Three methods share each task allocation. Per-method allocation and whole scoring-process time are not separately measured; internal SGD compile time is not isolated.
+  IFAD_097 | 10030.245 | 未单独测量 | 4.433 | 9.844 | 未单独测量
+    Sum of12 separate scalar fits; native SGD internal compilation stays inside fitting。Three methods share each task allocation. Per-method allocation and whole scoring-process time are not separately measured; internal SGD compile time is not isolated.
+  SGD_alpha1 | 10947.095 | 未单独测量 | 9.668 | 8.485 | 未单独测量
+    Sum of12 separate scalar fits; native SGD internal compilation stays inside fitting。Three methods share each task allocation. Per-method allocation and whole scoring-process time are not separately measured; internal SGD compile time is not isolated.
+  总计时范围：Each trial is scalar B1 on one A40, three methods sequentially; method totals sum12 separate trials. Native SGD fit includes internal compilation. IF2 explicit preparation and independent scoring are separate. Failed early fits retain actual shorter cost; not a successful-fit speedup. Not a12-filter batched kernel timing.
+PFJAX | 2724 | 68 | 2792
+  方法 | 拟合秒 | 单独拟合编译秒 | 评分执行秒 | 评分编译秒 | 评分进程秒
+  IF2 | 1009.019 | 2.471 | 4.321 | 未单独测量 | 未单独测量
+    Unique whole batch of12; includes full IFAD prefix。Repair compilation is recorded once for all methods, not allocated per method. Whole scoring-process time and per-method allocation are not isolated.
+  IFAD | 831.462 | 7.551 | 4.317 | 未单独测量 | 未单独测量
+    Unique whole batch of12; includes full IFAD prefix。Repair compilation is recorded once for all methods, not allocated per method. Whole scoring-process time and per-method allocation are not isolated.
+  ADPF_extension | 777.964 | 4.963 | 4.676 | 未单独测量 | 未单独测量
+    Unique whole batch of12; includes full IFAD prefix。Repair compilation is recorded once for all methods, not allocated per method. Whole scoring-process time and per-method allocation are not isolated.
+  总计时范围：Original fit and score job plus mandatory independent rescoring of all36 unchanged endpoints; old score costs retained. Method fit times are not multiplied by12.
+Paper two-package comparison | 54540 | 0 | 54540
+  方法 | 拟合秒 | 单独拟合编译秒 | 评分执行秒 | 评分编译秒 | 评分进程秒
+  pypomp/IF2 | 5829.494 | 3.039 | 未单独测量 | 未单独测量 | 未单独测量
+    Whole batch100 with full IF2 prefix for each method; physical shared-prefix cost is deduplicated only in physical_costs。Final scoring was not separately timed. Job residual includes scoring, imports, cleanup, I/O and hashing; it is not a pure PF timer.
+  pypomp/IFAD_0 | 3881.256 | 8.193 | 未单独测量 | 未单独测量 | 未单独测量
+    Whole batch100 with full IF2 prefix for each method; physical shared-prefix cost is deduplicated only in physical_costs。Final scoring was not separately timed. Job residual includes scoring, imports, cleanup, I/O and hashing; it is not a pure PF timer.
+  pypomp/IFAD_097 | 4130.947 | 10.126 | 未单独测量 | 未单独测量 | 未单独测量
+    Whole batch100 with full IF2 prefix for each method; physical shared-prefix cost is deduplicated only in physical_costs。Final scoring was not separately timed. Job residual includes scoring, imports, cleanup, I/O and hashing; it is not a pure PF timer.
+  pypomp/IFAD_1 | 4013.108 | 8.299 | 未单独测量 | 未单独测量 | 未单独测量
+    Whole batch100 with full IF2 prefix for each method; physical shared-prefix cost is deduplicated only in physical_costs。Final scoring was not separately timed. Job residual includes scoring, imports, cleanup, I/O and hashing; it is not a pure PF timer.
+  cuthbert/IF2 | 13411.986 | 5.263 | 未单独测量 | 未单独测量 | 未单独测量
+    Whole batch100 with full IF2 prefix for each method; physical shared-prefix cost is deduplicated only in physical_costs。Final scoring was not separately timed. Job residual includes scoring, imports, cleanup, I/O and hashing; it is not a pure PF timer.
+  cuthbert/IFAD_0 | 7451.880 | 11.097 | 未单独测量 | 未单独测量 | 未单独测量
+    Whole batch100 with full IF2 prefix for each method; physical shared-prefix cost is deduplicated only in physical_costs。Final scoring was not separately timed. Job residual includes scoring, imports, cleanup, I/O and hashing; it is not a pure PF timer.
+  cuthbert/IFAD_097 | 8069.541 | 9.775 | 未单独测量 | 未单独测量 | 未单独测量
+    Whole batch100 with full IF2 prefix for each method; physical shared-prefix cost is deduplicated only in physical_costs。Final scoring was not separately timed. Job residual includes scoring, imports, cleanup, I/O and hashing; it is not a pure PF timer.
+  cuthbert/IFAD_1 | 7713.015 | 11.214 | 未单独测量 | 未单独测量 | 未单独测量
+    Whole batch100 with full IF2 prefix for each method; physical shared-prefix cost is deduplicated only in physical_costs。Final scoring was not separately timed. Job residual includes scoring, imports, cleanup, I/O and hashing; it is not a pure PF timer.
+  总计时范围：Final PF scoring was not separately timed. Residual allocation includes evaluation compilation/execution, startup, cache cleanup, I/O, hashing and other overhead. It is not a PF-only runtime.
+计时字段有包含关系，不能把编译、执行、进程和分配时间全部相加；未单独测量不等于零。
+
+CPU占用（核秒）
+实验/包 | 正式作业实际占用 | 必要重评分追加 | 正式与重评分合计
+pypfilt | 27464 | 0 | 27464
+  方法 | 拟合秒 | 单独拟合编译秒 | 评分执行秒 | 评分编译秒 | 评分进程秒
+  PF + external Nelder-Mead | 21677.700 | 未单独测量 | 4758.832 | 57.913 | 5508.571
+    12 scalar single-core CPU fits summed, including late rejected calls。No isolated fitting compile timer; reported scoring process wall includes its preparation, compilation and execution.
+  总计时范围：12 scalar CPU fits,1800s each; final late calls and independent scoring charged. Not a GPU speed comparison.
+particles | 24740 | 0 | 24740
+  方法 | 拟合秒 | 单独拟合编译秒 | 评分执行秒 | 评分编译秒 | 评分进程秒
+  PF + external Nelder-Mead | 21622.390 | 未单独测量 | 2190.745 | 46.916 | 2753.929
+    12 scalar single-core CPU fits summed, including late rejected calls。No isolated fitting compile timer; reported scoring process wall includes its preparation, compilation and execution.
+  总计时范围：12 scalar CPU fits,1800s each; final late calls and independent scoring charged. Not a GPU speed comparison.
+计时字段有包含关系，不能把编译、执行、进程和分配时间全部相加；未单独测量不等于零。
+
+各包完整likelihood与实际耗时科学图、中文报告、原始评分和复现包：
+PyDPF: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/outputs/competitor_estimation/pydpf/formal_v1_final
+  复现包SHA256: 91e63a49f41c557ba1b7cbd14a6b8dfb7710f91d1b23acdeded5498b94f640e5
+TFP: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/outputs/competitor_estimation/tfp/formal_v2_final
+  复现包SHA256: 7f4f172f6de4b226440421956df5745017ba7bec42b688fd039928b03d9028d2
+Dynamax: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/outputs/competitor_estimation/dynamax/dacca_formal_final
+  复现包SHA256: 8753555c1962c9f9861bdb51f216014bf7bdf769915c601b4647002beb3ef10e
+PFJAX: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/outputs/competitor_estimation/pfjax/evaluation_v2
+  复现包SHA256: 27033e0a37005b901eb14d97efb99a2cf8c26986c992fb853e44bb0e8b362274
+pypfilt: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/outputs/competitor_estimation/pypfilt/formal_v1
+  复现包SHA256: dbede637e5553718b194beb0ab430c9dcbd2ff49952dedbf7a31c746cb92cfe2
+particles: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/outputs/competitor_estimation/particles/formal_v1
+  复现包SHA256: 939b86aaf9f83bb44fc82b3a3d01e271cc5a394a75380361bae1f702992ca8b5
+Paper two-package comparison: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/outputs/cuthbert_dacca_paper/audited_v2
+  复现包SHA256: 239ee17ad6ca20adb353455a398ffb9c946019f5eca1c17b1f8d7edfb4d913d4
+
+所有中位数均注明分母；条件中位数排除拟合失败和评分失败，但不额外排除低精度或底值点。低精度数量的分母是有限评分数；全部精度未通过数量另存CSV/JSON，含无法评分行。
+低精度和底值点保留不表示良好拟合；完成迭代不表示收敛。CPU/GPU实际成本分列，不合成速度排名。
+原生算法和本地扩展的具体边界、编译/拟合/评分嵌套计时、检查点可追溯性的限制见各包报告。
+本索引仅汇总已通过审核的交付，没有重新拟合或重新计算PF评分。

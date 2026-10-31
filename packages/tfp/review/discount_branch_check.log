@@ -1,0 +1,6 @@
+test_discount_against_manual_gradient_recursion (__main__.ExtensionsTest.test_discount_against_manual_gradient_recursion) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.470s
+
+OK

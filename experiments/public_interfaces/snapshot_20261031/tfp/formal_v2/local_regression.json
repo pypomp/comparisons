@@ -1,0 +1,29 @@
+{
+  "1.0": {
+    "old_wrapper_loss_and_gradient_within_tolerance": true,
+    "rtol": 2e-05,
+    "atol": 1e-05,
+    "maximum_gradient_difference": 5.960464477539062e-07,
+    "gradient_bitwise_equal": false
+  },
+  "0.97": {
+    "old_wrapper_loss_and_gradient_within_tolerance": true,
+    "rtol": 2e-05,
+    "atol": 1e-05,
+    "maximum_gradient_difference": 2.86102294921875e-06,
+    "gradient_bitwise_equal": false
+  },
+  "passed": true,
+  "purpose": "actual tiny-model driver regression; not full Dacca or GPU evidence",
+  "T": 3,
+  "J": 8,
+  "batch": 12,
+  "genuine_nonfinite_row_isolation": true,
+  "remaining_11_updates_exact": true,
+  "BC_identical_initial_Adam": true,
+  "derived_training_member_keys": 11700,
+  "training_stream_collisions": 0,
+  "BC_intentionally_share_domain30": true,
+  "score_root": 94881000,
+  "score_different_library_and_root": true
+}

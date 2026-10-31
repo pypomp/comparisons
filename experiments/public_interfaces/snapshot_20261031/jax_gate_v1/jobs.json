@@ -1,0 +1,11 @@
+{
+  "submitted_at_utc": "2026-10-30T20:20:25.355163+00:00",
+  "job_id": "65096175",
+  "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/jax_gate_v1",
+  "time_limit_seconds": 3600,
+  "gpus": 1,
+  "GPU": "A40",
+  "source_manifest_sha256": "16c3fda2548032dcab5c6f3219e5d89cd2649ee0ceca56577f00765f647f747a",
+  "submission_stdout": "65096175\n",
+  "submission_stderr": ""
+}

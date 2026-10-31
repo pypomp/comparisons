@@ -1,0 +1,17 @@
+........................................................................ [ 43%]
+...s.................................................................... [ 86%]
+.......s..ss..........s                                                  [100%]
+=============================== warnings summary ===============================
+tensorflow_probability/python/distributions/poisson_test.py::PoissonSamplingTest::testSamplePoissonInvalidRates_eager
+tensorflow_probability/python/distributions/poisson_test.py::PoissonSamplingTest::testSamplePoissonInvalidRates_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/poisson_test.py:571: RuntimeWarning: divide by zero encountered in log
+    log_rate = np.log(rate)
+
+tensorflow_probability/python/distributions/poisson_test.py::PoissonSamplingTest::testSamplePoissonInvalidRates_eager
+tensorflow_probability/python/distributions/poisson_test.py::PoissonSamplingTest::testSamplePoissonInvalidRates_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/poisson_test.py:571: RuntimeWarning: invalid value encountered in log
+    log_rate = np.log(rate)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__distributions__poisson_test/candidate.xml -
+162 passed, 5 skipped, 4 warnings in 24.69s

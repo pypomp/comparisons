@@ -1,0 +1,62 @@
+particles：通过原有 Bootstrap 和 SMC 增加 IF2
+2026-10-30
+
+本轮结论
+已完成第一版可供审查的 IF2 实现。原有的 particles/core.py、state_space_models.py、resampling.py 和模型代码均未修改。新增模块通过 FeynmanKac 回调，把参数和状态放在同一个粒子中，实际调用原 Bootstrap.M0/M/logG 和原 SMC.run。随机游走、冷却和 IF2 外层重复放在通用模块，Dacca 模型不需要写这些步骤。
+这是本地候选修改，不是维护者已接受的功能。没有启动新的正式比较，也没有修改旧实验、重评旧终点、发送邮件、push 或 PR。
+
+原包的方法及实际适用范围
+固定上游源码：nchopin/particles，3388c4bd30ab9acc5a27c970089230f93610b627，版本 0.4，103 个受控文件。
+
+原有函数或示例 | 原来做什么 | 本次处理
+state_space_models.Bootstrap、SMC.run | 用 PX0/PX/PY 做 bootstrap PF，产生 likelihood 估计 | IF2 直接复用其初始化、传播、观测权重及完整 SMC 循环
+mcmc.PMMH | 配合参数先验、提议分布和 PF likelihood 做后验采样 | 原方法保留；原始 Dacca 的模拟接口原则上可供其 bootstrap PF 使用，但本轮没有规定先验或运行新的后验实验
+smc_samplers.SMC2 | 参数粒子及内部 PF 的贝叶斯序贯推断 | 原方法保留；本轮未实现 Dacca 的先验与对应比较，不把它当作 MLE
+mcmc.ParticleGibbs | 条件 SMC 与参数更新；用户须提供 update_theta | Dacca 没有现成的参数条件更新，不能称为开箱即用的 Dacca 估计器
+book/mle/mle_neuro.py 的 EM、梯度上升 | 针对 Neuro 模型编写的平滑、M-step 和 score 公式 | 原始 Dacca 的月度模拟器没有可直接求值的月度转移密度，本轮未移植这些公式，也没有造 Gaussian 近似
+同一示例中的 scipy.optimize.minimize | 外部 SciPy Nelder–Mead 优化 PF likelihood | 此前 Dacca 正式实验采用了这一组合；本轮保留结果，没有把 Nelder–Mead 加进包内 IF2 模块
+
+在所检查版本的包、文档和 book 代码中，没有找到现成的通用 IF2 或 ADPF。此次新增的是 IF2；不将 NumPy PF 直接称作可微 PF，也不把 IF2 称作 IFAD。
+
+我们增加的代码具体是什么
+1. if2_step 接收完整 (N,P) 参数集合和扰动标准差，初始扰动后调用原 Bootstrap.M0。普通模型仍提供原来的 PX0/PX/PY。
+2. 包装粒子为包含 theta 与 x 的 NumPy structured array。原 SMC.resample_move 的 X[A] 同时选取状态和参数，祖先选择仍由原包执行。
+3. 原 SMC 调用新增 M 回调时，先扰动已选中的参数，再用新的参数创建普通模型并调用原 Bootstrap.M；logG 调用原 Bootstrap.logG，使用本月参数、当前状态以及所选祖先的上一状态。
+4. 每步的权重归一化、时间循环及 logLt 累加均由原 SMC 完成。新增 time_to_resample 只规定每次观测转移都重采样；即使权重恰好均匀也如此。原 ESS 判断没有被修改。
+5. 最后调用原重采样函数，返回完整等权参数集合。下一轮从该集合继续并重新初始化状态；不使用均值重新复制 N 个参数。
+6. iterated_filtering 只负责上述完整滤波的重复及 cooling**m。参数均值是查看输出，不用来选择最好的一轮。返回的 likelihood 属于有扰动模型，不能当作均值参数的最终评分。
+
+支持范围
+参数为 float64 向量；模型状态为带粒子轴的数值数组，可为标量或向量。参数约束、log/logit 变换由 factory 明确实现。扰动标准差可为 (P,) 或 (T,P)；初始值参数可只在第 0 行设非零。每轮的所有标准差再乘 cooling**m，模型中不需实现冷却。
+默认逐粒子构造普通标量参数模型，便于复用现有模型，但 Python 循环和重复构造可能昂贵。vectorized=True 接受 (N,P) 参数矩阵，要求模型分布正确支持逐粒子参数；未改的 StochVol 已实际验证这一方式。没有声称所有原有模型都支持向量化。
+支持 multinomial、systematic、stratified、residual 四种原有重采样。SSP 内部使用 Numba RNG；实测仅重置 NumPy seed 不会重放，额外重置 Numba seed 才会重放。因此本接口明确拒绝 SSP，不改原 SSP，也不声称 NumPy checkpoint 足以覆盖所有原包采样器。
+可保留完整参数集合、NumPy RNG 状态和迭代下标，在内存中分段继续。模型若另用其他 RNG，也须自行保留其状态。没有 checkpoint 文件写入器、异常后的自动恢复或并发线程共享随机流功能。
+非有限参数/状态、NaN 或 +inf 权重、整组 -inf 权重会报错；单个 -inf 权重允许存在。没有失败重跑、逐行失败隔离、SQMC、guided/APF 扩展、ADPF、DMOP 或 Adam。
+
+实际正确性检查
+34 项定向测试通过。包括独立 Gaussian 逐时递推、四种重采样、标量/向量化两种模型调用、完整参数集合分段续接、RNG 续接、固定坐标、只在初始扰动的坐标、向量状态、首条观测、非法输入和失败处理。
+在零扰动、共同参数下，直接调用原 StochVol/Bootstrap/SMC 与新增包装的终态、权重和 likelihood 逐位一致；测试也记录 if2_step 确实调用原 particles.SMC.run。
+另在独立进程中执行未修改上游与候选包的 Bootstrap、GuidedPF、AuxiliaryPF：三个原算法的终态、权重、loglik 和 RNG 状态均一致。不是完整上游测试套件；仓库 tests 下的 linear_reg.py 是 1000 次大规模实验脚本，本轮没有运行它。
+原 StochVol 可执行示例已运行：50 观测、100 粒子、3 轮 IF2，随后用独立种子的原 PF 各做一次评分。示例说明调用方式，不声明收敛、速度或优化优越性。
+
+完整 Dacca 接入检查
+使用逐字节复制的旧 Dacca NumPy 模型、DaccaSSM、输入和坐标变换。保留 600 个月、每月 20 Euler 步、Gaussian 过程噪声和 23 个自由坐标。
+CPU、float64、J8，从第一个冻结 paper 起点运行两轮 IF2；普通坐标标准差 .002，初始值坐标仅在首时点 .008，第二轮乘 .8。它是专门的接口检查设置，不是 J5000 正式拟合协议。
+与独立编写的逐月递推对照，完整终点参数集合、两轮参数均值和扰动 loglik 一致，最大差均为 0。独立递推复用原 Dacca 模型和原重采样函数，但不调用候选 IF2、Bootstrap 或 SMC 时间循环，所以它检查参数扰动与原 PF 的衔接，不重新证明 Dacca 模型和重采样数学正确。
+终点另用原始 particles Bootstrap+SMC、两个新种子执行不扰动参数的 PF。两个单次值保留；没有用它们声明 MCSE、ESS 精度或优化改进。此处没有运行新的 PyPOMP 正式评分。
+
+检查中出现并处理的情况
+第一次启动 pytest 缺少 pygments；改为使用已有本地依赖，没有更改包算法。
+第一次独立 Gaussian 对照把 noise*scale*cooling 与 noise*(scale*cooling) 当作逐位相同，产生约 1e-17 差异；对照改为先计算本轮标准差，再采样扰动，没有放宽参数相等断言。
+SSP 的随机流问题经独立种子实验确认后，从候选接口支持范围中移除，原有失败记录保留。
+第一次 Dacca 对照保留了输入文件的 float32，而公共接口明确转换为 float64，逐次原地扰动导致约 1.42e-5 参数差异。将独立对照起始数组明确设为 float64 后，逐位断言通过；没有放宽容差或更改模型。最初失败日志一并交付。
+
+与历史实验的关系
+旧 particles/formal_v1 是原 PF + 外部 SciPy Nelder–Mead，没有 IF2。本轮新增模块不替换冻结 driver；旧优化结果不能自动作为新 IF2 的效果证据。
+184 项预检 manifest 与 47 项正式 manifest 的文件均核验不变。这些是各清单条目数，存在重叠，不能相加当作唯一文件数。
+
+正确性、时间和优化效果分别到哪里
+正确性：上述本地定向检查及完整模型少粒子接入已经执行，支持范围明确。
+运行时间：日志仅保留实际检查耗时。没有统一 PF 速度实验，不将标量/向量化接口的存在当作加速结论。
+优化效果：本轮没有新的正式 IF2 或 IF2+Nelder–Mead 比较；历史 Nelder–Mead 结果和成本保留。
+文档完整构建、完整上游安装测试、维护者对 API 与 IF2 终点约定的意见仍未取得。可读补丁、源码基线、可执行例子、测试和复现材料已准备；未声称已可合并。

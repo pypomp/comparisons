@@ -1,0 +1,14 @@
+........................................................................ [ 90%]
+........                                                                 [100%]
+=============================== warnings summary ===============================
+tensorflow_probability/python/bijectors/softfloor_test.py::SoftFloor32Test::test_session
+  /opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py:690: DeprecationWarning: It is deprecated to return a value that is not None from a test case (<bound method TensorFlowTestCase.test_session of <tensorflow_probability.python.bijectors.softfloor_test.SoftFloor32Test testMethod=test_session>>)
+    return self.run(*args, **kwds)
+
+tensorflow_probability/python/bijectors/softfloor_test.py::SoftFloor64Test::test_session
+  /opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/case.py:690: DeprecationWarning: It is deprecated to return a value that is not None from a test case (<bound method TensorFlowTestCase.test_session of <tensorflow_probability.python.bijectors.softfloor_test.SoftFloor64Test testMethod=test_session>>)
+    return self.run(*args, **kwds)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__bijectors__softfloor_test/candidate.xml -
+80 passed, 2 warnings in 15.96s

@@ -1,0 +1,30 @@
+[tool.uv.workspace]
+members = ["pkg/*"]
+
+[tool.uv]
+# The tensorflow-probability override forces installation on undefined platforms only
+# effectively disabling it for all normal platforms
+override-dependencies = [
+    "tensorflow-probability ; sys_platform == 'undefined'",
+]
+
+[tool.ruff]
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401", "F821", "E402", "D104"]
+"tests/**/*.py" = ["D"] # no docstring checking for tests
+"cuthbertlib/resampling/**/*.py" = ["D102", "D103"] # resampling uses decorator for docstrings
+[tool.ruff.lint]
+extend-select = ["D"]
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ty.src]
+exclude = ["tests"]
+
+[tool.pytest]
+[tool.pytest.ini_options]
+markers = "examples: Run tangled example scripts as tests"
+
+[tool.entangled]
+version = "2.3.0"
+ignore_list = ["CONTRIBUTING.md"]

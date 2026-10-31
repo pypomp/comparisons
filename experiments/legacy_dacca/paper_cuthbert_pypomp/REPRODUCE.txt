@@ -1,0 +1,11 @@
+Dacca paper comparison: frozen experiment and independent audits
+
+All 800 endpoint records are retained, including 7 nonfinite fits, 9 imprecise finite scores and 2 density-floor scores. The latter are not evidence of good fits.
+
+paper_experiment/ contains frozen input/source, actual traces, raw scores, group/aggregate manifests and Slurm logs. independent_audit/ contains the audit and plotting programs, expected source identity, independent second review, and actual Slurm evidence. delivery/ contains reviewed reports, figures and statistics.
+
+To audit existing data and rebuild figures in an environment with NumPy, JAX and Matplotlib:
+python independent_audit/deliver.py --paper-root paper_experiment --scheduler-evidence independent_audit/scheduler_evidence.json --output rebuilt_delivery
+The command does not fit models or submit cluster jobs. Compare source/result hashes and recorded runtime before rerunning any original experiment. The second-review script contains the original local root path and must be pointed at the extracted experiment if used elsewhere.
+
+Both likelihood.png (clearly marked zoom) and likelihood_full_range.png are provided. All finite values enter both box summaries. Below-view points are counted and indicated by triangles. Numerical audits do not replace the included visual check.

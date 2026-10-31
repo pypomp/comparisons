@@ -1,0 +1,59 @@
+{
+  "dtype": "<class 'jax.numpy.float64'>",
+  "rows": [
+    {
+      "seed": 20261030,
+      "pass_index": 0,
+      "new_reference_parameters_max": 2.6762542546659995e-08,
+      "new_reference_loglik_abs": 7.015866685833316e-06,
+      "original_reference_parameters_max": 4.216862059536197e-08,
+      "original_reference_loglik_abs": 5.196915844862815e-05
+    },
+    {
+      "seed": 20261030,
+      "pass_index": 1,
+      "new_reference_parameters_max": 3.8687172354556765e-08,
+      "new_reference_loglik_abs": 1.6021956980694085e-05,
+      "original_reference_parameters_max": 4.743199877310644e-08,
+      "original_reference_loglik_abs": 0.00014871734219923383
+    },
+    {
+      "seed": 20261031,
+      "pass_index": 0,
+      "new_reference_parameters_max": 1.9273758367077676e-08,
+      "new_reference_loglik_abs": 1.999255346163409e-05,
+      "original_reference_parameters_max": 2.2243119124354394e-08,
+      "original_reference_loglik_abs": 1.751880245137727e-05
+    },
+    {
+      "seed": 20261031,
+      "pass_index": 1,
+      "new_reference_parameters_max": 2.5081596355391866e-08,
+      "new_reference_loglik_abs": 4.180558880761964e-05,
+      "original_reference_parameters_max": 3.2391069382242677e-08,
+      "original_reference_loglik_abs": 6.733215741405729e-06
+    },
+    {
+      "seed": 20261101,
+      "pass_index": 0,
+      "new_reference_parameters_max": 2.6336851366437486e-08,
+      "new_reference_loglik_abs": 4.0095394069794565e-05,
+      "original_reference_parameters_max": 4.14049150521123e-08,
+      "original_reference_loglik_abs": 4.7856226956355385e-05
+    },
+    {
+      "seed": 20261101,
+      "pass_index": 1,
+      "new_reference_parameters_max": 3.2236078695291326e-08,
+      "new_reference_loglik_abs": 2.9048684154986404e-05,
+      "original_reference_parameters_max": 5.5907069196337034e-08,
+      "original_reference_loglik_abs": 2.763456359389238e-05
+    }
+  ],
+  "compiled_independent_reference_exact": false
+}
+Traceback (most recent call last):
+  File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-validation-20261030/diagnose_pfjax.py", line 63, in <module>
+    assert result['compiled_independent_reference_exact'], 'Matched reference must agree exactly; retain failure report.'
+           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Matched reference must agree exactly; retain failure report.

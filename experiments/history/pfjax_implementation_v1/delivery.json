@@ -1,0 +1,24 @@
+{
+  "status": "local candidate ready for review",
+  "archive_sha256": "aeeb0aa82f93a637166102157e4623684d4d2c47564d042e4b74da55aa61e739",
+  "archive_verification": {
+    "passed": true,
+    "hashed_files": 28,
+    "baseline_files": 192,
+    "patched_files": 197,
+    "numerical_tests_rerun": false
+  },
+  "frozen": {
+    "formal_v1": {
+      "count": 592,
+      "manifest_sha256": "9a1f5816023f262febcce0ecec3378a6cad95a0649862b1529a21abc9a2b7d7a",
+      "unchanged": true
+    },
+    "evaluation_v2": {
+      "count": 10,
+      "manifest_sha256": "bbbec91e20bf6714d44efdc6b1760d127754655a8c56701777343caa85c8b147",
+      "unchanged": true
+    }
+  },
+  "upstream_accepted": false
+}

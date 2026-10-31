@@ -1,0 +1,13 @@
+sss..................................................................... [ 24%]
+ssss.................................................................... [ 49%]
+.ssss................................................................... [ 73%]
+..ssss.................................................................. [ 98%]
+...s                                                                     [100%]
+=============================== warnings summary ===============================
+tensorflow_probability/python/distributions/inverse_gaussian_test.py:16
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/inverse_gaussian_test.py:16: DeprecationWarning: scipy.misc is deprecated and will be removed in 2.0.0
+    from scipy import misc as sp_misc
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__distributions__inverse_gaussian_test/candidate.xml -
+276 passed, 16 skipped, 1 warning in 24.67s

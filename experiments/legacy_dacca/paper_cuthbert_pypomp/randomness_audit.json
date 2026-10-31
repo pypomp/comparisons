@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "source_manifest_sha256": "a9517f47619eedee80c0f5d8827fef7ebaf2b17453d26ef29d8bae1766c4dfd2",
+  "jax": "0.12.0.1",
+  "implementation": "threefry2x32",
+  "score_domains": {
+    "pypomp:IF2": 761,
+    "cuthbert:IF2": 762,
+    "pypomp:IFAD_0": 771,
+    "cuthbert:IFAD_0": 772,
+    "pypomp:IFAD_097": 781,
+    "cuthbert:IFAD_097": 782,
+    "pypomp:IFAD_1": 791,
+    "cuthbert:IFAD_1": 792
+  },
+  "score_keys": 28800,
+  "gradient_entry_keys_unique": 42500,
+  "IF2_entry_counts": {
+    "60": {
+      "native_IF2_entry_keys": 6000,
+      "cuthbert_IF2_entry_keys": 6000
+    },
+    "175": {
+      "native_IF2_entry_keys": 17500,
+      "cuthbert_IF2_entry_keys": 17500
+    },
+    "1950": {
+      "native_IF2_entry_keys": 195000,
+      "cuthbert_IF2_entry_keys": 195000
+    }
+  },
+  "training_entry_keys_unique": 237600,
+  "train_score_collisions": [],
+  "intentional_reuse": "Both backends/methods use IF2 root741 and gradient root751 per start. IFAD0/1 physically share60IF2. Gradient sequence is paired across arms; optimizer settings and warm endpoints differ. Final scoring uses eight separate root domains.",
+  "preparation": "Compilation lower/compile does not execute training. Preflight domains711/712/731 and smoke201/202 are distinct from production741/751 and evaluation761..792.",
+  "scope": "Checks actual source-derived per-pass/per-gradient/PF-evaluation entry keys at full design, not every internal random word. No PF or fit executed."
+}

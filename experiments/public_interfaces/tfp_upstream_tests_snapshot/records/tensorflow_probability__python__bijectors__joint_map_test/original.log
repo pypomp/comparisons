@@ -1,0 +1,29 @@
+........................s                                                [100%]
+=============================== warnings summary ===============================
+tensorflow_probability/python/bijectors/joint_map_test.py::JointMapBijectorTest::testCompositeTensor_eager
+tensorflow_probability/python/bijectors/joint_map_test.py::JointMapBijectorTest::testCompositeTensor_eager_no_tf_function
+tensorflow_probability/python/bijectors/joint_map_test.py::JointMapBijectorTest::testCompositeTensor_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/saved_model/nested_structure_coder.py:458: UserWarning: Encoding a StructuredValue with type tfp.bijectors.JointMap_ACTTypeSpec; loading this StructuredValue will require that this type be imported and registered.
+    warnings.warn("Encoding a StructuredValue with type %s; loading this "
+
+tensorflow_probability/python/bijectors/joint_map_test.py::JointMapBijectorTest::testCompositeTensor_eager
+tensorflow_probability/python/bijectors/joint_map_test.py::JointMapBijectorTest::testCompositeTensor_eager_no_tf_function
+tensorflow_probability/python/bijectors/joint_map_test.py::JointMapBijectorTest::testCompositeTensor_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/saved_model/nested_structure_coder.py:458: UserWarning: Encoding a StructuredValue with type tfp.bijectors.Exp_ACTTypeSpec; loading this StructuredValue will require that this type be imported and registered.
+    warnings.warn("Encoding a StructuredValue with type %s; loading this "
+
+tensorflow_probability/python/bijectors/joint_map_test.py::JointMapBijectorTest::testCompositeTensor_eager
+tensorflow_probability/python/bijectors/joint_map_test.py::JointMapBijectorTest::testCompositeTensor_eager_no_tf_function
+tensorflow_probability/python/bijectors/joint_map_test.py::JointMapBijectorTest::testCompositeTensor_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/saved_model/nested_structure_coder.py:458: UserWarning: Encoding a StructuredValue with type tfp.bijectors.Softplus_ACTTypeSpec; loading this StructuredValue will require that this type be imported and registered.
+    warnings.warn("Encoding a StructuredValue with type %s; loading this "
+
+tensorflow_probability/python/bijectors/joint_map_test.py::JointMapBijectorTest::testCompositeTensor_eager
+tensorflow_probability/python/bijectors/joint_map_test.py::JointMapBijectorTest::testCompositeTensor_eager_no_tf_function
+tensorflow_probability/python/bijectors/joint_map_test.py::JointMapBijectorTest::testCompositeTensor_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/saved_model/nested_structure_coder.py:458: UserWarning: Encoding a StructuredValue with type tfp.bijectors.Scale_ACTTypeSpec; loading this StructuredValue will require that this type be imported and registered.
+    warnings.warn("Encoding a StructuredValue with type %s; loading this "
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__bijectors__joint_map_test/original.xml -
+24 passed, 1 skipped, 12 warnings in 14.21s

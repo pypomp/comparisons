@@ -1,0 +1,262 @@
+FFFFFFFFFFFFsFFF                                                         [100%]
+=================================== FAILURES ===================================
+__________________ PadBijectorTest.test_axis_exceptions_eager __________________
+tensorflow_probability/python/internal/test_util.py:251: in assertRaisesWithPredicateMatch
+    yield
+tensorflow_probability/python/bijectors/pad_test.py:99: in test_axis_exceptions
+    pad.Pad(axis=[[-1]], validate_args=True)
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/pad_test.py:97: in test_axis_exceptions
+    with self.assertRaisesWithPredicateMatch(
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:255: in assertRaisesWithPredicateMatch
+    raise AssertionError('Exception of type %s: %s' %
+E   AssertionError: Exception of type <class 'TypeError'>: reshape() got an unexpected keyword argument 'newshape'
+__________ PadBijectorTest.test_axis_exceptions_eager_no_tf_function ___________
+tensorflow_probability/python/internal/test_util.py:251: in assertRaisesWithPredicateMatch
+    yield
+tensorflow_probability/python/bijectors/pad_test.py:99: in test_axis_exceptions
+    pad.Pad(axis=[[-1]], validate_args=True)
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/pad_test.py:97: in test_axis_exceptions
+    with self.assertRaisesWithPredicateMatch(
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:255: in assertRaisesWithPredicateMatch
+    raise AssertionError('Exception of type %s: %s' %
+E   AssertionError: Exception of type <class 'TypeError'>: reshape() got an unexpected keyword argument 'newshape'
+__________________ PadBijectorTest.test_axis_exceptions_graph __________________
+tensorflow_probability/python/internal/test_util.py:251: in assertRaisesWithPredicateMatch
+    yield
+tensorflow_probability/python/bijectors/pad_test.py:99: in test_axis_exceptions
+    pad.Pad(axis=[[-1]], validate_args=True)
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/pad_test.py:97: in test_axis_exceptions
+    with self.assertRaisesWithPredicateMatch(
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:255: in assertRaisesWithPredicateMatch
+    raise AssertionError('Exception of type %s: %s' %
+E   AssertionError: Exception of type <class 'TypeError'>: reshape() got an unexpected keyword argument 'newshape'
+------------------------------ Captured log call -------------------------------
+INFO     absl:test_util.py:246 Searching within error strings: "Argument `axis` must be known statically." within "Argument `axis` must be known statically. If you need this feature,  please contact `tfprobability@tensorflow.org`."
+_____________________ PadBijectorTest.test_defaults_eager ______________________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/pad_test.py:28: in test_defaults
+    b = pad.Pad(validate_args=True)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+______________ PadBijectorTest.test_defaults_eager_no_tf_function ______________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/pad_test.py:28: in test_defaults
+    b = pad.Pad(validate_args=True)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_____________________ PadBijectorTest.test_defaults_graph ______________________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/pad_test.py:28: in test_defaults
+    b = pad.Pad(validate_args=True)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+___________________ PadBijectorTest.test_left_right_3d_eager ___________________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/pad_test.py:62: in test_left_right_3d
+    b = pad.Pad(paddings=[[1, 2], [3, 4]], validate_args=True)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+___________ PadBijectorTest.test_left_right_3d_eager_no_tf_function ____________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/pad_test.py:62: in test_left_right_3d
+    b = pad.Pad(paddings=[[1, 2], [3, 4]], validate_args=True)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+___________________ PadBijectorTest.test_left_right_3d_graph ___________________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/pad_test.py:62: in test_left_right_3d
+    b = pad.Pad(paddings=[[1, 2], [3, 4]], validate_args=True)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+________________ PadBijectorTest.test_paddings_exceptions_eager ________________
+tensorflow_probability/python/internal/test_util.py:251: in assertRaisesWithPredicateMatch
+    yield
+tensorflow_probability/python/bijectors/pad_test.py:110: in test_paddings_exceptions
+    pad.Pad(paddings=-1, validate_args=True)
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/pad_test.py:108: in test_paddings_exceptions
+    with self.assertRaisesWithPredicateMatch(
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:255: in assertRaisesWithPredicateMatch
+    raise AssertionError('Exception of type %s: %s' %
+E   AssertionError: Exception of type <class 'TypeError'>: reshape() got an unexpected keyword argument 'newshape'
+________ PadBijectorTest.test_paddings_exceptions_eager_no_tf_function _________
+tensorflow_probability/python/internal/test_util.py:251: in assertRaisesWithPredicateMatch
+    yield
+tensorflow_probability/python/bijectors/pad_test.py:110: in test_paddings_exceptions
+    pad.Pad(paddings=-1, validate_args=True)
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/pad_test.py:108: in test_paddings_exceptions
+    with self.assertRaisesWithPredicateMatch(
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:255: in assertRaisesWithPredicateMatch
+    raise AssertionError('Exception of type %s: %s' %
+E   AssertionError: Exception of type <class 'TypeError'>: reshape() got an unexpected keyword argument 'newshape'
+________________ PadBijectorTest.test_paddings_exceptions_graph ________________
+tensorflow_probability/python/internal/test_util.py:251: in assertRaisesWithPredicateMatch
+    yield
+tensorflow_probability/python/bijectors/pad_test.py:110: in test_paddings_exceptions
+    pad.Pad(paddings=-1, validate_args=True)
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/pad_test.py:108: in test_paddings_exceptions
+    with self.assertRaisesWithPredicateMatch(
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:255: in assertRaisesWithPredicateMatch
+    raise AssertionError('Exception of type %s: %s' %
+E   AssertionError: Exception of type <class 'TypeError'>: reshape() got an unexpected keyword argument 'newshape'
+_________________ PadBijectorTest.test_variable_paddings_eager _________________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/pad_test.py:82: in test_variable_paddings
+    b = pad.Pad(paddings=x, validate_args=True)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_________ PadBijectorTest.test_variable_paddings_eager_no_tf_function __________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/pad_test.py:82: in test_variable_paddings
+    b = pad.Pad(paddings=x, validate_args=True)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_________________ PadBijectorTest.test_variable_paddings_graph _________________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/pad_test.py:82: in test_variable_paddings
+    b = pad.Pad(paddings=x, validate_args=True)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__bijectors__pad_test/original.xml -
+=========================== short test summary info ============================
+FAILED tensorflow_probability/python/bijectors/pad_test.py::PadBijectorTest::test_axis_exceptions_eager
+FAILED tensorflow_probability/python/bijectors/pad_test.py::PadBijectorTest::test_axis_exceptions_eager_no_tf_function
+FAILED tensorflow_probability/python/bijectors/pad_test.py::PadBijectorTest::test_axis_exceptions_graph
+FAILED tensorflow_probability/python/bijectors/pad_test.py::PadBijectorTest::test_defaults_eager
+FAILED tensorflow_probability/python/bijectors/pad_test.py::PadBijectorTest::test_defaults_eager_no_tf_function
+FAILED tensorflow_probability/python/bijectors/pad_test.py::PadBijectorTest::test_defaults_graph
+FAILED tensorflow_probability/python/bijectors/pad_test.py::PadBijectorTest::test_left_right_3d_eager
+FAILED tensorflow_probability/python/bijectors/pad_test.py::PadBijectorTest::test_left_right_3d_eager_no_tf_function
+FAILED tensorflow_probability/python/bijectors/pad_test.py::PadBijectorTest::test_left_right_3d_graph
+FAILED tensorflow_probability/python/bijectors/pad_test.py::PadBijectorTest::test_paddings_exceptions_eager
+FAILED tensorflow_probability/python/bijectors/pad_test.py::PadBijectorTest::test_paddings_exceptions_eager_no_tf_function
+FAILED tensorflow_probability/python/bijectors/pad_test.py::PadBijectorTest::test_paddings_exceptions_graph
+FAILED tensorflow_probability/python/bijectors/pad_test.py::PadBijectorTest::test_variable_paddings_eager
+FAILED tensorflow_probability/python/bijectors/pad_test.py::PadBijectorTest::test_variable_paddings_eager_no_tf_function
+FAILED tensorflow_probability/python/bijectors/pad_test.py::PadBijectorTest::test_variable_paddings_graph
+15 failed, 1 skipped in 14.14s

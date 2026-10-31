@@ -1,0 +1,26 @@
+{
+  "pytest": {
+    "version": "9.1.1",
+    "pure_python": true
+  },
+  "_pytest": {
+    "version": "9.1.1",
+    "pure_python": true
+  },
+  "pluggy": {
+    "version": "1.7.0",
+    "pure_python": true
+  },
+  "iniconfig": {
+    "version": "2.3.1",
+    "pure_python": true
+  },
+  "packaging": {
+    "version": "26.3",
+    "pure_python": true
+  },
+  "pygments": {
+    "version": "2.21.0",
+    "pure_python": true
+  }
+}

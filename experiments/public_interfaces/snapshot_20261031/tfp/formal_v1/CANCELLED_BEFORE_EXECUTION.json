@@ -1,0 +1,12 @@
+{
+  "reason": "Scoring PYTHONPATH deployment fix; original frozen source retained; no fitting started",
+  "jobs": [
+    65098423,
+    65098424,
+    65098425,
+    65098426
+  ],
+  "squeue_before": "65098426|PENDING|0:00\n65098425|PENDING|0:00\n65098424|PENDING|0:00\n65098423|PENDING|0:00\n",
+  "sacct_after": "JobID|State|ExitCode|ElapsedRaw|Start|End\n65098423|CANCELLED by 114400395|0:0|0|None|2026-10-30T16:43:55\n65098424|CANCELLED by 114400395|0:0|0|None|2026-10-30T16:43:55\n65098425|CANCELLED by 114400395|0:0|0|None|2026-10-30T16:43:55\n65098426|CANCELLED by 114400395|0:0|0|None|2026-10-30T16:43:55\n",
+  "time_unix": 1793393037.3594058
+}

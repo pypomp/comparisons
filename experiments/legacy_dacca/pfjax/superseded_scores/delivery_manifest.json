@@ -1,0 +1,12 @@
+{
+  "files": {
+    "audit.json": "5a96ef6b0d3ff071cbda2f713590efe9a6ef05561decc520995312d46babbffa",
+    "REPORT_ZH.txt": "5a16b70f8b6dbfc8367e70746628620123a607b4b5734ea6dcea968719d7133a",
+    "comparison.png": "1781b806b9418b79f08523cb73c4dbec3cb7e37864840467ee4dcbae82dfb9c3",
+    "comparison.pdf": "4c4e7cf1150fb990a7a7c7bc92469607337ae06240f157cfbd268497fa0fd93d",
+    "reproduction.tar.gz": "637ea0eefb9097cb438379d7c252275e8bc190247be9444d5da5ebc64f6f00b9",
+    "endpoints.csv": "954b15a9b4ba3380892e8c02efab9649c1e8ace7ac59e3e08f3f8a64be50e237",
+    "endpoints.json": "a18bdcfaa1f2cd68dd87094b5accda9ef02fd076e1634087c8be4c0316b1a848"
+  },
+  "visual_check_pending": true
+}

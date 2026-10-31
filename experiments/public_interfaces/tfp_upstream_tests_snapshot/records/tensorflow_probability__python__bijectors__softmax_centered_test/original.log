@@ -1,0 +1,389 @@
+FFFFFFFFFFFFFFFFFFFFFFFFs                                                [100%]
+=================================== FAILURES ===================================
+________ SoftmaxCenteredBijectorTest.testAssertsValidArgToInverse_eager ________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:127: in testAssertsValidArgToInverse
+    softmax = softmax_centered.SoftmaxCentered(validate_args=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_ SoftmaxCenteredBijectorTest.testAssertsValidArgToInverse_eager_no_tf_function _
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:127: in testAssertsValidArgToInverse
+    softmax = softmax_centered.SoftmaxCentered(validate_args=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+________ SoftmaxCenteredBijectorTest.testAssertsValidArgToInverse_graph ________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:127: in testAssertsValidArgToInverse
+    softmax = softmax_centered.SoftmaxCentered(validate_args=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+___________ SoftmaxCenteredBijectorTest.testBijectiveAndFinite_eager ___________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:114: in testBijectiveAndFinite
+    softmax = softmax_centered.SoftmaxCentered()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+___ SoftmaxCenteredBijectorTest.testBijectiveAndFinite_eager_no_tf_function ____
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:114: in testBijectiveAndFinite
+    softmax = softmax_centered.SoftmaxCentered()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+___________ SoftmaxCenteredBijectorTest.testBijectiveAndFinite_graph ___________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:114: in testBijectiveAndFinite
+    softmax = softmax_centered.SoftmaxCentered()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+__________ SoftmaxCenteredBijectorTest.testBijectorUnknownShape_eager __________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:54: in testBijectorUnknownShape
+    softmax = softmax_centered.SoftmaxCentered()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+__ SoftmaxCenteredBijectorTest.testBijectorUnknownShape_eager_no_tf_function ___
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:54: in testBijectorUnknownShape
+    softmax = softmax_centered.SoftmaxCentered()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+__________ SoftmaxCenteredBijectorTest.testBijectorUnknownShape_graph __________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:54: in testBijectorUnknownShape
+    softmax = softmax_centered.SoftmaxCentered()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_____________ SoftmaxCenteredBijectorTest.testBijectorVector_eager _____________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:36: in testBijectorVector
+    softmax = softmax_centered.SoftmaxCentered()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_____ SoftmaxCenteredBijectorTest.testBijectorVector_eager_no_tf_function ______
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:36: in testBijectorVector
+    softmax = softmax_centered.SoftmaxCentered()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_____________ SoftmaxCenteredBijectorTest.testBijectorVector_graph _____________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:36: in testBijectorVector
+    softmax = softmax_centered.SoftmaxCentered()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_______ SoftmaxCenteredBijectorTest.testShapeGetersWithBatchShape_eager ________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:92: in testShapeGetersWithBatchShape
+    bijector = softmax_centered.SoftmaxCentered(validate_args=True)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_ SoftmaxCenteredBijectorTest.testShapeGetersWithBatchShape_eager_no_tf_function _
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:92: in testShapeGetersWithBatchShape
+    bijector = softmax_centered.SoftmaxCentered(validate_args=True)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_______ SoftmaxCenteredBijectorTest.testShapeGetersWithBatchShape_graph ________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:92: in testShapeGetersWithBatchShape
+    bijector = softmax_centered.SoftmaxCentered(validate_args=True)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+______ SoftmaxCenteredBijectorTest.testShapeGettersWithDynamicShape_eager ______
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:107: in testShapeGettersWithDynamicShape
+    bijector = softmax_centered.SoftmaxCentered(validate_args=True)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_ SoftmaxCenteredBijectorTest.testShapeGettersWithDynamicShape_eager_no_tf_function _
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:107: in testShapeGettersWithDynamicShape
+    bijector = softmax_centered.SoftmaxCentered(validate_args=True)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+______ SoftmaxCenteredBijectorTest.testShapeGettersWithDynamicShape_graph ______
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:107: in testShapeGettersWithDynamicShape
+    bijector = softmax_centered.SoftmaxCentered(validate_args=True)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+______________ SoftmaxCenteredBijectorTest.testShapeGetters_eager ______________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:77: in testShapeGetters
+    bijector = softmax_centered.SoftmaxCentered(validate_args=True)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+______ SoftmaxCenteredBijectorTest.testShapeGetters_eager_no_tf_function _______
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:77: in testShapeGetters
+    bijector = softmax_centered.SoftmaxCentered(validate_args=True)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+______________ SoftmaxCenteredBijectorTest.testShapeGetters_graph ______________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:77: in testShapeGetters
+    bijector = softmax_centered.SoftmaxCentered(validate_args=True)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+____________ SoftmaxCenteredBijectorTest.testTheoreticalFldj_eager _____________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:140: in testTheoreticalFldj
+    softmax = softmax_centered.SoftmaxCentered()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+_____ SoftmaxCenteredBijectorTest.testTheoreticalFldj_eager_no_tf_function _____
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:140: in testTheoreticalFldj
+    softmax = softmax_centered.SoftmaxCentered()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+____________ SoftmaxCenteredBijectorTest.testTheoreticalFldj_graph _____________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/softmax_centered_test.py:140: in testTheoreticalFldj
+    softmax = softmax_centered.SoftmaxCentered()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__bijectors__softmax_centered_test/original.xml -
+=========================== short test summary info ============================
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testAssertsValidArgToInverse_eager
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testAssertsValidArgToInverse_eager_no_tf_function
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testAssertsValidArgToInverse_graph
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testBijectiveAndFinite_eager
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testBijectiveAndFinite_eager_no_tf_function
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testBijectiveAndFinite_graph
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testBijectorUnknownShape_eager
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testBijectorUnknownShape_eager_no_tf_function
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testBijectorUnknownShape_graph
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testBijectorVector_eager
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testBijectorVector_eager_no_tf_function
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testBijectorVector_graph
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testShapeGetersWithBatchShape_eager
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testShapeGetersWithBatchShape_eager_no_tf_function
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testShapeGetersWithBatchShape_graph
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testShapeGettersWithDynamicShape_eager
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testShapeGettersWithDynamicShape_eager_no_tf_function
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testShapeGettersWithDynamicShape_graph
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testShapeGetters_eager
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testShapeGetters_eager_no_tf_function
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testShapeGetters_graph
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testTheoreticalFldj_eager
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testTheoreticalFldj_eager_no_tf_function
+FAILED tensorflow_probability/python/bijectors/softmax_centered_test.py::SoftmaxCenteredBijectorTest::testTheoreticalFldj_graph
+24 failed, 1 skipped in 14.26s

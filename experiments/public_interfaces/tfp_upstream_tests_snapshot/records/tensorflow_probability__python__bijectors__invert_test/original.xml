@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="6" skipped="1" tests="28" time="14.256" timestamp="2026-10-30T17:04:08.203535-04:00" hostname="appledeMacBook-Pro-43.local"><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testBijector_eager" time="0.007"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/invert_test.py:44: in testBijector
+    softmax_centered.SoftmaxCentered(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testBijector_eager_no_tf_function" time="0.002"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/invert_test.py:44: in testBijector
+    softmax_centered.SoftmaxCentered(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testBijector_graph" time="0.001"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/invert_test.py:44: in testBijector
+    softmax_centered.SoftmaxCentered(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testDocstringExample_eager" time="0.100" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testDocstringExample_eager_no_tf_function" time="0.021" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testDocstringExample_graph" time="0.074" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testInvertCallStillWorks_eager" time="0.001" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testInvertCallStillWorks_eager_no_tf_function" time="0.001" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testInvertCallStillWorks_graph" time="0.001" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testNoReductionWhenEventNdimsIsOmitted_eager" time="0.004" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testNoReductionWhenEventNdimsIsOmitted_eager_no_tf_function" time="0.003" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testNoReductionWhenEventNdimsIsOmitted_graph" time="0.006" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testNonCompositeTensorBijectorRetainsVariable_eager" time="0.057" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testNonCompositeTensorBijectorRetainsVariable_eager_no_tf_function" time="0.001" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testNonCompositeTensorBijectorRetainsVariable_graph" time="0.001" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testNonCompositeTensorBijectorTfFunction_eager" time="0.012" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testNonCompositeTensorBijectorTfFunction_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testNonCompositeTensorBijectorTfFunction_graph" time="0.005" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testScalarCongruency_eager" time="0.008" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testScalarCongruency_eager_no_tf_function" time="0.007" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testScalarCongruency_graph" time="0.018" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testShapeGetters_eager" time="0.001"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/invert_test.py:68: in testShapeGetters
+    softmax_centered.SoftmaxCentered(validate_args=True))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testShapeGetters_eager_no_tf_function" time="0.001"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/invert_test.py:68: in testShapeGetters
+    softmax_centered.SoftmaxCentered(validate_args=True))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testShapeGetters_graph" time="0.001"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/invert_test.py:68: in testShapeGetters
+    softmax_centered.SoftmaxCentered(validate_args=True))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testSharedCaching_eager" time="0.002" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testSharedCaching_eager_no_tf_function" time="0.001" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="testSharedCaching_graph" time="0.002" /><testcase classname="tensorflow_probability.python.bijectors.invert_test.InvertBijectorTest" name="test_session" time="0.000"><skipped type="pytest.skip" message="Not a test.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/test_util.py:2981: Not a test.</skipped></testcase></testsuite></testsuites>

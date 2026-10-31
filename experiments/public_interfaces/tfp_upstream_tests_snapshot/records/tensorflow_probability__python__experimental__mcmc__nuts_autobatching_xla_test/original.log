@@ -1,0 +1,9 @@
+.s.                                                                      [100%]
+=============================== warnings summary ===============================
+tensorflow_probability/python/experimental/mcmc/nuts_autobatching_xla_test.py::NutsXLATest::testMultivariateNormalNd
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/mcmc/sample.py:339: UserWarning: Tracing all kernel results by default is deprecated. Set the `trace_fn` argument to None (the future default value) or an explicit callback that traces the values you are interested in.
+    warnings.warn('Tracing all kernel results by default is deprecated. Set '
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__experimental__mcmc__nuts_autobatching_xla_test/original.xml -
+2 passed, 1 skipped, 1 warning in 20.58s

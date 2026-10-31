@@ -1,0 +1,240 @@
+{
+  "repository_integrity_passed": true,
+  "imported_files_checked": 8513,
+  "patches": {
+    "cuthbert": {
+      "patch_applied": true,
+      "all_files_match": true,
+      "files": 254
+    },
+    "pfjax": {
+      "patch_applied": true,
+      "all_files_match": true,
+      "files": 197
+    },
+    "pydpf": {
+      "patch_applied": true,
+      "all_files_match": true,
+      "files": 30
+    },
+    "tfp": {
+      "patch_applied": true,
+      "all_files_match": true,
+      "files": 1541
+    },
+    "particles": {
+      "patch_applied": true,
+      "all_files_match": true,
+      "files": 107
+    }
+  },
+  "legacy_endpoints": 968,
+  "legacy_raw_PF_repetitions": 37584,
+  "new_particles_endpoints": 24,
+  "new_particles_raw_PF_repetitions": 1692,
+  "new_particles_precision_passed": 21,
+  "archives_read": [
+    {
+      "path": "artifacts/packages/cuthbert/review/cuthbert_v3_code_and_CPU_checks_DRAFT.zip",
+      "members_read": 286
+    },
+    {
+      "path": "artifacts/packages/pfjax/review/review_bundle.zip",
+      "members_read": 33
+    },
+    {
+      "path": "artifacts/packages/pfjax/review/upstream.tar.gz",
+      "members_read": 192
+    },
+    {
+      "path": "artifacts/packages/pydpf/review/review_bundle.zip",
+      "members_read": 26
+    },
+    {
+      "path": "artifacts/packages/pydpf/review/upstream.tar.gz",
+      "members_read": 26
+    },
+    {
+      "path": "artifacts/packages/tfp/review/review_bundle.zip",
+      "members_read": 38
+    },
+    {
+      "path": "artifacts/packages/tfp/review/upstream.tar.gz",
+      "members_read": 1537
+    },
+    {
+      "path": "artifacts/packages/particles/review/review_bundle.zip",
+      "members_read": 37
+    },
+    {
+      "path": "artifacts/packages/particles/review/upstream.tar.gz",
+      "members_read": 103
+    },
+    {
+      "path": "artifacts/experiments/legacy_dacca/pydpf/reproduction.tar.gz",
+      "members_read": 3415
+    },
+    {
+      "path": "artifacts/experiments/legacy_dacca/tfp/reproduction.tar.gz",
+      "members_read": 165
+    },
+    {
+      "path": "artifacts/experiments/legacy_dacca/dynamax/reproduction.tar.gz",
+      "members_read": 742
+    },
+    {
+      "path": "artifacts/experiments/legacy_dacca/pfjax/reproduction.tar.gz",
+      "members_read": 890
+    },
+    {
+      "path": "artifacts/experiments/legacy_dacca/pypfilt/pypfilt_dacca_formal_reproduction.tar.gz",
+      "members_read": 2600
+    },
+    {
+      "path": "artifacts/experiments/legacy_dacca/particles/particles_dacca_formal_reproduction.tar.gz",
+      "members_read": 4338
+    },
+    {
+      "path": "artifacts/experiments/legacy_dacca/paper_cuthbert_pypomp/reproduction.tar.gz",
+      "members_read": 1134
+    },
+    {
+      "path": "artifacts/experiments/legacy_dacca/pfjax/superseded_scores/reproduction.tar.gz",
+      "members_read": 745
+    },
+    {
+      "path": "artifacts/experiments/history/cuthbert_case_comparison_review.zip",
+      "members_read": 390
+    },
+    {
+      "path": "artifacts/experiments/history/cuthbert_common_warm_review.zip",
+      "members_read": 560
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/cuthbert_gate_v3/deployment.tar.gz",
+      "members_read": 572
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/cuthbert_gpu_diagnosis_v1/deployment.tar.gz",
+      "members_read": 758
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/jax_formal_v1.tar.gz",
+      "members_read": 106
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/jax_formal_v2.tar.gz",
+      "members_read": 106
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/jax_gate_v1.tar.gz",
+      "members_read": 1331
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/jax_gate_v2.tar.gz",
+      "members_read": 1365
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/jax_gate_v2_dependencies.tar.gz",
+      "members_read": 37
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/attempts/65096422/deployment.tar.gz",
+      "members_read": 338
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/attempts/65096422/remote_failure.tar.gz",
+      "members_read": 2
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/deployment.tar.gz",
+      "members_read": 338
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/environment_fix.tar.gz",
+      "members_read": 3
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/formal_v1/deployment.tar.gz",
+      "members_read": 358
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/formal_v1/partial_audit/tasks0_1_2_3_4_5_raw.tar.gz",
+      "members_read": 1840
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/formal_v1/submission_patch.tar.gz",
+      "members_read": 3
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/preflight_results.tar.gz",
+      "members_read": 15
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/pydpf/deployment.tar.gz",
+      "members_read": 596
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/pydpf/formal_v1/deployment.tar.gz",
+      "members_read": 150
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/pydpf/preflight_65096176_raw.tar.gz",
+      "members_read": 12
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/pydpf/repair_v2/deployment.tar.gz",
+      "members_read": 601
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/recovery_20261031/jax/raw.tar.gz",
+      "members_read": 23
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/recovery_20261031/particles/raw.tar.gz",
+      "members_read": 5386
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/recovery_20261031/pydpf/raw.tar.gz",
+      "members_read": 17
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/recovery_20261031/tfp/raw.tar.gz",
+      "members_read": 7
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/tfp/formal_v1/payload.tar.gz",
+      "members_read": 3100
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/tfp/formal_v2/payload.tar.gz",
+      "members_read": 3101
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/snapshot_20261031/tfp/validation_payload.tar.gz",
+      "members_read": 3094
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/upstream_test_sources/tfp.tar.gz",
+      "members_read": 1633
+    },
+    {
+      "path": "artifacts/experiments/public_interfaces/upstream_test_sources/pydpf.tar.gz",
+      "members_read": 62
+    },
+    {
+      "path": "artifacts/experiments/history/cuthbert_implementation_v2/review_bundle.zip",
+      "members_read": 39
+    },
+    {
+      "path": "artifacts/experiments/history/pfjax_implementation_v1/review_bundle.zip",
+      "members_read": 29
+    },
+    {
+      "path": "artifacts/experiments/history/pfjax_implementation_v1/upstream.tar.gz",
+      "members_read": 192
+    }
+  ],
+  "scientific_experiments_rerun": false,
+  "scope": "Repository integrity and existing evidence; not a new GPU correctness or optimization result."
+}

@@ -1,0 +1,77 @@
+..................s..............sFFFFFFs                                [100%]
+=================================== FAILURES ===================================
+_____ DistributedDiagonalMMATest.test_dmma_kernel_tracks_axis_names_eager ______
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedDiagonalMMATest.test_dmma_kernel_tracks_axis_names_eager_no_tf_function _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_____ DistributedDiagonalMMATest.test_dmma_kernel_tracks_axis_names_graph ______
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedDiagonalMMATest.test_momentum_distribution_has_right_shard_axis_names_eager _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedDiagonalMMATest.test_momentum_distribution_has_right_shard_axis_names_eager_no_tf_function _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedDiagonalMMATest.test_momentum_distribution_has_right_shard_axis_names_graph _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+=============================== warnings summary ===============================
+tensorflow_probability/python/experimental/mcmc/diagonal_mass_matrix_adaptation_test.py: 28 warnings
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/mcmc/sample.py:315: UserWarning: supplied `TransitionKernel` is not calibrated. Markov chain may not converge to intended target distribution.
+    warnings.warn('supplied `TransitionKernel` is not calibrated. Markov '
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__experimental__mcmc__diagonal_mass_matrix_adaptation_test/original.xml -
+=========================== short test summary info ============================
+FAILED tensorflow_probability/python/experimental/mcmc/diagonal_mass_matrix_adaptation_test.py::DistributedDiagonalMMATest::test_dmma_kernel_tracks_axis_names_eager
+FAILED tensorflow_probability/python/experimental/mcmc/diagonal_mass_matrix_adaptation_test.py::DistributedDiagonalMMATest::test_dmma_kernel_tracks_axis_names_eager_no_tf_function
+FAILED tensorflow_probability/python/experimental/mcmc/diagonal_mass_matrix_adaptation_test.py::DistributedDiagonalMMATest::test_dmma_kernel_tracks_axis_names_graph
+FAILED tensorflow_probability/python/experimental/mcmc/diagonal_mass_matrix_adaptation_test.py::DistributedDiagonalMMATest::test_momentum_distribution_has_right_shard_axis_names_eager
+FAILED tensorflow_probability/python/experimental/mcmc/diagonal_mass_matrix_adaptation_test.py::DistributedDiagonalMMATest::test_momentum_distribution_has_right_shard_axis_names_eager_no_tf_function
+FAILED tensorflow_probability/python/experimental/mcmc/diagonal_mass_matrix_adaptation_test.py::DistributedDiagonalMMATest::test_momentum_distribution_has_right_shard_axis_names_graph
+6 failed, 32 passed, 3 skipped, 28 warnings in 65.81s (0:01:05)

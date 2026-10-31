@@ -1,0 +1,40 @@
+{
+  "phase": "fitting",
+  "fit_job": "65097887",
+  "score_job": "65097888",
+  "completed_endpoints": 0,
+  "expected_endpoints": 24,
+  "source_frozen": true,
+  "time": "2026-10-30T20:38:23.336543+00:00",
+  "last_scheduler_check": "2026-10-30T20:45:34.556313+00:00",
+  "running_tasks": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "pending_tasks": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "score_state": "PENDING Dependency",
+  "running_snapshot_elapsed_seconds": 400
+}

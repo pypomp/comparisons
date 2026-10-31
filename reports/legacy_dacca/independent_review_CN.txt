@@ -1,0 +1,25 @@
+最终 Dacca 索引独立复核
+
+结论：实际968条终点记录和七份复现包通过复核。没有使用模拟输入补足未完成结果，没有重新拟合或运行PF。
+
+计数和统计
+论文两包800条 + 六个新增包168条 = 968条；按实验范围、包、方法、起点和重复唯一。
+有限评分961条；完整拟合且评分无失败的有限子集959条。
+拟合失败9条，评分失败0条。论文7条非有限拟合被跳过终点评分，与评分过程失败分开记录。
+有限低精度17条；全部精度未通过24条（包含7条无法评分记录）；观测底值饱和4条均保留。
+全部有限保留中位数和完整拟合且评分无失败的条件中位数分别重算；两者都有明确分母，条件子集不额外删除低精度或底值点。PyDPF与Dynamax的有限失败最后参数仍在全部有限中位数中。
+
+实际原始PF重复
+实际最终采用37584次原始PF结果，逐数组独立重算log likelihood、MCSE与likelihood ESS：论文28548，particles864，pypfilt2052，Dynamax1800，PyDPF1548，TFP1440，PFJAX1332。
+原R字段相加37836，其中论文7条非有限拟合保留计划R36，但实际raw_repetitions=0。已逐条核对跳过标记与原审计的无raw记录，差额252不能说成已运行评分。PFJAX历史被替换评分不混入最终计数，相关修复成本仍保留。
+
+成本与来源
+逐行核对原包likelihood、MCSE、ESS、R、失败、精度和底值字段；endpoints.csv与method_summary.csv逐单元格和JSON一致。
+七个完整复现包的存在、字节大小及SHA、原包summary/审核/视觉SHA与索引引用一致。主reproduction.tar.gz与嵌套原始method归档没有混淆。
+CPU与GPU成本分列。正式作业加必要重评分合计GPU 176844秒（49.123333GPU小时）；两CPU包合计52204核秒（14.501111核小时）。这不是所有部署、预检或探索成本的总计；已有Dynamax先前成本单列保留。
+各方法真实拟合、评分执行、评分编译和评分进程时间逐项对原记录；没有给未单独测量的编译/评分/方法分配时间填0或推算。Dynamax为12次标量调用累加，其他批量方法不乘12；论文共享前缀的物理成本去重，方法成本仍含完整前缀。嵌套时间不能相加。
+算法归属简表已核对：PFJAX三主组为本地扩展且原生OT不在结果内；PyDPF/TFP直接stop-gradient PF与对应Adam使用原生接口，IF2和折扣为本地扩展；Dynamax原生SSM.fit_sgd配合本地PF/IF2/IFAD；CPU原生PF配外部Nelder-Mead；论文Cuthbert本地扩展并复用PyPOMP Adam，PyPOMP调用functional.mif/train。
+
+结果JSON SHA256：e7e86a4f6429007ebac0a0f6c50d17fc4f282fcd3b2c4ced56ad2fba7a208d5f
+其余四个索引数据/报告SHA保存在independent_review.json的verified_index_artifact_sha256中。index_manifest_sha256_before_review_attachment指挂入本复核文件之前的清单，避免清单包含自身审核SHA造成循环；数据文件SHA不变。
+可执行复核脚本：work/competitor-estimation/final_index_review/verify_final_index.py。

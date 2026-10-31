@@ -1,0 +1,13 @@
+......................................................s                  [100%]
+=============================== warnings summary ===============================
+tensorflow_probability/python/bijectors/batch_normalization_test.py: 16 warnings
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/bijectors/batch_normalization_test.py:78: UserWarning: `layer.updates` will be removed in a future version. This property should not be used in TensorFlow 2.0, as `updates` are applied automatically.
+    with tf.control_dependencies(batch_norm.batchnorm.updates):
+
+tensorflow_probability/python/bijectors/batch_normalization_test.py::BatchNormTest::testWithKeras_eager_no_tf_function
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/data/ops/structured_function.py:258: UserWarning: Even though the `tf.config.experimental_run_functions_eagerly` option is set, this option does not apply to tf.data functions. To force eager execution of tf.data functions, please use `tf.data.experimental.enable_debug_mode()`.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__bijectors__batch_normalization_test/candidate.xml -
+54 passed, 1 skipped, 17 warnings in 15.81s

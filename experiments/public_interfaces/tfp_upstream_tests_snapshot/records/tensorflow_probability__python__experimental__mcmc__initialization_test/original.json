@@ -1,0 +1,62 @@
+{
+  "kind": "original",
+  "file": "tensorflow_probability/python/experimental/mcmc/initialization_test.py",
+  "command": [
+    "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/bin/python",
+    "-m",
+    "pytest",
+    "tensorflow_probability/python/experimental/mcmc/initialization_test.py",
+    "-q",
+    "--tb=short",
+    "--continue-on-collection-errors",
+    "--junitxml=/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__experimental__mcmc__initialization_test/original.xml"
+  ],
+  "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original",
+  "timeout_seconds": 180,
+  "exit_code": 1,
+  "state": "finished",
+  "elapsed_seconds": 19.034782207920216,
+  "pytest_counts": {
+    "tests": 27,
+    "failures": 7,
+    "errors": 0,
+    "skipped": 2
+  },
+  "failed_tests": [
+    {
+      "name": "testBatchShapeJDCoroAB_eager",
+      "class": "tensorflow_probability.python.experimental.mcmc.initialization_test.InitializationTest",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+    },
+    {
+      "name": "testBatchShapeJDCoroAB_eager_no_tf_function",
+      "class": "tensorflow_probability.python.experimental.mcmc.initialization_test.InitializationTest",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+    },
+    {
+      "name": "testBatchShapeJDCoroAB_graph",
+      "class": "tensorflow_probability.python.experimental.mcmc.initialization_test.InitializationTest",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+    },
+    {
+      "name": "testBatchShapeJDCoro_eager",
+      "class": "tensorflow_probability.python.experimental.mcmc.initialization_test.InitializationTest",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+    },
+    {
+      "name": "testBatchShapeJDCoro_eager_no_tf_function",
+      "class": "tensorflow_probability.python.experimental.mcmc.initialization_test.InitializationTest",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+    },
+    {
+      "name": "testBatchShapeJDCoro_graph",
+      "class": "tensorflow_probability.python.experimental.mcmc.initialization_test.InitializationTest",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+    },
+    {
+      "name": "test_can_initialize_from_sharded_distribution",
+      "class": "tensorflow_probability.python.experimental.mcmc.initialization_test.DistributedTest",
+      "message": "RuntimeError: Virtual devices cannot be modified after being initialized"
+    }
+  ]
+}

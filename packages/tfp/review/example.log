@@ -1,0 +1,3 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1793330794.923813 11370937 op_level_cost_estimator.cc:743] Invalid device specifications for CPU: type: "CPU" model: "0" num_cores: 14 environment { key: "cpu_instruction_set" value: "ARM NEON" } environment { key: "eigen" value: "3.4.90" } l1_cache_size: 16384 l2_cache_size: 524288 l3_cache_size: 524288 memory_size: 268435456
+{"completed": true, "IF2_passes": 3, "Keras_Adam_updates": 3, "independent_score_repetitions": 4, "logmeanlik": [-2.6864137649536133, -2.6971263885498047], "MCSE_assessed": false, "package_path": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/tfp-implementation-v1/candidate/tensorflow_probability/__init__.py"}

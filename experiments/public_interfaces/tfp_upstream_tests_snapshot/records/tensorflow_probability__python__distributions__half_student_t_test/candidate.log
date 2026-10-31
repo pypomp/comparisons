@@ -1,0 +1,12 @@
+........................................................................ [ 98%]
+s                                                                        [100%]
+=============================== warnings summary ===============================
+tensorflow_probability/python/distributions/half_student_t_test.py::HalfStudentTTest::testVarianceAllowNanStatsTrueReturnsNaNforUndefinedBatchMembers_eager
+tensorflow_probability/python/distributions/half_student_t_test.py::HalfStudentTTest::testVarianceAllowNanStatsTrueReturnsNaNforUndefinedBatchMembers_eager_no_tf_function
+tensorflow_probability/python/distributions/half_student_t_test.py::HalfStudentTTest::testVarianceAllowNanStatsTrueReturnsNaNforUndefinedBatchMembers_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/test_util.py:720: RuntimeWarning: invalid value encountered in subtract
+    np.abs(a - b) > atol + rtol * np.abs(b),
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__distributions__half_student_t_test/candidate.xml -
+72 passed, 1 skipped, 3 warnings in 30.77s

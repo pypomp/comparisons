@@ -1,0 +1,29 @@
+{
+  "iteration": 0,
+  "seed": 3178133136,
+  "seconds": 0.1750153750181198,
+  "alpha": 1.0,
+  "active_before": [
+    true,
+    true
+  ],
+  "accepted": [
+    true,
+    true
+  ],
+  "training_loss": [
+    6.224475383758545,
+    6.082916736602783
+  ],
+  "batch_slots": 2,
+  "generator_after_sha256": "ecb26c6683f7fbbd0859ade55f3ba6fc4126ca01d6803b3920aac485d5ddbf78",
+  "fallback": false,
+  "natural_parameters_finite": [
+    true,
+    true
+  ],
+  "optimizer_state_finite": [
+    true,
+    true
+  ]
+}

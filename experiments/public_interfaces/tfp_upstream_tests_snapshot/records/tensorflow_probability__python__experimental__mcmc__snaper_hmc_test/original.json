@@ -1,0 +1,87 @@
+{
+  "kind": "original",
+  "file": "tensorflow_probability/python/experimental/mcmc/snaper_hmc_test.py",
+  "command": [
+    "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/bin/python",
+    "-m",
+    "pytest",
+    "tensorflow_probability/python/experimental/mcmc/snaper_hmc_test.py",
+    "-q",
+    "--tb=short",
+    "--continue-on-collection-errors",
+    "--junitxml=/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__experimental__mcmc__snaper_hmc_test/original.xml"
+  ],
+  "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original",
+  "timeout_seconds": 180,
+  "exit_code": 1,
+  "state": "finished",
+  "elapsed_seconds": 124.66967375006061,
+  "pytest_counts": {
+    "tests": 79,
+    "failures": 12,
+    "errors": 0,
+    "skipped": 20
+  },
+  "failed_tests": [
+    {
+      "name": "testInitState",
+      "class": "tensorflow_probability.python.experimental.mcmc.snaper_hmc_test.SampleSNAPERHMCTestFloat32",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+    },
+    {
+      "name": "testInitState",
+      "class": "tensorflow_probability.python.experimental.mcmc.snaper_hmc_test.SampleSNAPERHMCTestFloat64",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+    },
+    {
+      "name": "testShardedChainAxes_eager",
+      "class": "tensorflow_probability.python.experimental.mcmc.snaper_hmc_test.DistributedSampleSNAPERHMCTest",
+      "message": "RuntimeError: Virtual devices cannot be modified after being initialized"
+    },
+    {
+      "name": "testShardedChainAxes_graph",
+      "class": "tensorflow_probability.python.experimental.mcmc.snaper_hmc_test.DistributedSampleSNAPERHMCTest",
+      "message": "RuntimeError: Virtual devices cannot be modified after being initialized"
+    },
+    {
+      "name": "testShardedState_eager",
+      "class": "tensorflow_probability.python.experimental.mcmc.snaper_hmc_test.DistributedSampleSNAPERHMCTest",
+      "message": "RuntimeError: Virtual devices cannot be modified after being initialized"
+    },
+    {
+      "name": "testShardedState_graph",
+      "class": "tensorflow_probability.python.experimental.mcmc.snaper_hmc_test.DistributedSampleSNAPERHMCTest",
+      "message": "RuntimeError: Virtual devices cannot be modified after being initialized"
+    },
+    {
+      "name": "testAxisNameTracking_eager",
+      "class": "tensorflow_probability.python.experimental.mcmc.snaper_hmc_test.DistributedSNAPERHMCTest",
+      "message": "RuntimeError: Virtual devices cannot be modified after being initialized"
+    },
+    {
+      "name": "testAxisNameTracking_graph",
+      "class": "tensorflow_probability.python.experimental.mcmc.snaper_hmc_test.DistributedSNAPERHMCTest",
+      "message": "RuntimeError: Virtual devices cannot be modified after being initialized"
+    },
+    {
+      "name": "testShardedChainAxes_eager",
+      "class": "tensorflow_probability.python.experimental.mcmc.snaper_hmc_test.DistributedSNAPERHMCTest",
+      "message": "RuntimeError: Virtual devices cannot be modified after being initialized"
+    },
+    {
+      "name": "testShardedChainAxes_graph",
+      "class": "tensorflow_probability.python.experimental.mcmc.snaper_hmc_test.DistributedSNAPERHMCTest",
+      "message": "RuntimeError: Virtual devices cannot be modified after being initialized"
+    },
+    {
+      "name": "testShardedState_eager",
+      "class": "tensorflow_probability.python.experimental.mcmc.snaper_hmc_test.DistributedSNAPERHMCTest",
+      "message": "RuntimeError: Virtual devices cannot be modified after being initialized"
+    },
+    {
+      "name": "testShardedState_graph",
+      "class": "tensorflow_probability.python.experimental.mcmc.snaper_hmc_test.DistributedSNAPERHMCTest",
+      "message": "RuntimeError: Virtual devices cannot be modified after being initialized"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "phase": "formal_array_queued_gate_passed",
+  "formal_submitted": true,
+  "gate_submitted": true,
+  "local_scalar_regression_passed": true,
+  "local_three_method_worker_and_PyPOMP_scoring_passed": true,
+  "production": "original scalar API; no product-model batch wrapper",
+  "deployed": true,
+  "GL_runtime_imports_and_data_passed": true,
+  "gate_job_id": "64993983",
+  "array_job_id": "64993987",
+  "gate_passed": true,
+  "gate_complete": true,
+  "formal_completed": false,
+  "expected_endpoints": 36,
+  "completed_endpoints": 0
+}

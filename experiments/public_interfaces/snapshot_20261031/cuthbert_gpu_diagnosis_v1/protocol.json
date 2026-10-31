@@ -1,0 +1,19 @@
+{
+  "purpose": "Diagnose unchanged upstream GPU failures before any Cuthbert ABC fitting",
+  "T": 600,
+  "J_full_cost": 5000,
+  "no_formal_optimization": true,
+  "candidate_changes_since_gate_v2": [],
+  "test_tolerance_changes": false,
+  "prior_gate": 65097220,
+  "allocation_seconds": 1680,
+  "prior_combined_JAX_gate_GPU_seconds": 1876,
+  "gate_total_if_full_allocation_seconds": 3556,
+  "source_version": "c737efe3098b2b5ecaa7d8b976e7cea246998b17 plus existing public implementation v2",
+  "focus_tests": [
+    "tests/cuthbert/ensemble_kalman/test_enkf.py::test_gaussian_taper_log_likelihood_gradient",
+    "tests/cuthbert/gaussian/test_taylor.py::test_smoother[0-3-1-25]",
+    "tests/cuthbert/gaussian/test_taylor.py::test_smoother[0-3-2-25]"
+  ],
+  "acceptance_note": "This diagnosis does not claim full GPU suite passes. Preserve original/candidate failures and inspect them before establishing a new formal gate."
+}

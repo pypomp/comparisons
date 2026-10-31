@@ -1,0 +1,35 @@
+{
+  "timestamp_UTC": "2026-10-29T04:25:15.460133+00:00",
+  "package": "pypfilt",
+  "stable_task_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "running_task_directories_excluded": [
+    9,
+    10,
+    11
+  ],
+  "one_remote_archive_read": true,
+  "archive_sha256": "64192ee0bd71d235d5d940bcea505a992b12c643dc1510e9b0560620889def35",
+  "source_manifest_unchanged": true,
+  "prior_completed_task_hashes_unchanged": true,
+  "new_task_ids": [
+    6,
+    7,
+    8
+  ],
+  "new_tasks_precision_passed": [
+    7,
+    8
+  ],
+  "no_resubmission": true,
+  "no_refitting": true
+}

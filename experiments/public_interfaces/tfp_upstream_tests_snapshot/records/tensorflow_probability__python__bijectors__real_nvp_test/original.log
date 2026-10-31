@@ -1,0 +1,19 @@
+..............................s..............................s.......... [ 42%]
+....................s..............................s.................... [ 85%]
+..........s.............s                                                [100%]
+=============================== warnings summary ===============================
+tensorflow_probability/python/bijectors/real_nvp_test.py: 60 warnings
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/bijectors/real_nvp.py:393: UserWarning: `tf.layers.dense` is deprecated and will be removed in a future version. Please use `tf.keras.layers.Dense` instead.
+    x = tf_keras.tf1_layers.dense(
+
+tensorflow_probability/python/bijectors/real_nvp_test.py: 60 warnings
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/bijectors/real_nvp.py:399: UserWarning: `tf.layers.dense` is deprecated and will be removed in a future version. Please use `tf.keras.layers.Dense` instead.
+    x = tf_keras.tf1_layers.dense(
+
+tensorflow_probability/python/bijectors/real_nvp_test.py: 30 warnings
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/bijectors/real_nvp_test.py:230: UserWarning: `tf.layers.dense` is deprecated and will be removed in a future version. Please use `tf.keras.layers.Dense` instead.
+    out = tf_keras.tf1_layers.dense(inputs=x, units=2 * output_units)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__bijectors__real_nvp_test/original.xml -
+163 passed, 6 skipped, 150 warnings in 20.10s

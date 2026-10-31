@@ -1,0 +1,12 @@
+{
+  "frozen.npz": {
+    "TFP_sha256": "2fbe1f58a93d1e4370c6ece29647990a15981747eb61561ae0767e444aa18942",
+    "paper_sha256": "2fbe1f58a93d1e4370c6ece29647990a15981747eb61561ae0767e444aa18942",
+    "same_array_content": true
+  },
+  "paper_starts_estimation_free.npy": {
+    "TFP_sha256": "e80c4047435aa57fc37a5eb797b9235df1395e449655eed3982d24b54d907cd4",
+    "paper_sha256": "e80c4047435aa57fc37a5eb797b9235df1395e449655eed3982d24b54d907cd4",
+    "same_array_content": true
+  }
+}

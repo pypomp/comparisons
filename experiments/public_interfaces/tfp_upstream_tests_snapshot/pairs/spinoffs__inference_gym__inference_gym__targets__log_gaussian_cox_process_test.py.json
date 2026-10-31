@@ -1,0 +1,71 @@
+{
+  "file": "spinoffs/inference_gym/inference_gym/targets/log_gaussian_cox_process_test.py",
+  "results": [
+    {
+      "kind": "original",
+      "file": "spinoffs/inference_gym/inference_gym/targets/log_gaussian_cox_process_test.py",
+      "command": [
+        "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/bin/python",
+        "-m",
+        "pytest",
+        "spinoffs/inference_gym/inference_gym/targets/log_gaussian_cox_process_test.py",
+        "-q",
+        "--tb=short",
+        "--continue-on-collection-errors",
+        "--junitxml=/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/spinoffs__inference_gym__inference_gym__targets__log_gaussian_cox_process_test/original.xml"
+      ],
+      "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original",
+      "timeout_seconds": 180,
+      "exit_code": 1,
+      "state": "finished",
+      "elapsed_seconds": 16.29191033402458,
+      "pytest_counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 1,
+        "skipped": 0
+      },
+      "failed_tests": [
+        {
+          "name": "inference_gym.targets.log_gaussian_cox_process_test",
+          "class": "",
+          "message": "collection failure"
+        }
+      ]
+    },
+    {
+      "kind": "candidate",
+      "file": "spinoffs/inference_gym/inference_gym/targets/log_gaussian_cox_process_test.py",
+      "command": [
+        "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/bin/python",
+        "-m",
+        "pytest",
+        "spinoffs/inference_gym/inference_gym/targets/log_gaussian_cox_process_test.py",
+        "-q",
+        "--tb=short",
+        "--continue-on-collection-errors",
+        "--junitxml=/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/spinoffs__inference_gym__inference_gym__targets__log_gaussian_cox_process_test/candidate.xml"
+      ],
+      "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate",
+      "timeout_seconds": 180,
+      "exit_code": 1,
+      "state": "finished",
+      "elapsed_seconds": 15.154238917049952,
+      "pytest_counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 1,
+        "skipped": 0
+      },
+      "failed_tests": [
+        {
+          "name": "inference_gym.targets.log_gaussian_cox_process_test",
+          "class": "",
+          "message": "collection failure"
+        }
+      ]
+    }
+  ],
+  "same_exit_status": true,
+  "candidate_only_failure": false
+}

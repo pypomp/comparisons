@@ -1,0 +1,87 @@
+{
+  "kind": "candidate",
+  "file": "tensorflow_probability/python/distributions/batch_broadcast_test.py",
+  "command": [
+    "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/bin/python",
+    "-m",
+    "pytest",
+    "tensorflow_probability/python/distributions/batch_broadcast_test.py",
+    "-q",
+    "--tb=short",
+    "--continue-on-collection-errors",
+    "--junitxml=/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__distributions__batch_broadcast_test/candidate.xml"
+  ],
+  "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate",
+  "timeout_seconds": 180,
+  "exit_code": 1,
+  "state": "finished",
+  "elapsed_seconds": 23.013153417035937,
+  "pytest_counts": {
+    "tests": 98,
+    "failures": 12,
+    "errors": 0,
+    "skipped": 2
+  },
+  "failed_tests": [
+    {
+      "name": "test_default_bijector_eager",
+      "class": "tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastStaticTest",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'\nwhile generating 'Draw 3' from distributions(batch_shape=TensorShape([]), eligibility_filter=lambda name: name != 'BatchReshape')\nFalsifying example: test_default_bijector(\n    self=<tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastStaticTest testMethod=test_default_bijector_eager>,\n    data=data(...),\n)\nDraw 1: TensorShape([])\nDraw 2: [TensorShape([]), TensorShape([])]\n\nYou can reproduce this example by temporarily adding @reproduce_failure('6.142.4', b'AEEAQQBBAEEBQQQ=') as a decorator on your test case"
+    },
+    {
+      "name": "test_default_bijector_eager_no_tf_function",
+      "class": "tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastStaticTest",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'\nwhile generating 'Draw 3' from distributions(batch_shape=TensorShape([]), eligibility_filter=lambda name: name != 'BatchReshape')\nFalsifying example: test_default_bijector(\n    self=<tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastStaticTest testMethod=test_default_bijector_eager_no_tf_function>,\n    data=data(...),\n)\nDraw 1: TensorShape([])\nDraw 2: [TensorShape([]), TensorShape([])]\n\nYou can reproduce this example by temporarily adding @reproduce_failure('6.142.4', b'AEEAQQBBAEEBQQQ=') as a decorator on your test case"
+    },
+    {
+      "name": "test_default_bijector_graph",
+      "class": "tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastStaticTest",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'\nwhile generating 'Draw 3' from distributions(batch_shape=TensorShape([]), eligibility_filter=lambda name: name != 'BatchReshape')\nFalsifying example: test_default_bijector(\n    self=<tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastStaticTest testMethod=test_default_bijector_graph>,\n    data=data(...),\n)\nDraw 1: TensorShape([])\nDraw 2: [TensorShape([]), TensorShape([])]\n\nYou can reproduce this example by temporarily adding @reproduce_failure('6.142.4', b'AEEAQQBBAEEBQQQ=') as a decorator on your test case"
+    },
+    {
+      "name": "test_shapes_eager",
+      "class": "tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastStaticTest",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'\nwhile generating 'Draw 3' from distributions(batch_shape=TensorShape([]))\nFalsifying example: test_shapes(\n    self=<tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastStaticTest testMethod=test_shapes_eager>,\n    data=data(...),\n)\nDraw 1: TensorShape([])\nDraw 2: [TensorShape([]), TensorShape([])]\n\nYou can reproduce this example by temporarily adding @reproduce_failure('6.142.4', b'AEEAQQBBAEEBQQU=') as a decorator on your test case"
+    },
+    {
+      "name": "test_shapes_eager_no_tf_function",
+      "class": "tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastStaticTest",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'\nwhile generating 'Draw 3' from distributions(batch_shape=TensorShape([]))\nFalsifying example: test_shapes(\n    self=<tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastStaticTest testMethod=test_shapes_eager_no_tf_function>,\n    data=data(...),\n)\nDraw 1: TensorShape([])\nDraw 2: [TensorShape([]), TensorShape([])]\n\nYou can reproduce this example by temporarily adding @reproduce_failure('6.142.4', b'AEEAQQBBAEEBQQU=') as a decorator on your test case"
+    },
+    {
+      "name": "test_shapes_graph",
+      "class": "tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastStaticTest",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'\nwhile generating 'Draw 3' from distributions(batch_shape=TensorShape([]))\nFalsifying example: test_shapes(\n    self=<tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastStaticTest testMethod=test_shapes_graph>,\n    data=data(...),\n)\nDraw 1: TensorShape([])\nDraw 2: [TensorShape([]), TensorShape([])]\n\nYou can reproduce this example by temporarily adding @reproduce_failure('6.142.4', b'AEEAQQBBAEEBQQU=') as a decorator on your test case"
+    },
+    {
+      "name": "test_default_bijector_eager",
+      "class": "tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastDynamicTest",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'\nwhile generating 'Draw 3' from distributions(batch_shape=TensorShape([]), eligibility_filter=lambda name: name != 'BatchReshape')\nFalsifying example: test_default_bijector(\n    self=<tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastDynamicTest testMethod=test_default_bijector_eager>,\n    data=data(...),\n)\nDraw 1: TensorShape([])\nDraw 2: [TensorShape([]), TensorShape([])]\n\nYou can reproduce this example by temporarily adding @reproduce_failure('6.142.4', b'AEEAQQBBAEEBQQQ=') as a decorator on your test case"
+    },
+    {
+      "name": "test_default_bijector_eager_no_tf_function",
+      "class": "tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastDynamicTest",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'\nwhile generating 'Draw 3' from distributions(batch_shape=TensorShape([]), eligibility_filter=lambda name: name != 'BatchReshape')\nFalsifying example: test_default_bijector(\n    self=<tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastDynamicTest testMethod=test_default_bijector_eager_no_tf_function>,\n    data=data(...),\n)\nDraw 1: TensorShape([])\nDraw 2: [TensorShape([]), TensorShape([])]\n\nYou can reproduce this example by temporarily adding @reproduce_failure('6.142.4', b'AEEAQQBBAEEBQQQ=') as a decorator on your test case"
+    },
+    {
+      "name": "test_default_bijector_graph",
+      "class": "tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastDynamicTest",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'\nwhile generating 'Draw 3' from distributions(batch_shape=TensorShape([]), eligibility_filter=lambda name: name != 'BatchReshape')\nFalsifying example: test_default_bijector(\n    self=<tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastDynamicTest testMethod=test_default_bijector_graph>,\n    data=data(...),\n)\nDraw 1: TensorShape([])\nDraw 2: [TensorShape([]), TensorShape([])]\n\nYou can reproduce this example by temporarily adding @reproduce_failure('6.142.4', b'AEEAQQBBAEEBQQQ=') as a decorator on your test case"
+    },
+    {
+      "name": "test_shapes_eager",
+      "class": "tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastDynamicTest",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'\nwhile generating 'Draw 3' from distributions(batch_shape=TensorShape([]))\nFalsifying example: test_shapes(\n    self=<tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastDynamicTest testMethod=test_shapes_eager>,\n    data=data(...),\n)\nDraw 1: TensorShape([])\nDraw 2: [TensorShape([]), TensorShape([])]\n\nYou can reproduce this example by temporarily adding @reproduce_failure('6.142.4', b'AEEAQQBBAEEBQQU=') as a decorator on your test case"
+    },
+    {
+      "name": "test_shapes_eager_no_tf_function",
+      "class": "tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastDynamicTest",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'\nwhile generating 'Draw 3' from distributions(batch_shape=TensorShape([]))\nFalsifying example: test_shapes(\n    self=<tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastDynamicTest testMethod=test_shapes_eager_no_tf_function>,\n    data=data(...),\n)\nDraw 1: TensorShape([])\nDraw 2: [TensorShape([]), TensorShape([])]\n\nYou can reproduce this example by temporarily adding @reproduce_failure('6.142.4', b'AEEAQQBBAEEBQQU=') as a decorator on your test case"
+    },
+    {
+      "name": "test_shapes_graph",
+      "class": "tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastDynamicTest",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'\nwhile generating 'Draw 3' from distributions(batch_shape=TensorShape([]))\nFalsifying example: test_shapes(\n    self=<tensorflow_probability.python.distributions.batch_broadcast_test.BatchBroadcastDynamicTest testMethod=test_shapes_graph>,\n    data=data(...),\n)\nDraw 1: TensorShape([])\nDraw 2: [TensorShape([]), TensorShape([])]\n\nYou can reproduce this example by temporarily adding @reproduce_failure('6.142.4', b'AEEAQQBBAEEBQQU=') as a decorator on your test case"
+    }
+  ]
+}

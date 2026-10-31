@@ -1,0 +1,42 @@
+Cuthbert 本轮实现验证复现
+
+本机候选源码：
+/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v2/candidate
+本机验证输入及脚本：
+/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v2/validation
+本机结果：
+/Users/mac/Documents/Codex/2026-10-22/cloud-gl/outputs/competitor_estimation/cuthbert_implementation_v2
+
+以下命令在 candidate 中执行。运行日志应写入新目录，避免覆盖本轮审查记录。
+使用已经存在的 panel-cute-cpu 环境和 probe/quality 依赖；环境清单见 environment.json。无需提交 Slurm 作业。
+
+扩展测试与选定回归测试（31+88；另 60 项不选）：
+PYTHONPATH=.:../../cuthbert-probe-deps:../../cuthbert-quality-tools ../../panel-cute-cpu/bin/python -m pytest -q tests/cuthbert/smc/test_parameter_estimation.py tests/cuthbertlib/resampling tests/cuthbert/smc/test_particle_filters.py -k 'parameter_estimation or resampling or pytree_particles'
+
+生成文档中的可执行示例：
+PYTHONPATH=.:../../cuthbert-quality-tools:../../cuthbert-probe-deps ../../panel-cute-cpu/bin/python ../../cuthbert-quality-tools/bin/entangled tangle
+
+执行 IFAD 示例：
+PYTHONPATH=.:../../cuthbert-probe-deps:../../cuthbert-quality-tools ../../panel-cute-cpu/bin/python -m pytest -q tests/test_examples_scripts.py -k parameter_estimation_ifad
+
+完整时间长度 Dacca 接入检查，J32、各一步、R2，不是估计比较：
+PYTHONPATH=.:../../cuthbert-probe-deps:../../cuthbert-quality-tools ../../panel-cute-cpu/bin/python ../validation/check_dacca_api.py --output /private/tmp/cuthbert_dacca_api_recheck.json
+
+Lint（含生成示例与验证脚本）：
+../../cuthbert-quality-tools/bin/ruff check cuthbert/smc/_estimation.py cuthbert/smc/iterated_filtering.py cuthbert/smc/dmop.py cuthbert/smc/ifad.py cuthbertlib/resampling/autodiff.py tests/cuthbert/smc/test_parameter_estimation.py examples_scripts/parameter_estimation_ifad.py ../validation/check_dacca_api.py
+
+格式检查（7 个手写文件；生成示例遵循 entangled 的输出）：
+../../cuthbert-quality-tools/bin/ruff format --check cuthbert/smc/_estimation.py cuthbert/smc/iterated_filtering.py cuthbert/smc/dmop.py cuthbert/smc/ifad.py cuthbertlib/resampling/autodiff.py tests/cuthbert/smc/test_parameter_estimation.py ../validation/check_dacca_api.py
+
+类型检查：
+../../cuthbert-quality-tools/bin/ty check cuthbert/smc/_estimation.py cuthbert/smc/dmop.py cuthbert/smc/iterated_filtering.py cuthbert/smc/ifad.py cuthbertlib/resampling/autodiff.py examples_scripts/parameter_estimation_ifad.py ../validation/check_dacca_api.py --python ../../panel-cute-cpu --extra-search-path . --extra-search-path ../validation --extra-search-path ../../cuthbert-probe-deps
+
+文档构建：
+PYTHONPATH=.:../../cuthbert-quality-tools:../../cuthbert-probe-deps ../../panel-cute-cpu/bin/python ../../cuthbert-quality-tools/bin/zensical build
+
+在独立位置检查补丁：
+将 review_bundle.zip 解压到新目录，先执行 python verify_bundle.py。
+创建 source 目录，把 upstream.tar.gz 解压到 source；进入 source，执行 git apply --check ../full.patch，再执行 git apply ../full.patch。
+full.patch 相对固定上游；changes_this_round.patch 相对上一份本地扩展，不能把两份补丁依次应用。
+validation/ 和 examples_scripts/parameter_estimation_ifad.py 随包提供。配置与 environment.json 相容的 Python 及依赖后，使用 source 作为 PYTHONPATH，运行上述 pytest 及 validation/check_dacca_api.py。依赖环境本身没有打包。
+不同硬件和编译版本不保证数值逐位相同；Dacca 编译方式诊断见 report_CN.txt。

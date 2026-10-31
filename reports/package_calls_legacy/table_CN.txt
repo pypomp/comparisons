@@ -1,0 +1,29 @@
+原始 Dacca 正式实验：包原有函数与我们编写的代码
+
+“包原有函数”指我们实际调用、且由原包提供的函数；不表示整套IF2/IFAD流程均由原包提供，也不是该包全部功能的目录。新增函数即使放在包的目录里，也不列为包原有函数。
+下表alpha表示梯度折扣系数。模型函数及详细代码位置见同目录README_CN.txt。
+范围：Cuthbert/PyPOMP两行指J5000论文实验。早期J1024、180秒GPU实验已完成A/B/C，其中A/B实际调用原有stop_gradient_decorator和PF，使用Optax Adam；C使用新增折扣梯度。该早期结果见outputs/cuthbert_dacca，不应与下表混同。
+
+| 包 | 包原有函数（本次实际调用） | 我们写的IF2代码 | 我们写的梯度训练或其他参数搜索代码 |
+| --- | --- | --- | --- |
+| PyPOMP | functional.mif、functional.train、Adam；模型使用models.dhaka。 | 设置扰动、冷却和迭代数后调用mif；把最后参数交给train。IF2自身的滤波与重复迭代由包执行。 | 设置alpha、学习率和Adam参数，调用train；梯度和更新循环由包执行。我们负责两阶段衔接、随机数、批量运行及记录。 |
+| Cuthbert | particle_filter.build_filter、其返回的filter_prepare和filter_combine，以及systematic.resampling。 | 写cuthbert_mif，将状态与参数放入同一个粒子；在初始化与传播函数中扰动参数。写逐月循环调用包内滤波更新，并写外层IF2循环及冷却；每轮末尾调用原重采样函数，将完整参数集合传给下一轮。 | 新增dmop.log_likelihood及discounted_stop_gradient_decorator，在原重采样返回的log权重上加入前向值为零、导数乘alpha的修正项。调用jax.grad；写参数更新循环，调用来自PyPOMP的Adam.step。 |
+| PFJAX | 梯度阶段调用particle_filter；IF2和梯度阶段均使用resample_multinomial。 | 自写逐月滤波与外层IF2：扰动参数、传播状态、计算权重、累计likelihood，调用包内重采样；完整参数集合传入下一轮。IF2不调用particle_filter。 | 新增CorrectedDacca和corrected_resampler，保存、归一化并传递权重导数修正，再交给particle_filter。调用JAX求导及Optax的scale_by_adam，自己写参数更新、学习率和状态保存。 |
+| PyDPF | FilteringModel、ParticleFilter、SystematicResampler；直接ADPF使用StopGradientDPF。 | 写Prior.sample、Dyn.sample和Obs.score，使每个粒子包含状态和参数，并加入扰动。整段滤波由ParticleFilter执行；我们写外层轮次、冷却和完整参数集合的保存。 | 直接ADPF调用原有StopGradientDPF。IFAD新增DiscountedResampler，调用原重采样函数并利用其祖先索引和权重加入alpha修正。调用PyTorch自动求导及torch.optim.Adam；训练循环由我们写。 |
+| TensorFlow Probability | WeightedParticles、sequential_monte_carlo、particle_filter(unbiased_gradients=True)、resample_systematic；IFAD还调用内部weighted_resampling.resample。 | 写propose回调，逐月扰动参数、模拟状态并计算未归一化观测权重。SMC循环由包执行；外层IF2、冷却和完整参数集合保存由我们写。 | 直接ADPF使用原有particle_filter梯度功能。IFAD在建图时临时包装内部resample，使target_log_weights导数乘alpha，随后恢复原引用。调用GradientTape和Keras Adam；训练循环由我们写。 |
+| Dynamax | SSM.fit_sgd。 | Dacca的逐月滤波、重采样、参数扰动、冷却和外层IF2均由我们写；没有调用Dynamax的PF。 | 自写local_pf及权重导数修正；覆写marginal_log_prob，将该结果交给原有fit_sgd。传入Optax Adam，并用我们写的包装函数保存状态和失败记录。 |
+| particles | state_space_models.Bootstrap、SMC及其logLt结果。 | 本次没有实现或调用IF2。 | 提供Dacca模型，写参数变换和返回负PF log-likelihood的目标函数，调用外部SciPy Nelder-Mead。RecordedSMC在原SMC完成统计后追加记录；PF与重采样由包执行。 |
+| pypfilt | load_instances、build_context、fit；本次fit只用于固定参数下的状态滤波。 | 本次没有实现或调用IF2，也未用参数粒子和正则化进行参数推断。 | 提供Dacca模型与观测函数；在观测函数中另行累计likelihood增量；写目标函数及参数变换，调用外部SciPy Nelder-Mead。未调用adaptive_fit。 |
+
+优化器的来源
+  PyPOMP、Cuthbert：pypomp.Adam；Cuthbert不提供本次使用的Adam。
+  PFJAX、Dynamax：Optax。
+  PyDPF：torch.optim.Adam，来自PyTorch。
+  TFP：tf.keras.optimizers.Adam，来自TensorFlow/Keras。
+  particles、pypfilt：SciPy Nelder-Mead。
+
+必须保留的说明
+  Cuthbert原本已有stop_gradient_decorator，但下表所述J5000论文Dacca的alpha=1也调用我们新增的discounted_stop_gradient_decorator，并设alpha=1；所以没有把原stop_gradient_decorator列为本次直接调用的函数。
+  PFJAX实际使用的particle_filter.py包含已记录的随机key数组索引性能修改；“包原有函数”不表示该文件未经修改。修改记录见package_call_boundaries_v1/pfjax_particle_filter.diff。
+  PyDPF、TFP的直接ADPF使用包内原有的梯度功能，Adam训练流程仍由我们的代码组织；不能将组合直接称为包提供的一键MLE方法。
+  最终终点评分统一使用独立原始PyPOMP PF；本表描述的是训练调用。

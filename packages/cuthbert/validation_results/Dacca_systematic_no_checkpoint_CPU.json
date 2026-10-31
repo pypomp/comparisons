@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "purpose": "Full-length Dacca public-API integration check only; not an estimation comparison.",
+  "jax_version": "0.12.0.1",
+  "backend": "cpu",
+  "modules": {
+    "cuthbert.smc.particle_filter": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v3/candidate/cuthbert/smc/particle_filter.py",
+    "cuthbert.smc.dmop": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v3/candidate/cuthbert/smc/dmop.py",
+    "cuthbert.smc.ifad": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v3/candidate/cuthbert/smc/ifad.py",
+    "cuthbert.smc.iterated_filtering": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v3/candidate/cuthbert/smc/iterated_filtering.py"
+  },
+  "observations": 600,
+  "euler_steps_per_observation": 20,
+  "free_parameters": 23,
+  "particles": 32,
+  "resampling": "systematic",
+  "seed": 20261030,
+  "if2_iterations": 1,
+  "gradient_updates": 1,
+  "score_replicates": 2,
+  "score_precision_assessed": false,
+  "rtol": 1e-05,
+  "atol": 0.0001,
+  "checks": {
+    "alpha_0.0": {
+      "forward_matches_original_pf": true,
+      "finite_gradient": true
+    },
+    "alpha_0.97": {
+      "forward_matches_original_pf": true,
+      "finite_gradient": true
+    },
+    "alpha_1.0": {
+      "forward_matches_original_pf": true,
+      "finite_gradient": true,
+      "gradient_matches_original_adpf": true,
+      "max_gradient_absolute_difference": 0.0
+    },
+    "zero_perturbation_if2_matches_original_pf": true,
+    "composition_max_parameter_absolute_difference": 0.0,
+    "public_ifad_matches_separate_public_calls": true,
+    "public_ifad_scoring_matches_original_pf": true
+  },
+  "score_compilation_diagnostic": {
+    "same_endpoint_and_random_keys": true,
+    "public_ifad_scores": [
+      -3811.871826171875,
+      -3823.09423828125
+    ],
+    "native_pf_dynamic_parameter_scores": [
+      -3811.871826171875,
+      -3823.09423828125
+    ],
+    "native_pf_captured_parameter_scores": [
+      -3800.257568359375,
+      -3828.514404296875
+    ],
+    "native_pf_captured_with_barrier_scores": [
+      -3811.871826171875,
+      -3823.09423828125
+    ],
+    "dynamic_and_barrier_scores_bitwise_equal": true,
+    "max_absolute_difference_dynamic_vs_captured": 11.6142578125,
+    "note": "Use runtime parameters for same-key comparisons. A parameter optimization barrier reproduces that path exactly in this test; unrestricted captured constants remain separately reported. See implementation_validation_20261030/cuthbert for state and ancestry traces. No cross-compiler identity is claimed."
+  },
+  "source_sha256": {
+    "dacca_model.py": "6ee02afb99eaac9657dcce789ed0aaaf67099962c29e700aa51639e17ce17900",
+    "frozen.npz": "71446b8d04f4790bb636b17c15d51a9ce8984294a6ceceda500a3aef05bf9ba2"
+  },
+  "elapsed_seconds": 10.311983291991055
+}

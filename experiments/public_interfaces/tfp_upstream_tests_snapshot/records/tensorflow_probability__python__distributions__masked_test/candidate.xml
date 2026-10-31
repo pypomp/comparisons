@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="6" skipped="1" tests="31" time="16.831" timestamp="2026-10-31T11:22:52.521758-04:00" hostname="appledeMacBook-Pro-43.local"><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_batch_mask_eager" time="0.018" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_batch_mask_eager_no_tf_function" time="0.007" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_batch_mask_graph" time="0.020" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_degenerate_scalar_mask_eager" time="0.028" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_degenerate_scalar_mask_eager_no_tf_function" time="0.026" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_degenerate_scalar_mask_graph" time="0.079" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_event_space_bijector_eager" time="0.002"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/masked_test.py:76: in test_event_space_bijector
+    bij = d.experimental_default_event_space_bijector()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/masked.py:296: in _default_event_space_bijector
+    self.distribution.experimental_default_event_space_bijector())
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/relaxed_onehot_categorical.py:390: in _default_event_space_bijector
+    softmax_centered_bijector.SoftmaxCentered(
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_event_space_bijector_eager_no_tf_function" time="0.002"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/masked_test.py:76: in test_event_space_bijector
+    bij = d.experimental_default_event_space_bijector()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/masked.py:296: in _default_event_space_bijector
+    self.distribution.experimental_default_event_space_bijector())
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/relaxed_onehot_categorical.py:390: in _default_event_space_bijector
+    softmax_centered_bijector.SoftmaxCentered(
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_event_space_bijector_fldj_eager" time="0.001"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/masked_test.py:89: in test_event_space_bijector_fldj
+    bij = d.experimental_default_event_space_bijector()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/masked.py:296: in _default_event_space_bijector
+    self.distribution.experimental_default_event_space_bijector())
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/relaxed_onehot_categorical.py:390: in _default_event_space_bijector
+    softmax_centered_bijector.SoftmaxCentered(
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_event_space_bijector_fldj_eager_no_tf_function" time="0.001"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/masked_test.py:89: in test_event_space_bijector_fldj
+    bij = d.experimental_default_event_space_bijector()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/masked.py:296: in _default_event_space_bijector
+    self.distribution.experimental_default_event_space_bijector())
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/relaxed_onehot_categorical.py:390: in _default_event_space_bijector
+    softmax_centered_bijector.SoftmaxCentered(
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_event_space_bijector_fldj_graph" time="0.001"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/masked_test.py:89: in test_event_space_bijector_fldj
+    bij = d.experimental_default_event_space_bijector()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/masked.py:296: in _default_event_space_bijector
+    self.distribution.experimental_default_event_space_bijector())
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/relaxed_onehot_categorical.py:390: in _default_event_space_bijector
+    softmax_centered_bijector.SoftmaxCentered(
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_event_space_bijector_graph" time="0.006"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/masked_test.py:76: in test_event_space_bijector
+    bij = d.experimental_default_event_space_bijector()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/masked.py:296: in _default_event_space_bijector
+    self.distribution.experimental_default_event_space_bijector())
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/relaxed_onehot_categorical.py:390: in _default_event_space_bijector
+    softmax_centered_bijector.SoftmaxCentered(
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_grad_log_prob_unsafe_val_eager" time="0.048" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_grad_log_prob_unsafe_val_eager_no_tf_function" time="0.008" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_grad_log_prob_unsafe_val_graph" time="0.032" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_kl_eager" time="0.016" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_kl_eager_no_tf_function" time="0.014" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_kl_graph" time="0.053" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_log_prob_eager" time="0.009" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_log_prob_eager_no_tf_function" time="0.008" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_log_prob_graph" time="0.033" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_log_prob_ratio_eager" time="0.042" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_log_prob_ratio_eager_no_tf_function" time="0.040" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_log_prob_ratio_graph" time="0.085" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_sampling_eager" time="0.109" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_sampling_eager_no_tf_function" time="0.051" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_sampling_graph" time="0.175" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_session" time="0.000"><skipped type="pytest.skip" message="Not a test.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/test_util.py:2981: Not a test.</skipped></testcase><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_shape_eager" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_shape_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.masked_test.MaskedTest" name="test_shape_graph" time="0.003" /></testsuite></testsuites>

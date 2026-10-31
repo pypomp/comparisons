@@ -1,0 +1,59 @@
+{
+  "passed": true,
+  "purpose": "API integration and numerical agreement; not an estimation comparison",
+  "torch_version": "2.9.1",
+  "device": "cpu",
+  "dtype": "float32",
+  "package_path": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/pydpf-implementation-v1/candidate/pydpf/pydpf/__init__.py",
+  "T": 600,
+  "Euler_steps_per_month": 20,
+  "free_parameters": 23,
+  "particles": 8,
+  "IF2_passes": 2,
+  "Adam_updates": 1,
+  "evaluation_repetitions": 2,
+  "score_precision_assessed": false,
+  "gradient_clipping": false,
+  "Adam_learning_rate": 1e-06,
+  "IF2_history_and_likelihood_match_frozen_reference_exactly": true,
+  "IF2_generator_state_matches_frozen_reference": true,
+  "alpha_checks": {
+    "0.0": {
+      "forward_matches_native": true,
+      "gradient_finite": true
+    },
+    "0.97": {
+      "forward_matches_native": true,
+      "gradient_finite": true
+    },
+    "1.0": {
+      "forward_matches_native": true,
+      "gradient_finite": true,
+      "gradient_matches_native_exactly": true
+    }
+  },
+  "historical_discounted_decorator_comparison": {
+    "old_log_likelihood": [
+      -4424.0068359375
+    ],
+    "new_log_likelihood": [
+      -4424.0068359375
+    ],
+    "max_gradient_absolute_difference": 0.0,
+    "same_random_seed_and_parameters": true,
+    "not_a_claim_of_identical_historical_training_trajectories": true
+  },
+  "evaluation_raw": [
+    [
+      -6640.134765625
+    ],
+    [
+      -6705.8203125
+    ]
+  ],
+  "source_sha256": {
+    "dacca_model.py": "b9280b9c911742793f88d234ae62252f38381ff489fc09320ba381b909d62e7e",
+    "input/frozen.npz": "2fbe1f58a93d1e4370c6ece29647990a15981747eb61561ae0767e444aa18942"
+  },
+  "elapsed_seconds": 58.93979812494945
+}

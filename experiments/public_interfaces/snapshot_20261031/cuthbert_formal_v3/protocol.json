@@ -1,0 +1,101 @@
+{
+  "status": "PREPARED_NOT_SUBMITTED",
+  "model": "Original Dacca Gaussian process noise",
+  "T": 600,
+  "euler_steps": 20,
+  "J": 5000,
+  "free_coordinates": 23,
+  "starts_file": "input/paper_starts_estimation_free.npy",
+  "start_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "replicates": 2,
+  "methods": {
+    "A": "Direct alpha1 + Adam400",
+    "B": "Public IF2 175 then alpha1 + Adam400",
+    "C": "Same public IF2 endpoint then alpha .97 + Adam400"
+  },
+  "matched_discount_comparison": "B vs C: same endpoint, Adam initial state, rates, keys, updates",
+  "initialization_comparison": "A vs B; B includes 175 IF2 passes and is not equal-total-compute",
+  "optimizer": {
+    "library": "Optax scale_by_adam",
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "eps": 1e-08,
+    "loss": "-loglik/600",
+    "lr": 0.1,
+    "half_rate_names": [
+      "gamma",
+      "beta_trend",
+      "sigma",
+      "tau",
+      "S_0",
+      "I_0",
+      "R1_0",
+      "R2_0",
+      "R3_0"
+    ],
+    "warmup": 10,
+    "warmup_initial_fraction": 0.1,
+    "cosine_final_factor": 0.05,
+    "clip": null
+  },
+  "resampling": "multinomial",
+  "initial_scale": {
+    "ordinary_parameters": 0.02,
+    "IVP": 0.16
+  },
+  "process_scale": {
+    "ordinary_parameters": 0.02,
+    "IVP": 0
+  },
+  "IF2_package_difference": "Cuthbert public fit keeps cooling fixed within pass and perturbs before first interval; PFJAX public step has within-pass cooling and uses its native first-observation initialization. Preserve and report; not an identical-algorithm cross-package test.",
+  "execution": "One case per job, 3 arms same A40, rotate arm order by case mod3; IF2 physically computed once and charged fully to B and C separately in logical method comparison",
+  "expected_endpoints_per_package": 36,
+  "score": "Independent frozen original PyPOMP PF J5000, R36->72->144->288, MCSE<=1 ESS>=10; all failures and low precision retained",
+  "training_seeds": {
+    "cuthbert": 24681000,
+    "pfjax": 25081000
+  },
+  "scoring_seeds": {
+    "cuthbert": 94681000,
+    "pfjax": 95081000
+  },
+  "failure_rule": "No fit retry; preserve last valid parameter/state and failure. Unscorable endpoints retained. Interrupted attempts require audited recovery, not automatic replay.",
+  "time_limit_per_case_seconds": 3360,
+  "array": "0-11%3",
+  "allocation_limit_gpu_hours_per_package": 11.2,
+  "release_gates": [
+    "actual CUDA public tests and full-length Dacca checks passed",
+    "native forward PF timing separate",
+    "J5000 cost probe fits inside allocation",
+    "source hashes and B/C initial state verified"
+  ],
+  "api_calls": {
+    "cuthbert": {
+      "IF2": "new cuthbert.smc.iterated_filtering.fit using original PF callbacks and update functions",
+      "A_B": "new dmop.log_likelihood(alpha=1, checkpoint=False) calls original stop_gradient_decorator without modification",
+      "C": "new dmop.log_likelihood(alpha=.97, checkpoint=False) calls added discounted_stop_gradient_decorator",
+      "optimizer": "experiment driver calls external Optax scale_by_adam; it does not call dmop.fit or ifad.fit"
+    }
+  },
+  "supersedes_unstarted_jobs": [
+    "65097906"
+  ],
+  "additional_acceptance_guard": "Require finite natural-scale parameter vector as well as estimation coordinates, loss, gradient and all Adam state.",
+  "Cuthbert_new_GPU_check_hours_reserved": 0.4666666666666667,
+  "Cuthbert_combined_new_validation_and_formal_allocation_hours_upper": 11.666666666666666,
+  "within_original_Cuthbert_11_8h_budget": true,
+  "packages": [
+    "cuthbert"
+  ],
+  "checkpoint": false,
+  "gate_job": 65144479,
+  "manual_release_required": true,
+  "source_change_reason": "Direct use of original ADPF at alpha1 and disabled rematerialization to retain the original differentiation path; no formal optimization was run before this revision."
+}

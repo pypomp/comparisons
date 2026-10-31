@@ -1,0 +1,13 @@
+{
+  "task_id": 3,
+  "start_id": 0,
+  "replicate": 1,
+  "method": "B",
+  "protocol_sha256": "35cc8c3b9d10914253f1cb5cb10d0a5ccfe73d7c2c464a998311d96d7b018b39",
+  "phase": "fit_failed",
+  "stage": "IF2",
+  "charged_fit_seconds": 3.0,
+  "completed_PF_calls": 0,
+  "accepted_IF2_passes": 0,
+  "time_unix": 1793391980.177414
+}

@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "device": "cpu",
+  "formal": false,
+  "finite_gradient_Adam_overflow_detected_and_rolled_back": true,
+  "natural_parameter_overflow_detected_and_rolled_back": true,
+  "T": 12,
+  "J": 32,
+  "rows": 2,
+  "gradient_steps": 3,
+  "full_optimizer_resume_exact": true,
+  "BC_initial_parameters_and_empty_Adam_hash_identical": true,
+  "BC_per_iteration_rng_identical": true,
+  "forced_failure_preserves_other_row_and_rng": true,
+  "failed_row_last_valid_parameters_and_optimizer_retained": true,
+  "swarm_reset": false
+}

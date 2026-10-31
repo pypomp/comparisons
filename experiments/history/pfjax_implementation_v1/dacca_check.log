@@ -1,0 +1,60 @@
+{
+  "T": 600,
+  "Euler_steps": 20,
+  "J": 8,
+  "free_parameters": 23,
+  "devices": [
+    "cpu:0"
+  ],
+  "float32": true,
+  "historical_IF2_trajectory_replayed": false,
+  "passed": true,
+  "copied_source_hashes": {
+    "bridge.py": "d8c6a57b7aff60d1c9d72b807b994d5432e96d7c17f5f830ef39d1a32d37ad08",
+    "dacca_model.py": "5249a3a1a636db7d2ddcddbb4895fd514c313b8439ad7036b2cc012ac6766a94",
+    "input/frozen.npz": "2fbe1f58a93d1e4370c6ece29647990a15981747eb61561ae0767e444aa18942"
+  },
+  "IF2": [
+    {
+      "pass": 0,
+      "max_parameter_difference_from_explicit_loop": 1.1920928955078125e-07,
+      "perturbed_loglik_difference": 0.0009765625,
+      "valid": true
+    },
+    {
+      "pass": 1,
+      "max_parameter_difference_from_explicit_loop": 5.960464477539063e-08,
+      "perturbed_loglik_difference": 0.0,
+      "valid": true
+    }
+  ],
+  "gradient_comparisons": [
+    {
+      "alpha": 0.0,
+      "loglik": -4717.44091796875,
+      "forward_difference": 0.0,
+      "max_gradient_difference_from_frozen_wrapper": 0.0
+    },
+    {
+      "alpha": 0.97,
+      "loglik": -4717.44091796875,
+      "forward_difference": 0.0,
+      "max_gradient_difference_from_frozen_wrapper": 0.0
+    },
+    {
+      "alpha": 1.0,
+      "loglik": -4717.44091796875,
+      "forward_difference": 0.0,
+      "max_gradient_difference_from_frozen_wrapper": 0.0
+    }
+  ],
+  "Adam_updates": 1,
+  "optimizer": "external Optax Adam",
+  "raw_independent_PF_scores": [
+    -4284.8544921875,
+    -4378.64599609375
+  ],
+  "score_precision_claimed": false,
+  "new_formal_comparison": false,
+  "elapsed_seconds_including_compilation": 11.680712459026836
+}

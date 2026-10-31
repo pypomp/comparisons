@@ -1,0 +1,24 @@
+{
+  "state": "repair_preflight_submitted",
+  "recorded_at_UTC": "2026-10-30T20:33:07.248804+00:00",
+  "remote_root": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/pydpf/repair_v2",
+  "source_manifest_sha256": "9b7334df9d44e0b80cd9c8f63fb7dbb4f90114cf10c7e6ffadb0ea6358cc0756",
+  "preflight_GPU_hour_cap": 0.9833333333333333,
+  "formal_submitted": false,
+  "sbatch_returncode": 0,
+  "sbatch_stdout": "65096176\n",
+  "sbatch_stderr": "",
+  "preflight_job": 65097403,
+  "job_history": [
+    {
+      "job_id": 65096176,
+      "state": "FAILED",
+      "exit_code": "1:0",
+      "elapsed_seconds": 234,
+      "raw_archive": "preflight_65096176_raw.tar.gz",
+      "source_manifest_sha256": "e2daa9841576dfbdd24352665e10258d15f3684d08ddef0f8f9b95c68af5afb0"
+    }
+  ],
+  "repair_preflight_cap_seconds": 3300,
+  "total_preflight_with_previous_actual_seconds_max": 3534
+}

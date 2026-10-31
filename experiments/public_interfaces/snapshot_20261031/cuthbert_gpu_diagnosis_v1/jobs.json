@@ -1,0 +1,12 @@
+{
+  "job_id": "65144329",
+  "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/cuthbert_gpu_diagnosis_v1",
+  "submitted_at_utc": "2026-10-31T21:50:24.678551+00:00",
+  "GPU": "A40",
+  "time_limit_seconds": 1680,
+  "source_manifest_sha256": "8353adc2073c1281825bfe78a20160f6da0fa4c5f2e57d9d8a7246b592c85108",
+  "prior_job": 65097220,
+  "native_timing_repeated": false,
+  "formal_fit_calls": 0,
+  "submission_stdout": "SOURCE_VERIFIED 757\n65144329\n"
+}

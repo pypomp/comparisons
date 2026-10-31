@@ -1,0 +1,11 @@
+{
+  "complete": true,
+  "endpoint_count": 1,
+  "score_records": 1,
+  "fit_calls": 0,
+  "elapsed_seconds": 1.1937983750831336,
+  "compilation_seconds": 0.5868647909956053,
+  "failed_fits_retained": 1,
+  "score_precision_passed": 0,
+  "score_seed": 94981000
+}

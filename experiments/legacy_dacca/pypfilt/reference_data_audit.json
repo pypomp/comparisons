@@ -1,0 +1,9 @@
+{
+  "all600_observations_exact": true,
+  "all_covariates_exact": true,
+  "all_dt_exact": true,
+  "all_nstep_exact": true,
+  "reference_source": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-dacca-paper/source/pypomp/__init__.py",
+  "reference_commit": "17f8798e7d944977335c81b8525353fa90e14be9",
+  "checked_at_UTC": "2026-10-29T05:25:26.263243+00:00"
+}

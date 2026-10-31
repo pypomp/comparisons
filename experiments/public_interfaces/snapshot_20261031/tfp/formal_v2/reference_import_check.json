@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "purpose": "reference scoring dependency import only; not GPU or likelihood evidence",
+  "observed_at_utc": "2026-10-30T20:44:50.064484+00:00",
+  "reference_python": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/model024_panel_cute_20261023/venv/bin/python",
+  "PYTHONPATH": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/cuthbert_dacca_paper_20261028/source:/scratch/ionides_root/ionides1/hkunyang/model024_20261006/cuthbert_dacca_20261027/source:/scratch/ionides_root/ionides1/hkunyang/model024_20261006/cuthbert_dacca_20261027/deps",
+  "pypomp_module": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/cuthbert_dacca_paper_20261028/source/pypomp/__init__.py",
+  "optax_module": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/cuthbert_dacca_20261027/source/optax/__init__.py",
+  "jax": "0.12.0.1",
+  "backend": "cpu",
+  "x64": false,
+  "Dhaka_T": 600,
+  "nstep": 20,
+  "parameter_count": 28
+}

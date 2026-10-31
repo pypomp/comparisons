@@ -1,0 +1,10 @@
+{
+  "fit_complete": true,
+  "endpoints": 3,
+  "failed": 0,
+  "B_C_common_initialization_and_keys_verified": true,
+  "elapsed_seconds": 3.076435000053607,
+  "physical_IF2_calls": 1,
+  "logical_IF2_cost_attributed_to_each_B_C": true,
+  "smoke_only": true
+}

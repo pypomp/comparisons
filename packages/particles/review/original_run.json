@@ -1,0 +1,10 @@
+{
+  "command": [
+    "/opt/homebrew/bin/python3.12",
+    "-c",
+    "import sys,runpy; sys.path.append('/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/lib/python3.12/site-packages'); sys.argv=['work/particles-implementation-v1/validation/check_original.py']; runpy.run_path(sys.argv[0], run_name=\"__main__\")"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 2.7379558086395264,
+  "purpose": "local correctness/integration; not benchmark timing"
+}

@@ -1,0 +1,303 @@
+........................sssss...s...s.....sssss...s...s.....sFFFFFFFFFFF [ 80%]
+FFFFFFFFFFFFFFFFs                                                        [100%]
+=================================== FAILURES ===================================
+_______________ DistributedGBTLATest.test_adaptation_ChEES_eager _______________
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_______ DistributedGBTLATest.test_adaptation_ChEES_eager_no_tf_function ________
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_______________ DistributedGBTLATest.test_adaptation_ChEES_graph _______________
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+______________ DistributedGBTLATest.test_adaptation_SNAPER_eager _______________
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_______ DistributedGBTLATest.test_adaptation_SNAPER_eager_no_tf_function _______
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+______________ DistributedGBTLATest.test_adaptation_SNAPER_graph _______________
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedGBTLATest.test_gbtla_kernel_can_shard_chains_across_devices_ChEESR_eager _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedGBTLATest.test_gbtla_kernel_can_shard_chains_across_devices_ChEESR_eager_no_tf_function _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedGBTLATest.test_gbtla_kernel_can_shard_chains_across_devices_ChEESR_graph _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedGBTLATest.test_gbtla_kernel_can_shard_chains_across_devices_ChEES_eager _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedGBTLATest.test_gbtla_kernel_can_shard_chains_across_devices_ChEES_eager_no_tf_function _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedGBTLATest.test_gbtla_kernel_can_shard_chains_across_devices_ChEES_graph _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedGBTLATest.test_gbtla_kernel_can_shard_chains_across_devices_SNAPER_eager _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedGBTLATest.test_gbtla_kernel_can_shard_chains_across_devices_SNAPER_eager_no_tf_function _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedGBTLATest.test_gbtla_kernel_can_shard_chains_across_devices_SNAPER_graph _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedGBTLATest.test_gbtla_kernel_computes_same_criterion_info_with_sharded_state_ChEESR_eager _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedGBTLATest.test_gbtla_kernel_computes_same_criterion_info_with_sharded_state_ChEESR_eager_no_tf_function _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedGBTLATest.test_gbtla_kernel_computes_same_criterion_info_with_sharded_state_ChEESR_graph _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedGBTLATest.test_gbtla_kernel_computes_same_criterion_info_with_sharded_state_ChEES_eager _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedGBTLATest.test_gbtla_kernel_computes_same_criterion_info_with_sharded_state_ChEES_eager_no_tf_function _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedGBTLATest.test_gbtla_kernel_computes_same_criterion_info_with_sharded_state_ChEES_graph _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedGBTLATest.test_gbtla_kernel_computes_same_criterion_info_with_sharded_state_SNAPER_eager _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedGBTLATest.test_gbtla_kernel_computes_same_criterion_info_with_sharded_state_SNAPER_eager_no_tf_function _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedGBTLATest.test_gbtla_kernel_computes_same_criterion_info_with_sharded_state_SNAPER_graph _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+________ DistributedGBTLATest.test_gbtla_kernel_tracks_axis_names_eager ________
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedGBTLATest.test_gbtla_kernel_tracks_axis_names_eager_no_tf_function _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+________ DistributedGBTLATest.test_gbtla_kernel_tracks_axis_names_graph ________
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__experimental__mcmc__gradient_based_trajectory_length_adaptation_test/candidate.xml -
+=========================== short test summary info ============================
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_adaptation_ChEES_eager
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_adaptation_ChEES_eager_no_tf_function
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_adaptation_ChEES_graph
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_adaptation_SNAPER_eager
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_adaptation_SNAPER_eager_no_tf_function
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_adaptation_SNAPER_graph
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_can_shard_chains_across_devices_ChEESR_eager
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_can_shard_chains_across_devices_ChEESR_eager_no_tf_function
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_can_shard_chains_across_devices_ChEESR_graph
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_can_shard_chains_across_devices_ChEES_eager
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_can_shard_chains_across_devices_ChEES_eager_no_tf_function
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_can_shard_chains_across_devices_ChEES_graph
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_can_shard_chains_across_devices_SNAPER_eager
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_can_shard_chains_across_devices_SNAPER_eager_no_tf_function
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_can_shard_chains_across_devices_SNAPER_graph
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_computes_same_criterion_info_with_sharded_state_ChEESR_eager
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_computes_same_criterion_info_with_sharded_state_ChEESR_eager_no_tf_function
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_computes_same_criterion_info_with_sharded_state_ChEESR_graph
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_computes_same_criterion_info_with_sharded_state_ChEES_eager
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_computes_same_criterion_info_with_sharded_state_ChEES_eager_no_tf_function
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_computes_same_criterion_info_with_sharded_state_ChEES_graph
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_computes_same_criterion_info_with_sharded_state_SNAPER_eager
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_computes_same_criterion_info_with_sharded_state_SNAPER_eager_no_tf_function
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_computes_same_criterion_info_with_sharded_state_SNAPER_graph
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_tracks_axis_names_eager
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_tracks_axis_names_eager_no_tf_function
+FAILED tensorflow_probability/python/experimental/mcmc/gradient_based_trajectory_length_adaptation_test.py::DistributedGBTLATest::test_gbtla_kernel_tracks_axis_names_graph
+27 failed, 46 passed, 16 skipped in 15.39s

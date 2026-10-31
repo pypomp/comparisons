@@ -1,0 +1,19 @@
+Dynamax full Dacca formal comparison
+
+Gate64993983 completed0:0 in109seconds on A40/gl1529. Formal array64993987 has12tasks,6starts x2repetitions,at most3A40GPUs at once. Its afterok dependency has cleared; last observed state was pending. Three groups per task: IF2=1950, IFAD alpha.97=175+400, direct original scalarSGD alpha1=425. No fourth group submitted.
+
+Source manifest:205b5dea998616be24e8370b9d75bcf55a0355b30900b9450c17e7f4c3731df0.339files;327original source/input files unchanged. FullGL runtime imports and all600months of original PyPOMP data loaded successfully before submission.
+
+Production uses original scalar DaccaSGD, unchanged SSM.fit_sgd, and original paperOptax chain. No product-model batch wrapper or fusedAdam. GPU gate parameter differences:alpha1=2.38e-7,alpha.97=0; largest optimizer-state difference2.26e-6. Both alpha forwardvalues=-3748.467285 and gradients finite. GPU Gaussian draws for20steps x5000particles matched exactly under batching, but the earlier batchedPF path difference remains unexplained.
+
+Estimated actual formal cost about8.2GPUhours. Slurm rounded submitted59:30 to60minutes. The pending array actual TimeLimit was reduced to59:00; override recorded in jobs.json. Frozen source unchanged. Maximum formal allocation=5+12x59=713minutes, below12GPUhours. Earlier package jobs used1028seconds; gate adds109, so cumulative pre-array total1137seconds.
+
+Efficiency64991534 completed470seconds but every product-model batch candidate failed a predefined check; selected_batch=None. B4/B12 PF difference reached635.14; B1 optimizer-wrapper parameter difference.004756. Keep all rawNPZ/logs/report in ../efficiency_v1. Do not present job completion as batching validation.
+
+IF2 checkpoints preserve full swarms. SGD checkpoints preserve original Optax moments/counts, parameters, and global key indices. Failed fits retain their last finite point and are flagged. Unclean in-flight checkpoints require allocation-cost audit before resume. A clean resume may change floating-point arithmetic because the remaining-minibatch count changes; no full-series bitwise guarantee.
+
+SGD fitting wall includes native internal compilation; first true update including compile is recorded without subtracting it as purecompile. IF2 explicitcompile and independentPF scoring compile/run costs are separate.
+
+Expected final delivery:36endpoints,36independent originalPyPOMP scores atJ5000. InitialR36, fixed extension to288 if ESS<10 or MCSE>1. Preserve all rawscores,lowprecision,andfailures. No formal ranking exists yet.
+
+One-shot collection:python3 tools/collect.py. Thislocal-only helper is outside the frozen runtime manifest and never submits jobs or starts background collectors. It downloads gate_results/runs/results/logs to gl/ and checks completed terminal manifests. Avoid duplicate collectors/submissions. Current jobs.json is authoritative.

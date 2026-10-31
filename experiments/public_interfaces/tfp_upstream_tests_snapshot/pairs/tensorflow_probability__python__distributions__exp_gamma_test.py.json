@@ -1,0 +1,101 @@
+{
+  "file": "tensorflow_probability/python/distributions/exp_gamma_test.py",
+  "results": [
+    {
+      "kind": "original",
+      "file": "tensorflow_probability/python/distributions/exp_gamma_test.py",
+      "command": [
+        "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/bin/python",
+        "-m",
+        "pytest",
+        "tensorflow_probability/python/distributions/exp_gamma_test.py",
+        "-q",
+        "--tb=short",
+        "--continue-on-collection-errors",
+        "--junitxml=/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__distributions__exp_gamma_test/original.xml"
+      ],
+      "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original",
+      "timeout_seconds": 180,
+      "exit_code": 1,
+      "state": "finished",
+      "elapsed_seconds": 38.137805167003535,
+      "pytest_counts": {
+        "tests": 92,
+        "failures": 4,
+        "errors": 0,
+        "skipped": 4
+      },
+      "failed_tests": [
+        {
+          "name": "testCompareToExplicitGradient_float32_eager",
+          "class": "tensorflow_probability.python.distributions.exp_gamma_test.GammaSamplingTest",
+          "message": "AttributeError: module 'scipy.misc' has no attribute 'derivative'"
+        },
+        {
+          "name": "testCompareToExplicitGradient_float32_graph",
+          "class": "tensorflow_probability.python.distributions.exp_gamma_test.GammaSamplingTest",
+          "message": "AttributeError: module 'scipy.misc' has no attribute 'derivative'"
+        },
+        {
+          "name": "testCompareToExplicitGradient_float64_eager",
+          "class": "tensorflow_probability.python.distributions.exp_gamma_test.GammaSamplingTest",
+          "message": "AttributeError: module 'scipy.misc' has no attribute 'derivative'"
+        },
+        {
+          "name": "testCompareToExplicitGradient_float64_graph",
+          "class": "tensorflow_probability.python.distributions.exp_gamma_test.GammaSamplingTest",
+          "message": "AttributeError: module 'scipy.misc' has no attribute 'derivative'"
+        }
+      ]
+    },
+    {
+      "kind": "candidate",
+      "file": "tensorflow_probability/python/distributions/exp_gamma_test.py",
+      "command": [
+        "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/bin/python",
+        "-m",
+        "pytest",
+        "tensorflow_probability/python/distributions/exp_gamma_test.py",
+        "-q",
+        "--tb=short",
+        "--continue-on-collection-errors",
+        "--junitxml=/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__distributions__exp_gamma_test/candidate.xml"
+      ],
+      "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate",
+      "timeout_seconds": 180,
+      "exit_code": 1,
+      "state": "finished",
+      "elapsed_seconds": 38.2286346249748,
+      "pytest_counts": {
+        "tests": 92,
+        "failures": 4,
+        "errors": 0,
+        "skipped": 4
+      },
+      "failed_tests": [
+        {
+          "name": "testCompareToExplicitGradient_float32_eager",
+          "class": "tensorflow_probability.python.distributions.exp_gamma_test.GammaSamplingTest",
+          "message": "AttributeError: module 'scipy.misc' has no attribute 'derivative'"
+        },
+        {
+          "name": "testCompareToExplicitGradient_float32_graph",
+          "class": "tensorflow_probability.python.distributions.exp_gamma_test.GammaSamplingTest",
+          "message": "AttributeError: module 'scipy.misc' has no attribute 'derivative'"
+        },
+        {
+          "name": "testCompareToExplicitGradient_float64_eager",
+          "class": "tensorflow_probability.python.distributions.exp_gamma_test.GammaSamplingTest",
+          "message": "AttributeError: module 'scipy.misc' has no attribute 'derivative'"
+        },
+        {
+          "name": "testCompareToExplicitGradient_float64_graph",
+          "class": "tensorflow_probability.python.distributions.exp_gamma_test.GammaSamplingTest",
+          "message": "AttributeError: module 'scipy.misc' has no attribute 'derivative'"
+        }
+      ]
+    }
+  ],
+  "same_exit_status": true,
+  "candidate_only_failure": false
+}

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="1" tests="10" time="16.675" timestamp="2026-10-30T17:14:36.037828-04:00" hostname="appledeMacBook-Pro-43.local"><testcase classname="tensorflow_probability.python.bijectors.transform_diagonal_test.TransformDiagonalBijectorTest" name="testBijector_eager" time="0.016" /><testcase classname="tensorflow_probability.python.bijectors.transform_diagonal_test.TransformDiagonalBijectorTest" name="testBijector_eager_no_tf_function" time="0.008" /><testcase classname="tensorflow_probability.python.bijectors.transform_diagonal_test.TransformDiagonalBijectorTest" name="testBijector_graph" time="0.025" /><testcase classname="tensorflow_probability.python.bijectors.transform_diagonal_test.TransformDiagonalBijectorTest" name="testTheoreticalFldjNormalCDF_eager" time="0.101" /><testcase classname="tensorflow_probability.python.bijectors.transform_diagonal_test.TransformDiagonalBijectorTest" name="testTheoreticalFldjNormalCDF_eager_no_tf_function" time="0.074" /><testcase classname="tensorflow_probability.python.bijectors.transform_diagonal_test.TransformDiagonalBijectorTest" name="testTheoreticalFldjNormalCDF_graph" time="0.061" /><testcase classname="tensorflow_probability.python.bijectors.transform_diagonal_test.TransformDiagonalBijectorTest" name="testTheoreticalFldj_eager" time="1.821"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'&#10;while generating 'Draw 2' from unconstrained_bijectors(max_forward_event_ndims=1, must_preserve_event_ndims=True).filter(lambda bijector: bijector.forward_event_shape([dim]) == [dim])&#10;Falsifying example: testTheoreticalFldj(&#10;    self=&lt;tensorflow_probability.python.bijectors.transform_diagonal_test.TransformDiagonalBijectorTest testMethod=testTheoreticalFldj_eager&gt;,&#10;    data=data(...),&#10;)&#10;Draw 1: 0&#10;&#10;You can reproduce this example by temporarily adding @reproduce_failure('6.142.4', b'AEEA') as a decorator on your test case">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/transform_diagonal_test.py:91: in testTheoreticalFldj
+    @hp.given(hps.data())
+                 ^^^^^^^
+tensorflow_probability/python/bijectors/transform_diagonal_test.py:95: in testTheoreticalFldj
+    diag_bijector = data.draw(
+../../test-deps/hypothesis/strategies/_internal/core.py:2274: in draw
+    result = self.conjecture_data.draw(strategy, observe_as=f"generate:{desc}")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../test-deps/hypothesis/internal/conjecture/data.py:1212: in draw
+    v = unwrapped.do_draw(self)
+        ^^^^^^^^^^^^^^^^^^^^^^^
+../../test-deps/hypothesis/strategies/_internal/strategies.py:1187: in do_draw
+    result = self.do_filtered_draw(data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../test-deps/hypothesis/strategies/_internal/strategies.py:1196: in do_filtered_draw
+    value = data.draw(self.filtered_strategy)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../test-deps/hypothesis/internal/conjecture/data.py:1207: in draw
+    return unwrapped.do_draw(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+../../test-deps/hypothesis/strategies/_internal/core.py:1876: in do_draw
+    return self.definition(data.draw, *self.args, **self.kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/hypothesis_testlib.py:439: in unconstrained_bijectors
+    bijectors = trivially_instantiable_bijectors()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/hypothesis_testlib.py:189: in trivially_instantiable_bijectors
+    if not bijector_class()._is_injective:  # pylint: disable=protected-access
+           ^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+E   while generating 'Draw 2' from unconstrained_bijectors(max_forward_event_ndims=1, must_preserve_event_ndims=True).filter(lambda bijector: bijector.forward_event_shape([dim]) == [dim])
+E   Falsifying example: testTheoreticalFldj(
+E       self=&lt;tensorflow_probability.python.bijectors.transform_diagonal_test.TransformDiagonalBijectorTest testMethod=testTheoreticalFldj_eager&gt;,
+E       data=data(...),
+E   )
+E   Draw 1: 0
+E   
+E   You can reproduce this example by temporarily adding @reproduce_failure('6.142.4', b'AEEA') as a decorator on your test case</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.transform_diagonal_test.TransformDiagonalBijectorTest" name="testTheoreticalFldj_eager_no_tf_function" time="0.076"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'&#10;while generating 'Draw 2' from unconstrained_bijectors(max_forward_event_ndims=1, must_preserve_event_ndims=True).filter(lambda bijector: bijector.forward_event_shape([dim]) == [dim])&#10;Falsifying example: testTheoreticalFldj(&#10;    self=&lt;tensorflow_probability.python.bijectors.transform_diagonal_test.TransformDiagonalBijectorTest testMethod=testTheoreticalFldj_eager_no_tf_function&gt;,&#10;    data=data(...),&#10;)&#10;Draw 1: 0&#10;&#10;You can reproduce this example by temporarily adding @reproduce_failure('6.142.4', b'AEEA') as a decorator on your test case">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/transform_diagonal_test.py:91: in testTheoreticalFldj
+    @hp.given(hps.data())
+                 ^^^^^^^
+tensorflow_probability/python/bijectors/transform_diagonal_test.py:95: in testTheoreticalFldj
+    diag_bijector = data.draw(
+../../test-deps/hypothesis/strategies/_internal/core.py:2274: in draw
+    result = self.conjecture_data.draw(strategy, observe_as=f"generate:{desc}")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../test-deps/hypothesis/internal/conjecture/data.py:1212: in draw
+    v = unwrapped.do_draw(self)
+        ^^^^^^^^^^^^^^^^^^^^^^^
+../../test-deps/hypothesis/strategies/_internal/strategies.py:1187: in do_draw
+    result = self.do_filtered_draw(data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../test-deps/hypothesis/strategies/_internal/strategies.py:1196: in do_filtered_draw
+    value = data.draw(self.filtered_strategy)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../test-deps/hypothesis/internal/conjecture/data.py:1207: in draw
+    return unwrapped.do_draw(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+../../test-deps/hypothesis/strategies/_internal/core.py:1876: in do_draw
+    return self.definition(data.draw, *self.args, **self.kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/hypothesis_testlib.py:439: in unconstrained_bijectors
+    bijectors = trivially_instantiable_bijectors()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/hypothesis_testlib.py:189: in trivially_instantiable_bijectors
+    if not bijector_class()._is_injective:  # pylint: disable=protected-access
+           ^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+E   while generating 'Draw 2' from unconstrained_bijectors(max_forward_event_ndims=1, must_preserve_event_ndims=True).filter(lambda bijector: bijector.forward_event_shape([dim]) == [dim])
+E   Falsifying example: testTheoreticalFldj(
+E       self=&lt;tensorflow_probability.python.bijectors.transform_diagonal_test.TransformDiagonalBijectorTest testMethod=testTheoreticalFldj_eager_no_tf_function&gt;,
+E       data=data(...),
+E   )
+E   Draw 1: 0
+E   
+E   You can reproduce this example by temporarily adding @reproduce_failure('6.142.4', b'AEEA') as a decorator on your test case</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.transform_diagonal_test.TransformDiagonalBijectorTest" name="testTheoreticalFldj_graph" time="0.079"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'&#10;while generating 'Draw 2' from unconstrained_bijectors(max_forward_event_ndims=1, must_preserve_event_ndims=True).filter(lambda bijector: bijector.forward_event_shape([dim]) == [dim])&#10;Falsifying example: testTheoreticalFldj(&#10;    self=&lt;tensorflow_probability.python.bijectors.transform_diagonal_test.TransformDiagonalBijectorTest testMethod=testTheoreticalFldj_graph&gt;,&#10;    data=data(...),&#10;)&#10;Draw 1: 0&#10;&#10;You can reproduce this example by temporarily adding @reproduce_failure('6.142.4', b'AEEA') as a decorator on your test case">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/bijectors/transform_diagonal_test.py:91: in testTheoreticalFldj
+    @hp.given(hps.data())
+                 ^^^^^^^
+tensorflow_probability/python/bijectors/transform_diagonal_test.py:95: in testTheoreticalFldj
+    diag_bijector = data.draw(
+../../test-deps/hypothesis/strategies/_internal/core.py:2274: in draw
+    result = self.conjecture_data.draw(strategy, observe_as=f"generate:{desc}")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../test-deps/hypothesis/internal/conjecture/data.py:1212: in draw
+    v = unwrapped.do_draw(self)
+        ^^^^^^^^^^^^^^^^^^^^^^^
+../../test-deps/hypothesis/strategies/_internal/strategies.py:1187: in do_draw
+    result = self.do_filtered_draw(data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../test-deps/hypothesis/strategies/_internal/strategies.py:1196: in do_filtered_draw
+    value = data.draw(self.filtered_strategy)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../test-deps/hypothesis/internal/conjecture/data.py:1207: in draw
+    return unwrapped.do_draw(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+../../test-deps/hypothesis/strategies/_internal/core.py:1876: in do_draw
+    return self.definition(data.draw, *self.args, **self.kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/hypothesis_testlib.py:439: in unconstrained_bijectors
+    bijectors = trivially_instantiable_bijectors()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/hypothesis_testlib.py:189: in trivially_instantiable_bijectors
+    if not bijector_class()._is_injective:  # pylint: disable=protected-access
+           ^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+E   while generating 'Draw 2' from unconstrained_bijectors(max_forward_event_ndims=1, must_preserve_event_ndims=True).filter(lambda bijector: bijector.forward_event_shape([dim]) == [dim])
+E   Falsifying example: testTheoreticalFldj(
+E       self=&lt;tensorflow_probability.python.bijectors.transform_diagonal_test.TransformDiagonalBijectorTest testMethod=testTheoreticalFldj_graph&gt;,
+E       data=data(...),
+E   )
+E   Draw 1: 0
+E   
+E   You can reproduce this example by temporarily adding @reproduce_failure('6.142.4', b'AEEA') as a decorator on your test case</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.transform_diagonal_test.TransformDiagonalBijectorTest" name="test_session" time="0.000"><skipped type="pytest.skip" message="Not a test.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/test_util.py:2981: Not a test.</skipped></testcase></testsuite></testsuites>

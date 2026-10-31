@@ -1,0 +1,31 @@
+{
+  "status": "local candidate ready for review",
+  "upstream_accepted": false,
+  "archive_sha256": "24a0f24e46e0de663ee808dd85d9ba25f87d1734a81456f75cf491368434260a",
+  "archive_verification": {
+    "archive_files_verified": 36,
+    "patch_applies": true,
+    "reconstructed_files_match": true,
+    "numerical_checks_run": false
+  },
+  "existing_python_files_unchanged": true,
+  "frozen": {
+    "work/competitor-estimation/particles/manifest.json": {
+      "sha256": "87554c6447432ac1aa977e5902dafd099cd1c988b081f623065ef7c9a59a2228",
+      "entries": 184,
+      "all_entries_unchanged": true
+    },
+    "work/competitor-estimation/particles/formal_v1/manifest.json": {
+      "sha256": "0c9ba6beb4e480e43f5bfe55858b3da5f26e19e709fc705946f5166dbe3a49f2",
+      "entries": 47,
+      "all_entries_unchanged": true
+    }
+  },
+  "correctness_checks": {
+    "targeted_tests": 34,
+    "original_PF_comparisons": 3,
+    "full_Dacca_J8": true
+  },
+  "runtime_benchmark_performed": false,
+  "formal_IF2_optimization_comparison_performed": false
+}

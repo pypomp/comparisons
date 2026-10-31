@@ -1,0 +1,92 @@
+{
+  "source_manifest_sha256": "a7230485e25ad8623e27b2af24f32e0e9f01e3657dcb1229809766af1f00d9a2",
+  "source_file_count": 1148,
+  "source_mismatches": [],
+  "files": {
+    "results/cuthbert_native_timing.process.json": {
+      "sha256": "fdc0cd43eb6fa93e7c9838764567680e5bef8104ffd8a2649e33f688a43a399c",
+      "bytes": 1598
+    },
+    "results/terminal_manifest.json": {
+      "sha256": "e8dec5c71d5f4d95da2a36ffe86044b3741bb00bb5287415eb303655e50bce0a",
+      "bytes": 1875
+    },
+    "results/pfjax_native_timing.json": {
+      "sha256": "48dbe9d83662a8fc45e6a447c7ccc9997a4cdee611b57f7b5e0c9086cfba3f30",
+      "bytes": 2311
+    },
+    "results/pfjax_dacca.process.json": {
+      "sha256": "8031daad7cdc2471e8bbcdf61ee391806d7393c9f7817a7ee49e4786235ccbb3",
+      "bytes": 1577
+    },
+    "results/progress.json": {
+      "sha256": "4cb628c31bc08868bf63178b57068a1c51343b418c99509f4364aa257fe35837",
+      "bytes": 150
+    },
+    "results/cuthbert_native_timing.process.log": {
+      "sha256": "6726eefa0dfd11f13d2adc55683b8256032191b4e4275ac37cbf8003a1fc9838",
+      "bytes": 1635
+    },
+    "results/cuthbert_tests.process.json": {
+      "sha256": "f684764d7069138c44beff98b4b60429268c90038b4620cbfb98e3ffc08c55d8",
+      "bytes": 1439
+    },
+    "results/COMPLETE.json": {
+      "sha256": "2866c64f36faee7d6577ac57826e11b7bbbda1ac59c5d5a98b7b63ada2544f60",
+      "bytes": 228
+    },
+    "results/pfjax_dacca.process.log": {
+      "sha256": "f6d5ead1fabbc8b6051895bce47c3d090e6874ad5c40504109b8b4f1b2badecf",
+      "bytes": 1709
+    },
+    "results/cuthbert_dacca.json": {
+      "sha256": "1e8d8e985e28d1551ed1144c47ac2b8ddf5ec503dd627eeeb5b23bb34448879a",
+      "bytes": 3007
+    },
+    "results/pfjax_native_timing.process.json": {
+      "sha256": "ad4b516d7feacd43d853f2a0e53af694ec755da960c9414488259c3d34645489",
+      "bytes": 1591
+    },
+    "results/pfjax_tests.process.log": {
+      "sha256": "f10fe22f69949df02feaf8af4a4da007f8bad9afe57b87fcf444dce09aae6ff9",
+      "bytes": 1140
+    },
+    "results/cuthbert_tests.process.log": {
+      "sha256": "9b730fd29cbd416f334bb74a5c4204979dfc14d07c1bfc2cd2ea10b102bb7266",
+      "bytes": 550
+    },
+    "results/pfjax_tests.process.json": {
+      "sha256": "8279a434c4991f3e02c3626163ace32419884b81e908c46237bb3fcb04fac43d",
+      "bytes": 1384
+    },
+    "results/cuthbert_dacca.process.json": {
+      "sha256": "7a3ab3d9c1a88504d7efe32b3b2b0f5d3d541a43d65177774f742c518cc72a7f",
+      "bytes": 1589
+    },
+    "results/pfjax_native_timing.process.log": {
+      "sha256": "f3546abe4fbb1c513dd0dbbb3a13542e77f8305a42edc365cf92594ed5fa0879",
+      "bytes": 1617
+    },
+    "results/cuthbert_native_timing.json": {
+      "sha256": "d4d859a517ad15658aa8567f6bea689a0808fb1313e0b98ba56a98d8a523010f",
+      "bytes": 2329
+    },
+    "results/cuthbert_dacca.process.log": {
+      "sha256": "c8182495fb982645bbda5f7f66588e3c147cf31f7be5ff970fab54e78ecdd386",
+      "bytes": 667
+    },
+    "logs/gate-65097220.out": {
+      "sha256": "5e05f73e18f60d4325b34286d143d9db4768c214778a7fa2f4a805816ebed93d",
+      "bytes": 10463
+    },
+    "logs/gate-65097220.err": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "source_manifest.json": {
+      "sha256": "a7230485e25ad8623e27b2af24f32e0e9f01e3657dcb1229809766af1f00d9a2",
+      "bytes": 144058
+    }
+  },
+  "missing_optional_outputs": []
+}

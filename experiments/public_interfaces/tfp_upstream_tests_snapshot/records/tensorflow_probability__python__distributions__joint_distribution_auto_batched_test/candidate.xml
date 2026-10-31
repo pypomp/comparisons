@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="9" skipped="12" tests="154" time="131.642" timestamp="2026-10-31T04:28:05.441990-04:00" hostname="appledeMacBook-Pro-43.local"><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_batch_and_event_shape_with_plate_coroutine_eager" time="0.264" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_batch_and_event_shape_with_plate_coroutine_eager_no_tf_function" time="0.208" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_batch_and_event_shape_with_plate_coroutine_graph" time="0.242" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_batch_and_event_shape_with_plate_named_eager" time="0.103" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_batch_and_event_shape_with_plate_named_eager_no_tf_function" time="0.099" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_batch_and_event_shape_with_plate_named_graph" time="0.248" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_batch_and_event_shape_with_plate_sequential_eager" time="0.103" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_batch_and_event_shape_with_plate_sequential_eager_no_tf_function" time="0.101" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_batch_and_event_shape_with_plate_sequential_graph" time="0.236" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_broadcast_ragged_batch_shape_coroutine_eager" time="0.211" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_broadcast_ragged_batch_shape_coroutine_eager_no_tf_function" time="0.158" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_broadcast_ragged_batch_shape_coroutine_graph" time="0.170" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_broadcast_ragged_batch_shape_named_eager" time="0.125" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_broadcast_ragged_batch_shape_named_eager_no_tf_function" time="0.118" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_broadcast_ragged_batch_shape_named_graph" time="0.140" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_broadcast_ragged_batch_shape_sequential_eager" time="0.110" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_broadcast_ragged_batch_shape_sequential_eager_no_tf_function" time="0.106" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_broadcast_ragged_batch_shape_sequential_graph" time="0.119" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_default_event_space_bijector_constant_jacobian_coroutine_eager" time="0.073" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_default_event_space_bijector_constant_jacobian_coroutine_eager_no_tf_function" time="0.070" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_default_event_space_bijector_constant_jacobian_coroutine_graph" time="0.055" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_default_event_space_bijector_constant_jacobian_named_eager" time="0.072" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_default_event_space_bijector_constant_jacobian_named_eager_no_tf_function" time="0.067" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_default_event_space_bijector_constant_jacobian_named_graph" time="0.255" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_default_event_space_bijector_constant_jacobian_sequential_eager" time="0.081" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_default_event_space_bijector_constant_jacobian_sequential_eager_no_tf_function" time="0.075" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_default_event_space_bijector_constant_jacobian_sequential_graph" time="0.048" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_default_event_space_bijector_coroutine_eager" time="0.033"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py:897: in test_default_event_space_bijector
+    joint_bijector = joint.experimental_default_event_space_bijector()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1109: in _default_event_space_bijector
+    return _DefaultJointBijectorAutoBatched(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1426: in __init__
+    self._joint_bijector = _DefaultJointBijector(
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in &lt;genexpr&gt;
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in &lt;lambda&gt;
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/deterministic.py:171: in _default_event_space_bijector
+    pad_zero = pad.Pad([(1, 0)])
+               ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_default_event_space_bijector_coroutine_eager_no_tf_function" time="0.032"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py:897: in test_default_event_space_bijector
+    joint_bijector = joint.experimental_default_event_space_bijector()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1109: in _default_event_space_bijector
+    return _DefaultJointBijectorAutoBatched(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1426: in __init__
+    self._joint_bijector = _DefaultJointBijector(
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in &lt;genexpr&gt;
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in &lt;lambda&gt;
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/deterministic.py:171: in _default_event_space_bijector
+    pad_zero = pad.Pad([(1, 0)])
+               ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_default_event_space_bijector_coroutine_graph" time="0.039"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py:897: in test_default_event_space_bijector
+    joint_bijector = joint.experimental_default_event_space_bijector()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1109: in _default_event_space_bijector
+    return _DefaultJointBijectorAutoBatched(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1426: in __init__
+    self._joint_bijector = _DefaultJointBijector(
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in &lt;genexpr&gt;
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in &lt;lambda&gt;
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/deterministic.py:171: in _default_event_space_bijector
+    pad_zero = pad.Pad([(1, 0)])
+               ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_default_event_space_bijector_named_eager" time="0.032"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py:897: in test_default_event_space_bijector
+    joint_bijector = joint.experimental_default_event_space_bijector()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1109: in _default_event_space_bijector
+    return _DefaultJointBijectorAutoBatched(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1426: in __init__
+    self._joint_bijector = _DefaultJointBijector(
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in &lt;genexpr&gt;
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in &lt;lambda&gt;
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/deterministic.py:171: in _default_event_space_bijector
+    pad_zero = pad.Pad([(1, 0)])
+               ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_default_event_space_bijector_named_eager_no_tf_function" time="0.034"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py:897: in test_default_event_space_bijector
+    joint_bijector = joint.experimental_default_event_space_bijector()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1109: in _default_event_space_bijector
+    return _DefaultJointBijectorAutoBatched(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1426: in __init__
+    self._joint_bijector = _DefaultJointBijector(
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in &lt;genexpr&gt;
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in &lt;lambda&gt;
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/deterministic.py:171: in _default_event_space_bijector
+    pad_zero = pad.Pad([(1, 0)])
+               ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_default_event_space_bijector_named_graph" time="0.043"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py:897: in test_default_event_space_bijector
+    joint_bijector = joint.experimental_default_event_space_bijector()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1109: in _default_event_space_bijector
+    return _DefaultJointBijectorAutoBatched(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1426: in __init__
+    self._joint_bijector = _DefaultJointBijector(
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in &lt;genexpr&gt;
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in &lt;lambda&gt;
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/deterministic.py:171: in _default_event_space_bijector
+    pad_zero = pad.Pad([(1, 0)])
+               ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_default_event_space_bijector_sequential_eager" time="0.031"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py:897: in test_default_event_space_bijector
+    joint_bijector = joint.experimental_default_event_space_bijector()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1109: in _default_event_space_bijector
+    return _DefaultJointBijectorAutoBatched(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1426: in __init__
+    self._joint_bijector = _DefaultJointBijector(
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in &lt;genexpr&gt;
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in &lt;lambda&gt;
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/deterministic.py:171: in _default_event_space_bijector
+    pad_zero = pad.Pad([(1, 0)])
+               ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_default_event_space_bijector_sequential_eager_no_tf_function" time="0.031"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py:897: in test_default_event_space_bijector
+    joint_bijector = joint.experimental_default_event_space_bijector()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1109: in _default_event_space_bijector
+    return _DefaultJointBijectorAutoBatched(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1426: in __init__
+    self._joint_bijector = _DefaultJointBijector(
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in &lt;genexpr&gt;
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in &lt;lambda&gt;
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/deterministic.py:171: in _default_event_space_bijector
+    pad_zero = pad.Pad([(1, 0)])
+               ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_default_event_space_bijector_sequential_graph" time="0.037"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_auto_batched_test.py:897: in test_default_event_space_bijector
+    joint_bijector = joint.experimental_default_event_space_bijector()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1109: in _default_event_space_bijector
+    return _DefaultJointBijectorAutoBatched(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1426: in __init__
+    self._joint_bijector = _DefaultJointBijector(
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in &lt;genexpr&gt;
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in &lt;lambda&gt;
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/deterministic.py:171: in _default_event_space_bijector
+    pad_zero = pad.Pad([(1, 0)])
+               ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_broadcasting_check_eager" time="0.025" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_broadcasting_check_eager_no_tf_function" time="0.024" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_broadcasting_check_graph" time="0.041" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_precision_JointDistributionCoroutineAutoBatched_eager" time="1.090" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_precision_JointDistributionCoroutineAutoBatched_eager_no_tf_function" time="1.016" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_precision_JointDistributionCoroutineAutoBatched_graph" time="1.221" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_precision_JointDistributionCoroutineAutoBatched_jit_eager" time="0.034"><skipped type="pytest.skip" message="b/179303849">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/test_combinations.py:240: b/179303849</skipped></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_precision_JointDistributionCoroutineAutoBatched_jit_eager_no_tf_function" time="0.000"><skipped type="pytest.skip" message="b/179303849">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/test_combinations.py:240: b/179303849</skipped></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_precision_JointDistributionCoroutineAutoBatched_jit_graph" time="0.002"><skipped type="pytest.skip" message="b/179303849">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/test_combinations.py:240: b/179303849</skipped></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_precision_JointDistributionNamedAutoBatched_eager" time="1.795" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_precision_JointDistributionNamedAutoBatched_eager_no_tf_function" time="1.272" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_precision_JointDistributionNamedAutoBatched_graph" time="1.401" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_precision_JointDistributionNamedAutoBatched_jit_eager" time="0.003"><skipped type="pytest.skip" message="b/179303849">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/test_combinations.py:240: b/179303849</skipped></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_precision_JointDistributionNamedAutoBatched_jit_eager_no_tf_function" time="0.000"><skipped type="pytest.skip" message="b/179303849">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/test_combinations.py:240: b/179303849</skipped></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_precision_JointDistributionNamedAutoBatched_jit_graph" time="0.001"><skipped type="pytest.skip" message="b/179303849">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/test_combinations.py:240: b/179303849</skipped></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_precision_JointDistributionSequentialAutoBatched_eager" time="0.928" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_precision_JointDistributionSequentialAutoBatched_eager_no_tf_function" time="0.916" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_precision_JointDistributionSequentialAutoBatched_graph" time="1.268" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_precision_JointDistributionSequentialAutoBatched_jit_eager" time="0.003"><skipped type="pytest.skip" message="b/179303849">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/test_combinations.py:240: b/179303849</skipped></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_precision_JointDistributionSequentialAutoBatched_jit_eager_no_tf_function" time="0.000"><skipped type="pytest.skip" message="b/179303849">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/test_combinations.py:240: b/179303849</skipped></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_kahan_precision_JointDistributionSequentialAutoBatched_jit_graph" time="0.002"><skipped type="pytest.skip" message="b/179303849">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/test_combinations.py:240: b/179303849</skipped></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_latent_dirichlet_allocation_coroutine_eager" time="1.131" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_latent_dirichlet_allocation_coroutine_eager_no_tf_function" time="0.537" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_latent_dirichlet_allocation_coroutine_graph" time="1.092" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_latent_dirichlet_allocation_named_eager" time="0.284" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_latent_dirichlet_allocation_named_eager_no_tf_function" time="0.265" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_latent_dirichlet_allocation_named_graph" time="1.028" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_latent_dirichlet_allocation_sequential_eager" time="0.234" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_latent_dirichlet_allocation_sequential_eager_no_tf_function" time="0.234" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_latent_dirichlet_allocation_sequential_graph" time="0.726" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_log_prob_and_prob_with_plate_coroutine_eager" time="0.038" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_log_prob_and_prob_with_plate_coroutine_eager_no_tf_function" time="0.035" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_log_prob_and_prob_with_plate_coroutine_graph" time="0.082" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_log_prob_and_prob_with_plate_named_eager" time="0.037" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_log_prob_and_prob_with_plate_named_eager_no_tf_function" time="0.035" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_log_prob_and_prob_with_plate_named_graph" time="0.082" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_log_prob_and_prob_with_plate_sequential_eager" time="0.037" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_log_prob_and_prob_with_plate_sequential_eager_no_tf_function" time="0.035" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_log_prob_and_prob_with_plate_sequential_graph" time="0.084" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_log_prob_multiple_samples_coroutine_eager" time="0.151" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_log_prob_multiple_samples_coroutine_eager_no_tf_function" time="0.152" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_log_prob_multiple_samples_coroutine_graph" time="0.117" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_log_prob_multiple_samples_named_eager" time="0.153" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_log_prob_multiple_samples_named_eager_no_tf_function" time="0.165" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_log_prob_multiple_samples_named_graph" time="0.132" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_log_prob_multiple_samples_sequential_eager" time="0.173" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_log_prob_multiple_samples_sequential_eager_no_tf_function" time="0.181" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_log_prob_multiple_samples_sequential_graph" time="0.142" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_dynamic_batch_ndims_eager" time="0.000"><skipped type="pytest.skip" message="Dynamic shape.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/test_combinations.py:240: Dynamic shape.</skipped></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_dynamic_batch_ndims_eager_no_tf_function" time="0.000"><skipped type="pytest.skip" message="Dynamic shape.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/internal/test_combinations.py:240: Dynamic shape.</skipped></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_dynamic_batch_ndims_graph" time="1.338" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_nontrivial_batch_shape_CoroutineStateful_eager" time="2.454" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_nontrivial_batch_shape_CoroutineStateful_eager_no_tf_function" time="4.301" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_nontrivial_batch_shape_CoroutineStateful_graph" time="2.553" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_nontrivial_batch_shape_CoroutineStateless_eager" time="2.399" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_nontrivial_batch_shape_CoroutineStateless_eager_no_tf_function" time="2.668" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_nontrivial_batch_shape_CoroutineStateless_graph" time="2.221" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_nontrivial_batch_shape_NamedStateful_eager" time="1.040" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_nontrivial_batch_shape_NamedStateful_eager_no_tf_function" time="1.204" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_nontrivial_batch_shape_NamedStateful_graph" time="0.938" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_nontrivial_batch_shape_NamedStateless_eager" time="1.048" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_nontrivial_batch_shape_NamedStateless_eager_no_tf_function" time="0.988" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_nontrivial_batch_shape_NamedStateless_graph" time="0.899" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_nontrivial_batch_shape_SequentialStateful_eager" time="0.834" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_nontrivial_batch_shape_SequentialStateful_eager_no_tf_function" time="1.049" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_nontrivial_batch_shape_SequentialStateful_graph" time="0.904" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_nontrivial_batch_shape_SequentialStateless_eager" time="1.208" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_nontrivial_batch_shape_SequentialStateless_eager_no_tf_function" time="1.003" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_model_with_nontrivial_batch_shape_SequentialStateless_graph" time="0.864" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_nested_joint_distributions_eager" time="1.359" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_nested_joint_distributions_eager_no_tf_function" time="1.104" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_nested_joint_distributions_graph" time="0.957" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_repr_with_custom_sample_dtype_eager" time="0.084" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_repr_with_custom_sample_dtype_eager_no_tf_function" time="0.014" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_repr_with_custom_sample_dtype_graph" time="0.083" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_and_log_prob_coroutine_eager" time="2.203" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_and_log_prob_coroutine_eager_no_tf_function" time="3.067" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_and_log_prob_coroutine_graph" time="1.986" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_and_log_prob_named_eager" time="1.898" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_and_log_prob_named_eager_no_tf_function" time="2.987" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_and_log_prob_named_graph" time="2.254" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_and_log_prob_sequential_eager" time="2.272" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_and_log_prob_sequential_eager_no_tf_function" time="4.635" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_and_log_prob_sequential_graph" time="4.778" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_distributions_eager" time="1.650" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_distributions_eager_no_tf_function" time="1.618" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_distributions_graph" time="1.106" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_distributions_not_composite_tensor_raises_error_eager" time="0.072" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_distributions_not_composite_tensor_raises_error_eager_no_tf_function" time="0.052" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_distributions_not_composite_tensor_raises_error_graph" time="0.039" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_dtype_structures_output_eager" time="1.563" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_dtype_structures_output_eager_no_tf_function" time="1.580" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_dtype_structures_output_graph" time="1.060" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_with_batch_value_eager" time="0.413" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_with_batch_value_eager_no_tf_function" time="0.433" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_with_batch_value_graph" time="0.421" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_with_partially_specified_value_stateful_eager" time="0.718" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_with_partially_specified_value_stateful_eager_no_tf_function" time="0.704" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_with_partially_specified_value_stateful_graph" time="0.879" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_with_partially_specified_value_stateless_eager" time="1.424" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_with_partially_specified_value_stateless_eager_no_tf_function" time="1.302" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_with_partially_specified_value_stateless_graph" time="1.442" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_with_prefix_of_values_stateful_eager" time="0.612" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_with_prefix_of_values_stateful_eager_no_tf_function" time="0.476" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_with_prefix_of_values_stateful_graph" time="0.290" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_with_prefix_of_values_stateless_eager" time="0.294" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_with_prefix_of_values_stateless_eager_no_tf_function" time="0.260" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_with_prefix_of_values_stateless_graph" time="0.214" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_with_value_as_kwarg_eager" time="0.105" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_with_value_as_kwarg_eager_no_tf_function" time="0.110" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_sample_with_value_as_kwarg_graph" time="0.089" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_session" time="0.000"><skipped type="pytest.skip" message="Not a test.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/test_util.py:2981: Not a test.</skipped></testcase><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_unit_sample_shape_avoids_vectorization_eager" time="0.199" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_unit_sample_shape_avoids_vectorization_eager_no_tf_function" time="0.028" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_unit_sample_shape_avoids_vectorization_graph" time="0.026" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_unit_sample_shape_eager" time="0.143" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_unit_sample_shape_eager_no_tf_function" time="0.126" /><testcase classname="tensorflow_probability.python.distributions.joint_distribution_auto_batched_test.JointDistributionAutoBatchedTest" name="test_unit_sample_shape_graph" time="0.579" /></testsuite></testsuites>

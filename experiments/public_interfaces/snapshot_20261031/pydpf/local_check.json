@@ -1,0 +1,11 @@
+{
+  "candidate_added_tests": 34,
+  "CPU_passed": 34,
+  "GPU_tested": false,
+  "elapsed_seconds": 2.12,
+  "warnings": [
+    "upstream invalid escape syntax warning",
+    "CUDA unavailable in local CPU environment"
+  ],
+  "note": "Local CPU preparation check; not a substitute for the submitted CUDA preflight"
+}

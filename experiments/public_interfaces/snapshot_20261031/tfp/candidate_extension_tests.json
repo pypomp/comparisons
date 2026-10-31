@@ -1,0 +1,19 @@
+{
+  "command": [
+    "work/competitor-estimation/tfp/local-venv/bin/python",
+    "work/implementation-comparison-20261030/tfp/source/candidate/tests/test_extensions.py"
+  ],
+  "cwd": null,
+  "started_at_utc": "2026-10-30T20:35:30.250396+00:00",
+  "timeout_seconds": 600,
+  "state": "finished",
+  "environment": {
+    "PYTHONPATH": "work/implementation-comparison-20261030/tfp/source/candidate",
+    "JAX_PLATFORMS": null,
+    "JAX_ENABLE_X64": null,
+    "CUDA_VISIBLE_DEVICES": null
+  },
+  "exit_code": 0,
+  "elapsed_seconds": 20.456465875031427,
+  "finished_at_utc": "2026-10-30T20:35:50.706852+00:00"
+}

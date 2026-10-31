@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "reviewed_at_utc": "2026-10-29T08:59:27.378675+00:00",
+  "method": "Direct visual inspection of all three generated PNG figures in the image viewer.",
+  "files": {
+    "likelihood.png": "c9bd7067009f1c73078f52edf068c7473ec1a2bce3e2222cf989b4989b83981f",
+    "likelihood_full_range.png": "82c68ce76a299d1f9366a892dcbb007d354353462a7fd7b7317bd6f17df5fdde",
+    "runtime.png": "b28135c287abb3e48001c9d9613d50b564f80ee1bd04a3954631cac7a118847a"
+  },
+  "checks": [
+    "Titles,axes,legends and labels legible without overlap or clipping.",
+    "Zoomed likelihood uses the same limits across panels; every point below view marked and counts shown.",
+    "Full-range plot retains both extreme density-floor scores as crosses.",
+    "Nonfinite fits and imprecise scores explicitly counted; finite does not imply a good fit.",
+    "Runtime labels distinguish per-arm total prefix costs and actual allocation with shared prefixes counted once."
+  ],
+  "result": "passed"
+}

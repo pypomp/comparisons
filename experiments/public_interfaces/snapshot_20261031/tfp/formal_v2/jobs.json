@@ -1,0 +1,80 @@
+{
+  "gate_job_id": 65096288,
+  "remote_root": "/gpfs/accounts/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/tfp/formal_v2",
+  "manifest_sha256": "e315f3a76cf8a79e6eabbca7b8741b099550c3fc0b1618c090951ab64eb5825f",
+  "submitted": true,
+  "requested_total_GPU_hours": 20,
+  "methods": {
+    "prefix": {
+      "job_id": 65098962,
+      "time_limit_hours": 8,
+      "dependency_afterok": [
+        65096288
+      ],
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=tfp-public-prefix",
+        "--time=8:00:00",
+        "--dependency=afterok:65096288",
+        "formal.sbatch",
+        "prefix"
+      ],
+      "submitted_unix": 1793393117.2455575
+    },
+    "A": {
+      "job_id": 65098963,
+      "time_limit_hours": 4,
+      "dependency_afterok": [
+        65096288
+      ],
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=tfp-public-A",
+        "--time=4:00:00",
+        "--dependency=afterok:65096288",
+        "formal.sbatch",
+        "A"
+      ],
+      "submitted_unix": 1793393117.300902
+    },
+    "B": {
+      "job_id": 65098964,
+      "time_limit_hours": 4,
+      "dependency_afterok": [
+        65096288,
+        65098962
+      ],
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=tfp-public-B",
+        "--time=4:00:00",
+        "--dependency=afterok:65096288:65098962",
+        "formal.sbatch",
+        "B"
+      ],
+      "submitted_unix": 1793393117.3270788
+    },
+    "C": {
+      "job_id": 65098965,
+      "time_limit_hours": 4,
+      "dependency_afterok": [
+        65096288,
+        65098962
+      ],
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=tfp-public-C",
+        "--time=4:00:00",
+        "--dependency=afterok:65096288:65098962",
+        "formal.sbatch",
+        "C"
+      ],
+      "submitted_unix": 1793393117.3527246
+    }
+  },
+  "started_unix": 1793393117.1591449
+}

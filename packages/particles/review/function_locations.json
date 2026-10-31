@@ -1,0 +1,252 @@
+[
+  {
+    "file": "book/mle/if2_stochvol.py",
+    "name": "model_factory",
+    "line": 15
+  },
+  {
+    "file": "book/mle/if2_stochvol.py",
+    "name": "main",
+    "line": 20
+  },
+  {
+    "file": "particles/iterated_filtering.py",
+    "name": "_inputs",
+    "line": 23
+  },
+  {
+    "file": "particles/iterated_filtering.py",
+    "name": "_perturb",
+    "line": 37
+  },
+  {
+    "file": "particles/iterated_filtering.py",
+    "name": "_pack",
+    "line": 48
+  },
+  {
+    "file": "particles/iterated_filtering.py",
+    "name": "_PerturbedBootstrap",
+    "line": 60
+  },
+  {
+    "file": "particles/iterated_filtering.py",
+    "name": "if2_step",
+    "line": 111
+  },
+  {
+    "file": "particles/iterated_filtering.py",
+    "name": "iterated_filtering",
+    "line": 167
+  },
+  {
+    "file": "particles/iterated_filtering.py",
+    "name": "__init__",
+    "line": 63
+  },
+  {
+    "file": "particles/iterated_filtering.py",
+    "name": "_apply",
+    "line": 68
+  },
+  {
+    "file": "particles/iterated_filtering.py",
+    "name": "M0",
+    "line": 88
+  },
+  {
+    "file": "particles/iterated_filtering.py",
+    "name": "M",
+    "line": 92
+  },
+  {
+    "file": "particles/iterated_filtering.py",
+    "name": "logG",
+    "line": 96
+  },
+  {
+    "file": "particles/iterated_filtering.py",
+    "name": "time_to_resample",
+    "line": 105
+  },
+  {
+    "file": "particles/iterated_filtering.py",
+    "name": "call",
+    "line": 69
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "Gaussian",
+    "line": 12
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "reference",
+    "line": 32
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "test_independent_recursion",
+    "line": 62
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "AlwaysBootstrap",
+    "line": 73
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "test_zero_perturbation_native_model_and_smc",
+    "line": 79
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "test_split_continuation_preserves_cloud_and_rng",
+    "line": 103
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "test_fixed_coordinate_and_initial_only_perturbations",
+    "line": 120
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "VectorGaussian",
+    "line": 132
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "test_vector_state_and_one_observation",
+    "line": 143
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "test_zero_passes_does_not_sample_or_alias",
+    "line": 150
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "BadObservation",
+    "line": 161
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "test_bad_weights_raise",
+    "line": 172
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "test_some_impossible_particles_are_allowed",
+    "line": 180
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "test_invalid_inputs",
+    "line": 197
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "test_uniform_weights_still_resample_every_transition",
+    "line": 205
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "__init__",
+    "line": 13
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "PX0",
+    "line": 16
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "PX",
+    "line": 19
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "PY",
+    "line": 22
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "time_to_resample",
+    "line": 74
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "factory",
+    "line": 81
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "record",
+    "line": 89
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "__init__",
+    "line": 133
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "PX0",
+    "line": 135
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "PX",
+    "line": 137
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "PY",
+    "line": 139
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "PY",
+    "line": 163
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "Model",
+    "line": 173
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "Model",
+    "line": 181
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "Model",
+    "line": 206
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "Law",
+    "line": 165
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "PY",
+    "line": 182
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "logpdf",
+    "line": 166
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "Law",
+    "line": 183
+  },
+  {
+    "file": "tests/test_iterated_filtering.py",
+    "name": "logpdf",
+    "line": 184
+  }
+]

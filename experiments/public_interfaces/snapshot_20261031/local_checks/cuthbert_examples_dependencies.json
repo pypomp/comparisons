@@ -1,0 +1,24 @@
+{
+  "command": [
+    "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_examples_scripts.py",
+    "-o",
+    "cache_dir=/private/tmp/cuthbert-examples-pytest-cache"
+  ],
+  "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v2/candidate",
+  "started_at_utc": "2026-10-30T20:18:19.803451+00:00",
+  "timeout_seconds": 3600,
+  "state": "finished",
+  "environment": {
+    "PYTHONPATH": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v2/candidate:/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-probe-deps:/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-quality-tools:/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/dynamax/plot-deps:/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/dynamax/deps:/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/dynamax/source",
+    "JAX_PLATFORMS": "cpu",
+    "JAX_ENABLE_X64": "True",
+    "CUDA_VISIBLE_DEVICES": null
+  },
+  "exit_code": 1,
+  "elapsed_seconds": 191.06958124996163,
+  "finished_at_utc": "2026-10-30T20:21:30.872720+00:00"
+}

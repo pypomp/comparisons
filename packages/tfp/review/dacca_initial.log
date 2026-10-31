@@ -1,0 +1,33 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1793330339.883217 11359893 op_level_cost_estimator.cc:743] Invalid device specifications for CPU: type: "CPU" model: "0" num_cores: 14 environment { key: "cpu_instruction_set" value: "ARM NEON" } environment { key: "eigen" value: "3.4.90" } l1_cache_size: 16384 l2_cache_size: 524288 l3_cache_size: 524288 memory_size: 268435456
+W0000 00:00:1793330339.889096 11359893 op_level_cost_estimator.cc:743] Invalid device specifications for CPU: type: "CPU" model: "0" num_cores: 14 environment { key: "cpu_instruction_set" value: "ARM NEON" } environment { key: "eigen" value: "3.4.90" } l1_cache_size: 16384 l2_cache_size: 524288 l3_cache_size: 524288 memory_size: 268435456
+W0000 00:00:1793330341.218235 11359893 op_level_cost_estimator.cc:743] Invalid device specifications for CPU: type: "CPU" model: "0" num_cores: 14 environment { key: "cpu_instruction_set" value: "ARM NEON" } environment { key: "eigen" value: "3.4.90" } l1_cache_size: 16384 l2_cache_size: 524288 l3_cache_size: 524288 memory_size: 268435456
+W0000 00:00:1793330341.223796 11359893 op_level_cost_estimator.cc:743] Invalid device specifications for CPU: type: "CPU" model: "0" num_cores: 14 environment { key: "cpu_instruction_set" value: "ARM NEON" } environment { key: "eigen" value: "3.4.90" } l1_cache_size: 16384 l2_cache_size: 524288 l3_cache_size: 524288 memory_size: 268435456
+Traceback (most recent call last):
+  File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/tfp-implementation-v1/validation/check_dacca.py", line 128, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/tfp-implementation-v1/validation/check_dacca.py", line 60, in main
+    np.testing.assert_array_equal(actual.numpy(),expected.numpy())
+  File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/numpy/testing/_private/utils.py", line 1128, in assert_array_equal
+    assert_array_compare(operator.__eq__, actual, desired, err_msg=err_msg,
+  File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/numpy/testing/_private/utils.py", line 988, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError: 
+Arrays are not equal
+
+Mismatched elements: 80 / 184 (43.5%)
+First 5 mismatches are at indices:
+ [0, 0, 0]: 3.071368932723999 (ACTUAL), 3.0713694095611572 (DESIRED)
+ [0, 0, 4]: 1.2337942123413086 (ACTUAL), 1.2337945699691772 (DESIRED)
+ [0, 0, 6]: -3.1943905353546143 (ACTUAL), -3.1943907737731934 (DESIRED)
+ [0, 0, 7]: 3.6269028186798096 (ACTUAL), 3.6269030570983887 (DESIRED)
+ [0, 0, 8]: 3.078174352645874 (ACTUAL), 3.078174591064453 (DESIRED)
+Max absolute difference among violations: 7.1525574e-07
+Max relative difference among violations: 3.1684397e-07
+ ACTUAL: array([[[  3.071369,   3.788383,  -3.219984,  -0.71125 ,   1.233794,
+           6.666599,  -3.194391,   3.626903,   3.078174,   4.264722,
+           0.871751,  -1.152743,  -0.330879,  -1.088222,  -6.610652,...
+ DESIRED: array([[[  3.071369,   3.788383,  -3.219984,  -0.71125 ,   1.233795,
+           6.666599,  -3.194391,   3.626903,   3.078175,   4.264722,
+           0.871751,  -1.152743,  -0.330879,  -1.088222,  -6.610652,...

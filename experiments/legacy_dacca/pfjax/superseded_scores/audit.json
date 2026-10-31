@@ -1,0 +1,378 @@
+{
+  "complete": true,
+  "audit_passed": true,
+  "endpoints": 36,
+  "source_files": 592,
+  "terminal_files": 94,
+  "runtime": {
+    "jax": "0.12.0.1",
+    "GPU": "NVIDIA A40",
+    "node": "gl1515",
+    "job": "64993822",
+    "utc": "2026-10-29T02:45:48.894618+00:00"
+  },
+  "summary": {
+    "IF2": {
+      "n": 12,
+      "fit_failures": 0,
+      "low_precision": 0,
+      "median_logmeanlik": -3767.381555727167,
+      "batch_fit_seconds": 1009.0192796327174,
+      "compile_seconds": 2.470751965418458,
+      "preparation_seconds": 0.0,
+      "evaluation_seconds": 4.31704653147608
+    },
+    "IFAD": {
+      "n": 12,
+      "fit_failures": 0,
+      "low_precision": 0,
+      "median_logmeanlik": -3744.7008400073905,
+      "batch_fit_seconds": 831.4615251757205,
+      "compile_seconds": 7.551052981987596,
+      "preparation_seconds": 1.9192998334765434,
+      "evaluation_seconds": 4.672151671722531
+    },
+    "ADPF_extension": {
+      "n": 12,
+      "fit_failures": 0,
+      "low_precision": 0,
+      "median_logmeanlik": -3799.437352767577,
+      "batch_fit_seconds": 777.9643406271935,
+      "compile_seconds": 4.9627289939671755,
+      "preparation_seconds": 1.852506572380662,
+      "evaluation_seconds": 5.031736338511109
+    }
+  },
+  "paired_IFAD_differences": {
+    "IF2": {
+      "median_difference": 22.780723610397217,
+      "positive_pairs": 12,
+      "positive_MC_lower95": 12,
+      "pairs": [
+        {
+          "start": 0,
+          "repeat": 0,
+          "difference": 25.53769076419212,
+          "combined_MCSE": 0.17059217169715674,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 0,
+          "repeat": 1,
+          "difference": 14.009773179927834,
+          "combined_MCSE": 0.22014432330344724,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 1,
+          "repeat": 0,
+          "difference": 20.023756456602314,
+          "combined_MCSE": 0.2359407943984729,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 1,
+          "repeat": 1,
+          "difference": 69.6684569023987,
+          "combined_MCSE": 0.18168266255029952,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 2,
+          "repeat": 0,
+          "difference": 15.102435711358794,
+          "combined_MCSE": 0.20931192746526853,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 2,
+          "repeat": 1,
+          "difference": 40.31669100622412,
+          "combined_MCSE": 0.17296645454518036,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 3,
+          "repeat": 0,
+          "difference": 6.190952034991369,
+          "combined_MCSE": 0.17790039590407722,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 3,
+          "repeat": 1,
+          "difference": 7.59992075849641,
+          "combined_MCSE": 0.2093491483520183,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 4,
+          "repeat": 0,
+          "difference": 25.622546489059914,
+          "combined_MCSE": 0.2597309566434776,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 4,
+          "repeat": 1,
+          "difference": 8.794108547336236,
+          "combined_MCSE": 0.2019472532198938,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 5,
+          "repeat": 0,
+          "difference": 37.18915138514649,
+          "combined_MCSE": 0.1881932340923164,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 5,
+          "repeat": 1,
+          "difference": 28.10075858921573,
+          "combined_MCSE": 0.24820211316125745,
+          "positive_MC_lower95": true
+        }
+      ]
+    },
+    "ADPF_extension": {
+      "median_difference": 54.49040239810847,
+      "positive_pairs": 12,
+      "positive_MC_lower95": 12,
+      "pairs": [
+        {
+          "start": 0,
+          "repeat": 0,
+          "difference": 4.543440697265396,
+          "combined_MCSE": 0.20154932402786027,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 0,
+          "repeat": 1,
+          "difference": 4.485910484950637,
+          "combined_MCSE": 0.256347097771231,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 1,
+          "repeat": 0,
+          "difference": 20.147336431902204,
+          "combined_MCSE": 0.26204804622511263,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 1,
+          "repeat": 1,
+          "difference": 21.40118568892194,
+          "combined_MCSE": 0.17080565185256513,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 2,
+          "repeat": 0,
+          "difference": 87.72278011163917,
+          "combined_MCSE": 0.13177425487150968,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 2,
+          "repeat": 1,
+          "difference": 84.1993425980636,
+          "combined_MCSE": 0.14354681792910085,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 3,
+          "repeat": 0,
+          "difference": 460.1221137234493,
+          "combined_MCSE": 0.26052845156157095,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 3,
+          "repeat": 1,
+          "difference": 271.47316924250526,
+          "combined_MCSE": 0.18946448033171018,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 4,
+          "repeat": 0,
+          "difference": 425.7292766718483,
+          "combined_MCSE": 0.31698278023173315,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 4,
+          "repeat": 1,
+          "difference": 388.0987106123007,
+          "combined_MCSE": 0.24464559745776862,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 5,
+          "repeat": 0,
+          "difference": 24.78146219815335,
+          "combined_MCSE": 0.15304514163998564,
+          "positive_MC_lower95": true
+        },
+        {
+          "start": 5,
+          "repeat": 1,
+          "difference": 24.28485095603446,
+          "combined_MCSE": 0.2443441226569525,
+          "positive_MC_lower95": true
+        }
+      ]
+    }
+  },
+  "stage_times": {
+    "IF2": {
+      "batch_fit_seconds": 1009.0192796327174,
+      "compile_seconds": 2.470751965418458,
+      "iterations_requested": 1950,
+      "iterations_completed": [
+        1950,
+        1950,
+        1950,
+        1950,
+        1950,
+        1950,
+        1950,
+        1950,
+        1950,
+        1950,
+        1950,
+        1950
+      ],
+      "failed": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "preparation_seconds": 0.0
+    },
+    "common_IF2": {
+      "batch_fit_seconds": 90.75070361141115,
+      "compile_seconds": 2.324771494604647,
+      "iterations_requested": 175,
+      "iterations_completed": [
+        175,
+        175,
+        175,
+        175,
+        175,
+        175,
+        175,
+        175,
+        175,
+        175,
+        175,
+        175
+      ],
+      "failed": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "preparation_seconds": 0.0
+    },
+    "IFAD": {
+      "batch_fit_seconds": 740.7108215643093,
+      "compile_seconds": 5.226281487382948,
+      "iterations_requested": 400,
+      "iterations_completed": [
+        400,
+        400,
+        400,
+        400,
+        400,
+        400,
+        400,
+        400,
+        400,
+        400,
+        400,
+        400
+      ],
+      "failed": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "preparation_seconds": 1.9192998334765434
+    },
+    "ADPF_extension": {
+      "batch_fit_seconds": 777.9643406271935,
+      "compile_seconds": 4.9627289939671755,
+      "iterations_requested": 425,
+      "iterations_completed": [
+        425,
+        425,
+        425,
+        425,
+        425,
+        425,
+        425,
+        425,
+        425,
+        425,
+        425,
+        425
+      ],
+      "failed": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "preparation_seconds": 1.852506572380662
+    }
+  },
+  "total_wall_seconds": 2670.474855172448,
+  "allocation_seconds": 2724,
+  "score_compile_seconds": 0.5259160287678242,
+  "notes": [
+    "All three fitted methods are local extensions; native PFJAX OT gradients failed full-series prechecks.",
+    "IFAD has175 IF2 then400 updates; ADPF_extension starts directly from original starts for425 updates, with a different random stream. Legacy protocol comparison text about all continuation arms sharing a prefix is inapplicable.",
+    "Fit times are total walltimes of a batch of12, not single-search latency.",
+    "Independent original PyPOMP PF scores; retain failed and low-precision rows.",
+    "Partial-batch numerical failure masks retain last finite parameters; a completed job alone does not establish convergence."
+  ]
+}

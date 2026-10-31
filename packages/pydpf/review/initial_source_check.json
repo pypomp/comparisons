@@ -1,0 +1,143 @@
+{
+  "base_commit": "a7487ce1c344c70e1a244e75725b950deb15e146",
+  "baseline_scope": "pydpf/ subtree, root README/LICENSE, native tutorial; not full repository",
+  "baseline_files": [
+    {
+      "path": "LICENSE",
+      "git_blob": "3821d02e96fcca929b4dd44361b5d3a8916e082c",
+      "sha256": "94fd8bf877576eb636b5511d6be65bb5aa63ba98dafe15c12a1d566bc3d17146"
+    },
+    {
+      "path": "README.rst",
+      "git_blob": "77bd3a6ce058c5486901453c6ff98622ad4c5dae",
+      "sha256": "03142a9d2189784dceadf4d003b3a1794868d4c1f273ad25bf25420c7a7cd0b5"
+    },
+    {
+      "path": "docs/source/tutorial.rst",
+      "git_blob": "ff91aa4f613155b236026fe5d39b295c68136a8a",
+      "sha256": "c38ed2701e88721f248d58e5908f3ca623cfdfb82c8959ba56a6af0e76032223"
+    },
+    {
+      "path": "pydpf/LICENSE",
+      "git_blob": "3821d02e96fcca929b4dd44361b5d3a8916e082c",
+      "sha256": "94fd8bf877576eb636b5511d6be65bb5aa63ba98dafe15c12a1d566bc3d17146"
+    },
+    {
+      "path": "pydpf/MANIFEST.in",
+      "git_blob": "a7292c34015a2c156d7a11900cadfcbce5c10290",
+      "sha256": "14a20a7c138eff055fcf4bf8fa8fb614f0ddb3870f113ae102c0bd6d96fbc763"
+    },
+    {
+      "path": "pydpf/README.rst",
+      "git_blob": "0dbf3eb7ce0c6ebf32e08ab31a84e46da1bba5ef",
+      "sha256": "b81d526439c817db2ea58e0508b168296758288b66a7859ed867f34ba5c8653a"
+    },
+    {
+      "path": "pydpf/pydpf/Kalman.py",
+      "git_blob": "8aff22aa46207c6e20fa70b6563876c1577fdcf1",
+      "sha256": "aefdcc2336755f321ad0bc364351ab15cff0f82c9bd2ebce93af09929d04f748"
+    },
+    {
+      "path": "pydpf/pydpf/__init__.py",
+      "git_blob": "eecd094851dd1952cf67b889a9a2028aee4ada0a",
+      "sha256": "84b578f3c9ddf555aebc76085a8eb5058299a79adfc3038b3be44dec82442b16"
+    },
+    {
+      "path": "pydpf/pydpf/base.py",
+      "git_blob": "fa9692ec469eb72adc1b65c40ea274dc97a7f0ea",
+      "sha256": "1e6d3ec40df6eeed56653c9eb6d29cc02237434d5c00aac4a2998202823f6e22"
+    },
+    {
+      "path": "pydpf/pydpf/conditional_resampling.py",
+      "git_blob": "5cc57021daf6755cbf99958e696e264bfc8dcf73",
+      "sha256": "42bbc8c8ca5308e40935ccbbd3d71f6c75397873c0315b72e20c1a19c54c1707"
+    },
+    {
+      "path": "pydpf/pydpf/datautils.py",
+      "git_blob": "b7992a233df152d3ea0bf6bb6521896323126fa1",
+      "sha256": "3541686e8b50bbd4f2d9914ba1f58691cd054d0f8bd388843f738c3630cd4477"
+    },
+    {
+      "path": "pydpf/pydpf/deserialisation.py",
+      "git_blob": "07402d6c7514e7b631cf542ebf4629134fef1677",
+      "sha256": "7a67d1e0c751e5d5ec7d90ef50cb19765820876d25fe59084328bfd0d8eec60c"
+    },
+    {
+      "path": "pydpf/pydpf/distributions/Gaussian.py",
+      "git_blob": "195fbb1323fb45bd0cb5f8edc5a031a55f76d623",
+      "sha256": "5c5e8bb623a394de2d88bfc86b05e10c5a83d0f90d91d8fe4139c7fd1631708b"
+    },
+    {
+      "path": "pydpf/pydpf/distributions/__init__.py",
+      "git_blob": "444c90199c2669cf87fa9013283c30ac6bb24c8a",
+      "sha256": "5bc1b17871b818520d68a143be743818159dbd1af00c13889ffdf786dc8faa7e"
+    },
+    {
+      "path": "pydpf/pydpf/distributions/base.py",
+      "git_blob": "a3ea414e0c9d468e9fb8ac1a8a8a57f8b0d2187c",
+      "sha256": "655984d2c3bd0f16730f9cbdc035fec3eb81a3089451a7cf5ee338b517e4cb3d"
+    },
+    {
+      "path": "pydpf/pydpf/distributions/kde.py",
+      "git_blob": "3804fd34bed87ce51f12a5a562002ee80e69252f",
+      "sha256": "bb74260fb69414f2c26af236f54bb153290c1a39b89c37c6165e52e9cb4f1a10"
+    },
+    {
+      "path": "pydpf/pydpf/distributions/vonMises.py",
+      "git_blob": "3c68649f2c76b6baf7edb6ffbfe5c246fcb01841",
+      "sha256": "25c51f56dafd295551b2f0f046ccf309c1950f7d2cd6cb4321bfb6842daa497e"
+    },
+    {
+      "path": "pydpf/pydpf/filtering.py",
+      "git_blob": "d43fdb09c9f74f6e1f39d9cdaaa353b2880d50a4",
+      "sha256": "4d0a1f5e12304556a6ffd7589c4b3154da6d32b68aab311c4877aa7746364f5e"
+    },
+    {
+      "path": "pydpf/pydpf/gradient_regularisation.py",
+      "git_blob": "94da3c72498ccccac1b2d564594e4b167666246a",
+      "sha256": "dc26489564412b0eaf198acc4fa9822621be14e9999f9bd5a97ad7aef1809007"
+    },
+    {
+      "path": "pydpf/pydpf/model_based_api.py",
+      "git_blob": "38e12b6c33fcedae84d8df1dba4a646d32afd2d6",
+      "sha256": "91ee942d51d6f65b950abadbca767ee9016affc1cf107b048fec64c583ba4006"
+    },
+    {
+      "path": "pydpf/pydpf/optimal_transport.py",
+      "git_blob": "b438884fbe4637564d8f0c8dd80f970ac5c3ffc0",
+      "sha256": "e340904eda5ae87229adeb8fb8629b09fb895d3239b0cdc901a447c5ae1d53a5"
+    },
+    {
+      "path": "pydpf/pydpf/outputs.py",
+      "git_blob": "04ce9234d549a958d859757bb88f4acc2a2dc88d",
+      "sha256": "86fb331a19a85ba5d80352b17ca1aeb32762fb5303540eb68e368039d0f467df"
+    },
+    {
+      "path": "pydpf/pydpf/resampling.py",
+      "git_blob": "1bbfe3806abdf7eb3f2ad6b74592b86120ef5c65",
+      "sha256": "652b098522ab6fc7f275613b6be96f106ee257b68fa92c460f26344756de1c96"
+    },
+    {
+      "path": "pydpf/pydpf/utils.py",
+      "git_blob": "7aa9385011bf1aa4f0c3b79a780b3d8cb9ca5a9b",
+      "sha256": "d8464995d5aa9b788afa179cf698e41bd3f99da736056f1d0cafc15ee618020b"
+    },
+    {
+      "path": "pydpf/pyproject.toml",
+      "git_blob": "5bae0b0caa8d3417f5e867f225d8d22a06206b8a",
+      "sha256": "6e528250c842f59734a4fa777a098ead26fad53e515be12dc444af9e5ae4946e"
+    },
+    {
+      "path": "pydpf/requirements.txt",
+      "git_blob": "123ada7a524b0e9eb0dc9f17e698325147085608",
+      "sha256": "a34137bd88c7f1480b0d59b28184e477c2561c668a18e238fd3a9fa66c2ddc68"
+    }
+  ],
+  "frozen_manifest_sha256": "6837b2b49a758e9261d49353d68aa066b1a309929b1b25e1ebc27c09bc526a03",
+  "frozen_files_verified": 246,
+  "validation_copies": {
+    "sessions.py": "4bb236f6d9744727c1da667f025ee25bad54170f3826cca58a80527a2a1105ba",
+    "dacca_model.py": "b9280b9c911742793f88d234ae62252f38381ff489fc09320ba381b909d62e7e",
+    "input/frozen.npz": "2fbe1f58a93d1e4370c6ece29647990a15981747eb61561ae0767e444aa18942"
+  }
+}

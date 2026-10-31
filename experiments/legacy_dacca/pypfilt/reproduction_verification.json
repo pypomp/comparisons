@@ -1,0 +1,19 @@
+{
+  "timestamp_UTC": "2026-10-29T05:26:29.942285+00:00",
+  "archive_sha256": "dbede637e5553718b194beb0ab430c9dcbd2ff49952dedbf7a31c746cb92cfe2",
+  "archive_files_verified": 2599,
+  "unpacked_standalone_verifier_passed": true,
+  "audited_endpoints": 12,
+  "low_precision_preserved": [
+    0,
+    2,
+    3,
+    6,
+    11
+  ],
+  "figure_redrawn_from_bundle_identical": true,
+  "figure_png_sha256": "351a18effda9e655e6f617425fb99a890f6914b18eeb159a5e98c375da6dd699",
+  "source_manifest_unchanged": true,
+  "previous_tasks0_10_and_particles_delivery_2177_files_unchanged": true,
+  "no_models_rerun": true
+}

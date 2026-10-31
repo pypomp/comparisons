@@ -1,0 +1,18 @@
+
+==================================== ERRORS ====================================
+_ ERROR collecting tensorflow_probability/python/experimental/fastgp/partial_lanczos_test.py _
+ImportError while importing test module '/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/experimental/fastgp/partial_lanczos_test.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/fastgp/__init__.py:17: in <module>
+    from tensorflow_probability.python.experimental.fastgp import fast_gp
+tensorflow_probability/python/experimental/fastgp/fast_gp.py:23: in <module>
+    import jax
+E   ModuleNotFoundError: No module named 'jax'
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__experimental__fastgp__partial_lanczos_test/candidate.xml -
+=========================== short test summary info ============================
+ERROR tensorflow_probability/python/experimental/fastgp/partial_lanczos_test.py
+1 error in 13.53s

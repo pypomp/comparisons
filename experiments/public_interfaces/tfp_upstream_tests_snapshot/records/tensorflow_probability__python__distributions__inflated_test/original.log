@@ -1,0 +1,15 @@
+......s..                                                                [100%]
+=============================== warnings summary ===============================
+tensorflow_probability/python/distributions/inflated_test.py::DistributionsTest::test_inflated
+tensorflow_probability/python/distributions/inflated_test.py::DistributionsTest::test_inflated_continuous_log_prob
+tensorflow_probability/python/distributions/inflated_test.py::DistributionsTest::test_inflated_factory
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/distributions/inflated.py:101: UserWarning: You have created an Inflated distribution with Normal, which is not discrete. 
+    warnings.warn('You have created an Inflated distribution with '
+
+tensorflow_probability/python/distributions/inflated_test.py::DistributionsTest::test_log_prob_for_inflated_lognormal_is_diffable
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/distributions/inflated.py:101: UserWarning: You have created an Inflated distribution with LogNormal, which is not discrete. 
+    warnings.warn('You have created an Inflated distribution with '
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__distributions__inflated_test/original.xml -
+8 passed, 1 skipped, 4 warnings in 30.51s

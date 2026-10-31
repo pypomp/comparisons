@@ -1,0 +1,38 @@
+PFJAX 调用与新增代码对照
+
+原有 PF：
+particle_filter -> model.pf_init -> 原 filter_step/lax.scan
+ -> resample_multinomial -> model.pf_step -> 原 logsumexp 累积与返回。
+
+新增 IF2：
+iterated_filter（新增外层 scan）
+ -> iterated_filter_step（新增）
+    -> 初始参数扰动（新增） -> 原模型 pf_init
+    -> 原 particle_filter(initial_particles=...)（只有初始化入口新增）
+       -> 原 filter_step/lax.scan
+          -> 原 resample_multinomial 联合选择状态和参数
+          -> PerturbedModel.pf_step（新增包装：参数扰动、冷却）
+             -> 原模型 pf_step
+          -> 原 logsumexp 累积
+    -> 原 resample_multinomial 得到等权终态参数
+ -> 整组参数进入下一轮。
+
+新增梯度：
+particle_filter_mop（新增）
+ -> 原 particle_filter
+    -> CorrectedModel.pf_init（新增包装） -> 原模型 pf_init
+    -> 原 filter_step/lax.scan
+       -> resample（新增包装） -> 原 resample_multinomial
+          -> 选中 log 权重的 stop-gradient 修正与归一化（新增）
+       -> CorrectedModel.pf_step（新增包装） -> 原模型 pf_step
+          -> 加上 correction（新增）
+       -> 原 logsumexp 累积
+ -> JAX value_and_grad -> 外部 Optax Adam（仅示例）。
+
+原生估计接口：
+particle_filter(score=True) 的 score 累加器：保留原代码。
+particle_filter_rb(score=True)：保留整个原函数；示例实际运行。
+resample_ot -> OTT：保留整个原函数；本轮不再次运行历史 Dacca OT。
+
+完整修改见 full.patch；initial_particles.patch 是其中原 particle_filter.py
+的子补丁，不能在 full.patch 后重复应用。function_locations.json 给出函数行号。

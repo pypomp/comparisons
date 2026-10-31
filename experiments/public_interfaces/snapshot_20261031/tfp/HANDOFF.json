@@ -1,0 +1,41 @@
+{
+  "updated_utc": "2026-10-30T20:49:09.218334+00:00",
+  "current_jobs_file": "work/implementation-comparison-20261030/tfp/jobs.json",
+  "formal_jobs_file": "work/implementation-comparison-20261030/tfp/formal_v2/jobs.json",
+  "validation_job": 65096288,
+  "formal_jobs": {
+    "prefix": 65098962,
+    "A": 65098963,
+    "B": 65098964,
+    "C": 65098965
+  },
+  "formal_manifest_sha256": "e315f3a76cf8a79e6eabbca7b8741b099550c3fc0b1618c090951ab64eb5825f",
+  "stage": "queued; no current GPU timing or fitted endpoints",
+  "formal_GPU_hour_cap": 20,
+  "validation_GPU_hour_cap": 1,
+  "completed_endpoints": 0,
+  "expected_endpoints": 36,
+  "test_runner": {
+    "pid": 95022,
+    "launcher": "upstream_tests_with_deps_launcher.json",
+    "progress": "upstream_tests_with_deps/status.json",
+    "result": "upstream_tests_with_deps/COMPLETE.json",
+    "summary_refresh": "work/panel-cute-cpu/bin/python work/implementation-comparison-20261030/tfp/summarize_tests.py",
+    "completed_pairs_at_handoff": 60,
+    "expected_pairs": 515,
+    "complete": false,
+    "all_passed": false
+  },
+  "do_not_repeat": [
+    "validation job",
+    "formal submissions",
+    "already completed test pairs",
+    "old frozen experiments"
+  ],
+  "next_actions": [
+    "read current jobs and actual scheduler states",
+    "when validation ends audit COMPLETE/failure plus raw timings and true exit",
+    "after formal completion audit all 36 rows and original PF scores, failure flags, B/C full initial-state hashes and timing scopes",
+    "wait for full upstream file-pair runner completion; preserve all common failures, timeout/collection boundaries and any candidate-only failures"
+  ]
+}

@@ -1,0 +1,137 @@
+....................s............s............s..FFFFFFFFFsFFF           [100%]
+=================================== FAILURES ===================================
+_ DistributedPHMCTest.test_computes_same_log_acceptance_correction_with_sharded_state_eager _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedPHMCTest.test_computes_same_log_acceptance_correction_with_sharded_state_eager_no_tf_function _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedPHMCTest.test_computes_same_log_acceptance_correction_with_sharded_state_graph _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_________ DistributedPHMCTest.test_hmc_kernel_tracks_axis_names_eager __________
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+__ DistributedPHMCTest.test_hmc_kernel_tracks_axis_names_eager_no_tf_function __
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_________ DistributedPHMCTest.test_hmc_kernel_tracks_axis_names_graph __________
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedPHMCTest.test_phmc_kernel_samples_correct_momenta_for_sharded_state_eager _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedPHMCTest.test_phmc_kernel_samples_correct_momenta_for_sharded_state_eager_no_tf_function _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedPHMCTest.test_phmc_kernel_samples_correct_momenta_for_sharded_state_graph _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedPHMCTest.test_unsharded_state_remains_synchronized_across_devices_eager _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedPHMCTest.test_unsharded_state_remains_synchronized_across_devices_eager_no_tf_function _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_ DistributedPHMCTest.test_unsharded_state_remains_synchronized_across_devices_graph _
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__experimental__mcmc__preconditioned_hmc_test/original.xml -
+=========================== short test summary info ============================
+FAILED tensorflow_probability/python/experimental/mcmc/preconditioned_hmc_test.py::DistributedPHMCTest::test_computes_same_log_acceptance_correction_with_sharded_state_eager
+FAILED tensorflow_probability/python/experimental/mcmc/preconditioned_hmc_test.py::DistributedPHMCTest::test_computes_same_log_acceptance_correction_with_sharded_state_eager_no_tf_function
+FAILED tensorflow_probability/python/experimental/mcmc/preconditioned_hmc_test.py::DistributedPHMCTest::test_computes_same_log_acceptance_correction_with_sharded_state_graph
+FAILED tensorflow_probability/python/experimental/mcmc/preconditioned_hmc_test.py::DistributedPHMCTest::test_hmc_kernel_tracks_axis_names_eager
+FAILED tensorflow_probability/python/experimental/mcmc/preconditioned_hmc_test.py::DistributedPHMCTest::test_hmc_kernel_tracks_axis_names_eager_no_tf_function
+FAILED tensorflow_probability/python/experimental/mcmc/preconditioned_hmc_test.py::DistributedPHMCTest::test_hmc_kernel_tracks_axis_names_graph
+FAILED tensorflow_probability/python/experimental/mcmc/preconditioned_hmc_test.py::DistributedPHMCTest::test_phmc_kernel_samples_correct_momenta_for_sharded_state_eager
+FAILED tensorflow_probability/python/experimental/mcmc/preconditioned_hmc_test.py::DistributedPHMCTest::test_phmc_kernel_samples_correct_momenta_for_sharded_state_eager_no_tf_function
+FAILED tensorflow_probability/python/experimental/mcmc/preconditioned_hmc_test.py::DistributedPHMCTest::test_phmc_kernel_samples_correct_momenta_for_sharded_state_graph
+FAILED tensorflow_probability/python/experimental/mcmc/preconditioned_hmc_test.py::DistributedPHMCTest::test_unsharded_state_remains_synchronized_across_devices_eager
+FAILED tensorflow_probability/python/experimental/mcmc/preconditioned_hmc_test.py::DistributedPHMCTest::test_unsharded_state_remains_synchronized_across_devices_eager_no_tf_function
+FAILED tensorflow_probability/python/experimental/mcmc/preconditioned_hmc_test.py::DistributedPHMCTest::test_unsharded_state_remains_synchronized_across_devices_graph
+12 failed, 46 passed, 4 skipped in 78.63s (0:01:18)

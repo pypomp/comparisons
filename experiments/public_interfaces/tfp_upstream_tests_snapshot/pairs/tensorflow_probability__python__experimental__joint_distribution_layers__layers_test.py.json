@@ -1,0 +1,241 @@
+{
+  "file": "tensorflow_probability/python/experimental/joint_distribution_layers/layers_test.py",
+  "results": [
+    {
+      "kind": "original",
+      "file": "tensorflow_probability/python/experimental/joint_distribution_layers/layers_test.py",
+      "command": [
+        "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/bin/python",
+        "-m",
+        "pytest",
+        "tensorflow_probability/python/experimental/joint_distribution_layers/layers_test.py",
+        "-q",
+        "--tb=short",
+        "--continue-on-collection-errors",
+        "--junitxml=/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__experimental__joint_distribution_layers__layers_test/original.xml"
+      ],
+      "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original",
+      "timeout_seconds": 180,
+      "exit_code": 1,
+      "state": "finished",
+      "elapsed_seconds": 32.83403279108461,
+      "pytest_counts": {
+        "tests": 122,
+        "failures": 18,
+        "errors": 0,
+        "skipped": 2
+      },
+      "failed_tests": [
+        {
+          "name": "testIsDistributionLambda_eager",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest32",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionLambda_eager_no_tf_function",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest32",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionLambda_graph",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest32",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialAffine_eager",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest32",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialAffine_eager_no_tf_function",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest32",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialAffine_graph",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest32",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialConv_eager",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest32",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialConv_eager_no_tf_function",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest32",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialConv_graph",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest32",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionLambda_eager",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest64",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionLambda_eager_no_tf_function",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest64",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionLambda_graph",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest64",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialAffine_eager",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest64",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialAffine_eager_no_tf_function",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest64",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialAffine_graph",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest64",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialConv_eager",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest64",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialConv_eager_no_tf_function",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest64",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialConv_graph",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest64",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        }
+      ]
+    },
+    {
+      "kind": "candidate",
+      "file": "tensorflow_probability/python/experimental/joint_distribution_layers/layers_test.py",
+      "command": [
+        "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/bin/python",
+        "-m",
+        "pytest",
+        "tensorflow_probability/python/experimental/joint_distribution_layers/layers_test.py",
+        "-q",
+        "--tb=short",
+        "--continue-on-collection-errors",
+        "--junitxml=/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__experimental__joint_distribution_layers__layers_test/candidate.xml"
+      ],
+      "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate",
+      "timeout_seconds": 180,
+      "exit_code": 1,
+      "state": "finished",
+      "elapsed_seconds": 33.84802470798604,
+      "pytest_counts": {
+        "tests": 122,
+        "failures": 18,
+        "errors": 0,
+        "skipped": 2
+      },
+      "failed_tests": [
+        {
+          "name": "testIsDistributionLambda_eager",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest32",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionLambda_eager_no_tf_function",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest32",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionLambda_graph",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest32",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialAffine_eager",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest32",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialAffine_eager_no_tf_function",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest32",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialAffine_graph",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest32",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialConv_eager",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest32",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialConv_eager_no_tf_function",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest32",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialConv_graph",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest32",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionLambda_eager",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest64",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionLambda_eager_no_tf_function",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest64",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionLambda_graph",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest64",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialAffine_eager",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest64",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialAffine_eager_no_tf_function",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest64",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialAffine_graph",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest64",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialConv_eager",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest64",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialConv_eager_no_tf_function",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest64",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        },
+        {
+          "name": "testIsDistributionSequentialConv_graph",
+          "class": "tensorflow_probability.python.experimental.joint_distribution_layers.layers_test.JDLayersTest64",
+          "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+        }
+      ]
+    }
+  ],
+  "same_exit_status": true,
+  "candidate_only_failure": false
+}

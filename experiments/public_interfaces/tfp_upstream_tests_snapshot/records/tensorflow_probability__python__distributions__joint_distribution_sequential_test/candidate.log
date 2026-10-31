@@ -1,0 +1,42 @@
+........................................................................ [ 62%]
+.....................s.....................s                             [100%]
+=============================== warnings summary ===============================
+tensorflow_probability/python/distributions/joint_distribution_sequential_test.py::JointDistributionSequentialTest::testCompositeTensorSerialization_eager
+tensorflow_probability/python/distributions/joint_distribution_sequential_test.py::JointDistributionSequentialTest::testCompositeTensorSerialization_eager_no_tf_function
+tensorflow_probability/python/distributions/joint_distribution_sequential_test.py::JointDistributionSequentialTest::testCompositeTensorSerialization_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/saved_model/nested_structure_coder.py:458: UserWarning: Encoding a StructuredValue with type tfp.distributions.JointDistributionSequentialSpec; loading this StructuredValue will require that this type be imported and registered.
+    warnings.warn("Encoding a StructuredValue with type %s; loading this "
+
+tensorflow_probability/python/distributions/joint_distribution_sequential_test.py::JointDistributionSequentialTest::testCompositeTensorSerialization_eager
+tensorflow_probability/python/distributions/joint_distribution_sequential_test.py::JointDistributionSequentialTest::testCompositeTensorSerialization_eager_no_tf_function
+tensorflow_probability/python/distributions/joint_distribution_sequential_test.py::JointDistributionSequentialTest::testCompositeTensorSerialization_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/saved_model/nested_structure_coder.py:458: UserWarning: Encoding a StructuredValue with type tfp.distributions.Independent_ACTTypeSpec; loading this StructuredValue will require that this type be imported and registered.
+    warnings.warn("Encoding a StructuredValue with type %s; loading this "
+
+tensorflow_probability/python/distributions/joint_distribution_sequential_test.py::JointDistributionSequentialTest::testCompositeTensorSerialization_eager
+tensorflow_probability/python/distributions/joint_distribution_sequential_test.py::JointDistributionSequentialTest::testCompositeTensorSerialization_eager_no_tf_function
+tensorflow_probability/python/distributions/joint_distribution_sequential_test.py::JointDistributionSequentialTest::testCompositeTensorSerialization_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/saved_model/nested_structure_coder.py:458: UserWarning: Encoding a StructuredValue with type tfp.distributions.Exponential_ACTTypeSpec; loading this StructuredValue will require that this type be imported and registered.
+    warnings.warn("Encoding a StructuredValue with type %s; loading this "
+
+tensorflow_probability/python/distributions/joint_distribution_sequential_test.py::JointDistributionSequentialTest::testCompositeTensorSerialization_eager
+tensorflow_probability/python/distributions/joint_distribution_sequential_test.py::JointDistributionSequentialTest::testCompositeTensorSerialization_eager_no_tf_function
+tensorflow_probability/python/distributions/joint_distribution_sequential_test.py::JointDistributionSequentialTest::testCompositeTensorSerialization_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/saved_model/nested_structure_coder.py:458: UserWarning: Encoding a StructuredValue with type tfp.distributions.Normal_ACTTypeSpec; loading this StructuredValue will require that this type be imported and registered.
+    warnings.warn("Encoding a StructuredValue with type %s; loading this "
+
+tensorflow_probability/python/distributions/joint_distribution_sequential_test.py::JointDistributionSequentialTest::testCompositeTensorSerialization_eager
+tensorflow_probability/python/distributions/joint_distribution_sequential_test.py::JointDistributionSequentialTest::testCompositeTensorSerialization_eager_no_tf_function
+tensorflow_probability/python/distributions/joint_distribution_sequential_test.py::JointDistributionSequentialTest::testCompositeTensorSerialization_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/saved_model/nested_structure_coder.py:458: UserWarning: Encoding a StructuredValue with type tfp.distributions.Sample_ACTTypeSpec; loading this StructuredValue will require that this type be imported and registered.
+    warnings.warn("Encoding a StructuredValue with type %s; loading this "
+
+tensorflow_probability/python/distributions/joint_distribution_sequential_test.py::JointDistributionSequentialTest::testCompositeTensorSerialization_eager
+tensorflow_probability/python/distributions/joint_distribution_sequential_test.py::JointDistributionSequentialTest::testCompositeTensorSerialization_eager_no_tf_function
+tensorflow_probability/python/distributions/joint_distribution_sequential_test.py::JointDistributionSequentialTest::testCompositeTensorSerialization_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/saved_model/nested_structure_coder.py:458: UserWarning: Encoding a StructuredValue with type tfp.distributions.Bernoulli_ACTTypeSpec; loading this StructuredValue will require that this type be imported and registered.
+    warnings.warn("Encoding a StructuredValue with type %s; loading this "
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__distributions__joint_distribution_sequential_test/candidate.xml -
+114 passed, 2 skipped, 18 warnings in 43.14s

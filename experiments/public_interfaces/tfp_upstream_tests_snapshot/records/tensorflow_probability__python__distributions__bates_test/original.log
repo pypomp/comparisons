@@ -1,0 +1,60 @@
+........................................................................ [ 72%]
+.........FFF...............s                                             [100%]
+=================================== FAILURES ===================================
+____________ BatesTest.testBatesStableTotalCountWarning_graph_eager ____________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/bates_test.py:98: in testBatesStableTotalCountWarning
+    self.assertRegex(
+E   AssertionError: Regex didn't match: 'Bates PDF/CDF is unstable for `total_count` >' not found in ''
+----------------------------- Captured stderr call -----------------------------
+WARNING: Bates PDF/CDF is unstable for `total_count` > 25
+____ BatesTest.testBatesStableTotalCountWarning_graph_eager_no_tf_function _____
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/bates_test.py:98: in testBatesStableTotalCountWarning
+    self.assertRegex(
+E   AssertionError: Regex didn't match: 'Bates PDF/CDF is unstable for `total_count` >' not found in ''
+----------------------------- Captured stderr call -----------------------------
+WARNING: Bates PDF/CDF is unstable for `total_count` > 25
+____________ BatesTest.testBatesStableTotalCountWarning_graph_graph ____________
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:327: in bound_param_test
+    return test_method(self, **testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/bates_test.py:98: in testBatesStableTotalCountWarning
+    self.assertRegex(
+E   AssertionError: Regex didn't match: 'Bates PDF/CDF is unstable for `total_count` >' not found in ''
+----------------------------- Captured stderr call -----------------------------
+WARNING: Bates PDF/CDF is unstable for `total_count` > 25
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__distributions__bates_test/original.xml -
+=========================== short test summary info ============================
+FAILED tensorflow_probability/python/distributions/bates_test.py::BatesTest::testBatesStableTotalCountWarning_graph_eager
+FAILED tensorflow_probability/python/distributions/bates_test.py::BatesTest::testBatesStableTotalCountWarning_graph_eager_no_tf_function
+FAILED tensorflow_probability/python/distributions/bates_test.py::BatesTest::testBatesStableTotalCountWarning_graph_graph
+3 failed, 96 passed, 1 skipped in 24.09s

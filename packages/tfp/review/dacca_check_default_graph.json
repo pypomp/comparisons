@@ -1,0 +1,83 @@
+{
+  "passed": true,
+  "purpose": "API integration; not a new estimation comparison",
+  "graph_mode": "default_graph",
+  "optimizer_options": {
+    "disable_model_pruning": false,
+    "disable_meta_optimizer": false
+  },
+  "IF2_bitwise_identity_to_frozen": false,
+  "T": 600,
+  "Euler_steps_per_month": 20,
+  "free_parameters": 23,
+  "particles": 8,
+  "device": "CPU",
+  "dtype": "float32",
+  "IF2_passes": 2,
+  "Adam_updates": 1,
+  "learning_rate": 1e-06,
+  "independent_score_repetitions": 2,
+  "MCSE_assessed": false,
+  "if2_frozen_formal_comparison": [
+    {
+      "pass": 0,
+      "max_parameter_difference": 7.152557373046875e-07,
+      "old_loglik": [
+        -6487.11279296875
+      ],
+      "new_loglik": [
+        -6487.1123046875
+      ],
+      "exact_cloud": false,
+      "exact_loglik": false
+    },
+    {
+      "pass": 1,
+      "max_parameter_difference": 9.5367431640625e-07,
+      "old_loglik": [
+        -5234.4482421875
+      ],
+      "new_loglik": [
+        -5234.44189453125
+      ],
+      "exact_cloud": false,
+      "exact_loglik": false
+    }
+  ],
+  "gradient_checks": {
+    "0.0": {
+      "forward_exact": true,
+      "gradient_finite": true,
+      "max_gradient_difference_from_alpha1": 123.77789306640625
+    },
+    "0.97": {
+      "forward_exact": true,
+      "gradient_finite": true,
+      "max_gradient_difference_from_alpha1": 9.888763427734375
+    },
+    "1.0": {
+      "forward_exact": true,
+      "gradient_finite": true,
+      "max_gradient_difference_from_alpha1": 0.0
+    }
+  },
+  "old_wrapper_loss": [
+    7.016291618347168
+  ],
+  "old_wrapper_loss_gradient_max_difference": 2.47955322265625e-05,
+  "historical_trajectory_identity_claimed": false,
+  "Adam_max_parameter_change": 1.0132789611816406e-06,
+  "score_raw": [
+    -4571.458984375,
+    -4280.22314453125
+  ],
+  "elapsed_seconds_including_graph_builds": 38.840817791060545,
+  "tensorflow": "2.20.0",
+  "tensorflow_probability": "0.25.0",
+  "candidate_path": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/tfp-implementation-v1/candidate/tensorflow_probability/__init__.py",
+  "frozen_copy_hashes": {
+    "model.py": "c56b780552ed204b8c06035a4623d6c7488762a82f8d2b26ac31c2af0ffb4a35",
+    "keyed.py": "0aa6fff1a0a7427560d53e698725cac7ecea84bc2194f3c6e3fe21a1337d5136",
+    "input/frozen.npz": "2fbe1f58a93d1e4370c6ece29647990a15981747eb61561ae0767e444aa18942"
+  }
+}

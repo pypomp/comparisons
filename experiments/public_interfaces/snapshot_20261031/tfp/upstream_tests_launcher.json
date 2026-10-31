@@ -1,0 +1,4 @@
+{
+  "pid": 93510,
+  "scope": "all upstream pytest test files, original and candidate; fixed 180s per file; two pairs in parallel"
+}

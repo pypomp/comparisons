@@ -1,0 +1,21 @@
+{
+  "phase": "complete",
+  "method": "B",
+  "protocol_sha256": "5296ef3cdd1bc6aa6c8de331c8c4c0643865aae56f97560c64ce7ae25ede6d68",
+  "iteration": 3,
+  "target_iterations": 3,
+  "active": [
+    true,
+    true
+  ],
+  "compute_seconds": 0.4973485419759527,
+  "gradient_wall_seconds": 0.5085928339976817,
+  "initialization_seconds": 0.0007936249021440744,
+  "warm_IF2_call_seconds": 0.10419774893671274,
+  "warm_IF2_preparation_seconds": 0.00361895898822695,
+  "initial_parameter_sha256": "eee46f3229a6708de1e4956c8c51f3362e7e4d812e6dc46a95da960e0cbb28f1",
+  "initial_Adam_state_sha256": "37d27295a845f63be6077db40eb6f01086be4a4d4b73a8eccde54694bcbad42d",
+  "initial_Adam_state_empty": true,
+  "job_id": null,
+  "batch_slots": 2
+}

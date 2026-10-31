@@ -1,0 +1,37 @@
+{
+  "kind": "original",
+  "file": "tensorflow_probability/python/experimental/distributions/joint_distribution_pinned_test.py",
+  "command": [
+    "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/bin/python",
+    "-m",
+    "pytest",
+    "tensorflow_probability/python/experimental/distributions/joint_distribution_pinned_test.py",
+    "-q",
+    "--tb=short",
+    "--continue-on-collection-errors",
+    "--junitxml=/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__experimental__distributions__joint_distribution_pinned_test/original.xml"
+  ],
+  "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original",
+  "timeout_seconds": 180,
+  "exit_code": 1,
+  "state": "finished",
+  "elapsed_seconds": 171.17236054199748,
+  "pytest_counts": {
+    "tests": 72,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 2
+  },
+  "failed_tests": [
+    {
+      "name": "test_str_eager",
+      "class": "tensorflow_probability.python.experimental.distributions.joint_distribution_pinned_test.JointDistributionPinnedTest",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+    },
+    {
+      "name": "test_str_graph",
+      "class": "tensorflow_probability.python.experimental.distributions.joint_distribution_pinned_test.JointDistributionPinnedTest",
+      "message": "TypeError: reshape() got an unexpected keyword argument 'newshape'"
+    }
+  ]
+}

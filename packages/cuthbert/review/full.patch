@@ -1,0 +1,1960 @@
+diff --git a/cuthbert/smc/README.md b/cuthbert/smc/README.md
+--- a/cuthbert/smc/README.md
++++ b/cuthbert/smc/README.md
+@@ -1,6 +1,13 @@
+ # Sequential Monte Carlo Methods
+ 
+ The core atomic functions can be found in [`cuthbertlib.smc`](../../cuthbertlib/smc).
++
++Parameter estimation for bootstrap models is available through
++`iterated_filtering.fit` (IF2), `dmop.fit` (discounted MOP gradients), and
++`ifad.fit` (IF2 followed by DMOP and independent PF scoring). These functions
++resample at every observation and accept parameter PyTrees on an unconstrained
++estimation scale. DMOP requires pathwise differentiable model sampling.
++See the [IFAD example](../../docs/examples/parameter_estimation_ifad.md).
+ 
+ <!-- --8<-- [start:feynman_kac] -->
+ Sequential Monte Carlo methods provide particle approximations to general Feynman-Kac models:
+diff --git a/cuthbert/smc/_estimation.py b/cuthbert/smc/_estimation.py
+new file mode 100644
+--- /dev/null
++++ b/cuthbert/smc/_estimation.py
+@@ -0,0 +1,154 @@
++"""Shared implementation details for bootstrap parameter estimation."""
++
++import math
++from collections.abc import Callable
++from typing import Any, Protocol
++
++import jax
++import jax.numpy as jnp
++import numpy as np
++from jax import core
++
++from cuthbert.smc.types import InitSample, LogPotential, PropagateSample
++from cuthbert.utils import dummy_leading_element
++from cuthbertlib.resampling import multinomial, systematic
++
++
++class ModelFactory(Protocol):
++    """Build bootstrap callbacks from an estimation-scale parameter PyTree.
++
++    Apply constraints (exp, sigmoid, etc.) inside this pure JAX function. The
++    returned functions have the same signatures as ``particle_filter.build_filter``.
++    The potential must be the observation log density, not a guided-proposal
++    correction. DMOP additionally requires pathwise differentiable sampling.
++    """
++
++    def __call__(
++        self, parameters: Any, /
++    ) -> tuple[InitSample, PropagateSample, LogPotential]:
++        """Return initial sampler, transition sampler and observation potential."""
++        ...
++
++
++class Optimizer(Protocol):
++    """Optax-compatible optimizer, without a dependency on Optax."""
++
++    def init(self, parameters: Any, /) -> Any:
++        """Initialize optimizer state."""
++        ...
++
++    def update(self, gradients: Any, state: Any, parameters: Any, /) -> tuple[Any, Any]:
++        """Return additive parameter updates and the new optimizer state."""
++        ...
++
++
++def positive_int(name, value, *, allow_zero=False):
++    if isinstance(value, bool) or not isinstance(value, int):
++        raise ValueError(f"{name} must be an integer")
++    if value < (0 if allow_zero else 1):
++        raise ValueError(f"{name} is out of range")
++
++
++def scalar_range(name, value, lo, hi):
++    if not math.isfinite(value) or not lo <= value <= hi:
++        raise ValueError(f"{name} must be finite and in [{lo}, {hi}]")
++
++
++def parameters_tree(parameters):
++    parameters = jax.tree.map(jnp.asarray, parameters)
++    leaves = jax.tree.leaves(parameters)
++    if not leaves or any(x.size == 0 for x in leaves):
++        raise ValueError("parameters must be a nonempty PyTree of nonempty arrays")
++    if any(not jnp.issubdtype(x.dtype, jnp.floating) for x in leaves):
++        raise ValueError("parameters must have real floating-point dtypes")
++    return parameters
++
++
++def inputs_tree(model_inputs):
++    model_inputs = jax.tree.map(jnp.asarray, model_inputs)
++    leaves = jax.tree.leaves(model_inputs)
++    if not leaves or any(x.ndim == 0 for x in leaves):
++        raise ValueError("model_inputs must have a leading observation axis")
++    length = leaves[0].shape[0]
++    if length < 1 or any(x.shape[0] != length for x in leaves):
++        raise ValueError("model_inputs must share a nonempty observation axis")
++    return model_inputs
++
++
++def broadcast_tree(value, template, *, name, boolean=False):
++    # A scalar can control every coordinate; otherwise require the exact tree.
++    if np.isscalar(value) or (hasattr(value, "ndim") and value.ndim == 0):
++        value = jax.tree.map(lambda _: value, template)
++    if jax.tree.structure(value) != jax.tree.structure(template):
++        raise ValueError(f"{name} must be scalar or match the parameter PyTree")
++
++    def convert(v, p):
++        if boolean and not jnp.issubdtype(jnp.asarray(v).dtype, jnp.bool_):
++            raise ValueError(f"{name} must contain boolean values")
++        v = jnp.asarray(v, dtype=bool if boolean else p.dtype)
++        try:
++            v = jnp.broadcast_to(v, p.shape)
++        except ValueError as exc:
++            raise ValueError(f"{name} has an incompatible leaf shape") from exc
++        if not boolean:
++            valid = jnp.isfinite(v) & (v >= 0)
++            all_valid = jnp.all(valid)
++            # A captured array may be concrete while this predicate is traced.
++            if not isinstance(all_valid, core.Tracer) and not bool(all_valid):
++                raise ValueError(f"{name} must be finite and nonnegative")
++            # Invalid traced scales produce a reported failure, not silent use.
++            v = jnp.where(valid, v, jnp.nan)
++        return v
++
++    return jax.tree.map(convert, value, template)
++
++
++def resampler(method):
++    if method == "systematic":
++        return systematic.resampling
++    if method == "multinomial":
++        return multinomial.resampling
++    raise ValueError("resampling must be 'systematic' or 'multinomial'")
++
++
++def all_finite(value):
++    leaves = jax.tree.leaves(value)
++    if not leaves:
++        return jnp.array(True)
++    return jnp.all(jnp.stack([jnp.all(jnp.isfinite(v)) for v in leaves]))
++
++
++def select_tree(condition, new, old):
++    return jax.tree.map(lambda a, b: jnp.where(condition, a, b), new, old)
++
++
++def perturb(parameters, scale, cooling, key):
++    leaves, structure = jax.tree.flatten(parameters)
++    scales = jax.tree.leaves(scale)
++    keys = jax.random.split(key, len(leaves))
++    return jax.tree.unflatten(
++        structure,
++        [
++            p
++            + jnp.asarray(cooling, dtype=p.dtype)
++            * s
++            * jax.random.normal(k, p.shape, dtype=p.dtype)
++            for p, s, k in zip(leaves, scales, keys, strict=True)
++        ],
++    )
++
++
++def scan_final(filter_obj, model_inputs, init_state, key, *, checkpoint):
++    """Match cuthbert.filter's key order, returning only its terminal state."""
++    length = jax.tree.leaves(model_inputs)[0].shape[0]
++    prepare_keys = jax.random.split(key, length)
++    init_state = init_state._replace(model_inputs=dummy_leading_element(model_inputs))
++
++    def step(previous, inp_and_key):
++        inp, k = inp_and_key
++        prepared = filter_obj.filter_prepare(inp, key=k)
++        state = filter_obj.filter_combine(previous, prepared)
++        return state, None
++
++    body: Callable = jax.checkpoint(step) if checkpoint else step
++    return jax.lax.scan(body, init_state, (model_inputs, prepare_keys))[0]
+diff --git a/cuthbert/smc/dmop.py b/cuthbert/smc/dmop.py
+new file mode 100644
+--- /dev/null
++++ b/cuthbert/smc/dmop.py
+@@ -0,0 +1,198 @@
++"""Discounted MOP gradients and optimization for smooth bootstrap models.
++
++All parameters and traces are on the estimation scale. Constraints belong in
++the model factory. Every observation resamples; adaptive/guided filters and
++discrete process-score corrections are deliberately outside this API.
++"""
++
++from typing import Any, NamedTuple
++
++import jax
++import jax.numpy as jnp
++
++from cuthbert.smc import _estimation as util
++from cuthbert.smc import particle_filter
++from cuthbert.smc._estimation import ModelFactory, Optimizer
++from cuthbertlib.resampling import discounted_stop_gradient_decorator
++
++
++class GradientFitResult(NamedTuple):
++    """Optimization output; objectives align with the parameter history.
++
++    ``objectives[m]`` is a negative PF log-likelihood at ``parameter_history[m]``
++    using a fresh key. The last entry is a separate final evaluation. On a failed
++    update, parameters freeze at the last valid value; remaining objectives are
++    NaN and ``success`` is false. Failure is never turned into a zero gradient.
++    """
++
++    parameters: Any
++    parameter_history: Any
++    objectives: Any
++    gradient_norms: Any
++    step_accepted: Any
++    completed_iterations: Any
++    success: Any
++
++
++def log_likelihood(
++    model_factory: ModelFactory,
++    parameters: Any,
++    model_inputs: Any,
++    *,
++    key: Any,
++    n_particles: int,
++    alpha: float = 0.97,
++    resampling: str = "systematic",
++    checkpoint: bool = False,
++) -> jax.Array:
++    """Return the bootstrap PF log-likelihood with a DMOP surrogate derivative.
++
++    Changing alpha leaves forward PF values unchanged. For alpha < 1 its
++    derivative is discounted; finite differences of the unchanged forward PF
++    are NOT a reference for that surrogate derivative.
++
++    Args:
++        model_factory: Estimation-scale parameters to bootstrap callbacks.
++        parameters: A floating-point parameter PyTree.
++        model_inputs: Observation inputs with a common leading time axis.
++        key: Random key, independent across optimization/evaluation calls.
++        n_particles: Positive static particle count.
++        alpha: Static discount in [0, 1].
++        resampling: 'systematic' or 'multinomial', performed at every time.
++        checkpoint: Rematerialize filter steps during differentiation. Disabled
++            by default to retain the original ADPF differentiation path.
++            Enabling this can change floating-point gradients.
++
++    Returns:
++        Scalar log-likelihood with the chosen surrogate gradient.
++    """
++    util.positive_int("n_particles", n_particles)
++    parameters = util.parameters_tree(parameters)
++    inputs = util.inputs_tree(model_inputs)
++    sample0, propagate, potential = model_factory(parameters)
++    sample_ancestors = discounted_stop_gradient_decorator(
++        util.resampler(resampling), alpha
++    )
++    obj = particle_filter.build_filter(
++        sample0, propagate, potential, n_particles, sample_ancestors
++    )
++    init_key, filter_key = jax.random.split(key)
++    final = util.scan_final(
++        obj, inputs, obj.init_prepare(key=init_key), filter_key, checkpoint=checkpoint
++    )
++    return final.log_normalizing_constant
++
++
++def fit(
++    model_factory: ModelFactory,
++    initial_parameters: Any,
++    model_inputs: Any,
++    *,
++    key: Any,
++    n_particles: int,
++    n_iterations: int,
++    optimizer: Optimizer,
++    alpha: float = 0.97,
++    resampling: str = "systematic",
++    trainable_mask: Any = True,
++    max_gradient_norm: float | None = None,
++    checkpoint: bool = False,
++) -> GradientFitResult:
++    """Minimize negative log-likelihood with DMOP and an Optax-style optimizer.
++
++    Args:
++        model_factory: Estimation-scale parameters to bootstrap callbacks.
++        initial_parameters: Floating-point PyTree, also defining trace structure.
++        model_inputs: Time-indexed observation inputs.
++        key: Root key; every iteration and the final evaluation get distinct keys.
++        n_particles: Positive static particle count.
++        n_iterations: Nonnegative static number of gradient updates.
++        optimizer: Object with init(parameters) and update(gradients, state,
++            parameters) methods. Updates are added to parameters, as in Optax.
++        alpha: Static DMOP discount in [0, 1].
++        resampling: Unconditional 'systematic' or 'multinomial'.
++        trainable_mask: Boolean scalar or parameter-shaped PyTree. False entries
++            freeze parameters even if an optimizer applies momentum/weight decay.
++        max_gradient_norm: Optional positive global gradient clipping threshold.
++        checkpoint: Rematerialize each filter step in reverse mode. Disabled
++            by default; enabling it can change floating-point gradients.
++
++    Returns:
++        Traces, last valid parameters and an explicit success flag.
++    """
++    util.positive_int("n_iterations", n_iterations, allow_zero=True)
++    util.positive_int("n_particles", n_particles)
++    util.scalar_range("alpha", alpha, 0, 1)
++    util.resampler(resampling)
++    if max_gradient_norm is not None:
++        util.scalar_range("max_gradient_norm", max_gradient_norm, 1e-30, float("inf"))
++    initial = util.parameters_tree(initial_parameters)
++    inputs = util.inputs_tree(model_inputs)
++    mask = util.broadcast_tree(
++        trainable_mask, initial, name="trainable_mask", boolean=True
++    )
++    keys = jax.random.split(key, n_iterations + 1)
++
++    def objective(parameters, k):
++        return -log_likelihood(
++            model_factory,
++            parameters,
++            inputs,
++            key=k,
++            n_particles=n_particles,
++            alpha=alpha,
++            resampling=resampling,
++            checkpoint=checkpoint,
++        )
++
++    value_dtype = jax.eval_shape(objective, initial, keys[0]).dtype
++
++    def step(carry, k):
++        parameters, opt_state, active = carry
++
++        def advance(_):
++            value, gradient = jax.value_and_grad(objective)(parameters, k)
++            gradient = jax.tree.map(lambda g, m: jnp.where(m, g, 0), gradient, mask)
++            finite = jnp.isfinite(value) & util.all_finite(gradient)
++            norm = jnp.asarray(
++                jnp.sqrt(sum(jnp.sum(g * g) for g in jax.tree.leaves(gradient))),
++                dtype=value_dtype,
++            )
++            finite = finite & jnp.isfinite(norm)
++            if max_gradient_norm is not None:
++                factor = jnp.minimum(1.0, max_gradient_norm / jnp.maximum(norm, 1e-30))
++                gradient = jax.tree.map(lambda g: factor.astype(g.dtype) * g, gradient)
++            updates, next_opt = optimizer.update(gradient, opt_state, parameters)
++            proposal = jax.tree.map(
++                lambda p, u, m: p + jnp.where(m, u, 0), parameters, updates, mask
++            )
++            accepted = finite & util.all_finite(proposal) & util.all_finite(next_opt)
++            result = util.select_tree(accepted, proposal, parameters)
++            next_opt = util.select_tree(accepted, next_opt, opt_state)
++            return (result, next_opt, accepted), (result, value, norm, accepted)
++
++        def skip(_):
++            nan = jnp.asarray(jnp.nan, dtype=value_dtype)
++            return carry, (parameters, nan, nan, jnp.array(False))
++
++        return jax.lax.cond(active, advance, skip, operand=None)
++
++    (parameters, _, active), (history, values, norms, accepted) = jax.lax.scan(
++        step, (initial, optimizer.init(initial), util.all_finite(initial)), keys[:-1]
++    )
++    final_value = jax.lax.cond(
++        active,
++        lambda _: objective(parameters, keys[-1]),
++        lambda _: jnp.asarray(jnp.nan, dtype=values.dtype),
++        operand=None,
++    )
++    history = jax.tree.map(lambda p, h: jnp.concatenate((p[None], h)), initial, history)
++    return GradientFitResult(
++        parameters,
++        history,
++        jnp.concatenate((values, final_value[None])),
++        norms,
++        accepted,
++        jnp.sum(accepted),
++        active & jnp.isfinite(final_value),
++    )
+diff --git a/cuthbert/smc/ifad.py b/cuthbert/smc/ifad.py
+new file mode 100644
+--- /dev/null
++++ b/cuthbert/smc/ifad.py
+@@ -0,0 +1,160 @@
++"""IF2 warm start followed by DMOP optimization and independent PF scoring."""
++
++from typing import Any, NamedTuple
++
++import jax
++import jax.numpy as jnp
++
++from cuthbert.smc import _estimation as util
++from cuthbert.smc import dmop, iterated_filtering, particle_filter
++from cuthbert.smc._estimation import ModelFactory, Optimizer
++
++
++class IFADResult(NamedTuple):
++    """Two-stage fit with independent, unperturbed endpoint PF evaluations.
++
++    ``log_likelihood`` is log(mean(exp(evaluation_log_likelihoods))). Individual
++    repetitions are retained for Monte Carlo diagnostics. No uncertainty or
++    optimizer-superiority claim is implied by success, which means finite runs.
++    """
++
++    parameters: Any
++    warm_start: iterated_filtering.IteratedFilteringResult
++    refinement: dmop.GradientFitResult
++    evaluation_log_likelihoods: Any
++    log_likelihood: Any
++    success: Any
++
++
++def fit(
++    model_factory: ModelFactory,
++    initial_parameters: Any,
++    model_inputs: Any,
++    *,
++    key: Any,
++    n_particles: int,
++    n_if2_iterations: int,
++    n_dmop_iterations: int,
++    perturbation_scale: Any,
++    optimizer: Optimizer,
++    initial_perturbation_scale: Any = None,
++    cooling_rate: float = 0.9,
++    alpha: float = 0.97,
++    resampling: str = "systematic",
++    trainable_mask: Any = True,
++    max_gradient_norm: float | None = None,
++    evaluation_particles: int | None = None,
++    evaluation_replicates: int = 8,
++    checkpoint: bool = False,
++) -> IFADResult:
++    """Run a complete IFAD pipeline for a smooth bootstrap model.
++
++    Args:
++        model_factory: Estimation-scale parameters to bootstrap callbacks.
++        initial_parameters: Initial floating-point parameter PyTree.
++        model_inputs: Time-indexed observation inputs.
++        key: Root key, split into IF2, DMOP and independent evaluation streams.
++        n_particles: Particle count for both fitting stages.
++        n_if2_iterations: Nonnegative number of IF2 passes.
++        n_dmop_iterations: Nonnegative number of DMOP updates.
++        perturbation_scale: IF2 process perturbation standard deviations.
++        optimizer: Optax-compatible optimizer for DMOP (minimizing negative logL).
++        initial_perturbation_scale: IF2 initial noise; defaults to process scales.
++        cooling_rate: IF2 geometric cooling multiplier in (0, 1].
++        alpha: DMOP discount in [0, 1].
++        resampling: Unconditional 'systematic' or 'multinomial'.
++        trainable_mask: Coordinates updated in the DMOP stage. IF2 coordinates
++            are controlled separately by their perturbation scales.
++        max_gradient_norm: Optional DMOP global gradient clipping threshold.
++        evaluation_particles: PF scoring particle count, defaulting to fitting.
++        evaluation_replicates: Positive number of independent scoring PFs.
++        checkpoint: Rematerialize DMOP filter steps in reverse mode. Disabled
++            by default; enabling it can change floating-point gradients.
++
++    Returns:
++        Both stages' traces and independently evaluated final parameters.
++        A failed IF2 stage skips refinement and evaluation and reports failure.
++    """
++    util.positive_int("evaluation_replicates", evaluation_replicates)
++    n_eval = n_particles if evaluation_particles is None else evaluation_particles
++    util.positive_int("evaluation_particles", n_eval)
++    inputs = util.inputs_tree(model_inputs)
++    warm_key, gradient_key, evaluation_key = jax.random.split(key, 3)
++    warm = iterated_filtering.fit(
++        model_factory,
++        initial_parameters,
++        inputs,
++        key=warm_key,
++        n_particles=n_particles,
++        n_iterations=n_if2_iterations,
++        perturbation_scale=perturbation_scale,
++        initial_perturbation_scale=initial_perturbation_scale,
++        cooling_rate=cooling_rate,
++        resampling=resampling,
++    )
++
++    def refine(parameters):
++        return dmop.fit(
++            model_factory,
++            parameters,
++            inputs,
++            key=gradient_key,
++            n_particles=n_particles,
++            n_iterations=n_dmop_iterations,
++            optimizer=optimizer,
++            alpha=alpha,
++            resampling=resampling,
++            trainable_mask=trainable_mask,
++            max_gradient_norm=max_gradient_norm,
++            checkpoint=checkpoint,
++        )
++
++    refinement_shape = jax.eval_shape(refine, warm.parameters)
++
++    def skip_refinement(parameters):
++        history = jax.tree.map(
++            lambda p: jnp.broadcast_to(p, (n_dmop_iterations + 1,) + p.shape),
++            parameters,
++        )
++        return dmop.GradientFitResult(
++            parameters,
++            history,
++            jnp.full(
++                (n_dmop_iterations + 1,), jnp.nan, refinement_shape.objectives.dtype
++            ),
++            jnp.full(
++                (n_dmop_iterations,), jnp.nan, refinement_shape.gradient_norms.dtype
++            ),
++            jnp.zeros(n_dmop_iterations, dtype=bool),
++            jnp.asarray(0, dtype=refinement_shape.completed_iterations.dtype),
++            jnp.array(False),
++        )
++
++    refinement = jax.lax.cond(warm.success, refine, skip_refinement, warm.parameters)
++
++    def evaluate(k):
++        obj = particle_filter.build_filter(
++            *model_factory(refinement.parameters), n_eval, util.resampler(resampling)
++        )
++        init_key, filter_key = jax.random.split(k)
++        return util.scan_final(
++            obj, inputs, obj.init_prepare(key=init_key), filter_key, checkpoint=False
++        ).log_normalizing_constant
++
++    evaluation_keys = jax.random.split(evaluation_key, evaluation_replicates)
++    evaluation_dtype = jax.eval_shape(evaluate, evaluation_keys[0]).dtype
++    logliks = jax.lax.cond(
++        warm.success & refinement.success,
++        lambda _: jax.vmap(evaluate)(evaluation_keys),
++        lambda _: jnp.full((evaluation_replicates,), jnp.nan, dtype=evaluation_dtype),
++        operand=None,
++    )
++    loglik = jax.scipy.special.logsumexp(logliks) - jnp.log(evaluation_replicates)
++    return IFADResult(
++        refinement.parameters,
++        warm,
++        refinement,
++        logliks,
++        loglik,
++        warm.success & refinement.success & util.all_finite(logliks),
++    )
+diff --git a/cuthbert/smc/iterated_filtering.py b/cuthbert/smc/iterated_filtering.py
+new file mode 100644
+--- /dev/null
++++ b/cuthbert/smc/iterated_filtering.py
+@@ -0,0 +1,182 @@
++"""Iterated filtering with Gaussian perturbations on the estimation scale.
++
++Particles carry a model state and a parameter PyTree with shared ancestry.
++Each pass starts from the previous pass's terminal, equally weighted parameter
++swarm. This module uses unconditional bootstrap resampling at every observation.
++"""
++
++from typing import Any, NamedTuple
++
++import jax
++import jax.numpy as jnp
++
++from cuthbert.smc import _estimation as util
++from cuthbert.smc import particle_filter as pf
++from cuthbert.smc._estimation import ModelFactory
++
++
++class IteratedFilteringResult(NamedTuple):
++    """IF2 result on the estimation scale.
++
++    Parameters are the arithmetic mean of the terminal, equally weighted swarm.
++    ``perturbed_log_likelihoods`` belong to the perturbed models, NOT to the
++    static model at these parameters. Use independent unperturbed PF evaluation
++    to compare endpoints. On failure the last valid swarm is retained.
++    """
++
++    parameters: Any
++    parameter_swarm: Any
++    parameter_history: Any
++    perturbed_log_likelihoods: Any
++    step_accepted: Any
++    completed_iterations: Any
++    success: Any
++
++
++def fit(
++    model_factory: ModelFactory,
++    initial_parameters: Any,
++    model_inputs: Any,
++    *,
++    key: Any,
++    n_particles: int,
++    n_iterations: int,
++    perturbation_scale: Any,
++    initial_perturbation_scale: Any = None,
++    cooling_rate: float = 0.9,
++    resampling: str = "systematic",
++) -> IteratedFilteringResult:
++    """Run IF2 with Gaussian parameter random walks and geometric cooling.
++
++    Pass m uses ``cooling_rate**m`` for both initial and within-pass noise.
++    Initial noise is applied before rinit; process noise is applied before each
++    observation interval, including the first. To perturb an IVP only at rinit,
++    give it a nonzero initial scale and a zero process scale.
++
++    Args:
++        model_factory: Estimation-scale parameters to bootstrap callbacks.
++        initial_parameters: Floating-point parameter PyTree. Use vmap for starts.
++        model_inputs: Observation inputs sharing a leading time axis.
++        key: Root key for independent initial, process and terminal draws.
++        n_particles: Positive static size of the state/parameter swarm.
++        n_iterations: Nonnegative static number of passes through the data.
++        perturbation_scale: Nonnegative scalar or parameter-shaped PyTree of
++            standard deviations on the estimation scale.
++        initial_perturbation_scale: Initial standard deviations, defaulting to
++            perturbation_scale. Distinct scales support initial-value parameters.
++        cooling_rate: Static geometric multiplier in (0, 1].
++        resampling: Unconditional 'systematic' or 'multinomial'.
++
++    Returns:
++        Parameter swarm, means, perturbed likelihoods and failure diagnostics.
++    """
++    util.positive_int("n_particles", n_particles)
++    util.positive_int("n_iterations", n_iterations, allow_zero=True)
++    util.scalar_range("cooling_rate", cooling_rate, 1e-30, 1)
++    base_resampling = util.resampler(resampling)
++    initial = util.parameters_tree(initial_parameters)
++    inputs = util.inputs_tree(model_inputs)
++    scale = util.broadcast_tree(perturbation_scale, initial, name="perturbation_scale")
++    initial_scale = util.broadcast_tree(
++        perturbation_scale
++        if initial_perturbation_scale is None
++        else initial_perturbation_scale,
++        initial,
++        name="initial_perturbation_scale",
++    )
++    initial_swarm = jax.tree.map(
++        lambda p: jnp.broadcast_to(p, (n_particles,) + p.shape), initial
++    )
++    iteration_keys = jax.random.split(key, n_iterations)
++
++    def one_pass(swarm, pass_key, cooling):
++        perturb_key, init_key, filter_key, terminal_key = jax.random.split(pass_key, 4)
++        swarm = util.perturb(swarm, initial_scale, cooling, perturb_key)
++        state_keys = jax.random.split(init_key, n_particles)
++        states = jax.vmap(lambda p, k: model_factory(p)[0](k))(swarm, state_keys)
++
++        # This callback is used only for shape inference by filter_prepare.
++        def shape_init(key):
++            return {"state": model_factory(initial)[0](key), "parameters": initial}
++
++        def propagate(key, state, model_inputs):
++            noise_key, process_key = jax.random.split(key)
++            parameters = util.perturb(state["parameters"], scale, cooling, noise_key)
++            next_state = model_factory(parameters)[1](
++                process_key, state["state"], model_inputs
++            )
++            return {"state": next_state, "parameters": parameters}
++
++        def potential(state_prev, state, model_inputs):
++            return model_factory(state["parameters"])[2](
++                state_prev["state"], state["state"], model_inputs
++            )
++
++        obj = pf.build_filter(
++            shape_init, propagate, potential, n_particles, base_resampling
++        )
++        start = pf.ParticleFilterState(
++            init_key,
++            {"state": states, "parameters": swarm},
++            jnp.zeros(n_particles),
++            jnp.arange(n_particles),
++            None,
++            jnp.array(0.0),
++        )
++        final = util.scan_final(obj, inputs, start, filter_key, checkpoint=False)
++        finite = (
++            jnp.isfinite(final.log_normalizing_constant)
++            & util.all_finite(final.particles)
++            & jnp.any(jnp.isfinite(final.log_weights))
++        )
++
++        def finish(_):
++            # cuthbert resamples BEFORE propagation, leaving weighted particles
++            # after the last observation. Explicitly resample the terminal swarm.
++            _, _, particles = base_resampling(
++                terminal_key, final.log_weights, final.particles, n_particles
++            )
++            return particles["parameters"]
++
++        terminal_swarm = jax.lax.cond(finite, finish, lambda _: swarm, operand=None)
++        return terminal_swarm, final.log_normalizing_constant, finite
++
++    loglik_dtype = jax.eval_shape(one_pass, initial_swarm, key, jnp.asarray(1.0))[
++        1
++    ].dtype
++
++    def step(carry, item):
++        swarm, means, active = carry
++        m, pass_key = item
++
++        def advance(_):
++            proposal, loglik, finite = one_pass(swarm, pass_key, cooling_rate**m)
++            proposal_means = jax.tree.map(lambda p: jnp.mean(p, axis=0), proposal)
++            finite = finite & util.all_finite(proposal_means)
++            next_swarm = util.select_tree(finite, proposal, swarm)
++            next_means = util.select_tree(finite, proposal_means, means)
++            return (next_swarm, next_means, finite), (next_means, loglik, finite)
++
++        def skip(_):
++            return carry, (
++                means,
++                jnp.asarray(jnp.nan, dtype=loglik_dtype),
++                jnp.array(False),
++            )
++
++        return jax.lax.cond(active, advance, skip, operand=None)
++
++    valid = (
++        util.all_finite(initial_swarm)
++        & util.all_finite(scale)
++        & util.all_finite(initial_scale)
++    )
++    (swarm, means, active), (history, logliks, accepted) = jax.lax.scan(
++        step,
++        (initial_swarm, initial, valid),
++        (jnp.arange(n_iterations), iteration_keys),
++    )
++    history = jax.tree.map(lambda p, h: jnp.concatenate((p[None], h)), initial, history)
++    return IteratedFilteringResult(
++        means, swarm, history, logliks, accepted, jnp.sum(accepted), active
++    )
+diff --git a/cuthbertlib/resampling/README.md b/cuthbertlib/resampling/README.md
+--- a/cuthbertlib/resampling/README.md
++++ b/cuthbertlib/resampling/README.md
+@@ -51,3 +51,11 @@
+     resampling_key, logits, particles, 100
+ )
+ ```
++
++For smooth bootstrap models that resample at every observation,
++`discounted_stop_gradient_decorator(resampling_fn, alpha)` discounts inherited
++log-weight derivatives without changing the forward particle filter. Alpha
++must be in `[0, 1]`; `alpha=1` recovers the original stop-gradient correction.
++Do not wrap it in an adaptive resampler: skipped calls would discount by
++resampling events instead of observation times. See the
++[IFAD example](../../docs/examples/parameter_estimation_ifad.md).
+diff --git a/cuthbertlib/resampling/__init__.py b/cuthbertlib/resampling/__init__.py
+--- a/cuthbertlib/resampling/__init__.py
++++ b/cuthbertlib/resampling/__init__.py
+@@ -7,6 +7,9 @@
+     systematic,
+ )
+ from cuthbertlib.resampling.adaptive import ess_decorator
+-from cuthbertlib.resampling.autodiff import stop_gradient_decorator
++from cuthbertlib.resampling.autodiff import (
++    discounted_stop_gradient_decorator,
++    stop_gradient_decorator,
++)
+ from cuthbertlib.resampling.protocols import ConditionalResampling, Resampling
+ from cuthbertlib.resampling.utils import inverse_cdf
+diff --git a/cuthbertlib/resampling/autodiff.py b/cuthbertlib/resampling/autodiff.py
+--- a/cuthbertlib/resampling/autodiff.py
++++ b/cuthbertlib/resampling/autodiff.py
+@@ -8,6 +8,7 @@
+ See [Scibior and Wood (2021)](https://arxiv.org/abs/2106.10314) for more details.
+ """
+ 
++import math
+ from functools import wraps
+ 
+ import jax
+@@ -16,6 +17,47 @@
+ from cuthbertlib.resampling.protocols import Resampling
+ from cuthbertlib.resampling.utils import apply_resampling_indices
+ from cuthbertlib.types import Array, ArrayLike, ArrayTree, ArrayTreeLike
++
++
++def discounted_stop_gradient_decorator(func: Resampling, alpha: float) -> Resampling:
++    """Discount inherited log-weight derivatives without changing the forward PF.
++
++    This implements the DMOP weight recursion for a reparameterizable bootstrap
++    particle filter that resamples at EVERY observation. ``func`` must return
++    equally weighted particles (e.g. systematic or multinomial resampling).
++    Do not compose this with adaptive/no-resampling wrappers: skipping calls
++    discounts by resampling events rather than observation times. Guided
++    proposals and discrete transition scores require separate treatment.
++
++    Args:
++        func: An unconditional, equally weighted resampling function.
++        alpha: Static discount in [0, 1]. One recovers the existing stop-gradient
++            correction; zero removes inherited weight derivatives, while keeping
++            pathwise derivatives through the particle states.
++
++    Returns:
++        A resampler with unchanged forward particles, ancestry and weights.
++
++    Raises:
++        ValueError: If alpha is nonfinite or outside [0, 1].
++    """
++    if not math.isfinite(alpha) or not 0 <= alpha <= 1:
++        raise ValueError("alpha must be finite and in [0, 1]")
++
++    # Keep the undiscounted baseline on Cuthbert's existing ADPF implementation.
++    if alpha == 1:
++        return stop_gradient_decorator(func)
++
++    @wraps(func)
++    def wrapped(key, logits, positions, n):
++        idx, base_logits, particles = func(
++            key, jax.lax.stop_gradient(logits), positions, n
++        )
++        selected = apply_resampling_indices(logits, idx)
++        correction = alpha * (selected - jax.lax.stop_gradient(selected))
++        return idx, base_logits + correction, particles
++
++    return jax.jit(wrapped, static_argnames=("n",))
+ 
+ 
+ def stop_gradient_decorator(func: Resampling) -> Resampling:
+diff --git a/docs/api_cuthbert/smc/dmop.md b/docs/api_cuthbert/smc/dmop.md
+new file mode 100644
+--- /dev/null
++++ b/docs/api_cuthbert/smc/dmop.md
+@@ -0,0 +1,31 @@
++# Discounted MOP
++
++The original `stop_gradient_decorator` uses the selected ancestors' log weights
++to correct derivatives through resampling. The added
++`discounted_stop_gradient_decorator` uses the same resampling interface and
++multiplies that derivative correction by `alpha`. The correction is zero in
++the forward calculation. It does not change particle selection, propagation
++or observation likelihoods.
++
++`log_likelihood` constructs the original `particle_filter.build_filter` with
++this decorator. Its internal loop calls the original PF update functions and
++returns only the terminal state, with optional rematerialization for gradients.
++Rematerialization is disabled by default. It saves intermediate storage but
++can change floating-point gradients; comparisons with the original ADPF use
++`checkpoint=False` on the public interface.
++`fit` differentiates this objective and calls a caller-supplied optimizer.
++The optimizer is not an ADPF implementation and does not replace the PF.
++
++At `alpha=1`, this wrapper calls the original `stop_gradient_decorator`.
++The existing ADPF function remains unchanged. For
++`alpha<1`, it is a discounted derivative, not the ordinary derivative of the
++unchanged forward likelihood. This extension is restricted to pathwise
++differentiable bootstrap models with resampling at every observation.
++
++::: cuthbert.smc.dmop
++
++## Model factory and optimizer
++
++::: cuthbert.smc._estimation.ModelFactory
++
++::: cuthbert.smc._estimation.Optimizer
+diff --git a/docs/api_cuthbert/smc/ifad.md b/docs/api_cuthbert/smc/ifad.md
+new file mode 100644
+--- /dev/null
++++ b/docs/api_cuthbert/smc/ifad.md
+@@ -0,0 +1,13 @@
++# IFAD
++
++`fit` composes `iterated_filtering.fit` and `dmop.fit`, then evaluates the final
++parameters with independent original bootstrap PF draws. All three calls use
++the same model factory. IF2 supplies the starting parameters for a newly
++initialized optimizer in the DMOP stage; the stages have separate random keys.
++
++This module does not implement another particle filter. It delegates fitting
++to the two modules above and scoring to `particle_filter.build_filter` with an
++ordinary resampler. Parameter transformations stay in the model factory;
++perturbation scales and optimizer settings are supplied through the API.
++
++::: cuthbert.smc.ifad
+diff --git a/docs/api_cuthbert/smc/index.md b/docs/api_cuthbert/smc/index.md
+--- a/docs/api_cuthbert/smc/index.md
++++ b/docs/api_cuthbert/smc/index.md
+@@ -3,6 +3,9 @@
+ - [Particle filter](particle_filter.md) - flexible particle filter for general Feynman-Kac models.
+ - [Marginal particle filter](marginal_particle_filter.md) - $O(N^2)$ variant of the particle filter.
+ - [Backward sampler](backward_sampler.md) - flexible backward smoothing using approaches in [`cuthbertlib.smc.smoothing`](../../api_cuthbertlib/smc.md).
++- [Discounted MOP](dmop.md) - surrogate gradients and optimization for smooth bootstrap models.
++- [Iterated filtering](iterated_filtering.md) - parameter perturbations and cooling across repeated bootstrap filters.
++- [IFAD](ifad.md) - IF2 warm start, DMOP refinement and independent endpoint evaluation.
+ 
+ The core atomic functions can be found in [`cuthbertlib.smc`](../../api_cuthbertlib/smc.md).
+ 
+diff --git a/docs/api_cuthbert/smc/iterated_filtering.md b/docs/api_cuthbert/smc/iterated_filtering.md
+new file mode 100644
+--- /dev/null
++++ b/docs/api_cuthbert/smc/iterated_filtering.md
+@@ -0,0 +1,20 @@
++# Iterated filtering
++
++`fit` adds Gaussian parameter perturbations and repeated passes through the
++data to the existing bootstrap PF. A model factory returns the same initial,
++propagation and observation callbacks accepted by `particle_filter.build_filter`.
++The factory applies any parameter transformations; it does not implement IF2.
++
++The module wraps those callbacks so that each particle contains both the model
++state and its parameters. It calls the original PF update with these augmented
++particles. State and parameters are resampled together. The complete terminal
++parameter swarm, rather than just its mean, is passed to the next iteration.
++Initial and within-pass perturbation scales can be specified separately.
++
++The implementation uses the original `filter_prepare`, `filter_combine` and
++systematic or multinomial resampler. Its time loop stores only the terminal
++filter state. The model callbacks do not need their own perturbation logic.
++This interface currently supports unconditional bootstrap resampling and a
++geometric cooling factor between passes; other schedules are not implied.
++
++::: cuthbert.smc.iterated_filtering
+diff --git a/docs/examples/index.md b/docs/examples/index.md
+--- a/docs/examples/index.md
++++ b/docs/examples/index.md
+@@ -11,4 +11,5 @@
+ - [Ensemble Kalman filtering for Lorenz-63](enkf_comparison.md)
+ - [Ensemble Kalman filtering with localization for Lorenz-96](enkf_localization_l96.md)
+ - [Differentiable particle filtering](diff_pf_resampling.md)
++- [Parameter estimation with IFAD](parameter_estimation_ifad.md)
+ - [Using `cuthbert` with Dynamax](dynamax_integration.md)
+diff --git a/docs/examples/parameter_estimation_ifad.md b/docs/examples/parameter_estimation_ifad.md
+new file mode 100644
+--- /dev/null
++++ b/docs/examples/parameter_estimation_ifad.md
+@@ -0,0 +1,258 @@
++# Parameter estimation with IFAD
++
++IFAD uses iterated filtering (IF2) to find a starting point, then automatic
++differentiation to refine it. This example fits a continuous linear Gaussian
++model using discounted MOP (DMOP) derivatives. An exact Kalman likelihood gives
++an independent check of the fitted endpoint.
++
++For the method, see [Tan et al., Automatic Differentiation for Inference on
++Partially Observed Markov Process Models](https://arxiv.org/abs/2407.03085v2).
++The IF2 stage follows [Ionides et al. (2015)](https://doi.org/10.1073/pnas.1410597112).
++
++The implementation supports bootstrap particle filters with resampling at every
++observation. The model samplers must be pathwise differentiable for the DMOP
++stage. Adaptive resampling, guided proposals and discrete transition-score
++corrections are outside this example's scope.
++
++Install the `examples` extra to obtain Optax. The library itself accepts an
++Optax-compatible optimizer without requiring Optax as a core dependency.
++
++## Model and parameters
++
++We use a stationary AR(1) latent process with known persistence and observation
++noise, and estimate its mean and process standard deviation. The estimation
++scale is `(mean, log_process_sd)`; constraints are applied inside the model
++factory. Its three callbacks use the existing particle-filter signatures.
++
++```{.python #ifad-imports}
++"""Use the existing PF callbacks for ADPF, IF2 and IFAD."""
++
++import jax
++import jax.numpy as jnp
++import optax
++
++from cuthbert import filter as run_filter
++from cuthbert.smc import dmop, ifad, particle_filter
++from cuthbertlib.resampling import autodiff, systematic
++
++jax.config.update("jax_enable_x64", True)
++RHO, OBS_SD = 0.65, 0.5
++
++
++def model(parameters):
++    """Construct a reparameterized bootstrap model."""
++    mean, log_q = parameters
++    q = jnp.exp(log_q)
++
++    def init_sample(key):
++        return mean + q / jnp.sqrt(1 - RHO**2) * jax.random.normal(key)
++
++    def propagate_sample(key, state, model_inputs):
++        return mean + RHO * (state - mean) + q * jax.random.normal(key)
++
++    def log_potential(state_prev, state, model_inputs):
++        z = (model_inputs - state) / OBS_SD
++        return -0.5 * (z**2 + jnp.log(2 * jnp.pi * OBS_SD**2))
++
++    return init_sample, propagate_sample, log_potential
++```
++
++The data, IF2, DMOP and endpoint scoring each use separate random streams.
++
++```{.python #ifad-data}
++def simulate(key, parameters, length):
++    """Generate observations from the same model."""
++    init, propagate, _ = model(parameters)
++    init_key, steps_key = jax.random.split(key)
++
++    def step(x, k):
++        process_key, observation_key = jax.random.split(k)
++        x = propagate(process_key, x, None)
++        return x, x + OBS_SD * jax.random.normal(observation_key)
++
++    return jax.lax.scan(
++        step, init(init_key), jax.random.split(steps_key, length)
++    )[1]
++
++
++data_key, fit_key = jax.random.split(jax.random.key(2026))
++truth = jnp.array([1.25, jnp.log(0.45)])
++observations = simulate(data_key, truth, 60)
++initial = jnp.array([-1.5, jnp.log(1.2)])
++```
++
++## Using the existing particle filter
++
++The same model factory can be passed to the existing particle filter. No
++parameter perturbations or gradient corrections belong in these model callbacks.
++The original ADPF is obtained by wrapping the resampling function with the
++existing `stop_gradient_decorator`:
++
++```{.python #ifad-existing-pf}
++def original_log_likelihood(parameters, key, resampler):
++    """Evaluate the original PF using the same model callbacks."""
++    init_sample, propagate_sample, log_potential = model(parameters)
++    obj = particle_filter.build_filter(
++        init_sample, propagate_sample, log_potential, 64, resampler
++    )
++    init_key, filter_key = jax.random.split(key)
++    states = run_filter(
++        obj, observations, obj.init_prepare(key=init_key), key=filter_key
++    )
++    return states.log_normalizing_constant[-1]
++
++
++comparison_key = jax.random.key(19)
++original_adpf = autodiff.stop_gradient_decorator(systematic.resampling)
++adpf_value, adpf_gradient = jax.jit(
++    jax.value_and_grad(
++        lambda p: original_log_likelihood(p, comparison_key, original_adpf)
++    )
++)(initial)
++dmop_value, dmop_gradient = jax.jit(
++    jax.value_and_grad(
++        lambda p: dmop.log_likelihood(
++            model, p, observations, key=comparison_key, n_particles=64, alpha=1.0
++        )
++    )
++)(initial)
++assert bool(jnp.allclose(adpf_value, dmop_value, rtol=1e-10, atol=1e-10))
++assert bool(jnp.allclose(adpf_gradient, dmop_gradient, rtol=1e-10, atol=1e-10))
++```
++
++The IF2 module wraps these callbacks to carry and perturb parameters alongside
++the state. The DMOP module passes a discounted resampling decorator to the
++same `particle_filter.build_filter`. Both use the original PF update functions.
++Their internal time loop returns only the final state and can rematerialize
++steps for differentiation; `run_filter` above returns the full state history.
++The optimizer is supplied separately: this example uses Optax Adam.
++
++## IF2 followed by DMOP
++
++Each IF2 particle contains both a state and parameters. They share ancestry.
++Gaussian parameter perturbations shrink geometrically between passes. The
++terminal weighted parameter swarm is resampled before starting the next pass.
++For an initial-value parameter, use a nonzero `initial_perturbation_scale` and
++zero `perturbation_scale` in that coordinate.
++
++DMOP uses an inherited log-weight derivative correction discounted by `alpha`.
++The forward calculation is the usual bootstrap PF likelihood for every alpha.
++At `alpha=1`, the wrapper calls cuthbert's existing stop-gradient
++resampler. For `alpha<1`, it is a discounted surrogate derivative, so finite
++differences of the forward PF are not a valid gradient reference. At `alpha=0`,
++pathwise state derivatives remain, but inherited weight derivatives vanish.
++
++```{.python #ifad-fit}
++@jax.jit
++def fit(parameters, key):
++    """Run both fitting stages and independent endpoint scoring."""
++    return ifad.fit(
++        model,
++        parameters,
++        observations,
++        key=key,
++        n_particles=256,
++        n_if2_iterations=20,
++        n_dmop_iterations=60,
++        perturbation_scale=jnp.array([0.12, 0.08]),
++        cooling_rate=0.9,
++        alpha=0.97,
++        optimizer=optax.adam(0.03),
++        max_gradient_norm=50.0,
++        evaluation_particles=2048,
++        evaluation_replicates=8,
++    )
++
++
++result = jax.block_until_ready(fit(initial, fit_key))
++assert bool(result.success), "Inspect stage success flags and traces on failure"
++print("Initial parameters:", initial)
++print("IF2 endpoint:", result.warm_start.parameters)
++print("IFAD endpoint:", result.parameters)
++print("Independent PF log-likelihoods:", result.evaluation_log_likelihoods)
++print("Log of the mean PF likelihood:", float(result.log_likelihood))
++```
++
++The IF2 likelihood trace belongs to perturbed models; it is not an endpoint
++score for the original model. DMOP's objective is negative log-likelihood,
++with its final entry evaluated under a new key. IFAD's endpoint score uses
++independent, unmodified bootstrap PFs and averages likelihoods on the natural
++scale before taking the logarithm. The raw log-likelihood repetitions are
++also returned.
++
++`success` reports finite execution, not optimizer convergence. An invalid
++update freezes the previous parameters and skips later updates. IF2 failure
++skips refinement and scoring. Inspect `step_accepted` and
++`completed_iterations` to identify where a stage stopped.
++
++## Independent exact check
++
++This scalar Kalman recursion uses the same stationary initialization and data
++convention as the simulator. It evaluates all three endpoints without using
++particle randomness or the fitted objective trace.
++
++```{.python #ifad-check}
++def exact_log_likelihood(parameters):
++    """Evaluate the original model by a scalar Kalman recursion."""
++    mean, log_q = parameters
++    q2 = jnp.exp(2 * log_q)
++
++    def step(carry, y):
++        m, variance, loglik = carry
++        predicted = mean + RHO * (m - mean)
++        variance = RHO**2 * variance + q2
++        innovation_variance = variance + OBS_SD**2
++        error = y - predicted
++        loglik -= 0.5 * (
++            jnp.log(2 * jnp.pi * innovation_variance)
++            + error**2 / innovation_variance
++        )
++        gain = variance / innovation_variance
++        return (
++            predicted + gain * error,
++            (1 - gain) * variance,
++            loglik,
++        ), None
++
++    return jax.lax.scan(
++        step, (mean, q2 / (1 - RHO**2), jnp.array(0.0)), observations
++    )[0][2]
++
++
++exact_scores = jax.vmap(exact_log_likelihood)(
++    jnp.stack([initial, result.warm_start.parameters, result.parameters])
++)
++print("Exact log-likelihoods [initial, IF2, IFAD]:", exact_scores)
++assert bool(jnp.all(jnp.isfinite(exact_scores)))
++# A regression check for this fixed seed and deliberately poor start only.
++assert float(exact_scores[-1]) > float(exact_scores[0])
++```
++
++## Key Takeaways
++
++- The existing PF and resampling kernels support both stages through a model
++  factory and joint state/parameter particles.
++- Parameters and traces are on the estimation scale. Optimizer masks apply to
++  DMOP; IF2 coordinates are controlled by their perturbation scales.
++- Independent endpoint evaluation is essential. This fixed-seed illustration
++  establishes a working pipeline, not an optimization or speed advantage over
++  other methods.
++
++## Next Steps
++
++- Read the [DMOP](../api_cuthbert/smc/dmop.md),
++  [IF2](../api_cuthbert/smc/iterated_filtering.md) and
++  [IFAD](../api_cuthbert/smc/ifad.md) API documentation.
++- Compare against the existing [differentiable PF example](diff_pf_resampling.md).
++- For performance comparisons, repeat multiple starts under matched total
++  computation, count both fitting stages, and use independent endpoint scores.
++
++<!--- entangled-tangle-block
++```{.python file=examples_scripts/parameter_estimation_ifad.py}
++<<ifad-imports>>
++<<ifad-data>>
++<<ifad-existing-pf>>
++<<ifad-fit>>
++<<ifad-check>>
++```
++-->
+diff --git a/examples_scripts/parameter_estimation_ifad.py b/examples_scripts/parameter_estimation_ifad.py
+new file mode 100644
+--- /dev/null
++++ b/examples_scripts/parameter_estimation_ifad.py
+@@ -0,0 +1,152 @@
++# ~/~ begin <<docs/examples/parameter_estimation_ifad.md#examples_scripts/parameter_estimation_ifad.py>>[init]
++# ~/~ begin <<docs/examples/parameter_estimation_ifad.md#ifad-imports>>[init]
++"""Use the existing PF callbacks for ADPF, IF2 and IFAD."""
++
++import jax
++import jax.numpy as jnp
++import optax
++
++from cuthbert import filter as run_filter
++from cuthbert.smc import dmop, ifad, particle_filter
++from cuthbertlib.resampling import autodiff, systematic
++
++jax.config.update("jax_enable_x64", True)
++RHO, OBS_SD = 0.65, 0.5
++
++
++def model(parameters):
++    """Construct a reparameterized bootstrap model."""
++    mean, log_q = parameters
++    q = jnp.exp(log_q)
++
++    def init_sample(key):
++        return mean + q / jnp.sqrt(1 - RHO**2) * jax.random.normal(key)
++
++    def propagate_sample(key, state, model_inputs):
++        return mean + RHO * (state - mean) + q * jax.random.normal(key)
++
++    def log_potential(state_prev, state, model_inputs):
++        z = (model_inputs - state) / OBS_SD
++        return -0.5 * (z**2 + jnp.log(2 * jnp.pi * OBS_SD**2))
++
++    return init_sample, propagate_sample, log_potential
++# ~/~ end
++# ~/~ begin <<docs/examples/parameter_estimation_ifad.md#ifad-data>>[init]
++def simulate(key, parameters, length):
++    """Generate observations from the same model."""
++    init, propagate, _ = model(parameters)
++    init_key, steps_key = jax.random.split(key)
++
++    def step(x, k):
++        process_key, observation_key = jax.random.split(k)
++        x = propagate(process_key, x, None)
++        return x, x + OBS_SD * jax.random.normal(observation_key)
++
++    return jax.lax.scan(
++        step, init(init_key), jax.random.split(steps_key, length)
++    )[1]
++
++
++data_key, fit_key = jax.random.split(jax.random.key(2026))
++truth = jnp.array([1.25, jnp.log(0.45)])
++observations = simulate(data_key, truth, 60)
++initial = jnp.array([-1.5, jnp.log(1.2)])
++# ~/~ end
++# ~/~ begin <<docs/examples/parameter_estimation_ifad.md#ifad-existing-pf>>[init]
++def original_log_likelihood(parameters, key, resampler):
++    """Evaluate the original PF using the same model callbacks."""
++    init_sample, propagate_sample, log_potential = model(parameters)
++    obj = particle_filter.build_filter(
++        init_sample, propagate_sample, log_potential, 64, resampler
++    )
++    init_key, filter_key = jax.random.split(key)
++    states = run_filter(
++        obj, observations, obj.init_prepare(key=init_key), key=filter_key
++    )
++    return states.log_normalizing_constant[-1]
++
++
++comparison_key = jax.random.key(19)
++original_adpf = autodiff.stop_gradient_decorator(systematic.resampling)
++adpf_value, adpf_gradient = jax.jit(
++    jax.value_and_grad(
++        lambda p: original_log_likelihood(p, comparison_key, original_adpf)
++    )
++)(initial)
++dmop_value, dmop_gradient = jax.jit(
++    jax.value_and_grad(
++        lambda p: dmop.log_likelihood(
++            model, p, observations, key=comparison_key, n_particles=64, alpha=1.0
++        )
++    )
++)(initial)
++assert bool(jnp.allclose(adpf_value, dmop_value, rtol=1e-10, atol=1e-10))
++assert bool(jnp.allclose(adpf_gradient, dmop_gradient, rtol=1e-10, atol=1e-10))
++# ~/~ end
++# ~/~ begin <<docs/examples/parameter_estimation_ifad.md#ifad-fit>>[init]
++@jax.jit
++def fit(parameters, key):
++    """Run both fitting stages and independent endpoint scoring."""
++    return ifad.fit(
++        model,
++        parameters,
++        observations,
++        key=key,
++        n_particles=256,
++        n_if2_iterations=20,
++        n_dmop_iterations=60,
++        perturbation_scale=jnp.array([0.12, 0.08]),
++        cooling_rate=0.9,
++        alpha=0.97,
++        optimizer=optax.adam(0.03),
++        max_gradient_norm=50.0,
++        evaluation_particles=2048,
++        evaluation_replicates=8,
++    )
++
++
++result = jax.block_until_ready(fit(initial, fit_key))
++assert bool(result.success), "Inspect stage success flags and traces on failure"
++print("Initial parameters:", initial)
++print("IF2 endpoint:", result.warm_start.parameters)
++print("IFAD endpoint:", result.parameters)
++print("Independent PF log-likelihoods:", result.evaluation_log_likelihoods)
++print("Log of the mean PF likelihood:", float(result.log_likelihood))
++# ~/~ end
++# ~/~ begin <<docs/examples/parameter_estimation_ifad.md#ifad-check>>[init]
++def exact_log_likelihood(parameters):
++    """Evaluate the original model by a scalar Kalman recursion."""
++    mean, log_q = parameters
++    q2 = jnp.exp(2 * log_q)
++
++    def step(carry, y):
++        m, variance, loglik = carry
++        predicted = mean + RHO * (m - mean)
++        variance = RHO**2 * variance + q2
++        innovation_variance = variance + OBS_SD**2
++        error = y - predicted
++        loglik -= 0.5 * (
++            jnp.log(2 * jnp.pi * innovation_variance)
++            + error**2 / innovation_variance
++        )
++        gain = variance / innovation_variance
++        return (
++            predicted + gain * error,
++            (1 - gain) * variance,
++            loglik,
++        ), None
++
++    return jax.lax.scan(
++        step, (mean, q2 / (1 - RHO**2), jnp.array(0.0)), observations
++    )[0][2]
++
++
++exact_scores = jax.vmap(exact_log_likelihood)(
++    jnp.stack([initial, result.warm_start.parameters, result.parameters])
++)
++print("Exact log-likelihoods [initial, IF2, IFAD]:", exact_scores)
++assert bool(jnp.all(jnp.isfinite(exact_scores)))
++# A regression check for this fixed seed and deliberately poor start only.
++assert float(exact_scores[-1]) > float(exact_scores[0])
++# ~/~ end
++# ~/~ end
+diff --git a/pkg/cuthbert/pyproject.toml b/pkg/cuthbert/pyproject.toml
+--- a/pkg/cuthbert/pyproject.toml
++++ b/pkg/cuthbert/pyproject.toml
+@@ -28,7 +28,7 @@
+ docs = ["zensical", "mkdocstrings-python"]
+ examples = [
+     "matplotlib", "pandas", "pandas-stubs", "yfinance",
+-    "dynamax", "ipython", "tfp-nightly[jax]",
++    "dynamax", "ipython", "tfp-nightly[jax]", "optax",
+ ]
+ 
+ [tool.uv.sources]
+diff --git a/tests/cuthbert/smc/test_parameter_estimation.py b/tests/cuthbert/smc/test_parameter_estimation.py
+new file mode 100644
+--- /dev/null
++++ b/tests/cuthbert/smc/test_parameter_estimation.py
+@@ -0,0 +1,582 @@
++"""Independent recursion and end-to-end checks for bootstrap parameter fitting."""
++
++from functools import partial
++from typing import NamedTuple
++
++import jax
++import jax.numpy as jnp
++import numpy as np
++import pytest
++
++from cuthbert import filter as run_filter
++from cuthbert.smc import dmop, ifad, iterated_filtering
++from cuthbert.smc import particle_filter as pf
++from cuthbertlib.resampling import autodiff, multinomial, systematic
++
++
++class Optimizer(NamedTuple):
++    init: object
++    update: object
++
++
++def sgd(rate):
++    return Optimizer(
++        lambda _: (),
++        lambda g, s, p: (jax.tree.map(lambda x: -rate * x, g), s),
++    )
++
++
++@pytest.fixture(autouse=True)
++def precision():
++    previous = jax.config.jax_enable_x64
++    jax.config.update("jax_enable_x64", True)
++    yield
++    jax.config.update("jax_enable_x64", previous)
++
++
++def model(theta):
++    phi, log_q, initial_mean = theta
++
++    def init(k):
++        return initial_mean + jax.random.normal(k, (), dtype=theta.dtype)
++
++    def propagate(k, x, y):
++        return jnp.tanh(phi) * x + jnp.exp(log_q) * jax.random.normal(
++            k, (), dtype=theta.dtype
++        )
++
++    def potential(old, x, y):
++        return -0.5 * ((y - x) / 0.7) ** 2 - jnp.log(0.7 * jnp.sqrt(2 * jnp.pi))
++
++    return init, propagate, potential
++
++
++Y = [0.3, -0.5, 0.7, 1.0, 0.2]
++
++
++def test_public_alpha_one_uses_original_adpf(monkeypatch):
++    """The undiscounted comparison must execute the original package decorator."""
++    original = autodiff.stop_gradient_decorator
++    calls = []
++
++    def record_original(resampler):
++        calls.append(resampler)
++        return original(resampler)
++
++    monkeypatch.setattr(autodiff, "stop_gradient_decorator", record_original)
++    theta = jnp.array([0.4, -0.7, 0.2])
++    value, gradient = jax.value_and_grad(
++        lambda p: dmop.log_likelihood(
++            model,
++            p,
++            jnp.array(Y),
++            key=jax.random.key(13),
++            n_particles=32,
++            alpha=1.0,
++            resampling="systematic",
++        )
++    )(theta)
++    assert calls == [systematic.resampling]
++    assert np.isfinite(value) and np.isfinite(gradient).all()
++
++
++def stock_run(theta, ys, key, resampler, n=32):
++    obj = pf.build_filter(*model(theta), n, resampler)
++    ik, fk = jax.random.split(key)
++    return run_filter(obj, ys, obj.init_prepare(key=ik), key=fk)
++
++
++@pytest.mark.parametrize("method", ["systematic", "multinomial"])
++@pytest.mark.parametrize("alpha", [0.0, 0.5, 0.97, 1.0])
++def test_dmop_matches_explicit_recursion(method, alpha):
++    theta, ys, key = jnp.array([0.4, -0.7, 0.2]), jnp.array(Y), jax.random.key(13)
++    n, t_count = 32, len(Y)
++    base = systematic.resampling if method == "systematic" else multinomial.resampling
++    stock = stock_run(theta, ys, key, base, n)
++    wrapped = autodiff.discounted_stop_gradient_decorator(base, alpha)
++    with_correction = stock_run(theta, ys, key, wrapped, n)
++    np.testing.assert_array_equal(stock.particles, with_correction.particles)
++    np.testing.assert_array_equal(
++        stock.ancestor_indices, with_correction.ancestor_indices
++    )
++    np.testing.assert_allclose(
++        stock.log_normalizing_constant,
++        with_correction.log_normalizing_constant,
++        rtol=1e-14,
++        atol=1e-14,
++    )
++
++    # Explicit propagate/weight/resample MOP recurrence with recorded randomness.
++    # cuthbert also resamples BEFORE its first propagation; retain that ancestry.
++    ik, fk = jax.random.split(key)
++    initial_noise = jax.vmap(lambda k: jax.random.normal(k))(jax.random.split(ik, n))
++    prep = jax.random.split(fk, t_count)
++    step_keys = jnp.concatenate([ik[None], prep[:-1]])
++    noise = jax.vmap(
++        lambda k: jax.vmap(lambda s: jax.random.normal(s))(
++            jax.random.split(k, n + 1)[1:]
++        )
++    )(step_keys)
++    ancestry = stock.ancestor_indices[1:]
++
++    def reference(th):
++        x = (th[2] + initial_noise)[ancestry[0]]
++        score, ll = jnp.zeros(n), jnp.array(0.0)
++        for t in range(t_count):
++            prior = alpha * score
++            x = jnp.tanh(th[0]) * x + jnp.exp(th[1]) * noise[t]
++            g = model(th)[2](x, x, ys[t])
++            ll += jax.scipy.special.logsumexp(prior + g) - jax.scipy.special.logsumexp(
++                prior
++            )
++            if t + 1 < t_count:
++                idx = ancestry[t + 1]
++                x = x[idx]
++                score = (prior + g - jax.lax.stop_gradient(g))[idx]
++        return ll
++
++    fn = partial(
++        dmop.log_likelihood,
++        model,
++        model_inputs=ys,
++        key=key,
++        n_particles=n,
++        alpha=alpha,
++        resampling=method,
++    )
++    value, grad = jax.jit(jax.value_and_grad(fn))(theta)
++    rv, rg = jax.value_and_grad(reference)(theta)
++    np.testing.assert_allclose(value, rv, rtol=1e-12, atol=1e-12)
++    np.testing.assert_allclose(grad, rg, rtol=1e-12, atol=1e-12)
++    if alpha == 0:
++        expected = jax.grad(
++            lambda p: stock_run(p, ys, key, base, n).log_normalizing_constant[-1]
++        )(theta)
++        np.testing.assert_allclose(grad, expected, rtol=1e-12, atol=1e-12)
++    if alpha == 1:
++        expected = jax.grad(
++            lambda p: stock_run(
++                p, ys, key, autodiff.stop_gradient_decorator(base), n
++            ).log_normalizing_constant[-1]
++        )(theta)
++        np.testing.assert_allclose(grad, expected, rtol=1e-12, atol=1e-12)
++
++
++def manual_if2(theta, ys, key, n, iterations, scale, init_scale, cooling):
++    """Plain Python-loop IF2 reference including terminal resampling."""
++    swarm = jnp.broadcast_to(theta, (n, theta.size))
++    likelihoods, means = [], [theta]
++    for m, mk in enumerate(jax.random.split(key, iterations)):
++        nk, ik, fk, tk = jax.random.split(mk, 4)
++        rate = cooling**m
++        swarm = swarm + rate * init_scale * jax.random.normal(
++            jax.random.split(nk, 1)[0], swarm.shape
++        )
++        x = jax.vmap(lambda p, k: model(p)[0](k))(swarm, jax.random.split(ik, n))
++        weights, ll = jnp.zeros(n), jnp.array(0.0)
++        step_keys = jnp.concatenate([ik[None], jax.random.split(fk, len(ys))[:-1]])
++        for y, sk in zip(ys, step_keys, strict=True):
++            keys = jax.random.split(sk, n + 1)
++            idx, _, _ = systematic.resampling(keys[0], weights, x, n)
++            x, swarm = x[idx], swarm[idx]
++            split = jax.vmap(jax.random.split)(keys[1:])
++            noise_keys = jax.vmap(lambda k: jax.random.split(k, 1)[0])(split[:, 0])
++            eps = jax.vmap(lambda k: jax.random.normal(k, theta.shape))(noise_keys)
++            swarm = swarm + rate * scale * eps
++            old = x
++            x = jax.vmap(lambda k, s, p: model(p)[1](k, s, y))(split[:, 1], x, swarm)
++            weights = jax.vmap(lambda a, b, p: model(p)[2](a, b, y))(old, x, swarm)
++            ll += jax.scipy.special.logsumexp(weights) - jnp.log(n)
++        idx, _, _ = systematic.resampling(tk, weights, x, n)
++        swarm = swarm[idx]
++        means.append(jnp.mean(swarm, axis=0))
++        likelihoods.append(ll)
++    return swarm, jnp.stack(means), jnp.stack(likelihoods)
++
++
++@pytest.mark.parametrize("scale", [jnp.zeros(3), jnp.array([0.1, 0.04, 0.0])])
++@pytest.mark.parametrize("initial_scale", [[0.0, 0.0, 0.0], [0.02, 0.0, 0.3]])
++def test_if2_cooling_and_initial_parameters_against_reference(scale, initial_scale):
++    theta, ys, key = jnp.array([0.4, -0.7, 0.2]), jnp.array(Y), jax.random.key(5)
++    init_scale = jnp.array(initial_scale)
++    expected, means, logliks = manual_if2(theta, ys, key, 16, 3, scale, init_scale, 0.6)
++    result = iterated_filtering.fit(
++        model,
++        theta,
++        ys,
++        key=key,
++        n_particles=16,
++        n_iterations=3,
++        perturbation_scale=scale,
++        initial_perturbation_scale=init_scale,
++        cooling_rate=0.6,
++    )
++    assert result.success and result.completed_iterations == 3
++    np.testing.assert_allclose(result.parameter_swarm, expected, rtol=2e-6, atol=1e-7)
++    np.testing.assert_allclose(result.parameter_history, means, rtol=2e-6, atol=1e-7)
++    np.testing.assert_allclose(
++        result.perturbed_log_likelihoods, logliks, rtol=2e-6, atol=1e-7
++    )
++
++
++def tree_model(parameters):
++    return model(jnp.concatenate([parameters["dynamic"], parameters["initial"][None]]))
++
++
++@pytest.mark.parametrize("dtype", [jnp.float32, jnp.float64])
++def test_pytree_jit_vmap_masks_and_checkpoint(dtype):
++    theta = {"dynamic": jnp.array([0.4, -0.7], dtype), "initial": jnp.array(0.2, dtype)}
++    ys = jnp.array(Y, dtype)
++    key = jax.random.key(8)
++
++    def fn(p, k):
++        return dmop.fit(
++            tree_model,
++            p,
++            ys,
++            key=k,
++            n_particles=16,
++            n_iterations=2,
++            optimizer=sgd(0.01),
++            trainable_mask={"dynamic": True, "initial": False},
++            max_gradient_norm=2.0,
++        )
++
++    result = jax.jit(fn)(theta, key)
++    assert result.success
++    np.testing.assert_array_equal(
++        result.parameter_history["initial"], 0.2 * np.ones(3, dtype=np.dtype(dtype))
++    )
++    batch = jax.jit(jax.vmap(fn, in_axes=(None, 0)))(theta, jax.random.split(key, 2))
++    assert np.asarray(batch.success).all()
++    for checkpoint in (False, True):
++        value, gradient = jax.value_and_grad(
++            lambda p: dmop.log_likelihood(
++                tree_model, p, ys, key=key, n_particles=16, checkpoint=checkpoint
++            )
++        )(theta)
++        if not checkpoint:
++            expected_value, expected_gradient = value, gradient
++        else:
++            np.testing.assert_allclose(value, expected_value, rtol=1e-6)
++            for a, b in zip(
++                jax.tree.leaves(gradient),
++                jax.tree.leaves(expected_gradient),
++                strict=True,
++            ):
++                np.testing.assert_allclose(a, b, rtol=1e-5, atol=1e-6)
++    warm = jax.jit(
++        lambda p, k: iterated_filtering.fit(
++            tree_model,
++            p,
++            ys,
++            key=k,
++            n_particles=16,
++            n_iterations=2,
++            perturbation_scale={"dynamic": 0.01, "initial": 0.0},
++            initial_perturbation_scale={"dynamic": 0.0, "initial": 0.05},
++        )
++    )(theta, key)
++    assert warm.success
++    assert warm.parameters["dynamic"].dtype == dtype
++
++
++def test_objective_trace_alignment_and_final_evaluation():
++    theta, ys, key = jnp.array([0.4, -0.7, 0.2]), jnp.array(Y), jax.random.key(16)
++    result = dmop.fit(
++        model, theta, ys, key=key, n_particles=16, n_iterations=3, optimizer=sgd(0.01)
++    )
++    keys = jax.random.split(key, 4)
++    for i in range(4):
++        objective = -dmop.log_likelihood(
++            model, result.parameter_history[i], ys, key=keys[i], n_particles=16
++        )
++        np.testing.assert_allclose(result.objectives[i], objective, rtol=1e-12)
++
++
++def test_ifad_composition_and_independent_scoring():
++    theta, ys, key = jnp.array([0.4, -0.7, 0.2]), jnp.array(Y), jax.random.key(42)
++    result = jax.jit(
++        lambda p, k: ifad.fit(
++            model,
++            p,
++            ys,
++            key=k,
++            n_particles=16,
++            n_if2_iterations=2,
++            n_dmop_iterations=2,
++            perturbation_scale=0.05,
++            optimizer=sgd(0.01),
++            evaluation_particles=24,
++            evaluation_replicates=3,
++        )
++    )(theta, key)
++    assert result.success
++    warm_key, gradient_key, evaluation_key = jax.random.split(key, 3)
++    warm = iterated_filtering.fit(
++        model,
++        theta,
++        ys,
++        key=warm_key,
++        n_particles=16,
++        n_iterations=2,
++        perturbation_scale=0.05,
++    )
++    refine = dmop.fit(
++        model,
++        warm.parameters,
++        ys,
++        key=gradient_key,
++        n_particles=16,
++        n_iterations=2,
++        optimizer=sgd(0.01),
++    )
++    np.testing.assert_allclose(result.parameters, refine.parameters, atol=1e-12)
++    expected = jnp.stack(
++        [
++            stock_run(
++                result.parameters, ys, k, systematic.resampling, 24
++            ).log_normalizing_constant[-1]
++            for k in jax.random.split(evaluation_key, 3)
++        ]
++    )
++    np.testing.assert_allclose(result.evaluation_log_likelihoods, expected, atol=1e-12)
++    np.testing.assert_allclose(
++        result.log_likelihood,
++        jax.scipy.special.logsumexp(expected) - jnp.log(3),
++        atol=1e-12,
++    )
++
++
++def test_failures_do_not_silently_update_or_proceed():
++    theta, ys = jnp.array([0.4, -0.7, 0.2]), jnp.array(Y)
++    bad_opt = Optimizer(lambda _: (), lambda g, s, p: (jnp.full_like(p, jnp.nan), s))
++    result = dmop.fit(
++        model,
++        theta,
++        ys,
++        key=jax.random.key(1),
++        n_particles=8,
++        n_iterations=3,
++        optimizer=bad_opt,
++    )
++    assert not result.success and result.completed_iterations == 0
++    np.testing.assert_array_equal(result.parameters, theta)
++    assert np.isnan(result.objectives[1:]).all()
++
++    def impossible(p):
++        init, propagate, _ = model(p)
++        return init, propagate, lambda old, x, y: jnp.array(-jnp.inf)
++
++    failed = ifad.fit(
++        impossible,
++        theta,
++        jnp.array([0.0]),
++        key=jax.random.key(2),
++        n_particles=8,
++        n_if2_iterations=2,
++        n_dmop_iterations=3,
++        perturbation_scale=0.1,
++        optimizer=sgd(0.01),
++    )
++    assert not failed.success and not failed.warm_start.success
++    assert failed.refinement.completed_iterations == 0
++    np.testing.assert_array_equal(failed.parameters, theta)
++    assert np.isnan(failed.evaluation_log_likelihoods).all()
++
++
++def test_zero_iterations_and_frozen_update_even_with_weight_decay():
++    theta, ys, key = jnp.array([0.4, -0.7, 0.2]), jnp.array(Y), jax.random.key(2)
++    warm = iterated_filtering.fit(
++        model, theta, ys, key=key, n_particles=8, n_iterations=0, perturbation_scale=0.1
++    )
++    np.testing.assert_array_equal(warm.parameters, theta)
++    assert warm.parameter_history.shape == (1, 3) and warm.success
++    result = dmop.fit(
++        model, theta, ys, key=key, n_particles=8, n_iterations=0, optimizer=sgd(0.01)
++    )
++    assert result.parameter_history.shape == (1, 3) and result.success
++    decay = Optimizer(lambda _: (), lambda g, s, p: (-0.1 * p, s))
++    frozen = dmop.fit(
++        model,
++        theta,
++        ys,
++        key=key,
++        n_particles=8,
++        n_iterations=2,
++        optimizer=decay,
++        trainable_mask=False,
++    )
++    np.testing.assert_array_equal(frozen.parameters, theta)
++
++
++@pytest.mark.parametrize("valid", [True, False])
++def test_ifad_accepts_captured_scale_arrays_under_jit(valid):
++    # A normal user call constructs scales before jitting a fitting function.
++    # The captured array can be concrete while operations on it are traced.
++    theta, ys = jnp.array([0.4, -0.7, 0.2]), jnp.array(Y)
++    scale = jnp.array([0.01 if valid else -0.01, 0.02, 0.0])
++    initial_scale = jnp.array([0.0, 0.0, 0.03])
++
++    @jax.jit
++    def run(parameters):
++        return ifad.fit(
++            model,
++            parameters,
++            ys,
++            key=jax.random.key(73),
++            n_particles=8,
++            n_if2_iterations=1,
++            n_dmop_iterations=1,
++            perturbation_scale=scale,
++            initial_perturbation_scale=initial_scale,
++            optimizer=sgd(0.001),
++            evaluation_replicates=2,
++        )
++
++    result = run(theta)
++    assert bool(result.success) == valid
++    if valid:
++        assert result.warm_start.completed_iterations == 1
++        assert result.refinement.completed_iterations == 1
++        assert np.isfinite(result.evaluation_log_likelihoods).all()
++    else:
++        assert result.warm_start.completed_iterations == 0
++        assert result.refinement.completed_iterations == 0
++        np.testing.assert_array_equal(result.parameters, theta)
++        assert np.isnan(result.evaluation_log_likelihoods).all()
++
++
++@pytest.mark.parametrize(
++    "kwargs",
++    [
++        {"alpha": -1},
++        {"alpha": float("nan")},
++        {"resampling": "adaptive"},
++        {"n_particles": 0},
++    ],
++)
++def test_invalid_dmop_configuration(kwargs):
++    options = dict(key=jax.random.key(0), n_particles=8)
++    options.update(kwargs)
++    with pytest.raises(ValueError):
++        dmop.log_likelihood(model, jnp.array([0.4, -0.7, 0.2]), jnp.array(Y), **options)
++
++
++@pytest.mark.parametrize(
++    "kwargs",
++    [
++        {"cooling_rate": 0},
++        {"perturbation_scale": -1},
++        {"initial_perturbation_scale": [1.0, 2.0]},
++        {"n_iterations": -1},
++    ],
++)
++def test_invalid_if2_configuration(kwargs):
++    options = dict(
++        key=jax.random.key(0), n_particles=8, n_iterations=2, perturbation_scale=0.1
++    )
++    options.update(kwargs)
++    with pytest.raises(ValueError):
++        iterated_filtering.fit(
++            model, jnp.array([0.4, -0.7, 0.2]), jnp.array(Y), **options
++        )
++
++
++def test_clipping_direction_and_invalid_mask():
++    def gaussian_mean(p):
++        return (
++            lambda k: jnp.array(0.0),
++            lambda k, x, y: x,
++            lambda old, x, y: -0.5 * (y - p) ** 2,
++        )
++
++    options = dict(
++        key=jax.random.key(0), n_particles=4, n_iterations=1, optimizer=sgd(0.1)
++    )
++    result = dmop.fit(
++        gaussian_mean,
++        jnp.array(0.0),
++        jnp.array([10.0]),
++        max_gradient_norm=2.0,
++        **options,
++    )
++    np.testing.assert_allclose(result.parameters, 0.2)
++    np.testing.assert_allclose(result.gradient_norms, [10.0])
++    with pytest.raises(ValueError, match="boolean"):
++        dmop.fit(
++            gaussian_mean,
++            jnp.array(0.0),
++            jnp.array([10.0]),
++            trainable_mask=1.0,
++            **options,
++        )
++
++
++def test_dynamic_invalid_scale_and_ifad_refinement_failure():
++    theta, ys, key = jnp.array([0.4, -0.7, 0.2]), jnp.array(Y), jax.random.key(0)
++    run = jax.jit(
++        lambda scale: iterated_filtering.fit(
++            model,
++            theta,
++            ys,
++            key=key,
++            n_particles=8,
++            n_iterations=2,
++            perturbation_scale=scale,
++        )
++    )
++    failed = run(jnp.array(-1.0))
++    assert not failed.success and failed.completed_iterations == 0
++    np.testing.assert_array_equal(failed.parameters, theta)
++    bad = Optimizer(lambda _: (), lambda g, s, p: (jnp.full_like(p, jnp.nan), s))
++    result = ifad.fit(
++        model,
++        theta,
++        ys,
++        key=key,
++        n_particles=8,
++        n_if2_iterations=1,
++        n_dmop_iterations=2,
++        perturbation_scale=0.01,
++        optimizer=bad,
++    )
++    assert (
++        result.warm_start.success
++        and not result.refinement.success
++        and not result.success
++    )
++    np.testing.assert_array_equal(result.parameters, result.warm_start.parameters)
++    assert np.isnan(result.evaluation_log_likelihoods).all()
++
++
++def test_batched_ifad_with_multinomial_and_pytree():
++    theta = {"dynamic": jnp.array([0.4, -0.7]), "initial": jnp.array(0.2)}
++
++    # Adapt input structure while retaining the same parameter PyTree.
++    def input_tree_model(p):
++        init, propagate, potential = tree_model(p)
++        return (
++            init,
++            lambda k, x, inp: propagate(k, x, inp["observations"]),
++            lambda old, x, inp: potential(old, x, inp["observations"]),
++        )
++
++    def run(k):
++        return ifad.fit(
++            input_tree_model,
++            theta,
++            {"observations": jnp.array(Y)},
++            key=k,
++            n_particles=8,
++            n_if2_iterations=1,
++            n_dmop_iterations=1,
++            perturbation_scale=0.01,
++            optimizer=sgd(0.01),
++            resampling="multinomial",
++            evaluation_replicates=2,
++        )
++
++    result = jax.jit(jax.vmap(run))(jax.random.split(jax.random.key(1), 2))
++    assert np.asarray(result.success).all()
++    assert result.parameters["dynamic"].shape == (2, 2)
+diff --git a/zensical.toml b/zensical.toml
+--- a/zensical.toml
++++ b/zensical.toml
+@@ -17,6 +17,7 @@
+     { "Ensemble Kalman Filtering for Lorenz-63" = "examples/enkf_comparison.md" },
+     { "EnKF With Localization for Lorenz-96" = "examples/enkf_localization_l96.md" },
+     { "Differentiable Resampling in Particle Filters" = "examples/diff_pf_resampling.md" },
++    { "Parameter Estimation with IFAD" = "examples/parameter_estimation_ifad.md" },
+     { "Dynamax Integration" = "examples/dynamax_integration.md" },
+   ] },
+   { "cuthbert API" = [
+@@ -49,6 +50,9 @@
+       "api_cuthbert/smc/backward_sampler.md",
+       "api_cuthbert/smc/marginal_particle_filter.md",
+       "api_cuthbert/smc/particle_filter.md",
++      "api_cuthbert/smc/dmop.md",
++      "api_cuthbert/smc/iterated_filtering.md",
++      "api_cuthbert/smc/ifad.md",
+       "api_cuthbert/smc/types.md",
+     ] },
+   ] },

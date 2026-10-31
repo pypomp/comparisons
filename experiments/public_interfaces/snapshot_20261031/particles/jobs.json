@@ -1,0 +1,26 @@
+{
+  "preflight_job": "65096908",
+  "submitted_at": "2026-10-30T20:24:20.528896+00:00",
+  "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/particles",
+  "manifest_sha256": "7468c5f9278cbafed1d666aa09e71f3e755a372290334fb896099fc2454833d5",
+  "allocation": {
+    "CPU": 1,
+    "maximum_seconds": 1740
+  },
+  "formal_jobs": [
+    "65097887",
+    "65097888"
+  ],
+  "history": [
+    {
+      "job_id": "65096422",
+      "state": "FAILED",
+      "exit_code": "1:0",
+      "elapsed_seconds": 4,
+      "reason": "missing numba dependency path before algorithms",
+      "archive": "attempts/65096422"
+    }
+  ],
+  "replacement_submitted_at": "2026-10-30T20:29:26.862220+00:00",
+  "formal_jobs_detail": "formal_v1/jobs.json"
+}

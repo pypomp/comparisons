@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "reviewed_at": "2026-10-29T05:27:22.348530+00:00",
+  "completed_endpoints": 12,
+  "raw_scores_independently_recomputed": 2052,
+  "low_precision_tasks": [
+    0,
+    2,
+    3,
+    6,
+    11
+  ],
+  "median_logmeanlik_all_rows": -4654.881177788675,
+  "median_scope": "All12 values including5lowprecision estimates; descriptive only",
+  "Slurm_CPU_seconds": 27464,
+  "actual_cost_partition_verified": true,
+  "results_sha256": "2b07b4007b56e55969e8c200e29db5a3a69c931f2584daeada3ac33b3a852be6",
+  "reproduction_sha256": "dbede637e5553718b194beb0ab430c9dcbd2ff49952dedbf7a31c746cb92cfe2",
+  "visual_check": {
+    "passed": true,
+    "checked_at": "2026-10-29T05:25:21.260941+00:00",
+    "reviewer": "root",
+    "image_sha256": "351a18effda9e655e6f617425fb99a890f6914b18eeb159a5e98c375da6dd699",
+    "checks": [
+      "All12 endpoint estimates visible",
+      "All five low-precision endpoints shown as hollow markers",
+      "CPU costs include fitting and scoring, separate from GPU costs",
+      "No clipping or overlapping data labels",
+      "Likelihood precision threshold and score limit clearly labelled"
+    ]
+  }
+}

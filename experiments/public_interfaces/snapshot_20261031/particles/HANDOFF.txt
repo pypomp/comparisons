@@ -1,0 +1,39 @@
+2026-10-30 particles 新接口验证和正式比较交接
+
+当前真实作业：CPU 拟合数组 65097887；独立 A40 评分 65097888，依赖 afterany:65097887。
+jobs/status 以 formal_v1/jobs.json、formal_v1/status.json 为准。不得重复提交。
+远程：/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/particles
+
+CPU 验证已完成并独立核验：65096908 COMPLETED 0:0，gl3120，151 秒。
+原版 PF 中位 5.496708558 秒；候选版 5.526815115 秒。两边各 2 次预热、7 次正式计时，进程隔离且交替运行；同 seed 的 LL、X、W、RNG 完全一致，无 PF 加速证据。
+新 if2_step(vectorized=True) 完整 T600/J5000 两次 pass 耗时 11.168434867、11.281056836 秒；实际调用 particles.core.SMC。339 源 hash、10 终态 hash、5000×23 完整 cloud/RNG 均通过审计。
+完整预检在 preflight_audit.json、gl/results/preflight/；中文说明 CPU_validation_zh.txt。
+
+失败保留：65096422 FAILED 1:0，4 秒，启动环境漏 numba 依赖目录，模型尚未执行。归档 attempts/65096422，包括旧 manifest、源码部署 tar、真实日志与状态。修正仅补 PYTHONPATH。预检总成本 155 CPU 秒。
+本地首次 vectorized adapter 漏了原模型的 float64 covariate/dt 转换，已修正且未放宽阈值；失败与成功日志都在 local_checks。
+上游 pytest 实际收集 0 项，exit 5；新接口 34 项测试通过。原版/候选三种原生 PF 与缩小的上游 linear_reg 脚本输出一致。其余上游示例只有 syntax check，不能声称完整上游测试全部通过。
+
+正式冻结源位于 formal_v1；不要修改已运行源码。
+最终 manifest SHA256：4589d67c3539860cd190f024869e365eaf855f38f260ca0a57dec2adb3de5acf（357 文件）。
+最新 shared scorer 冻结副本 SHA256：8aec1ba02982a1ad9bff227b300806eaafa972a1e9fd00b71bef2c5f0ebdc508。
+最终 deployment.tar.gz SHA256：c68c300b2e3ec926ec1bbd5d24c9277ac4308504be5176febb05343d539fff3b。
+正式清单已包含 pypomp/core/results/ 六模块和全部 data，不使用“忽略任何 results 目录”的错误打包规则。远端真实 PyPOMP、Optax、完整 Dacca 数据导入已通过。
+
+正式任务 task_id=(start*2+rep)*2+arm；arm A=0、B=1；start0–5、rep0–1，共 24 个终点。
+A：原生 particles PF + 外部 SciPy Nelder–Mead。
+B：新公共 IF2 前 900 秒 + 相同 NM，合计 1800 秒。不是原生 NM，不是固定论文迭代次数比较。
+600 个月，20 Gaussian Euler 步/月，J5000，23 自由坐标。IF2 RWSD=.02，初值坐标 .16 只在第一个观测扰动，cooling=.5**(pass/50)。完整 swarm 贯穿各轮；NM 从最后一个在 IF2 截止前完成的 cloud mean 出发。
+IF2 迟到 pass 保存但不接受；其耗时减少 NM 剩余总预算。NM 迟到 PF 保存且计费，但不能更新终点。失败保存 traceback、full cloud/RNG、最后有限参数并独立评分，不重试。
+训练种子 root24981000；task 独立 100000 整数区间，IF2 stage0 单 seed 后延续 RNG；NM stage1 为 +50000+call，call<50000。排除截断 SeedSequence 到 uint32 的碰撞风险。
+每任务 45 分钟、1CPU/8G，数组并发6，no-requeue。24次设定拟合合计12 CPUh；最大 Slurm allocation18 CPUh，两者必须区分。预检155秒另外记账。
+
+独立评分单 A40 最多30分钟，4CPU/80G，GPU评分成本独立，不用于宣传CPU优化加速。
+score.sbatch 已加载 gcc cuda/12.8.1、正确 LD_LIBRARY_PATH、LD_PRELOAD libcusparse.so.12.5.8.93，JAX_ENABLE_X64=False。
+统一原始 PyPOMP J5000，R36→72→144→288，MCSE≤1 且 likelihood ESS≥10，否则追加至上限。seed94981000，typed jax.random.key，固定 A0/B1/C2 方法码。低精度、失败和 floor 都保留。
+assemble_endpoints.py 必须先核验全部24份 terminal_manifest 与冻结源 hash；缺任何终点拒绝评分。不会重拟合或选最优终点。
+
+后续只读检查：sacct -X -n -P -j 65097887,65097888 --format=JobID,State,ExitCode,ElapsedRaw,NodeList。
+只在单个 task 确认终态后回收 formal_v1/results/task_00 … task_23；运行目录不 tar。
+每个目录含 endpoint.json、initial.json、NM_initial.json、NM_calls、IF2_swarms（B）、完整 RNG、failure（如有）、runtime 与 terminal_manifest。
+数组结束后评分输出 formal_v1/endpoints.json、formal_v1/scoring/。需重新复算全部 raw PF统计，核验参数和 source/terminal SHA、全CPU实际成本、score GPU实际成本，再作优化比较。
+此交接时正式结果尚未完成，不能把预检或2秒smoke当作优化排名。

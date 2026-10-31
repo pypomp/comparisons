@@ -1,0 +1,100 @@
+FFFFFFFFFs                                                               [100%]
+=================================== FAILURES ===================================
+_ ParticleFilterUtilTestFloat32.test_docstring_example_stochastic_fibonacci_eager _
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/experimental/mcmc/particle_filter_augmentation_test.py:106: in test_docstring_example_stochastic_fibonacci
+    particle_filter.infer_trajectories(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'function' object has no attribute 'infer_trajectories'
+----------------------------- Captured stderr call -----------------------------
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1793392245.188790 12224101 op_level_cost_estimator.cc:743] Invalid device specifications for CPU: type: "CPU" model: "0" num_cores: 14 environment { key: "cpu_instruction_set" value: "ARM NEON" } environment { key: "eigen" value: "3.4.90" } l1_cache_size: 16384 l2_cache_size: 524288 l3_cache_size: 524288 memory_size: 268435456
+_ ParticleFilterUtilTestFloat32.test_docstring_example_stochastic_fibonacci_eager_no_tf_function _
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/experimental/mcmc/particle_filter_augmentation_test.py:106: in test_docstring_example_stochastic_fibonacci
+    particle_filter.infer_trajectories(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'function' object has no attribute 'infer_trajectories'
+_ ParticleFilterUtilTestFloat32.test_docstring_example_stochastic_fibonacci_graph _
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/experimental/mcmc/particle_filter_augmentation_test.py:106: in test_docstring_example_stochastic_fibonacci
+    particle_filter.infer_trajectories(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'function' object has no attribute 'infer_trajectories'
+__ ParticleFilterUtilTestFloat32.test_model_can_use_observation_history_eager __
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/experimental/mcmc/particle_filter_augmentation_test.py:150: in test_model_can_use_observation_history
+    particle_filter.particle_filter(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'function' object has no attribute 'particle_filter'
+_ ParticleFilterUtilTestFloat32.test_model_can_use_observation_history_eager_no_tf_function _
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/experimental/mcmc/particle_filter_augmentation_test.py:150: in test_model_can_use_observation_history
+    particle_filter.particle_filter(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'function' object has no attribute 'particle_filter'
+__ ParticleFilterUtilTestFloat32.test_model_can_use_observation_history_graph __
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/experimental/mcmc/particle_filter_augmentation_test.py:150: in test_model_can_use_observation_history
+    particle_filter.particle_filter(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'function' object has no attribute 'particle_filter'
+----------------------------- Captured stderr call -----------------------------
+I0000 00:00:1793392245.646343 12224101 mlir_graph_optimization_pass.cc:437] MLIR V1 optimization pass is not enabled
+_____ ParticleFilterUtilTestFloat32.test_model_can_use_state_history_eager _____
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/experimental/mcmc/particle_filter_augmentation_test.py:66: in test_model_can_use_state_history
+    particle_filter.infer_trajectories(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'function' object has no attribute 'infer_trajectories'
+_ ParticleFilterUtilTestFloat32.test_model_can_use_state_history_eager_no_tf_function _
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/experimental/mcmc/particle_filter_augmentation_test.py:66: in test_model_can_use_state_history
+    particle_filter.infer_trajectories(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'function' object has no attribute 'infer_trajectories'
+_____ ParticleFilterUtilTestFloat32.test_model_can_use_state_history_graph _____
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/experimental/mcmc/particle_filter_augmentation_test.py:66: in test_model_can_use_state_history
+    particle_filter.infer_trajectories(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'function' object has no attribute 'infer_trajectories'
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__experimental__mcmc__particle_filter_augmentation_test/candidate.xml -
+=========================== short test summary info ============================
+FAILED tensorflow_probability/python/experimental/mcmc/particle_filter_augmentation_test.py::ParticleFilterUtilTestFloat32::test_docstring_example_stochastic_fibonacci_eager
+FAILED tensorflow_probability/python/experimental/mcmc/particle_filter_augmentation_test.py::ParticleFilterUtilTestFloat32::test_docstring_example_stochastic_fibonacci_eager_no_tf_function
+FAILED tensorflow_probability/python/experimental/mcmc/particle_filter_augmentation_test.py::ParticleFilterUtilTestFloat32::test_docstring_example_stochastic_fibonacci_graph
+FAILED tensorflow_probability/python/experimental/mcmc/particle_filter_augmentation_test.py::ParticleFilterUtilTestFloat32::test_model_can_use_observation_history_eager
+FAILED tensorflow_probability/python/experimental/mcmc/particle_filter_augmentation_test.py::ParticleFilterUtilTestFloat32::test_model_can_use_observation_history_eager_no_tf_function
+FAILED tensorflow_probability/python/experimental/mcmc/particle_filter_augmentation_test.py::ParticleFilterUtilTestFloat32::test_model_can_use_observation_history_graph
+FAILED tensorflow_probability/python/experimental/mcmc/particle_filter_augmentation_test.py::ParticleFilterUtilTestFloat32::test_model_can_use_state_history_eager
+FAILED tensorflow_probability/python/experimental/mcmc/particle_filter_augmentation_test.py::ParticleFilterUtilTestFloat32::test_model_can_use_state_history_eager_no_tf_function
+FAILED tensorflow_probability/python/experimental/mcmc/particle_filter_augmentation_test.py::ParticleFilterUtilTestFloat32::test_model_can_use_state_history_graph
+9 failed, 1 skipped in 15.42s

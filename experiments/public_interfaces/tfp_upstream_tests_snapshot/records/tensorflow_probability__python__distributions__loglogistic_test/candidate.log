@@ -1,0 +1,11 @@
+.........................................................s               [100%]
+=============================== warnings summary ===============================
+tensorflow_probability/python/distributions/loglogistic_test.py::LogLogisticTest::testLogLogisticMode_eager
+tensorflow_probability/python/distributions/loglogistic_test.py::LogLogisticTest::testLogLogisticMode_eager_no_tf_function
+tensorflow_probability/python/distributions/loglogistic_test.py::LogLogisticTest::testLogLogisticMode_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/loglogistic_test.py:82: RuntimeWarning: invalid value encountered in power
+    mode = log_logistic_scale * ((1. - scale) / (1. + scale))**scale
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__distributions__loglogistic_test/candidate.xml -
+57 passed, 1 skipped, 3 warnings in 15.03s

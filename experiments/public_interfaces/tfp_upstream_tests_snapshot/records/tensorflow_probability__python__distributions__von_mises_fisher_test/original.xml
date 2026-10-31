@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="1" tests="73" time="60.563" timestamp="2026-10-31T17:53:27.456375-04:00" hostname="appledeMacBook-Pro-43.local"><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testAssertValidSample_eager" time="0.012" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testAssertValidSample_eager_no_tf_function" time="0.005" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testAssertValidSample_graph" time="0.711" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testAssertsValidImmutableParams_eager" time="0.005" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testAssertsValidImmutableParams_eager_no_tf_function" time="0.006" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testAssertsValidImmutableParams_graph" time="0.114" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testAssertsValidMutableParams_eager" time="0.007" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testAssertsValidMutableParams_eager_no_tf_function" time="0.006" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testAssertsValidMutableParams_graph" time="0.184" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testEntropyDim0_eager" time="0.593" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testEntropyDim0_eager_no_tf_function" time="0.498" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testEntropyDim0_graph" time="1.163" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testEntropyDim1_eager" time="0.112" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testEntropyDim1_eager_no_tf_function" time="0.108" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testEntropyDim1_graph" time="0.671" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testEntropyDim2_eager" time="0.314" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testEntropyDim2_eager_no_tf_function" time="0.309" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testEntropyDim2_graph" time="1.079" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testEntropyDim3_eager" time="0.347" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testEntropyDim3_eager_no_tf_function" time="0.342" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testEntropyDim3_graph" time="0.974" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testEntropyDim4_eager" time="0.327" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testEntropyDim4_eager_no_tf_function" time="0.322" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testEntropyDim4_graph" time="0.987" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testInternalShapeInference_eager" time="0.037" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testInternalShapeInference_eager_no_tf_function" time="0.038" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testInternalShapeInference_graph" time="0.204" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testKLVonMisesFisherSphericalUniformDim0_eager" time="0.669" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testKLVonMisesFisherSphericalUniformDim0_eager_no_tf_function" time="0.666" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testKLVonMisesFisherSphericalUniformDim0_graph" time="1.914" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testKLVonMisesFisherSphericalUniformDim1_eager" time="0.216" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testKLVonMisesFisherSphericalUniformDim1_eager_no_tf_function" time="0.214" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testKLVonMisesFisherSphericalUniformDim1_graph" time="1.272" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testKLVonMisesFisherSphericalUniformDim2_eager" time="0.542" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testKLVonMisesFisherSphericalUniformDim2_eager_no_tf_function" time="0.535" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testKLVonMisesFisherSphericalUniformDim2_graph" time="1.731" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testKLVonMisesFisherSphericalUniformDim3_eager" time="0.502" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testKLVonMisesFisherSphericalUniformDim3_eager_no_tf_function" time="0.488" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testKLVonMisesFisherSphericalUniformDim3_graph" time="1.698" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testKLVonMisesFisherSphericalUniformDim4_eager" time="0.545" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testKLVonMisesFisherSphericalUniformDim4_eager_no_tf_function" time="0.526" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testKLVonMisesFisherSphericalUniformDim4_graph" time="1.934" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testReproducibleGraph_eager" time="0.074" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testReproducibleGraph_eager_no_tf_function" time="0.072" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testReproducibleGraph_graph" time="0.272" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleAndPdfConsistency0_eager" time="1.154" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleAndPdfConsistency0_eager_no_tf_function" time="1.128" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleAndPdfConsistency0_graph" time="2.171" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleAndPdfConsistency1_eager" time="0.233" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleAndPdfConsistency1_eager_no_tf_function" time="0.221" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleAndPdfConsistency1_graph" time="0.977" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleAndPdfConsistency2_eager" time="1.009" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleAndPdfConsistency2_eager_no_tf_function" time="1.003" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleAndPdfConsistency2_graph" time="2.022" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleAndPdfConsistency3_eager" time="0.927" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleAndPdfConsistency3_eager_no_tf_function" time="0.932" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleAndPdfConsistency3_graph" time="2.126" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleAndPdfConsistency4_eager" time="0.846" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleAndPdfConsistency4_eager_no_tf_function" time="0.842" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleAndPdfConsistency4_graph" time="1.863" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleAndPdfConsistency5_eager" time="0.826" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleAndPdfConsistency5_eager_no_tf_function" time="0.799" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleAndPdfConsistency5_graph" time="1.905" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleMeanDir2d_eager" time="0.436" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleMeanDir2d_eager_no_tf_function" time="0.430" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleMeanDir2d_graph" time="0.629" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleMeanDir3d_eager" time="0.044" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleMeanDir3d_eager_no_tf_function" time="0.043" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSampleMeanDir3d_graph" time="0.124" /><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSupportBijectorOutsideRange_eager" time="0.004"><failure message="AssertionError: Exception of type &lt;class 'TypeError'&gt;: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_util.py:251: in assertRaisesWithPredicateMatch
+    yield
+tensorflow_probability/python/internal/test_util.py:262: in assertRaisesOpError
+    yield
+tensorflow_probability/python/distributions/von_mises_fisher_test.py:462: in testSupportBijectorOutsideRange
+    dist.experimental_default_event_space_bijector().inverse(x[0]))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/von_mises_fisher.py:493: in _default_event_space_bijector
+    softmax_centered_bijector.SoftmaxCentered(
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/von_mises_fisher_test.py:460: in testSupportBijectorOutsideRange
+    with self.assertRaisesOpError('must sum to `1`'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:261: in assertRaisesOpError
+    with super(TestCase, self).assertRaisesOpError(msg):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:255: in assertRaisesWithPredicateMatch
+    raise AssertionError('Exception of type %s: %s' %
+E   AssertionError: Exception of type &lt;class 'TypeError'&gt;: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSupportBijectorOutsideRange_eager_no_tf_function" time="0.003"><failure message="AssertionError: Exception of type &lt;class 'TypeError'&gt;: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_util.py:251: in assertRaisesWithPredicateMatch
+    yield
+tensorflow_probability/python/internal/test_util.py:262: in assertRaisesOpError
+    yield
+tensorflow_probability/python/distributions/von_mises_fisher_test.py:462: in testSupportBijectorOutsideRange
+    dist.experimental_default_event_space_bijector().inverse(x[0]))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/von_mises_fisher.py:493: in _default_event_space_bijector
+    softmax_centered_bijector.SoftmaxCentered(
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/von_mises_fisher_test.py:460: in testSupportBijectorOutsideRange
+    with self.assertRaisesOpError('must sum to `1`'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:261: in assertRaisesOpError
+    with super(TestCase, self).assertRaisesOpError(msg):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:255: in assertRaisesWithPredicateMatch
+    raise AssertionError('Exception of type %s: %s' %
+E   AssertionError: Exception of type &lt;class 'TypeError'&gt;: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="testSupportBijectorOutsideRange_graph" time="0.008"><failure message="AssertionError: Exception of type &lt;class 'TypeError'&gt;: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_util.py:251: in assertRaisesWithPredicateMatch
+    yield
+tensorflow_probability/python/internal/test_util.py:262: in assertRaisesOpError
+    yield
+tensorflow_probability/python/distributions/von_mises_fisher_test.py:462: in testSupportBijectorOutsideRange
+    dist.experimental_default_event_space_bijector().inverse(x[0]))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/von_mises_fisher.py:493: in _default_event_space_bijector
+    softmax_centered_bijector.SoftmaxCentered(
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/von_mises_fisher_test.py:460: in testSupportBijectorOutsideRange
+    with self.assertRaisesOpError('must sum to `1`'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:261: in assertRaisesOpError
+    with super(TestCase, self).assertRaisesOpError(msg):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:255: in assertRaisesWithPredicateMatch
+    raise AssertionError('Exception of type %s: %s' %
+E   AssertionError: Exception of type &lt;class 'TypeError'&gt;: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.von_mises_fisher_test.VonMisesFisherTest" name="test_session" time="0.000"><skipped type="pytest.skip" message="Not a test.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/test_util.py:2981: Not a test.</skipped></testcase></testsuite></testsuites>

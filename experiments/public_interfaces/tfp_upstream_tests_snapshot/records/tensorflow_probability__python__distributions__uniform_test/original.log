@@ -1,0 +1,18 @@
+........................................................................ [ 94%]
+...s                                                                     [100%]
+=============================== warnings summary ===============================
+tensorflow_probability/python/distributions/uniform_test.py::UniformTest::testUniformCDF_eager
+tensorflow_probability/python/distributions/uniform_test.py::UniformTest::testUniformCDF_eager_no_tf_function
+tensorflow_probability/python/distributions/uniform_test.py::UniformTest::testUniformCDF_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/distributions/uniform_test.py:104: RuntimeWarning: divide by zero encountered in log
+    self.assertAllClose(np.log(_expected_cdf()), self.evaluate(log_cdf))
+
+tensorflow_probability/python/distributions/uniform_test.py::UniformTest::testUniformPDF_eager
+tensorflow_probability/python/distributions/uniform_test.py::UniformTest::testUniformPDF_eager_no_tf_function
+tensorflow_probability/python/distributions/uniform_test.py::UniformTest::testUniformPDF_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/distributions/uniform_test.py:61: RuntimeWarning: divide by zero encountered in log
+    self.assertAllClose(np.log(expected_pdf), self.evaluate(log_pdf))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__distributions__uniform_test/original.xml -
+75 passed, 1 skipped, 6 warnings in 14.73s

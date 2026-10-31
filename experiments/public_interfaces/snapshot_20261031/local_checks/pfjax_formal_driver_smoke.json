@@ -1,0 +1,26 @@
+{
+  "command": [
+    "work/panel-cute-cpu/bin/python",
+    "work/implementation-comparison-20261030/jax_formal_v1/run.py",
+    "--package",
+    "pfjax",
+    "--case",
+    "0",
+    "--output",
+    "work/implementation-comparison-20261030/jax_formal_v1/smoke/pfjax",
+    "--smoke"
+  ],
+  "cwd": null,
+  "started_at_utc": "2026-10-30T20:24:55.561998+00:00",
+  "timeout_seconds": 300,
+  "state": "finished",
+  "environment": {
+    "PYTHONPATH": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/jax_gate_v1/pfjax/candidate/src:/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/jax_gate_v1/pfjax/validation:/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-probe-deps:/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/pfjax/deps",
+    "JAX_PLATFORMS": "cpu",
+    "JAX_ENABLE_X64": "False",
+    "CUDA_VISIBLE_DEVICES": null
+  },
+  "exit_code": 0,
+  "elapsed_seconds": 4.5364668749971315,
+  "finished_at_utc": "2026-10-30T20:25:00.098461+00:00"
+}

@@ -1,0 +1,308 @@
+[
+  {
+    "file": "examples/iterated_filter.py",
+    "name": "main",
+    "line": 17,
+    "end_line": 83
+  },
+  {
+    "file": "src/pfjax/iterated_filter.py",
+    "name": "_settings",
+    "line": 15,
+    "end_line": 42
+  },
+  {
+    "file": "src/pfjax/iterated_filter.py",
+    "name": "iterated_filter_step",
+    "line": 45,
+    "end_line": 149
+  },
+  {
+    "file": "src/pfjax/iterated_filter.py",
+    "name": "iterated_filter",
+    "line": 152,
+    "end_line": 213
+  },
+  {
+    "file": "src/pfjax/iterated_filter.py",
+    "name": "PerturbedModel",
+    "line": 108,
+    "end_line": 122
+  },
+  {
+    "file": "src/pfjax/iterated_filter.py",
+    "name": "one",
+    "line": 189,
+    "end_line": 204
+  },
+  {
+    "file": "src/pfjax/iterated_filter.py",
+    "name": "pf_step",
+    "line": 109,
+    "end_line": 122
+  },
+  {
+    "file": "src/pfjax/particle_filter.py",
+    "name": "_initialize_score",
+    "line": 15,
+    "end_line": 30
+  },
+  {
+    "file": "src/pfjax/particle_filter.py",
+    "name": "_initialize_fisher",
+    "line": 33,
+    "end_line": 49
+  },
+  {
+    "file": "src/pfjax/particle_filter.py",
+    "name": "particle_filter",
+    "line": 52,
+    "end_line": 315
+  },
+  {
+    "file": "src/pfjax/particle_filter.py",
+    "name": "particle_filter_rb",
+    "line": 318,
+    "end_line": 621
+  },
+  {
+    "file": "src/pfjax/particle_filter.py",
+    "name": "accumulate_deriv",
+    "line": 133,
+    "end_line": 168
+  },
+  {
+    "file": "src/pfjax/particle_filter.py",
+    "name": "pf_step",
+    "line": 171,
+    "end_line": 177
+  },
+  {
+    "file": "src/pfjax/particle_filter.py",
+    "name": "pf_init",
+    "line": 179,
+    "end_line": 184
+  },
+  {
+    "file": "src/pfjax/particle_filter.py",
+    "name": "pf_aux",
+    "line": 186,
+    "end_line": 191
+  },
+  {
+    "file": "src/pfjax/particle_filter.py",
+    "name": "filter_step",
+    "line": 194,
+    "end_line": 253
+  },
+  {
+    "file": "src/pfjax/particle_filter.py",
+    "name": "accumulate_deriv",
+    "line": 371,
+    "end_line": 421
+  },
+  {
+    "file": "src/pfjax/particle_filter.py",
+    "name": "pf_prop",
+    "line": 423,
+    "end_line": 432
+  },
+  {
+    "file": "src/pfjax/particle_filter.py",
+    "name": "pf_step",
+    "line": 434,
+    "end_line": 443
+  },
+  {
+    "file": "src/pfjax/particle_filter.py",
+    "name": "pf_init",
+    "line": 445,
+    "end_line": 450
+  },
+  {
+    "file": "src/pfjax/particle_filter.py",
+    "name": "pf_aux",
+    "line": 452,
+    "end_line": 466
+  },
+  {
+    "file": "src/pfjax/particle_filter.py",
+    "name": "pf_bar",
+    "line": 468,
+    "end_line": 505
+  },
+  {
+    "file": "src/pfjax/particle_filter.py",
+    "name": "filter_step",
+    "line": 508,
+    "end_line": 554
+  },
+  {
+    "file": "src/pfjax/particle_filter_mop.py",
+    "name": "particle_filter_mop",
+    "line": 17,
+    "end_line": 87
+  },
+  {
+    "file": "src/pfjax/particle_filter_mop.py",
+    "name": "CorrectedModel",
+    "line": 54,
+    "end_line": 63
+  },
+  {
+    "file": "src/pfjax/particle_filter_mop.py",
+    "name": "resample",
+    "line": 65,
+    "end_line": 75
+  },
+  {
+    "file": "src/pfjax/particle_filter_mop.py",
+    "name": "pf_init",
+    "line": 55,
+    "end_line": 57
+  },
+  {
+    "file": "src/pfjax/particle_filter_mop.py",
+    "name": "pf_step",
+    "line": 59,
+    "end_line": 63
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "Model",
+    "line": 16,
+    "end_line": 30
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "close_tree",
+    "line": 33,
+    "end_line": 39
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "original_filter",
+    "line": 42,
+    "end_line": 47
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "test_native_unchanged",
+    "line": 52,
+    "end_line": 64
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "test_initial_population",
+    "line": 69,
+    "end_line": 83
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "manual_if2",
+    "line": 86,
+    "end_line": 119
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "test_if2_manual",
+    "line": 125,
+    "end_line": 154
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "test_full_population_continuation_and_dynamic_scales",
+    "line": 157,
+    "end_line": 180
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "test_within_pass_cooling_preserves_float64_precision",
+    "line": 184,
+    "end_line": 211
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "manual_gradient",
+    "line": 214,
+    "end_line": 243
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "test_mop_gradient_and_forward",
+    "line": 248,
+    "end_line": 267
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "test_invalid_configuration_and_nonfinite",
+    "line": 270,
+    "end_line": 296
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "test_observation_pytree",
+    "line": 299,
+    "end_line": 310
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "__init__",
+    "line": 19,
+    "end_line": 20
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "pf_init",
+    "line": 22,
+    "end_line": 24
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "pf_step",
+    "line": 26,
+    "end_line": 30
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "supplied",
+    "line": 73,
+    "end_line": 78
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "Bad",
+    "line": 291,
+    "end_line": 293
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "DictModel",
+    "line": 300,
+    "end_line": 305
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "tangent",
+    "line": 234,
+    "end_line": 235
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "pf_step",
+    "line": 292,
+    "end_line": 293
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "pf_init",
+    "line": 301,
+    "end_line": 302
+  },
+  {
+    "file": "tests/test_iterated_filter.py",
+    "name": "pf_step",
+    "line": 304,
+    "end_line": 305
+  }
+]

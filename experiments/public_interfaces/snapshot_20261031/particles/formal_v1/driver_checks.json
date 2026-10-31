@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "checks": {
+    "passed": true,
+    "late_calls_rejected": true,
+    "late_cost_retained": true,
+    "full_swarm_carried": true,
+    "IF2_late_cloud_not_used_for_NM": true,
+    "common_initial_exact": true,
+    "training_seeds_distinct": true,
+    "completed_fit_not_repeated": true,
+    "failure_not_retried": true,
+    "failed_cost_retained": true
+  },
+  "actual_smoke": [
+    {
+      "method": "A",
+      "fit_failed": false,
+      "accepted_IF2_passes": 0,
+      "PF_calls": 101,
+      "late_PF_calls": 1,
+      "charged_fit_seconds": 2.0094998750137165,
+      "initial_estimation_sha256": "7a3e0461132a18e1a569aaef4e9d79ae10a8a57703ef09a8134e0b7d139094bc"
+    },
+    {
+      "method": "B",
+      "fit_failed": false,
+      "accepted_IF2_passes": 42,
+      "PF_calls": 59,
+      "late_PF_calls": 1,
+      "charged_fit_seconds": 2.0125019579427317,
+      "initial_estimation_sha256": "7a3e0461132a18e1a569aaef4e9d79ae10a8a57703ef09a8134e0b7d139094bc"
+    }
+  ],
+  "files": {
+    "fit.py": "f29a8c4ecdb65bf9c75d3f6ce7b9eb1c094ca6fec07dbf9eb5153a6a1d710a55",
+    "check_driver.py": "c1903177248f5863f25c76cc0cdbf463ef876ebffa4dc83daaf8f29ee1477d12"
+  }
+}

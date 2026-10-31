@@ -1,0 +1,58 @@
+{
+  "status": "DRAFT_WAITING_GPU_THROUGHPUT",
+  "study": "fixed_iterations",
+  "model": {
+    "T": 600,
+    "Euler_steps": 20,
+    "J": 5000,
+    "free_coordinates": 23
+  },
+  "start_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "repetitions": 2,
+  "methods": {
+    "IF2": {
+      "IF2_passes": 1950,
+      "cooling": 0.9283177667225558,
+      "gradient_updates": 0
+    },
+    "IFAD_097": {
+      "IF2_passes": 175,
+      "cooling": 0.5,
+      "gradient_updates": 400,
+      "alpha": 0.97
+    },
+    "SGD_alpha1": {
+      "IF2_passes": 0,
+      "gradient_updates": 425,
+      "alpha": 1.0,
+      "note": "Direct native SSM.fit_sgd plus local alpha1 PF, no IF2 prefix; not paper IFAD1"
+    }
+  },
+  "optional_fourth_submitted": false,
+  "IF2_chunk": 25,
+  "gradient_chunk": 64,
+  "batch_size": null,
+  "randomness": {
+    "IF2": 22111,
+    "IFAD_prefix": 22112,
+    "gradient": 22211,
+    "warmup": 22311,
+    "evaluation": 22411
+  },
+  "evaluation": {
+    "J": 5000,
+    "initial_R": 36,
+    "maximum_R": 288,
+    "batch_R": 36,
+    "minimum_ESS": 10,
+    "maximum_MCSE": 1.0
+  },
+  "resource_plan": "Pending measured A40 batching throughput; preserve prior558s plus efficiency actualelapsed"
+}

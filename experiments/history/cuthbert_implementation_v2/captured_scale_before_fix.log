@@ -1,0 +1,162 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+___________ test_ifad_accepts_captured_scale_arrays_under_jit[True] ____________
+
+valid = True
+
+    @pytest.mark.parametrize("valid", [True, False])
+    def test_ifad_accepts_captured_scale_arrays_under_jit(valid):
+        # A normal user call constructs scales before jitting a fitting function.
+        # The captured array can be concrete while operations on it are traced.
+        theta, ys = jnp.array([0.4, -0.7, 0.2]), jnp.array(Y)
+        scale = jnp.array([0.01 if valid else -0.01, 0.02, 0.0])
+        initial_scale = jnp.array([0.0, 0.0, 0.03])
+    
+        @jax.jit
+        def run(parameters):
+            return ifad.fit(
+                model,
+                parameters,
+                ys,
+                key=jax.random.key(73),
+                n_particles=8,
+                n_if2_iterations=1,
+                n_dmop_iterations=1,
+                perturbation_scale=scale,
+                initial_perturbation_scale=initial_scale,
+                optimizer=sgd(0.001),
+                evaluation_replicates=2,
+            )
+    
+>       result = run(theta)
+                 ^^^^^^^^^^
+
+tests/cuthbert/smc/test_parameter_estimation.py:411: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/cuthbert/smc/test_parameter_estimation.py:397: in run
+    return ifad.fit(
+cuthbert/smc/ifad.py:82: in fit
+    warm = iterated_filtering.fit(
+cuthbert/smc/iterated_filtering.py:79: in fit
+    scale = util.broadcast_tree(perturbation_scale, initial, name="perturbation_scale")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+cuthbert/smc/_estimation.py:101: in broadcast_tree
+    return jax.tree.map(convert, value, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../panel-cute-cpu/lib/python3.12/site-packages/jax/_src/tree.py:156: in map
+    return tree_util.tree_map(f, tree, *rest, is_leaf=is_leaf)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+v = Array([0.01, 0.02, 0.  ], dtype=float64), p = JitTracer(float64[3])
+
+    def convert(v, p):
+        if boolean and not jnp.issubdtype(jnp.asarray(v).dtype, jnp.bool_):
+            raise ValueError(f"{name} must contain boolean values")
+        v = jnp.asarray(v, dtype=bool if boolean else p.dtype)
+        try:
+            v = jnp.broadcast_to(v, p.shape)
+        except ValueError as exc:
+            raise ValueError(f"{name} has an incompatible leaf shape") from exc
+        if not boolean:
+            valid = jnp.isfinite(v) & (v >= 0)
+>           if not isinstance(v, core.Tracer) and not bool(jnp.all(valid)):
+                                                      ^^^^^^^^^^^^^^^^^^^^
+E           jax.errors.TracerBoolConversionError: Attempted boolean conversion of traced array with shape bool[].
+E           The error occurred while tracing the function run at /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v2/candidate/tests/cuthbert/smc/test_parameter_estimation.py:395 for jit. This value became a tracer due to JAX operations on these lines:
+E           
+E             operation a:key<fry>[] = random_seed[impl=fry] 73:i64[]
+E               from line /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v2/candidate/tests/cuthbert/smc/test_parameter_estimation.py:401:16 (test_ifad_accepts_captured_scale_arrays_under_jit.<locals>.run)
+E           
+E             operation a:bool[3] = is_finite b
+E               from line /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v2/candidate/cuthbert/smc/_estimation.py:94:20 (broadcast_tree.<locals>.convert)
+E           
+E             operation a:bool[3] = ge b 0.0:f64[]
+E               from line /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v2/candidate/cuthbert/smc/_estimation.py:94:39 (broadcast_tree.<locals>.convert)
+E           See https://docs.jax.dev/en/latest/101/errors.html#jax.errors.TracerBoolConversionError
+E           --------------------
+E           For simplicity, JAX has removed its internal frames from the traceback of the following exception. Set JAX_TRACEBACK_FILTERING=off to include these.
+
+cuthbert/smc/_estimation.py:95: TracerBoolConversionError
+___________ test_ifad_accepts_captured_scale_arrays_under_jit[False] ___________
+
+valid = False
+
+    @pytest.mark.parametrize("valid", [True, False])
+    def test_ifad_accepts_captured_scale_arrays_under_jit(valid):
+        # A normal user call constructs scales before jitting a fitting function.
+        # The captured array can be concrete while operations on it are traced.
+        theta, ys = jnp.array([0.4, -0.7, 0.2]), jnp.array(Y)
+        scale = jnp.array([0.01 if valid else -0.01, 0.02, 0.0])
+        initial_scale = jnp.array([0.0, 0.0, 0.03])
+    
+        @jax.jit
+        def run(parameters):
+            return ifad.fit(
+                model,
+                parameters,
+                ys,
+                key=jax.random.key(73),
+                n_particles=8,
+                n_if2_iterations=1,
+                n_dmop_iterations=1,
+                perturbation_scale=scale,
+                initial_perturbation_scale=initial_scale,
+                optimizer=sgd(0.001),
+                evaluation_replicates=2,
+            )
+    
+>       result = run(theta)
+                 ^^^^^^^^^^
+
+tests/cuthbert/smc/test_parameter_estimation.py:411: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/cuthbert/smc/test_parameter_estimation.py:397: in run
+    return ifad.fit(
+cuthbert/smc/ifad.py:82: in fit
+    warm = iterated_filtering.fit(
+cuthbert/smc/iterated_filtering.py:79: in fit
+    scale = util.broadcast_tree(perturbation_scale, initial, name="perturbation_scale")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+cuthbert/smc/_estimation.py:101: in broadcast_tree
+    return jax.tree.map(convert, value, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../panel-cute-cpu/lib/python3.12/site-packages/jax/_src/tree.py:156: in map
+    return tree_util.tree_map(f, tree, *rest, is_leaf=is_leaf)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+v = Array([-0.01,  0.02,  0.  ], dtype=float64), p = JitTracer(float64[3])
+
+    def convert(v, p):
+        if boolean and not jnp.issubdtype(jnp.asarray(v).dtype, jnp.bool_):
+            raise ValueError(f"{name} must contain boolean values")
+        v = jnp.asarray(v, dtype=bool if boolean else p.dtype)
+        try:
+            v = jnp.broadcast_to(v, p.shape)
+        except ValueError as exc:
+            raise ValueError(f"{name} has an incompatible leaf shape") from exc
+        if not boolean:
+            valid = jnp.isfinite(v) & (v >= 0)
+>           if not isinstance(v, core.Tracer) and not bool(jnp.all(valid)):
+                                                      ^^^^^^^^^^^^^^^^^^^^
+E           jax.errors.TracerBoolConversionError: Attempted boolean conversion of traced array with shape bool[].
+E           The error occurred while tracing the function run at /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v2/candidate/tests/cuthbert/smc/test_parameter_estimation.py:395 for jit. This value became a tracer due to JAX operations on these lines:
+E           
+E             operation a:key<fry>[] = random_seed[impl=fry] 73:i64[]
+E               from line /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v2/candidate/tests/cuthbert/smc/test_parameter_estimation.py:401:16 (test_ifad_accepts_captured_scale_arrays_under_jit.<locals>.run)
+E           
+E             operation a:bool[3] = is_finite b
+E               from line /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v2/candidate/cuthbert/smc/_estimation.py:94:20 (broadcast_tree.<locals>.convert)
+E           
+E             operation a:bool[3] = ge b 0.0:f64[]
+E               from line /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v2/candidate/cuthbert/smc/_estimation.py:94:39 (broadcast_tree.<locals>.convert)
+E           See https://docs.jax.dev/en/latest/101/errors.html#jax.errors.TracerBoolConversionError
+E           --------------------
+E           For simplicity, JAX has removed its internal frames from the traceback of the following exception. Set JAX_TRACEBACK_FILTERING=off to include these.
+
+cuthbert/smc/_estimation.py:95: TracerBoolConversionError
+=========================== short test summary info ============================
+FAILED tests/cuthbert/smc/test_parameter_estimation.py::test_ifad_accepts_captured_scale_arrays_under_jit[True]
+FAILED tests/cuthbert/smc/test_parameter_estimation.py::test_ifad_accepts_captured_scale_arrays_under_jit[False]
+2 failed, 29 deselected in 1.04s

@@ -1,0 +1,130 @@
+{
+  "status": "draft_pending_root_allocation_review",
+  "T": 600,
+  "J": 5000,
+  "rows": [
+    {
+      "row_id": 0,
+      "start_id": 0,
+      "replicate": 0
+    },
+    {
+      "row_id": 1,
+      "start_id": 0,
+      "replicate": 1
+    },
+    {
+      "row_id": 2,
+      "start_id": 1,
+      "replicate": 0
+    },
+    {
+      "row_id": 3,
+      "start_id": 1,
+      "replicate": 1
+    },
+    {
+      "row_id": 4,
+      "start_id": 2,
+      "replicate": 0
+    },
+    {
+      "row_id": 5,
+      "start_id": 2,
+      "replicate": 1
+    },
+    {
+      "row_id": 6,
+      "start_id": 3,
+      "replicate": 0
+    },
+    {
+      "row_id": 7,
+      "start_id": 3,
+      "replicate": 1
+    },
+    {
+      "row_id": 8,
+      "start_id": 4,
+      "replicate": 0
+    },
+    {
+      "row_id": 9,
+      "start_id": 4,
+      "replicate": 1
+    },
+    {
+      "row_id": 10,
+      "start_id": 5,
+      "replicate": 0
+    },
+    {
+      "row_id": 11,
+      "start_id": 5,
+      "replicate": 1
+    }
+  ],
+  "warm_IF2_iterations": 175,
+  "gradient_iterations": 400,
+  "alpha": {
+    "A": 1.0,
+    "B": 1.0,
+    "C": 0.97
+  },
+  "train_seed_root": 24781000,
+  "score_seed_root": 94781000,
+  "resource_estimate": "Resolved deterministically from frozen preflight benchmark at runtime; all four phases use identical resolved protocol hashes.",
+  "formal_GPU_hour_cap": 30,
+  "model": "original Dacca 600 months,20 Gaussian Euler steps,23free coordinates",
+  "pairing": "B/C exact shared public IF2 result, identical empty Adam state, SeedSequence([24781000,1,iteration]), fixed12slots even after failures. A uses namespace2; warm B1row uses namespace0,row_id.",
+  "failure_policy": "No retry, no clipping, no best-iterate selection. Public IF2 B1 complete call preserves full swarm; interrupted call cannot restart from mean. Gradient failures retain last accepted params plus complete pre-failure optimizer snapshot; fixed12slots retain random-stream pairing. Unclassified/infrastructure failures stop task incomplete. Every accepted update must have finite estimation and natural parameters and Adam moments. Failed slots retain pre-step parameters/moments plus a full dedicated pre-step optimizer snapshot; shared scalar optimizer steps continue only for survivors.",
+  "score_policy": "Root shared original PyPOMP evaluator, J5000,R36\u219272\u2192144\u2192288,MCSE<=1 ESS>=10; independent score94781000, method-specific keys B/C differ.",
+  "method_definitions": {
+    "A": "direct native StopGradientDPF alpha1 plus400Adam",
+    "B": "175public IF2 then400native alpha1Adam",
+    "C": "same175public IF2 endpoint then400alpha.97Adam"
+  },
+  "Adam": {
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "epsilon": 1e-08,
+    "coordinate_rates": "same frozen previous formal settings",
+    "warmup": 10,
+    "cosine_floor": 0.05,
+    "gradient_clip": false
+  },
+  "timing": "full initialization/prefix in each logical arm; warm physical job counted once; sameA40model across jobs; A versus B not compute-matched",
+  "GPU_gate": {
+    "job": 65097403,
+    "source_manifest_sha256": "9b7334df9d44e0b80cd9c8f63fb7dbb4f90114cf10c7e6ffadb0ea6358cc0756",
+    "must_pass_all_phases": true
+  },
+  "budget_margin_factor": 1.05,
+  "allocation_by_phase": {
+    "warm": {
+      "allocation_seconds": 24300,
+      "fit_limit_seconds": 24000,
+      "preparation_reserve_seconds": 600,
+      "score_reserve_seconds": 0
+    },
+    "A": {
+      "allocation_seconds": 27900,
+      "fit_limit_seconds": 25800,
+      "preparation_reserve_seconds": 600,
+      "score_reserve_seconds": 1800
+    },
+    "B": {
+      "allocation_seconds": 27900,
+      "fit_limit_seconds": 25800,
+      "preparation_reserve_seconds": 600,
+      "score_reserve_seconds": 1800
+    },
+    "C": {
+      "allocation_seconds": 27900,
+      "fit_limit_seconds": 25800,
+      "preparation_reserve_seconds": 600,
+      "score_reserve_seconds": 1800
+    }
+  },
+  "additional_GPU_driver_test": "Before each formal task starts fitting, run T12/J32 resume/pairing/row-failure/finite-gradient moment overflow/natural overflow regressions on CUDA:0; failure prevents fitting."
+}

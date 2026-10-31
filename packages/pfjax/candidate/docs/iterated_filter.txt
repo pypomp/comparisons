@@ -1,0 +1,119 @@
+IF2 and an added weight-gradient correction
+
+This candidate extends PFJAX commit 97652aa1bdff73a92c0286549b010e99cc6f7264.
+It is not an accepted upstream release. The original score, Rao-Blackwellized
+score and optimal-transport implementations are unchanged.
+
+IF2 interface
+
+    fit = pfjax.iterated_filter(
+        model, key, y_meas, parameter_particles, perturbation_scale, n_iter,
+        initial_scale=initial_scale, cooling_rate=.9, cooling_interval=1.,
+        within_pass_cooling=False)
+
+parameter_particles is a floating array of shape (J, P). The existing model
+supplies pf_init(key, y_init, theta) and pf_step(key, x_prev, y_curr, theta).
+theta is one length-P parameter vector, just as in an ordinary PFJAX model.
+Model state and observations can be PyTrees with array leaves. The model is
+responsible for parameter transforms, appropriate proposal importance weights
+and any transition performed inside pf_init. The extension neither invents a
+transition density nor derives one from a simulator.
+
+The wrapper perturbs parameters before pf_init and later pf_step calls. It
+adds state, parameters and a time index to each particle. The original
+particle_filter runs the time loop, weight accumulation and multinomial
+resampling. A last multinomial resampling returns equal-weight parameters.
+All J parameter vectors, not just their mean, enter the next IF2 pass.
+Initial-value parameters can have positive initial_scale and zero
+perturbation_scale. For parameters perturbed at observation zero, set their
+initial_scale too. No first-transition perturbation is silently inferred.
+
+The cooling factor is rate**((iteration + fraction)/interval), where fraction
+is t/n_obs if within_pass_cooling=True, otherwise zero; t=0 is initialization.
+The integer time is converted to the parameter dtype before division. This
+preserves float64 cooling when the parameter population is float64; candidate
+v1 inadvertently evaluated this fraction in float32. The float32 path is
+unchanged. A strict float64 regression and independent full-Dacca recursion
+cover this correction. Historical benchmark source and results are separate.
+iterated_filter folds iteration_offset+i into the root key. A split run uses
+the returned whole population, the same root key and the next offset.
+Scales and parameters may be JIT inputs. n_iter, iteration_offset, cooling
+constants and within_pass_cooling are fixed settings. This version has a
+single particle axis; callers may vmap independent filters.
+
+Returned history contains per-pass mean theta, perturbed loglik and valid.
+The perturbed likelihood is not a final fixed-parameter evaluation score.
+valid checks nonnegative finite scales, a nonnegative finite iteration, finite
+terminal parameters and finite likelihood. It is not a convergence or MCSE
+test. Nonfinite passes are not retried; all requested passes still execute.
+Callers must inspect valid before using a fit. No checkpoint writer or
+per-case recovery policy is included.
+
+The only change inside the original PF function is an optional keyword-only
+initial_particles=(states, logw) argument. It supplies the initialization at
+y_meas[0], bypassing pf_init but consuming the original initial key split.
+It does not resume a previous likelihood or support score/Fisher accumulators.
+This lets IF2 supply its exact whole parameter population without resampling
+that population a second time at the start or replacing the PF time loop.
+The original Python key-unpacking code is retained in this candidate. The
+earlier benchmark's array-slicing performance change is not folded into it.
+
+Gradient interface
+
+    result = pfjax.particle_filter_mop(
+        model, key, y_meas, theta, n_particles, alpha=.97)
+    gradient = jax.grad(lambda p: pfjax.particle_filter_mop(
+        model, key, y_meas, p, n_particles, alpha=.97)['loglik'])(theta)
+
+This is an added method, including at alpha=1. It uses the original PF model
+and resampler callbacks. It does not modify or call PFJAX's OT derivative or
+its score/RB accumulators. Require model._bootstrap=True, reparameterized
+state sampling, and no pf_aux. General proposals and other resamplers are
+not supported here. The bootstrap declaration is the model author's
+contract; the function cannot prove that the supplied sampler is appropriate.
+
+For ancestor indices a and previous log weights l, define
+    c = alpha * (l[a] - stop_gradient(l[a])).
+The wrapper adds c-logmeanexp(c) to the next measurement log weights.
+The subtraction accounts for the denominator when the original PF sums
+log-normalizers. Its derivative is the selected weight derivative minus
+its mean over the resampled population. State derivatives continue through
+the selected states. alpha=0 retains the original pathwise derivative;
+alpha=1 adds the correction; lower positive alpha discounts the inherited
+weight derivative. Forward PF values are unchanged mathematically. Floating
+arithmetic across different compiled graphs need not be bitwise identical.
+
+This is a gradient estimator; finite differences of its unchanged forward
+value do not validate the stop-gradient rule. No exact/unbiased gradient of
+finite-particle log likelihood, second-derivative estimator, or universal
+optimization improvement is claimed. Callers must check finite outputs.
+
+Original methods and the example
+
+PFJAX's stochastic-optimization tutorial uses particle_filter_rb(score=True)
+with external Optax Adam. Its score estimators need state transition log
+densities. OT uses resample_ot and changes the finite-particle filter; this
+candidate does not tune or replace it.
+
+examples/iterated_filter.py uses the unchanged built-in BMModel. It executes
+the original RB score plus Optax Adam, IF2 followed by that same RB score,
+and IF2 followed by the added discounted gradient plus Optax Adam. Three
+updates and four independent PF draws per endpoint are execution examples,
+not evidence of optimization quality. Optax is an example dependency.
+
+Scope and checks
+
+The new IF2 path rejects auxiliary PFs and uses multinomial resampling only.
+The MOP path rejects models without the explicit bootstrap declaration.
+The generic tests use linear/nonlinear models, 1/3 parameter dimensions,
+nested states, observation PyTrees, fixed coordinates, zero passes, split
+runs, bad settings and nonfinite likelihoods. Gradient derivatives are
+checked by independently propagating state tangents and weight derivatives.
+Pristine-source checks verify the default PF's values and gradients remain
+unchanged. Additional tests use the original Brownian PF and RB score tests.
+
+The Dacca check uses all 600 months and 20 Euler steps, J=8, two IF2 passes,
+one external Adam step and two independent ordinary PF draws. It does not
+reuse the historical IF2 random assignment, claim a historical trajectory
+replay, or assess score precision. The formal source and results stay frozen.
+GPU behavior, performance and the full upstream suite remain unverified.

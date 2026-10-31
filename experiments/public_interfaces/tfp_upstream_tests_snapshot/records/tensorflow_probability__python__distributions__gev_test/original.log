@@ -1,0 +1,11 @@
+................s................s................s                      [100%]
+=============================== warnings summary ===============================
+tensorflow_probability/python/distributions/gev_test.py::GEVTestStaticShape::testGEVMode
+tensorflow_probability/python/distributions/gev_test.py::GEVTestFloat64StaticShape::testGEVMode
+tensorflow_probability/python/distributions/gev_test.py::GEVTestDynamicShape::testGEVMode
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/distributions/gev_test.py:232: RuntimeWarning: invalid value encountered in divide
+    np_mode_z = np.where(conc == 0., 0., ((conc+1)**(-conc) - 1.) / conc)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__distributions__gev_test/original.xml -
+48 passed, 3 skipped, 3 warnings in 23.05s

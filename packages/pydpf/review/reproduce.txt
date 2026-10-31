@@ -1,0 +1,32 @@
+PyDPF 本地补丁复现
+
+当前源码：/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/pydpf-implementation-v1/candidate
+检查脚本：/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/pydpf-implementation-v1/validation
+结果目录：/Users/mac/Documents/Codex/2026-10-22/cloud-gl/outputs/competitor_estimation/pydpf_implementation_v1
+
+以下命令在 candidate 中执行。当前使用 Torch 2.9.1 CPU；其他版本未据此认证。
+
+34 项定向检查：
+PYTHONPATH=pydpf:../../competitor-estimation/pydpf/local-deps ../../panel-cute-cpu/bin/python -m pytest -q tests/test_estimation_extension.py
+
+执行公开接口示例：
+PYTHONPATH=pydpf:../../competitor-estimation/pydpf/local-deps ../../panel-cute-cpu/bin/python examples/if2_and_discount.py
+
+完整时间长度的 Dacca 少粒子接入检查：
+PYTHONPATH=pydpf:../../competitor-estimation/pydpf/local-deps ../../panel-cute-cpu/bin/python ../validation/check_dacca.py --output /private/tmp/pydpf_dacca_api_recheck.json
+
+生成并核验补丁/审查包，在工作区根目录执行：
+work/panel-cute-cpu/bin/python work/pydpf-implementation-v1/build_review.py
+
+独立查看审查包：
+解压 review_bundle.zip，在解压目录执行 python verify_bundle.py。
+创建 upstream 和 candidate 两个目录，将 upstream.tar.gz 分别解压到这两个目录。
+在 candidate 中运行 git apply --check ../full.patch，再运行 git apply ../full.patch。
+将包中的 validation 保留在 candidate 同级。在与 environment.json 相容的 Python 环境中，从 candidate 运行：
+PYTHONPATH=pydpf python -m pytest -q tests/test_estimation_extension.py
+PYTHONPATH=pydpf python examples/if2_and_discount.py
+PYTHONPATH=pydpf python ../validation/check_dacca.py --output /tmp/pydpf_dacca_api_recheck.json
+
+full.patch 相对固定上游；gradient_discount.patch 只是它的一个子集，不要依次应用这两份补丁。
+原仓库为部分克隆，git archive 会尝试获取缺失对象。本次改用 git ls-tree 给出的 blob SHA-1 逐一核验已经在本机的 26 个选定文件，再复制它们。upstream.tar.gz 包含 pydpf 包子目录、根 README/LICENSE 及原教程，未声称包含完整仓库。
+包内环境清单记录实际导入的模块；依赖环境未打包。CPU 接入检查不评估性能、优化质量或 MCSE，也未重新运行历史正式比较。

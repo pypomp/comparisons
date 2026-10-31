@@ -1,0 +1,12 @@
+{
+  "job_id": "65144479",
+  "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/cuthbert_gate_v3",
+  "submitted_at_utc": "2026-10-31T22:00:21.844383+00:00",
+  "GPU": "A40",
+  "time_limit_seconds": 1680,
+  "source_manifest_sha256": "c3cf801b178be021bd59d03a4876d6ef7c0576459f5cad5d06bcdaf57134da55",
+  "prior_job": 65144329,
+  "native_timing_repeated": false,
+  "formal_fit_calls": 0,
+  "submission_stdout": "SOURCE_VERIFIED 571\n65144479\n"
+}

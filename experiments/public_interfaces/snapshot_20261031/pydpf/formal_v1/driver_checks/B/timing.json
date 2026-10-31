@@ -1,0 +1,11 @@
+{
+  "method": "B",
+  "gradient_wall_seconds": 0.5486720419721678,
+  "compute_seconds": 0.5355107919313014,
+  "initialization_seconds": 0.5462231661658734,
+  "warm_IF2_call_seconds": 0.10564837395213544,
+  "warm_IF2_preparation_seconds": 0.0036447090096771717,
+  "logical_method_fit_seconds": 1.2041882910998538,
+  "physical_shared_warm_counted_once": true,
+  "note": "B/C each report full shared warm cost; physical aggregate deduplicates warm job. No multiplication of batch time by12."
+}

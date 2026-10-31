@@ -1,0 +1,975 @@
+diff --git a/docs/source/iterated_filtering.rst b/docs/source/iterated_filtering.rst
+new file mode 100644
+--- /dev/null
++++ b/docs/source/iterated_filtering.rst
+@@ -0,0 +1,104 @@
++IF2 and discounted particle-filter gradients
++===========================================
++
++This local extension adds parameter perturbations to the existing bootstrap
++``ParticleFilter`` and an optional ``alpha`` argument to ``StopGradientDPF``.
++It does not replace the particle filter or add an optimizer. Training still
++uses an ordinary Torch training loop, as in the existing PyDPF tutorial.
++
++Using an existing model
++-----------------------
++
++Provide ``model_factory(parameters)`` returning a normal ``FilteringModel``.
++Its prior and dynamic components implement ``sample`` and its observation
++component implements ``fitness`` (the existing ``score`` spelling also works).
++The factory applies parameter transformations and captures the resulting
++parameters in these components. It must support a parameter tensor with one
++row per particle, of shape ``(batch, particles, coordinates)``. A module that
++only reads one global ``torch.nn.Parameter`` needs a model adapter first;
++the extension does not automatically rewrite arbitrary PyDPF models.
++
++The IF2 module handles parameter perturbation, ancestor selection, and the
++iteration over complete filtering passes. Model callbacks contain none of
++these operations. They use the existing PyDPF argument conventions, including
++time, control and series metadata. This version supports vector-valued states
++and parameters, bootstrap proposals, and unconditional systematic or
++multinomial resampling.
++
++The example in ``examples/if2_and_discount.py`` uses the same factory for a
++normal ``StopGradientDPF`` and ``IteratedFiltering``:
++
++.. code-block:: python
++
++    warm = pydpf.IteratedFiltering(
++        model_factory,
++        perturbation_scale=process_scales,
++        initial_scale=initial_scales,
++        generator=generator,
++    )(initial_parameters, observations, n_particles=64, n_iterations=3)
++    if not warm.success:
++        raise RuntimeError(warm.failure_reason)
++
++The parameter swarm is appended to the model state. The original filter
++resamples this joined state, so state and parameters use the same ancestors.
++After the last observation, a further call to the original resampler produces
++an equally weighted parameter swarm for the next pass. The swarm is retained
++in full; its mean is not used to recreate the next swarm.
++
++``initial_scale`` is applied at the beginning of each pass. Process
++perturbations are applied before sampling the prior at observation zero and
++before subsequent transitions. A coordinate that should change only at
++initialization must have process scale zero. If a model requires distinct
++parameter values for its unobserved initial state and a transition before its
++first observation, this single-prior interface may need a separate adapter.
++
++``cooling_rate**(m/cooling_interval)`` controls the scales in pass ``m``.
++With ``within_pass_cooling=True``, observation ``t`` instead uses
++``cooling_rate**((m+t/T)/cooling_interval)``. The caller supplies the scales and
++cooling; no Dacca dimensions, parameter names, or paper settings are built in.
++
++Failure of one pass stops the whole batch, reports ``success=False`` and keeps
++the preceding valid swarm. Successful-pass histories and counts remain
++available. This interface does not perform the historical benchmark driver's
++per-row isolation, checkpoint recovery, or automatic retries.
++
++Adding the gradient discount
++----------------------------
++
++.. code-block:: python
++
++    pf = pydpf.StopGradientDPF(
++        SSM=model_factory(parameters),
++        resampling_generator=generator,
++        alpha=0.97,
++    )
++
++The default ``alpha=1`` retains the existing resampling computation.
++For ``alpha<1``, the derivative inherited from the selected log weights is
++multiplied by ``alpha``. Derivatives through the sampled states remain.
++The forward arithmetic is retained from the original stop-gradient resampler,
++including its floating-point rounding. Thus alpha zero does not disable all
++gradients, and finite differences of the forward likelihood are not a test
++for the discounted derivative.
++
++Discounting is restricted to pathwise bootstrap models and unconditional
++systematic/multinomial resampling at every observation. Combining it with
++guided proposals, conditional resampling, other resamplers, or transition-score
++REINFORCE is not validated here. The default alpha-one API keeps its original
++supported configuration choices.
++
++IFAD and endpoint evaluation
++---------------------------
++
++Use the IF2 parameters as the initial values in the normal Torch optimizer
++loop, then use ``StopGradientDPF(alpha=0.97)`` for the likelihood gradient.
++Call ``pf.update()`` as instructed by the original training tutorial when
++reusing modules with cached derived quantities. Adam remains ``torch.optim.Adam``;
++neither it nor the complete IFAD training loop is called a native PyDPF MLE
++routine. No new general training-loop API is introduced in this patch.
++
++After fitting, evaluate fixed parameters with the ordinary PF and fresh random
++draws. Keep each log likelihood; use log(mean likelihood) for repeated PF
++evaluation, not the arithmetic mean of the log likelihoods. IF2's perturbed
++model likelihoods and training objectives are not endpoint scores. The small
++example only demonstrates execution and does not assess score precision.
+diff --git a/docs/source/tutorial.rst b/docs/source/tutorial.rst
+--- a/docs/source/tutorial.rst
++++ b/docs/source/tutorial.rst
+@@ -232,6 +232,9 @@
+ 
+ Training a DPF
+ ==============
++The local :doc:`iterated_filtering` extension describes an IF2 initialization
++and an optional gradient discount, using the same model and training interfaces.
++
+ The training procedure is much the same as base ``torch``, and like base ``torch`` we do not implement training loops in ``PyDPF`` instead we leave it up to the users to design a
+ routine that suits their needs. The only difference to a generic ``torch`` training loop is that it is safest to always call ``DPF.update()`` after any backwards pass or
+ optimiser step to ensure that the cache is properly invalidated and the computation graph cleared.
+@@ -279,4 +282,4 @@
+ 
+ .. [1] Doucet and Johansen (2011), *A tutorial on particle filtering and smoothing: Fifteen years later*
+ .. [2] Gordon, Salmond and Smith (1993), *Novel Approach to Nonlinear and Non-Gaussian Bayesian State Estimation*
+-.. [3] Karkus, Hsu and Lee (2018), *Particle Filter Networks with Application to Visual Localization*
+\ No newline at end of file
++.. [3] Karkus, Hsu and Lee (2018), *Particle Filter Networks with Application to Visual Localization*
+diff --git a/examples/if2_and_discount.py b/examples/if2_and_discount.py
+new file mode 100644
+--- /dev/null
++++ b/examples/if2_and_discount.py
+@@ -0,0 +1,118 @@
++"""Use one model with the original ADPF, IF2, and discounted ADPF interfaces."""
++
++import json
++
++import torch
++import pydpf
++
++
++def model_factory(
++    parameters, generator, *, dimension=1, nonlinear=False, package=pydpf
++):
++    """Build ordinary PyDPF model components; no parameter perturbations here.
++
++    Parameter rows may be shared across particles (B, P) or specific to each
++    particle (B, J, P). The latter is required for the IF2 extension.
++    """
++    theta = parameters[:, None, :] if parameters.ndim == 2 else parameters
++    coefficient = torch.tanh(theta[..., :1])
++    location = theta[..., 1 : dimension + 1]
++    scale = 0.1 * theta[..., -1:].exp()
++
++    def noise(shape):
++        return torch.randn(
++            shape, generator=generator, device=theta.device, dtype=theta.dtype
++        )
++
++    class Prior(package.Module):
++        def sample(self, batch_size, n_particles, **data):
++            return location + 0.3 * noise((batch_size, n_particles, dimension))
++
++    class Dynamic(package.Module):
++        def sample(self, prev_state, **data):
++            state = torch.sin(prev_state) if nonlinear else prev_state
++            return coefficient * state + location + scale * noise(prev_state.shape)
++
++    class Observation(package.Module):
++        def fitness(self, state, observation, **data):
++            residual = (observation[:, :1] - state.sum(dim=-1)) / 0.6
++            return -0.5 * residual.square() - torch.log(
++                theta.new_tensor(0.6 * (2 * torch.pi) ** 0.5)
++            )
++
++    return package.FilteringModel(
++        prior_model=Prior(), dynamic_model=Dynamic(), observation_model=Observation()
++    )
++
++
++def log_likelihood(parameters, observation, generator, *, alpha=1.0):
++    """Use PyDPF's existing filter/likelihood outputs and the added alpha option."""
++    pf = pydpf.StopGradientDPF(
++        SSM=model_factory(parameters, generator),
++        resampling_generator=generator,
++        alpha=alpha,
++    )
++    pf.update()  # Native PyDPF cache maintenance, as in its training tutorial.
++    factors = pf(
++        n_particles=64,
++        time_extent=len(observation) - 1,
++        aggregation_function=pydpf.LogLikelihoodFactors(),
++        observation=observation,
++    )
++    if factors.shape[0] != len(observation):
++        raise RuntimeError("Incomplete filtering trajectory")
++    return factors.sum(dim=0).reshape(parameters.shape[0])
++
++
++def main():
++    """Demonstrate composition, not an optimization-method comparison."""
++    observation = torch.linspace(-0.4, 0.8, 12).reshape(12, 1, 1)
++    initial = torch.tensor([[0.2, 0.0, -0.2]])
++    fit_generator = torch.Generator().manual_seed(20261029)
++    warm = pydpf.IteratedFiltering(
++        lambda theta: model_factory(theta, fit_generator),
++        generator=fit_generator,
++        perturbation_scale=torch.tensor([0.02, 0.02, 0.0]),
++        initial_scale=torch.tensor([0.0, 0.0, 0.03]),
++    )(initial, observation, n_particles=64, n_iterations=3)
++    if not warm.success:
++        raise RuntimeError(warm.failure_reason)
++
++    # This is an external Torch optimizer, following PyDPF's tutorial.
++    parameters = torch.nn.Parameter(warm.parameters.clone())
++    optimizer = torch.optim.Adam([parameters], lr=0.002)
++    for _ in range(3):
++        optimizer.zero_grad(set_to_none=True)
++        loss = -log_likelihood(parameters, observation, fit_generator, alpha=0.97).sum()
++        loss.backward()
++        if not torch.isfinite(loss) or not torch.isfinite(parameters.grad).all():
++            raise RuntimeError("Nonfinite loss or gradient")
++        optimizer.step()
++        if not torch.isfinite(parameters).all():
++            raise RuntimeError("Nonfinite parameter update")
++
++    evaluation_generator = torch.Generator().manual_seed(20261030)
++    with torch.no_grad():
++        raw = torch.stack(
++            [
++                log_likelihood(parameters, observation, evaluation_generator)
++                for _ in range(4)
++            ]
++        )
++        score = torch.logsumexp(raw, dim=0) - torch.log(raw.new_tensor(len(raw)))
++    print(
++        json.dumps(
++            {
++                "example_completed": True,
++                "if2_passes": warm.completed_iterations,
++                "adam_updates": 3,
++                "score_replicates": 4,
++                "log_mean_likelihood": score.tolist(),
++                "score_precision_assessed": False,
++            }
++        )
++    )
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/pydpf/pydpf/__init__.py b/pydpf/pydpf/__init__.py
+--- a/pydpf/pydpf/__init__.py
++++ b/pydpf/pydpf/__init__.py
+@@ -8,6 +8,7 @@
+ from .conditional_resampling import *
+ from .gradient_regularisation import *
+ from .model_based_api import *
++from .iterated_filtering import IteratedFiltering, IF2Result
+ from .Kalman import *
+ import torch
+ import warnings
+@@ -18,4 +19,4 @@
+         "degraded. If you have a CUDA-capable GPU, install a CUDA build of "
+         "PyTorch from https://pytorch.org/get-started/locally/.",
+         stacklevel=2,
+-    )
+\ No newline at end of file
++    )
+diff --git a/pydpf/pydpf/filtering.py b/pydpf/pydpf/filtering.py
+--- a/pydpf/pydpf/filtering.py
++++ b/pydpf/pydpf/filtering.py
+@@ -685,6 +685,11 @@
+     use_REINFORCE_for_initial_proposal: bool. Default False.
+         Whether to use the REINFORCE estimator for the gradient due to the initial particle proposal process.
+ 
++    alpha: float. Default 1.
++        Discount inherited weight derivatives. Values below one are currently
++        supported only for pathwise bootstrap filtering with resampling at every
++        observation. This does not add an optimizer.
++
+     Notes
+     -----
+     See [1]_. If ``use_REINFORCE_for_proposal`` is ``True`` then this DPF is as described in [1]_ and the proposal model cannot be learned. Otherwise, it is as in [2]_.
+@@ -701,10 +706,14 @@
+                  multinomial:bool = False,
+                  *,
+                  use_REINFORCE_for_proposal: bool = False,
+-                 use_REINFORCE_for_initial_proposal: bool = False
++                 use_REINFORCE_for_initial_proposal: bool = False,
++                 alpha: float = 1.0
+                  ) -> None:
++        if alpha != 1 and (use_REINFORCE_for_proposal or use_REINFORCE_for_initial_proposal
++                           or SSM is None or SSM.has_proposal or SSM.has_initial_proposal):
++            raise ValueError('Discounting currently requires a pathwise bootstrap FilteringModel')
+         base_resampler = MultinomialResampler(resampling_generator) if multinomial else SystematicResampler(resampling_generator)
+-        resampler = StopGradientResampler(base_resampler)
++        resampler = StopGradientResampler(base_resampler, alpha=alpha)
+         super().__init__(resampler, SSM, use_REINFORCE_for_proposal=use_REINFORCE_for_proposal, use_REINFORCE_for_initial_proposal=use_REINFORCE_for_initial_proposal)
+ 
+ class MarginalStopGradientDPF(MarginalParticleFilter):
+diff --git a/pydpf/pydpf/iterated_filtering.py b/pydpf/pydpf/iterated_filtering.py
+new file mode 100644
+--- /dev/null
++++ b/pydpf/pydpf/iterated_filtering.py
+@@ -0,0 +1,268 @@
++"""IF2 parameter perturbations using the existing bootstrap ParticleFilter."""
++
++from math import isfinite
++from typing import Callable, NamedTuple
++
++import torch
++from torch import Tensor
++
++from .base import DivergenceError, Module
++from .filtering import ParticleFilter
++from .model_based_api import FilteringModel
++from .resampling import MultinomialResampler, SystematicResampler
++
++
++class IF2Result(NamedTuple):
++    """Last valid parameter swarm, its means, and perturbed-model likelihoods.
++
++    A failed pass stops the whole batch and preserves the preceding swarm.
++    ``completed_iterations`` counts complete accepted passes, not individual rows.
++    These likelihoods must not be used as endpoint scores for the static model.
++    """
++
++    parameters: Tensor
++    parameter_swarm: Tensor
++    parameter_history: Tensor
++    perturbed_log_likelihoods: Tensor
++    completed_iterations: int
++    success: bool
++    failure_reason: str | None
++
++
++class _LastState(Module):
++    def forward(self, state, weight, likelihood, **data):
++        self.state, self.weight = state, weight
++        return likelihood
++
++
++class IteratedFiltering(Module):
++    """Fit a bootstrap model by perturbing parameters carried by its particles.
++
++    ``model_factory(parameters)`` must return a ``FilteringModel`` accepting
++    parameters of shape (batch, particles, coordinates). Model states must have
++    shape (batch, particles, state_dimension), with the same dtype and device.
++    The original prior.sample, dynamic.sample and observation.fitness/score
++    interfaces are used; no model callback implements parameter perturbations.
++    Parameter constraints belong in the factory, which must be side-effect free
++    apart from the random draws made by its samplers.
++
++    The initial scale is applied before each pass. The process scale is applied
++    before the prior at observation zero and before each later transition.
++    Initial-value-only coordinates therefore use zero process scale. A prior
++    requiring separate parameters before and after a pre-observation transition
++    is outside this interface; adapt that model explicitly rather than assume
++    that the two parameter values are interchangeable.
++
++    Pass m, observation t uses cooling_rate ** ((m + t/T) / cooling_interval)
++    when within_pass_cooling is True; otherwise t/T is omitted. Cooling starts
++    at m=0. A full terminal parameter swarm is retained between passes.
++
++    All stochastic model callbacks must use the generator controlled by the
++    caller if exact replay is required. A failed batch is not retried here.
++    """
++
++    def __init__(
++        self,
++        model_factory: Callable[[Tensor], FilteringModel],
++        *,
++        perturbation_scale,
++        initial_scale=0.0,
++        generator: torch.Generator = torch.default_generator,
++        cooling_rate: float = 0.9,
++        cooling_interval: float = 1.0,
++        within_pass_cooling: bool = False,
++        multinomial: bool = False,
++    ):
++        super().__init__()
++        if not isfinite(cooling_rate) or not 0 < cooling_rate <= 1:
++            raise ValueError("cooling_rate must be finite and in (0, 1]")
++        if not isfinite(cooling_interval) or cooling_interval <= 0:
++            raise ValueError("cooling_interval must be finite and positive")
++        self.model_factory = model_factory
++        self.perturbation_scale, self.initial_scale = perturbation_scale, initial_scale
++        self.generator = generator
++        self.cooling_rate, self.cooling_interval = cooling_rate, cooling_interval
++        self.within_pass_cooling, self.multinomial = within_pass_cooling, multinomial
++
++    @torch.no_grad()
++    def forward(
++        self,
++        initial_parameters: Tensor,
++        observation: Tensor,
++        n_particles: int,
++        n_iterations: int,
++        *,
++        control: Tensor | None = None,
++        time: Tensor | None = None,
++        series_metadata: Tensor | None = None,
++    ) -> IF2Result:
++        """Run complete PF passes; return failure if a pass is incomplete/nonfinite."""
++        for name, value, minimum in [
++            ("n_particles", n_particles, 1),
++            ("n_iterations", n_iterations, 0),
++        ]:
++            if isinstance(value, bool) or not isinstance(value, int) or value < minimum:
++                raise ValueError(f"{name} must be an integer >= {minimum}")
++        p = initial_parameters.detach().clone()
++        if p.ndim != 2 or min(p.shape) < 1 or not p.is_floating_point():
++            raise ValueError(
++                "initial_parameters must be a nonempty floating (B, P) tensor"
++            )
++        if not torch.isfinite(p).all():
++            raise ValueError("initial_parameters must be finite")
++        if (
++            observation.ndim < 3
++            or observation.shape[0] < 1
++            or observation.shape[1] != p.shape[0]
++        ):
++            raise ValueError("observation must have shape (T, B, ...) with T > 0")
++        if (
++            observation.device != p.device
++            or torch.device(self.generator.device) != p.device
++        ):
++            raise ValueError(
++                "parameters, observations and generator must share a device"
++            )
++
++        def scales(value):
++            result = torch.as_tensor(value, dtype=p.dtype, device=p.device)
++            try:
++                result = torch.broadcast_to(result, p.shape)[:, None, :]
++            except RuntimeError as exc:
++                raise ValueError("scales must broadcast to (B, P)") from exc
++            if not torch.isfinite(result).all() or (result < 0).any():
++                raise ValueError("scales must be finite and nonnegative")
++            return result
++
++        process_scale, initial_scale = (
++            scales(self.perturbation_scale),
++            scales(self.initial_scale),
++        )
++        batch, coordinates = p.shape
++        length = observation.shape[0]
++        swarm = p[:, None, :].expand(batch, n_particles, coordinates).clone()
++        history, likelihoods, failure = [p], [], None
++        resampler_type = (
++            MultinomialResampler if self.multinomial else SystematicResampler
++        )
++
++        def model(parameters):
++            ssm = self.model_factory(parameters)
++            if (
++                not isinstance(ssm, FilteringModel)
++                or ssm.has_proposal
++                or ssm.has_initial_proposal
++            ):
++                raise ValueError("model_factory must return a bootstrap FilteringModel")
++            return ssm
++
++        # Reject unsupported models even when zero iterations are requested.
++        model(swarm)
++
++        def perturb(parameters, scale, cooling):
++            noise = torch.randn(
++                parameters.shape,
++                device=p.device,
++                dtype=p.dtype,
++                generator=self.generator,
++            )
++            return parameters + noise * scale * cooling
++
++        def pack(state, parameters):
++            if (
++                state.ndim != 3
++                or state.shape[:2] != parameters.shape[:2]
++                or state.shape[-1] < 1
++            ):
++                raise ValueError("model states must have shape (B, J, state_dimension)")
++            if state.dtype != parameters.dtype or state.device != parameters.device:
++                raise ValueError(
++                    "model states and parameters must have the same dtype and device"
++                )
++            return torch.cat((state, parameters), dim=-1)
++
++        for iteration in range(n_iterations):
++
++            def cooling(t):
++                within = t / length if self.within_pass_cooling else 0.0
++                return self.cooling_rate ** (
++                    (iteration + within) / self.cooling_interval
++                )
++
++            initial = perturb(swarm, initial_scale, cooling(0))
++
++            class Prior(Module):
++                def sample(self, batch_size, n_particles, **data):
++                    parameters = perturb(initial, process_scale, cooling(0))
++                    state = model(parameters).prior_model.sample(
++                        batch_size=batch_size, n_particles=n_particles, **data
++                    )
++                    return pack(state, parameters)
++
++            class Dynamic(Module):
++                def sample(self, prev_state, t, **data):
++                    parameters = perturb(
++                        prev_state[..., -coordinates:], process_scale, cooling(t)
++                    )
++                    state = model(parameters).dynamic_model.sample(
++                        prev_state=prev_state[..., :-coordinates], t=t, **data
++                    )
++                    return pack(state, parameters)
++
++            class Observation(Module):
++                def fitness(self, state, observation, **data):
++                    ssm = model(state[..., -coordinates:])
++                    fitness = ParticleFilter._get_fitness_func(ssm)
++                    return fitness(
++                        state=state[..., :-coordinates], observation=observation, **data
++                    )
++
++            ssm = FilteringModel(
++                prior_model=Prior(),
++                dynamic_model=Dynamic(),
++                observation_model=Observation(),
++            )
++            pf = ParticleFilter(resampler=resampler_type(self.generator), SSM=ssm)
++            last = _LastState()
++            try:
++                factors = pf(
++                    n_particles=n_particles,
++                    time_extent=length - 1,
++                    aggregation_function=last,
++                    observation=observation,
++                    control=control,
++                    time=time,
++                    series_metadata=series_metadata,
++                )
++                if factors.shape[0] != length:
++                    raise DivergenceError("incomplete IF2 trajectory")
++                valid_weights = (
++                    not torch.isnan(last.weight).any()
++                    and not torch.isposinf(last.weight).any()
++                    and torch.isfinite(last.weight).any(dim=1).all()
++                )
++                if not valid_weights or not all(
++                    torch.isfinite(x).all() for x in (factors, last.state)
++                ):
++                    raise DivergenceError("nonfinite IF2 state, weights or likelihood")
++                terminal, _ = resampler_type(self.generator)(last.state, last.weight)
++                proposal = terminal[..., -coordinates:]
++                if not torch.isfinite(proposal).all():
++                    raise DivergenceError("nonfinite terminal parameter swarm")
++            except DivergenceError as exc:
++                failure = str(exc)
++                break
++            swarm = proposal.detach().clone()
++            history.append(swarm.mean(dim=1))
++            likelihoods.append(factors.sum(dim=0).reshape(batch))
++
++        ll = torch.stack(likelihoods) if likelihoods else p.new_empty((0, batch))
++        return IF2Result(
++            history[-1],
++            swarm,
++            torch.stack(history),
++            ll,
++            len(likelihoods),
++            failure is None,
++            failure,
++        )
+diff --git a/pydpf/pydpf/resampling.py b/pydpf/pydpf/resampling.py
+--- a/pydpf/pydpf/resampling.py
++++ b/pydpf/pydpf/resampling.py
+@@ -8,7 +8,7 @@
+ from .utils import batched_select, multiple_unsqueeze, normalise
+ from .base import Module
+ from . import optimal_transport
+-from math import sqrt, log
++from math import sqrt, log, isfinite
+ from .distributions.Gaussian import  StandardGaussian
+ 
+ 
+@@ -158,8 +158,12 @@
+ 
+     Parameters
+     ----------
+-    generator: torch.Generator
+-        The generator to track the random state of the resampling process.
++    base_resampler: Module
++        The underlying resampling module.
++    alpha: float. Default 1.
++        Discount inherited log-weight derivatives. The default retains the existing
++        estimator. Values below one require unconditional systematic or multinomial
++        resampling at every observation; they do not remove pathwise state derivatives.
+ 
+     Notes
+     -----
+@@ -172,8 +176,13 @@
+     ----------
+     .. [1] Scibior A, Wood F (2021). “Differentiable particle filtering without modifying the forward pass.” arXiv:2106.10314
+     '''
+-    def __init__(self, base_resampler:Module):
+-        super().__init__()
++    def __init__(self, base_resampler:Module, *, alpha:float = 1.0):
++        super().__init__()
++        if not isfinite(alpha) or not 0 <= alpha <= 1:
++            raise ValueError('alpha must be finite and in [0, 1]')
++        if alpha != 1 and type(base_resampler) not in (SystematicResampler, MultinomialResampler):
++            raise ValueError('Discounting requires unconditional systematic or multinomial resampling')
++        self.alpha = float(alpha)
+         self.cache = {}
+         self.base_resampler = base_resampler
+         self._need_weight_output = True
+@@ -187,7 +196,12 @@
+             resampled_weight = batched_select(self.base_resampler.cache['used_weight'], self.base_resampler.cache['sampled_indices'])
+             self.cache = self.base_resampler.cache
+             self.cache['used_weight'] = self.cache['used_weight'].detach()
+-            return state, new_weight + resampled_weight - resampled_weight.detach()
++            corrected_weight = new_weight + resampled_weight - resampled_weight.detach()
++            if self.alpha == 1:
++                return state, corrected_weight
++            # Keep the original forward rounding; discount only inherited weight derivatives.
++            correction = resampled_weight - resampled_weight.detach()
++            return state, corrected_weight.detach() + self.alpha * correction
+ 
+         if self._need_weight_output:
+             self.base_resampler._need_weight_output = True
+diff --git a/tests/test_estimation_extension.py b/tests/test_estimation_extension.py
+new file mode 100644
+--- /dev/null
++++ b/tests/test_estimation_extension.py
+@@ -0,0 +1,338 @@
++"""Compare with pinned upstream code and explicit particle recursions."""
++
++import importlib.util
++from math import log
++from pathlib import Path
++import sys
++
++import pytest
++import torch
++import pydpf
++from pydpf.utils import normalise, batched_select
++
++sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "examples"))
++from if2_and_discount import model_factory
++
++BASE = Path(__file__).resolve().parents[2] / "upstream/pydpf/pydpf"
++spec = importlib.util.spec_from_file_location(
++    "_pydpf_original", BASE / "__init__.py", submodule_search_locations=[str(BASE)]
++)
++original = importlib.util.module_from_spec(spec)
++sys.modules[spec.name] = original
++spec.loader.exec_module(original)
++torch.set_num_threads(1)
++
++
++def data(dimension=1, dtype=torch.float32):
++    theta = torch.zeros((2, dimension + 2), dtype=dtype)
++    theta[:, 0] = torch.tensor([0.2, -0.3])
++    theta[:, -1] = -0.4
++    obs = torch.linspace(-0.5, 1.0, 10, dtype=dtype).reshape(5, 2, 1)
++    return theta, obs
++
++
++def native(
++    theta,
++    obs,
++    generator,
++    *,
++    package=pydpf,
++    alpha=None,
++    multinomial=False,
++    dimension=1,
++    nonlinear=False,
++):
++    kw = {} if alpha is None else {"alpha": alpha}
++    pf = package.StopGradientDPF(
++        SSM=model_factory(
++            theta, generator, package=package, dimension=dimension, nonlinear=nonlinear
++        ),
++        resampling_generator=generator,
++        multinomial=multinomial,
++        **kw,
++    )
++    return pf(
++        n_particles=24,
++        time_extent=len(obs) - 1,
++        aggregation_function=package.LogLikelihoodFactors(),
++        observation=obs,
++    )
++
++
++@pytest.mark.parametrize("multinomial", [False, True])
++@pytest.mark.parametrize("dtype", [torch.float32, torch.float64])
++def test_default_and_alpha_one_match_pristine_upstream(multinomial, dtype):
++    theta, obs = data(dtype=dtype)
++    theta.requires_grad_()
++    records = []
++    for package, alpha in [(original, None), (pydpf, None), (pydpf, 1.0)]:
++        g = torch.Generator().manual_seed(123)
++        value = native(
++            theta, obs, g, package=package, alpha=alpha, multinomial=multinomial
++        )
++        gradient = torch.autograd.grad(value.sum(), theta)[0]
++        records.append((value.detach(), gradient, g.get_state()))
++    for value in records[1:]:
++        for a, b in zip(records[0], value):
++            torch.testing.assert_close(a, b, rtol=0, atol=0)
++
++
++def explicit_gradient(theta, obs, generator, alpha, multinomial):
++    """Direct bootstrap recursion with the inherited-weight derivative written out."""
++    ssm = model_factory(theta, generator)
++    state = ssm.prior_model.sample(batch_size=len(theta), n_particles=24)
++    weights, factor = normalise(ssm.observation_model.fitness(state, obs[0]))
++    factors = [(factor - log(24)).float()]
++    sampler = (
++        pydpf.MultinomialResampler(generator)
++        if multinomial
++        else pydpf.SystematicResampler(generator)
++    )
++    for t in range(1, len(obs)):
++        ancestors, uniform = sampler(state, weights)
++        inherited = batched_select(weights, sampler.cache["sampled_indices"])
++        # Native forward arithmetic, with the specified derivative attached.
++        primal = (uniform + inherited - inherited.detach()).detach()
++        corrected = primal + alpha * (inherited - inherited.detach())
++        state = ssm.dynamic_model.sample(ancestors, t=t)
++        weights, factor = normalise(
++            corrected + ssm.observation_model.fitness(state, obs[t])
++        )
++        factors.append(factor.float())
++    return torch.stack(factors)
++
++
++@pytest.mark.parametrize("alpha", [0.0, 0.5, 0.97, 1.0])
++@pytest.mark.parametrize("multinomial", [False, True])
++def test_discounted_forward_and_explicit_gradient(alpha, multinomial):
++    theta, obs = data(dtype=torch.float64)
++    theta.requires_grad_()
++    value = native(
++        theta,
++        obs,
++        torch.Generator().manual_seed(31),
++        alpha=alpha,
++        multinomial=multinomial,
++    )
++    expected = explicit_gradient(
++        theta, obs, torch.Generator().manual_seed(31), alpha, multinomial
++    )
++    reference = native(
++        theta,
++        obs,
++        torch.Generator().manual_seed(31),
++        package=original,
++        multinomial=multinomial,
++    )
++    torch.testing.assert_close(value, reference, rtol=0, atol=0)
++    torch.testing.assert_close(value, expected, rtol=0, atol=0)
++    actual_grad = torch.autograd.grad(value.sum(), theta)[0]
++    expected_grad = torch.autograd.grad(expected.sum(), theta)[0]
++    torch.testing.assert_close(actual_grad, expected_grad, rtol=1e-10, atol=1e-10)
++    assert actual_grad.abs().sum() > 0  # alpha=0 still has state-path derivatives.
++
++
++@pytest.mark.parametrize("grad_enabled", [False, True])
++@pytest.mark.parametrize("need_weight", [False, True])
++def test_resampler_default_branches_and_cache(grad_enabled, need_weight):
++    values = []
++    for package in [original, pydpf]:
++        resampler = package.StopGradientResampler(
++            package.SystematicResampler(torch.Generator().manual_seed(3))
++        )
++        resampler._need_weight_output = need_weight
++        state = torch.arange(10.0).reshape(2, 5, 1).requires_grad_()
++        weight = (
++            torch.randn((2, 5), generator=torch.Generator().manual_seed(4))
++            .log_softmax(1)
++            .requires_grad_()
++        )
++        with torch.set_grad_enabled(grad_enabled):
++            result = resampler(state, weight)
++        values.append((result, resampler.cache))
++    torch.testing.assert_close(values[0][0], values[1][0], rtol=0, atol=0)
++    torch.testing.assert_close(values[0][1], values[1][1], rtol=0, atol=0)
++
++
++def explicit_if2(
++    initial,
++    obs,
++    generator,
++    scale,
++    initial_scale,
++    *,
++    dimension,
++    nonlinear,
++    passes,
++    rate,
++    interval,
++    within,
++    multinomial,
++):
++    """Independent time loop: no ParticleFilter or IteratedFiltering call."""
++    swarm = initial[:, None, :].expand(2, 24, -1).clone()
++    histories, likelihoods = [initial], []
++    sampler = (
++        pydpf.MultinomialResampler(generator)
++        if multinomial
++        else pydpf.SystematicResampler(generator)
++    )
++
++    def noise():
++        return torch.randn(swarm.shape, generator=generator, dtype=swarm.dtype)
++
++    for m in range(passes):
++        parameters = swarm + noise() * initial_scale * rate ** (m / interval)
++        parameters = parameters + noise() * scale * rate ** (m / interval)
++        ssm = model_factory(
++            parameters, generator, dimension=dimension, nonlinear=nonlinear
++        )
++        state = ssm.prior_model.sample(2, 24)
++        weights, ll = normalise(ssm.observation_model.fitness(state, obs[0]))
++        factors = [(ll - log(24)).float()]
++        for t in range(1, len(obs)):
++            joined, uniform = sampler(torch.cat((state, parameters), -1), weights)
++            parameters = joined[..., dimension:] + noise() * scale * rate ** (
++                (m + (t / len(obs) if within else 0)) / interval
++            )
++            ssm = model_factory(
++                parameters, generator, dimension=dimension, nonlinear=nonlinear
++            )
++            state = ssm.dynamic_model.sample(joined[..., :dimension], t=t)
++            weights, ll = normalise(
++                uniform + ssm.observation_model.fitness(state, obs[t])
++            )
++            factors.append(ll.float())
++        terminal, _ = sampler(torch.cat((state, parameters), -1), weights)
++        swarm = terminal[..., dimension:]
++        histories.append(swarm.mean(1))
++        likelihoods.append(torch.stack(factors).sum(0).reshape(2))
++    return swarm, torch.stack(histories), torch.stack(likelihoods)
++
++
++@pytest.mark.parametrize("dimension,nonlinear", [(1, False), (3, True)])
++@pytest.mark.parametrize("multinomial", [False, True])
++@pytest.mark.parametrize("within", [False, True])
++def test_if2_full_swarm_cooling_and_model_dimensions(
++    dimension, nonlinear, multinomial, within
++):
++    theta, obs = data(dimension)
++    scale = torch.full((dimension + 2,), 0.03)
++    scale[-1] = 0
++    initial_scale = torch.zeros_like(scale)
++    initial_scale[-1] = 0.04
++    generator = torch.Generator().manual_seed(1234)
++    result = pydpf.IteratedFiltering(
++        lambda p: model_factory(p, generator, dimension=dimension, nonlinear=nonlinear),
++        generator=generator,
++        perturbation_scale=scale,
++        initial_scale=initial_scale,
++        cooling_rate=0.5,
++        cooling_interval=2,
++        within_pass_cooling=within,
++        multinomial=multinomial,
++    )(theta, obs, n_particles=24, n_iterations=3)
++    expected_generator = torch.Generator().manual_seed(1234)
++    expected = explicit_if2(
++        theta,
++        obs,
++        expected_generator,
++        scale,
++        initial_scale,
++        dimension=dimension,
++        nonlinear=nonlinear,
++        passes=3,
++        rate=0.5,
++        interval=2,
++        within=within,
++        multinomial=multinomial,
++    )
++    assert result.success and result.completed_iterations == 3
++    for a, b in zip(
++        (
++            result.parameter_swarm,
++            result.parameter_history,
++            result.perturbed_log_likelihoods,
++        ),
++        expected,
++    ):
++        torch.testing.assert_close(a, b, rtol=0, atol=0)
++    assert torch.equal(generator.get_state(), expected_generator.get_state())
++
++
++def test_zero_iterations_and_frozen_coordinates():
++    theta, obs = data()
++    generator = torch.Generator().manual_seed(3)
++    obj = pydpf.IteratedFiltering(
++        lambda p: model_factory(p, generator), generator=generator, perturbation_scale=0
++    )
++    state = generator.get_state().clone()
++    result = obj(theta, obs, n_particles=24, n_iterations=0)
++    assert result.success and result.completed_iterations == 0
++    assert torch.equal(generator.get_state(), state)
++    assert result.perturbed_log_likelihoods.shape == (0, 2)
++    result = obj(theta, obs, n_particles=24, n_iterations=2)
++    torch.testing.assert_close(
++        result.parameter_swarm, theta[:, None].expand(2, 24, 3), rtol=0, atol=0
++    )
++
++
++def test_failed_pass_retains_preceding_swarm():
++    theta, obs = data()
++    generator = torch.Generator().manual_seed(3)
++
++    def factory(p):
++        ssm = model_factory(p, generator)
++        sample = ssm.dynamic_model.sample
++        ssm.dynamic_model.sample = lambda prev_state, **kw: sample(
++            prev_state, **kw
++        ) * float("nan")
++        return ssm
++
++    result = pydpf.IteratedFiltering(
++        factory, generator=generator, perturbation_scale=0.02
++    )(theta, obs, n_particles=24, n_iterations=3)
++    assert not result.success and result.completed_iterations == 0
++    assert result.failure_reason
++    torch.testing.assert_close(
++        result.parameter_swarm, theta[:, None].expand(2, 24, 3), rtol=0, atol=0
++    )
++
++
++@pytest.mark.parametrize("alpha", [-0.1, 1.01, float("nan"), float("inf")])
++def test_invalid_alpha(alpha):
++    theta, _ = data()
++    g = torch.Generator()
++    with pytest.raises(ValueError):
++        pydpf.StopGradientDPF(SSM=model_factory(theta, g), alpha=alpha)
++
++
++@pytest.mark.parametrize("scale", [-0.1, float("nan"), [0.1, 0.2]])
++def test_invalid_perturbation_scales(scale):
++    theta, obs = data()
++    g = torch.Generator()
++    with pytest.raises(ValueError):
++        pydpf.IteratedFiltering(
++            lambda p: model_factory(p, g), generator=g, perturbation_scale=scale
++        )(theta, obs, 24, 1)
++
++
++def test_discount_and_if2_reject_guided_proposals():
++    theta, obs = data()
++    g = torch.Generator()
++
++    def factory(p):
++        ssm = model_factory(p, g)
++        ssm.proposal_model = ssm.dynamic_model
++        return ssm
++
++    with pytest.raises(ValueError):
++        pydpf.StopGradientDPF(SSM=factory(theta), alpha=0.97)
++    with pytest.raises(ValueError):
++        pydpf.IteratedFiltering(factory, generator=g, perturbation_scale=0.01)(
++            theta, obs, 24, 1
++        )
++    with pytest.raises(ValueError):
++        pydpf.StopGradientDPF(
++            SSM=model_factory(theta, g), alpha=0.97, use_REINFORCE_for_proposal=True
++        )

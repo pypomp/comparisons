@@ -1,0 +1,1151 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="22" skipped="15" tests="87" time="160.707" timestamp="2026-10-30T16:42:28.565372-04:00" hostname="appledeMacBook-Pro-43.local"><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_batch_of_problems_autobatched_eager" time="0.019"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:459: in test_batch_of_problems_autobatched
+    samp = model.sample(seed=test_util.test_seed())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:956: in _call_sample_n
+    return self._sample_n(
+tensorflow_probability/python/internal/distribution_util.py:1350: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:693: in _sample_n
+    self._get_static_distribution_attributes(seed=seed)
+tensorflow_probability/python/distributions/joint_distribution.py:361: in _get_static_distribution_attributes
+    flat_list_of_static_attributes = callable_util.get_output_spec(
+tensorflow_probability/python/internal/callable_util.py:63: in get_output_spec
+    return tf.function(fn, autograph=False).get_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1256: in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1226: in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:362: in &lt;lambda&gt;
+    lambda: self._execute_model(  # pylint: disable=g-long-lambda
+tensorflow_probability/python/distributions/joint_distribution.py:1047: in _execute_model
+    d = gen.send(next_value)
+        ^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:456: in model_fn
+    logits=pad.Pad([(0, 1)])(x), total_count=10, name='y')
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_batch_of_problems_autobatched_graph" time="0.014"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:459: in test_batch_of_problems_autobatched
+    samp = model.sample(seed=test_util.test_seed())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:956: in _call_sample_n
+    return self._sample_n(
+tensorflow_probability/python/internal/distribution_util.py:1350: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:693: in _sample_n
+    self._get_static_distribution_attributes(seed=seed)
+tensorflow_probability/python/distributions/joint_distribution.py:361: in _get_static_distribution_attributes
+    flat_list_of_static_attributes = callable_util.get_output_spec(
+tensorflow_probability/python/internal/callable_util.py:63: in get_output_spec
+    return tf.function(fn, autograph=False).get_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1256: in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1226: in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:362: in &lt;lambda&gt;
+    lambda: self._execute_model(  # pylint: disable=g-long-lambda
+tensorflow_probability/python/distributions/joint_distribution.py:1047: in _execute_model
+    d = gen.send(next_value)
+        ^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:456: in model_fn
+    logits=pad.Pad([(0, 1)])(x), total_count=10, name='y')
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_batch_of_problems_named_eager" time="0.019"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:485: in test_batch_of_problems_named
+    samp = model.sample(seed=test_util.test_seed())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:956: in _call_sample_n
+    return self._sample_n(
+tensorflow_probability/python/internal/distribution_util.py:1350: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:693: in _sample_n
+    self._get_static_distribution_attributes(seed=seed)
+tensorflow_probability/python/distributions/joint_distribution.py:361: in _get_static_distribution_attributes
+    flat_list_of_static_attributes = callable_util.get_output_spec(
+tensorflow_probability/python/internal/callable_util.py:63: in get_output_spec
+    return tf.function(fn, autograph=False).get_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1256: in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1226: in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:362: in &lt;lambda&gt;
+    lambda: self._execute_model(  # pylint: disable=g-long-lambda
+tensorflow_probability/python/distributions/joint_distribution.py:1047: in _execute_model
+    d = gen.send(next_value)
+        ^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_sequential.py:399: in _model_coroutine
+    dist = dist_fn(*xs)
+           ^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_named.py:419: in _fn
+    return dist_fn(**kwargs)
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:478: in mk_y
+    logits=pad.Pad([(0, 1)])(x), total_count=10)
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_batch_of_problems_named_graph" time="0.015"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:485: in test_batch_of_problems_named
+    samp = model.sample(seed=test_util.test_seed())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:956: in _call_sample_n
+    return self._sample_n(
+tensorflow_probability/python/internal/distribution_util.py:1350: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:693: in _sample_n
+    self._get_static_distribution_attributes(seed=seed)
+tensorflow_probability/python/distributions/joint_distribution.py:361: in _get_static_distribution_attributes
+    flat_list_of_static_attributes = callable_util.get_output_spec(
+tensorflow_probability/python/internal/callable_util.py:63: in get_output_spec
+    return tf.function(fn, autograph=False).get_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1256: in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1226: in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:362: in &lt;lambda&gt;
+    lambda: self._execute_model(  # pylint: disable=g-long-lambda
+tensorflow_probability/python/distributions/joint_distribution.py:1047: in _execute_model
+    d = gen.send(next_value)
+        ^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_sequential.py:399: in _model_coroutine
+    dist = dist_fn(*xs)
+           ^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution_named.py:419: in _fn
+    return dist_fn(**kwargs)
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:478: in mk_y
+    logits=pad.Pad([(0, 1)])(x), total_count=10)
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_batches_of_chains_hmc_3_eager" time="0.069"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:518: in test_batches_of_chains
+    samp = model.sample(seed=test_util.test_seed())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:956: in _call_sample_n
+    return self._sample_n(
+tensorflow_probability/python/internal/distribution_util.py:1350: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:693: in _sample_n
+    self._get_static_distribution_attributes(seed=seed)
+tensorflow_probability/python/distributions/joint_distribution.py:361: in _get_static_distribution_attributes
+    flat_list_of_static_attributes = callable_util.get_output_spec(
+tensorflow_probability/python/internal/callable_util.py:63: in get_output_spec
+    return tf.function(fn, autograph=False).get_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1256: in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1226: in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:362: in &lt;lambda&gt;
+    lambda: self._execute_model(  # pylint: disable=g-long-lambda
+tensorflow_probability/python/distributions/joint_distribution.py:1047: in _execute_model
+    d = gen.send(next_value)
+        ^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:515: in model_fn
+    logits=pad.Pad([(0, 1)])(x), total_count=10, name='y')
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_batches_of_chains_hmc_3_graph" time="0.013"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:518: in test_batches_of_chains
+    samp = model.sample(seed=test_util.test_seed())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:956: in _call_sample_n
+    return self._sample_n(
+tensorflow_probability/python/internal/distribution_util.py:1350: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:693: in _sample_n
+    self._get_static_distribution_attributes(seed=seed)
+tensorflow_probability/python/distributions/joint_distribution.py:361: in _get_static_distribution_attributes
+    flat_list_of_static_attributes = callable_util.get_output_spec(
+tensorflow_probability/python/internal/callable_util.py:63: in get_output_spec
+    return tf.function(fn, autograph=False).get_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1256: in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1226: in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:362: in &lt;lambda&gt;
+    lambda: self._execute_model(  # pylint: disable=g-long-lambda
+tensorflow_probability/python/distributions/joint_distribution.py:1047: in _execute_model
+    d = gen.send(next_value)
+        ^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:515: in model_fn
+    logits=pad.Pad([(0, 1)])(x), total_count=10, name='y')
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_batches_of_chains_hmc_[2, 1]_eager" time="0.013"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:518: in test_batches_of_chains
+    samp = model.sample(seed=test_util.test_seed())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:956: in _call_sample_n
+    return self._sample_n(
+tensorflow_probability/python/internal/distribution_util.py:1350: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:693: in _sample_n
+    self._get_static_distribution_attributes(seed=seed)
+tensorflow_probability/python/distributions/joint_distribution.py:361: in _get_static_distribution_attributes
+    flat_list_of_static_attributes = callable_util.get_output_spec(
+tensorflow_probability/python/internal/callable_util.py:63: in get_output_spec
+    return tf.function(fn, autograph=False).get_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1256: in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1226: in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:362: in &lt;lambda&gt;
+    lambda: self._execute_model(  # pylint: disable=g-long-lambda
+tensorflow_probability/python/distributions/joint_distribution.py:1047: in _execute_model
+    d = gen.send(next_value)
+        ^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:515: in model_fn
+    logits=pad.Pad([(0, 1)])(x), total_count=10, name='y')
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_batches_of_chains_hmc_[2, 1]_graph" time="0.014"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:518: in test_batches_of_chains
+    samp = model.sample(seed=test_util.test_seed())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:956: in _call_sample_n
+    return self._sample_n(
+tensorflow_probability/python/internal/distribution_util.py:1350: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:693: in _sample_n
+    self._get_static_distribution_attributes(seed=seed)
+tensorflow_probability/python/distributions/joint_distribution.py:361: in _get_static_distribution_attributes
+    flat_list_of_static_attributes = callable_util.get_output_spec(
+tensorflow_probability/python/internal/callable_util.py:63: in get_output_spec
+    return tf.function(fn, autograph=False).get_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1256: in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1226: in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:362: in &lt;lambda&gt;
+    lambda: self._execute_model(  # pylint: disable=g-long-lambda
+tensorflow_probability/python/distributions/joint_distribution.py:1047: in _execute_model
+    d = gen.send(next_value)
+        ^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:515: in model_fn
+    logits=pad.Pad([(0, 1)])(x), total_count=10, name='y')
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_batches_of_chains_hmc_[2, 2, 2]_eager" time="0.013"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:518: in test_batches_of_chains
+    samp = model.sample(seed=test_util.test_seed())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:956: in _call_sample_n
+    return self._sample_n(
+tensorflow_probability/python/internal/distribution_util.py:1350: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:693: in _sample_n
+    self._get_static_distribution_attributes(seed=seed)
+tensorflow_probability/python/distributions/joint_distribution.py:361: in _get_static_distribution_attributes
+    flat_list_of_static_attributes = callable_util.get_output_spec(
+tensorflow_probability/python/internal/callable_util.py:63: in get_output_spec
+    return tf.function(fn, autograph=False).get_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1256: in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1226: in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:362: in &lt;lambda&gt;
+    lambda: self._execute_model(  # pylint: disable=g-long-lambda
+tensorflow_probability/python/distributions/joint_distribution.py:1047: in _execute_model
+    d = gen.send(next_value)
+        ^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:515: in model_fn
+    logits=pad.Pad([(0, 1)])(x), total_count=10, name='y')
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_batches_of_chains_hmc_[2, 2, 2]_graph" time="0.013"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:518: in test_batches_of_chains
+    samp = model.sample(seed=test_util.test_seed())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:956: in _call_sample_n
+    return self._sample_n(
+tensorflow_probability/python/internal/distribution_util.py:1350: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:693: in _sample_n
+    self._get_static_distribution_attributes(seed=seed)
+tensorflow_probability/python/distributions/joint_distribution.py:361: in _get_static_distribution_attributes
+    flat_list_of_static_attributes = callable_util.get_output_spec(
+tensorflow_probability/python/internal/callable_util.py:63: in get_output_spec
+    return tf.function(fn, autograph=False).get_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1256: in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1226: in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:362: in &lt;lambda&gt;
+    lambda: self._execute_model(  # pylint: disable=g-long-lambda
+tensorflow_probability/python/distributions/joint_distribution.py:1047: in _execute_model
+    d = gen.send(next_value)
+        ^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:515: in model_fn
+    logits=pad.Pad([(0, 1)])(x), total_count=10, name='y')
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_batches_of_chains_hmc_[]_eager" time="0.013"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:518: in test_batches_of_chains
+    samp = model.sample(seed=test_util.test_seed())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:956: in _call_sample_n
+    return self._sample_n(
+tensorflow_probability/python/internal/distribution_util.py:1350: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:693: in _sample_n
+    self._get_static_distribution_attributes(seed=seed)
+tensorflow_probability/python/distributions/joint_distribution.py:361: in _get_static_distribution_attributes
+    flat_list_of_static_attributes = callable_util.get_output_spec(
+tensorflow_probability/python/internal/callable_util.py:63: in get_output_spec
+    return tf.function(fn, autograph=False).get_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1256: in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1226: in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:362: in &lt;lambda&gt;
+    lambda: self._execute_model(  # pylint: disable=g-long-lambda
+tensorflow_probability/python/distributions/joint_distribution.py:1047: in _execute_model
+    d = gen.send(next_value)
+        ^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:515: in model_fn
+    logits=pad.Pad([(0, 1)])(x), total_count=10, name='y')
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_batches_of_chains_hmc_[]_graph" time="0.013"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:518: in test_batches_of_chains
+    samp = model.sample(seed=test_util.test_seed())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:956: in _call_sample_n
+    return self._sample_n(
+tensorflow_probability/python/internal/distribution_util.py:1350: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:693: in _sample_n
+    self._get_static_distribution_attributes(seed=seed)
+tensorflow_probability/python/distributions/joint_distribution.py:361: in _get_static_distribution_attributes
+    flat_list_of_static_attributes = callable_util.get_output_spec(
+tensorflow_probability/python/internal/callable_util.py:63: in get_output_spec
+    return tf.function(fn, autograph=False).get_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1256: in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1226: in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:362: in &lt;lambda&gt;
+    lambda: self._execute_model(  # pylint: disable=g-long-lambda
+tensorflow_probability/python/distributions/joint_distribution.py:1047: in _execute_model
+    d = gen.send(next_value)
+        ^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:515: in model_fn
+    logits=pad.Pad([(0, 1)])(x), total_count=10, name='y')
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_batches_of_chains_nuts_3_eager" time="0.013"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:518: in test_batches_of_chains
+    samp = model.sample(seed=test_util.test_seed())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:956: in _call_sample_n
+    return self._sample_n(
+tensorflow_probability/python/internal/distribution_util.py:1350: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:693: in _sample_n
+    self._get_static_distribution_attributes(seed=seed)
+tensorflow_probability/python/distributions/joint_distribution.py:361: in _get_static_distribution_attributes
+    flat_list_of_static_attributes = callable_util.get_output_spec(
+tensorflow_probability/python/internal/callable_util.py:63: in get_output_spec
+    return tf.function(fn, autograph=False).get_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1256: in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1226: in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:362: in &lt;lambda&gt;
+    lambda: self._execute_model(  # pylint: disable=g-long-lambda
+tensorflow_probability/python/distributions/joint_distribution.py:1047: in _execute_model
+    d = gen.send(next_value)
+        ^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:515: in model_fn
+    logits=pad.Pad([(0, 1)])(x), total_count=10, name='y')
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_batches_of_chains_nuts_3_graph" time="0.013"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:518: in test_batches_of_chains
+    samp = model.sample(seed=test_util.test_seed())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:956: in _call_sample_n
+    return self._sample_n(
+tensorflow_probability/python/internal/distribution_util.py:1350: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:693: in _sample_n
+    self._get_static_distribution_attributes(seed=seed)
+tensorflow_probability/python/distributions/joint_distribution.py:361: in _get_static_distribution_attributes
+    flat_list_of_static_attributes = callable_util.get_output_spec(
+tensorflow_probability/python/internal/callable_util.py:63: in get_output_spec
+    return tf.function(fn, autograph=False).get_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1256: in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1226: in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:362: in &lt;lambda&gt;
+    lambda: self._execute_model(  # pylint: disable=g-long-lambda
+tensorflow_probability/python/distributions/joint_distribution.py:1047: in _execute_model
+    d = gen.send(next_value)
+        ^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:515: in model_fn
+    logits=pad.Pad([(0, 1)])(x), total_count=10, name='y')
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_batches_of_chains_nuts_[2, 1]_eager" time="0.013"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:518: in test_batches_of_chains
+    samp = model.sample(seed=test_util.test_seed())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:956: in _call_sample_n
+    return self._sample_n(
+tensorflow_probability/python/internal/distribution_util.py:1350: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:693: in _sample_n
+    self._get_static_distribution_attributes(seed=seed)
+tensorflow_probability/python/distributions/joint_distribution.py:361: in _get_static_distribution_attributes
+    flat_list_of_static_attributes = callable_util.get_output_spec(
+tensorflow_probability/python/internal/callable_util.py:63: in get_output_spec
+    return tf.function(fn, autograph=False).get_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1256: in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1226: in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:362: in &lt;lambda&gt;
+    lambda: self._execute_model(  # pylint: disable=g-long-lambda
+tensorflow_probability/python/distributions/joint_distribution.py:1047: in _execute_model
+    d = gen.send(next_value)
+        ^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:515: in model_fn
+    logits=pad.Pad([(0, 1)])(x), total_count=10, name='y')
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_batches_of_chains_nuts_[2, 1]_graph" time="0.013"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:518: in test_batches_of_chains
+    samp = model.sample(seed=test_util.test_seed())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:956: in _call_sample_n
+    return self._sample_n(
+tensorflow_probability/python/internal/distribution_util.py:1350: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:693: in _sample_n
+    self._get_static_distribution_attributes(seed=seed)
+tensorflow_probability/python/distributions/joint_distribution.py:361: in _get_static_distribution_attributes
+    flat_list_of_static_attributes = callable_util.get_output_spec(
+tensorflow_probability/python/internal/callable_util.py:63: in get_output_spec
+    return tf.function(fn, autograph=False).get_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1256: in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1226: in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:362: in &lt;lambda&gt;
+    lambda: self._execute_model(  # pylint: disable=g-long-lambda
+tensorflow_probability/python/distributions/joint_distribution.py:1047: in _execute_model
+    d = gen.send(next_value)
+        ^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:515: in model_fn
+    logits=pad.Pad([(0, 1)])(x), total_count=10, name='y')
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_batches_of_chains_nuts_[2, 2, 2]_eager" time="0.013"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:518: in test_batches_of_chains
+    samp = model.sample(seed=test_util.test_seed())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:956: in _call_sample_n
+    return self._sample_n(
+tensorflow_probability/python/internal/distribution_util.py:1350: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:693: in _sample_n
+    self._get_static_distribution_attributes(seed=seed)
+tensorflow_probability/python/distributions/joint_distribution.py:361: in _get_static_distribution_attributes
+    flat_list_of_static_attributes = callable_util.get_output_spec(
+tensorflow_probability/python/internal/callable_util.py:63: in get_output_spec
+    return tf.function(fn, autograph=False).get_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1256: in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1226: in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:362: in &lt;lambda&gt;
+    lambda: self._execute_model(  # pylint: disable=g-long-lambda
+tensorflow_probability/python/distributions/joint_distribution.py:1047: in _execute_model
+    d = gen.send(next_value)
+        ^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:515: in model_fn
+    logits=pad.Pad([(0, 1)])(x), total_count=10, name='y')
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_batches_of_chains_nuts_[2, 2, 2]_graph" time="0.013"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:518: in test_batches_of_chains
+    samp = model.sample(seed=test_util.test_seed())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:956: in _call_sample_n
+    return self._sample_n(
+tensorflow_probability/python/internal/distribution_util.py:1350: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:693: in _sample_n
+    self._get_static_distribution_attributes(seed=seed)
+tensorflow_probability/python/distributions/joint_distribution.py:361: in _get_static_distribution_attributes
+    flat_list_of_static_attributes = callable_util.get_output_spec(
+tensorflow_probability/python/internal/callable_util.py:63: in get_output_spec
+    return tf.function(fn, autograph=False).get_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1256: in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1226: in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:362: in &lt;lambda&gt;
+    lambda: self._execute_model(  # pylint: disable=g-long-lambda
+tensorflow_probability/python/distributions/joint_distribution.py:1047: in _execute_model
+    d = gen.send(next_value)
+        ^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:515: in model_fn
+    logits=pad.Pad([(0, 1)])(x), total_count=10, name='y')
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_batches_of_chains_nuts_[]_eager" time="0.013"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:518: in test_batches_of_chains
+    samp = model.sample(seed=test_util.test_seed())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:956: in _call_sample_n
+    return self._sample_n(
+tensorflow_probability/python/internal/distribution_util.py:1350: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:693: in _sample_n
+    self._get_static_distribution_attributes(seed=seed)
+tensorflow_probability/python/distributions/joint_distribution.py:361: in _get_static_distribution_attributes
+    flat_list_of_static_attributes = callable_util.get_output_spec(
+tensorflow_probability/python/internal/callable_util.py:63: in get_output_spec
+    return tf.function(fn, autograph=False).get_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1256: in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1226: in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:362: in &lt;lambda&gt;
+    lambda: self._execute_model(  # pylint: disable=g-long-lambda
+tensorflow_probability/python/distributions/joint_distribution.py:1047: in _execute_model
+    d = gen.send(next_value)
+        ^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:515: in model_fn
+    logits=pad.Pad([(0, 1)])(x), total_count=10, name='y')
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_batches_of_chains_nuts_[]_graph" time="0.013"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:518: in test_batches_of_chains
+    samp = model.sample(seed=test_util.test_seed())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1205: in sample
+    return self._call_sample_n(sample_shape, seed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:956: in _call_sample_n
+    return self._sample_n(
+tensorflow_probability/python/internal/distribution_util.py:1350: in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:693: in _sample_n
+    self._get_static_distribution_attributes(seed=seed)
+tensorflow_probability/python/distributions/joint_distribution.py:361: in _get_static_distribution_attributes
+    flat_list_of_static_attributes = callable_util.get_output_spec(
+tensorflow_probability/python/internal/callable_util.py:63: in get_output_spec
+    return tf.function(fn, autograph=False).get_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1256: in get_concrete_function
+    concrete = self._get_concrete_function_garbage_collected(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:1226: in _get_concrete_function_garbage_collected
+    self._initialize(args, kwargs, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:362: in &lt;lambda&gt;
+    lambda: self._execute_model(  # pylint: disable=g-long-lambda
+tensorflow_probability/python/distributions/joint_distribution.py:1047: in _execute_model
+    d = gen.send(next_value)
+        ^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:515: in model_fn
+    logits=pad.Pad([(0, 1)])(x), total_count=10, name='y')
+           ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_bijector_eager" time="0.002"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:502: in test_bijector
+    bij, _ = windowed_sampling._get_flat_unconstraining_bijector(dist)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling.py:172: in _get_flat_unconstraining_bijector
+    event_space_bij = jd_model.experimental_default_event_space_bijector()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1110: in _default_event_space_bijector
+    return _DefaultJointBijector(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in &lt;genexpr&gt;
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in &lt;lambda&gt;
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet.py:316: in _default_event_space_bijector
+    return softmax_centered_bijector.SoftmaxCentered(
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_bijector_graph" time="0.002"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:502: in test_bijector
+    bij, _ = windowed_sampling._get_flat_unconstraining_bijector(dist)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/windowed_sampling.py:172: in _get_flat_unconstraining_bijector
+    event_space_bij = jd_model.experimental_default_event_space_bijector()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1110: in _default_event_space_bijector
+    return _DefaultJointBijector(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in &lt;genexpr&gt;
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in &lt;lambda&gt;
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/dirichlet.py:316: in _default_event_space_bijector
+    return softmax_centered_bijector.SoftmaxCentered(
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_dynamic_batch_shape_eager" time="0.000"><skipped type="pytest.skip" message="Eager does not support dynamic batch shapes.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/internal/test_combinations.py:240: Eager does not support dynamic batch shapes.</skipped></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_dynamic_batch_shape_graph" time="6.770" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_explicit_init_eager" time="0.038" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_explicit_init_graph" time="0.042" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_explicit_init_samples_eager" time="0.000"><skipped type="pytest.skip" message="Eager test is slow.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/internal/test_combinations.py:240: Eager test is slow.</skipped></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_explicit_init_samples_graph" time="2.068" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_extra_pins_not_required_eager" time="0.062" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_extra_pins_not_required_graph" time="0.087" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_f64_state_hmc_eager" time="1.457" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_f64_state_hmc_graph" time="1.409" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_f64_state_nuts_eager" time="1.540" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_f64_state_nuts_graph" time="1.711" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_f64_step_size_eager" time="0.054" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_f64_step_size_graph" time="0.087" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_get_window_sizes_0_eager" time="0.000" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_get_window_sizes_0_graph" time="0.000" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_get_window_sizes_10000_eager" time="0.000" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_get_window_sizes_10000_graph" time="0.000" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_get_window_sizes_100_eager" time="0.000" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_get_window_sizes_100_graph" time="0.000" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_get_window_sizes_1_eager" time="0.000" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_get_window_sizes_1_graph" time="0.000" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_get_window_sizes_499_eager" time="0.000" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_get_window_sizes_499_graph" time="0.000" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_get_window_sizes_500_eager" time="0.000" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_get_window_sizes_500_graph" time="0.000" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_hmc_fitting_gaussian_eager" time="0.000"><skipped type="pytest.skip" message="Eager test is slow.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/internal/test_combinations.py:240: Eager test is slow.</skipped></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_hmc_fitting_gaussian_graph" time="6.485" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_hmc_samples_well_eager" time="0.000"><skipped type="pytest.skip" message="Eager test is slow.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/internal/test_combinations.py:240: Eager test is slow.</skipped></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_hmc_samples_well_graph" time="5.914" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_hmc_type_checks_eight_schools_coroutine_eager" time="4.079" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_hmc_type_checks_eight_schools_coroutine_graph" time="4.008" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_hmc_type_checks_eight_schools_named_eager" time="3.938" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_hmc_type_checks_eight_schools_named_graph" time="3.406" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_hmc_type_checks_eight_schools_nested_eager" time="4.193" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_hmc_type_checks_eight_schools_nested_graph" time="3.883" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_hmc_type_checks_eight_schools_sequential_eager" time="4.223" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_hmc_type_checks_eight_schools_sequential_graph" time="3.455" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_nuts_fitting_gaussian_eager" time="0.000"><skipped type="pytest.skip" message="Eager test is slow.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/internal/test_combinations.py:240: Eager test is slow.</skipped></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_nuts_fitting_gaussian_graph" time="18.926" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_nuts_samples_well_eager" time="0.000"><skipped type="pytest.skip" message="Eager test is slow.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/internal/test_combinations.py:240: Eager test is slow.</skipped></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_nuts_samples_well_graph" time="8.905" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_nuts_type_checks_eight_schools_coroutine_eager" time="7.412" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_nuts_type_checks_eight_schools_coroutine_graph" time="3.502" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_nuts_type_checks_eight_schools_named_eager" time="7.373" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_nuts_type_checks_eight_schools_named_graph" time="4.054" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_nuts_type_checks_eight_schools_nested_eager" time="7.686" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_nuts_type_checks_eight_schools_nested_graph" time="3.588" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_nuts_type_checks_eight_schools_sequential_eager" time="7.355" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_nuts_type_checks_eight_schools_sequential_graph" time="3.660" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_session" time="0.000"><skipped type="pytest.skip" message="Not a test.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/test_util.py:2981: Not a test.</skipped></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_valid_init_eager" time="0.250" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingTest" name="test_valid_init_graph" time="0.163" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingStepSizeTest" name="test_sequential_step_size_eager" time="0.000"><skipped type="pytest.skip" message="Eager test is slow.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/internal/test_combinations.py:240: Eager test is slow.</skipped></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingStepSizeTest" name="test_sequential_step_size_graph" time="4.954" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingStepSizeTest" name="test_session" time="0.000"><skipped type="pytest.skip" message="Not a test.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/test_util.py:2981: Not a test.</skipped></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingStepSizeTest" name="test_supply_full_step_size_eager" time="0.000"><skipped type="pytest.skip" message="Eager test is slow.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/internal/test_combinations.py:240: Eager test is slow.</skipped></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingStepSizeTest" name="test_supply_full_step_size_graph" time="2.580" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingStepSizeTest" name="test_supply_partial_step_size_eager" time="0.000"><skipped type="pytest.skip" message="Eager test is slow.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/internal/test_combinations.py:240: Eager test is slow.</skipped></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingStepSizeTest" name="test_supply_partial_step_size_graph" time="2.547" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingStepSizeTest" name="test_supply_single_step_size_eager" time="0.000"><skipped type="pytest.skip" message="Eager test is slow.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/internal/test_combinations.py:240: Eager test is slow.</skipped></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.WindowedSamplingStepSizeTest" name="test_supply_single_step_size_graph" time="2.322" /><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.PrecompiledTest" name="test_base_kernel_hmc_jit_sig" time="0.379"><skipped type="pytest.skip" message="b/195070752">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:766: b/195070752</skipped></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.PrecompiledTest" name="test_base_kernel_nuts_jit_sig" time="0.116"><skipped type="pytest.skip" message="b/195070752">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/original/tensorflow_probability/python/experimental/mcmc/windowed_sampling_test.py:766: b/195070752</skipped></testcase><testcase classname="tensorflow_probability.python.experimental.mcmc.windowed_sampling_test.PrecompiledTest" name="test_session" time="0.001"><skipped type="pytest.skip" message="Not a test.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/test_util.py:2981: Not a test.</skipped></testcase></testsuite></testsuites>

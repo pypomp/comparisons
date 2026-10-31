@@ -1,0 +1,37 @@
+TFP 候选补丁复现
+
+本地工作目录：/Users/mac/Documents/Codex/2026-10-22/cloud-gl
+源码：work/tfp-implementation-v1/candidate
+基础源码：work/tfp-implementation-v1/upstream
+输出：outputs/competitor_estimation/tfp_implementation_v1
+Python：work/competitor-estimation/tfp/local-venv/bin/python
+实际模块版本与路径见 environment.json；依赖环境本身未打包。
+
+在工作区根目录执行：
+TF_CPP_MIN_LOG_LEVEL=2 PYTHONPATH=work/tfp-implementation-v1/candidate work/competitor-estimation/tfp/local-venv/bin/python work/tfp-implementation-v1/candidate/tests/test_extensions.py
+TF_CPP_MIN_LOG_LEVEL=2 PYTHONPATH=work/tfp-implementation-v1/candidate work/competitor-estimation/tfp/local-venv/bin/python work/tfp-implementation-v1/candidate/examples/if2_and_discount.py
+TF_CPP_MIN_LOG_LEVEL=2 PYTHONPATH=work/tfp-implementation-v1/candidate work/competitor-estimation/tfp/local-venv/bin/python work/tfp-implementation-v1/validation/check_dacca.py --output /private/tmp/tfp_dacca_default.json
+TF_CPP_MIN_LOG_LEVEL=2 PYTHONPATH=work/tfp-implementation-v1/candidate work/competitor-estimation/tfp/local-venv/bin/python work/tfp-implementation-v1/validation/check_dacca.py --disable-graph-rewrites --output /private/tmp/tfp_dacca_controlled.json
+
+最后两项分别保留默认与受控图设置。不要只选择较好的一项覆盖另一项。
+单步差异诊断脚本 diagnose_if2.py 及输出也保留在 validation/。
+
+审查补丁：先看 gradient_discount.patch（只改原梯度设施），再看 full.patch。
+它们是子集和全集关系，不要依次应用两者。
+
+独立审查包：
+解压 review_bundle.zip，在解压目录运行 python3 verify_bundle.py（Python>=3.9，另需 git）。
+校验器核对所有 SHA、基础源码和完整补丁应用，不将它称为重新运行科学检验。
+将 upstream.tar.gz 分别解压到同级 upstream/ 与 candidate/，在 candidate 内执行：
+git apply --check ../full.patch
+git apply ../full.patch
+将 validation/ 保留在同级，在与 environment.json 相容的环境中，从 candidate 执行：
+PYTHONPATH=. python tests/test_extensions.py
+PYTHONPATH=. python examples/if2_and_discount.py
+PYTHONPATH=. python ../validation/check_dacca.py --output /tmp/tfp_dacca_default.json
+PYTHONPATH=. python ../validation/check_dacca.py --disable-graph-rewrites --output /tmp/tfp_dacca_controlled.json
+
+只重建本地审查包（需要原工作区、基础源码及冻结 source manifest）：
+work/panel-cute-cpu/bin/python work/tfp-implementation-v1/build_review.py
+
+此材料未宣称 GPU/XLA 或 NumPy/JAX 后端通过，未跑完整上游测试集。

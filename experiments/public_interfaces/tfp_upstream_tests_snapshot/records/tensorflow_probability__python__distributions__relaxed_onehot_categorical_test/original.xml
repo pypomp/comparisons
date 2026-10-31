@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="3" tests="72" time="14.850" timestamp="2026-10-31T17:42:36.497088-04:00" hostname="appledeMacBook-Pro-43.local"><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalTest" name="testPdf_eager" time="0.017" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalTest" name="testPdf_eager_no_tf_function" time="0.008" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalTest" name="testPdf_graph" time="0.035" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalTest" name="testProbs_eager" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalTest" name="testProbs_eager_no_tf_function" time="0.001" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalTest" name="testProbs_graph" time="0.006" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalTest" name="test_session" time="0.000"><skipped type="pytest.skip" message="Not a test.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/test_util.py:2981: Not a test.</skipped></testcase><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testAssertValidSample_eager" time="0.006" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testAssertValidSample_eager_no_tf_function" time="0.005" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testAssertValidSample_graph" time="0.088" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testDTypes0_eager" time="0.069" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testDTypes0_eager_no_tf_function" time="0.010" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testDTypes0_graph" time="0.018" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testDTypes1_eager" time="0.010" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testDTypes1_eager_no_tf_function" time="0.008" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testDTypes1_graph" time="0.017" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testEventSizeOfOne_eager" time="0.007" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testEventSizeOfOne_eager_no_tf_function" time="0.007" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testEventSizeOfOne_graph" time="0.037" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testLogits_eager" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testLogits_eager_no_tf_function" time="0.001" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testLogits_graph" time="0.006" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testParamBroadcasting_eager" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testParamBroadcasting_eager_no_tf_function" time="0.001" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testParamBroadcasting_graph" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testParamTensorFromLogits_eager" time="0.001" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testParamTensorFromLogits_eager_no_tf_function" time="0.001" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testParamTensorFromLogits_graph" time="0.009" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testParamTensorFromProbs_eager" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testParamTensorFromProbs_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testParamTensorFromProbs_graph" time="0.026" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testPdf_eager" time="0.023" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testPdf_eager_no_tf_function" time="0.022" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testPdf_graph" time="0.107" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testProbs_eager" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testProbs_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testProbs_graph" time="0.012" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testSample_eager" time="0.025" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testSample_eager_no_tf_function" time="0.023" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testSample_graph" time="0.077" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testShapes_eager" time="0.015" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testShapes_eager_no_tf_function" time="0.014" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testShapes_graph" time="0.068" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testSupportBijectorOutsideRange_eager" time="0.003"><failure message="AssertionError: Exception of type &lt;class 'TypeError'&gt;: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_util.py:251: in assertRaisesWithPredicateMatch
+    yield
+tensorflow_probability/python/internal/test_util.py:262: in assertRaisesOpError
+    yield
+tensorflow_probability/python/distributions/relaxed_onehot_categorical_test.py:288: in testSupportBijectorOutsideRange
+    dist.experimental_default_event_space_bijector().inverse(x))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/relaxed_onehot_categorical.py:562: in _default_event_space_bijector
+    return softmax_centered_bijector.SoftmaxCentered(
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/relaxed_onehot_categorical_test.py:286: in testSupportBijectorOutsideRange
+    with self.assertRaisesOpError('must sum to `1`'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:261: in assertRaisesOpError
+    with super(TestCase, self).assertRaisesOpError(msg):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:255: in assertRaisesWithPredicateMatch
+    raise AssertionError('Exception of type %s: %s' %
+E   AssertionError: Exception of type &lt;class 'TypeError'&gt;: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testSupportBijectorOutsideRange_eager_no_tf_function" time="0.004"><failure message="AssertionError: Exception of type &lt;class 'TypeError'&gt;: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_util.py:251: in assertRaisesWithPredicateMatch
+    yield
+tensorflow_probability/python/internal/test_util.py:262: in assertRaisesOpError
+    yield
+tensorflow_probability/python/distributions/relaxed_onehot_categorical_test.py:288: in testSupportBijectorOutsideRange
+    dist.experimental_default_event_space_bijector().inverse(x))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/relaxed_onehot_categorical.py:562: in _default_event_space_bijector
+    return softmax_centered_bijector.SoftmaxCentered(
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/relaxed_onehot_categorical_test.py:286: in testSupportBijectorOutsideRange
+    with self.assertRaisesOpError('must sum to `1`'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:261: in assertRaisesOpError
+    with super(TestCase, self).assertRaisesOpError(msg):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:255: in assertRaisesWithPredicateMatch
+    raise AssertionError('Exception of type %s: %s' %
+E   AssertionError: Exception of type &lt;class 'TypeError'&gt;: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testSupportBijectorOutsideRange_graph" time="0.012"><failure message="AssertionError: Exception of type &lt;class 'TypeError'&gt;: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_util.py:251: in assertRaisesWithPredicateMatch
+    yield
+tensorflow_probability/python/internal/test_util.py:262: in assertRaisesOpError
+    yield
+tensorflow_probability/python/distributions/relaxed_onehot_categorical_test.py:288: in testSupportBijectorOutsideRange
+    dist.experimental_default_event_space_bijector().inverse(x))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/relaxed_onehot_categorical.py:562: in _default_event_space_bijector
+    return softmax_centered_bijector.SoftmaxCentered(
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+
+The above exception was the direct cause of the following exception:
+tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+tensorflow_probability/python/distributions/relaxed_onehot_categorical_test.py:286: in testSupportBijectorOutsideRange
+    with self.assertRaisesOpError('must sum to `1`'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:261: in assertRaisesOpError
+    with super(TestCase, self).assertRaisesOpError(msg):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.12/3.12.15/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py:158: in __exit__
+    self.gen.throw(value)
+tensorflow_probability/python/internal/test_util.py:255: in assertRaisesWithPredicateMatch
+    raise AssertionError('Exception of type %s: %s' %
+E   AssertionError: Exception of type &lt;class 'TypeError'&gt;: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testUnknownAndInvalidShape_eager" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testUnknownAndInvalidShape_eager_no_tf_function" time="0.001" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testUnknownAndInvalidShape_graph" time="0.040" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testUnknownShape_eager" time="0.008" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testUnknownShape_eager_no_tf_function" time="0.008" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="testUnknownShape_graph" time="0.034" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.RelaxedOneHotCategoricalTest" name="test_session" time="0.000"><skipped type="pytest.skip" message="Not a test.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/test_util.py:2981: Not a test.</skipped></testcase><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalFromVariableTest" name="testAssertionsLogits_eager" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalFromVariableTest" name="testAssertionsLogits_eager_no_tf_function" time="0.001" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalFromVariableTest" name="testAssertionsLogits_graph" time="0.001" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalFromVariableTest" name="testAssertionsProbsAfterMutation_eager" time="0.006" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalFromVariableTest" name="testAssertionsProbsAfterMutation_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalFromVariableTest" name="testAssertionsProbsAfterMutation_graph" time="0.022" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalFromVariableTest" name="testAssertionsProbs_eager" time="0.004" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalFromVariableTest" name="testAssertionsProbs_eager_no_tf_function" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalFromVariableTest" name="testAssertionsProbs_graph" time="0.032" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalFromVariableTest" name="testAssertionsTemperatureAfterMutation_eager" time="0.005" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalFromVariableTest" name="testAssertionsTemperatureAfterMutation_eager_no_tf_function" time="0.003" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalFromVariableTest" name="testAssertionsTemperatureAfterMutation_graph" time="0.026" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalFromVariableTest" name="testGradientLogits_eager" time="0.008" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalFromVariableTest" name="testGradientLogits_eager_no_tf_function" time="0.006" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalFromVariableTest" name="testGradientLogits_graph" time="0.016" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalFromVariableTest" name="testGradientProbs_eager" time="0.007" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalFromVariableTest" name="testGradientProbs_eager_no_tf_function" time="0.007" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalFromVariableTest" name="testGradientProbs_graph" time="0.023" /><testcase classname="tensorflow_probability.python.distributions.relaxed_onehot_categorical_test.ExpRelaxedOneHotCategoricalFromVariableTest" name="test_session" time="0.000"><skipped type="pytest.skip" message="Not a test.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/test_util.py:2981: Not a test.</skipped></testcase></testsuite></testsuites>

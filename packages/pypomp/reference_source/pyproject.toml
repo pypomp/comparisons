@@ -1,0 +1,93 @@
+[project]
+name = "pypomp"
+
+version = "1.0.5"
+
+authors = [
+    { name = "The pypomp core developer team", email = "pypomp-org@umich.edu" }
+]
+description = "Modeling and inference using partially observed Markov process (POMP) models"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+keywords = ["POMP", "state-space models", "particle filter", "iterated filtering", "JAX", "time series"]
+
+dependencies = [
+    "jax>=0.5.3",
+    "tqdm>=4.66.4",
+    "numpy>=1.24",
+    "pandas",
+    "xarray",
+    "scipy",
+    "typing_extensions",
+    "cloudpickle"
+]
+
+[project.optional-dependencies]
+benchmarks = ["statsmodels"]
+tests = ["pytest", "pytest-cov", "pytest-xdist", "pytest-timeout", "pytest-regressions", "pandas-stubs", "scipy-stubs", "pre-commit", "pyright", "plotnine"]
+viz = ["plotly"]
+
+
+[project.urls]
+Homepage = "https://github.com/pypomp/pypomp"
+Issues = "https://github.com/pypomp/pypomp/issues"
+Documentation = "https://pypomp.readthedocs.io"
+Repository = "https://github.com/pypomp/pypomp"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+required-version = ">=0.16.0"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "B"]
+ignore = [
+    "E741",    # ambiguous names (l, I) — deliberate in math code
+    # RUF009: false positive on helper functions that wrap dataclasses.field()
+    # (e.g. core/algorithms/contexts.py's `static()`).
+    "RUF009",
+]
+
+
+[tool.pyright]
+include = ["."]
+exclude = ["**/.venv", "**/.claude", "**/.agents", "scratch", "dist"]
+venvPath = "."
+venv = ".venv"
+pythonVersion = "3.14"
+typeCheckingMode = "standard"
+
+[tool.mypy]
+python_version = "3.14"
+warn_return_any = false
+warn_unused_configs = true
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = [
+    "statsmodels.*",
+    "matplotlib.*"
+]
+ignore_missing_imports = true
+
+[tool.coverage.run]
+source = ["pypomp"]
+omit = ["tests/*", "scratch.py", "scratch/*"]

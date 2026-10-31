@@ -1,0 +1,60 @@
+{
+  "cuthbert": {
+    "revision": 3,
+    "base": "c737efe3098b2b5ecaa7d8b976e7cea246998b17",
+    "baseline_scope": "See original review manifest and preserved upstream files.",
+    "review_manifest": "packages/cuthbert/review/review_manifest.json",
+    "patch": "packages/cuthbert/review/full.patch",
+    "candidate_files": 254,
+    "upstream_accepted": false
+  },
+  "pfjax": {
+    "revision": 2,
+    "base": "97652aa1bdff73a92c0286549b010e99cc6f7264",
+    "baseline_scope": "See original review manifest and preserved upstream files.",
+    "review_manifest": "packages/pfjax/review/review_manifest.json",
+    "patch": "packages/pfjax/review/full.patch",
+    "candidate_files": 197,
+    "upstream_accepted": false
+  },
+  "pydpf": {
+    "revision": 1,
+    "base": "a7487ce1c344c70e1a244e75725b950deb15e146",
+    "baseline_scope": "pydpf/ subtree, root README/LICENSE, native tutorial; not full repository",
+    "review_manifest": "packages/pydpf/review/review_manifest.json",
+    "patch": "packages/pydpf/review/full.patch",
+    "candidate_files": 30,
+    "upstream_accepted": false
+  },
+  "tfp": {
+    "revision": 1,
+    "base": "installed TFP 0.25.0 wheel files, verified against RECORD",
+    "baseline_scope": "See original review manifest and preserved upstream files.",
+    "review_manifest": "packages/tfp/review/review_manifest.json",
+    "patch": "packages/tfp/review/full.patch",
+    "candidate_files": 1541,
+    "upstream_accepted": false
+  },
+  "particles": {
+    "revision": 1,
+    "base": "3388c4bd30ab9acc5a27c970089230f93610b627",
+    "baseline_scope": "See original review manifest and preserved upstream files.",
+    "review_manifest": "packages/particles/review/review_manifest.json",
+    "patch": "packages/particles/review/full.patch",
+    "candidate_files": 107,
+    "upstream_accepted": false
+  },
+  "dynamax": {
+    "new_public_interface": false,
+    "source_and_raw_archive": "artifacts/experiments/legacy_dacca/dynamax/reproduction.tar.gz"
+  },
+  "pypfilt": {
+    "new_public_interface": false,
+    "source_and_raw_archive": "artifacts/experiments/legacy_dacca/pypfilt/pypfilt_dacca_formal_reproduction.tar.gz"
+  },
+  "pypomp": {
+    "base": "17f8798e7d944977335c81b8525353fa90e14be9",
+    "role": "Paper comparator and fixed independent endpoint scorer",
+    "source_and_raw_archive": "artifacts/experiments/legacy_dacca/paper_cuthbert_pypomp/reproduction.tar.gz"
+  }
+}

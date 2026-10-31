@@ -1,0 +1,20 @@
+{
+  "compilation_seconds": 8.803501529968344,
+  "memory": {
+    "argument_size_in_bytes": 100,
+    "output_size_in_bytes": 112,
+    "temp_size_in_bytes": 250546168,
+    "alias_size_in_bytes": 0
+  },
+  "seconds": [
+    9.178127720020711
+  ],
+  "first_execution_seconds": 9.045616391929798,
+  "all_finite": false,
+  "shapes": [
+    [],
+    [
+      23
+    ]
+  ]
+}

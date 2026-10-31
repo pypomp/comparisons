@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="12" skipped="1" tests="55" time="15.532" timestamp="2026-10-30T16:55:06.883297-04:00" hostname="appledeMacBook-Pro-43.local"><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testBijectiveAndFinite_eager" time="0.064" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testBijectiveAndFinite_eager_no_tf_function" time="0.052" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testBijectiveAndFinite_graph" time="0.103" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testCompositeTensor_eager" time="0.042" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testCompositeTensor_eager_no_tf_function" time="0.013" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testCompositeTensor_graph" time="0.036" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testExplicitBlocksdynamic_batched_eager" time="0.038" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testExplicitBlocksdynamic_batched_eager_no_tf_function" time="0.094" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testExplicitBlocksdynamic_batched_graph" time="0.215" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testExplicitBlocksdynamic_eager" time="0.052" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testExplicitBlocksdynamic_eager_no_tf_function" time="0.039" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testExplicitBlocksdynamic_graph" time="0.209" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testExplicitBlocksstatic_batched_eager" time="0.038" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testExplicitBlocksstatic_batched_eager_no_tf_function" time="0.038" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testExplicitBlocksstatic_batched_graph" time="0.158" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testExplicitBlocksstatic_eager" time="0.039" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testExplicitBlocksstatic_eager_no_tf_function" time="0.040" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testExplicitBlocksstatic_graph" time="0.145" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testImplicitBlocks_eager" time="0.003" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testImplicitBlocks_eager_no_tf_function" time="0.003" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testImplicitBlocks_graph" time="0.004" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testKwargs_eager" time="0.027" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testKwargs_eager_no_tf_function" time="0.026" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testKwargs_graph" time="0.036" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testNameOneBijector_eager" time="0.003" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testNameOneBijector_eager_no_tf_function" time="0.002" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testNameOneBijector_graph" time="0.002" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testName_eager" time="0.003" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testName_eager_no_tf_function" time="0.003" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testName_graph" time="0.004" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testNonCompositeTensor_eager" time="0.008" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testNonCompositeTensor_eager_no_tf_function" time="0.005" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testNonCompositeTensor_graph" time="0.008" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testRaisesBadBlocksDynamic_eager" time="0.000" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testRaisesBadBlocksDynamic_eager_no_tf_function" time="0.000" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testRaisesBadBlocksDynamic_graph" time="0.021" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testRaisesBadBlocks_eager" time="0.001" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testRaisesBadBlocks_eager_no_tf_function" time="0.001" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testRaisesBadBlocks_graph" time="0.001" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testRaisesEmptyBijectors_eager" time="0.000" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testRaisesEmptyBijectors_eager_no_tf_function" time="0.000" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testRaisesEmptyBijectors_graph" time="0.000" /><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testSizeChangingExplicitBlocksdynamic_batched_eager" time="0.001"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/blockwise_test.py:127: in testSizeChangingExplicitBlocks
+    sc = softmax_centered.SoftmaxCentered()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testSizeChangingExplicitBlocksdynamic_batched_eager_no_tf_function" time="0.001"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/blockwise_test.py:127: in testSizeChangingExplicitBlocks
+    sc = softmax_centered.SoftmaxCentered()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testSizeChangingExplicitBlocksdynamic_batched_graph" time="0.001"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/blockwise_test.py:127: in testSizeChangingExplicitBlocks
+    sc = softmax_centered.SoftmaxCentered()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testSizeChangingExplicitBlocksdynamic_eager" time="0.001"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/blockwise_test.py:127: in testSizeChangingExplicitBlocks
+    sc = softmax_centered.SoftmaxCentered()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testSizeChangingExplicitBlocksdynamic_eager_no_tf_function" time="0.001"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/blockwise_test.py:127: in testSizeChangingExplicitBlocks
+    sc = softmax_centered.SoftmaxCentered()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testSizeChangingExplicitBlocksdynamic_graph" time="0.001"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/blockwise_test.py:127: in testSizeChangingExplicitBlocks
+    sc = softmax_centered.SoftmaxCentered()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testSizeChangingExplicitBlocksstatic_batched_eager" time="0.001"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/blockwise_test.py:127: in testSizeChangingExplicitBlocks
+    sc = softmax_centered.SoftmaxCentered()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testSizeChangingExplicitBlocksstatic_batched_eager_no_tf_function" time="0.001"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/blockwise_test.py:127: in testSizeChangingExplicitBlocks
+    sc = softmax_centered.SoftmaxCentered()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testSizeChangingExplicitBlocksstatic_batched_graph" time="0.001"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/blockwise_test.py:127: in testSizeChangingExplicitBlocks
+    sc = softmax_centered.SoftmaxCentered()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testSizeChangingExplicitBlocksstatic_eager" time="0.001"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/blockwise_test.py:127: in testSizeChangingExplicitBlocks
+    sc = softmax_centered.SoftmaxCentered()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testSizeChangingExplicitBlocksstatic_eager_no_tf_function" time="0.001"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/blockwise_test.py:127: in testSizeChangingExplicitBlocks
+    sc = softmax_centered.SoftmaxCentered()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="testSizeChangingExplicitBlocksstatic_graph" time="0.001"><failure message="TypeError: reshape() got an unexpected keyword argument 'newshape'">tensorflow_probability/python/internal/test_combinations.py:303: in decorated
+    execute_test_method()
+tensorflow_probability/python/internal/test_combinations.py:291: in execute_test_method
+    test_method(**kwargs_to_pass)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/absl/testing/parameterized.py:329: in bound_param_test
+    return test_method(self, *testcase_params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/blockwise_test.py:127: in testSizeChangingExplicitBlocks
+    sc = softmax_centered.SoftmaxCentered()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/softmax_centered.py:65: in __init__
+    self._pad = pad_lib.Pad(validate_args=validate_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'</failure></testcase><testcase classname="tensorflow_probability.python.bijectors.blockwise_test.BlockwiseBijectorTest" name="test_session" time="0.000"><skipped type="pytest.skip" message="Not a test.">/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/test_util.py:2981: Not a test.</skipped></testcase></testsuite></testsuites>

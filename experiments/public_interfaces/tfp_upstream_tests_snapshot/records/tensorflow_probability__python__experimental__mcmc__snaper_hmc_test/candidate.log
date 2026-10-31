@@ -1,0 +1,231 @@
+s.......ss.......ssF....s.s.s.s.......ssF....s.s.s.s.......sFFFFsFFFFFFs [ 91%]
+....s.s                                                                  [100%]
+=================================== FAILURES ===================================
+___________________ SampleSNAPERHMCTestFloat32.testInitState ___________________
+tensorflow_probability/python/experimental/mcmc/snaper_hmc_test.py:496: in testInitState
+    run(pinned_model.sample_unpinned(16, seed=seed))
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:833: in __call__
+    result = self._call(*args, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:889: in _call
+    self._initialize(args, kwds, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/snaper_hmc_test.py:488: in run
+    return snaper_hmc.sample_snaper_hmc(
+tensorflow_probability/python/experimental/mcmc/snaper_hmc.py:1228: in sample_snaper_hmc
+    shard_axis_names_parts) = _init_chain_state(
+tensorflow_probability/python/experimental/mcmc/snaper_hmc.py:713: in _init_chain_state
+    event_space_bijector = model.experimental_default_event_space_bijector()
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/distributions/joint_distribution_pinned.py:473: in experimental_default_event_space_bijector
+    return joint_distribution._DefaultJointBijector(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in <genexpr>
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in <lambda>
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/deterministic.py:171: in _default_event_space_bijector
+    pad_zero = pad.Pad([(1, 0)])
+               ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+----------------------------- Captured stderr call -----------------------------
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1793392880.243890 12245034 op_level_cost_estimator.cc:743] Invalid device specifications for CPU: type: "CPU" model: "0" num_cores: 14 environment { key: "cpu_instruction_set" value: "ARM NEON" } environment { key: "eigen" value: "3.4.90" } l1_cache_size: 16384 l2_cache_size: 524288 l3_cache_size: 524288 memory_size: 268435456
+------------------------------ Captured log call -------------------------------
+WARNING  tensorflow:deprecation.py:50 From /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/distributions/distribution.py:342: calling GaussianProcess.__init__ (from tensorflow_probability.python.distributions.gaussian_process) with jitter is deprecated and will be removed after 2021-05-10.
+Instructions for updating:
+`jitter` is deprecated; please use `marginal_fn` directly.
+___________________ SampleSNAPERHMCTestFloat64.testInitState ___________________
+tensorflow_probability/python/experimental/mcmc/snaper_hmc_test.py:496: in testInitState
+    run(pinned_model.sample_unpinned(16, seed=seed))
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/util/traceback_utils.py:141: in error_handler
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:833: in __call__
+    result = self._call(*args, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:889: in _call
+    self._initialize(args, kwds, add_initializers_to=initializers)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:696: in _initialize
+    self._concrete_variable_creation_fn = tracing_compilation.trace_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:178: in trace_function
+    concrete_function = _maybe_define_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:283: in _maybe_define_function
+    concrete_function = _create_concrete_function(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compilation.py:310: in _create_concrete_function
+    traced_func_graph = func_graph_module.func_graph_from_py_func(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/func_graph.py:1060: in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py:599: in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/mcmc/snaper_hmc_test.py:488: in run
+    return snaper_hmc.sample_snaper_hmc(
+tensorflow_probability/python/experimental/mcmc/snaper_hmc.py:1228: in sample_snaper_hmc
+    shard_axis_names_parts) = _init_chain_state(
+tensorflow_probability/python/experimental/mcmc/snaper_hmc.py:713: in _init_chain_state
+    event_space_bijector = model.experimental_default_event_space_bijector()
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/experimental/distributions/joint_distribution_pinned.py:473: in experimental_default_event_space_bijector
+    return joint_distribution._DefaultJointBijector(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in __init__
+    bijectors = tuple(bijector_fn(d)
+tensorflow_probability/python/distributions/joint_distribution.py:1345: in <genexpr>
+    bijectors = tuple(bijector_fn(d)
+                      ^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/joint_distribution.py:1342: in <lambda>
+    bijector_fn = lambda d: d.experimental_default_event_space_bijector()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/distribution.py:1797: in experimental_default_event_space_bijector
+    return self._default_event_space_bijector(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/distributions/deterministic.py:171: in _default_event_space_bijector
+    pad_zero = pad.Pad([(1, 0)])
+               ^^^^^^^^^^^^^^^^^
+tensorflow_probability/python/bijectors/pad.py:143: in __init__
+    np.reshape(axis_, newshape=[-1]),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   TypeError: reshape() got an unexpected keyword argument 'newshape'
+__________ DistributedSampleSNAPERHMCTest.testShardedChainAxes_eager ___________
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+__________ DistributedSampleSNAPERHMCTest.testShardedChainAxes_graph ___________
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+____________ DistributedSampleSNAPERHMCTest.testShardedState_eager _____________
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+____________ DistributedSampleSNAPERHMCTest.testShardedState_graph _____________
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_____________ DistributedSNAPERHMCTest.testAxisNameTracking_eager ______________
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_____________ DistributedSNAPERHMCTest.testAxisNameTracking_graph ______________
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_____________ DistributedSNAPERHMCTest.testShardedChainAxes_eager ______________
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_____________ DistributedSNAPERHMCTest.testShardedChainAxes_graph ______________
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_______________ DistributedSNAPERHMCTest.testShardedState_eager ________________
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+_______________ DistributedSNAPERHMCTest.testShardedState_graph ________________
+tensorflow_probability/python/internal/distribute_test_lib.py:35: in setUp
+    distributed_set_up()
+tensorflow_probability/python/internal/distribute_test_lib.py:122: in distributed_set_up
+    tf.config.experimental.set_virtual_device_configuration(
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/config.py:912: in set_logical_device_configuration
+    context.context().set_logical_device_configuration(device, logical_devices)
+../../../../competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/eager/context.py:2052: in set_logical_device_configuration
+    raise RuntimeError(
+E   RuntimeError: Virtual devices cannot be modified after being initialized
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__experimental__mcmc__snaper_hmc_test/candidate.xml -
+=========================== short test summary info ============================
+FAILED tensorflow_probability/python/experimental/mcmc/snaper_hmc_test.py::SampleSNAPERHMCTestFloat32::testInitState
+FAILED tensorflow_probability/python/experimental/mcmc/snaper_hmc_test.py::SampleSNAPERHMCTestFloat64::testInitState
+FAILED tensorflow_probability/python/experimental/mcmc/snaper_hmc_test.py::DistributedSampleSNAPERHMCTest::testShardedChainAxes_eager
+FAILED tensorflow_probability/python/experimental/mcmc/snaper_hmc_test.py::DistributedSampleSNAPERHMCTest::testShardedChainAxes_graph
+FAILED tensorflow_probability/python/experimental/mcmc/snaper_hmc_test.py::DistributedSampleSNAPERHMCTest::testShardedState_eager
+FAILED tensorflow_probability/python/experimental/mcmc/snaper_hmc_test.py::DistributedSampleSNAPERHMCTest::testShardedState_graph
+FAILED tensorflow_probability/python/experimental/mcmc/snaper_hmc_test.py::DistributedSNAPERHMCTest::testAxisNameTracking_eager
+FAILED tensorflow_probability/python/experimental/mcmc/snaper_hmc_test.py::DistributedSNAPERHMCTest::testAxisNameTracking_graph
+FAILED tensorflow_probability/python/experimental/mcmc/snaper_hmc_test.py::DistributedSNAPERHMCTest::testShardedChainAxes_eager
+FAILED tensorflow_probability/python/experimental/mcmc/snaper_hmc_test.py::DistributedSNAPERHMCTest::testShardedChainAxes_graph
+FAILED tensorflow_probability/python/experimental/mcmc/snaper_hmc_test.py::DistributedSNAPERHMCTest::testShardedState_eager
+FAILED tensorflow_probability/python/experimental/mcmc/snaper_hmc_test.py::DistributedSNAPERHMCTest::testShardedState_graph
+12 failed, 47 passed, 20 skipped in 124.65s (0:02:04)

@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "checks": {
+    "alpha_0.0": {
+      "forward_matches_original_pf": true,
+      "finite_gradient": true
+    },
+    "alpha_0.97": {
+      "forward_matches_original_pf": true,
+      "finite_gradient": true
+    },
+    "alpha_1.0": {
+      "forward_matches_original_pf": true,
+      "finite_gradient": true,
+      "gradient_matches_original_adpf": true,
+      "max_gradient_absolute_difference": 0.0
+    },
+    "zero_perturbation_if2_matches_original_pf": true,
+    "composition_max_parameter_absolute_difference": 0.0,
+    "public_ifad_matches_separate_public_calls": true,
+    "public_ifad_scoring_matches_original_pf": true
+  }
+}

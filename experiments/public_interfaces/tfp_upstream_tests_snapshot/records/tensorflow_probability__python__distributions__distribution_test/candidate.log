@@ -1,0 +1,14 @@
+.s..............................s.........ss......................s...ss [ 58%]
+....s...s...s............s........................s                      [100%]
+=============================== warnings summary ===============================
+tensorflow_probability/python/distributions/distribution_test.py::DistributionStrReprTest::testReprWorksCorrectlyScalar_graph
+tensorflow_probability/python/distributions/distribution_test.py::DistributionStrReprTest::testReprWorksCorrectlyScalar_graph
+tensorflow_probability/python/distributions/distribution_test.py::DistributionStrReprTest::testStrWorksCorrectlyScalar_graph
+tensorflow_probability/python/distributions/distribution_test.py::DistributionStrReprTest::testStrWorksCorrectlyScalar_graph
+  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/lib/python3.12/site-packages/tensorflow/python/framework/tensor_util.py:778: DeprecationWarning: Setting the dtype on a NumPy array has been deprecated in NumPy 2.5.
+  Instead of changing the dtype on an array x, create a new array with x.view(new_dtype)
+    values.dtype = dtype
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__distributions__distribution_test/candidate.xml -
+111 passed, 12 skipped, 4 warnings in 20.93s

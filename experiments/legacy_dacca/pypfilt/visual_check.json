@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checked_at": "2026-10-29T05:25:21.260941+00:00",
+  "reviewer": "root",
+  "image_sha256": "351a18effda9e655e6f617425fb99a890f6914b18eeb159a5e98c375da6dd699",
+  "checks": [
+    "All12 endpoint estimates visible",
+    "All five low-precision endpoints shown as hollow markers",
+    "CPU costs include fitting and scoring, separate from GPU costs",
+    "No clipping or overlapping data labels",
+    "Likelihood precision threshold and score limit clearly labelled"
+  ]
+}

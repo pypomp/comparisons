@@ -1,0 +1,1 @@
+{"passed": true, "original_algorithms_compared": ["Bootstrap", "GuidedPF", "AuxiliaryPF"], "SSP_same_numpy_seed_repeats": false, "SSP_also_reseed_numba_repeats": true, "candidate_supports_SSP": false, "full_original_suite_executed": false}

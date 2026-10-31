@@ -1,0 +1,1062 @@
+diff --git a/docs/iterated_filter.txt b/docs/iterated_filter.txt
+new file mode 100644
+--- /dev/null
++++ b/docs/iterated_filter.txt
+@@ -0,0 +1,101 @@
++IF2 and resampling gradient discount: local TFP 0.25 candidate
++
++These additions are under tensorflow_probability.python.experimental.mcmc.
++They are not part of the original 0.25 release. Only the TensorFlow backend
++is changed; the NumPy and JAX substrates are unchanged and not supported by
++this patch. API names and scope still require maintainer discussion.
++
++Original facilities retained
++
++particle_filter constructs initial weights, samples transition distributions,
++and computes observation log probabilities. sequential_monte_carlo uses the
++original SequentialMonteCarlo.one_step and trace_scan loop. WeightedParticles,
++normalization, ancestral indices and the original resampling algorithms remain.
++The original particle filter does not include an MLE optimizer. The example
++uses an external tf.keras.optimizers.Adam loop with its own persistent state.
++
++Gradient discount
++
++particle_filter(..., unbiased_gradients=True, gradient_discount=.97)
++
++The optional keyword travels through sequential_monte_carlo to the original
++SequentialMonteCarlo class. At the existing call to weighted_resampling.resample,
++the normalized target log weights are replaced with
++
++  stop_gradient(w) + alpha * (w - stop_gradient(w)).
++
++The values are unchanged and their derivatives are multiplied by alpha. State
++pathwise derivatives are retained. Default alpha=1 uses the original expression.
++The parameter is a fixed Python real in [0,1], not a trainable Tensor. Nondefault
++values require unbiased_gradients=True and enabled resampling. The public PF
++currently rejects proposals and rejuvenation for nondefault discounts; this
++scope does not establish correctness for every supported PF variant.
++
++With ESS-based resampling, this modifies the derivative only on resampling
++steps. To implement the every-observation discount used in our Dacca DMOP
++comparison, pass an explicit criterion that returns True at every step. In this
++pinned code criterion=None disables resampling, despite wording in its docstring.
++The patch does not change that historical behavior.
++No global function replacement is needed to build different-discount graphs.
++The infer_trajectories and smc_squared public wrappers were not extended.
++
++IF2
++
++iterated_filter_step(parameter_particles, observations,
++                     initial_state_prior_fn, transition_fn, observation_fn,
++                     perturbation_scale, ..., seed=...)
++
++The three model functions return regular TFP distributions. They take parameter
++tensors with shape [J, batch..., P]. initial_state_prior_fn(parameters) returns
++a distribution with batch shape [J, batch...]; transition_fn(step, state,
++parameters) advances the state, and observation_fn(step, state, parameters)
++returns an observation distribution. Each model reads its particle's parameter
++values but does not implement parameter perturbations. Transition sampling
++requires no fabricated transition log density. State can be a Tensor or a
++nested structure supported by the returned distribution and TFP's resampler.
++
++The initial scale is added before the prior, on each pass. Process noise in
++parameter coordinates is added before each later transition; coordinates with
++initial-only noise use zero process scale. At observation zero, the initial
++state is weighted exactly as in the original PF. A model with its first real
++observation after a transition may explicitly supply an uninformative time-zero
++observation. The library does not silently invent or discard an observation.
++
++The callback in the original SMC loop samples the transition and adds the
++observation log weight. TFP performs normalization and resampling at each step,
++including the final step, so the returned whole parameter cloud is equally
++weighted. This cloud is retained for the next pass. Its mean is an estimate and
++history entry, not a replacement cloud. Perturbed-model likelihoods are not
++endpoint evaluation scores.
++
++iterated_filter(initial_parameters, ..., num_particles, num_iterations, ...)
++runs passes in a TensorFlow while_loop and returns means, the final cloud,
++parameter history and perturbed likelihoods. No best iterate is selected.
++A stateless root is folded with the pass number; within a pass the noise and
++SMC seeds are split explicitly. An optional normal_sample_fn and the original
++resample_fn permit a caller's per-member RNG layout. The default does not promise
++batch-size-independent draws. Pure model constructors must not consume random
++numbers or mutate external state.
++
++Scope
++
++Bootstrap model, particle axis zero, floating parameter Tensor with a known
++last dimension, and one observation Tensor with a static time length >=2.
++One transition connects successive observations. Distributions must support
++per-particle parameters. Guided proposals, arbitrary parameter Variables,
++SMC-squared and automatic model rewriting are outside this implementation.
++Scales are nonnegative, finite and broadcast over the parameter batch shape.
++Nonfinite/invalid passes raise InvalidArgumentError for the whole call; there
++is no retry, per-row failure isolation, checkpointing or job-resume policy.
++The frozen formal driver retains its separate recovery and accounting logic.
++
++Usage and verification
++
++See examples/if2_and_discount.py for three IF2 passes, three Keras Adam updates,
++and independently seeded endpoint PF evaluations. Four evaluations are an API
++example, not a precision assessment. Run tests/test_extensions.py with unittest.
++The review material includes a frozen Dacca model and a 600-month, J8 integration
++check. Default float32 graph optimization can change arithmetic ordering between
++the old model-specific IF2 and the new generic interface. The recorded default
++and controlled-graph comparisons are distinct; small-model tests do not establish
++bitwise replay of the historical GPU optimization trajectories.
+diff --git a/examples/if2_and_discount.py b/examples/if2_and_discount.py
+new file mode 100644
+--- /dev/null
++++ b/examples/if2_and_discount.py
+@@ -0,0 +1,97 @@
++"""Execute the proposed IF2 API, native TFP PF and external Keras Adam."""
++
++import json
++import tensorflow as tf
++import tensorflow_probability as tfp
++
++tfd = tfp.distributions
++
++
++def model_functions(dimension=1, nonlinear=False):
++    def prior(parameters):
++        loc = tf.broadcast_to(
++            parameters[..., :1], tf.concat([tf.shape(parameters)[:-1], [dimension]], 0)
++        )
++        return tfd.Independent(tfd.Normal(loc, tf.cast(0.2, parameters.dtype)), 1)
++
++    def transition(step, state, parameters):
++        del step
++        previous = tf.sin(state) if nonlinear else state
++        loc = 0.6 * previous + parameters[..., 1:2]
++        return tfd.Independent(tfd.Normal(loc, tf.cast(0.3, state.dtype)), 1)
++
++    def observation(step, state, parameters):
++        del step, parameters
++        return tfd.Normal(tf.reduce_sum(state, -1), tf.cast(0.7, state.dtype))
++
++    return prior, transition, observation
++
++
++def always_resample(state, particles_dim=0):
++    return tf.ones_like(
++        tf.reduce_sum(state.log_weights, particles_dim, keepdims=True), tf.bool
++    )
++
++
++def main():
++    initial = tf.constant([[0.2, 0.1], [0.4, -0.1]], tf.float32)
++    y = tf.constant([[0.1, 0.2], [0.2, 0.5], [0.4, 0.3], [0.6, 0.1]], tf.float32)
++    prior, transition, observation = model_functions()
++    warm = tfp.experimental.mcmc.iterated_filter(
++        initial,
++        y,
++        prior,
++        transition,
++        observation,
++        16,
++        3,
++        [0.05, 0.05],
++        initial_scale=[0.1, 0.0],
++        seed=tf.constant([20261029, 1]),
++    )
++    parameters = tf.Variable(warm.parameters)
++    optimizer = tf.keras.optimizers.Adam(0.005)
++
++    @tf.function(autograph=False)
++    def loglik(parameters, seed):
++        increments = tfp.experimental.mcmc.particle_filter(
++            y,
++            prior(parameters),
++            lambda t, x: transition(t, x, parameters),
++            lambda t, x: observation(t, x, parameters),
++            16,
++            resample_criterion_fn=always_resample,
++            gradient_discount=0.97,
++            trace_fn=lambda s, r: r.incremental_log_marginal_likelihood,
++            seed=seed,
++        )
++        return tf.reduce_sum(increments, 0)
++
++    for i in range(3):
++        with tf.GradientTape() as tape:
++            loss = -tf.reduce_sum(loglik(parameters, tf.constant([20261030, i]))) / 4.0
++        gradient = tape.gradient(loss, parameters)
++        tf.debugging.assert_all_finite(gradient, "nonfinite example gradient")
++        optimizer.apply_gradients([(gradient, parameters)])
++    tf.debugging.assert_all_finite(parameters, "nonfinite example endpoint")
++    raw = tf.stack([loglik(parameters, tf.constant([20261031, i])) for i in range(4)])
++    tf.debugging.assert_all_finite(raw, "nonfinite example scores")
++    print(
++        json.dumps(
++            {
++                "completed": True,
++                "IF2_passes": 3,
++                "Keras_Adam_updates": 3,
++                "independent_score_repetitions": 4,
++                "logmeanlik": (tf.reduce_logsumexp(raw, 0) - tf.math.log(4.0))
++                .numpy()
++                .tolist(),
++                "MCSE_assessed": False,
++                "package_path": tfp.__file__,
++            }
++        )
++    )
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/tensorflow_probability/python/experimental/mcmc/__init__.py b/tensorflow_probability/python/experimental/mcmc/__init__.py
+--- a/tensorflow_probability/python/experimental/mcmc/__init__.py
++++ b/tensorflow_probability/python/experimental/mcmc/__init__.py
+@@ -26,6 +26,9 @@
+ from tensorflow_probability.python.experimental.mcmc.gradient_based_trajectory_length_adaptation import snaper_criterion
+ from tensorflow_probability.python.experimental.mcmc.initialization import init_near_unconstrained_zero
+ from tensorflow_probability.python.experimental.mcmc.initialization import retry_init
++from tensorflow_probability.python.experimental.mcmc.iterated_filter import iterated_filter
++from tensorflow_probability.python.experimental.mcmc.iterated_filter import iterated_filter_step
++from tensorflow_probability.python.experimental.mcmc.iterated_filter import IteratedFilterResults
+ from tensorflow_probability.python.experimental.mcmc.kernel_builder import KernelBuilder
+ from tensorflow_probability.python.experimental.mcmc.kernel_outputs import KernelOutputs
+ from tensorflow_probability.python.experimental.mcmc.nuts_autobatching import NoUTurnSampler
+@@ -77,6 +80,9 @@
+ 
+ 
+ __all__ = [
++    'iterated_filter',
++    'iterated_filter_step',
++    'IteratedFilterResults',
+     'CovarianceReducer',
+     'DiagonalMassMatrixAdaptation',
+     'EllipticalSliceSampler',
+diff --git a/tensorflow_probability/python/experimental/mcmc/iterated_filter.py b/tensorflow_probability/python/experimental/mcmc/iterated_filter.py
+new file mode 100644
+--- /dev/null
++++ b/tensorflow_probability/python/experimental/mcmc/iterated_filter.py
+@@ -0,0 +1,220 @@
++"""Iterated filtering using TFP's existing sequential Monte Carlo kernel.
++
++Local candidate extension; this file is not part of the pinned TFP release.
++"""
++
++import collections
++import importlib
++import math
++
++import tensorflow.compat.v2 as tf
++from tensorflow_probability.python.experimental.mcmc import sequential_monte_carlo_kernel as smc
++from tensorflow_probability.python.experimental.mcmc import weighted_resampling
++from tensorflow_probability.python.internal import samplers
++
++pf = importlib.import_module(
++    'tensorflow_probability.python.experimental.mcmc.particle_filter')
++
++__all__ = ['iterated_filter', 'iterated_filter_step', 'IteratedFilterResults']
++
++IteratedFilterResults = collections.namedtuple(
++    'IteratedFilterResults',
++    ['parameters', 'parameter_particles', 'parameter_history',
++     'perturbed_log_likelihoods'])
++
++
++def _always_resample(state, particles_dim=0):
++  return tf.ones_like(tf.reduce_sum(state.log_weights, axis=particles_dim,
++                                    keepdims=True), dtype=tf.bool)
++
++
++def _normal_sample(template, seed):
++  return tf.random.stateless_normal(tf.shape(template), seed, dtype=template.dtype)
++
++
++def iterated_filter_step(
++    parameter_particles, observations, initial_state_prior_fn,
++    transition_fn, observation_fn, perturbation_scale, *, initial_scale=0.,
++    iteration=0, cooling_rate=.9, cooling_interval=1.,
++    within_pass_cooling=False,
++    resample_fn=weighted_resampling.resample_systematic,
++    normal_sample_fn=_normal_sample, seed=None, name=None):
++  """Run one perturbed bootstrap PF and retain its complete parameter cloud.
++
++  Args:
++    parameter_particles: Float Tensor [J, b1, ..., bN, P], in unconstrained
++      estimation coordinates. Particle axis is zero; P is statically known.
++    observations: Tensor [T, b1, ..., bN, ...]. T must be statically known
++      and at least two. Observation zero weights the initial state, exactly
++      as in particle_filter. Models with observations after transitions can
++      explicitly supply a dummy time-zero observation of log probability zero.
++    initial_state_prior_fn: parameters -> Distribution whose batch shape is
++      [J, b1, ..., bN]. sample(seed=...) generates the initial state. It may
++      be a nested-state Distribution; no transition density is required.
++    transition_fn: (step, state, parameters) -> Distribution with batch shape
++      [J, b1, ..., bN]. Its sample(seed=...) advances from step to step+1.
++    observation_fn: (step, state, parameters) -> Distribution whose log_prob
++      returns one weight per particle and batch member.
++    perturbation_scale: Nonnegative finite scale broadcastable to the
++      parameter batch shape [b1, ..., bN, P]. Applied before each transition.
++    initial_scale: Scale added before sampling the prior, on every pass.
++    iteration: Nonnegative scalar pass index, starting at zero.
++    cooling_rate: Python real in (0, 1].
++    cooling_interval: Positive Python real. Cooling at transition t is
++      rate ** ((iteration + t/(T-1)) / interval) when within_pass_cooling
++      is True, otherwise rate ** (iteration / interval).
++    within_pass_cooling: Whether to cool within a pass.
++    resample_fn: Original TFP resampling callback signature. Resampling is
++      always performed, including at the initial and final observations.
++    normal_sample_fn: Optional (template, stateless_seed) -> standard normal
++      Tensor of the same shape/dtype, for a caller-controlled RNG layout.
++    seed: Stateless seed (or TFP-compatible seed).
++    name: Optional name scope.
++
++  Returns:
++    parameter_particles: Equally weighted terminal cloud, retained between
++      passes rather than replaced with copies of its mean.
++    perturbed_log_likelihood: Per-batch likelihood of the perturbed model;
++      this is not a final score for the static model.
++
++  Invalid/nonfinite passes raise InvalidArgumentError; no automatic retries,
++  per-member failure isolation or job recovery are implemented. Pure model
++  constructors must support per-particle parameters. This function does not
++  rewrite arbitrary parameter Variables in an existing model.
++  """
++  if not math.isfinite(cooling_rate) or not 0 < cooling_rate <= 1:
++    raise ValueError('cooling_rate must be in (0, 1]')
++  if not math.isfinite(cooling_interval) or cooling_interval <= 0:
++    raise ValueError('cooling_interval must be finite and positive')
++  with tf.name_scope(name or 'iterated_filter_step'):
++    cloud = tf.stop_gradient(tf.convert_to_tensor(parameter_particles))
++    observations = tf.convert_to_tensor(observations)
++    if (not cloud.dtype.is_floating or cloud.shape.rank is None or
++        cloud.shape.rank < 2 or cloud.shape[-1] is None or cloud.shape[-1] < 1):
++      raise ValueError('parameter_particles must have shape [J, ..., P]')
++    if observations.shape.rank is None or observations.shape.rank < 1:
++      raise ValueError('observations must have a leading time dimension')
++    length = observations.shape[0]
++    if length is None or length < 2:
++      raise ValueError('observations require a static length of at least two')
++    index = tf.cast(tf.convert_to_tensor(iteration), cloud.dtype)
++    checks = [tf.debugging.assert_all_finite(cloud, 'nonfinite initial cloud'),
++              tf.debugging.assert_positive(tf.shape(cloud)[0]),
++              tf.debugging.assert_rank(index, 0),
++              tf.debugging.assert_non_negative(index),
++              tf.debugging.assert_equal(index, tf.floor(index)),
++              tf.debugging.assert_all_finite(index, 'nonfinite iteration')]
++
++    def scale(value):
++      value = tf.broadcast_to(tf.convert_to_tensor(value, dtype=cloud.dtype),
++                              tf.shape(cloud)[1:])
++      with tf.control_dependencies([
++          tf.debugging.assert_non_negative(value),
++          tf.debugging.assert_all_finite(value, 'nonfinite perturbation scale')]):
++        return tf.identity(value)
++
++    process_scale, start_scale = scale(perturbation_scale), scale(initial_scale)
++
++    def perturb(parameters, std, cooling, key):
++      noise = normal_sample_fn(parameters, key)
++      with tf.control_dependencies([
++          tf.debugging.assert_equal(tf.shape(noise), tf.shape(parameters)),
++          tf.debugging.assert_all_finite(noise, 'nonfinite perturbation noise')]):
++        return parameters + noise * std * cooling
++
++    # Match the two explicit streams of the existing Dacca IF2 pass. The
++    # prior receives a separate folded seed; constructors must not draw RNGs.
++    keys = tf.random.experimental.stateless_split(samplers.sanitize_seed(seed), 2)
++    with tf.control_dependencies(checks):
++      parameters = perturb(cloud, start_scale,
++                           cooling_rate ** (index / cooling_interval), keys[0])
++    prior = initial_state_prior_fn(parameters)
++    state = prior.sample(seed=tf.random.experimental.stateless_fold_in(keys[0], 1))
++    weights = tf.fill(tf.shape(parameters)[:-1],
++                      -tf.math.log(tf.cast(tf.shape(cloud)[0], cloud.dtype)))
++    initial_log_prob = pf._compute_observation_log_weights(
++        0, state, observations,
++        lambda step, x: observation_fn(step, x, parameters), particles_dim=0)
++    with tf.control_dependencies([
++        tf.debugging.assert_equal(tf.shape(initial_log_prob), tf.shape(weights))]):
++      initial = smc.WeightedParticles(
++          {'state': state, 'parameters': parameters}, weights + initial_log_prob)
++
++    def propose(step, weighted, seed):
++      step_keys = tf.random.experimental.stateless_split(seed, 2)
++      within = tf.cast(step, cloud.dtype) / (length - 1) if within_pass_cooling else 0.
++      new_parameters = perturb(
++          weighted.particles['parameters'], process_scale,
++          cooling_rate ** ((index + within) / cooling_interval), step_keys[0])
++      transition = transition_fn(step, weighted.particles['state'], new_parameters)
++      new_state = transition.sample(seed=step_keys[1])
++      log_prob = pf._compute_observation_log_weights(
++          step + 1, new_state, observations,
++          lambda t, x: observation_fn(t, x, new_parameters), particles_dim=0)
++      with tf.control_dependencies([
++          tf.debugging.assert_equal(tf.shape(log_prob), tf.shape(weights))]):
++        return smc.WeightedParticles(
++            {'state': new_state, 'parameters': new_parameters},
++            weighted.log_weights + log_prob)
++
++    final, log_likelihood = pf.sequential_monte_carlo(
++        initial, propose, num_steps=length, resample_fn=resample_fn,
++        resample_criterion_fn=_always_resample, unbiased_gradients=False,
++        trace_fn=lambda s, r: (s.particles, r.accumulated_log_marginal_likelihood),
++        trace_criterion_fn=None, seed=keys[1])
++    assertions = [tf.debugging.assert_all_finite(x, 'nonfinite IF2 terminal state')
++                  for x in tf.nest.flatten(final)]
++    assertions.append(tf.debugging.assert_all_finite(
++        log_likelihood, 'nonfinite IF2 likelihood'))
++    with tf.control_dependencies(assertions):
++      return (tf.stop_gradient(final['parameters']),
++              tf.stop_gradient(log_likelihood))
++
++
++def iterated_filter(
++    initial_parameters, observations, initial_state_prior_fn, transition_fn,
++    observation_fn, num_particles, num_iterations, perturbation_scale, *,
++    seed=None, name=None, **step_kwargs):
++  """Run complete IF2 passes with a TensorFlow while loop.
++
++  initial_parameters has shape [b1, ..., bN, P]. num_particles and
++  num_iterations are Python integers (positive/nonnegative respectively).
++  Other arguments follow iterated_filter_step. Pass seeds are stateless
++  fold_in(root_seed, pass_index). An invalid pass raises; this function does
++  not return a selected best iterate or replay a failed pass.
++  """
++  for label, value, lower in [('num_particles', num_particles, 1),
++                              ('num_iterations', num_iterations, 0)]:
++    if isinstance(value, bool) or not isinstance(value, int) or value < lower:
++      raise ValueError(label + ' must be an integer >= ' + str(lower))
++  if 'iteration' in step_kwargs:
++    raise ValueError('iteration is managed by iterated_filter')
++  with tf.name_scope(name or 'iterated_filter'):
++    parameters = tf.convert_to_tensor(initial_parameters)
++    if (not parameters.dtype.is_floating or parameters.shape.rank is None or
++        parameters.shape.rank < 1 or parameters.shape[-1] is None or
++        parameters.shape[-1] < 1):
++      raise ValueError('initial_parameters must have shape [..., P]')
++    with tf.control_dependencies([tf.debugging.assert_all_finite(
++        parameters, 'nonfinite initial parameters')]):
++      cloud = tf.broadcast_to(parameters[None],
++                              tf.concat([[num_particles], tf.shape(parameters)], 0))
++    root_seed = samplers.sanitize_seed(seed)
++    history = tf.TensorArray(parameters.dtype, size=num_iterations + 1,
++                             element_shape=parameters.shape).write(0, parameters)
++    likelihoods = tf.TensorArray(parameters.dtype, size=num_iterations,
++                                 element_shape=parameters.shape[:-1])
++
++    def body(i, cloud, history, likelihoods):
++      cloud, ll = iterated_filter_step(
++          cloud, observations, initial_state_prior_fn, transition_fn,
++          observation_fn, perturbation_scale,
++          iteration=tf.cast(i, parameters.dtype),
++          seed=tf.random.experimental.stateless_fold_in(root_seed, i), **step_kwargs)
++      return i + 1, cloud, history.write(i + 1, tf.reduce_mean(cloud, 0)), likelihoods.write(i, ll)
++
++    _, cloud, history, likelihoods = tf.while_loop(
++        lambda i, *_: i < num_iterations, body,
++        (tf.constant(0), cloud, history, likelihoods), parallel_iterations=1)
++    return IteratedFilterResults(history.read(num_iterations), cloud,
++                                 history.stack(), likelihoods.stack())
+diff --git a/tensorflow_probability/python/experimental/mcmc/particle_filter.py b/tensorflow_probability/python/experimental/mcmc/particle_filter.py
+--- a/tensorflow_probability/python/experimental/mcmc/particle_filter.py
++++ b/tensorflow_probability/python/experimental/mcmc/particle_filter.py
+@@ -297,6 +297,8 @@
+     static_trace_allocation_size=None,
+     seed=None,
+     name=None,
++    *,
++    gradient_discount=1.,
+ ):
+   """Run Sequential Monte Carlo.
+ 
+@@ -375,6 +377,11 @@
+       It is primarily intended for contexts where static shapes are required,
+       such as in XLA-compiled code.
+       Default value: `None`.
++    gradient_discount: Python real in [0, 1]. Multiplies the inherited
++      log-weight derivative on resampling steps; the default 1 preserves
++      the original correction. Different from 1 requires unbiased gradients.
++      For discounting at every observation, explicitly resample at every step.
++      Adaptive resampling discounts only when resampling occurs.
+     seed: PRNG seed; see `tfp.random.sanitize_seed` for details.
+     name: Python `str` name for ops created by this method.
+       Default value: `None` (i.e., `'particle_filter'`).
+@@ -398,7 +405,8 @@
+         resample_fn=resample_fn,
+         resample_criterion_fn=resample_criterion_fn,
+         particles_dim=particles_dim,
+-        unbiased_gradients=unbiased_gradients)
++        unbiased_gradients=unbiased_gradients,
++        gradient_discount=gradient_discount)
+ 
+     # If trace criterion is `None`, we'll return only the final results.
+     never_trace = lambda *_: False
+@@ -456,7 +464,9 @@
+                     static_trace_allocation_size=None,
+                     parallel_iterations=1,
+                     seed=None,
+-                    name=None):  # pylint: disable=g-doc-args
++                    name=None,
++                    *,
++                    gradient_discount=1.):  # pylint: disable=g-doc-args
+   """Samples a series of particles representing filtered latent states.
+ 
+   The particle filter samples from the sequence of "filtering" distributions
+@@ -490,6 +500,11 @@
+       Default value: `None`.
+     parallel_iterations: Passed to the internal `tf.while_loop`.
+       Default value: `1`.
++    gradient_discount: Python real in [0, 1]. Multiplies the inherited
++      log-weight derivative on resampling steps; the default 1 preserves
++      the original correction. Different from 1 requires unbiased gradients.
++      For discounting at every observation, explicitly resample at every step.
++      Adaptive resampling discounts only when resampling occurs.
+     seed: PRNG seed; see `tfp.random.sanitize_seed` for details.
+     name: Python `str` name for ops created by this method.
+       Default value: `None` (i.e., `'particle_filter'`).
+@@ -506,6 +521,11 @@
+       arXiv:2106.10314_, 2021. https://arxiv.org/abs/2106.10314
+   """
+ 
++  if gradient_discount != 1 and (initial_state_proposal is not None or
++                                 proposal_fn is not None or
++                                 rejuvenation_kernel_fn is not None):
++    raise ValueError('Discounted particle_filter currently supports bootstrap '
++                     'models without rejuvenation only')
+   init_seed, loop_seed = samplers.split_seed(seed, salt='particle_filter')
+   with tf.name_scope(name or 'particle_filter'):
+     num_observation_steps = ps.size0(tf.nest.flatten(observations)[0])
+@@ -541,6 +561,7 @@
+         trace_criterion_fn=trace_criterion_fn,
+         trace_fn=trace_fn,
+         unbiased_gradients=unbiased_gradients,
++        gradient_discount=gradient_discount,
+         seed=loop_seed)
+ 
+ 
+diff --git a/tensorflow_probability/python/experimental/mcmc/sequential_monte_carlo_kernel.py b/tensorflow_probability/python/experimental/mcmc/sequential_monte_carlo_kernel.py
+--- a/tensorflow_probability/python/experimental/mcmc/sequential_monte_carlo_kernel.py
++++ b/tensorflow_probability/python/experimental/mcmc/sequential_monte_carlo_kernel.py
+@@ -15,6 +15,8 @@
+ """Sequential Monte Carlo."""
+ 
+ import collections
++import math
++import numbers
+ 
+ import tensorflow.compat.v2 as tf
+ from tensorflow_probability.python.experimental.mcmc import weighted_resampling
+@@ -157,7 +159,9 @@
+                resample_criterion_fn=ess_below_threshold,
+                unbiased_gradients=True,
+                particles_dim=0,
+-               name=None):
++               name=None,
++               *,
++               gradient_discount=1.):
+     """Initializes a sequential Monte Carlo transition kernel.
+ 
+     Args:
+@@ -207,6 +211,12 @@
+         kernel operates.
+         Default value: `0`.
+       name: Python `str` name for ops created by this kernel.
++      gradient_discount: Python real in [0, 1]. Scales only the inherited
++        log-weight derivative on steps that resample. Requires
++        `unbiased_gradients=True` when different from 1. State derivatives
++        are preserved. With adaptive resampling this is a discount per
++        resampling event, not per observation. Default 1 preserves the
++        original gradient correction.
+ 
+     #### References
+ 
+@@ -214,6 +224,15 @@
+         Filtering without Modifying the Forward Pass. _arXiv preprint
+         arXiv:2106.10314_, 2021. https://arxiv.org/abs/2106.10314
+     """
++    if (isinstance(gradient_discount, bool) or
++        not isinstance(gradient_discount, numbers.Real) or
++        not math.isfinite(gradient_discount) or not 0 <= gradient_discount <= 1):
++      raise ValueError('gradient_discount must be a finite Python real in [0, 1]')
++    if gradient_discount != 1 and not unbiased_gradients:
++      raise ValueError('gradient_discount requires unbiased_gradients=True')
++    if gradient_discount != 1 and resample_criterion_fn is None:
++      raise ValueError('gradient_discount requires resampling to be enabled')
++    self._gradient_discount = gradient_discount
+     self._propose_and_update_log_weights_fn = propose_and_update_log_weights_fn
+     self._resample_fn = resample_fn
+     self._resample_criterion_fn = resample_criterion_fn
+@@ -244,6 +263,10 @@
+   @property
+   def unbiased_gradients(self):
+     return self._unbiased_gradients
++
++  @property
++  def gradient_discount(self):
++    return self._gradient_discount
+ 
+   @property
+   def particles_dim(self):
+@@ -310,6 +333,13 @@
+           # not needed -- but we're ultimately interested in adaptive resampling
+           # for statistical (not computational) purposes, so this isn't a
+           # dealbreaker.
++          target_log_weights = None
++          if self.unbiased_gradients:
++            target_log_weights = normalized_log_weights
++            if self.gradient_discount != 1:
++              stopped = tf.stop_gradient(target_log_weights)
++              target_log_weights = stopped + self.gradient_discount * (
++                  target_log_weights - stopped)
+           [
+               resampled_particles,
+               resample_indices,
+@@ -322,8 +352,7 @@
+               # in Scibior, Masrani, and Wood (2021).
+               log_weights=tf.stop_gradient(state.log_weights),
+               resample_fn=self.resample_fn,
+-              target_log_weights=(normalized_log_weights
+-                                  if self.unbiased_gradients else None),
++              target_log_weights=target_log_weights,
+               particles_dim=self.particles_dim,
+               seed=resample_seed)
+           (resampled_particles,
+diff --git a/tests/test_extensions.py b/tests/test_extensions.py
+new file mode 100644
+--- /dev/null
++++ b/tests/test_extensions.py
+@@ -0,0 +1,437 @@
++"""Targeted numerical checks against pristine code and explicit recursions."""
++
++import importlib
++import importlib.util
++from pathlib import Path
++import sys
++import unittest
++
++import numpy as np
++import tensorflow as tf
++import tensorflow_probability as tfp
++from tensorflow_probability.python.internal import samplers
++
++ROOT = Path(__file__).resolve().parents[1]
++sys.path.insert(0, str(ROOT / "examples"))
++from if2_and_discount import model_functions, always_resample
++
++REL = "tensorflow_probability/python/experimental/mcmc"
++
++
++def load(name, filename):
++    spec = importlib.util.spec_from_file_location(
++        name, ROOT.parent / "upstream" / REL / filename
++    )
++    module = importlib.util.module_from_spec(spec)
++    spec.loader.exec_module(module)
++    return module
++
++
++original_smc = load("original_smc", "sequential_monte_carlo_kernel.py")
++original_pf = load("original_pf", "particle_filter.py")
++# Only this isolated pristine module's dependency is bound to the pristine
++# kernel. No installed/candidate module or global resampling function changes.
++original_pf.smc_kernel = original_smc
++smc = importlib.import_module(
++    "tensorflow_probability.python.experimental.mcmc.sequential_monte_carlo_kernel"
++)
++pf = importlib.import_module(
++    "tensorflow_probability.python.experimental.mcmc.particle_filter"
++)
++wr = importlib.import_module(
++    "tensorflow_probability.python.experimental.mcmc.weighted_resampling"
++)
++
++
++def manual_pass(
++    cloud,
++    y,
++    prior,
++    transition,
++    observation,
++    process,
++    initial,
++    index,
++    rate,
++    interval,
++    within,
++    resampler,
++    key,
++):
++    """No IF2 or SMC calls: explicit normalization, index selection and time loop."""
++    k = tf.random.experimental.stateless_split(key, 2)
++    params = cloud + tf.random.stateless_normal(
++        tf.shape(cloud), k[0], dtype=cloud.dtype
++    ) * initial * rate ** (index / interval)
++    state = prior(params).sample(seed=tf.random.experimental.stateless_fold_in(k[0], 1))
++    weight = tf.fill(
++        tf.shape(params)[:-1], -tf.math.log(tf.cast(tf.shape(cloud)[0], cloud.dtype))
++    ) + observation(0, state, params).log_prob(y[0])
++    total = tf.zeros(tf.shape(cloud)[1:-1], cloud.dtype)
++    seed = k[1]
++    for t in range(y.shape[0]):
++        one, seed = samplers.split_seed(seed)
++        proposal_key, resample_key = samplers.split_seed(one)
++        if t:
++            step_keys = tf.random.experimental.stateless_split(proposal_key, 2)
++            exponent = (
++                index + ((t - 1) / (y.shape[0] - 1) if within else 0.0)
++            ) / interval
++            params = (
++                params
++                + tf.random.stateless_normal(
++                    tf.shape(params), step_keys[0], dtype=cloud.dtype
++                )
++                * process
++                * rate**exponent
++            )
++            state = transition(t - 1, state, params).sample(seed=step_keys[1])
++            weight = weight + observation(t, state, params).log_prob(y[t])
++        norm = tf.nn.log_softmax(weight, axis=0)
++        total = total + weight[0] - norm[0]
++        pair, _, weight = wr.resample(
++            {"x": state, "p": params}, weight, resampler, seed=resample_key
++        )
++        state, params = pair["x"], pair["p"]
++    return params, total
++
++
++class ExtensionsTest(unittest.TestCase):
++    def check_same(self, a, b, atol=0):
++        for x, y in zip(tf.nest.flatten(a), tf.nest.flatten(b)):
++            np.testing.assert_allclose(x.numpy(), y.numpy(), rtol=0, atol=atol)
++
++    def test_default_and_one_match_original(self):
++        for dtype in (tf.float32, tf.float64):
++            for resampler in (wr.resample_systematic, wr.resample_independent):
++                for graph in (False, True):
++                    for criterion in (always_resample, smc.ess_below_threshold, None):
++                        with self.subTest(
++                            dtype=dtype.name,
++                            resampler=resampler.__name__,
++                            graph=graph,
++                            criterion=str(criterion),
++                        ):
++                            prior, trans, obs = model_functions()
++                            p = tf.constant([[0.2, 0.1], [0.4, -0.1]], dtype)
++                            y = tf.constant(
++                                [[0.1, 0.2], [0.2, 0.5], [0.4, 0.3], [0.6, 0.1]], dtype
++                            )
++
++                            def run(function, kw):
++                                def compute(p):
++                                    with tf.GradientTape() as tape:
++                                        tape.watch(p)
++                                        result = function(
++                                            y,
++                                            prior(p),
++                                            lambda t, x: trans(t, x, p),
++                                            lambda t, x: obs(t, x, p),
++                                            7,
++                                            resample_fn=resampler,
++                                            resample_criterion_fn=criterion,
++                                            seed=tf.constant([301, 7]),
++                                            **kw,
++                                        )
++                                        ll = tf.reduce_sum(result[-1])
++                                    return result, tape.gradient(ll, p)
++
++                                return (
++                                    tf.function(compute, autograph=False)
++                                    if graph
++                                    else compute
++                                )(p)
++
++                            baseline = run(original_pf.particle_filter, {})
++                            self.check_same(run(pf.particle_filter, {}), baseline)
++                            self.check_same(
++                                run(pf.particle_filter, {"gradient_discount": 1.0}),
++                                baseline,
++                            )
++
++    def test_discount_against_manual_gradient_recursion(self):
++        for alpha in (0.0, 0.5, 0.97, 1.0):
++            for adaptive in (False, True):
++                with self.subTest(alpha=alpha, adaptive=adaptive):
++
++                    def run(manual):
++                        theta = tf.constant(0.3, tf.float64)
++                        decisions = []
++                        with tf.GradientTape() as tape:
++                            tape.watch(theta)
++                            x = (
++                                tf.linspace(
++                                    tf.cast(-1.0, theta.dtype),
++                                    tf.cast(1.0, theta.dtype),
++                                    5,
++                                )
++                                + 0.2 * theta
++                            )
++                            weight = -0.5 * (x - theta) ** 2 - tf.math.log(
++                                tf.cast(5, theta.dtype)
++                            )
++                            state = smc.WeightedParticles(x, weight)
++
++                            def proposal(step, s, seed):
++                                del seed
++                                z = 0.6 * s.particles + 0.1 * theta
++                                return smc.WeightedParticles(
++                                    z,
++                                    s.log_weights
++                                    - 0.5
++                                    * (z - tf.cast(step, theta.dtype) / 10.0) ** 2
++                                    * (1.0 + theta),
++                                )
++
++                            def adaptive_criterion(s, particles_dim=0):
++                                del particles_dim
++                                decision = tf.reduce_mean(s.particles) > 0.065
++                                decisions.append(bool(decision))
++                                return decision
++
++                            criterion = adaptive_criterion if adaptive else always_resample
++                            kernel = smc.SequentialMonteCarlo(
++                                proposal,
++                                resample_criterion_fn=criterion,
++                                gradient_discount=alpha,
++                            )
++                            result = kernel.bootstrap_results(state)
++                            total = tf.zeros([], theta.dtype)
++                            for i in range(4):
++                                key = tf.constant([407, i])
++                                if manual:
++                                    if i:
++                                        state = proposal(i - 1, state, None)
++                                    norm = tf.nn.log_softmax(state.log_weights, axis=0)
++                                    total += state.log_weights[0] - norm[0]
++                                    _, rs = samplers.split_seed(
++                                        samplers.sanitize_seed(key)
++                                    )
++                                    z, idx, uniform = wr.resample(
++                                        state.particles,
++                                        tf.stop_gradient(state.log_weights),
++                                        wr.resample_systematic,
++                                        seed=rs,
++                                    )
++                                    selected = tf.gather(norm, idx)
++                                    corrected = uniform + alpha * (
++                                        selected - tf.stop_gradient(selected)
++                                    )
++                                    choose = criterion(state)
++                                    state = smc.WeightedParticles(
++                                        tf.where(choose, z, state.particles),
++                                        tf.where(choose, corrected, norm),
++                                    )
++                                else:
++                                    state, result = kernel.one_step(
++                                        state, result, seed=key
++                                    )
++                                    total += result.incremental_log_marginal_likelihood
++                        if adaptive:
++                            self.assertIn(True, decisions)
++                            self.assertIn(False, decisions)
++                        return total, tape.gradient(total, theta)
++
++                    actual, expected = run(False), run(True)
++                    self.check_same(actual, expected, atol=1e-12)
++                    self.assertGreater(abs(float(actual[1])), 1e-5)
++
++    def test_if2_against_explicit_time_loop(self):
++        for dimension, nonlinear in [(1, False), (3, True)]:
++            for within in (False, True):
++                for resampler in (wr.resample_systematic, wr.resample_independent):
++                    with self.subTest(
++                        dimension=dimension, within=within, sampler=resampler.__name__
++                    ):
++                        p = tf.constant([[0.2, 0.1, 2.0], [0.4, -0.1, 3.0]], tf.float64)
++                        cloud = tf.broadcast_to(p[None], [7, 2, 3])
++                        y = tf.constant(
++                            [[0.1, 0.2], [0.2, 0.5], [0.4, 0.3], [0.6, 0.1]], tf.float64
++                        )
++                        prior, transition, obs = model_functions(dimension, nonlinear)
++                        process = tf.constant([0.05, 0.03, 0.0], tf.float64)
++                        initial = tf.constant([0.1, 0.0, 0.0], tf.float64)
++                        for i in range(2):
++                            key = tf.constant([800, i])
++                            kwargs = dict(
++                                initial_scale=initial,
++                                iteration=float(i),
++                                cooling_rate=0.7,
++                                cooling_interval=3.0,
++                                within_pass_cooling=within,
++                                resample_fn=resampler,
++                                seed=key,
++                            )
++                            actual = tfp.experimental.mcmc.iterated_filter_step(
++                                cloud, y, prior, transition, obs, process, **kwargs
++                            )
++                            expected = manual_pass(
++                                cloud,
++                                y,
++                                prior,
++                                transition,
++                                obs,
++                                process,
++                                initial,
++                                float(i),
++                                0.7,
++                                3.0,
++                                within,
++                                resampler,
++                                key,
++                            )
++                            self.check_same(actual, expected, atol=2e-14)
++                            cloud = actual[0]
++                        self.check_same(
++                            cloud[..., 2], tf.broadcast_to(p[None, :, 2], [7, 2])
++                        )
++
++    def test_multi_pass_graph_and_frozen_coordinates(self):
++        p = tf.constant([[0.2, 0.1, 2.0], [0.4, -0.1, 3.0]], tf.float32)
++        y = tf.zeros([4, 2])
++        prior, trans, obs = model_functions()
++        root = tf.constant([900, 1])
++
++        def run(p):
++            return tfp.experimental.mcmc.iterated_filter(
++                p,
++                y,
++                prior,
++                trans,
++                obs,
++                7,
++                3,
++                [0.05, 0.03, 0.0],
++                initial_scale=[0.1, 0.0, 0.0],
++                seed=root,
++            )
++
++        result = tf.function(run, autograph=False)(p)
++        cloud = tf.broadcast_to(p[None], [7, 2, 3])
++        history = [p]
++        ll = []
++        for i in range(3):
++            cloud, score = tfp.experimental.mcmc.iterated_filter_step(
++                cloud,
++                y,
++                prior,
++                trans,
++                obs,
++                [0.05, 0.03, 0.0],
++                initial_scale=[0.1, 0.0, 0.0],
++                iteration=float(i),
++                seed=tf.random.experimental.stateless_fold_in(root, i),
++            )
++            history.append(tf.reduce_mean(cloud, 0))
++            ll.append(score)
++        # Eager-vs-graph kernels can differ by float32 rounding.
++        self.check_same(result.parameter_particles, cloud, atol=2e-6)
++        self.check_same(result.parameter_history, tf.stack(history), atol=2e-6)
++        self.check_same(result.perturbed_log_likelihoods, tf.stack(ll), atol=2e-6)
++
++    def test_input_and_failure_checks(self):
++        for alpha in (-0.1, 1.1, float("nan"), True):
++            with self.subTest(alpha=alpha), self.assertRaises(ValueError):
++                smc.SequentialMonteCarlo(lambda *a: None, gradient_discount=alpha)
++        with self.assertRaises(ValueError):
++            smc.SequentialMonteCarlo(
++                lambda *a: None, gradient_discount=0.9, unbiased_gradients=False
++            )
++        with self.assertRaises(ValueError):
++            smc.SequentialMonteCarlo(
++                lambda *a: None, gradient_discount=0.9, resample_criterion_fn=None
++            )
++        prior, trans, obs = model_functions()
++        cloud = tf.ones([4, 2, 2])
++        y = tf.zeros([3, 2])
++        for scale in (-0.1, float("nan")):
++            with (
++                self.subTest(scale=scale),
++                self.assertRaises(tf.errors.InvalidArgumentError),
++            ):
++                tfp.experimental.mcmc.iterated_filter_step(
++                    cloud, y, prior, trans, obs, scale, seed=[2, 1]
++                )
++        with self.assertRaises(ValueError):
++            tfp.experimental.mcmc.particle_filter(
++                y,
++                prior(cloud[0]),
++                lambda t, x: trans(t, x, cloud[0]),
++                lambda t, x: obs(t, x, cloud[0]),
++                4,
++                proposal_fn=lambda *a: None,
++                gradient_discount=0.9,
++            )
++        with self.assertRaises(tf.errors.InvalidArgumentError):
++            tfp.experimental.mcmc.iterated_filter_step(
++                cloud,
++                tf.fill([3, 2], float("nan")),
++                prior,
++                trans,
++                obs,
++                0.1,
++                seed=[2, 1],
++            )
++
++    def test_zero_passes(self):
++        prior, trans, obs = model_functions()
++        p = tf.constant([[0.1234567, 0.3], [0.7, 0.1]])
++        result = tfp.experimental.mcmc.iterated_filter(
++            p, tf.zeros([3, 2]), prior, trans, obs, 7, 0, 0.1, seed=[3, 1]
++        )
++        self.check_same(result.parameters, p)
++        self.assertEqual(tuple(result.perturbed_log_likelihoods.shape), (0, 2))
++
++    def test_nested_state_and_no_batch_dimension(self):
++        tfd = tfp.distributions
++        prior = lambda p: tfd.JointDistributionNamed(
++            {
++                "a": tfd.Normal(p[..., 0], tf.cast(0.1, p.dtype)),
++                "b": tfd.Normal(p[..., 1], tf.cast(0.2, p.dtype)),
++            }
++        )
++        transition = lambda t, x, p: tfd.JointDistributionNamed(
++            {
++                "a": tfd.Normal(0.6 * x["a"] + p[..., 0], tf.cast(0.2, p.dtype)),
++                "b": tfd.Normal(0.4 * x["b"] + p[..., 1], tf.cast(0.1, p.dtype)),
++            }
++        )
++        observation = lambda t, x, p: tfd.Normal(x["a"] + x["b"], tf.cast(0.7, p.dtype))
++        cloud = tf.broadcast_to(tf.constant([[0.2, 0.1]], tf.float64), [5, 2])
++        y = tf.constant([0.3, 0.1, -0.2], tf.float64)
++        process = tf.constant([0.03, 0.02], tf.float64)
++        start = tf.constant([0.1, 0.0], tf.float64)
++        seed = tf.constant([701, 3])
++        original_resample = wr.resample
++        actual = tfp.experimental.mcmc.iterated_filter_step(
++            cloud,
++            y,
++            prior,
++            transition,
++            observation,
++            process,
++            initial_scale=start,
++            cooling_rate=0.7,
++            seed=seed,
++        )
++        expected = manual_pass(
++            cloud,
++            y,
++            prior,
++            transition,
++            observation,
++            process,
++            start,
++            0.0,
++            0.7,
++            1.0,
++            False,
++            wr.resample_systematic,
++            seed,
++        )
++        self.check_same(actual, expected, atol=2e-14)
++        self.assertIs(wr.resample, original_resample)
++
++
++if __name__ == "__main__":
++    unittest.main(verbosity=2)

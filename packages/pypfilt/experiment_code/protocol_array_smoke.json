@@ -1,0 +1,47 @@
+{
+  "status": "draft smoke only",
+  "method": "pypfilt PF + external SciPy Nelder-Mead",
+  "native_optimizer": false,
+  "package_version": "0.8.7",
+  "device": "CPU",
+  "dtype": "float64",
+  "T": 24,
+  "Euler_steps_per_month": 20,
+  "J": 64,
+  "free_coordinates": 23,
+  "starts": [
+    0,
+    1
+  ],
+  "repeats": 2,
+  "budget_seconds": 0.25,
+  "seed": 890100,
+  "optimizer": {
+    "name": "scipy.optimize.minimize(Nelder-Mead)",
+    "randomness": "fresh",
+    "objective_repetitions": 1,
+    "xatol": 0.01,
+    "fatol": 0.0001,
+    "adaptive": false,
+    "maxiter": 1000000,
+    "maxfev": 1000000,
+    "initial_simplex": "SciPy default 5 percent coordinate perturbation; zero coordinate becomes .00025"
+  },
+  "endpoint_selection": "Best finite training objective completed by the deadline; independent evaluation never selects endpoint",
+  "late_call": "Whole cost retained; candidate finishing after the deadline excluded",
+  "score": {
+    "backend": "original pinned PyPOMP 17f8798e7d944977335c81b8525353fa90e14be9",
+    "J": 64,
+    "dtype": "float32",
+    "stages": [
+      4
+    ],
+    "batch_repetitions": 4,
+    "MCSE_max": 1,
+    "likelihood_ESS_min": 10,
+    "seed": 990100,
+    "scope": "precision flag retained at cap, no selection of endpoints by scores"
+  },
+  "comparison_scope": "CPU custom optimizer; JAX IF2/IFAD reference is not a same-hardware speed ranking",
+  "scope_note": "Starts and repetitions are configurable and awaiting the user scope decision; no formal submission authorized yet"
+}

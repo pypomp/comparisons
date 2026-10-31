@@ -1,0 +1,16 @@
+Current authoritative GPU preflight65097403 inrepair_v2. Do not resubmit. Previous65096176 failed234s and retains complete native PF timing.
+Formal unique submissions at2026-10-30T20:43:49UTC:
+warm65098862 afterok65097403,6h45m
+A65098863 afterok65097403,7h45m
+B65098864 afterok65098862,7h45m
+C65098865 afterok65098862,7h45m
+Total formalallocation108000s=30GPUh. Authoritativeformal_v1/jobs.json; parentpydpf/jobs.json also points there.
+149sourcefiles formalmanifest5d7de6e4964eda73201f4a67b65855f75005b2260f02717a824f2691ed781f9d; protocol913a11b76d80d231a98d149a59b17bfc7c6ced135d5ddeab8ca1f586e7fc5467. Sourcefrozen. Never alter it or retry jobs blindly.
+Runtimecheck_gate.py verifiesrepair600sourceSHA,full34CUDA tests,Dacca correctness,originalGPU driver checks,and measuredpublic APIrate budgetguard. Perphase requiredfitprojection*1.05+600prep+1800score (warm no score) must fit itsallocation. Otherwise nofit starts; parent decides anyreallocation. Runtime resolved_protocol hash isidenticalacrossallphases,soB/Cexactsharedwarm protocolcomparison isvalid.
+Eachphase then runsnewCUDA small driver regression for completeAdamresume,B/Cpairing,rowfailure isolation,1e30finitegradient causingAdamsecond-momentinf,andfiniteestimation coordinate causingnaturaloverflow. NoCPUfallback.
+Runtime usesfullB1 publicIF2 175passes12rows preservingfullswarm. OnephysicalwarmsharedB/C;eachlogicalB/Ccostincludesfullprefix. A/B/Cgradient B12fixedslots400. No clipping, retry, bestiterationselection, orswarmreset. Failedrowparams andmomentsroll back; fullprefailureoptimizer snapshotpreserves itsrealAdamstep;sharedglobalAdamstepcontinuesonlyforsurvivors.
+Referencechild importsformalreference_source beforeoldcuthbert/source (Optax) anddeps. Onlyreferencechild setsCUDA_HOME lib64/targets paths andlibcusparse.so.12.5.8.93preload;Torchchildgetsneither. RemoteCPUimport/newuploadedreferenceoriginalT600,28params,exactfrozendataalready passed. Scorerfrozen8aec1ba02982a1ad9bff227b300806eaafa972a1e9fd00b71bef2c5f0ebdc508 typedJAXkeys.
+Remoteformal:/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/pydpf/formal_v1
+Results eachphase results/{warm,A,B,C}; checkpoints,allfailures,endpoints,scoresrawR36/72/144/288,andterminalmanifests. Do not collectrunningcheckpoints orretarallpreviousresults.
+Localtorch:PYTHONPATH=work/implementation-comparison-20261030/pydpf/formal_v1/candidate/pydpf:work/competitor-estimation/pydpf/local-deps work/panel-cute-cpu/bin/python
+OnlyexistingSSHcontrol/tmp/greatlakes-codex-login2.sock. Do notmodifyoldcandidate/oldresults,parentstatus/current_results.
