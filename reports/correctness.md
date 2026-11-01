@@ -27,3 +27,5 @@ The [latest preparation checks](pfjax_case4_and_preparation_20261101.md) cover P
 The [TFP prefix-audit and gradient-driver controls](pfjax_cases5_8_and_tfp_preparation_20261101.md) use saved arrays and synthetic CPU gradients. They retain local preparation failures and do not certify the prefix (which was pending at that dated snapshot) or deploy new production code. The same report records PFJAX case8 A's real nonfinite proposal and density-floor score separately from prior consistency checks.
 
 The [completed PFJAX review](pfjax_20261101/report.md) audits all twelve saved cases, one rejected nonfinite proposal, the floor score, all independent score values and resource costs. This saved-data audit and verified source restoration do not resolve the original execution-mode discrepancy or certify mathematical derivatives. Earlier failed checks retain their original status.
+
+[TFP gradient submission preparation](tfp_gradient_submission_preparation_20261101.md) adds tested file-reference and duplicate-attempt checks outside the frozen source. Both live prefix jobs are still running; no real prefix approval or gradient job has been created.

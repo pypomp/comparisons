@@ -650,5 +650,19 @@
     "experiments_rerun": false,
     "review_ready": true,
     "upstream_release": false
+  },
+  {
+    "path": "artifacts/validation/tfp_gradient_guard_preparation_20261101T1256.tar.gz",
+    "source": "TFP local gradient submission preparation and tested prefix-file/duplicate-attempt checks; original frozen prefix sources and prior synthetic recording controls retained. No completed GPU prefix or new job.",
+    "sha256": "b893dc5da4ea10f1348ee733c1bd0a389bd0f5688cbfc596313bb17a8fb2154d",
+    "bytes": 27518447,
+    "files": 6341,
+    "all_member_hashes_verified": true,
+    "extracted_synthetic_guard_checks_byte_identical": true,
+    "extracted_saved_driver_audit_byte_identical": true,
+    "PF_calls": 0,
+    "fit_calls": 0,
+    "GPU_results_added": false,
+    "deployed": false
   }
 ]
