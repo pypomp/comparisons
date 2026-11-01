@@ -1,7 +1,7 @@
 {
-  "observed_at_utc": "2026-11-01T01:03:13.842811+00:00",
-  "scheduler_source": "work/implementation-comparison-20261030/scheduler_20261101T010313.json",
-  "scheduler_source_sha256": "7c10d90a4b9bcffdedec8d74ad04a578ea767cbb18505f0f75fe96ae3354c6e6",
+  "observed_at_utc": "2026-11-01T02:07:32.653016+00:00",
+  "scheduler_source": "work/implementation-comparison-20261030/scheduler_20261101T0207.json",
+  "scheduler_source_sha256": "8859451ef9263a873634589a6e4a153f66503d3653db2327f0ac56ce7e9eee0d",
   "jobs": {
     "cuthbert": {
       "job_id": "65144479",

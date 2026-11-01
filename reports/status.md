@@ -1,6 +1,6 @@
 # Experiment status
 
-The [saved scheduler query](../results/current_jobs.json) is from 01:03 UTC on 1 November 2026. All four GPU checks were pending for priority, with no assigned node. This page records that query; it does not poll the cluster.
+The [saved scheduler query](../results/current_jobs.json) is from 02:07 UTC on 1 November 2026. All four GPU checks were pending for priority, with no assigned node. This page records that query; it does not poll the cluster.
 
 | Package | GPU check | New optimization results |
 |---|---|---|
