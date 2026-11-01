@@ -785,5 +785,35 @@
     "all_methods_complete": false,
     "PF_calls": 0,
     "optimizer_steps": 0
+  },
+  {
+    "path": "artifacts/experiments/dacca/tfp_review_20261101.tar.gz",
+    "source": "Complete TFP public-interface Dacca review: 36 endpoints, 1332 independent PF values, one failed A fit and floor score; complete sources/diffs, validation history, saved-data audits and figures.",
+    "sha256": "4b58514841a146237ba2c1c6458b11922a3ca1ae7fe855648e962deea56ba1d9",
+    "bytes": 178836360,
+    "files": 6655,
+    "all_member_hashes_verified": true,
+    "all_methods_audit_reproduced_byte_for_byte": true,
+    "rebuilt_outputs_verified": [
+      "endpoints.pdf",
+      "endpoints.png",
+      "likelihood_iqr.pdf",
+      "likelihood_iqr.png",
+      "summary.json",
+      "timing.pdf",
+      "timing.png"
+    ],
+    "patched_source_files_verified": 1541,
+    "endpoint_count": 36,
+    "raw_values": 1332,
+    "complete_fits": 35,
+    "failed_fits": 1,
+    "nonfloor_precision_passed": 35,
+    "floor_scores": 1,
+    "actual_formal_GPU_seconds": 43479,
+    "PF_calls": 0,
+    "optimizer_steps": 0,
+    "review_ready": true,
+    "upstream_release": false
   }
 ]

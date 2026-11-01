@@ -1,0 +1,18 @@
+{
+  "case_id": 6,
+  "iteration": 64,
+  "accepted_before_failure": 64,
+  "loss": 41.446533203125,
+  "loss_finite": true,
+  "gradient_nan": 23,
+  "gradient_inf": 0,
+  "gradient_finite": 0,
+  "proposed_parameters_finite": 23,
+  "proposed_natural_finite": 28,
+  "proposed_Adam_moments_finite": 46,
+  "rolled_back_parameters_equal": true,
+  "source_sha256": "25d7cfb9b89e621f4a54893804692c551234c5fe60a1e2a5895e15322f54919a",
+  "underlying_GPU_operation_identified": false,
+  "phase_audit_finite_loss_field_means_loss_AND_gradient": true,
+  "PF_calls": 0
+}

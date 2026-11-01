@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "inspected": [
+    "endpoints.png",
+    "timing.png",
+    "likelihood_iqr.png"
+  ],
+  "all_points_in_full_plot": true,
+  "IQR_hidden_cases": {
+    "A": [
+      6
+    ],
+    "B": [],
+    "C": []
+  },
+  "labels_legible": true,
+  "no_text_data_overlap": true,
+  "timing_is_whole_batch": true,
+  "floor_and_failure_visible": true,
+  "figures": {
+    "timing.pdf": "b1157262023cd8ecfae0c044288ff9aef322d0c9b291d606913d47a7f051d864",
+    "timing.png": "aab94b99aaa4b55de72d790b096c165b2793835d2f0c44e2c60deb94368dbb8b",
+    "endpoints.png": "80104e041adca0febf7ad9621951abcad7955693affd7876d72c8f7369dad166",
+    "endpoints.pdf": "5fdbce2478605e1982729340eaf3e94a324b6c0da1356099bf2cb439f1479e6d",
+    "likelihood_iqr.pdf": "9c696662b5fdb364c4d952434980873e4116f1e4e3c4f2cb623769b4c92909a4",
+    "likelihood_iqr.png": "5b0a3503b5d5e279a4d5ed329c20c177c094ba981940c5a12a3ca5a852bc275b"
+  }
+}

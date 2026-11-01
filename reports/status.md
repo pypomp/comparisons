@@ -1,16 +1,16 @@
 # Experiment status
 
-The [saved scheduler query](../results/current_jobs.json) was captured at 19:28 UTC on 1 November 2026. This page is a recorded snapshot, not a live cluster view.
+The [saved scheduler query](../results/current_jobs.json) was captured at 20:07 UTC on 1 November 2026. This page is a recorded snapshot, not a live cluster view.
 
 | Package | GPU check | New optimization results |
 |---|---|---|
 | Cuthbert v3 | Earlier failed checks retained; the repeat diagnosis shows that the old gradient rule also rejects original self-repeats | 36/36 endpoints audited; two A fits failed and three A scores are low precision; final report, figures and reproduction archive prepared |
 | PFJAX | [Matched execution controls: 324/324 likelihood pairs exactly equal](pfjax_execution_controls_20261101.md); original forward-only/differentiated values also differ | [36/36 endpoints and final review delivered](pfjax_20261101/report.md); 35 complete fits, one failed A fit with density-floor score; all other 35 scores meet precision |
 | PyDPF | [48/48 full-Dacca forward pairs exactly equal](pydpf_native_DPF_20261101.md); original failed checks retained | 0/36; [twelve complete IF2 fits audited; A/B/C submitted once](pydpf_warm_20261101.md), using the same physical warm results |
-| TFP | [72/72 full-Dacca forward pairs exactly equal](tfp_full_Dacca_20261101.md); finite values and memory pass, original time split fails | 12/36; [B completed and audited](tfp_B_20261101.md), all twelve fits and scores complete; A/C still running |
+| TFP | [72/72 full-Dacca forward pairs exactly equal](tfp_full_Dacca_20261101.md); finite values and memory pass, original time split fails | [36/36 endpoints and final review delivered](tfp_20261101/report.md); 35 complete fits, one failed A fit and floor score; 35 other scores meet precision |
 | particles | CPU checks and independent GPU evaluation complete | [24/24 results, figures and reproduction archive delivered](particles_20261101/report.md); 21 scores precise, three low-ESS A scores retained |
 
-[The complete Cuthbert report](cuthbert_20261101/report.md) contains all 36 retained endpoints and 2,052 original PF values. Two A fits in cases 8 and 9 failed at 43 and 60 accepted updates; those two scores and case 6 A remain low precision at R=288. The other 33 scores pass. C's estimated likelihood exceeds B's in all twelve pairs, with a median paired difference of 2.351684. The formal allocations used 23,034 GPU seconds. The complete source, pairing, random-key, raw-score and cost audit has passed; old validation failures remain failures. PyDPF and TFP remain unfinished. PFJAX has its own completed report, figures and verified reproduction archive. The particles report, figures and full reproduction archive are complete.
+[The complete Cuthbert report](cuthbert_20261101/report.md) contains all 36 retained endpoints and 2,052 original PF values. Two A fits in cases 8 and 9 failed at 43 and 60 accepted updates; those two scores and case 6 A remain low precision at R=288. The other 33 scores pass. C's estimated likelihood exceeds B's in all twelve pairs, with a median paired difference of 2.351684. The formal allocations used 23,034 GPU seconds. The complete source, pairing, random-key, raw-score and cost audit has passed; old validation failures remain failures. PyDPF remains unfinished; all three existing gradient jobs are running in the recorded snapshot. TFP is complete with its failed fit retained. PFJAX has its own completed report, figures and verified reproduction archive. The particles report, figures and full reproduction archive are complete.
 
 The [TFP diagnosis](tfp_gpu_20261101.md) retains all three timeouts. Its deterministic control has 12/12 available cross pairs with identical likelihood increments and gradients; without checkpointing, repeated gradients vary even within unchanged upstream.
 
@@ -24,8 +24,10 @@ The [Cuthbert repeat diagnosis](cuthbert_repeats_20261101.md) retains 54 finite 
 
 Completed checks: [Cuthbert v2 and TFP CPU tests](validation_20261101.md). Diagnostic design and CPU controls: [PFJAX, PyDPF and TFP](gpu_diagnosis_20261101.md). Earlier results, failures and full test logs remain in the [archive](../archive/README.md).
 
-The [TFP saved-state and score audit preparation](tfp_gradient_audit_preparation_20261101.md) passes local saved-record controls. B has now passed the actual phase audit; A/C remain running. No model or optimizer was run by these preparation checks.
+The [TFP saved-state and score audit preparation](tfp_gradient_audit_preparation_20261101.md) passes local saved-record controls. All three actual phases and the complete paired audit have now passed; A's numerical fit failure remains explicitly recorded. No model or optimizer was run by these preparation checks.
 
 The [PyDPF phase, score and aggregate audit preparation](pydpf_gradient_audit_preparation_20261101.md) is now available. Existing jobs remain queued or running; no new gradient result is claimed.
 
-The [TFP three-method audit preparation](tfp_all_methods_audit_preparation_20261101.md) now checks complete metadata, paired starts and streams, retained failures, independent scores and total cost using saved and synthetic controls. The complete three-method audit still awaits A/C; the actual B phase audit has passed.
+The [TFP three-method audit preparation](tfp_all_methods_audit_preparation_20261101.md) now checks complete metadata, paired starts and streams, retained failures, independent scores and total cost using saved and synthetic controls. The [actual three-method audit](../results/tfp/final_audit_20261101.json) is complete. It retains 36 endpoints, 1,332 raw PF values, one failed fit and its floor score.
+
+The independent PyDPF maze pilot, job 65185523, was running on gl1511 at the separate 20:07 UTC check (242 seconds). Its 1,800-second budget and supervised localization objective are separate from Dacca. No maze GPU result has been audited. Existing PyDPF Dacca A/B/C jobs are 65177901/65177902/65177903; no additional jobs are submitted.
