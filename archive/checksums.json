@@ -9,7 +9,7 @@
     "archive/history.json": "301a126979e010b627ac3e3efa33747d9c8d28aefb66240e03b9cb96d5c107ff",
     "archive/README.md": "d0b164b82a826c9a6a09c94378465f3d131d7babe19b90694e70520fc7d711cb",
     "archive/files.json.gz": "6d1395407c6809c0888da9ae587cd377921fcd8840af7ea376ecc3b43f31fbb3",
-    "archive/catalog.json": "66f3f4c68b39d620f905ca54a63b17ba6767007a4f0240681c35fd2d584ea0c5",
+    "archive/catalog.json": "0ae93f76ccdc547617eb7a7e6b4841636c99332742cf7ae0f9d2646382f82da6",
     "archive/licenses/PyPOMP": "4859045e896e5131efd0ed0772ae72cf4295d71f72357cac27713346bec73b9e",
     "experiments/dacca/original_paths.json": "e99e0e93a4dc2d6cdcbdb442eb6cb62c5c251bda6ebac2933dede79f74ce3b9a",
     "experiments/dacca/README.md": "fd1b8c8eba7616ec0324976ad3e7272cfec44f17ba8cd5abe9f110faf063dbf0",
@@ -154,7 +154,9 @@
     "packages/pydpf/validation/check_dacca.py": "ae36ec9f06871158ab66feec9e499ba8d04bf860ef09d084e69f187b9c9eb703",
     "packages/pydpf/validation/dacca_model.py": "b9280b9c911742793f88d234ae62252f38381ff489fc09320ba381b909d62e7e",
     "reports/validation_20261101.md": "f15690b0df6f0fe0df1e1833a5bf778d9f15fc8ed0551bf7dd8a87627ad2caa9",
-    "reports/status.md": "1d582f1108f965d80408d48decadc96a9ee57a79efc3437c77ed903164879432",
-    "reports/dacca_comparison.md": "601885a344fe5cfc47e0920bbaf8000d587ef089d98dcce63fa1fd2b5c3681dd"
+    "reports/status.md": "234dda9a680213610867bb7249ab63abc61ec1ddab491396a6215358a2ca6410",
+    "reports/dacca_comparison.md": "601885a344fe5cfc47e0920bbaf8000d587ef089d98dcce63fa1fd2b5c3681dd",
+    "reports/gpu_diagnosis_20261101.md": "7efcf83ad9b79d88f4dbbcbca23e8452297132f292a66825bb2045757b172a07",
+    "results/validation_20261101/other_packages_local_review.json": "d0be5caa62aa60d2c666bcf74048414070fce70a9eacddded09efde94555a32f"
   }
 }

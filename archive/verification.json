@@ -1,10 +1,10 @@
 {
   "passed": true,
-  "retained_files_checked": 156,
+  "retained_files_checked": 158,
   "archived_files_checked": 8527,
   "unchanged_copies_checked": 115,
-  "archive_checksums_checked": 52,
-  "archives_fully_read": 52,
+  "archive_checksums_checked": 53,
+  "archives_fully_read": 1,
   "patched_sources": [
     {
       "package": "cuthbert",

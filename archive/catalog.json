@@ -315,5 +315,13 @@
     "bytes": 9002271,
     "files": 6253,
     "description": "Completed Cuthbert v2 GPU diagnosis and all515 paired TFP CPU test files; includes failures and audit script"
+  },
+  {
+    "path": "artifacts/validation/gpu_diagnostics_20261101_setup.tar.gz",
+    "source": "work/implementation-comparison-20261030/other_gpu_diagnosis_v1 and referenced frozen package sources",
+    "sha256": "bb9056e54989ceda7a4210bd712ebb98ea37f93ba834deea87eca27c50a3cc49",
+    "bytes": 36134821,
+    "files": 3709,
+    "purpose": "GPU diagnostic setup and completed CPU controls; GPU jobs pending, no optimization results"
   }
 ]

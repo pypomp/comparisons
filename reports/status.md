@@ -1,6 +1,6 @@
 # Results and tests
 
-The original repository snapshot is from 31 October 2026. A [1 November validation update](validation_20261101.md) adds the completed Cuthbert v2 GPU diagnosis and all 515 TFP CPU test-file pairs. Cuthbert v3 remained pending at the 1 November scheduler query. This page is not a live job monitor. Earlier job records and failures remain [archived](../archive/README.md).
+The original repository snapshot is from 31 October 2026. A [1 November validation update](validation_20261101.md) adds the completed Cuthbert v2 GPU diagnosis and all 515 TFP CPU test-file pairs. A [further diagnostic update](gpu_diagnosis_20261101.md) records new CPU controls and submitted GPU checks for PFJAX, PyDPF and TFP. These three checks and Cuthbert v3 remained pending at 00:30 UTC on 1 November. This page is not a live job monitor. Earlier job records and failures remain [archived](../archive/README.md).
 
 The [Dacca report](dacca_comparison.md) describes the model and experiment design. The [source review](../archive/README.md) identifies the package functions used. Dynamax is excluded from the current comparison; its earlier 36 estimates remain in the historical reports and figures.
 
@@ -9,9 +9,9 @@ The [Dacca report](dacca_comparison.md) describes the model and experiment desig
 | Package | Tests and comparisons | Unfinished work |
 |---|---|---|
 | Cuthbert | Earlier local coverage: 1548 unique tests eventually passed after dependency repairs. Current v3: 32 CPU interface tests, full T=600 checks with both resamplers at J=32, and 12 original and modified ADPF comparisons passed. GPU diagnosis reproduced all three previous failures in unchanged original code; both sides passed 64 PF tests | Revised GPU check 65144479 remains pending. Full GPU correctness is not established |
-| PFJAX | 72 configured CPU tests and 72 configured GPU tests passed, with upstream exclusions retained | A Dacca gradient coordinate failed its tolerance; the revised interface has no formal optimization result |
-| PyDPF | Native PF likelihood increments matched in nine GPU pairs; repaired test run passed 33/34 | A float32 multinomial exact-equality test failed; the cause still needs an original-code comparison |
-| TFP | The separate PF subset passed 120 tests with 23 skipped on both sides after a test-harness name-binding repair. All 515 full-suite file pairs have now been attempted; no additional failed test identities in the candidate | GPU alpha=1 exact-gradient check failed. Full CPU suite has common failures, no-test exits, timeouts and an abort; it did not pass |
+| PFJAX | 72 configured CPU tests and 72 configured GPU tests passed, with upstream exclusions retained | A Dacca gradient coordinate failed its tolerance. Repeated-call and checkpointing diagnosis 65151851 is pending; no formal optimization result |
+| PyDPF | Native PF likelihood increments matched in nine GPU pairs; repaired test run passed 33/34 | A float32 multinomial exact-gradient test failed. Original-repeatability diagnosis 65151857 is pending |
+| TFP | The separate PF subset passed 120 tests with 23 skipped on both sides after a test-harness name-binding repair. All 515 full-suite file pairs have now been attempted; no additional failed test identities in the candidate | GPU alpha=1 exact-gradient check failed; diagnosis 65151858 is pending. The full CPU suite did not pass |
 | particles | Nine CPU PF pairs matched likelihood/state/weights/RNG; public IF2 tests and collected-result audits passed | The pinned upstream has no pytest suite; this is not a claim that an upstream test suite passed |
 
 The original TFP snapshot of 324 pairs remains archived. The completed run has 515 pairs: 370 normal exits, 127 test/collection failures, eight no-test exits, nine timeouts and one abort per side. Original/candidate outcomes and failed-test identities match in every pair. This does not imply that all tests passed. [Completed-run details](validation_20261101.md).
