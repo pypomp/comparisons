@@ -1,12 +1,12 @@
 # Experiment status
 
-The [saved scheduler queries](../results/current_jobs.json) include the 08:56 UTC query on 1 November 2026 and the separate new PFJAX diagnostic submission query. This page is a recorded snapshot, not a live cluster view.
+The [saved scheduler queries](../results/current_jobs.json) include the 09:26 UTC query on 1 November 2026 and the new-job query at 09:39 UTC. This page is a recorded snapshot, not a live cluster view.
 
 | Package | GPU check | New optimization results |
 |---|---|---|
 | Cuthbert v3 | Earlier failed checks retained; the repeat diagnosis shows that the old gradient rule also rejects original self-repeats | 36/36 endpoints audited; two A fits failed and three A scores are low precision; final report, figures and reproduction archive prepared |
-| PFJAX | [Full Dacca check failed in 4/12 forward case comparisons](pfjax_forward_20261101.md); new execution controls 65168970 submitted | 0/36; likelihood discrepancy under investigation; cost and finite-value checks passed |
-| PyDPF | 65151857 completed and reviewed; deterministic controls agree on the tested linear model | 0/36; earlier dependent jobs cancelled before starting |
+| PFJAX | [Matched execution controls: 324/324 likelihood pairs exactly equal](pfjax_execution_controls_20261101.md); original forward-only/differentiated values also differ | 0/36; first formal case 65169945_0 running; remaining cases await its audit |
+| PyDPF | [Full Dacca check 65169994 submitted](pydpf_full_Dacca_20261101.md), pending Priority; earlier linear-model diagnosis retained | 0/36; formal budget unused |
 | TFP | 65151858 failed after three subprocess timeouts; partial arrays reviewed | 0/36; earlier dependent jobs cancelled before starting |
 | particles | CPU checks and independent GPU evaluation complete | 24/24 estimates audited; 21 scores meet the precision requirement; final figures pending |
 

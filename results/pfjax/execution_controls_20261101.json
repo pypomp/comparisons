@@ -1,0 +1,133 @@
+{
+  "job_id": "65168970",
+  "state": "COMPLETED",
+  "elapsed_seconds": 354,
+  "T": 600,
+  "J": 5000,
+  "cases": [
+    0,
+    2,
+    11
+  ],
+  "repeats_per_execution_context": 3,
+  "evaluations": 144,
+  "comparisons_recomputed": 1656,
+  "all_values_and_gradients_finite": true,
+  "matched_execution_pairs": 324,
+  "matched_execution_pairs_exact": 324,
+  "original_execution_context_comparisons": [
+    {
+      "mode": "checkpoint",
+      "case": 0,
+      "first": "original:forward",
+      "second": "original:value_and_grad",
+      "pairs": 9,
+      "forward_equal": 0,
+      "within_existing_forward_rule": 0,
+      "maximum_absolute_forward_difference": 11.71630859375
+    },
+    {
+      "mode": "checkpoint",
+      "case": 2,
+      "first": "original:forward",
+      "second": "original:value_and_grad",
+      "pairs": 9,
+      "forward_equal": 9,
+      "within_existing_forward_rule": 9,
+      "maximum_absolute_forward_difference": 0.0
+    },
+    {
+      "mode": "checkpoint",
+      "case": 11,
+      "first": "original:forward",
+      "second": "original:value_and_grad",
+      "pairs": 9,
+      "forward_equal": 0,
+      "within_existing_forward_rule": 0,
+      "maximum_absolute_forward_difference": 112.3154296875
+    },
+    {
+      "mode": "no_checkpoint",
+      "case": 0,
+      "first": "original:forward",
+      "second": "original:value_and_grad",
+      "pairs": 9,
+      "forward_equal": 0,
+      "within_existing_forward_rule": 0,
+      "maximum_absolute_forward_difference": 11.71630859375
+    },
+    {
+      "mode": "no_checkpoint",
+      "case": 2,
+      "first": "original:forward",
+      "second": "original:value_and_grad",
+      "pairs": 9,
+      "forward_equal": 9,
+      "within_existing_forward_rule": 9,
+      "maximum_absolute_forward_difference": 0.0
+    },
+    {
+      "mode": "no_checkpoint",
+      "case": 11,
+      "first": "original:forward",
+      "second": "original:value_and_grad",
+      "pairs": 9,
+      "forward_equal": 0,
+      "within_existing_forward_rule": 0,
+      "maximum_absolute_forward_difference": 112.3154296875
+    }
+  ],
+  "source_files_verified": 8,
+  "reference_files_verified": 394,
+  "transfer_files_verified": 170,
+  "terminal_files_verified": 164,
+  "old_failed_check_preserved": true,
+  "underlying_GPU_operation_identified": false,
+  "mathematical_gradient_certification": false,
+  "formal_submission": {
+    "job_id": "65169945",
+    "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/pfjax_formal_v3",
+    "array": "0",
+    "cases_submitted": [
+      0
+    ],
+    "cases_remaining": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "all_expected_endpoints": 36,
+    "submitted_case_endpoints": 3,
+    "stage": "first full case; later cases after actual cost review",
+    "submitted_at_utc": "2026-11-01T09:35:54.792298+00:00",
+    "source_manifest_sha256": "51e41ece4fd091223835d3db0339c61748a5605b2389c5780975f0e58bfebaf2",
+    "time_limit_per_case_seconds": 3360,
+    "host_memory_GiB": 48,
+    "GPU": "A40",
+    "account": "ionides3",
+    "package_source_revision": "jax_gate_v2/pfjax unchanged",
+    "all12_cases_allocation_seconds_upper": 40320,
+    "new_validation_and_all12_cases_seconds_upper": 41161,
+    "completed_forward_control_job": "65168970",
+    "old_gate_state": "FAILED1:0 retained",
+    "submission_stdout": "65169945\n",
+    "empirical_comparison_authorized": true,
+    "matched_context_forward_pairs": 324,
+    "matched_context_forward_pairs_equal": 324,
+    "old_failed_check_retained": true,
+    "original_forward_vs_differentiated_difference_unresolved": true,
+    "derivative_correctness_certified": false,
+    "cost_forecast_seconds": 2810.5371476775035,
+    "maximum_allocation_with_validation_seconds": 41161
+  },
+  "archive": "artifacts/validation/pfjax_controls_and_next_runs_20261101T0926.tar.gz",
+  "archive_sha256": "ba21281f2add3be6ebe181eef6a03ba0668e4a061b31d4eb9d6dc65e7334b982"
+}

@@ -9,8 +9,8 @@ The new experiment has a different status:
 | Package | New endpoints | State |
 |---|---:|---|
 | Cuthbert | 36/36 | Complete report and audit; two A fits failed, three A scores low precision |
-| PFJAX | 0/36 | Dependent formal job cancelled before starting after GPU validation failure |
-| PyDPF | 0/36 | Dependent formal jobs cancelled before starting after GPU validation failure |
+| PFJAX | 0/36 | First full case 65169945_0 running; [execution controls and acceptance](pfjax_execution_controls_20261101.md); remaining eleven cases await its audit |
+| PyDPF | 0/36 | Full Dacca check 65169994 pending; no new formal fit submitted |
 | TFP | 0/36 | Dependent formal jobs cancelled before starting after GPU validation failure |
 | particles | 24/24 | Fits and independent scores audited; final new figures and reproducibility archive still pending |
 

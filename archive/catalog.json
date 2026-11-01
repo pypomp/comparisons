@@ -505,5 +505,19 @@
     "extracted_CPU_control_audit_identical": true,
     "new_diagnosis_GPU_results_included": false,
     "formal_fits_or_scores_rerun": false
+  },
+  {
+    "path": "artifacts/validation/pfjax_controls_and_next_runs_20261101T0926.tar.gz",
+    "source": "Completed PFJAX forward controls, full raw GPU records and analysis; first formal case source and submission; PyDPF full-scale check setup and CPU controls.",
+    "sha256": "ba21281f2add3be6ebe181eef6a03ba0668e4a061b31d4eb9d6dc65e7334b982",
+    "bytes": 40181410,
+    "files": 1033,
+    "all_member_hashes_verified": true,
+    "extracted_GPU_record_audit_identical": true,
+    "extracted_CPU_control_audit_identical": true,
+    "new_diagnosis_GPU_results_included": true,
+    "new_PyDPF_GPU_results_included": false,
+    "extracted_formal_acceptance_check_passed": true,
+    "formal_fits_or_scores_rerun": false
   }
 ]
