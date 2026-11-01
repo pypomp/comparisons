@@ -1,0 +1,31 @@
+--- prefix_v3/source/public_api.py
++++ gradient_v4/source/public_api.py
+@@ -105,7 +105,19 @@
+                 for v in opt.variables:
+                     if v.shape.rank == 1:
+                         valid_point &= tf.math.is_finite(v)
++            # Return pre-rollback values as additional outputs; no new update rule.
++            proposal_record = {'parameters_before': tf.stack(previous, -1),
++                               'parameters_proposed': proposal,
++                               'loss': loss, 'gradient': g,
++                               'finite_loss_and_gradient': valid,
++                               'finite_parameter_and_optimizer': valid_point,
++                               'active_before': tf.identity(self.active)}
++            for i, opt in enumerate(self.optimizers):
++                for j, v in enumerate(opt.variables):
++                    proposal_record[f'optimizer_proposed_{i}_{j}'] = tf.identity(v)
++                    proposal_record[f'optimizer_before_{i}_{j}'] = old_states[i][j]
+             active &= valid_point
++            proposal_record['accepted'] = active
+             for i, (opt, var) in enumerate(zip(self.optimizers, self.coords)):
+                 var.assign(tf.where(active, var, previous[i]))
+                 for v, old in zip(opt.variables, old_states[i]):
+@@ -113,7 +125,7 @@
+                         v.assign(tf.where(active, v, old))
+             self.active.assign(active)
+             self.accepted.assign_add(tf.cast(active, tf.int32))
+-            return tf.stack(self.coords, -1), loss, g, active
++            return tf.stack(self.coords, -1), loss, g, active, proposal_record
+         self.step = step
+ 
+     def parameters(self):

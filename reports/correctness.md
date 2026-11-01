@@ -29,3 +29,5 @@ The [TFP prefix-audit and gradient-driver controls](pfjax_cases5_8_and_tfp_prepa
 The [completed PFJAX review](pfjax_20261101/report.md) audits all twelve saved cases, one rejected nonfinite proposal, the floor score, all independent score values and resource costs. This saved-data audit and verified source restoration do not resolve the original execution-mode discrepancy or certify mathematical derivatives. Earlier failed checks retain their original status.
 
 [TFP gradient submission preparation](tfp_gradient_submission_preparation_20261101.md) adds tested file-reference and duplicate-attempt checks outside the frozen source. Both live prefix jobs are still running; no real prefix approval or gradient job has been created.
+
+The [completed TFP prefix audit](tfp_prefix_20261101.md) verifies all twelve saved 175-pass fits and canonical zero Adam states. The later gradient revision passes source, terminal, scorer and budget checks against those actual records. This permits the authorized empirical A/B/C runs; it does not certify their outcomes or mathematical gradients.

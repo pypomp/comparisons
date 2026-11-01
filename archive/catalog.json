@@ -664,5 +664,21 @@
     "fit_calls": 0,
     "GPU_results_added": false,
     "deployed": false
+  },
+  {
+    "path": "artifacts/experiments/dacca/tfp_prefix_and_gradient_submission_20261101T1556.tar.gz",
+    "source": "Audited completed TFP physical IF2 prefix and three previously unrun gradient-phase submissions with unchanged scientific settings and complete proposal records.",
+    "sha256": "0c6c04036f3240f0f5708a61876b385654557c8a832863b7765c7f145c179f54",
+    "bytes": 42305926,
+    "files": 9492,
+    "all_member_hashes_verified": true,
+    "extracted_prefix_audit_byte_identical": true,
+    "extracted_three_production_guards_passed": true,
+    "extracted_saved_proposal_audit_byte_identical": true,
+    "prefix_GPU_seconds": 12747,
+    "prefix_failed_rows": 0,
+    "gradient_results_claimed": false,
+    "PF_calls": 0,
+    "fit_calls": 0
   }
 ]
