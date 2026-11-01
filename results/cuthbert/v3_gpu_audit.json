@@ -1,0 +1,192 @@
+{
+  "audited_at_utc": "2026-11-01T02:42:25.097517+00:00",
+  "integrity_audit_passed": true,
+  "job_id": "65144479",
+  "scheduler_row": [
+    "65144479",
+    "FAILED",
+    "1:0",
+    "879",
+    "gl1516",
+    "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1"
+  ],
+  "source_files_verified_remotely": 571,
+  "transferred_files_checked": 52,
+  "terminal_files_checked": 46,
+  "source_manifest_sha256": "c3cf801b178be021bd59d03a4876d6ef7c0576459f5cad5d06bcdaf57134da55",
+  "collection_archive_sha256": "a777738ca3460fdb6eafe7344c1a80d07a99fa69f3f751303a50cbabf573798b",
+  "complete": {
+    "checks_completed": true,
+    "exit_codes": {
+      "prior_upstream_failures": 124,
+      "PF_regression": 124,
+      "public_tests": 0,
+      "Dacca_systematic": 0,
+      "Dacca_multinomial": 0,
+      "paired_ADPF_J32": 1,
+      "paired_ADPF_J5000": 1,
+      "public_cost": 0,
+      "ABC_driver_smoke": 0
+    },
+    "core_checks_passed": false,
+    "formal_release_approved": false,
+    "manual_upstream_failure_review_required": true,
+    "full_GPU_upstream_suite_passed": false,
+    "node": "gl1516.arc-ts.umich.edu",
+    "job": "65144479",
+    "elapsed_seconds": 863.6771688088775,
+    "formal_fit_calls": 0,
+    "native_timing_repeated": false,
+    "tolerance_changes": false,
+    "captured_at_utc": "2026-11-01T02:41:19.362883+00:00"
+  },
+  "commands": {
+    "prior_upstream_failures": {
+      "state": "timeout",
+      "exit_code": 124,
+      "elapsed_seconds": 180.33291054703295,
+      "timeout_seconds": 180,
+      "visible_passes_before_end": 0,
+      "log_tail": "ython 3.12.13, pytest-9.1.1, pluggy-1.7.0 -- /scratch/ionides_root/ionides1/hkunyang/model024_20261006/model024_panel_cute_20261023/venv/bin/python\ncachedir: /tmp/cuthbert-v3-focus\nrootdir: /gpfs/accounts/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/cuthbert_gate_v3/cuthbert/candidate\nconfigfile: pyproject.toml\nplugins: jaxtyping-0.3.9\ncollecting ... collected 3 items\n\ntests/cuthbert/ensemble_kalman/test_enkf.py::test_gaussian_taper_log_likelihood_gradient "
+    },
+    "PF_regression": {
+      "state": "timeout",
+      "exit_code": 124,
+      "elapsed_seconds": 240.4192373258993,
+      "timeout_seconds": 240,
+      "visible_passes_before_end": 61,
+      "log_tail": "t_filter_noop[marginal-5-1-99] PASSED [ 89%]\ntests/cuthbert/smc/test_particle_filters.py::test_filter_noop[marginal-5-1-123] PASSED [ 90%]\ntests/cuthbert/smc/test_particle_filters.py::test_filter_noop[marginal-5-1-456] PASSED [ 92%]\ntests/cuthbert/smc/test_particle_filters.py::test_filter_noop[marginal-5-10-1] PASSED [ 93%]\ntests/cuthbert/smc/test_particle_filters.py::test_filter_noop[marginal-5-10-43] PASSED [ 95%]\ntests/cuthbert/smc/test_particle_filters.py::test_filter_noop[marginal-5-10-99] "
+    },
+    "public_tests": {
+      "state": "finished",
+      "exit_code": 0,
+      "elapsed_seconds": 199.11349090468138,
+      "timeout_seconds": 240,
+      "pytest": {
+        "tests": 32,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "Dacca_systematic": {
+      "state": "finished",
+      "exit_code": 0,
+      "elapsed_seconds": 63.40732659865171,
+      "timeout_seconds": 120,
+      "visible_passes_before_end": 0,
+      "log_tail": "ard_matches_original_pf\": true,\n      \"finite_gradient\": true\n    },\n    \"alpha_1.0\": {\n      \"forward_matches_original_pf\": true,\n      \"finite_gradient\": true,\n      \"gradient_matches_original_adpf\": true,\n      \"max_gradient_absolute_difference\": 0.00042724609375\n    },\n    \"zero_perturbation_if2_matches_original_pf\": true,\n    \"composition_max_parameter_absolute_difference\": 0.0,\n    \"public_ifad_matches_separate_public_calls\": true,\n    \"public_ifad_scoring_matches_original_pf\": true\n  }\n}\n"
+    },
+    "Dacca_multinomial": {
+      "state": "finished",
+      "exit_code": 0,
+      "elapsed_seconds": 53.45059498772025,
+      "timeout_seconds": 120,
+      "visible_passes_before_end": 0,
+      "log_tail": "ward_matches_original_pf\": true,\n      \"finite_gradient\": true\n    },\n    \"alpha_1.0\": {\n      \"forward_matches_original_pf\": true,\n      \"finite_gradient\": true,\n      \"gradient_matches_original_adpf\": true,\n      \"max_gradient_absolute_difference\": 0.0001220703125\n    },\n    \"zero_perturbation_if2_matches_original_pf\": true,\n    \"composition_max_parameter_absolute_difference\": 0.0,\n    \"public_ifad_matches_separate_public_calls\": true,\n    \"public_ifad_scoring_matches_original_pf\": true\n  }\n}\n"
+    },
+    "paired_ADPF_J32": {
+      "state": "finished",
+      "exit_code": 1,
+      "elapsed_seconds": 23.346541177481413,
+      "timeout_seconds": 120,
+      "visible_passes_before_end": 0,
+      "log_tail": "rt/validation/check_native_adpf_pairs.py\", line 61, in <module>\n    main()\n  File \"/gpfs/accounts/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/cuthbert_gate_v3/cuthbert/validation/check_native_adpf_pairs.py\", line 57, in main\n    assert all(x['passed'] for x in records), 'Original/public ADPF comparison failed; see all twelve records'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Original/public ADPF comparison failed; see all twelve records\n"
+    },
+    "paired_ADPF_J5000": {
+      "state": "finished",
+      "exit_code": 1,
+      "elapsed_seconds": 50.88195495959371,
+      "timeout_seconds": 180,
+      "visible_passes_before_end": 0,
+      "log_tail": "rt/validation/check_native_adpf_pairs.py\", line 61, in <module>\n    main()\n  File \"/gpfs/accounts/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/cuthbert_gate_v3/cuthbert/validation/check_native_adpf_pairs.py\", line 57, in main\n    assert all(x['passed'] for x in records), 'Original/public ADPF comparison failed; see all twelve records'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Original/public ADPF comparison failed; see all twelve records\n"
+    },
+    "public_cost": {
+      "state": "finished",
+      "exit_code": 0,
+      "elapsed_seconds": 35.11443437542766,
+      "timeout_seconds": 180,
+      "visible_passes_before_end": 0,
+      "log_tail": "rue}, {\"kind\": \"timed\", \"seed\": 954001, \"seconds\": 1.6278665782883763, \"finite\": true}, {\"kind\": \"timed\", \"seed\": 954002, \"seconds\": 1.6126121189445257, \"finite\": true}, {\"kind\": \"timed\", \"seed\": 954003, \"seconds\": 1.623713443055749, \"finite\": true}], \"median_timed_seconds\": 1.623713443055749}}, \"native_module\": \"/gpfs/accounts/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/cuthbert_gate_v3/cuthbert/candidate/cuthbert/smc/particle_filter.py\", \"passed\": true}\n"
+    },
+    "ABC_driver_smoke": {
+      "state": "finished",
+      "exit_code": 0,
+      "elapsed_seconds": 16.989565418101847,
+      "timeout_seconds": 120,
+      "visible_passes_before_end": 0,
+      "log_tail": ""
+    }
+  },
+  "original_public_pairs": {
+    "32": {
+      "records_available": true,
+      "actual_pairs": 12,
+      "unique_cases": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "passed": false,
+      "failed_cases": [
+        4
+      ],
+      "maximum_gradient_absolute_difference": 0.0029296875
+    },
+    "5000": {
+      "records_available": true,
+      "actual_pairs": 12,
+      "unique_cases": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "passed": false,
+      "failed_cases": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "maximum_gradient_absolute_difference": 3.4453125
+    }
+  },
+  "cost_record_passed": true,
+  "conservative_case_forecast_seconds": 3419.4692725888453,
+  "formal_submission_requirements_satisfied": false,
+  "blockers": [
+    "PF_regression",
+    "paired_ADPF_J32",
+    "paired_ADPF_J5000",
+    "12 pairs J=32",
+    "12 pairs J=5000",
+    "J5000 memory and runtime requirement not established or exceeded",
+    "Slurm job did not complete with exit 0:0"
+  ],
+  "formal_fit_calls": 0,
+  "full_GPU_upstream_suite_passed": false,
+  "original_upstream_failure_review_still_required": true,
+  "note": "Integrity verification is separate from numerical acceptance. Timeouts remain incomplete tests; earlier v2 results do not replace missing v3 checks."
+}

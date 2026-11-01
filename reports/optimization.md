@@ -8,7 +8,7 @@ The new experiment has a different status:
 
 | Package | New endpoints | State |
 |---|---:|---|
-| Cuthbert | 0/36 | v3 formal comparison prepared; GPU checks pending; not submitted |
+| Cuthbert | 0/36 | v3 GPU checks failed; A/B/C not submitted. The conservative runtime estimate also exceeded the existing submission limit |
 | PFJAX | 0/36 | Dependent formal job cancelled before starting after GPU validation failure |
 | PyDPF | 0/36 | Dependent formal jobs cancelled before starting after GPU validation failure |
 | TFP | 0/36 | Dependent formal jobs cancelled before starting after GPU validation failure |
@@ -18,4 +18,4 @@ For new particles, the median independent log likelihood is −4169.070668 for A
 
 The new particles fits used 43,647 CPU seconds, plus 155 CPU seconds for the earlier checks. Independent A40 scoring used 96 seconds and is counted separately. [Audit](../results/particles/audit.json) · [24 endpoint records](../results/particles/endpoints.csv).
 
-Cuthbert is the next experiment. It can start after the original-code comparisons, GPU correctness tests and J=5000 memory and runtime checks pass. The prepared submission program checks these results before submitting the 12 A/B/C jobs.
+Cuthbert can start after the original-code comparisons, GPU correctness tests and J=5000 memory and runtime requirements pass. In v3, measured IF2 and gradient calls gave a conservative estimate of 3419.47 seconds per case, above the existing 3120-second submission limit. This is an estimate, not an observed complete optimization time. The driver and its limits have not been changed. [v3 results and failures](cuthbert_v3_20261101.md).

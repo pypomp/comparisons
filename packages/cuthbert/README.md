@@ -2,6 +2,8 @@
 
 Local revision 3, based on the original version recorded in [source details](version.json). The changes have not been submitted upstream.
 
+The completed v3 GPU check did not pass the original-ADPF gradient comparisons at all planned starts. A/B/C has not been submitted. [Results and follow-up diagnosis](../../reports/cuthbert_v3_20261101.md).
+
 ## Original code and IF2
 
 The new IF2 and DMOP functions call `particle_filter.build_filter` and use the original `filter_prepare` and `filter_combine` updates. Our `scan_final` function loops over observation times and returns the final filter state. It does not call the top-level `cuthbert.filter`.

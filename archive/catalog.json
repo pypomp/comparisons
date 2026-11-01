@@ -331,5 +331,21 @@
     "bytes": 23226,
     "files": 8,
     "purpose": "Queue inspection and same-job host-memory adjustment; includes original scheduler commands and unchanged-source check. No numerical results."
+  },
+  {
+    "path": "artifacts/validation/cuthbert_v3_20261101.tar.gz",
+    "source": "work/implementation-comparison-20261030",
+    "sha256": "e99eda0615d0f4d0c453857a88df330c8403f7698ae3b6eb748202d99cc3c7df",
+    "bytes": 8559656,
+    "files": 656,
+    "purpose": "Collected failed Cuthbert v3 GPU checks, exact source, review, actual cost and targeted follow-up diagnosis setup. No optimization results."
+  },
+  {
+    "path": "artifacts/validation/pfjax_gpu_20261101.tar.gz",
+    "source": "work/implementation-comparison-20261030",
+    "sha256": "416b9f8ad6c658bdb9e8f601e9c69bdb3c1c97bae0ca68dd1f9c60acf8c7f9b9",
+    "bytes": 3839558,
+    "files": 74,
+    "purpose": "Collected PFJAX GPU diagnosis including all raw repeats, histories, failed comparisons and independent recomputation."
   }
 ]

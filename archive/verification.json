@@ -1,9 +1,9 @@
 {
   "passed": true,
-  "retained_files_checked": 165,
+  "retained_files_checked": 169,
   "archived_files_checked": 8527,
   "unchanged_copies_checked": 115,
-  "archive_checksums_checked": 54,
+  "archive_checksums_checked": 56,
   "archives_fully_read": 1,
   "patched_sources": [
     {

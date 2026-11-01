@@ -1,112 +1,98 @@
 {
-  "observed_at_utc": "2026-11-01T02:28:08.109113+00:00",
-  "scheduler_source": "work/implementation-comparison-20261030/queue_analysis_20261101/post_adjustment.json",
-  "scheduler_source_sha256": "d5dd50c5bb6ea36262521bade95596ab41293b78b95d813267de8cad3f4667aa",
+  "observed_at_utc": "2026-11-01T02:48:37.979662+00:00",
+  "scheduler_source": "work/implementation-comparison-20261030/scheduler_20261101T024837.json",
+  "scheduler_source_sha256": "43f3a0e97beb7e7ee786ac6b7c21692c586f14936b9cb295ce602b663a2ca3a5",
   "jobs": {
     "cuthbert": {
       "job_id": "65144479",
-      "state": "RUNNING",
-      "reason": "None",
-      "elapsed_seconds": 89,
+      "state": "FAILED",
+      "exit_code": "1:0",
+      "elapsed_seconds": 879,
       "allocated_node": "gl1516",
-      "start_time_scheduler": "2026-10-31T22:26:40",
-      "scheduler_timezone": "America/Detroit",
-      "expected_start": null,
+      "reason": null,
       "requested_host_memory_GiB": 48,
-      "cpus": 4,
-      "gpu": "A40",
-      "sacct": {
-        "JobID": "65144479",
-        "State": "RUNNING",
-        "ExitCode": "0:0",
-        "ElapsedRaw": "89",
-        "Start": "2026-10-31T22:26:40",
-        "End": "Unknown",
-        "NodeList": "gl1516",
-        "ReqMem": "48G",
-        "ReqTRES": "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1",
-        "AllocTRES": "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1"
-      }
+      "sacct_row": [
+        "65144479",
+        "FAILED",
+        "1:0",
+        "879",
+        "gl1516",
+        "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1"
+      ]
     },
     "pfjax": {
       "job_id": "65151851",
-      "state": "PENDING",
-      "reason": "Priority",
-      "elapsed_seconds": 0,
-      "allocated_node": null,
-      "start_time_scheduler": null,
-      "scheduler_timezone": "America/Detroit",
-      "expected_start": null,
+      "state": "COMPLETED",
+      "exit_code": "0:0",
+      "elapsed_seconds": 293,
+      "allocated_node": "gl1516",
+      "reason": null,
       "requested_host_memory_GiB": 48,
-      "cpus": 4,
-      "gpu": "A40",
-      "sacct": {
-        "JobID": "65151851",
-        "State": "PENDING",
-        "ExitCode": "0:0",
-        "ElapsedRaw": "0",
-        "Start": "Unknown",
-        "End": "Unknown",
-        "NodeList": "None assigned",
-        "ReqMem": "48G",
-        "ReqTRES": "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1",
-        "AllocTRES": ""
-      }
+      "sacct_row": [
+        "65151851",
+        "COMPLETED",
+        "0:0",
+        "293",
+        "gl1516",
+        "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1"
+      ]
     },
     "pydpf": {
       "job_id": "65151857",
-      "state": "PENDING",
-      "reason": "Priority",
-      "elapsed_seconds": 0,
-      "allocated_node": null,
-      "start_time_scheduler": null,
-      "scheduler_timezone": "America/Detroit",
-      "expected_start": null,
+      "state": "RUNNING",
+      "exit_code": "0:0",
+      "elapsed_seconds": 97,
+      "allocated_node": "gl1516",
+      "reason": null,
       "requested_host_memory_GiB": 48,
-      "cpus": 4,
-      "gpu": "A40",
-      "sacct": {
-        "JobID": "65151857",
-        "State": "PENDING",
-        "ExitCode": "0:0",
-        "ElapsedRaw": "0",
-        "Start": "Unknown",
-        "End": "Unknown",
-        "NodeList": "None assigned",
-        "ReqMem": "48G",
-        "ReqTRES": "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1",
-        "AllocTRES": ""
-      }
+      "sacct_row": [
+        "65151857",
+        "RUNNING",
+        "0:0",
+        "97",
+        "gl1516",
+        "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1"
+      ]
     },
     "tfp": {
       "job_id": "65151858",
       "state": "PENDING",
-      "reason": "Priority",
+      "exit_code": "0:0",
       "elapsed_seconds": 0,
       "allocated_node": null,
-      "start_time_scheduler": null,
-      "scheduler_timezone": "America/Detroit",
-      "expected_start": null,
+      "reason": "Priority",
       "requested_host_memory_GiB": 48,
-      "cpus": 4,
-      "gpu": "A40",
-      "sacct": {
-        "JobID": "65151858",
-        "State": "PENDING",
-        "ExitCode": "0:0",
-        "ElapsedRaw": "0",
-        "Start": "Unknown",
-        "End": "Unknown",
-        "NodeList": "None assigned",
-        "ReqMem": "48G",
-        "ReqTRES": "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1",
-        "AllocTRES": ""
-      }
+      "sacct_row": [
+        "65151858",
+        "PENDING",
+        "0:0",
+        "0",
+        "None assigned",
+        ""
+      ]
+    },
+    "cuthbert_gradient_diagnosis": {
+      "job_id": "65156615",
+      "state": "PENDING",
+      "exit_code": "0:0",
+      "elapsed_seconds": 0,
+      "allocated_node": null,
+      "reason": "Priority",
+      "requested_host_memory_GiB": 48,
+      "sacct_row": [
+        "65156615",
+        "PENDING",
+        "0:0",
+        "0",
+        "None assigned",
+        ""
+      ]
     }
   },
-  "resource_adjustment_source": "work/implementation-comparison-20261030/queue_analysis_20261101/memory_adjustment.json",
-  "resource_adjustment_sha256": "dd4c90a3f660b7adec5d5fb83a21f9d87daee160d71e46e0aa8fee6a2a7cb061",
   "formal_ABC_submitted": false,
-  "new_GPU_results_collected": false,
-  "note": "Scheduler snapshot. Running is not a validation result. Frozen submission scripts retain their original 80 GiB request; the recorded scheduler override sets 48 GiB."
+  "new_GPU_results_collected": [
+    "cuthbert_v3",
+    "pfjax_diagnosis"
+  ],
+  "note": "Cuthbert v3 failed. New repeatability diagnosis is separate; no tolerance or production-source changes. PFJAX process completion is not formal approval."
 }
