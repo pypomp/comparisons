@@ -347,5 +347,13 @@
     "bytes": 3839558,
     "files": 74,
     "purpose": "Collected PFJAX GPU diagnosis including all raw repeats, histories, failed comparisons and independent recomputation."
+  },
+  {
+    "path": "artifacts/validation/gradient_test_review_20261101.tar.gz",
+    "source": "work/implementation-comparison-20261030",
+    "sha256": "65c88390a27c09e1b92e1cead3bf60196da6fe05faf2864d316983da62ea79cf",
+    "bytes": 389071,
+    "files": 147,
+    "purpose": "Gradient-test interpretation, saved Cuthbert gradient scales and completed PyDPF repeatability diagnosis; raw comparisons and source records preserved."
   }
 ]

@@ -1,0 +1,122 @@
+{
+  "integrity_audit_passed": true,
+  "raw_NPZ_files": 120,
+  "stored_array_comparisons_recomputed": 648,
+  "extra_cross_repeat_comparisons": 400,
+  "modes": {
+    "default": {
+      "float32_multinomial": {
+        "all_cross_repeat_gradients_exact": false,
+        "cross_pairs": 50,
+        "cross_exact": 30,
+        "cross_max_absolute_difference": 2.384185791015625e-07,
+        "within_function_nonexact": {
+          "original": 1,
+          "default": 4,
+          "alpha1": 1
+        },
+        "forwards_and_rng_exact": true
+      },
+      "float32_systematic": {
+        "all_cross_repeat_gradients_exact": true,
+        "cross_pairs": 50,
+        "cross_exact": 50,
+        "cross_max_absolute_difference": 0.0,
+        "within_function_nonexact": {
+          "original": 0,
+          "default": 0,
+          "alpha1": 0
+        },
+        "forwards_and_rng_exact": true
+      },
+      "float64_multinomial": {
+        "all_cross_repeat_gradients_exact": false,
+        "cross_pairs": 50,
+        "cross_exact": 35,
+        "cross_max_absolute_difference": 2.7755575615628914e-17,
+        "within_function_nonexact": {
+          "original": 0,
+          "default": 1,
+          "alpha1": 2
+        },
+        "forwards_and_rng_exact": true
+      },
+      "float64_systematic": {
+        "all_cross_repeat_gradients_exact": true,
+        "cross_pairs": 50,
+        "cross_exact": 50,
+        "cross_max_absolute_difference": 0.0,
+        "within_function_nonexact": {
+          "original": 0,
+          "default": 0,
+          "alpha1": 0
+        },
+        "forwards_and_rng_exact": true
+      }
+    },
+    "deterministic": {
+      "float32_multinomial": {
+        "all_cross_repeat_gradients_exact": true,
+        "cross_pairs": 50,
+        "cross_exact": 50,
+        "cross_max_absolute_difference": 0.0,
+        "within_function_nonexact": {
+          "original": 0,
+          "default": 0,
+          "alpha1": 0
+        },
+        "forwards_and_rng_exact": true
+      },
+      "float32_systematic": {
+        "all_cross_repeat_gradients_exact": true,
+        "cross_pairs": 50,
+        "cross_exact": 50,
+        "cross_max_absolute_difference": 0.0,
+        "within_function_nonexact": {
+          "original": 0,
+          "default": 0,
+          "alpha1": 0
+        },
+        "forwards_and_rng_exact": true
+      },
+      "float64_multinomial": {
+        "all_cross_repeat_gradients_exact": true,
+        "cross_pairs": 50,
+        "cross_exact": 50,
+        "cross_max_absolute_difference": 0.0,
+        "within_function_nonexact": {
+          "original": 0,
+          "default": 0,
+          "alpha1": 0
+        },
+        "forwards_and_rng_exact": true
+      },
+      "float64_systematic": {
+        "all_cross_repeat_gradients_exact": true,
+        "cross_pairs": 50,
+        "cross_exact": 50,
+        "cross_max_absolute_difference": 0.0,
+        "within_function_nonexact": {
+          "original": 0,
+          "default": 0,
+          "alpha1": 0
+        },
+        "forwards_and_rng_exact": true
+      }
+    }
+  },
+  "scheduler_row": [
+    "65151857",
+    "COMPLETED",
+    "0:0",
+    "306",
+    "gl1516",
+    "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1"
+  ],
+  "referenced_source_files_verified": 80,
+  "transferred_files_verified": 132,
+  "terminal_files_verified": 126,
+  "formal_fit_calls": 0,
+  "full_Dacca_gradient_validation": false,
+  "scope": "Small linear fixture: 5 observations, 24 particles, two batches; float32/64 and multinomial/systematic. Deterministic mode is a diagnostic control; production settings were not changed."
+}

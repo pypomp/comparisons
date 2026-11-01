@@ -8,7 +8,7 @@ The new experiment has a different status:
 
 | Package | New endpoints | State |
 |---|---:|---|
-| Cuthbert | 0/36 | v3 GPU checks failed; A/B/C not submitted. The conservative runtime estimate also exceeded the existing submission limit |
+| Cuthbert | 0/36 | PF forward agreement accepted; numerical gradient differences retained separately. A/B/C not submitted; runtime and revised submission plan unresolved |
 | PFJAX | 0/36 | Dependent formal job cancelled before starting after GPU validation failure |
 | PyDPF | 0/36 | Dependent formal jobs cancelled before starting after GPU validation failure |
 | TFP | 0/36 | Dependent formal jobs cancelled before starting after GPU validation failure |
@@ -18,4 +18,4 @@ For new particles, the median independent log likelihood is −4169.070668 for A
 
 The new particles fits used 43,647 CPU seconds, plus 155 CPU seconds for the earlier checks. Independent A40 scoring used 96 seconds and is counted separately. [Audit](../results/particles/audit.json) · [24 endpoint records](../results/particles/endpoints.csv).
 
-Cuthbert can start after the original-code comparisons, GPU correctness tests and J=5000 memory and runtime requirements pass. In v3, measured IF2 and gradient calls gave a conservative estimate of 3419.47 seconds per case, above the existing 3120-second submission limit. This is an estimate, not an observed complete optimization time. The driver and its limits have not been changed. [v3 results and failures](cuthbert_v3_20261101.md).
+Cuthbert's forward-PF agreement is accepted for proceeding with the empirical experiment; the [gradient-test review](gradient_tests_20261101.md) explains why its uncalibrated elementwise threshold is not a sufficient standalone reason to stop. Derivative correctness is not being certified. In v3, measured IF2 and gradient calls gave a conservative estimate of 3419.47 seconds per case, above the existing 3120-second submission limit. This is an estimate, not an observed complete optimization time. A feasible budget and an explicitly revised submission protocol are still required; the frozen driver, failed-job record and original limits have not been changed. [v3 results and failures](cuthbert_v3_20261101.md).
