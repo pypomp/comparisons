@@ -1,0 +1,28 @@
+{
+  "captured_at_utc": "2026-11-01T04:34:35.645125+00:00",
+  "returncode": 0,
+  "stdout": "{\"partition\": {\"returncode\": 0, \"stdout\": \"PartitionName=spgpu\\n   AllowGroups=ALL DenyAccounts=hessam1,lsa1,lsa3,pramodr1,qmei1,qmei2,vdenef1,mircore_project1,mircore_project2,gidas_project1 AllowQos=ALL\\n   AllocNodes=ALL Default=NO QoS=spgpu\\n   DefaultTime=01:00:00 DisableRootJobs=YES ExclusiveUser=NO ExclusiveTopo=NO GraceTime=0 Hidden=NO\\n   MaxNodes=UNLIMITED MaxTime=14-00:00:00 MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED MaxCPUsPerSocket=UNLIMITED\\n   Nodes=gl[1500-1529]\\n   PriorityJobFactor=1 PriorityTier=1 RootOnly=NO ReqResv=NO OverSubscribe=NO\\n   OverTimeLimit=NONE PreemptMode=REQUEUE\\n   State=DOWN TotalCPUs=960 TotalNodes=30 SelectTypeParameters=NONE\\n   JobDefaults=(null)\\n   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\\n   TRES=cpu=960,mem=12193980M,node=30,billing=4485094,gres/gpu=240,license/aa_r@slurmdb=50,license/aa_r_hpc@slurmdb=532,license/abaqus@slurmdb=375,license/ampl@slurmdb=5,license/ansys@slurmdb=2975,license/coe-lsdyna@slurmdb=5000,license/comsol-acdc@slurmdb=1,license/comsol-battery@slurmdb=1,license/comsol-cfd@slurmdb=1,license/comsol-heat-transfer@slurmdb=1,license/comsol-optimization@slurmdb=1,license/comsol-rf@slurmdb=1,license/comsol-structural-mechanics@slurmdb=1,license/comsol@slurmdb=2,license/fdtd_dengh@slurmdb=1,license/fdtd_kotov@slurmdb=20,license/gurobi@slurmdb=1024,license/sas@slurmdb=10,license/sentaurus@slurmdb=20,license/stata-mp@slurmdb=11,license/stata@slurmdb=20\\n   TRESBillingWeights=cpu=4519.67592593,mem=376.63966049G,GRES/gpu=18078.70370370\\n\\n\", \"stderr\": \"\"}, \"queue\": {\"returncode\": 0, \"stdout\": \"65160224_1|PENDING|0:00||(PartitionDown)|N/A\\n65160224_2|PENDING|0:00||(PartitionDown)|N/A\\n65160224_3|PENDING|0:00||(PartitionDown)|N/A\\n65160224_4|PENDING|0:00||(PartitionDown)|N/A\\n65160224_5|PENDING|0:00||(PartitionDown)|N/A\\n65160224_6|PENDING|0:00||(PartitionDown)|N/A\\n65160224_7|PENDING|0:00||(PartitionDown)|N/A\\n65160224_8|PENDING|0:00||(PartitionDown)|N/A\\n65160224_9|PENDING|0:00||(PartitionDown)|N/A\\n65160224_10|PENDING|0:00||(PartitionDown)|N/A\\n65160224_11|PENDING|0:00||(PartitionDown)|N/A\\n\", \"stderr\": \"\"}, \"accounting\": {\"returncode\": 0, \"stdout\": \"65160224_[7-11%3]|65160224|PENDING|0:0|0|None assigned|00:57:00|2026-11-01T00:32:06|Unknown\\n\", \"stderr\": \"\"}, \"estimated_start\": {\"returncode\": 0, \"stdout\": \"65160224_[1-11]|N/A|(PartitionDown)\\n\", \"stderr\": \"\"}}\n",
+  "stderr": "",
+  "queries": {
+    "partition": {
+      "returncode": 0,
+      "stdout": "PartitionName=spgpu\n   AllowGroups=ALL DenyAccounts=hessam1,lsa1,lsa3,pramodr1,qmei1,qmei2,vdenef1,mircore_project1,mircore_project2,gidas_project1 AllowQos=ALL\n   AllocNodes=ALL Default=NO QoS=spgpu\n   DefaultTime=01:00:00 DisableRootJobs=YES ExclusiveUser=NO ExclusiveTopo=NO GraceTime=0 Hidden=NO\n   MaxNodes=UNLIMITED MaxTime=14-00:00:00 MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED MaxCPUsPerSocket=UNLIMITED\n   Nodes=gl[1500-1529]\n   PriorityJobFactor=1 PriorityTier=1 RootOnly=NO ReqResv=NO OverSubscribe=NO\n   OverTimeLimit=NONE PreemptMode=REQUEUE\n   State=DOWN TotalCPUs=960 TotalNodes=30 SelectTypeParameters=NONE\n   JobDefaults=(null)\n   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED\n   TRES=cpu=960,mem=12193980M,node=30,billing=4485094,gres/gpu=240,license/aa_r@slurmdb=50,license/aa_r_hpc@slurmdb=532,license/abaqus@slurmdb=375,license/ampl@slurmdb=5,license/ansys@slurmdb=2975,license/coe-lsdyna@slurmdb=5000,license/comsol-acdc@slurmdb=1,license/comsol-battery@slurmdb=1,license/comsol-cfd@slurmdb=1,license/comsol-heat-transfer@slurmdb=1,license/comsol-optimization@slurmdb=1,license/comsol-rf@slurmdb=1,license/comsol-structural-mechanics@slurmdb=1,license/comsol@slurmdb=2,license/fdtd_dengh@slurmdb=1,license/fdtd_kotov@slurmdb=20,license/gurobi@slurmdb=1024,license/sas@slurmdb=10,license/sentaurus@slurmdb=20,license/stata-mp@slurmdb=11,license/stata@slurmdb=20\n   TRESBillingWeights=cpu=4519.67592593,mem=376.63966049G,GRES/gpu=18078.70370370\n\n",
+      "stderr": ""
+    },
+    "queue": {
+      "returncode": 0,
+      "stdout": "65160224_1|PENDING|0:00||(PartitionDown)|N/A\n65160224_2|PENDING|0:00||(PartitionDown)|N/A\n65160224_3|PENDING|0:00||(PartitionDown)|N/A\n65160224_4|PENDING|0:00||(PartitionDown)|N/A\n65160224_5|PENDING|0:00||(PartitionDown)|N/A\n65160224_6|PENDING|0:00||(PartitionDown)|N/A\n65160224_7|PENDING|0:00||(PartitionDown)|N/A\n65160224_8|PENDING|0:00||(PartitionDown)|N/A\n65160224_9|PENDING|0:00||(PartitionDown)|N/A\n65160224_10|PENDING|0:00||(PartitionDown)|N/A\n65160224_11|PENDING|0:00||(PartitionDown)|N/A\n",
+      "stderr": ""
+    },
+    "accounting": {
+      "returncode": 0,
+      "stdout": "65160224_[7-11%3]|65160224|PENDING|0:0|0|None assigned|00:57:00|2026-11-01T00:32:06|Unknown\n",
+      "stderr": ""
+    },
+    "estimated_start": {
+      "returncode": 0,
+      "stdout": "65160224_[1-11]|N/A|(PartitionDown)\n",
+      "stderr": ""
+    }
+  }
+}

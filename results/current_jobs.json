@@ -1,7 +1,7 @@
 {
-  "observed_at_utc": "2026-11-01T03:57:05.920584+00:00",
-  "scheduler_source": "work/implementation-comparison-20261030/scheduler_20261101T035705.json",
-  "scheduler_source_sha256": "07459d54f1857319ff0eb13410a154d99006595efddef97c0f881a29e964baec",
+  "observed_at_utc": "2026-11-01T04:34:35.645125+00:00",
+  "scheduler_source": "work/implementation-comparison-20261030/cuthbert_formal_v4_stage2/scheduler_after_submission.json",
+  "scheduler_source_sha256": "5891c379ea912973a3301cc610218b7be442c2b77afcafbdbee68d89b2dfb704",
   "jobs": {
     "cuthbert": {
       "job_id": "65144479",
@@ -90,41 +90,146 @@
     },
     "cuthbert_ABC_case0": {
       "job_id": "65158659_0",
-      "state": "RUNNING",
+      "state": "COMPLETED",
       "exit_code": "0:0",
-      "elapsed_seconds": 698,
+      "elapsed_seconds": 1882,
       "allocated_node": "gl1524",
       "reason": null,
       "requested_host_memory_GiB": 48,
       "sacct_row": [
         "65158659_0",
-        "RUNNING",
+        "COMPLETED",
         "0:0",
-        "698",
+        "1882",
         "gl1524",
-        "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1"
+        "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1",
+        "2026-10-31T23:45:27",
+        "2026-11-01T00:16:49",
+        "65158659"
       ],
-      "live_progress": {
-        "observed_at_utc": "2026-11-01T03:57:40.564002+00:00",
-        "snapshot": "work/implementation-comparison-20261030/cuthbert_case0_health_20261101T0357.json",
-        "snapshot_sha256": "9c6c7163d7027a582c90e8e7c0dbc90be98f1babc97342c9503434a73627e958",
-        "not_a_terminal_result": true,
-        "IF2_completed": 175,
-        "A": {
-          "attempted": 400,
-          "accepted": 400,
-          "fit_failed": false,
-          "fit_seconds": 557.5409111175686
-        },
-        "B": {
-          "attempted": 30,
-          "accepted": 30,
-          "fit_failed": false,
-          "fit_seconds": 41.79725861432962
-        },
-        "C": "not yet started",
-        "final_independent_scores_available": false
-      }
+      "audited_endpoints": 3,
+      "audit": "results/cuthbert/case0_20261101.json",
+      "raw_PF_repetitions": 108,
+      "precision_passed": 3,
+      "fit_failures": 0
+    },
+    "cuthbert_ABC_cases1_11": {
+      "job_id": "65160224",
+      "array": "1-11%3",
+      "cases": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "state": "PENDING",
+      "reason": "PartitionDown",
+      "partition_state": "DOWN",
+      "estimated_start": null,
+      "elapsed_seconds": 0,
+      "requested_host_memory_GiB": 48,
+      "time_limit_seconds": 3420,
+      "max_concurrent_GPUs": 3,
+      "squeue_rows": [
+        [
+          "65160224_1",
+          "PENDING",
+          "0:00",
+          "",
+          "(PartitionDown)",
+          "N/A"
+        ],
+        [
+          "65160224_2",
+          "PENDING",
+          "0:00",
+          "",
+          "(PartitionDown)",
+          "N/A"
+        ],
+        [
+          "65160224_3",
+          "PENDING",
+          "0:00",
+          "",
+          "(PartitionDown)",
+          "N/A"
+        ],
+        [
+          "65160224_4",
+          "PENDING",
+          "0:00",
+          "",
+          "(PartitionDown)",
+          "N/A"
+        ],
+        [
+          "65160224_5",
+          "PENDING",
+          "0:00",
+          "",
+          "(PartitionDown)",
+          "N/A"
+        ],
+        [
+          "65160224_6",
+          "PENDING",
+          "0:00",
+          "",
+          "(PartitionDown)",
+          "N/A"
+        ],
+        [
+          "65160224_7",
+          "PENDING",
+          "0:00",
+          "",
+          "(PartitionDown)",
+          "N/A"
+        ],
+        [
+          "65160224_8",
+          "PENDING",
+          "0:00",
+          "",
+          "(PartitionDown)",
+          "N/A"
+        ],
+        [
+          "65160224_9",
+          "PENDING",
+          "0:00",
+          "",
+          "(PartitionDown)",
+          "N/A"
+        ],
+        [
+          "65160224_10",
+          "PENDING",
+          "0:00",
+          "",
+          "(PartitionDown)",
+          "N/A"
+        ],
+        [
+          "65160224_11",
+          "PENDING",
+          "0:00",
+          "",
+          "(PartitionDown)",
+          "N/A"
+        ]
+      ],
+      "note": "squeue --array confirms all eleven tasks; the immediate sacct aggregate lists only 7-11, so that aggregate is not used to infer missing tasks."
     }
-  }
+  },
+  "completed_jobs_scheduler_source": "work/implementation-comparison-20261030/scheduler_20261101T0433_stage2.json",
+  "completed_jobs_scheduler_source_sha256": "3149b1f7baa072c922e10df2c54f62d1765d1691c3c57c0f0aa3c8f8da52998b"
 }

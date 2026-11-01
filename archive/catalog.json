@@ -381,5 +381,15 @@
     "files": 49,
     "all_member_hashes_verified": true,
     "audit_reproduced_byte_for_byte": true
+  },
+  {
+    "path": "artifacts/experiments/dacca/cuthbert_case0_20261101.tar.gz",
+    "source": "First Cuthbert A/B/C case: complete source, checkpoints, original PF scores, audit history and next eleven submissions.",
+    "sha256": "b6a9ae249970a755ddfcc620c405726eef728773fa4ced6c8f64636faed3204f",
+    "bytes": 15607838,
+    "files": 744,
+    "all_member_hashes_verified": true,
+    "audit_reproduced_byte_for_byte": true,
+    "experiments_rerun": false
   }
 ]

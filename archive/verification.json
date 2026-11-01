@@ -1,9 +1,9 @@
 {
   "passed": true,
-  "retained_files_checked": 181,
+  "retained_files_checked": 186,
   "archived_files_checked": 8527,
   "unchanged_copies_checked": 115,
-  "archive_checksums_checked": 60,
+  "archive_checksums_checked": 61,
   "archives_fully_read": 1,
   "patched_sources": [
     {
@@ -32,10 +32,12 @@
       "all_files_match": true
     }
   ],
-  "result_tables_rebuilt": 2,
+  "result_tables_rebuilt": 3,
   "old_endpoints_preserved": 968,
   "old_raw_PF_repetitions": 37584,
   "new_particles_endpoints": 24,
   "new_particles_raw_PF_repetitions": 1692,
+  "new_Cuthbert_endpoints": 3,
+  "new_Cuthbert_raw_PF_repetitions": 108,
   "numerical_experiments_rerun": false
 }

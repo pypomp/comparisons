@@ -47,9 +47,14 @@ def tables():
     assert sum(int(r['raw_repetitions']) for r in old) == 37584
     assert sum(int(r['repetitions']) for r in new) == 1692
     assert sum(r['precision_passed'] == 'True' for r in new) == 21
+    case0 = json.loads((ROOT / 'results/cuthbert/case0_20261101.json').read_text())
+    assert case0['passed'] and case0['endpoint_count'] == 3
+    first_case = [dict(case=0, method=arm, **record)
+                  for arm, record in case0['methods'].items()]
     return {
         'particles_summary.csv': csv_bytes(summarize(new, ['method'], 'repetitions')),
         'previous_summary.csv': csv_bytes(summarize(main, ['experiment_scope', 'package', 'method'], 'raw_repetitions')),
+        'cuthbert/case0_20261101.csv': csv_bytes(first_case),
     }
 
 
@@ -60,6 +65,9 @@ if __name__ == '__main__':
     if a.output.exists():
         raise SystemExit('Choose a new output directory; existing results are not overwritten.')
     a.output.mkdir(parents=True)
-    for name, data in tables().items():
-        (a.output / name).write_bytes(data)
-    print(f'Rebuilt two tables in {a.output.resolve()}; no PF calls or optimization.')
+    saved_tables = tables()
+    for name, data in saved_tables.items():
+        path = a.output / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(data)
+    print(f'Rebuilt {len(saved_tables)} tables in {a.output.resolve()}; no PF calls or optimization.')

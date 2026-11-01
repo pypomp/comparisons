@@ -56,14 +56,16 @@ def main():
     with tempfile.TemporaryDirectory(prefix='comparisons-verify-') as tmp:
         for pkg in PACKAGES:
             patches.append(prepare(pkg, Path(tmp) / pkg))
-    for name, data in tables().items():
+    saved_tables = tables()
+    for name, data in saved_tables.items():
         assert data == (ROOT / 'results' / name).read_bytes(), name
     assert sha(ROOT / 'experiments/dacca/score.py') == '8aec1ba02982a1ad9bff227b300806eaafa972a1e9fd00b71bef2c5f0ebdc508'
     result = dict(passed=True, retained_files_checked=len(checksums), archived_files_checked=len(seen),
                   unchanged_copies_checked=len(copies), archive_checksums_checked=len(archives),
                   archives_fully_read=len(archives) if a.archives else 1, patched_sources=patches,
-                  result_tables_rebuilt=2, old_endpoints_preserved=968, old_raw_PF_repetitions=37584,
+                  result_tables_rebuilt=len(saved_tables), old_endpoints_preserved=968, old_raw_PF_repetitions=37584,
                   new_particles_endpoints=24, new_particles_raw_PF_repetitions=1692,
+                  new_Cuthbert_endpoints=3, new_Cuthbert_raw_PF_repetitions=108,
                   numerical_experiments_rerun=False)
     if a.output:
         a.output.parent.mkdir(parents=True, exist_ok=True)

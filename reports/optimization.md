@@ -8,7 +8,7 @@ The new experiment has a different status:
 
 | Package | New endpoints | State |
 |---|---:|---|
-| Cuthbert | 0/36 | First complete A/B/C case is running as 65158659_0; remaining 11 cases follow after actual cost review. No independent endpoint scores yet; package and fitting code remain v3 |
+| Cuthbert | 3/36 | First A/B/C case audited; remaining cases submitted as 65160224, pending while spgpu is DOWN |
 | PFJAX | 0/36 | Dependent formal job cancelled before starting after GPU validation failure |
 | PyDPF | 0/36 | Dependent formal jobs cancelled before starting after GPU validation failure |
 | TFP | 0/36 | Dependent formal jobs cancelled before starting after GPU validation failure |
@@ -18,4 +18,8 @@ For new particles, the median independent log likelihood is −4169.070668 for A
 
 The new particles fits used 43,647 CPU seconds, plus 155 CPU seconds for the earlier checks. Independent A40 scoring used 96 seconds and is counted separately. [Audit](../results/particles/audit.json) · [24 endpoint records](../results/particles/endpoints.csv).
 
-Cuthbert's forward-PF agreement is accepted for proceeding with the empirical experiment; the [gradient-test review](gradient_tests_20261101.md) explains why its uncalibrated elementwise threshold is not a sufficient standalone reason to stop. Derivative correctness is not being certified. In v3, measured IF2 and gradient calls gave a conservative estimate of 3419.47 seconds per case, above the existing 3120-second submission limit. This is an estimate, not an observed complete optimization time. The revised submission protocol allocates 57minutes per case within the existing total budget and starts only case0 first. The forecast is unchanged; its former additional 240-second reserve is removed explicitly. All scientific iterations, original failures and the v3 fitting source are retained. The completed repeated-gradient diagnosis used 321 seconds, leaving a combined reservation of 42,240 seconds for the v3 check, diagnosis and twelve 57-minute cases, within the 42,480-second allowance. See the [test-method review](reference_tests_20261101.md), [acceptance and cost record](../results/cuthbert/acceptance_v4.json), and [actual submission](../results/cuthbert/submission_v4.json). [v3 results and failures](cuthbert_v3_20261101.md).
+The [first Cuthbert case](cuthbert_case0_20261101.md) gives independent log mean likelihoods of −3749.346585 (A), −3747.740628 (B) and −3744.844912 (C). All three completed 400 Adam updates; B/C shared the completed 175-pass IF2 result. Their 36-repeat scores all satisfy the precision requirement. These are three endpoints from one case; an overall method comparison awaits all twelve cases.
+
+The full first allocation used 1,882 seconds on an A40. Cases 1–11 were then submitted once as array 65160224, retaining the same 57-minute limit and all scientific settings. Actual v3 validation, diagnosis and case 0 costs plus the remaining allocation limits total 40,702 seconds, within 42,480 seconds. The partition is currently DOWN and supplies no start estimate. [Cost and submission record](../results/cuthbert/submission_cases1_11_20261101.json).
+
+Cuthbert's forward-PF agreement was accepted for proceeding with this empirical experiment. The [test-method review](reference_tests_20261101.md) and [original self-repeat diagnosis](cuthbert_repeats_20261101.md) explain why the old elementwise gradient threshold alone could not distinguish an extension error. This decision does not certify derivative correctness or erase the [earlier v3 failures](cuthbert_v3_20261101.md).

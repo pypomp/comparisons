@@ -20,9 +20,19 @@ PyDPF's original source is a recorded subset of the upstream repository. TFP's o
 python3 scripts/reproduce.py --output build/tables
 ```
 
-This recomputes both summary tables from saved endpoint records. Every finite score, including low-precision and floor-saturated scores, contributes to its group's median. Failed fits, nonfinite scores and precision counts are reported separately. It checks all 24 new particles rows and all 968 historical rows; the 36 historical Dynamax rows remain archived and are excluded from the main summary. Different hardware and experiment settings remain separate groups.
+This recomputes the two summary tables and the first Cuthbert case table from saved records. Every finite score, including low-precision and floor-saturated scores, contributes to its group's median. Failed fits, nonfinite scores and precision counts are reported separately. It checks all 24 new particles rows and all 968 historical rows; the 36 historical Dynamax rows remain archived and are excluded from the main summary. The three Cuthbert rows are one case of the planned twelve and remain separate from the earlier experiments.
 
 The script does not recalculate PF scores. Individual PF repeats and the original scoring audits are in the archives. To repeat those audits or rebuild original figures, restore the corresponding archive and use its original instructions.
+
+The first Cuthbert case has a separate audit of its complete checkpoints and 108 original PF scores:
+
+```bash
+python3 scripts/extract_archive.py artifacts/experiments/dacca/cuthbert_case0_20261101.tar.gz extracted/cuthbert_case0
+cd extracted/cuthbert_case0
+JAX_PLATFORMS=cpu JAX_ENABLE_X64=False PYTHONDONTWRITEBYTECODE=1 python audit_cuthbert_case0.py
+```
+
+This audit needs NumPy and JAX. It recalculates score summaries and random keys from the saved records without a PF call, fit or cluster connection. It has been run after extracting this archive; its output was byte-for-byte identical to the archived audit. The archive also preserves the first local audit attempt, its float32 particle-mean accumulation discrepancy, and the correction to float64 accumulation at the same tolerance.
 
 ## Restore the former directory layout
 
