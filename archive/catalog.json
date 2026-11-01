@@ -603,5 +603,17 @@
     "two_extracted_audits_byte_identical": true,
     "PF_calls": 0,
     "fit_calls": 0
+  },
+  {
+    "path": "artifacts/validation/pfjax_case4_and_audit_preparation_20261101T1126.tar.gz",
+    "source": "PFJAX case4: three audited endpoints, 108 raw scores; PyDPF saved-state audit preparation and TFP synthetic CPU failure-proposal recording, not new formal results.",
+    "sha256": "caaa913271794fb1f0d6f3631d6b60e2fbe6e085e4f35b1400015a30263aa32b",
+    "bytes": 53776756,
+    "files": 3898,
+    "all_member_hashes_verified": true,
+    "extracted_PFJAX_and_TFP_saved_audits_byte_identical": true,
+    "extracted_PyDPF_saved_CPU_core_identical": true,
+    "PF_calls": 0,
+    "fit_calls": 0
   }
 ]

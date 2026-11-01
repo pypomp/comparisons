@@ -9,7 +9,7 @@ The new experiment has a different status:
 | Package | New endpoints | State |
 |---|---:|---|
 | Cuthbert | 36/36 | Complete report and audit; two A fits failed, three A scores low precision |
-| PFJAX | 12/36 | [Cases 0–3 audited](pfjax_cases0_3_20261101.md); no failures or low precision; B is worse than A in case1; remaining eight cases already submitted |
+| PFJAX | 15/36 | [Cases 0–4 audited](pfjax_case4_and_preparation_20261101.md); no failures or low precision; B is worse than A in case1; remaining seven cases already submitted |
 | PyDPF | 0/36 | New shared IF2 job 65170880 running; A/B/C not submitted |
 | TFP | 0/36 | [Full-Dacca numerics reviewed; cost allocation revised](tfp_full_Dacca_20261101.md); shared prefix 65171217 submitted, A/B/C not submitted |
 | particles | 24/24 | [Final report, figures and full reproduction archive](particles_20261101/report.md) complete; three low-ESS scores retained |

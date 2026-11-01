@@ -1,13 +1,13 @@
 # Experiment status
 
-The [saved scheduler queries](../results/current_jobs.json) include the 10:56 UTC query on 1 November 2026 and the new-job query at 11:10 UTC. This page is a recorded snapshot, not a live cluster view.
+The [saved scheduler query](../results/current_jobs.json) was captured at 11:27 UTC on 1 November 2026. This page is a recorded snapshot, not a live cluster view.
 
 | Package | GPU check | New optimization results |
 |---|---|---|
 | Cuthbert v3 | Earlier failed checks retained; the repeat diagnosis shows that the old gradient rule also rejects original self-repeats | 36/36 endpoints audited; two A fits failed and three A scores are low precision; final report, figures and reproduction archive prepared |
-| PFJAX | [Matched execution controls: 324/324 likelihood pairs exactly equal](pfjax_execution_controls_20261101.md); original forward-only/differentiated values also differ | [12/36 endpoints audited](pfjax_cases0_3_20261101.md), all twelve fits and scores complete; cases 4–6 running, 7–11 pending concurrency limit |
+| PFJAX | [Matched execution controls: 324/324 likelihood pairs exactly equal](pfjax_execution_controls_20261101.md); original forward-only/differentiated values also differ | [15/36 endpoints audited](pfjax_case4_and_preparation_20261101.md), all fifteen fits and scores complete; cases 5–7 running, 8–11 pending concurrency limit |
 | PyDPF | [48/48 full-Dacca forward pairs exactly equal](pydpf_native_DPF_20261101.md); original failed checks retained | 0/36; shared IF2 job 65170880 running on gl1503; no gradient phase submitted |
-| TFP | [72/72 full-Dacca forward pairs exactly equal](tfp_full_Dacca_20261101.md); finite values and memory pass, original time split fails | 0/36; shared prefix job 65171217 submitted under revised limits within the same 20 GPU hours, pending AssocGrpGRES |
+| TFP | [72/72 full-Dacca forward pairs exactly equal](tfp_full_Dacca_20261101.md); finite values and memory pass, original time split fails | 0/36; shared prefix job 65171217 submitted under revised limits within the same 20 GPU hours, pending Priority |
 | particles | CPU checks and independent GPU evaluation complete | [24/24 results, figures and reproduction archive delivered](particles_20261101/report.md); 21 scores precise, three low-ESS A scores retained |
 
 [The complete Cuthbert report](cuthbert_20261101/report.md) contains all 36 retained endpoints and 2,052 original PF values. Two A fits in cases 8 and 9 failed at 43 and 60 accepted updates; those two scores and case 6 A remain low precision at R=288. The other 33 scores pass. C's estimated likelihood exceeds B's in all twelve pairs, with a median paired difference of 2.351684. The formal allocations used 23,034 GPU seconds. The complete source, pairing, random-key, raw-score and cost audit has passed; old validation failures remain failures. PFJAX, PyDPF and TFP remain unfinished. The particles report, figures and full reproduction archive are complete.

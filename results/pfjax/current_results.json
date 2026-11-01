@@ -223,14 +223,69 @@
       "physical_compile_seconds": 17.483919071033597,
       "audit_path": "pfjax_formal_v3_collected/case03/audit.json",
       "audit_sha256": "3eeb0a4c6698f3df4dffc5e0199bc58abe6216e6cbbe77672749d02a357da430"
+    },
+    {
+      "case": 4,
+      "start_id": 2,
+      "replicate": 0,
+      "methods": {
+        "A": {
+          "alpha": 1.0,
+          "logmeanlik": -3840.7730417237844,
+          "MCSE": 0.07426418650223873,
+          "likelihood_ESS": 30.175244520704382,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 529.6658854130656,
+          "logical_fit_seconds": 529.6658854130656,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400,
+          "failure_reason": null
+        },
+        "B": {
+          "alpha": 1.0,
+          "logmeanlik": -3748.398028672727,
+          "MCSE": 0.14490491706870537,
+          "likelihood_ESS": 20.750353239034418,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 530.1617933381349,
+          "logical_fit_seconds": 570.2367705339566,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400,
+          "failure_reason": null
+        },
+        "C": {
+          "alpha": 0.97,
+          "logmeanlik": -3745.080132871656,
+          "MCSE": 0.14113264620251004,
+          "likelihood_ESS": 21.212096505902995,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 530.0537588652223,
+          "logical_fit_seconds": 570.128736061044,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400,
+          "failure_reason": null
+        }
+      },
+      "allocation_GPU_seconds": 1739,
+      "node": "gl1504",
+      "job": "65170500_4",
+      "physical_kernel_seconds": 1629.9564148122445,
+      "physical_compile_seconds": 23.173795010894537,
+      "audit_path": "pfjax_formal_v3_collected/case04/audit.json",
+      "audit_sha256": "8375626521d327fb5a9622f4e091ba6944524d06d6ab421ef2638522b3025e72"
     }
   ],
   "expected_cases": 12,
   "expected_endpoints": 36,
-  "audited_endpoints": 12,
+  "audited_endpoints": 15,
   "partial": true,
   "uncompleted_cases": [
-    4,
     5,
     6,
     7,
@@ -239,12 +294,12 @@
     10,
     11
   ],
-  "original_PF_repetitions": 432,
+  "original_PF_repetitions": 540,
   "fit_failures": 0,
-  "score_precision_passed": 12,
+  "score_precision_passed": 15,
   "floor_saturated": 0,
-  "completed_allocation_GPU_seconds": 7171,
+  "completed_allocation_GPU_seconds": 8910,
   "original_budget_GPU_seconds": 42480,
-  "validation_and_completed_plus_remaining_limits_GPU_seconds": 34892,
+  "validation_and_completed_plus_remaining_limits_GPU_seconds": 33271,
   "timing_note": "Sum of one-GPU allocation seconds, not elapsed wall time; shared work is counted once within each physical case."
 }
