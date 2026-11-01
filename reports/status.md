@@ -1,6 +1,6 @@
 # Experiment status
 
-The [saved scheduler query](../results/current_jobs.json) was captured at 13:57 UTC on 1 November 2026. This page is a recorded snapshot, not a live cluster view.
+The [saved scheduler query](../results/current_jobs.json) was captured at 14:27 UTC on 1 November 2026. This page is a recorded snapshot, not a live cluster view.
 
 | Package | GPU check | New optimization results |
 |---|---|---|
