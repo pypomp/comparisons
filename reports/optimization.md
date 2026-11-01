@@ -8,7 +8,7 @@ The new experiment has a different status:
 
 | Package | New endpoints | State |
 |---|---:|---|
-| Cuthbert | 0/36 | First complete A/B/C case submitted as 65158659; remaining 11 cases follow after actual cost review. Package and fitting code remain v3 |
+| Cuthbert | 0/36 | First complete A/B/C case is running as 65158659_0; remaining 11 cases follow after actual cost review. No independent endpoint scores yet; package and fitting code remain v3 |
 | PFJAX | 0/36 | Dependent formal job cancelled before starting after GPU validation failure |
 | PyDPF | 0/36 | Dependent formal jobs cancelled before starting after GPU validation failure |
 | TFP | 0/36 | Dependent formal jobs cancelled before starting after GPU validation failure |

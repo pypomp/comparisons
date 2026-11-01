@@ -1,7 +1,7 @@
 {
-  "observed_at_utc": "2026-11-01T03:42:12.168490+00:00",
-  "scheduler_source": "work/implementation-comparison-20261030/scheduler_20261101T034212.json",
-  "scheduler_source_sha256": "a493992824a4b500c6d52b7ba01b08c9fd44c81166464fe2309f3b46e516214e",
+  "observed_at_utc": "2026-11-01T03:57:05.920584+00:00",
+  "scheduler_source": "work/implementation-comparison-20261030/scheduler_20261101T035705.json",
+  "scheduler_source_sha256": "07459d54f1857319ff0eb13410a154d99006595efddef97c0f881a29e964baec",
   "jobs": {
     "cuthbert": {
       "job_id": "65144479",
@@ -90,20 +90,41 @@
     },
     "cuthbert_ABC_case0": {
       "job_id": "65158659_0",
-      "state": "PENDING",
+      "state": "RUNNING",
       "exit_code": "0:0",
-      "elapsed_seconds": 0,
-      "allocated_node": null,
-      "reason": "Priority",
+      "elapsed_seconds": 698,
+      "allocated_node": "gl1524",
+      "reason": null,
       "requested_host_memory_GiB": 48,
       "sacct_row": [
         "65158659_0",
-        "PENDING",
+        "RUNNING",
         "0:0",
-        "0",
-        "None assigned",
-        ""
-      ]
+        "698",
+        "gl1524",
+        "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1"
+      ],
+      "live_progress": {
+        "observed_at_utc": "2026-11-01T03:57:40.564002+00:00",
+        "snapshot": "work/implementation-comparison-20261030/cuthbert_case0_health_20261101T0357.json",
+        "snapshot_sha256": "9c6c7163d7027a582c90e8e7c0dbc90be98f1babc97342c9503434a73627e958",
+        "not_a_terminal_result": true,
+        "IF2_completed": 175,
+        "A": {
+          "attempted": 400,
+          "accepted": 400,
+          "fit_failed": false,
+          "fit_seconds": 557.5409111175686
+        },
+        "B": {
+          "attempted": 30,
+          "accepted": 30,
+          "fit_failed": false,
+          "fit_seconds": 41.79725861432962
+        },
+        "C": "not yet started",
+        "final_independent_scores_available": false
+      }
     }
   }
 }
