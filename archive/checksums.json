@@ -6,7 +6,7 @@
     "README.md": "4c7c80237ca997c4f55b39127f138c28b4a5b822997c4c3da3833de16dfd3fd6",
     "THIRD_PARTY.md": "58c15cdbddba35cf543f386471c394d95ef1fa3e8afcd812371ec4c6ebacbd12",
     "archive/README.md": "d0b164b82a826c9a6a09c94378465f3d131d7babe19b90694e70520fc7d711cb",
-    "archive/catalog.json": "d527cb9a8e6a2dd37b00e796bc598cc68e08f5369f73bcb593a10feb94292847",
+    "archive/catalog.json": "7169b1a582380675db80ad2021567f6fe5bdacb12a134325307c61e6b63d449f",
     "archive/copies.json": "dca0c0d0b8d8365322a8af15cf95b730770fbbb1a6eee998e329d22a45ce765d",
     "archive/files.json.gz": "6d1395407c6809c0888da9ae587cd377921fcd8840af7ea376ecc3b43f31fbb3",
     "archive/history.json": "301a126979e010b627ac3e3efa33747d9c8d28aefb66240e03b9cb96d5c107ff",
@@ -201,7 +201,7 @@
     "reports/pydpf_startup_and_tfp_20261101.md": "395323aecd6502740fa35fa0191bf7897e8fe4538fc24c99de573e861de89d8e",
     "reports/queue_20261101.md": "d33b5a49f05e2848b1fd0259c8eab1414af8203a29edf79e6e7a8e74dceb200c",
     "reports/reference_tests_20261101.md": "9cf60d2865434f082c68e088d4113b6d9021036a0dcda5046095b9d3e6dc9aab",
-    "reports/status.md": "ef4924d87ac80a44ba756336ef4b954afa9a1f81c1e541da5478ee142e838bec",
+    "reports/status.md": "458a2407096eb18c98c929ad6dba66bdd021b1f6ca00318a0508e33982305876",
     "reports/tfp_full_Dacca_20261101.md": "60886e158624130ad70ca2d8126502478ef6f2c593d5bd704c9b02dd06191509",
     "reports/tfp_gpu_20261101.md": "53589ab76d5b9c9df0302dc5c96bcc88b55919b30d590516666cda7f52d2ba8b",
     "reports/tfp_gradient_submission_preparation_20261101.md": "b26bc2def958387b1d466b5b6adc124490ee44bffb83ac222616b368c90b67a7",
@@ -209,7 +209,7 @@
     "reports/timing.md": "e79fad532fc670e37c262a97ae72b334321279c776566a79f7abfa83c909bf33",
     "reports/validation_20261101.md": "f15690b0df6f0fe0df1e1833a5bf778d9f15fc8ed0551bf7dd8a87627ad2caa9",
     "results/README.md": "7c0fde4edb92c4901ff50c1856438693c544329c4b6750ea62d99cb8ec3b1877",
-    "results/current_jobs.json": "7cc97574fbec05f2ecb7fbd76915fcf58b60bc993d5611ec60aebf65f8ee253c",
+    "results/current_jobs.json": "eb916db34d2d75ca0d73225582bb35fcf655e6c5bc292c9015afad40e03bf6ee",
     "results/cuthbert/acceptance_v4.json": "8ff91865fa33d8ed69633d15fcd1198dec4ef057325974c58aa6bbefa149ef65",
     "results/cuthbert/case0_20261101.csv": "d71b70c1f7ee54562b271be4932193c1cd890b323cb6e7f6126ec028007dd939",
     "results/cuthbert/case0_20261101.json": "fa2f42de22e31ce5cf0f99fc86fa7cd831bb204612636ab4419661b943a8045f",
@@ -271,6 +271,8 @@
     "reports/tfp_gradient_audit_preparation_20261101.md": "a8d8e57d86693702307cb20ebb186c9070c40a1789680a6de8e39b2b9113a1e9",
     "results/pydpf/warm_audit_20261101.json": "6605d265082ed294a7e60e48cc5399276a016d08277e7c44ea17e7440afb538c",
     "results/pydpf/gradient_submission_20261101.json": "1e4190285e6b0ee90a41845a8302673a26759b8775a1fe6beadbfd18c5b6f750",
-    "reports/pydpf_warm_20261101.md": "7b248f36477db8604455137349eb0fe38c1aad87aac1ced0bcf76f89a0fa1b78"
+    "reports/pydpf_warm_20261101.md": "7b248f36477db8604455137349eb0fe38c1aad87aac1ced0bcf76f89a0fa1b78",
+    "results/pydpf/gradient_audit_preparation_20261101.json": "ed4461b4be73463c6f457d0e1550d49327d0d34a2156039b29816ee65b16f5f3",
+    "reports/pydpf_gradient_audit_preparation_20261101.md": "c468a861a73537ffbad9195e6838d58a35b8798b077f2b78a4eaed3ede6f1610"
   }
 }

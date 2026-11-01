@@ -1,6 +1,6 @@
 # Experiment status
 
-The [saved scheduler query](../results/current_jobs.json) was captured at 16:57 UTC on 1 November 2026, with a 17:01 UTC post-submission query. This page is a recorded snapshot, not a live cluster view.
+The [saved scheduler query](../results/current_jobs.json) was captured at 17:27 UTC on 1 November 2026. This page is a recorded snapshot, not a live cluster view.
 
 | Package | GPU check | New optimization results |
 |---|---|---|
@@ -25,3 +25,5 @@ The [Cuthbert repeat diagnosis](cuthbert_repeats_20261101.md) retains 54 finite 
 Completed checks: [Cuthbert v2 and TFP CPU tests](validation_20261101.md). Diagnostic design and CPU controls: [PFJAX, PyDPF and TFP](gpu_diagnosis_20261101.md). Earlier results, failures and full test logs remain in the [archive](../archive/README.md).
 
 The [TFP saved-state and score audit preparation](tfp_gradient_audit_preparation_20261101.md) passes local saved-record controls. Actual A/B/C jobs are running; their results are not yet audited. No model or optimizer was run by these preparation checks.
+
+The [PyDPF phase, score and aggregate audit preparation](pydpf_gradient_audit_preparation_20261101.md) is now available. Existing jobs remain queued or running; no new gradient result is claimed.

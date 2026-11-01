@@ -722,5 +722,30 @@
     "production_gradient_audit_ready": false,
     "PF_calls": 0,
     "optimizer_steps": 0
+  },
+  {
+    "path": "artifacts/validation/pydpf_gradient_audit_preparation_20261101T1726.tar.gz",
+    "source": "Retained first PyDPF audit preparation archive: member hashes pass; extracted missing-input control failed because its temporary PYTHONPATH hid Torch dependencies before the missing-collection check.",
+    "sha256": "b8902a72a304728df30e265584893d758a94d58714bd395b63ce511f6d3db377",
+    "bytes": 11635787,
+    "files": 454,
+    "all_member_hashes_verified": true,
+    "extracted_control_reproduction_passed": false,
+    "preparation_attempt_status": "FAILED; original retained",
+    "experiment_effect": false
+  },
+  {
+    "path": "artifacts/validation/pydpf_gradient_audit_preparation_20261101T1726_v2.tar.gz",
+    "source": "PyDPF complete saved-phase and score audit preparation, aggregate checks, original small controls and audited warm dependency; no gradient result. First archive reproduction failure retained.",
+    "sha256": "928c6e9e185301c10cc1cd483a14391fbded862a82c59f71418abbadb97aadf5",
+    "bytes": 11663880,
+    "files": 491,
+    "all_member_hashes_verified": true,
+    "extracted_all_core_score_metadata_and_aggregate_JSON_byte_identical": true,
+    "new_score_metadata_aggregate_corruptions_refused": 31,
+    "prior_core_corruptions_refused": 9,
+    "actual_GPU_gradient_audit_completed": false,
+    "PF_calls": 0,
+    "optimizer_steps": 0
   }
 ]
