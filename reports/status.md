@@ -1,12 +1,12 @@
 # Experiment status
 
-The [saved scheduler queries](../results/current_jobs.json) include the 09:26 UTC query on 1 November 2026 and the new-job query at 09:39 UTC. This page is a recorded snapshot, not a live cluster view.
+The [saved scheduler queries](../results/current_jobs.json) include the 09:56 UTC query on 1 November 2026 and the new-job query at 10:12 UTC. This page is a recorded snapshot, not a live cluster view.
 
 | Package | GPU check | New optimization results |
 |---|---|---|
 | Cuthbert v3 | Earlier failed checks retained; the repeat diagnosis shows that the old gradient rule also rejects original self-repeats | 36/36 endpoints audited; two A fits failed and three A scores are low precision; final report, figures and reproduction archive prepared |
-| PFJAX | [Matched execution controls: 324/324 likelihood pairs exactly equal](pfjax_execution_controls_20261101.md); original forward-only/differentiated values also differ | 0/36; first formal case 65169945_0 running; remaining cases await its audit |
-| PyDPF | [Full Dacca check 65169994 submitted](pydpf_full_Dacca_20261101.md), pending Priority; earlier linear-model diagnosis retained | 0/36; formal budget unused |
+| PFJAX | [Matched execution controls: 324/324 likelihood pairs exactly equal](pfjax_execution_controls_20261101.md); original forward-only/differentiated values also differ | [3/36 endpoints audited](pfjax_case0_20261101.md), all fits and scores complete; cases 1–11 submitted as 65170500, pending Priority |
+| PyDPF | [Full Dacca native-DPF comparisons: 48/48 exact forward pairs](pydpf_native_DPF_20261101.md); ordinary-PF/DPF discrepancy and failed original check retained | 0/36; shared IF2 job 65170442 running on gl1504; gradient phases not yet submitted |
 | TFP | 65151858 failed after three subprocess timeouts; partial arrays reviewed | 0/36; earlier dependent jobs cancelled before starting |
 | particles | CPU checks and independent GPU evaluation complete | 24/24 estimates audited; 21 scores meet the precision requirement; final figures pending |
 

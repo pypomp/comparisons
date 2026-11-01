@@ -519,5 +519,18 @@
     "new_PyDPF_GPU_results_included": false,
     "extracted_formal_acceptance_check_passed": true,
     "formal_fits_or_scores_rerun": false
+  },
+  {
+    "path": "artifacts/validation/pydpf_and_pfjax_20261101T0956.tar.gz",
+    "source": "PyDPF full-scale GPU records and native-DPF audit; original failed comparison; formal IF2 source and submission; PFJAX case0 audit when available.",
+    "sha256": "8c47609ccf947161ce68ae55646cb670f57af0ef83d68cbf2da5e57d60f6c327",
+    "bytes": 37937902,
+    "files": 968,
+    "all_member_hashes_verified": true,
+    "extracted_three_saved_data_audits_identical": true,
+    "PFJAX_case0_included": true,
+    "extracted_PFJAX_case_audit_identical": true,
+    "extracted_formal_acceptance_check_passed": true,
+    "formal_fits_or_scores_rerun": false
   }
 ]

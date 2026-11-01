@@ -1,0 +1,85 @@
+{
+  "cases": [
+    {
+      "case": 0,
+      "start_id": 0,
+      "replicate": 0,
+      "methods": {
+        "A": {
+          "alpha": 1.0,
+          "logmeanlik": -3748.3797321899465,
+          "MCSE": 0.11641681441290441,
+          "likelihood_ESS": 24.41752976849995,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 530.2326367469504,
+          "logical_fit_seconds": 530.2326367469504,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400,
+          "failure_reason": null
+        },
+        "B": {
+          "alpha": 1.0,
+          "logmeanlik": -3744.866356785501,
+          "MCSE": 0.2548512172969246,
+          "likelihood_ESS": 10.998344126359356,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 530.1390800736845,
+          "logical_fit_seconds": 570.3455971516669,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400,
+          "failure_reason": null
+        },
+        "C": {
+          "alpha": 0.97,
+          "logmeanlik": -3744.458823058323,
+          "MCSE": 0.13042275409229595,
+          "likelihood_ESS": 22.565534296166174,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 530.5093552581966,
+          "logical_fit_seconds": 570.715872336179,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400,
+          "failure_reason": null
+        }
+      },
+      "allocation_GPU_seconds": 1816,
+      "node": "gl1511",
+      "job": "65169945_0",
+      "physical_kernel_seconds": 1631.087589156814,
+      "physical_compile_seconds": 20.341916537843645,
+      "audit_path": "pfjax_formal_v3_collected/case00/audit.json",
+      "audit_sha256": "fb4bf5721f3449ac459ff7cecc29f5119259fc87a5f6d4007c0dd0593fd32d8a"
+    }
+  ],
+  "expected_cases": 12,
+  "expected_endpoints": 36,
+  "audited_endpoints": 3,
+  "partial": true,
+  "uncompleted_cases": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "original_PF_repetitions": 108,
+  "fit_failures": 0,
+  "score_precision_passed": 3,
+  "floor_saturated": 0,
+  "completed_allocation_GPU_seconds": 1816,
+  "original_budget_GPU_seconds": 42480,
+  "validation_and_completed_plus_remaining_limits_GPU_seconds": 39617,
+  "timing_note": "Sum of one-GPU allocation seconds, not elapsed wall time; shared work is counted once within each physical case."
+}

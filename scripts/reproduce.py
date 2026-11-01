@@ -58,11 +58,18 @@ def tables():
     assert len(current_rows) == current['audited_endpoints']
     assert len({(r['case'], r['method']) for r in current_rows}) == len(current_rows)
     assert sum(r['repetitions'] for r in current_rows) == current['original_PF_repetitions']
+    pfjax = json.loads((ROOT / 'results/pfjax/current_results.json').read_text())
+    pfjax_rows = [dict(case=c['case'], start_id=c['start_id'], replicate=c['replicate'], method=arm, **record)
+                  for c in pfjax['cases'] for arm, record in c['methods'].items()]
+    assert len(pfjax_rows) == pfjax['audited_endpoints']
+    assert len({(r['case'], r['method']) for r in pfjax_rows}) == len(pfjax_rows)
+    assert sum(r['repetitions'] for r in pfjax_rows) == pfjax['original_PF_repetitions']
     return {
         'particles_summary.csv': csv_bytes(summarize(new, ['method'], 'repetitions')),
         'previous_summary.csv': csv_bytes(summarize(main, ['experiment_scope', 'package', 'method'], 'raw_repetitions')),
         'cuthbert/case0_20261101.csv': csv_bytes(first_case),
         'cuthbert/endpoints.csv': csv_bytes(current_rows),
+        'pfjax/endpoints.csv': csv_bytes(pfjax_rows),
     }
 
 
