@@ -1,0 +1,44 @@
+{
+  "startup_failure_audited": true,
+  "formal_fitting_started": false,
+  "formal_IF2_passes_completed": 0,
+  "formal_endpoints": 0,
+  "job": "65170442",
+  "actual_GPU_seconds": 181,
+  "source_files_verified": 158,
+  "transfer_files_verified": 39,
+  "terminal_manifest_present": false,
+  "terminal_note": "Runner assertion preceded terminal-manifest creation; original absence retained. Stopped files verified before and after transfer.",
+  "failed_check": "Exact Adam moment equality between resumed and uninterrupted small Dacca GPU runs",
+  "small_test": {
+    "T": 12,
+    "J": 32,
+    "rows": 2,
+    "Adam_updates": 3,
+    "parameters_exact": true,
+    "generator_state_exact": true,
+    "optimizer_states_all_finite": true
+  },
+  "optimizer_state_differences": [
+    {
+      "coordinate": 9,
+      "field": "exp_avg",
+      "max_abs_difference": 3.725290298461914e-09
+    },
+    {
+      "coordinate": 9,
+      "field": "exp_avg_sq",
+      "max_abs_difference": 1.4551915228366852e-11
+    }
+  ],
+  "maximum_moment_absolute_difference": 3.725290298461914e-09,
+  "cause_proven": false,
+  "limitation": "These saved runs do not isolate serialization from nondeterministic GPU reduction. The production fit was never launched.",
+  "PF_calls": 0,
+  "fits_run": 0,
+  "formal_budget_seconds": 108000,
+  "remaining_formal_budget_seconds": 107819,
+  "proposed_new_warm_allocation_seconds": 24119,
+  "later_gradient_allocations_seconds": 83700,
+  "full_audit_and_arrays": "pydpf_formal_v2_collected/warm/startup_audit.json in artifacts/validation/pydpf_startup_and_tfp_20261101T1026.tar.gz"
+}

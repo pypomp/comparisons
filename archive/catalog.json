@@ -532,5 +532,26 @@
     "extracted_PFJAX_case_audit_identical": true,
     "extracted_formal_acceptance_check_passed": true,
     "formal_fits_or_scores_rerun": false
+  },
+  {
+    "path": "artifacts/validation/pydpf_startup_and_tfp_20261101T1026.tar.gz",
+    "source": "PyDPF stopped startup failure and independent test revision; TFP full-Dacca check source and CPU preflight; optional audited PFJAX cases.",
+    "sha256": "04d2a973bf846f32fea202bd6f775cca67ad749e9dc494f9e6117738fa86e59f",
+    "bytes": 25722955,
+    "files": 3610,
+    "all_member_hashes_verified": true,
+    "extracted_three_saved_data_audits_identical": true,
+    "extracted_formal_acceptance_check_passed": true,
+    "PFJAX_cases": [],
+    "extracted_PFJAX_case_audits_identical": true,
+    "formal_fits_or_scores_rerun": false
+  },
+  {
+    "path": "artifacts/validation/repository_update_20261101T1026.tar.gz",
+    "sha256": "5720763b081a09d15f101e0b33e5eaef396fc58cdee96e78fc47dbd8f2925530",
+    "bytes": 11951,
+    "files": 9,
+    "all_member_hashes_verified": true,
+    "source": "Local report update, preserved Python3.9 loading errors before execution, and successful integrity check; no numerical experiment."
   }
 ]

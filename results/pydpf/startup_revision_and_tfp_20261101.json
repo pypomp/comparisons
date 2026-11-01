@@ -1,0 +1,182 @@
+{
+  "pydpf_startup_failure": {
+    "startup_failure_audited": true,
+    "formal_fitting_started": false,
+    "formal_IF2_passes_completed": 0,
+    "formal_endpoints": 0,
+    "job": "65170442",
+    "actual_GPU_seconds": 181,
+    "source_files_verified": 158,
+    "transfer_files_verified": 39,
+    "terminal_manifest_present": false,
+    "terminal_note": "Runner assertion preceded terminal-manifest creation; original absence retained. Stopped files verified before and after transfer.",
+    "failed_check": "Exact Adam moment equality between resumed and uninterrupted small Dacca GPU runs",
+    "small_test": {
+      "T": 12,
+      "J": 32,
+      "rows": 2,
+      "Adam_updates": 3,
+      "parameters_exact": true,
+      "generator_state_exact": true,
+      "optimizer_states_all_finite": true
+    },
+    "optimizer_state_differences": [
+      {
+        "coordinate": 9,
+        "field": "exp_avg",
+        "max_abs_difference": 3.725290298461914e-09
+      },
+      {
+        "coordinate": 9,
+        "field": "exp_avg_sq",
+        "max_abs_difference": 1.4551915228366852e-11
+      }
+    ],
+    "maximum_moment_absolute_difference": 3.725290298461914e-09,
+    "cause_proven": false,
+    "limitation": "These saved runs do not isolate serialization from nondeterministic GPU reduction. The production fit was never launched.",
+    "PF_calls": 0,
+    "fits_run": 0,
+    "formal_budget_seconds": 108000,
+    "remaining_formal_budget_seconds": 107819,
+    "proposed_new_warm_allocation_seconds": 24119,
+    "later_gradient_allocations_seconds": 83700,
+    "full_audit_and_arrays": "pydpf_formal_v2_collected/warm/startup_audit.json in artifacts/validation/pydpf_startup_and_tfp_20261101T1026.tar.gz"
+  },
+  "pydpf_new_revision": {
+    "job_id": "65170880",
+    "phase": "warm",
+    "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/pydpf_formal_v3",
+    "submitted_at_utc": "2026-11-01T10:42:06.106999+00:00",
+    "source_manifest_sha256": "7fac0cfd6df9c93e383a719d64ef2bd71e47c9ae4af6fd4a410babd91633b58e",
+    "source_files": 160,
+    "GPU": "A40",
+    "CPUs": 4,
+    "host_memory_GiB": 48,
+    "account": "ionides3",
+    "allocation_seconds": 24119,
+    "total_new_four_phase_allocation_seconds": 107819,
+    "previous_formal_startup_seconds": 181,
+    "total_with_prior_actual_seconds": 108000,
+    "phases_submitted": [
+      "warm"
+    ],
+    "phases_not_submitted": [
+      "A",
+      "B",
+      "C"
+    ],
+    "validation_GPU_seconds": 2522,
+    "command": "sbatch --parsable --job-name=pydpf-public-warm-v3 --time=06:41:59 --export=ALL,PYDPF_PHASE=warm formal.sbatch",
+    "submission_stdout": "65170880\n",
+    "original_check_state": "FAILED1:0 retained",
+    "review": {
+      "passed": true,
+      "empirical_comparison_authorized": true,
+      "original_check_state": "FAILED1:0 retained",
+      "matched_native_DPF_forward_pairs": 48,
+      "ordinary_PF_vs_native_DPF_difference_unresolved": true,
+      "derivative_correctness_certified": false,
+      "budget_checks": {
+        "warm": {
+          "measured_fit_projection_seconds": 20061.81727377698,
+          "required_with_margin_and_reserves_seconds": 21664.908137465827,
+          "allocation_seconds": 24119,
+          "passed": true
+        },
+        "A": {
+          "measured_fit_projection_seconds": 22872.771492227912,
+          "required_with_margin_and_reserves_seconds": 26416.410066839308,
+          "allocation_seconds": 27900,
+          "passed": true
+        },
+        "B": {
+          "measured_fit_projection_seconds": 22872.771492227912,
+          "required_with_margin_and_reserves_seconds": 26416.410066839308,
+          "allocation_seconds": 27900,
+          "passed": true
+        },
+        "C": {
+          "measured_fit_projection_seconds": 22519.185825809836,
+          "required_with_margin_and_reserves_seconds": 26045.14511710033,
+          "allocation_seconds": 27900,
+          "passed": true
+        }
+      },
+      "total_allocation_seconds": 107819,
+      "no_fitting_performed": true
+    }
+  },
+  "pydpf_CPU_regression": {
+    "passed": true,
+    "device": "cpu",
+    "formal": false,
+    "test_deterministic_algorithms": true,
+    "production_setting_changed": false,
+    "finite_gradient_Adam_overflow_detected_and_rolled_back": true,
+    "natural_parameter_overflow_detected_and_rolled_back": true,
+    "T": 12,
+    "J": 32,
+    "rows": 2,
+    "gradient_steps": 3,
+    "full_optimizer_resume_exact": true,
+    "BC_initial_parameters_and_empty_Adam_hash_identical": true,
+    "BC_per_iteration_rng_identical": true,
+    "forced_failure_preserves_other_row_and_rng": true,
+    "failed_row_last_valid_parameters_and_optimizer_retained": true,
+    "swarm_reset": false
+  },
+  "TFP_new_check": {
+    "job_id": "65170859",
+    "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/tfp_check_v3",
+    "source_manifest_sha256": "a3d00a024397d6148c5a278b8af21d5e01a798d9efb3aab15a0dcea4326c6adf",
+    "submitted_at_utc": "2026-11-01T10:39:35.191023+00:00",
+    "purpose": "Full Dacca forward, finite-value, memory and public-call cost checks",
+    "GPU": "A40",
+    "cpus": 4,
+    "host_memory_GiB": 48,
+    "time_limit_seconds": 1800,
+    "validation_budget_seconds": 3600,
+    "previous_validation_seconds": 1635,
+    "total_validation_reserved_seconds": 3435,
+    "formal_budget_seconds": 72000,
+    "formal_fits_submitted": 0,
+    "submission_stdout": "65170859\n",
+    "previous_deployment_timeout_before_sbatch": true
+  },
+  "TFP_CPU_audit": {
+    "saved_records_audited": true,
+    "completed": true,
+    "cpu_smoke": true,
+    "T": 12,
+    "J": 8,
+    "B": 12,
+    "finite_calls": 9,
+    "matched_endpoint_pairs": 72,
+    "all_matched_monthly_forward_equal": true,
+    "core_checks_passed": true,
+    "formal_fits": 0,
+    "derivative_correctness_certified": false
+  },
+  "scheduler": {
+    "captured_at_utc": "2026-11-01T10:42:22.724758+00:00",
+    "command": "squeue -r -h -j 65170500,65170859,65170880,65170442 -o '%i|%T|%M|%N|%R'; sacct -j 65170500,65170859,65170880,65170442 -X -n -P --format=JobID,State,ExitCode,ElapsedRaw,NodeList,AllocTRES",
+    "returncode": 0,
+    "stdout": "65170500_9|PENDING|0:00||(JobArrayTaskLimit)\n65170500_8|PENDING|0:00||(JobArrayTaskLimit)\n65170500_7|PENDING|0:00||(JobArrayTaskLimit)\n65170500_6|PENDING|0:00||(JobArrayTaskLimit)\n65170500_5|PENDING|0:00||(JobArrayTaskLimit)\n65170500_4|PENDING|0:00||(JobArrayTaskLimit)\n65170500_10|PENDING|0:00||(JobArrayTaskLimit)\n65170880|PENDING|0:00||(Priority)\n65170500_11|PENDING|0:00||(JobArrayTaskLimit)\n65170500_1|RUNNING|29:54|gl1504|gl1504\n65170500_3|RUNNING|2:18|gl1526|gl1526\n65170500_2|RUNNING|5:56|gl1529|gl1529\n65170859|RUNNING|0:14|gl1503|gl1503\n65170442|FAILED|1:0|181|gl1504|billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65170500_1|RUNNING|0:0|1794|gl1504|billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65170500_2|RUNNING|0:0|356|gl1529|billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65170500_3|RUNNING|0:0|138|gl1526|billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65170500_11|PENDING|0:0|0|None assigned|\n65170859|RUNNING|0:0|14|gl1503|billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65170880|PENDING|0:0|0|None assigned|\n",
+    "stderr": ""
+  },
+  "archive": {
+    "path": "artifacts/validation/pydpf_startup_and_tfp_20261101T1026.tar.gz",
+    "source": "PyDPF stopped startup failure and independent test revision; TFP full-Dacca check source and CPU preflight; optional audited PFJAX cases.",
+    "sha256": "04d2a973bf846f32fea202bd6f775cca67ad749e9dc494f9e6117738fa86e59f",
+    "bytes": 25722955,
+    "files": 3610,
+    "all_member_hashes_verified": true,
+    "extracted_three_saved_data_audits_identical": true,
+    "extracted_formal_acceptance_check_passed": true,
+    "PFJAX_cases": [],
+    "extracted_PFJAX_case_audits_identical": true,
+    "formal_fits_or_scores_rerun": false
+  },
+  "new_GPU_result_claimed": false
+}

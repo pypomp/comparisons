@@ -1,13 +1,13 @@
 # Experiment status
 
-The [saved scheduler queries](../results/current_jobs.json) include the 09:56 UTC query on 1 November 2026 and the new-job query at 10:12 UTC. This page is a recorded snapshot, not a live cluster view.
+The [saved scheduler queries](../results/current_jobs.json) include the 10:26 UTC query on 1 November 2026 and the new-job query at 10:42 UTC. This page is a recorded snapshot, not a live cluster view.
 
 | Package | GPU check | New optimization results |
 |---|---|---|
 | Cuthbert v3 | Earlier failed checks retained; the repeat diagnosis shows that the old gradient rule also rejects original self-repeats | 36/36 endpoints audited; two A fits failed and three A scores are low precision; final report, figures and reproduction archive prepared |
-| PFJAX | [Matched execution controls: 324/324 likelihood pairs exactly equal](pfjax_execution_controls_20261101.md); original forward-only/differentiated values also differ | [3/36 endpoints audited](pfjax_case0_20261101.md), all fits and scores complete; cases 1–11 submitted as 65170500, pending Priority |
-| PyDPF | [Full Dacca native-DPF comparisons: 48/48 exact forward pairs](pydpf_native_DPF_20261101.md); ordinary-PF/DPF discrepancy and failed original check retained | 0/36; shared IF2 job 65170442 running on gl1504; gradient phases not yet submitted |
-| TFP | 65151858 failed after three subprocess timeouts; partial arrays reviewed | 0/36; earlier dependent jobs cancelled before starting |
+| PFJAX | [Matched execution controls: 324/324 likelihood pairs exactly equal](pfjax_execution_controls_20261101.md); original forward-only/differentiated values also differ | [3/36 endpoints audited](pfjax_case0_20261101.md), all fits and scores complete; cases 1–3 running in array 65170500; cases 4–11 pending its concurrency limit |
+| PyDPF | [Full Dacca native-DPF comparisons: 48/48 exact forward pairs](pydpf_native_DPF_20261101.md); ordinary-PF/DPF discrepancy and failed original check retained | 0/36; [65170442 failed before fitting](pydpf_startup_and_tfp_20261101.md); new warm job 65170880 pending Priority; gradients not submitted |
+| TFP | Earlier partial failures retained; [full-Dacca check 65170859](pydpf_startup_and_tfp_20261101.md) running on gl1503 | 0/36; no new formal job |
 | particles | CPU checks and independent GPU evaluation complete | 24/24 estimates audited; 21 scores meet the precision requirement; final figures pending |
 
 [The complete Cuthbert report](cuthbert_20261101/report.md) contains all 36 retained endpoints and 2,052 original PF values. Two A fits in cases 8 and 9 failed at 43 and 60 accepted updates; those two scores and case 6 A remain low precision at R=288. The other 33 scores pass. C's estimated likelihood exceeds B's in all twelve pairs, with a median paired difference of 2.351684. The formal allocations used 23,034 GPU seconds. The complete source, pairing, random-key, raw-score and cost audit has passed; old validation failures remain failures. PFJAX, PyDPF, TFP and the final particles figures remain separate unfinished work.

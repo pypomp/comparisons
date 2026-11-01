@@ -1,7 +1,7 @@
 {
-  "captured_at_utc": "2026-11-01T10:12:07.132289+00:00",
+  "captured_at_utc": "2026-11-01T10:42:22.724758+00:00",
   "snapshot_not_live": true,
-  "scheduler_output": "65170500_10|PENDING|0:00||(Priority)\n65170500_11|PENDING|0:00||(Priority)\n65170500_9|PENDING|0:00||(Priority)\n65170500_8|PENDING|0:00||(Priority)\n65170500_7|PENDING|0:00||(Priority)\n65170500_6|PENDING|0:00||(Priority)\n65170500_5|PENDING|0:00||(Priority)\n65170500_4|PENDING|0:00||(Priority)\n65170500_3|PENDING|0:00||(Priority)\n65170500_2|PENDING|0:00||(Priority)\n65170500_1|PENDING|0:00||(Priority)\n65170442|RUNNING|2:46|gl1504|gl1504\n65169945_0|COMPLETED|0:0|1816|gl1511|billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65170442|RUNNING|0:0|166|gl1504|billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65170500_[10-11%3]|PENDING|0:0|0|None assigned|\n",
+  "scheduler_output": "65170500_9|PENDING|0:00||(JobArrayTaskLimit)\n65170500_8|PENDING|0:00||(JobArrayTaskLimit)\n65170500_7|PENDING|0:00||(JobArrayTaskLimit)\n65170500_6|PENDING|0:00||(JobArrayTaskLimit)\n65170500_5|PENDING|0:00||(JobArrayTaskLimit)\n65170500_4|PENDING|0:00||(JobArrayTaskLimit)\n65170500_10|PENDING|0:00||(JobArrayTaskLimit)\n65170880|PENDING|0:00||(Priority)\n65170500_11|PENDING|0:00||(JobArrayTaskLimit)\n65170500_1|RUNNING|29:54|gl1504|gl1504\n65170500_3|RUNNING|2:18|gl1526|gl1526\n65170500_2|RUNNING|5:56|gl1529|gl1529\n65170859|RUNNING|0:14|gl1503|gl1503\n65170442|FAILED|1:0|181|gl1504|billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65170500_1|RUNNING|0:0|1794|gl1504|billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65170500_2|RUNNING|0:0|356|gl1529|billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65170500_3|RUNNING|0:0|138|gl1526|billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65170500_11|PENDING|0:0|0|None assigned|\n65170859|RUNNING|0:0|14|gl1503|billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65170880|PENDING|0:0|0|None assigned|\n",
   "ssh_stderr": "",
   "job_records": {
     "pfjax_formal_v3": {
@@ -79,19 +79,21 @@
       "actual_case0_and_remaining_reserved_GPU_seconds": 39617,
       "stage2_submission_record": "../pfjax_formal_v3_stage2/submission.json"
     },
-    "pydpf_formal_v2": {
-      "job_id": "65170442",
+    "pydpf_formal_v3": {
+      "job_id": "65170880",
       "phase": "warm",
-      "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/pydpf_formal_v2",
-      "submitted_at_utc": "2026-11-01T10:08:05.746681+00:00",
-      "source_manifest_sha256": "af918da10aa5e0926b306ec0e6a3db6663d152fc4c3cc7e14fd384dd8e17a1b3",
-      "source_files": 158,
+      "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/pydpf_formal_v3",
+      "submitted_at_utc": "2026-11-01T10:42:06.106999+00:00",
+      "source_manifest_sha256": "7fac0cfd6df9c93e383a719d64ef2bd71e47c9ae4af6fd4a410babd91633b58e",
+      "source_files": 160,
       "GPU": "A40",
       "CPUs": 4,
       "host_memory_GiB": 48,
       "account": "ionides3",
-      "allocation_seconds": 24300,
-      "total_four_phase_allocation_seconds": 108000,
+      "allocation_seconds": 24119,
+      "total_new_four_phase_allocation_seconds": 107819,
+      "previous_formal_startup_seconds": 181,
+      "total_with_prior_actual_seconds": 108000,
       "phases_submitted": [
         "warm"
       ],
@@ -101,8 +103,8 @@
         "C"
       ],
       "validation_GPU_seconds": 2522,
-      "command": "sbatch --parsable --job-name=pydpf-public-warm-v2 --time=06:45:00 --export=ALL,PYDPF_PHASE=warm formal.sbatch",
-      "submission_stdout": "65170442\n",
+      "command": "sbatch --parsable --job-name=pydpf-public-warm-v3 --time=06:41:59 --export=ALL,PYDPF_PHASE=warm formal.sbatch",
+      "submission_stdout": "65170880\n",
       "original_check_state": "FAILED1:0 retained",
       "review": {
         "passed": true,
@@ -115,7 +117,7 @@
           "warm": {
             "measured_fit_projection_seconds": 20061.81727377698,
             "required_with_margin_and_reserves_seconds": 21664.908137465827,
-            "allocation_seconds": 24300,
+            "allocation_seconds": 24119,
             "passed": true
           },
           "A": {
@@ -137,11 +139,36 @@
             "passed": true
           }
         },
-        "total_allocation_seconds": 108000,
+        "total_allocation_seconds": 107819,
         "no_fitting_performed": true
       }
+    },
+    "tfp_check_v3": {
+      "job_id": "65170859",
+      "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/tfp_check_v3",
+      "source_manifest_sha256": "a3d00a024397d6148c5a278b8af21d5e01a798d9efb3aab15a0dcea4326c6adf",
+      "submitted_at_utc": "2026-11-01T10:39:35.191023+00:00",
+      "purpose": "Full Dacca forward, finite-value, memory and public-call cost checks",
+      "GPU": "A40",
+      "cpus": 4,
+      "host_memory_GiB": 48,
+      "time_limit_seconds": 1800,
+      "validation_budget_seconds": 3600,
+      "previous_validation_seconds": 1635,
+      "total_validation_reserved_seconds": 3435,
+      "formal_budget_seconds": 72000,
+      "formal_fits_submitted": 0,
+      "submission_stdout": "65170859\n",
+      "previous_deployment_timeout_before_sbatch": true
     }
   },
-  "earlier_query_archived": "scheduler_20261101T0956.json in artifacts/validation/pydpf_and_pfjax_20261101T0956.tar.gz",
-  "completed_checks": "See dated package reports and archives; previously collected results are not recollected."
+  "new_submissions": [
+    "65170880",
+    "65170859"
+  ],
+  "initial_query": {
+    "path": "scheduler_20261101T1026.json",
+    "sha256": "31583aeace6e43d5aa05e0fbda443179ba299d4fb5fbf09b65af10b8027c42b4",
+    "archive": "artifacts/validation/pydpf_startup_and_tfp_20261101T1026.tar.gz"
+  }
 }

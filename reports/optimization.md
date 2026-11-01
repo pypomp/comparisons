@@ -10,8 +10,8 @@ The new experiment has a different status:
 |---|---:|---|
 | Cuthbert | 36/36 | Complete report and audit; two A fits failed, three A scores low precision |
 | PFJAX | 3/36 | [First complete case audited](pfjax_case0_20261101.md); all three fits and scores pass; remaining eleven cases submitted once as 65170500 |
-| PyDPF | 0/36 | Shared IF2 phase 65170442 running after [native-DPF and resource review](pydpf_native_DPF_20261101.md); A/B/C gradients not yet submitted |
-| TFP | 0/36 | Dependent formal jobs cancelled before starting after GPU validation failure |
+| PyDPF | 0/36 | [Startup 65170442 failed before formal fitting](pydpf_startup_and_tfp_20261101.md); new warm job 65170880 submitted; gradients not submitted |
+| TFP | 0/36 | [Full-Dacca check 65170859](pydpf_startup_and_tfp_20261101.md) running; no new formal job |
 | particles | 24/24 | Fits and independent scores audited; final new figures and reproducibility archive still pending |
 
 For new particles, the median independent log likelihood is −4169.070668 for A (1800-second external Nelder-Mead) and −3784.099127 for B (900-second public IF2, then Nelder-Mead to the same total budget). B is higher in all twelve observed pairs. Precision passes are 9/12 for A and 12/12 for B; A tasks 0, 2 and 12 reached R=288 and remain low precision. There were no failed fits or density-floor scores. These findings apply to the recorded starts and budgets, not universal optimizer superiority.

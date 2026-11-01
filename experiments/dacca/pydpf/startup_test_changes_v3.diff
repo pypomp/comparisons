@@ -1,0 +1,87 @@
+--- formal_v2/README.md
++++ formal_v3/README.md
+@@ -5,3 +5,5 @@
+ The original native StopGradientDPF is the gradient-stage baseline. The public extension preserves its full monthly forward values and final RNG in all 48 saved full-scale endpoint pairs. The ordinary original PF versus original DPF discrepancy is retained and unexplained. All previous checks remain as recorded; this is an empirical comparison, not gradient certification.
+ 
+ Package, model, input, optimizer mathematics and independent scorer are unchanged. The driver adds raw rejected proposals; the launcher and acceptance check use the newly reviewed data. The existing short driver regression runs before fitting. No dependent old cancelled job is reused.
++
++The prior warm allocation, 65170442, stopped in a small optimizer resume test before any formal IF2 call. Its final parameters and RNG matched; Adam moments differed by at most 3.725290298461914e-9. This revision enables deterministic Torch operations only in the regression subprocess and keeps its exact assertions. The formal driver runs separately with the original default setting. The earlier 181 GPU seconds are charged: the new warm allocation is 24,119 seconds, followed by three gradient allocations of 27,900 seconds, for a total of 108,000 seconds including the failed startup. No completed formal prefix is repeated.
+--- formal_v2/check_gate.py
++++ formal_v3/check_gate.py
+@@ -50,7 +50,10 @@
+                             allocation_seconds=allocation['allocation_seconds'],
+                             passed=required <= allocation['allocation_seconds'])
+     total = sum(v['allocation_seconds'] for v in config['allocation_by_phase'].values())
+-    assert total == 108000 and total <= config['formal_GPU_hour_cap'] * 3600
++    assert total == 107819 and total + config['previous_formal_startup_seconds'] == 108000
++    startup = load(evidence / 'startup_failure_v2_audit.json')
++    assert startup['startup_failure_audited'] and not startup['formal_fitting_started']
++    assert startup['actual_GPU_seconds'] == config['previous_formal_startup_seconds'] == 181
+     assert all(v['passed'] for v in checks.values())
+     resolved = dict(config)
+     resolved['resource_estimate'] = dict(IF2_B1_seconds_per_pass=warm, gradient_B12_seconds=max(rates.values()))
+--- formal_v2/formal.sbatch
++++ formal_v3/formal.sbatch
+@@ -5,9 +5,9 @@
+ #SBATCH --cpus-per-task=4
+ #SBATCH --mem=48G
+ #SBATCH --signal=B:TERM@120
+-#SBATCH --output=/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/pydpf_formal_v2/logs/%x-%j.log
++#SBATCH --output=/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/pydpf_formal_v3/logs/%x-%j.log
+ set -euo pipefail
+-TASK=/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/pydpf_formal_v2
++TASK=/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/pydpf_formal_v3
+ PHASE=${PYDPF_PHASE:?missing reviewed phase}
+ module purge
+ module load gcc cuda/12.8.1
+--- formal_v2/protocol.json
++++ formal_v3/protocol.json
+@@ -103,8 +103,8 @@
+   "budget_margin_factor": 1.05,
+   "allocation_by_phase": {
+     "warm": {
+-      "allocation_seconds": 24300,
+-      "fit_limit_seconds": 24000,
++      "allocation_seconds": 24119,
++      "fit_limit_seconds": 23819,
+       "preparation_reserve_seconds": 600,
+       "score_reserve_seconds": 0
+     },
+@@ -127,13 +127,14 @@
+       "score_reserve_seconds": 1800
+     }
+   },
+-  "additional_GPU_driver_test": "Before each formal task starts fitting, run T12/J32 resume/pairing/row-failure/finite-gradient moment overflow/natural overflow regressions on CUDA:0; failure prevents fitting.",
+-  "frozen_at_UTC": "2026-11-01T10:04:45.178179+00:00",
++  "additional_GPU_driver_test": "Small T12/J32 optimizer resume/BC/failure regression uses deterministic Torch algorithms in its own child process, with exact comparisons unchanged. Formal fit uses unchanged default nondeterministic execution in a separate process. Previous181-second startup failure retained; no formal fit was launched.",
++  "frozen_at_UTC": "2026-11-01T10:33:08.922646+00:00",
+   "GPU_device": "cuda:0",
+   "CPU_fallback": false,
+   "upstream_commit": "a7487ce1c344c70e1a244e75725b950deb15e146",
+   "scorer_sha256": "8aec1ba02982a1ad9bff227b300806eaafa972a1e9fd00b71bef2c5f0ebdc508",
+   "reference_dependencies": "Pinned complete reference_source first; read-only original cuthbert_dacca_20261027/source supplies Optax after it, followed by deps; record full runtime metadata",
+   "reference_CUDA": "For reference child only, CUDA_HOME/lib64 and targets/x86_64-linux/lib plus libcusparse.so.12.5.8.93 preload; Torch child retains unset LD paths",
+-  "deployment_revision": "pydpf_formal_v2"
++  "deployment_revision": "pydpf_formal_v3",
++  "previous_formal_startup_seconds": 181
+ }
+--- formal_v2/runtime/check_driver_v2.py
++++ formal_v3/runtime/check_driver_v2.py
+@@ -1,7 +1,10 @@
+ """Small CPU/CUDA driver regression only; no formal fitting claim."""
+ from pathlib import Path
+ import argparse,json,shutil,time
++import os
++os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
+ import torch
++torch.use_deterministic_algorithms(True)
+ import driver as d
+ ROOT=Path(__file__).resolve().parent
+ p=argparse.ArgumentParser();p.add_argument('--device',default='cpu');p.add_argument('--output-root',required=True);a=p.parse_args();device=a.device
+@@ -69,5 +72,5 @@
+ n=torch.load(natural/'B/checkpoint.pt',weights_only=True);nlast=torch.load(natural/'B/failures/row_01_last_valid.pt',weights_only=True)
+ assert n['rows'][1]['fit_failed'] and n['rows'][1]['accepted_steps']==1 and n['rows'][1]['failure']=='nonfinite natural parameter update'
+ assert torch.equal(n['parameters'][0],b['parameters'][0]) and torch.equal(n['parameters'][1],nlast['parameters'][1])
+-report=dict(passed=True,device=device,formal=False,finite_gradient_Adam_overflow_detected_and_rolled_back=True,natural_parameter_overflow_detected_and_rolled_back=True,T=12,J=32,rows=2,gradient_steps=3,full_optimizer_resume_exact=True,BC_initial_parameters_and_empty_Adam_hash_identical=True,BC_per_iteration_rng_identical=True,forced_failure_preserves_other_row_and_rng=True,failed_row_last_valid_parameters_and_optimizer_retained=True,swarm_reset=False)
++report=dict(passed=True,device=device,formal=False,test_deterministic_algorithms=True,production_setting_changed=False,finite_gradient_Adam_overflow_detected_and_rolled_back=True,natural_parameter_overflow_detected_and_rolled_back=True,T=12,J=32,rows=2,gradient_steps=3,full_optimizer_resume_exact=True,BC_initial_parameters_and_empty_Adam_hash_identical=True,BC_per_iteration_rng_identical=True,forced_failure_preserves_other_row_and_rng=True,failed_row_last_valid_parameters_and_optimizer_retained=True,swarm_reset=False)
+ d.atomic(ROOT/'driver_checks.json',report);print(json.dumps(report,indent=2))
