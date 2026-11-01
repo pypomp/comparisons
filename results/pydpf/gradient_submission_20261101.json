@@ -390,5 +390,48 @@
     "gradient_results_claimed": false,
     "PF_calls": 0,
     "fit_calls": 0
+  },
+  "saved_core_audit_preparation": {
+    "controls": {
+      "saved_small_runs_audited": 6,
+      "saved_rows_audited": 12,
+      "rejected_proposals_audited": 3,
+      "B_C_initial_parameters_empty_Adam_and_training_seeds_match": true,
+      "corruptions_refused": {
+        "endpoint_steps": "AssertionError",
+        "event_seed": "AssertionError",
+        "event_active": "AssertionError",
+        "rollback_parameter": "AssertionError",
+        "rollback_moment": "AssertionError",
+        "proposal_flags": "AssertionError",
+        "proposal_rate": "AssertionError",
+        "empty_Adam_hash": "AssertionError",
+        "missing_event": "AssertionError"
+      },
+      "source": "Existing CPU T12/J32/two-slot/three-update controls; original optimization calls not repeated.",
+      "production_gradient_audit_ready": false,
+      "remaining": [
+        "Complete production wrapper for source/terminal/allocation checks.",
+        "Independent score audit with fixed PyPOMP source and keys.",
+        "Cross-method pairing and whole-budget audit."
+      ],
+      "PF_calls": 0,
+      "IF2_calls": 0,
+      "optimizer_steps": 0,
+      "formal_gradient_results_audited": 0
+    },
+    "archive": {
+      "path": "artifacts/validation/pydpf_gradient_core_preparation_20261101T1656.tar.gz",
+      "source": "PyDPF gradient saved-core audit preparation and existing small CPU controls; production provenance and score wrapper still required.",
+      "sha256": "c7ed9337f5b40edd7f4be81bf3353ece163fc81a5bf4cc969729e112c9b2aceb",
+      "bytes": 6808513,
+      "files": 264,
+      "all_member_hashes_verified": true,
+      "extracted_six_saved_core_audits_and_controls_byte_identical": true,
+      "production_gradient_audit_ready": false,
+      "PF_calls": 0,
+      "optimizer_steps": 0
+    },
+    "actual_formal_gradient_audit_completed": false
   }
 }

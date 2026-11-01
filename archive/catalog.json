@@ -710,5 +710,17 @@
     "gradient_results_claimed": false,
     "PF_calls": 0,
     "fit_calls": 0
+  },
+  {
+    "path": "artifacts/validation/pydpf_gradient_core_preparation_20261101T1656.tar.gz",
+    "source": "PyDPF gradient saved-core audit preparation and existing small CPU controls; production provenance and score wrapper still required.",
+    "sha256": "c7ed9337f5b40edd7f4be81bf3353ece163fc81a5bf4cc969729e112c9b2aceb",
+    "bytes": 6808513,
+    "files": 264,
+    "all_member_hashes_verified": true,
+    "extracted_six_saved_core_audits_and_controls_byte_identical": true,
+    "production_gradient_audit_ready": false,
+    "PF_calls": 0,
+    "optimizer_steps": 0
   }
 ]

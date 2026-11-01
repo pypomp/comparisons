@@ -6,7 +6,7 @@
     "README.md": "4c7c80237ca997c4f55b39127f138c28b4a5b822997c4c3da3833de16dfd3fd6",
     "THIRD_PARTY.md": "58c15cdbddba35cf543f386471c394d95ef1fa3e8afcd812371ec4c6ebacbd12",
     "archive/README.md": "d0b164b82a826c9a6a09c94378465f3d131d7babe19b90694e70520fc7d711cb",
-    "archive/catalog.json": "64c44d762c76c7af569932eeecb75a8dec07e094cf03aa305349bd33262ee611",
+    "archive/catalog.json": "d527cb9a8e6a2dd37b00e796bc598cc68e08f5369f73bcb593a10feb94292847",
     "archive/copies.json": "dca0c0d0b8d8365322a8af15cf95b730770fbbb1a6eee998e329d22a45ce765d",
     "archive/files.json.gz": "6d1395407c6809c0888da9ae587cd377921fcd8840af7ea376ecc3b43f31fbb3",
     "archive/history.json": "301a126979e010b627ac3e3efa33747d9c8d28aefb66240e03b9cb96d5c107ff",
@@ -270,7 +270,7 @@
     "results/tfp/gradient_audit_preparation_20261101.json": "a34d1688de2b69ebe2f02d340ef982bb058aa50fb3deec4615e70d61b8179c35",
     "reports/tfp_gradient_audit_preparation_20261101.md": "a8d8e57d86693702307cb20ebb186c9070c40a1789680a6de8e39b2b9113a1e9",
     "results/pydpf/warm_audit_20261101.json": "6605d265082ed294a7e60e48cc5399276a016d08277e7c44ea17e7440afb538c",
-    "results/pydpf/gradient_submission_20261101.json": "6e660af223f44fc6d6fabff0ccc35dda6256af09bcc62addca1829dc41461b01",
-    "reports/pydpf_warm_20261101.md": "a418b2a7da6e2408d91ce6c5d17aee473d3df66226b5f219f6bbd06fc03dff8f"
+    "results/pydpf/gradient_submission_20261101.json": "1e4190285e6b0ee90a41845a8302673a26759b8775a1fe6beadbfd18c5b6f750",
+    "reports/pydpf_warm_20261101.md": "7b248f36477db8604455137349eb0fe38c1aad87aac1ced0bcf76f89a0fa1b78"
   }
 }
