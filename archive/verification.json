@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "retained_files_checked": 153,
+  "archived_files_checked": 8527,
+  "unchanged_copies_checked": 115,
+  "archive_checksums_checked": 51,
+  "archives_fully_read": 51,
+  "patched_sources": [
+    {
+      "package": "cuthbert",
+      "files_checked": 254,
+      "all_files_match": true
+    },
+    {
+      "package": "pfjax",
+      "files_checked": 197,
+      "all_files_match": true
+    },
+    {
+      "package": "pydpf",
+      "files_checked": 30,
+      "all_files_match": true
+    },
+    {
+      "package": "tfp",
+      "files_checked": 1541,
+      "all_files_match": true
+    },
+    {
+      "package": "particles",
+      "files_checked": 107,
+      "all_files_match": true
+    }
+  ],
+  "result_tables_rebuilt": 2,
+  "old_endpoints_preserved": 968,
+  "old_raw_PF_repetitions": 37584,
+  "new_particles_endpoints": 24,
+  "new_particles_raw_PF_repetitions": 1692,
+  "numerical_experiments_rerun": false
+}

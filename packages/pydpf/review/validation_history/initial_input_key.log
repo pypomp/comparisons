@@ -1,8 +1,0 @@
-PyDPF: PyTorch was unable to find a CUDA-enabled GPU. The package will run on CPU, but performance will be significantly degraded. If you have a CUDA-capable GPU, install a CUDA build of PyTorch from https://pytorch.org/get-started/locally/.
-Traceback (most recent call last):
-  File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/pydpf-implementation-v1/candidate/../validation/check_dacca.py", line 138, in <module>
-    main()
-  File "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/pydpf-implementation-v1/candidate/../validation/check_dacca.py", line 56, in main
-    initial = torch.tensor(frozen.to_est(frozen.DATA['theta']))[None]
-                                         ~~~~~~~~~~~^^^^^^^^^
-KeyError: 'theta'

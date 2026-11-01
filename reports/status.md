@@ -1,8 +1,8 @@
 # Results and tests
 
-This page describes the files included in the repository on 31 October 2026. The included scheduler query is from **22:09:39 UTC**; this page is not a live job monitor. See the [saved experiment status](../experiments/public_interfaces/snapshot_20261031/status.json), [job records](../experiments/public_interfaces/snapshot_20261031/) and [GPU test results](../experiments/public_interfaces/snapshot_20261031/recovery_20261031/GPU_audit.json).
+This page describes the files included in the repository on 31 October 2026. The included scheduler query is from **22:09:39 UTC**; this page is not a live job monitor. See the [saved experiment status](../archive/README.md), [job records](../archive/README.md) and [GPU test results](../archive/README.md).
 
-The [Dacca report](dacca_comparison.md) describes the model and experiment design. The [source review](native_pf_audit_20261031/report.md) identifies the package functions used. Dynamax is excluded from the current comparison; its earlier 36 estimates remain in the historical reports and figures.
+The [Dacca report](dacca_comparison.md) describes the model and experiment design. The [source review](../archive/README.md) identifies the package functions used. Dynamax is excluded from the current comparison; its earlier 36 estimates remain in the historical reports and figures.
 
 ## Correctness
 
@@ -14,7 +14,7 @@ The [Dacca report](dacca_comparison.md) describes the model and experiment desig
 | TFP | Both sides passed 120 official PF tests with 23 skipped after an explicit test-harness name-binding repair; the original common failures are also retained | GPU alpha=1 exact-gradient check failed. Full upstream testing is incomplete |
 | particles | Nine CPU PF pairs matched likelihood/state/weights/RNG; public IF2 tests and collected-result audits passed | The pinned upstream has no pytest suite; this is not a claim that an upstream test suite passed |
 
-The TFP full-suite snapshot contains 324 of 515 completed file pairs and their logs. One hundred pairs include a nonzero exit or incomplete original test execution. There are no candidate-only failing pairs in this copied subset. This count is separate from the 120-test PF subset and does not imply that all 515 files passed. [Exact snapshot counts](../experiments/public_interfaces/tfp_upstream_tests_snapshot/snapshot.json).
+The TFP full-suite snapshot contains 324 of 515 completed file pairs and their logs. One hundred pairs include a nonzero exit or incomplete original test execution. There are no candidate-only failing pairs in this copied subset. This count is separate from the 120-test PF subset and does not imply that all 515 files passed. [Exact snapshot counts](../archive/README.md).
 
 The Cuthbert v3 change preserves the original alpha=1 differentiation path by defaulting to `checkpoint=False`. A recorded CPU multinomial diagnosis showed that adding checkpointing to the original ADPF reproduces the prior discrepancy. Disabling it passed the recorded checks without changing tolerances. This local diagnosis still requires the pending GPU checks. The three failures in the earlier upstream GPU test run are not assumed to be upstream-only until the original/candidate comparison is reviewed.
 
@@ -34,7 +34,7 @@ These are implementation-specific timings under the recorded environments. They 
 
 ## Optimization
 
-The [earlier completed comparison](legacy_dacca/report_CN.txt) contains 968 fitted parameter vectors and 37,584 individual PF evaluations. It includes the two-package paper experiment and six other packages, with their different scopes explicitly retained. Its final reports, full-range figures, optional 1.5-IQR display figures, old failed fits, low-precision scores and density-floor outcomes are preserved. PFJAX's corrected evaluation_v2 alone supplies its final scores; the superseded scores remain as history.
+The [earlier completed comparison](../archive/README.md) contains 968 fitted parameter vectors and 37,584 individual PF evaluations. It includes the two-package paper experiment and six other packages, with their different scopes explicitly retained. Its final reports, full-range figures, optional 1.5-IQR display figures, old failed fits, low-precision scores and density-floor outcomes are preserved. PFJAX's corrected evaluation_v2 alone supplies its final scores; the superseded scores remain as history.
 
 The new experiment has a different status:
 
@@ -48,6 +48,6 @@ The new experiment has a different status:
 
 For new particles, the median independent log likelihood is −4169.070668 for A (1800-second external Nelder-Mead) and −3784.099127 for B (900-second public IF2, then Nelder-Mead to the same total budget). B is higher in all twelve observed pairs. Precision passes are 9/12 for A and 12/12 for B; A tasks 0, 2 and 12 reached R=288 and remain low precision. There were no failed fits or density-floor scores. These findings apply to the recorded starts and budgets, not universal optimizer superiority.
 
-The new particles fits used 43,647 CPU seconds, plus 155 CPU seconds for the earlier checks. Independent A40 scoring used 96 seconds and is counted separately. [Audit](../experiments/public_interfaces/snapshot_20261031/recovery_20261031/particles/audit.json) · [24 endpoint records](../experiments/public_interfaces/snapshot_20261031/recovery_20261031/particles/endpoints.csv).
+The new particles fits used 43,647 CPU seconds, plus 155 CPU seconds for the earlier checks. Independent A40 scoring used 96 seconds and is counted separately. [Audit](../results/particles/audit.json) · [24 endpoint records](../results/particles/endpoints.csv).
 
 Cuthbert is the next experiment. It can start after the original-code comparisons, GPU correctness tests and J=5000 memory and runtime checks pass. The prepared submission program checks these results before submitting the 12 A/B/C jobs.

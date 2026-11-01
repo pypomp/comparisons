@@ -1,6 +1,6 @@
 # PyDPF
 
-Local revision 1, based on the original version recorded in [source details](../../manifests/packages.json). The changes have not been submitted upstream.
+Local revision 1, based on the original version recorded in [source details](version.json). The changes have not been submitted upstream.
 
 The new `IteratedFiltering` wraps the model's prior, transition and observation callbacks so each particle contains both parameters and state. It calls the original `ParticleFilter` and `SIS.forward`; those classes are unchanged. The outer IF2 passes retain the full parameter population and apply the perturbation and cooling schedules.
 
@@ -8,22 +8,15 @@ The gradient stage uses the original `StopGradientDPF` derivative correction, ex
 
 The copied original code includes the specified package subtree, root README and license, and a native tutorial. It is a subset of the upstream repository.
 
-## Code and tests
 
-- [Original source](upstream/)
-- [Modified source](candidate/)
-- [Complete diff](review/full.patch)
-- [Function descriptions](review/call_chain.txt)
-- [Function locations](review/function_locations.json)
-- [Source versions and file hashes](review/review_manifest.json)
-- [Test programs](validation/) and [test and source records](review/)
-- [Earlier completed experiment](../../experiments/legacy_dacca/pydpf/)
-- [New experiment and tests](../../experiments/public_interfaces/README.md)
+## Inspect and restore
 
-## Included results
+[Changed files](changes/) · [Complete diff](review/full.patch) · [Version](version.json) · [Validation programs](validation/)
 
-Nine paired GPU runs matched all 600 PF likelihood increments. A later test run passed 33 of 34 tests; a float32 multinomial exact-equality check failed. New optimization jobs were cancelled before starting.
+From the repository root, restore the original code and apply the diff:
 
-[Results and tests](../../reports/status.md) gives the dates, measured PF times and remaining work. Earlier experiments used their own saved drivers. Their results do not validate this code revision.
+```bash
+python3 scripts/prepare.py pydpf --output build/pydpf
+```
 
-The [archive list](../../manifests/archives.json) identifies the original source and raw-result archives under `artifacts/`. From the repository root, `python3 scripts/verify.py` checks that the diff applied to the copied original source produces the modified source exactly. Numerical tests are recorded separately.
+The command checks every resulting file against the saved modified source. Original source trees, environments, test outputs and failures remain in the [archive](../../archive/README.md). [Results and tests](../../reports/status.md) describes the included evidence. [Reproduction instructions](../../docs/reproduction.md) distinguish restoring files from rerunning numerical experiments.

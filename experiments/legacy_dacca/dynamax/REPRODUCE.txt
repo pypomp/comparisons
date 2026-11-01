@@ -1,7 +1,0 @@
-Unpack reproduction.tar.gz into an empty directory. It preserves the relative work/ and outputs/ layout.
-For offline audit/report rebuild, create an isolated Python environment and install work/competitor-estimation/dynamax/dacca/report_requirements.txt. Tested Python/package versions are in summary.json reporter_runtime. Matplotlib is included explicitly.
-Offline rebuild: python3 work/competitor-estimation/dynamax/dacca/deliver_formal_fixed.py
-This rechecks saved scores/hashes/random-key separation and writes PNG/SVG/PDF; it does not launch fitting, PF scoring, SSH or Slurm.
-The separate frozen requirements-runtime.txt records the GPU experiment dependencies; do not install them into the reporter environment or modify global packages. Frozen array.sbatch is retained for provenance, not automatically run.
-After real current-summary root review and current-figure visual review: python3 work/competitor-estimation/dynamax/dacca/deliver_formal_fixed.py --finalize
-All failed formal fits and source/terminal manifests are retained. Prior failed batch-wrapper checks remain in the original efficiency_v1 workspace and are not claimed as validated.

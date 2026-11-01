@@ -1,9 +1,0 @@
-Initial parameters: [-1.5         0.18232156]
-IF2 endpoint: [ 1.18706704 -0.93457729]
-IFAD endpoint: [ 1.19507703 -0.98701969]
-Independent PF log-likelihoods: [-57.40348714 -57.66193658 -57.49661441 -57.28711009 -57.55625457
- -57.47443454 -57.35106412 -57.60601958]
-Log of the mean PF likelihood: -57.47242644708173
-Exact log-likelihoods [initial, IF2, IFAD]: [-97.75410086 -57.54558589 -57.51640187]
-.
-1 passed, 9 deselected in 3.22s

@@ -49,7 +49,7 @@ function renderFile(f, asSource=false){activeFile=f;const isMD=f.suffix==='.md',
   if($('toggle'))$('toggle').onclick=()=>renderFile(f,!asSource);
   if(f.text!==null)$('content').innerHTML=isMD&&!asSource?markdown(f.text,f.path):source(f.text,patch);
   else if(/\.(png|jpe?g)$/i.test(f.path))$('content').innerHTML='<img class="image-preview" src="'+raw(f.path)+'" alt="'+esc(f.path)+'">';
-  else $('content').innerHTML='<div class="notice">Binary file or file larger than 2 MB. Download the original to inspect it. Sources and checksums are recorded in manifests/.</div>';
+  else $('content').innerHTML='<div class="notice">Binary file or file larger than 2 MB. Download the original to inspect it. Sources and checksums are recorded in archive/.</div>';
   highlightLine();
 }
 function highlightLine(){document.querySelectorAll('.code-line.selected').forEach(e=>e.classList.remove('selected'));if(location.hash){const element=document.getElementById(location.hash.slice(1));if(element){element.classList.add('selected');element.scrollIntoView({block:'center'});}}}
@@ -57,7 +57,7 @@ window.addEventListener('hashchange',highlightLine);
 async function directory(name){const list=await api('tree',{path:name});$('actions').innerHTML='';$('content').innerHTML='<div class="tree">'+(name?'<a class="tree-row" href="'+route(name.split('/').slice(0,-1).join('/'))+'">↰ Parent directory</a>':'')+list.map(x=>'<a class="tree-row" href="'+route(x.path)+'"><span class="icon '+(x.directory?'directory':'')+'">'+(x.directory?'▣':'▤')+'</span>'+esc(x.name)+'</a>').join('')+'</div>';
   const readme=list.find(x=>x.name==='README.md')||list.find(x=>x.name==='README_CN.md');if(readme){const f=await api('file',{path:readme.path});if(f.text)$('content').insertAdjacentHTML('beforeend',markdown(f.text,readme.path));}}
 async function load(){breadcrumbs(path);try{if(!path)await directory('');else{try{renderFile(await api('file',{path}),!!location.hash);}catch(e){await directory(path);}}}catch(e){$('content').innerHTML='<div class="notice">'+esc(e.message)+'</div>';}}
-for(const name of ['cuthbert','pfjax','pydpf','tfp','particles','pypomp','pypfilt']){const div=document.createElement('div');div.className='pkg';div.innerHTML='<a href="'+route('packages/'+name)+'">'+esc(name)+'</a>'+(!['pypomp','pypfilt'].includes(name)?'<a href="'+route('packages/'+name+'/review/full.patch')+'">Diff</a>':'');$('packages').appendChild(div);}
+for(const name of ['cuthbert','pfjax','pydpf','tfp','particles']){const div=document.createElement('div');div.className='pkg';div.innerHTML='<a href="'+route('packages/'+name)+'">'+esc(name)+'</a>'+(!['pypomp','pypfilt'].includes(name)?'<a href="'+route('packages/'+name+'/review/full.patch')+'">Diff</a>':'');$('packages').appendChild(div);}
 api('meta').then(m=>{$('revision').textContent=m.branch+' · '+m.commit;$('count').textContent=m.files.toLocaleString()+' files';});
 let timer;$('search').addEventListener('input',()=>{clearTimeout(timer);const q=$('search').value;const sequence=++requestSequence;timer=setTimeout(async()=>{if(!q){load();return;}const found=await api('search',{q});if(sequence!==requestSequence)return;$('breadcrumbs').textContent='File search · '+q;$('actions').textContent=found.total+' matches; showing up to 150';$('content').innerHTML='<div class="tree">'+found.paths.map(p=>'<a class="tree-row result-path" href="'+route(p)+'">'+esc(p)+'</a>').join('')+'</div>';},180);});
 load();

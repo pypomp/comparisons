@@ -1,3 +1,0 @@
-# Types
-
-::: cuthbertlib.types

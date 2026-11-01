@@ -1,8 +1,0 @@
-{
-  "base_commit": "c737efe3098b2b5ecaa7d8b976e7cea246998b17",
-  "original_patch_sha256": "bf4175d46540ca8ec4e2dee2809eeaf2bc14ccba43bc53e1ce7d3efc0b092c1b",
-  "files_checked": 17,
-  "patch_applied_to_clean_base": true,
-  "candidate_matches_previous_implementation": true,
-  "candidate": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-implementation-v2/candidate"
-}

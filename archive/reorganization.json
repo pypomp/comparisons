@@ -1,0 +1,29 @@
+{
+  "checked_utc": "2026-11-01T00:06:25.110847+00:00",
+  "before_commit": "3d810f4bca1220d2ff26f15e3fb618477d12128d",
+  "before_tracked_files": 8527,
+  "before_tracked_bytes": 178945906,
+  "main_files_after_including_this_record": 155,
+  "all_previous_tracked_files_archived": true,
+  "original_bulk_archives_unchanged": 50,
+  "complete_old_layout_restored_and_old_verifier_passed": true,
+  "old_import_records_verified": 8513,
+  "original_and_modified_source_reconstructions_checked": 5,
+  "changed_source_files_kept_for_review": 45,
+  "recomputed_tables": 2,
+  "browser_functional_checks_passed": true,
+  "browser_visual_check_passed": true,
+  "recovery_refuses_overwrite_and_unsafe_paths": true,
+  "live_experiment_files_checked_unchanged": 1336,
+  "live_source_manifests": {
+    "work/implementation-comparison-20261030/cuthbert_gate_v3/source_manifest.json": "c3cf801b178be021bd59d03a4876d6ef7c0576459f5cad5d06bcdaf57134da55",
+    "work/implementation-comparison-20261030/cuthbert_gpu_diagnosis_v1/source_manifest.json": "8353adc2073c1281825bfe78a20160f6da0fa4c5f2e57d9d8a7246b592c85108"
+  },
+  "experiment_submissions": 0,
+  "experiment_cancellations": 0,
+  "fit_calls": 0,
+  "score_calls": 0,
+  "git_history_preserved": true,
+  "numerical_reruns_verified": false,
+  "numerical_rerun_requirement": "Recorded environments and original launch paths; see docs/reproduction.md"
+}

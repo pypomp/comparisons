@@ -1,0 +1,19 @@
+{
+  "revision": 1,
+  "base": "a7487ce1c344c70e1a244e75725b950deb15e146",
+  "baseline_scope": "pydpf/ subtree, root README/LICENSE, native tutorial; not full repository",
+  "patch": "packages/pydpf/review/full.patch",
+  "candidate_files": 30,
+  "upstream_accepted": false,
+  "changed_files": [
+    "docs/source/iterated_filtering.rst",
+    "docs/source/tutorial.rst",
+    "examples/if2_and_discount.py",
+    "pydpf/pydpf/__init__.py",
+    "pydpf/pydpf/filtering.py",
+    "pydpf/pydpf/iterated_filtering.py",
+    "pydpf/pydpf/resampling.py",
+    "tests/test_estimation_extension.py"
+  ],
+  "archived_review_manifest": "packages/pydpf/review/review_manifest.json"
+}

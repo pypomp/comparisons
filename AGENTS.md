@@ -15,6 +15,8 @@ This is a local comparison repository. Preserve imported evidence and its SHA256
 - CPU/GPU, particle counts, starts, iteration and time budgets must remain distinguishable. Batch execution time is counted once.
 - Final scoring uses the stated independent fixed PF and retains raw values, MCSE, likelihood ESS, failures and density-floor saturation.
 - If figures hide points using 1.5×IQR, retain all data and summary statistics and state the display rule.
-- Bulk archives in artifacts/ exist locally but are not in Git. Use manifests/archives.json when transferring them.
+- Bulk archives in artifacts/ exist locally but are not in Git. Use archive/catalog.json when transferring them.
 - Run scripts/verify.py after repository changes; it is an integrity check, not a numerical validation claim.
 - Do not create a remote, send messages, push or open a PR without explicit user instructions.
+
+- Keep the main tree small: changed code, full diffs, protocols, principal programs, result tables and a short report. Archive logs, complete source trees and prior reports with hashes and recovery instructions. Never discard failures to simplify presentation.

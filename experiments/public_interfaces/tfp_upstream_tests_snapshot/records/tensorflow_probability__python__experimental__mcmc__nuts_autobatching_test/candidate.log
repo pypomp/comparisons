@@ -1,9 +1,0 @@
-...............................................................s         [100%]
-=============================== warnings summary ===============================
-tensorflow_probability/python/experimental/mcmc/nuts_autobatching_test.py: 55 warnings
-  /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/candidate/tensorflow_probability/python/mcmc/sample.py:339: UserWarning: Tracing all kernel results by default is deprecated. Set the `trace_fn` argument to None (the future default value) or an explicit callback that traces the values you are interested in.
-    warnings.warn('Tracing all kernel results by default is deprecated. Set '
-
--- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-- generated xml file: /Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/tfp/upstream_tests_with_deps/records/tensorflow_probability__python__experimental__mcmc__nuts_autobatching_test/candidate.xml -
-63 passed, 1 skipped, 55 warnings in 117.28s (0:01:57)

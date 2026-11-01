@@ -1,8 +1,7 @@
-# Bulk evidence is present locally; manifests/archives.json records every SHA256.
 /artifacts/
+/build/
 /extracted/
 /scratch/
 __pycache__/
 *.pyc
 .DS_Store
-

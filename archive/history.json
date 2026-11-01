@@ -1,0 +1,9 @@
+{
+  "path": "artifacts/history/comparisons_20261031_before_simplification.tar.gz",
+  "source": "Local comparisons repository before simplification",
+  "sha256": "1d522333d33d98c25e54797baf0e68af4ba94467b7c9c081e3c22e2e5625561b",
+  "bytes": 75177909,
+  "commit": "3d810f4bca1220d2ff26f15e3fb618477d12128d",
+  "files": 8527,
+  "created_utc": "2026-11-01T00:00:32.826885+00:00"
+}

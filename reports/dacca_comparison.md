@@ -2,7 +2,7 @@
 
 This report compares package implementations of particle filtering and examines whether IF2 initialization and gradient discounting improve likelihood optimization within a package. It accompanies local changes to Cuthbert, PFJAX, PyDPF, TensorFlow Probability and particles. PyPOMP supplies the independent PF used to evaluate fitted parameters. Earlier pypfilt results are also retained.
 
-The new experiments are incomplete. This report describes the code, settings and results present in the repository as assembled on 31 October 2026. [Results and tests](status.md) gives the dates and numerical details. The [meeting notes](../docs/meeting_decisions.md) explain the questions that motivated the work.
+The new experiments are incomplete. This report describes the code, settings and results present in the repository as assembled on 31 October 2026. [Results and tests](status.md) gives the dates and numerical details. The [meeting notes](../archive/README.md) explain the questions that motivated the work.
 
 ## Model and evaluation
 
@@ -14,11 +14,11 @@ Every fitted parameter vector is evaluated with the same fixed, original PyPOMP 
 
 ## Package code and our changes
 
-The [function table](../docs/package_calls.md) identifies the original package calls, added code and external optimizers. The [source review](native_pf_audit_20261031/report.md) links those descriptions to source lines.
+The [function table](../docs/package_calls.md) identifies the original package calls, added code and external optimizers. The [source review](../archive/README.md) links those descriptions to source lines.
 
 Cuthbert uses its original PF update functions and its original α=1 ADPF correction. We added IF2, gradient discounting and a loop over observation times. The other four new implementations call the original full PF or SMC loop. PFJAX's α=1 resampling derivative correction is an addition we wrote. It is therefore not a PFJAX-provided ADPF baseline. Adam comes from Optax, PyTorch or Keras; particles and pypfilt use external SciPy Nelder-Mead.
 
-Each modified package has an original source directory, a modified source directory, a complete diff and test records. These are local changes awaiting review by package authors. Writing Dacca model callbacks is separate from changing a particle filter.
+Each modified package has a complete diff and the changed files. Original and modified source trees and all test records can be restored from the archive. These are local changes awaiting review by package authors. Writing Dacca model callbacks is separate from changing a particle filter.
 
 ## Correctness
 
@@ -46,9 +46,9 @@ B and C share the starting vector, zero initial Adam state, learning rates and t
 
 There are no new GPU optimization results in the included records. For particles, A uses 1,800 seconds of external Nelder-Mead; B uses IF2 for the first 900 seconds and Nelder-Mead for the remainder. Median independent log likelihoods are −4169.070668 for A and −3784.099127 for B. These medians use all 12 estimates per method, including the three imprecise A scores. B is higher in all 12 observed pairs. Nine A scores and all 12 B scores meet the precision requirement. A tasks 0, 2 and 12 remain below it at 288 repeats.
 
-The particles runs used 43,647 CPU seconds for fitting and 155 CPU seconds for earlier checks. Independent GPU scoring used another 96 seconds. [Parameter estimates](../experiments/public_interfaces/snapshot_20261031/recovery_20261031/particles/endpoints.csv) and [the result checks](../experiments/public_interfaces/snapshot_20261031/recovery_20261031/particles/audit.json) retain every case. Final figures and the reproducibility archive for this new comparison are pending.
+The particles runs used 43,647 CPU seconds for fitting and 155 CPU seconds for earlier checks. Independent GPU scoring used another 96 seconds. [Parameter estimates](../results/particles/endpoints.csv) and [the result checks](../results/particles/audit.json) retain every case. Final figures and the reproducibility archive for this new comparison are pending.
 
-[Earlier Dacca experiments](legacy_dacca/report_CN.txt) are complete and use their own saved code and protocols. Their figures and records remain available for reference. They are separate from the new experiments described here. Dynamax's earlier self-written PF comparison is retained only in that history.
+[Earlier Dacca experiments](../archive/README.md) are complete and use their own saved code and protocols. Their figures and records remain available for reference. They are separate from the new experiments described here. Dynamax's earlier self-written PF comparison is retained only in that history.
 
 ## Code and reproduction
 

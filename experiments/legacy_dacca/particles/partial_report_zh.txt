@@ -1,1 +1,0 @@
-已完成全部 12 个终点，请查看 report_zh.txt 和 results.json。

@@ -1,3 +1,0 @@
-recursive-exclude jss_examples **
-recursive-exclude docs **
-exclude *.csv

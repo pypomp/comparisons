@@ -1,0 +1,18 @@
+{
+  "revision": 1,
+  "base": "installed TFP 0.25.0 wheel files, verified against RECORD",
+  "baseline_scope": "See original review manifest and preserved upstream files.",
+  "patch": "packages/tfp/review/full.patch",
+  "candidate_files": 1541,
+  "upstream_accepted": false,
+  "changed_files": [
+    "docs/iterated_filter.txt",
+    "examples/if2_and_discount.py",
+    "tensorflow_probability/python/experimental/mcmc/__init__.py",
+    "tensorflow_probability/python/experimental/mcmc/iterated_filter.py",
+    "tensorflow_probability/python/experimental/mcmc/particle_filter.py",
+    "tensorflow_probability/python/experimental/mcmc/sequential_monte_carlo_kernel.py",
+    "tests/test_extensions.py"
+  ],
+  "archived_review_manifest": "packages/tfp/review/review_manifest.json"
+}

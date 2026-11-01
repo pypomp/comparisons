@@ -1,51 +1,67 @@
-# Reproduction and review
+# Reproduction
 
-## Check this repository
+Run these commands from the repository root. Recovery and table checks need Python 3.9 or later and Git, with no numerical libraries or network access.
 
-Run from any working directory:
-
-```bash
-python3 /path/to/comparisons/scripts/verify.py --archives
-```
-
-The command checks the imported SHA256 records, five complete patches applied to clean upstream copies, endpoint and raw-repeat counts, the fixed scorer, and all archive members. It uses Python's standard library and Git. It does not fit, evaluate or submit a cluster job. `manifests/repository_verification.json` records the check performed during assembly.
-
-`scripts/verify.py --originals /path/to/original/workspace` additionally checks whether the originals still match the imported snapshot. This option is intended for the import audit. Live status files may legitimately change afterward; the snapshot itself remains unchanged.
-
-## Review a package change
-
-For each of Cuthbert, PFJAX, PyDPF, TFP and particles, compare `packages/NAME/upstream/` with `packages/NAME/candidate/`, or read `packages/NAME/review/full.patch`. The preserved review manifest identifies the upstream commit or wheel version, modified files and validation. Other patches in the review folder are subsets or earlier revisions; do not apply them after the complete patch.
-
-PyDPF's preserved baseline is a specified subset of its repository. TFP's candidate baseline is the installed 0.25.0 wheel source, not a complete development checkout. Full upstream test-source archives are separately catalogued. These differences matter when preparing a future PR.
-
-## Recover raw experiment records
-
-The archive paths and SHA256 values are in [archives.json](../manifests/archives.json). For example:
+## Restore a package
 
 ```bash
-python3 scripts/extract_archive.py \
-  artifacts/experiments/legacy_dacca/paper_cuthbert_pypomp/reproduction.tar.gz \
-  extracted/paper_dacca
+python3 scripts/prepare.py cuthbert --output build/cuthbert
 ```
 
-The helper verifies the checksum and rejects path traversal, links, special files and existing extraction destinations. Archives stay unchanged. Read the extracted archive's README/REPRODUCE instructions for its audit and figure-generation commands. Numerical dependencies are specified in its original environment/source records.
+Replace `cuthbert` with `pfjax`, `pydpf`, `tfp` or `particles`. The command extracts the recorded original source, applies `review/full.patch`, and compares every resulting file with the archived modified source. It refuses to overwrite an existing directory. `version.json` identifies the commit or wheel and the changed files.
 
-For the completed paper archive, the preserved delivery program supports:
+PyDPF's original source is a recorded subset of the upstream repository. TFP's original source is the 0.25.0 installed wheel source. Restoring them does not create a full upstream development checkout. Full test-source archives are separately listed in the catalog.
+
+## Rebuild result tables
 
 ```bash
-cd extracted/paper_dacca
-python independent_audit/deliver.py \
-  --paper-root paper_experiment \
-  --scheduler-evidence independent_audit/scheduler_evidence.json \
-  --output rebuilt_delivery
+python3 scripts/reproduce.py --output build/tables
 ```
 
-This rebuild needs the dependencies stated by that archive. It was not rerun during repository assembly. The original verified delivery and all raw PF values are included unchanged.
+This recomputes both summary tables from saved endpoint records. Every finite score, including low-precision and floor-saturated scores, contributes to its group's median. Failed fits, nonfinite scores and precision counts are reported separately. It checks all 24 new particles rows and all 968 historical rows; the 36 historical Dynamax rows remain archived and are excluded from the main summary. Different hardware and experiment settings remain separate groups.
 
-Some historical scripts contain absolute workspace and cluster paths. Their source has deliberately not been rewritten, because their hashes identify what ran. The new integrity/extraction helpers are portable; a numerical rerun requires reconstructing the documented environment and explicitly adapting launch paths in a separate revision. No claim is made that all copied historical runners execute unmodified from this repository.
+The script does not recalculate PF scores. Individual PF repeats and the original scoring audits are in the archives. To repeat those audits or rebuild original figures, restore the corresponding archive and use its original instructions.
 
-## Add later results
+## Restore the former directory layout
 
-Create a new dated snapshot after collecting a stopped task and checking source hashes, terminal files, scheduler exit/cost, protocol, endpoints and raw scores. Preserve the previous snapshots. Update the package status and archive catalog only with observed evidence. Running or pending frozen sources are never edited here or on the cluster. A source change requires a new revision and its own validation.
+```bash
+python3 scripts/restore.py --output build/original --archives
+python3 build/original/scripts/verify.py
+```
 
-Bulk archives are local, untracked files. Any later distribution must include the listed archives or provide a deliberate storage arrangement; copying only Git history omits them. No remote publication is configured.
+This restores all 8,527 files from the repository before simplification, including the old import manifest, complete source trees, frozen experiment snapshots, recorded environments, failed tests and earlier reports. File contents and modes are checked during extraction. `--archives` also copies the 50 original bulk archives: the former verification program checks their hashes even when it does not decompress them. The second command runs that program against the complete restored layout. Omit `--archives` when only inspecting source or documents.
+
+To recover one path instead, use `--prefix`, for example:
+
+```bash
+python3 scripts/restore.py --output build/meeting --prefix docs/meeting_decisions.md
+```
+
+The archive paths in [the index](../archive/README.md) specify where to find the raw records. Extract a catalogued bulk archive with:
+
+```bash
+python3 scripts/extract_archive.py artifacts/experiments/legacy_dacca/paper_cuthbert_pypomp/reproduction.tar.gz extracted/paper
+```
+
+## Numerical reruns
+
+The main experiment files are exact copies for review. Some launchers contain absolute workspace and cluster paths and depend on the full source tree, input files and recorded environment. Their archived versions identify what ran; they have not been rewritten during simplification. Restoring the code does not install those environments or make every launcher portable. A numerical rerun elsewhere needs a separate copy with explicit environment and path adjustments.
+
+For example, after extracting the completed paper archive, its existing delivery program can rebuild its report from saved scores:
+
+```bash
+cd extracted/paper
+python independent_audit/deliver.py --paper-root paper_experiment --scheduler-evidence independent_audit/scheduler_evidence.json --output rebuilt_delivery
+```
+
+Use that archive's dependency instructions. Simplification verifies file recovery and table regeneration; it does not claim that this scientific report command or any fitting run was rerun.
+
+## Check preservation
+
+```bash
+python3 scripts/verify.py --archives --output build/verification.json
+```
+
+This checks the main file hashes, all archived former files, all 51 archive checksums and compressed contents, five source reconstructions, result-table regeneration and the fixed scorer hash. It is a repository check, not a GPU correctness result.
+
+New experiment records should be added as dated files after stopped jobs are collected and audited. Keep existing failures and snapshots. Running and queued experiment directories are outside this repository and must not be modified by repository maintenance.

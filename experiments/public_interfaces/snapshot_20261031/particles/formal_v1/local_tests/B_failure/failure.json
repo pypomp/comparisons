@@ -1,6 +1,0 @@
-{
-  "stage": "IF2",
-  "error": "FloatingPointError('injected failure')",
-  "traceback": "Traceback (most recent call last):\n  File \"/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/particles/formal_v1/fit.py\", line 77, in fit\n    step=public_if2(factory,inp['ys'],cloud,m.scales(config['T'])*config['IF2_cooling50']**(iteration/50),\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/particles/formal_v1/check_driver.py\", line 47, in failure\n    def failure(*a,**kw):fclock.t+=3;raise FloatingPointError('injected failure')\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFloatingPointError: injected failure\n",
-  "charged_fit_seconds": 3.0
-}

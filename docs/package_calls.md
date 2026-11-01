@@ -2,7 +2,7 @@
 
 This table describes the modified code under `packages/`. Here, an original function means one provided by the recorded package version. An added function is code we wrote. Calling an original PF does not make an external optimizer or an added derivative correction a package-provided method.
 
-The [source review](../reports/native_pf_audit_20261031/report.md) and [source locations](../reports/native_pf_audit_20261031/source_locations.md) show the calls. The [earlier table](../reports/package_calls_legacy/table_CN.txt) and [Chinese notes](package_calls_CN.md) describe previous experiments. In particular, earlier PFJAX IF2 used our own monthly filtering loop; its new interface calls the original full PF. Cuthbert uses the original PF update functions through a loop we added.
+The [source review](../archive/README.md) and [source locations](../archive/README.md) show the calls. The [earlier table](../archive/README.md) and [Chinese notes](../archive/README.md) describe previous experiments. In particular, earlier PFJAX IF2 used our own monthly filtering loop; its new interface calls the original full PF. Cuthbert uses the original PF update functions through a loop we added.
 
 | Package | Original package functions used | Code added or modified locally | Parameter optimization |
 |---|---|---|---|

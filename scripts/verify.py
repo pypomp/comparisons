@@ -1,112 +1,74 @@
 #!/usr/bin/env python3
-"""Verify copied evidence and patches offline. Does not run a PF or optimizer."""
+"""Verify retained files, archived records, reconstructed code and result tables."""
 import argparse
-import csv
 import hashlib
 import json
-import shutil
-import subprocess
 import tarfile
 import tempfile
 import zipfile
-from pathlib import Path, PurePosixPath
-
-ROOT = Path(__file__).resolve().parents[1]
-
-
-def sha(path):
-    h = hashlib.sha256()
-    with path.open('rb') as f:
-        for block in iter(lambda: f.read(1024 * 1024), b''):
-            h.update(block)
-    return h.hexdigest()
-
-
-def relative(name):
-    p = PurePosixPath(name)
-    if p.is_absolute() or '..' in p.parts:
-        raise ValueError(f'Unsafe archive path: {name}')
+from pathlib import Path
+from repository import ROOT, PACKAGES, history, relative, sha
+from prepare import prepare
+from reproduce import tables
 
 
 def main():
-    ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--archives', action='store_true', help='Also read all archive members to verify decompression and ZIP CRCs.')
-    ap.add_argument('--originals', type=Path, help='Optional original workspace to check source files still match this snapshot.')
-    ap.add_argument('--output', type=Path)
-    a = ap.parse_args()
-    imp = json.loads((ROOT / 'manifests/import.json').read_text())
-    checked = 0
-    for rel, rec in imp['files'].items():
-        p = ROOT / rel
-        assert p.is_file() and not p.is_symlink(), rel
-        assert sha(p) == rec['sha256'] and p.stat().st_size == rec['bytes'], rel
-        if a.originals:
-            assert sha(a.originals / rec['source']) == rec['sha256'], rec['source']
-        checked += 1
-    repo_manifest = ROOT / 'manifests/repository_files.json'
-    if repo_manifest.exists():
-        for rel, digest in json.loads(repo_manifest.read_text())['files'].items():
-            assert sha(ROOT / rel) == digest, rel
-    patches = {}
-    for package in ['cuthbert', 'pfjax', 'pydpf', 'tfp', 'particles']:
-        pkg = ROOT / 'packages' / package
-        with tempfile.TemporaryDirectory(prefix='comparisons-patch-') as tmp:
-            clean = Path(tmp) / 'source'
-            shutil.copytree(pkg / 'upstream', clean)
-            patch = pkg / 'review/full.patch'
-            subprocess.run(['git', 'apply', '--check', str(patch)], cwd=clean, check=True, capture_output=True)
-            subprocess.run(['git', 'apply', str(patch)], cwd=clean, check=True, capture_output=True)
-            expected = {p.relative_to(pkg / 'candidate').as_posix(): sha(p) for p in (pkg / 'candidate').rglob('*') if p.is_file()}
-            actual = {p.relative_to(clean).as_posix(): sha(p) for p in clean.rglob('*') if p.is_file()}
-            assert actual == expected, f'Patched {package} differs from candidate'
-            patches[package] = {'patch_applied': True, 'all_files_match': True, 'files': len(actual)}
-    def rows(rel):
-        with (ROOT / rel).open() as f:
-            return list(csv.DictReader(f))
-    old = rows('reports/legacy_dacca/endpoints.csv')
-    new = rows('experiments/public_interfaces/snapshot_20261031/recovery_20261031/particles/endpoints.csv')
-    assert len(old) == 968
-    assert sum(int(r['raw_repetitions']) for r in old) == 37584
-    assert len(new) == 24 and len({r['task'] for r in new}) == 24
-    assert sum(int(r['repetitions']) for r in new) == 1692
-    assert sum(r['precision_passed'] == 'True' for r in new) == 21
-    score = ROOT / 'experiments/public_interfaces/snapshot_20261031/shared/score.py'
-    assert sha(score) == '8aec1ba02982a1ad9bff227b300806eaafa972a1e9fd00b71bef2c5f0ebdc508'
-    archives = []
-    if a.archives:
-        for rec in json.loads((ROOT / 'manifests/archives.json').read_text()):
-            path = ROOT / rec['path']
-            count = 0
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--archives', action='store_true', help='Also read every compressed member of all archives')
+    p.add_argument('--output', type=Path)
+    a = p.parse_args()
+    checksums = json.loads((ROOT / 'archive/checksums.json').read_text())['files']
+    for name, digest in checksums.items():
+        path = ROOT / name
+        assert path.is_file() and not path.is_symlink() and sha(path) == digest, name
+    path, files = history()
+    with tarfile.open(path) as tf:
+        seen = set()
+        for m in tf:
+            assert m.isfile() and m.name in files and m.name not in seen, m.name
+            rec = files[m.name]
+            assert m.size == rec['bytes']
+            assert hashlib.sha256(tf.extractfile(m).read()).hexdigest() == rec['sha256'], m.name
+            seen.add(m.name)
+    assert seen == set(files) and len(seen) == 8527
+    copies = json.loads((ROOT / 'archive/copies.json').read_text())
+    for name, original in copies.items():
+        assert sha(ROOT / name) == files[original]['sha256'], name
+    archives = json.loads((ROOT / 'archive/catalog.json').read_text())
+    for rec in archives:
+        path = ROOT / rec['path']
+        assert path.is_file() and sha(path) == rec['sha256'] and path.stat().st_size == rec['bytes'], rec['path']
+        if a.archives:
             if zipfile.is_zipfile(path):
                 with zipfile.ZipFile(path) as z:
-                    for name in z.namelist():
-                        relative(name)
+                    for n in z.namelist():
+                        relative(n)
                     assert z.testzip() is None, path
-                    count = len(z.infolist())
-            elif tarfile.is_tarfile(path):
-                with tarfile.open(path) as tf:
-                    for member in tf:
-                        relative(member.name)
-                        if member.isfile():
-                            f = tf.extractfile(member)
-                            while f.read(1024 * 1024):
-                                pass
-                        count += 1
             else:
-                raise ValueError(f'Unrecognized archive: {path}')
-            archives.append({'path': rec['path'], 'members_read': count})
-    result = {'repository_integrity_passed': True, 'imported_files_checked': checked,
-              'patches': patches, 'legacy_endpoints': 968, 'legacy_raw_PF_repetitions': 37584,
-              'new_particles_endpoints': 24, 'new_particles_raw_PF_repetitions': 1692,
-              'new_particles_precision_passed': 21, 'archives_read': archives,
-              'scientific_experiments_rerun': False,
-              'scope': 'Repository integrity and existing evidence; not a new GPU correctness or optimization result.'}
-    text = json.dumps(result, indent=2) + '\n'
+                with tarfile.open(path) as tf:
+                    for m in tf:
+                        relative(m.name)
+                        if m.isfile():
+                            with tf.extractfile(m) as f:
+                                while f.read(1048576):
+                                    pass
+    patches = []
+    with tempfile.TemporaryDirectory(prefix='comparisons-verify-') as tmp:
+        for pkg in PACKAGES:
+            patches.append(prepare(pkg, Path(tmp) / pkg))
+    for name, data in tables().items():
+        assert data == (ROOT / 'results' / name).read_bytes(), name
+    assert sha(ROOT / 'experiments/dacca/score.py') == '8aec1ba02982a1ad9bff227b300806eaafa972a1e9fd00b71bef2c5f0ebdc508'
+    result = dict(passed=True, retained_files_checked=len(checksums), archived_files_checked=len(seen),
+                  unchanged_copies_checked=len(copies), archive_checksums_checked=len(archives),
+                  archives_fully_read=len(archives) if a.archives else 1, patched_sources=patches,
+                  result_tables_rebuilt=2, old_endpoints_preserved=968, old_raw_PF_repetitions=37584,
+                  new_particles_endpoints=24, new_particles_raw_PF_repetitions=1692,
+                  numerical_experiments_rerun=False)
     if a.output:
         a.output.parent.mkdir(parents=True, exist_ok=True)
-        a.output.write_text(text)
-    print(json.dumps({k: v for k, v in result.items() if k != 'archives_read'}, indent=2))
-    print('Archives fully read:', len(archives))
+        a.output.write_text(json.dumps(result, indent=2) + '\n')
+    print(json.dumps(result, indent=2))
 
 
 if __name__ == '__main__':

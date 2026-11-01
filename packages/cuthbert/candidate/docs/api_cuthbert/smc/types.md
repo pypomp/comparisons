@@ -1,3 +1,0 @@
-# Types
-
-::: cuthbert.smc.types

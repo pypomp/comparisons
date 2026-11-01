@@ -1,0 +1,16 @@
+{
+  "revision": 1,
+  "base": "3388c4bd30ab9acc5a27c970089230f93610b627",
+  "baseline_scope": "See original review manifest and preserved upstream files.",
+  "patch": "packages/particles/review/full.patch",
+  "candidate_files": 107,
+  "upstream_accepted": false,
+  "changed_files": [
+    "book/mle/if2_stochvol.py",
+    "docs/source/index.rst",
+    "docs/source/iterated_filtering.rst",
+    "particles/iterated_filtering.py",
+    "tests/test_iterated_filtering.py"
+  ],
+  "archived_review_manifest": "packages/particles/review/review_manifest.json"
+}

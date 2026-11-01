@@ -1,0 +1,29 @@
+{
+  "revision": 3,
+  "base": "c737efe3098b2b5ecaa7d8b976e7cea246998b17",
+  "baseline_scope": "See original review manifest and preserved upstream files.",
+  "patch": "packages/cuthbert/review/full.patch",
+  "candidate_files": 254,
+  "upstream_accepted": false,
+  "changed_files": [
+    "cuthbert/smc/README.md",
+    "cuthbert/smc/_estimation.py",
+    "cuthbert/smc/dmop.py",
+    "cuthbert/smc/ifad.py",
+    "cuthbert/smc/iterated_filtering.py",
+    "cuthbertlib/resampling/README.md",
+    "cuthbertlib/resampling/__init__.py",
+    "cuthbertlib/resampling/autodiff.py",
+    "docs/api_cuthbert/smc/dmop.md",
+    "docs/api_cuthbert/smc/ifad.md",
+    "docs/api_cuthbert/smc/index.md",
+    "docs/api_cuthbert/smc/iterated_filtering.md",
+    "docs/examples/index.md",
+    "docs/examples/parameter_estimation_ifad.md",
+    "examples_scripts/parameter_estimation_ifad.py",
+    "pkg/cuthbert/pyproject.toml",
+    "tests/cuthbert/smc/test_parameter_estimation.py",
+    "zensical.toml"
+  ],
+  "archived_review_manifest": "packages/cuthbert/review/review_manifest.json"
+}

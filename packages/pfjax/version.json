@@ -1,0 +1,18 @@
+{
+  "revision": 2,
+  "base": "97652aa1bdff73a92c0286549b010e99cc6f7264",
+  "baseline_scope": "See original review manifest and preserved upstream files.",
+  "patch": "packages/pfjax/review/full.patch",
+  "candidate_files": 197,
+  "upstream_accepted": false,
+  "changed_files": [
+    "docs/iterated_filter.txt",
+    "examples/iterated_filter.py",
+    "src/pfjax/__init__.py",
+    "src/pfjax/iterated_filter.py",
+    "src/pfjax/particle_filter.py",
+    "src/pfjax/particle_filter_mop.py",
+    "tests/test_iterated_filter.py"
+  ],
+  "archived_review_manifest": "packages/pfjax/review/review_manifest.json"
+}

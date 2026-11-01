@@ -19,7 +19,7 @@ def git(*args):
 
 def index():
     names = {n.decode() for n in git('ls-files', '-z', '--cached', '--others', '--exclude-standard').split(b'\0') if n}
-    names.update(r['path'] for r in json.loads((ROOT / 'manifests/archives.json').read_text()))
+    names.update(r['path'] for r in json.loads((ROOT / 'archive/catalog.json').read_text()))
     return sorted(n for n in names if (ROOT / n).is_file() and not (ROOT / n).is_symlink())
 
 
