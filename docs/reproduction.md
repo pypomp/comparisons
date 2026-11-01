@@ -62,6 +62,6 @@ Use that archive's dependency instructions. Simplification verifies file recover
 python3 scripts/verify.py --archives --output build/verification.json
 ```
 
-This checks the main file hashes, all archived former files, all 51 archive checksums and compressed contents, five source reconstructions, result-table regeneration and the fixed scorer hash. It is a repository check, not a GPU correctness result.
+This checks the main file hashes, all archived former files, all catalogued archive checksums and compressed contents, five source reconstructions, result-table regeneration and the fixed scorer hash. It is a repository check, not a GPU correctness result.
 
 New experiment records should be added as dated files after stopped jobs are collected and audited. Keep existing failures and snapshots. Running and queued experiment directories are outside this repository and must not be modified by repository maintenance.

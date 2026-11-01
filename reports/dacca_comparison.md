@@ -2,7 +2,7 @@
 
 This report compares package implementations of particle filtering and examines whether IF2 initialization and gradient discounting improve likelihood optimization within a package. It accompanies local changes to Cuthbert, PFJAX, PyDPF, TensorFlow Probability and particles. PyPOMP supplies the independent PF used to evaluate fitted parameters. Earlier pypfilt results are also retained.
 
-The new experiments are incomplete. This report describes the code, settings and results present in the repository as assembled on 31 October 2026. [Results and tests](status.md) gives the dates and numerical details. The [meeting notes](../archive/README.md) explain the questions that motivated the work.
+The new experiments are incomplete. This report describes the 31 October 2026 snapshot and the [1 November validation update](validation_20261101.md). [Results and tests](status.md) gives the dates and numerical details. The [archived meeting notes](../archive/README.md) explain the questions that motivated the work.
 
 ## Model and evaluation
 
@@ -22,7 +22,7 @@ Each modified package has a complete diff and the changed files. Original and mo
 
 ## Correctness
 
-We compare original and modified filters, test the added functions, and record failures from both versions. Cuthbert's revised CPU checks passed. Its earlier GPU test run timed out with three failures; the subsequent original-code comparisons and revised GPU tests had not finished in the included scheduler records. PFJAX, PyDPF and TFP have unresolved GPU gradient or equality checks. The [test table](status.md) gives the exact status, including incomplete test coverage.
+We compare original and modified filters, test the added functions, and record failures from both versions. Cuthbert's revised CPU checks passed. Its earlier GPU test run timed out with three failures; all three have since been reproduced in unchanged original code on A40. Both sides passed 64 PF tests. The revised v3 GPU checks are still pending. PFJAX, PyDPF and TFP have unresolved GPU gradient or equality checks. All 515 TFP CPU test-file pairs have been attempted, with common failures retained. The [test table](status.md) gives the exact status.
 
 Matching fitted likelihoods are useful as a check, but do not replace tests of filtering, perturbations and derivatives. Earlier completed experiments also cannot validate a later code revision.
 

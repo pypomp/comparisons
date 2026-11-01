@@ -307,5 +307,13 @@
     "commit": "3d810f4bca1220d2ff26f15e3fb618477d12128d",
     "files": 8527,
     "created_utc": "2026-11-01T00:00:32.826885+00:00"
+  },
+  {
+    "path": "artifacts/validation/20261101_completed_checks.tar.gz",
+    "source": "work/implementation-comparison-20261030/completed_checks_20261101",
+    "sha256": "bd749ff14809f28965218b2e2678b15f99b27e343a711038ccafaed9200310e9",
+    "bytes": 9002271,
+    "files": 6253,
+    "description": "Completed Cuthbert v2 GPU diagnosis and all515 paired TFP CPU test files; includes failures and audit script"
   }
 ]

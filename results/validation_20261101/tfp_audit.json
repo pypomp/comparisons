@@ -1,0 +1,52 @@
+{
+  "audit_passed": true,
+  "source_files_checked": 2601,
+  "pairs_checked": 515,
+  "raw_records_checked": 1030,
+  "XML_records_checked": 1010,
+  "all_files_attempted": true,
+  "all_tests_passed": false,
+  "pair_exit_state_count_differences": [],
+  "candidate_additional_failed_test_ids": [],
+  "sides": {
+    "original": {
+      "exit_codes": {
+        "1": 127,
+        "0": 370,
+        "124": 9,
+        "5": 8,
+        "-6": 1
+      },
+      "reported_XML_counts": {
+        "tests": 26754,
+        "failures": 1006,
+        "errors": 54,
+        "skipped": 1614
+      },
+      "subprocess_seconds": 13881.421711885952
+    },
+    "candidate": {
+      "exit_codes": {
+        "1": 127,
+        "0": 370,
+        "124": 9,
+        "5": 8,
+        "-6": 1
+      },
+      "reported_XML_counts": {
+        "tests": 26754,
+        "failures": 1006,
+        "errors": 54,
+        "skipped": 1614
+      },
+      "subprocess_seconds": 13752.098495537299
+    }
+  },
+  "no_new_tests_run": true,
+  "per_file_timeout_seconds": 180,
+  "status_finished_flag_stale": true,
+  "terminal_evidence": "COMPLETE.json, all515 pair records, no RUNNING.json and runner PID absent",
+  "limitation": "Common failures, no-test exits, timeouts and abort are not passes. CPU tests do not resolve the pending GPU gradient failure.",
+  "COMPLETE_sha256": "a4f05a19556610fe32cbb8f7f764ab9e08ed13ad86622e4d70f1c4ab7af21c71",
+  "audited_at_utc": "2026-11-01T00:12:54.323397+00:00"
+}

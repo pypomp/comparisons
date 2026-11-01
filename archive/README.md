@@ -2,7 +2,9 @@
 
 All 8,527 tracked files from commit `3d810f4bca1220d2ff26f15e3fb618477d12128d` are stored in `artifacts/history/comparisons_20261031_before_simplification.tar.gz`. This includes original and modified sources, failed checks, raw records copied into Git, earlier reports and internal notes. No original record was deleted from this archive or edited to change a result.
 
-The 50 existing source and raw-data archives remain at their original paths. [The catalog](catalog.json) lists all 51 files, sizes and SHA256 values. [The history record](history.json) identifies the former commit; `files.json.gz` lists the size, mode and SHA256 of each of its 8,527 files. `copies.json` maps unchanged files kept in the main tree to their former paths.
+The 50 original source and raw-data archives remain at their original paths. [The catalog](catalog.json) lists those archives, the full pre-simplification copy and later additions, with sizes and SHA256 values. [The history record](history.json) identifies the former commit; `files.json.gz` lists the size, mode and SHA256 of each of its 8,527 files. `copies.json` maps unchanged files kept in the main tree to their former paths.
+
+The [1 November validation records](../reports/validation_20261101.md) add the completed Cuthbert v2 diagnosis and 515 TFP CPU test-file pairs in `artifacts/validation/20261101_completed_checks.tar.gz`. Earlier snapshots remain unchanged.
 
 ## Recover or inspect
 

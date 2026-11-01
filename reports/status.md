@@ -1,6 +1,6 @@
 # Results and tests
 
-This page describes the files included in the repository on 31 October 2026. The included scheduler query is from **22:09:39 UTC**; this page is not a live job monitor. See the [saved experiment status](../archive/README.md), [job records](../archive/README.md) and [GPU test results](../archive/README.md).
+The original repository snapshot is from 31 October 2026. A [1 November validation update](validation_20261101.md) adds the completed Cuthbert v2 GPU diagnosis and all 515 TFP CPU test-file pairs. Cuthbert v3 remained pending at the 1 November scheduler query. This page is not a live job monitor. Earlier job records and failures remain [archived](../archive/README.md).
 
 The [Dacca report](dacca_comparison.md) describes the model and experiment design. The [source review](../archive/README.md) identifies the package functions used. Dynamax is excluded from the current comparison; its earlier 36 estimates remain in the historical reports and figures.
 
@@ -8,15 +8,15 @@ The [Dacca report](dacca_comparison.md) describes the model and experiment desig
 
 | Package | Tests and comparisons | Unfinished work |
 |---|---|---|
-| Cuthbert | Earlier local coverage: 1548 unique tests eventually passed after dependency repairs. Current v3: 32 CPU interface tests, full T=600 checks with both resamplers at J=32, and 12 original and modified ADPF comparisons passed | Earlier full GPU suite timed out with three failures. The original/candidate diagnosis (65144329) and revised GPU check (65144479) were pending. Full GPU correctness is not established |
+| Cuthbert | Earlier local coverage: 1548 unique tests eventually passed after dependency repairs. Current v3: 32 CPU interface tests, full T=600 checks with both resamplers at J=32, and 12 original and modified ADPF comparisons passed. GPU diagnosis reproduced all three previous failures in unchanged original code; both sides passed 64 PF tests | Revised GPU check 65144479 remains pending. Full GPU correctness is not established |
 | PFJAX | 72 configured CPU tests and 72 configured GPU tests passed, with upstream exclusions retained | A Dacca gradient coordinate failed its tolerance; the revised interface has no formal optimization result |
 | PyDPF | Native PF likelihood increments matched in nine GPU pairs; repaired test run passed 33/34 | A float32 multinomial exact-equality test failed; the cause still needs an original-code comparison |
-| TFP | Both sides passed 120 official PF tests with 23 skipped after an explicit test-harness name-binding repair; the original common failures are also retained | GPU alpha=1 exact-gradient check failed. Full upstream testing is incomplete |
+| TFP | The separate PF subset passed 120 tests with 23 skipped on both sides after a test-harness name-binding repair. All 515 full-suite file pairs have now been attempted; no additional failed test identities in the candidate | GPU alpha=1 exact-gradient check failed. Full CPU suite has common failures, no-test exits, timeouts and an abort; it did not pass |
 | particles | Nine CPU PF pairs matched likelihood/state/weights/RNG; public IF2 tests and collected-result audits passed | The pinned upstream has no pytest suite; this is not a claim that an upstream test suite passed |
 
-The TFP full-suite snapshot contains 324 of 515 completed file pairs and their logs. One hundred pairs include a nonzero exit or incomplete original test execution. There are no candidate-only failing pairs in this copied subset. This count is separate from the 120-test PF subset and does not imply that all 515 files passed. [Exact snapshot counts](../archive/README.md).
+The original TFP snapshot of 324 pairs remains archived. The completed run has 515 pairs: 370 normal exits, 127 test/collection failures, eight no-test exits, nine timeouts and one abort per side. Original/candidate outcomes and failed-test identities match in every pair. This does not imply that all tests passed. [Completed-run details](validation_20261101.md).
 
-The Cuthbert v3 change preserves the original alpha=1 differentiation path by defaulting to `checkpoint=False`. A recorded CPU multinomial diagnosis showed that adding checkpointing to the original ADPF reproduces the prior discrepancy. Disabling it passed the recorded checks without changing tolerances. This local diagnosis still requires the pending GPU checks. The three failures in the earlier upstream GPU test run are not assumed to be upstream-only until the original/candidate comparison is reviewed.
+The Cuthbert v3 change preserves the original alpha=1 differentiation path by defaulting to `checkpoint=False`. A recorded CPU multinomial diagnosis showed that adding checkpointing to the original ADPF reproduces the prior discrepancy. Disabling it passed the recorded checks without changing tolerances. This local diagnosis still requires the pending v3 GPU checks. The three earlier failed tests have now also failed in unchanged upstream on A40; their underlying numerical cause remains undetermined.
 
 ## Native particle-filter runtime
 

@@ -1,0 +1,93 @@
+{
+  "audit_passed": true,
+  "job": 65144329,
+  "node": "gl1516",
+  "Slurm_state": "FAILED",
+  "Slurm_exit": "1:0",
+  "actual_GPU_seconds": 801,
+  "source_files_verified_remotely": 757,
+  "transferred_files_checked": 50,
+  "terminal_files_checked": 45,
+  "source_manifest_sha256": "8353adc2073c1281825bfe78a20160f6da0fa4c5f2e57d9d8a7246b592c85108",
+  "archive_sha256": "591d692b532ec5ffee8286565aed5e60e424125bd5ce74d291367de3aa249b58",
+  "counts": {
+    "upstream_original_failures": {
+      "tests": 3,
+      "failures": 3,
+      "errors": 0,
+      "skipped": 0
+    },
+    "candidate_original_failures": {
+      "tests": 3,
+      "failures": 3,
+      "errors": 0,
+      "skipped": 0
+    },
+    "upstream_PF_regression": {
+      "tests": 64,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "candidate_PF_regression": {
+      "tests": 64,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "candidate_public_tests": {
+      "tests": 31,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "failed_tests": [
+    [
+      "tests.cuthbert.ensemble_kalman.test_enkf",
+      "test_gaussian_taper_log_likelihood_gradient"
+    ],
+    [
+      "tests.cuthbert.gaussian.test_taylor",
+      "test_smoother[0-3-1-25]"
+    ],
+    [
+      "tests.cuthbert.gaussian.test_taylor",
+      "test_smoother[0-3-2-25]"
+    ]
+  ],
+  "original_failures_reproduced": true,
+  "failure_assertion_summary": {
+    "upstream": {
+      "max_absolute_differences": [
+        "0.41011396",
+        "2.17069444e-06",
+        "2.02640667e-06"
+      ],
+      "tolerances": [
+        "rtol=1e-05, atol=1e-07",
+        "rtol=1e-05, atol=1e-08",
+        "rtol=1e-05, atol=1e-08"
+      ]
+    },
+    "candidate": {
+      "max_absolute_differences": [
+        "0.41011396",
+        "2.17069444e-06",
+        "2.02640667e-06"
+      ],
+      "tolerances": [
+        "rtol=1e-05, atol=1e-07",
+        "rtol=1e-05, atol=1e-08",
+        "rtol=1e-05, atol=1e-08"
+      ]
+    }
+  },
+  "full_GPU_suite_passed": false,
+  "candidate_revision": "v2 diagnosis, not v3",
+  "formal_fit_calls": 0,
+  "tolerance_changes": false,
+  "new_v3_release_authorized_by_this_audit": false,
+  "interpretation": "The three failures also occur in unchanged upstream on this A40 environment. Their underlying numerical cause is not established. The v3 multinomial/J5000/12-start GPU checks remain required; v2 cost measurements cannot approve v3.",
+  "audited_at_utc": "2026-11-01T00:12:54.334650+00:00"
+}
