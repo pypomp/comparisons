@@ -1,0 +1,22 @@
+--- formal_v2/run.py
++++ formal_v3/run.py
+@@ -88,7 +88,9 @@
+                     finite=np.isfinite(new_np).all() and np.isfinite(ll_np).all()
+                     natural=m.natural(tf.reduce_mean(new,0)).numpy()
+                     finite=finite and np.isfinite(natural).all()
+-                    if not finite:raise FloatingPointError('Nonfinite public IF2 cloud/likelihood/natural point')
++                    if not finite:
++                        save(where/f'rejected_IF2_{i:04d}.npz',{'cloud':new_np,'loglik':ll_np,'natural_mean':natural,'root_key':seed(10,i).numpy(),'members':ids.numpy()})
++                        raise FloatingPointError('Nonfinite public IF2 cloud/likelihood/natural point')
+                     cloud=new;accepted+=1
+                 except Exception as e:
+                     seconds=time.perf_counter()-t
+@@ -203,7 +205,7 @@
+             model=keyed.Dacca(T=600)
+             if a.method=='prefix':prefix(model,initial,cases,out)
+             else:
+-                gradient_regression(model,out)
++                # Full-Dacca controls are reviewed in runtime_guard.py; no repeated diagnostic.
+                 adam(model,initial,cases,a.method,out)
+     except BaseException as e:
+         write(out/'failure.json',{'exception':repr(e),'traceback':traceback.format_exc()});raise

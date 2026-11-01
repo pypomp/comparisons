@@ -21,3 +21,5 @@ particles compares external Nelder-Mead for 1800 seconds against 900 seconds of 
 Ed asked for parameter perturbations within the package's framework and an extension of Cuthbert's ADPF (29 October, 15:27:20–15:28:52). Giles asked for a readable diff from the package's original code (15:29:17–15:29:59). Kevin distinguished correctness, running time and likelihood performance (15:22:47–15:23:41). The within-package comparison was discussed at 15:24:45–15:25:17 and 15:53:37–15:53:55. Exact particle counts, iteration counts and paired streams were chosen afterward. The full notes and checked excerpts are [archived](../../archive/README.md).
 
 This repository cleanup changes file organization only. It does not submit, cancel, fit or score any experiment, or alter the live job directories.
+
+Later revisions and actual outcomes are linked from [current experiment status](../../reports/status.md). This table identifies the older principal-source copies kept in this directory; it is not the current scheduler state. Complete new source revisions, submission records and results are in the dated archives. The TFP v3 readable driver diff is appended without overwriting v2.

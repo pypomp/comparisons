@@ -10,7 +10,7 @@ Particle filtering and likelihood optimization for the Dacca cholera model. This
 | How long does an ordinary particle filter take? | [PF runtime](reports/timing.md) |
 | Do IF2 initialization and gradient discounting improve optimization? | [Likelihood optimization](reports/optimization.md) |
 
-[Study design](reports/dacca_comparison.md) describes the model and comparison. [Experiment status](reports/status.md) lists completed and unfinished work. The [completed Cuthbert comparison](reports/cuthbert_20261101/report.md) contains all 36 audited endpoints, including two failed A fits and three low-precision A scores. C exceeds B in all twelve observed pairs. The particles comparison has 24 estimates and independent scores, including three low-precision scores.
+[Study design](reports/dacca_comparison.md) describes the model and comparison. [Experiment status](reports/status.md) lists completed and unfinished work. The [completed Cuthbert comparison](reports/cuthbert_20261101/report.md) contains all 36 audited endpoints, including two failed A fits and three low-precision A scores. C exceeds B in all twelve observed pairs. The [completed particles comparison](reports/particles_20261101/report.md) includes all 24 estimates, independent scores, figures and a verified reproduction archive, with three low-precision scores retained.
 
 ## Package changes
 

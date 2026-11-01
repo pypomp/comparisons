@@ -1,0 +1,27 @@
+{
+  "path": "artifacts/experiments/dacca/particles_review_20261101.tar.gz",
+  "source": "Complete particles review: 24 fits, 1692 raw scores, all source, failures, swarms, logs and reproducible figures.",
+  "sha256": "c1a504d080bc9bea0beb02146513c1bcf59e8eb5122747d98466d4446062af11",
+  "bytes": 301877165,
+  "files": 8406,
+  "all_member_hashes_verified": true,
+  "recomputed_outputs_byte_identical": [
+    "audit.json",
+    "endpoints.csv",
+    "fit_audit.json",
+    "verification.json"
+  ],
+  "rebuilt_outputs_byte_identical": [
+    "endpoints.pdf",
+    "endpoints.png",
+    "likelihood_iqr.pdf",
+    "likelihood_iqr.png",
+    "summary.json",
+    "timing.pdf",
+    "timing.png"
+  ],
+  "patched_source_files_verified": 107,
+  "fit_calls": 0,
+  "PF_calls": 0,
+  "review_ready": true
+}

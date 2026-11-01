@@ -553,5 +553,55 @@
     "files": 9,
     "all_member_hashes_verified": true,
     "source": "Local report update, preserved Python3.9 loading errors before execution, and successful integrity check; no numerical experiment."
+  },
+  {
+    "path": "artifacts/experiments/dacca/particles_review_20261101.tar.gz",
+    "source": "Complete particles review: 24 fits, 1692 raw scores, all source, failures, swarms, logs and reproducible figures.",
+    "sha256": "c1a504d080bc9bea0beb02146513c1bcf59e8eb5122747d98466d4446062af11",
+    "bytes": 301877165,
+    "files": 8406,
+    "all_member_hashes_verified": true,
+    "recomputed_outputs_byte_identical": [
+      "audit.json",
+      "endpoints.csv",
+      "fit_audit.json",
+      "verification.json"
+    ],
+    "rebuilt_outputs_byte_identical": [
+      "endpoints.pdf",
+      "endpoints.png",
+      "likelihood_iqr.pdf",
+      "likelihood_iqr.png",
+      "summary.json",
+      "timing.pdf",
+      "timing.png"
+    ],
+    "patched_source_files_verified": 107,
+    "fit_calls": 0,
+    "PF_calls": 0,
+    "review_ready": true
+  },
+  {
+    "path": "artifacts/validation/tfp_and_pfjax_20261101T1056.tar.gz",
+    "source": "TFP full-Dacca GPU records and revised shared-prefix source/submission; PFJAX case1 complete raw scores and pairing audit.",
+    "sha256": "e1a9310a1456d8a974b8b31a051d3819e6a43c0755a3a5631308aeecb9f77504",
+    "bytes": 59544049,
+    "files": 6892,
+    "all_member_hashes_verified": true,
+    "extracted_two_audits_byte_identical": true,
+    "extracted_TFP_acceptance_passed": true,
+    "PF_calls": 0,
+    "fit_calls": 0
+  },
+  {
+    "path": "artifacts/experiments/dacca/pfjax_cases2_3_20261101T1056.tar.gz",
+    "source": "PFJAX cases2/3 stopped results: six endpoints, 216 raw scores, full source and pairing/cost audits.",
+    "sha256": "4895cbaac381476d51de4ef475570446cd1bb0259b923d9fe129ce91efbcd91f",
+    "bytes": 30774339,
+    "files": 605,
+    "all_member_hashes_verified": true,
+    "two_extracted_audits_byte_identical": true,
+    "PF_calls": 0,
+    "fit_calls": 0
   }
 ]
