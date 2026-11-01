@@ -1,7 +1,7 @@
 {
-  "observed_at_utc": "2026-11-01T05:26:59.365209+00:00",
-  "scheduler_source": "work/implementation-comparison-20261030/scheduler_20261101T0526.json",
-  "scheduler_source_sha256": "5396d62e18648c9f4e2d7adbf52e3c4e45632b5ddb27ffae55a8a22ad2fd3a3f",
+  "observed_at_utc": "2026-11-01T05:56:59.129979+00:00",
+  "scheduler_source": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/scheduler_20261101T0556.json",
+  "scheduler_source_sha256": "3ea8e6287613572fad3a1fdc65cdf622a08aecf35d4191f00a5c667d43a9c43e",
   "jobs": {
     "cuthbert": {
       "job_id": "65144479",
@@ -129,16 +129,17 @@
         10,
         11
       ],
-      "state": "RUNNING_AND_PENDING",
-      "running_cases": [
+      "completed_and_audited_cases": [
         1,
         2,
         3
       ],
-      "pending_cases": [
+      "running_cases": [
         4,
         5,
-        6,
+        6
+      ],
+      "pending_cases": [
         7,
         8,
         9,
@@ -146,69 +147,13 @@
         11
       ],
       "pending_reason": "JobArrayTaskLimit",
-      "estimated_start": null,
-      "requested_host_memory_GiB": 48,
+      "state": "THREE_COMPLETED_THREE_RUNNING_FIVE_PENDING",
       "time_limit_seconds": 3420,
+      "requested_host_memory_GiB": 48,
       "max_concurrent_GPUs": 3,
       "squeue_rows": [
         [
-          "65160224_1",
-          "RUNNING",
-          "18:22",
-          "gl1516",
-          "gl1516"
-        ],
-        [
-          "65160224_2",
-          "RUNNING",
-          "18:22",
-          "gl1516",
-          "gl1516"
-        ],
-        [
-          "65160224_3",
-          "RUNNING",
-          "18:22",
-          "gl1516",
-          "gl1516"
-        ],
-        [
-          "65160224_4",
-          "PENDING",
-          "0:00",
-          "",
-          "(JobArrayTaskLimit)"
-        ],
-        [
-          "65160224_5",
-          "PENDING",
-          "0:00",
-          "",
-          "(JobArrayTaskLimit)"
-        ],
-        [
-          "65160224_6",
-          "PENDING",
-          "0:00",
-          "",
-          "(JobArrayTaskLimit)"
-        ],
-        [
-          "65160224_7",
-          "PENDING",
-          "0:00",
-          "",
-          "(JobArrayTaskLimit)"
-        ],
-        [
-          "65160224_8",
-          "PENDING",
-          "0:00",
-          "",
-          "(JobArrayTaskLimit)"
-        ],
-        [
-          "65160224_9",
+          "65160224_11",
           "PENDING",
           "0:00",
           "",
@@ -222,80 +167,74 @@
           "(JobArrayTaskLimit)"
         ],
         [
-          "65160224_11",
+          "65160224_9",
           "PENDING",
           "0:00",
           "",
           "(JobArrayTaskLimit)"
+        ],
+        [
+          "65160224_8",
+          "PENDING",
+          "0:00",
+          "",
+          "(JobArrayTaskLimit)"
+        ],
+        [
+          "65160224_7",
+          "PENDING",
+          "0:00",
+          "",
+          "(JobArrayTaskLimit)"
+        ],
+        [
+          "65160224_4",
+          "RUNNING",
+          "13:58",
+          "gl1516",
+          "gl1516"
+        ],
+        [
+          "65160224_5",
+          "RUNNING",
+          "13:58",
+          "gl1516",
+          "gl1516"
+        ],
+        [
+          "65160224_6",
+          "RUNNING",
+          "13:58",
+          "gl1516",
+          "gl1516"
         ]
       ],
-      "observed_at_utc": "2026-11-01T05:26:59.365209+00:00",
-      "live_progress_observed_at_utc": "2026-11-01T05:27:28.352363+00:00",
-      "live_progress_source": "work/implementation-comparison-20261030/cuthbert_cases123_health_20261101T0526.json",
-      "live_progress_source_sha256": "1e3e80ba327ae9047e5804340c16aa7670aeef21b8f08e12a80c01abe00c4053",
-      "live_progress": {
-        "1": {
-          "IF2_completed": 175,
-          "arms": {
-            "A": null,
-            "B": {
-              "attempted": 400,
-              "accepted": 400,
-              "fit_failed": false,
-              "fit_seconds": 556.7575556077063
-            },
-            "C": {
-              "attempted": 230,
-              "accepted": 230,
-              "fit_failed": false,
-              "fit_seconds": 320.3283078940585
-            }
-          },
-          "complete": false
+      "observed_at_utc": "2026-11-01T05:56:59.129979+00:00",
+      "completed_case_records": [
+        {
+          "case": 1,
+          "job": "65160224_1",
+          "node": "gl1516",
+          "allocation_GPU_seconds": 2048,
+          "audit_sha256": "a1376250d69405e0925c91b3af4e6ad1c5da6d786bb35565375edce2c1ca67ec"
         },
-        "2": {
-          "IF2_completed": 175,
-          "arms": {
-            "A": {
-              "attempted": 240,
-              "accepted": 240,
-              "fit_failed": false,
-              "fit_seconds": 332.5521682575345
-            },
-            "B": null,
-            "C": {
-              "attempted": 400,
-              "accepted": 400,
-              "fit_failed": false,
-              "fit_seconds": 554.304480352439
-            }
-          },
-          "complete": false
+        {
+          "case": 2,
+          "job": "65160224_2",
+          "node": "gl1516",
+          "allocation_GPU_seconds": 2048,
+          "audit_sha256": "edccdd0a8da48ed59c76b2980c26423b14a58228b4230895daf7b309c0feb39b"
         },
-        "3": {
-          "IF2_completed": 175,
-          "arms": {
-            "A": {
-              "attempted": 400,
-              "accepted": 400,
-              "fit_failed": false,
-              "fit_seconds": 556.6673379912972
-            },
-            "B": {
-              "attempted": 240,
-              "accepted": 240,
-              "fit_failed": false,
-              "fit_seconds": 333.9823130602017
-            },
-            "C": null
-          },
-          "complete": false
+        {
+          "case": 3,
+          "job": "65160224_3",
+          "node": "gl1516",
+          "allocation_GPU_seconds": 2048,
+          "audit_sha256": "197990c9bcd1b89f6374bd808f93f683cd0c6d46cd283a4cd7258d03690f3103"
         }
-      },
-      "not_terminal_results": true,
-      "note": "Three existing tasks are running; the remaining eight wait for the array concurrency limit. The earlier PartitionDown record remains in the dated submission snapshot."
+      ]
     }
   },
-  "completed_jobs_scheduler_source": "work/implementation-comparison-20261030/scheduler_20261101T0526.json",
-  "completed_jobs_scheduler_source_sha256": "5396d62e18648c9f4e2d7adbf52e3c4e45632b5ddb27ffae55a8a22ad2fd3a3f"
+  "completed_jobs_scheduler_source": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/scheduler_20261101T0556.json",
+  "completed_jobs_scheduler_source_sha256": "3ea8e6287613572fad3a1fdc65cdf622a08aecf35d4191f00a5c667d43a9c43e"
 }

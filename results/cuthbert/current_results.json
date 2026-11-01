@@ -1,0 +1,238 @@
+{
+  "cases": [
+    {
+      "case": 0,
+      "start_id": 0,
+      "replicate": 0,
+      "methods": {
+        "A": {
+          "alpha": 1.0,
+          "logmeanlik": -3749.346584656804,
+          "MCSE": 0.182491565343027,
+          "likelihood_ESS": 16.623484090264864,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 557.5409111175686,
+          "logical_fit_seconds": 557.5409111175686,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400
+        },
+        "B": {
+          "alpha": 1.0,
+          "logmeanlik": -3747.7406283845226,
+          "MCSE": 0.17470100550745313,
+          "likelihood_ESS": 17.406310383623655,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 557.2730654325569,
+          "logical_fit_seconds": 629.2961537135998,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400
+        },
+        "C": {
+          "alpha": 0.97,
+          "logmeanlik": -3744.8449116060933,
+          "MCSE": 0.11996383548089956,
+          "likelihood_ESS": 23.941005152638247,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 557.7560598681448,
+          "logical_fit_seconds": 629.7791481491877,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400
+        }
+      },
+      "allocation_GPU_seconds": 1882,
+      "node": "gl1524",
+      "job": "65158659_0",
+      "physical_kernel_seconds": 1744.5931246993132,
+      "physical_compile_seconds": 18.334963310160674,
+      "audit_path": "cuthbert_formal_v4_collected/case00/audit.json",
+      "audit_sha256": "fa2f42de22e31ce5cf0f99fc86fa7cd831bb204612636ab4419661b943a8045f"
+    },
+    {
+      "case": 1,
+      "start_id": 0,
+      "replicate": 1,
+      "methods": {
+        "A": {
+          "alpha": 1.0,
+          "logmeanlik": -3749.191836463913,
+          "MCSE": 0.11223493408851418,
+          "likelihood_ESS": 24.984665400575125,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 556.8225194737315,
+          "logical_fit_seconds": 556.8225194737315,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400
+        },
+        "B": {
+          "alpha": 1.0,
+          "logmeanlik": -3745.2035262586564,
+          "MCSE": 0.1677114542631678,
+          "likelihood_ESS": 18.141050146269674,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 556.7575556077063,
+          "logical_fit_seconds": 627.8379782726988,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400
+        },
+        "C": {
+          "alpha": 0.97,
+          "logmeanlik": -3744.0107969395267,
+          "MCSE": 0.10714760791370644,
+          "likelihood_ESS": 25.680875887926206,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 557.1041966089979,
+          "logical_fit_seconds": 628.1846192739904,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400
+        }
+      },
+      "allocation_GPU_seconds": 2048,
+      "node": "gl1516",
+      "job": "65160224_1",
+      "physical_kernel_seconds": 1741.7646943554282,
+      "physical_compile_seconds": 17.274257528595626,
+      "audit_path": "cuthbert_formal_v4_collected/case01/audit.json",
+      "audit_sha256": "a1376250d69405e0925c91b3af4e6ad1c5da6d786bb35565375edce2c1ca67ec"
+    },
+    {
+      "case": 2,
+      "start_id": 1,
+      "replicate": 0,
+      "methods": {
+        "A": {
+          "alpha": 1.0,
+          "logmeanlik": -3796.6216963058887,
+          "MCSE": 0.12682404589975885,
+          "likelihood_ESS": 23.033339102638365,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 554.2602130174637,
+          "logical_fit_seconds": 554.2602130174637,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400
+        },
+        "B": {
+          "alpha": 1.0,
+          "logmeanlik": -3746.2625684457485,
+          "MCSE": 0.1263447619585648,
+          "likelihood_ESS": 23.09609638124017,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 554.2680354071781,
+          "logical_fit_seconds": 625.2553098676726,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400
+        },
+        "C": {
+          "alpha": 0.97,
+          "logmeanlik": -3744.227976568275,
+          "MCSE": 0.24181433357338342,
+          "likelihood_ESS": 11.816466573224691,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 554.304480352439,
+          "logical_fit_seconds": 625.2917548129335,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400
+        }
+      },
+      "allocation_GPU_seconds": 2048,
+      "node": "gl1516",
+      "job": "65160224_2",
+      "physical_kernel_seconds": 1733.8200032375753,
+      "physical_compile_seconds": 16.21595539804548,
+      "audit_path": "cuthbert_formal_v4_collected/case02/audit.json",
+      "audit_sha256": "edccdd0a8da48ed59c76b2980c26423b14a58228b4230895daf7b309c0feb39b"
+    },
+    {
+      "case": 3,
+      "start_id": 1,
+      "replicate": 1,
+      "methods": {
+        "A": {
+          "alpha": 1.0,
+          "logmeanlik": -3780.1598969407387,
+          "MCSE": 0.13654730755771383,
+          "likelihood_ESS": 21.784108145432292,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 556.6673379912972,
+          "logical_fit_seconds": 556.6673379912972,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400
+        },
+        "B": {
+          "alpha": 1.0,
+          "logmeanlik": -3750.942196575645,
+          "MCSE": 0.1791151902874766,
+          "likelihood_ESS": 16.958104260061,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 556.6300987396389,
+          "logical_fit_seconds": 627.5946339033544,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400
+        },
+        "C": {
+          "alpha": 0.97,
+          "logmeanlik": -3744.40847305482,
+          "MCSE": 0.15102431484115383,
+          "likelihood_ESS": 20.01899548470963,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 556.7447303561494,
+          "logical_fit_seconds": 627.7092655198649,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400
+        }
+      },
+      "allocation_GPU_seconds": 2048,
+      "node": "gl1516",
+      "job": "65160224_3",
+      "physical_kernel_seconds": 1741.006702250801,
+      "physical_compile_seconds": 18.184800659306347,
+      "audit_path": "cuthbert_formal_v4_collected/case03/audit.json",
+      "audit_sha256": "197990c9bcd1b89f6374bd808f93f683cd0c6d46cd283a4cd7258d03690f3103"
+    }
+  ],
+  "expected_cases": 12,
+  "expected_endpoints": 36,
+  "audited_endpoints": 12,
+  "partial": true,
+  "uncompleted_cases": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "original_PF_repetitions": 432,
+  "fit_failures": 0,
+  "score_precision_passed": 12,
+  "floor_saturated": 0,
+  "completed_allocation_GPU_seconds": 8026,
+  "original_budget_GPU_seconds": 42480,
+  "validation_and_completed_plus_remaining_limits_GPU_seconds": 36586,
+  "timing_note": "Sum of one-GPU allocation seconds, not elapsed wall time; shared work is counted once within each physical case."
+}

@@ -51,10 +51,18 @@ def tables():
     assert case0['passed'] and case0['endpoint_count'] == 3
     first_case = [dict(case=0, method=arm, **record)
                   for arm, record in case0['methods'].items()]
+    current = json.loads((ROOT / 'results/cuthbert/current_results.json').read_text())
+    current_rows = [dict(case=case['case'], start_id=case['start_id'], replicate=case['replicate'],
+                         method=arm, **record)
+                    for case in current['cases'] for arm, record in case['methods'].items()]
+    assert len(current_rows) == current['audited_endpoints']
+    assert len({(r['case'], r['method']) for r in current_rows}) == len(current_rows)
+    assert sum(r['repetitions'] for r in current_rows) == current['original_PF_repetitions']
     return {
         'particles_summary.csv': csv_bytes(summarize(new, ['method'], 'repetitions')),
         'previous_summary.csv': csv_bytes(summarize(main, ['experiment_scope', 'package', 'method'], 'raw_repetitions')),
         'cuthbert/case0_20261101.csv': csv_bytes(first_case),
+        'cuthbert/endpoints.csv': csv_bytes(current_rows),
     }
 
 

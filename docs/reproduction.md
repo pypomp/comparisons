@@ -20,7 +20,7 @@ PyDPF's original source is a recorded subset of the upstream repository. TFP's o
 python3 scripts/reproduce.py --output build/tables
 ```
 
-This recomputes the two summary tables and the first Cuthbert case table from saved records. Every finite score, including low-precision and floor-saturated scores, contributes to its group's median. Failed fits, nonfinite scores and precision counts are reported separately. It checks all 24 new particles rows and all 968 historical rows; the 36 historical Dynamax rows remain archived and are excluded from the main summary. The three Cuthbert rows are one case of the planned twelve and remain separate from the earlier experiments.
+This recomputes the two summary tables, the first Cuthbert case table and the current Cuthbert endpoint table from saved records. Every finite score, including low-precision and floor-saturated scores, contributes to its group's median. Failed fits, nonfinite scores and precision counts are reported separately. It checks all 24 new particles rows and all 968 historical rows; the 36 historical Dynamax rows remain archived and are excluded from the main summary. The dated first-case table remains unchanged. The current Cuthbert table contains all audited cases and remains separate from the earlier experiments. Allocation costs are recorded once per case in results/cuthbert/current_results.json.
 
 The script does not recalculate PF scores. Individual PF repeats and the original scoring audits are in the archives. To repeat those audits or rebuild original figures, restore the corresponding archive and use its original instructions.
 
