@@ -1,0 +1,18 @@
+{
+  "path": "artifacts/experiments/maze/pydpf_maze_pilot_20261101.tar.gz",
+  "source": "Independent PyDPF maze pilot: ten finite full-length GPU controls, three finite full-batch cost calls, original time-budget failure, zero trained models; source, raw arrays and all failures retained.",
+  "sha256": "ab4b5234f29cc1a0386e606fdc693b66b4b6a54b59191f72283df41a26c5b4e1",
+  "bytes": 148642307,
+  "files": 309,
+  "all_member_hashes_verified": true,
+  "extracted_saved_audit_byte_identical": true,
+  "extracted_summary_and_figures_byte_identical": true,
+  "patched_source_files_verified": 24,
+  "original_job_state": "FAILED1:0",
+  "actual_GPU_seconds": 1475,
+  "fitted_models": 0,
+  "held_out_RMSE_available": false,
+  "verified_budget_limit": true,
+  "PF_calls_in_review": 0,
+  "optimizer_steps_in_review": 0
+}

@@ -1,6 +1,6 @@
 # Experiment status
 
-The [saved scheduler query](../results/current_jobs.json) was captured at 20:07 UTC on 1 November 2026. This page is a recorded snapshot, not a live cluster view.
+The [saved scheduler query](../results/current_jobs.json) was captured at 20:37 UTC on 1 November 2026. This page is a recorded snapshot, not a live cluster view.
 
 | Package | GPU check | New optimization results |
 |---|---|---|
@@ -30,4 +30,4 @@ The [PyDPF phase, score and aggregate audit preparation](pydpf_gradient_audit_pr
 
 The [TFP three-method audit preparation](tfp_all_methods_audit_preparation_20261101.md) now checks complete metadata, paired starts and streams, retained failures, independent scores and total cost using saved and synthetic controls. The [actual three-method audit](../results/tfp/final_audit_20261101.json) is complete. It retains 36 endpoints, 1,332 raw PF values, one failed fit and its floor score.
 
-The independent PyDPF maze pilot, job 65185523, was running on gl1511 at the separate 20:07 UTC check (242 seconds). Its 1,800-second budget and supervised localization objective are separate from Dacca. No maze GPU result has been audited. Existing PyDPF Dacca A/B/C jobs are 65177901/65177902/65177903; no additional jobs are submitted.
+The separate [PyDPF maze pilot](pydpf_maze_20261101/report.md) has a verified time-budget limitation: job 65185523 failed at its original cost check after 1,475 GPU seconds. Ten finite full-length GPU controls give eight exact matched forward pairs; the forecast of 34,374.759 seconds exceeds the 330.428 seconds remaining. No model was trained and no held-out RMSE exists. The report, cost figure and full archive retain this outcome; no retry or larger allocation was made. Existing PyDPF Dacca A/B/C jobs 65177901/65177902/65177903 remain running in the 20:37 snapshot (8,464/4,995/3,797 seconds respectively), with their separate original budget.
