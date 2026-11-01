@@ -1,0 +1,22 @@
+{
+  "path": "artifacts/experiments/dacca/cuthbert_review_20261101.tar.gz",
+  "source": "Complete Cuthbert review: 12 cases, 36 endpoints, 2052 raw PF values; full source/diff, validation history, failures, saved-data audit and figures.",
+  "sha256": "d85ee48d0ba684d3456257cb57137ce43f9f9c8ae6f2447b661159f618683f27",
+  "bytes": 54622977,
+  "files": 1338,
+  "all_member_hashes_verified": true,
+  "all_case_audit_reproduced_byte_for_byte": true,
+  "rebuilt_outputs_verified": [
+    "endpoints.pdf",
+    "endpoints.png",
+    "likelihood_iqr.pdf",
+    "likelihood_iqr.png",
+    "summary.json",
+    "timing.pdf",
+    "timing.png"
+  ],
+  "patched_source_files_verified": 254,
+  "experiments_rerun": false,
+  "review_ready": true,
+  "upstream_release": false
+}

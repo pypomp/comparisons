@@ -77,3 +77,16 @@ python3 scripts/verify.py --archives --output build/verification.json
 This checks the main file hashes, all archived former files, all catalogued archive checksums and compressed contents, five source reconstructions, result-table regeneration and the fixed scorer hash. It is a repository check, not a GPU correctness result.
 
 New experiment records should be added as dated files after stopped jobs are collected and audited. Keep existing failures and snapshots. Running and queued experiment directories are outside this repository and must not be modified by repository maintenance.
+
+## Complete Cuthbert A/B/C review (1 November 2026)
+
+The standalone archive contains all twelve cases and their full audit, original/modified code, diff, raw PF scores, checkpoints, failed checks and reports:
+
+```bash
+python3 scripts/extract_archive.py artifacts/experiments/dacca/cuthbert_review_20261101.tar.gz extracted/cuthbert_review
+cd extracted/cuthbert_review
+JAX_PLATFORMS=cpu JAX_ENABLE_X64=False PYTHONDONTWRITEBYTECODE=1 python audit_cuthbert_all_cases_v2.py --output rechecked.json
+python analyze_cuthbert.py --input rechecked.json --output rebuilt_figures
+```
+
+Saved-data auditing needs NumPy and JAX. Plotting also needs Matplotlib. The archive README gives the tested versions and the comparison commands. This recalculates all 2,052 raw PF summaries and verifies the saved fitting states; it runs no PF or optimization. The final review preserves the first failed all-case audit attempt and its rounding diagnosis. To regenerate the same figures directly from this repository, run `python scripts/analyze_cuthbert.py --input results/cuthbert/final_audit_20261101.json --output build/cuthbert_figures` with a new output directory.

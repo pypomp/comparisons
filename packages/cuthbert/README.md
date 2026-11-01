@@ -2,7 +2,7 @@
 
 Local revision 3, based on the original version recorded in [source details](version.json). The changes have not been submitted upstream.
 
-The completed v3 GPU check did not pass the original-ADPF gradient comparisons at all planned starts. A/B/C has not been submitted. [Results and follow-up diagnosis](../../reports/cuthbert_v3_20261101.md).
+The [completed A/B/C experiment](../../reports/cuthbert_20261101/report.md) contains all 36 audited endpoints. The earlier v3 gradient comparisons and timeouts remain failed; original self-repeat controls also failed the old gradient rule. The empirical experiment proceeded after forward-likelihood agreement was accepted. See [correctness](../../reports/correctness.md).
 
 ## Original code and IF2
 
@@ -14,7 +14,7 @@ IF2 adds a parameter vector to each state particle, applies random-walk perturba
 
 ## Experiment calls
 
-The planned A/B/C experiment calls `iterated_filtering.fit` and `dmop.log_likelihood`, with external Optax `scale_by_adam` for parameter updates. It does not call the combined `ifad.fit` function.
+The completed A/B/C experiment calls `iterated_filtering.fit` and `dmop.log_likelihood`, with external Optax `scale_by_adam` for parameter updates. It does not call the combined `ifad.fit` function.
 
 ## Validation and reproduction
 
