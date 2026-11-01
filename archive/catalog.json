@@ -747,5 +747,23 @@
     "actual_GPU_gradient_audit_completed": false,
     "PF_calls": 0,
     "optimizer_steps": 0
+  },
+  {
+    "path": "artifacts/validation/tfp_all_methods_audit_preparation_20261101T1756.tar.gz",
+    "source": "TFP saved aggregate and complete-file audit preparation; frozen sources, stopped audited prefix, saved CPU controls and explicit synthetic score/pairing/metadata fixtures. No gradient result.",
+    "sha256": "0c3ea9e1d7caeb3b3a55687fcd81ed62dcf3c66337cf93db316ea4bdf07b7c64",
+    "bytes": 38252513,
+    "files": 6535,
+    "all_member_hashes_verified": true,
+    "extracted_control_JSONs_byte_identical": 67,
+    "aggregate_corruptions_refused": 15,
+    "metadata_corruptions_refused": 15,
+    "planned_TF_root_member_pairs": 11724,
+    "synthetic_score_records": 36,
+    "synthetic_raw_values": 2808,
+    "synthetic_JAX_keys": 2922,
+    "actual_GPU_all_methods_audit_completed": false,
+    "PF_calls": 0,
+    "optimizer_steps": 0
   }
 ]

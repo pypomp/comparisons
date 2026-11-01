@@ -1,6 +1,6 @@
 # Experiment status
 
-The [saved scheduler query](../results/current_jobs.json) was captured at 17:27 UTC on 1 November 2026. This page is a recorded snapshot, not a live cluster view.
+The [saved scheduler query](../results/current_jobs.json) was captured at 17:57 UTC on 1 November 2026. This page is a recorded snapshot, not a live cluster view.
 
 | Package | GPU check | New optimization results |
 |---|---|---|
@@ -27,3 +27,5 @@ Completed checks: [Cuthbert v2 and TFP CPU tests](validation_20261101.md). Diagn
 The [TFP saved-state and score audit preparation](tfp_gradient_audit_preparation_20261101.md) passes local saved-record controls. Actual A/B/C jobs are running; their results are not yet audited. No model or optimizer was run by these preparation checks.
 
 The [PyDPF phase, score and aggregate audit preparation](pydpf_gradient_audit_preparation_20261101.md) is now available. Existing jobs remain queued or running; no new gradient result is claimed.
+
+The [TFP three-method audit preparation](tfp_all_methods_audit_preparation_20261101.md) now checks complete metadata, paired starts and streams, retained failures, independent scores and total cost using saved and synthetic controls. It has not audited actual gradient results.
