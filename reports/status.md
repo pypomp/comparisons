@@ -1,12 +1,12 @@
 # Experiment status
 
-The [saved scheduler query](../results/current_jobs.json) was captured at 16:27 UTC on 1 November 2026. This page is a recorded snapshot, not a live cluster view.
+The [saved scheduler query](../results/current_jobs.json) was captured at 16:57 UTC on 1 November 2026, with a 17:01 UTC post-submission query. This page is a recorded snapshot, not a live cluster view.
 
 | Package | GPU check | New optimization results |
 |---|---|---|
 | Cuthbert v3 | Earlier failed checks retained; the repeat diagnosis shows that the old gradient rule also rejects original self-repeats | 36/36 endpoints audited; two A fits failed and three A scores are low precision; final report, figures and reproduction archive prepared |
 | PFJAX | [Matched execution controls: 324/324 likelihood pairs exactly equal](pfjax_execution_controls_20261101.md); original forward-only/differentiated values also differ | [36/36 endpoints and final review delivered](pfjax_20261101/report.md); 35 complete fits, one failed A fit with density-floor score; all other 35 scores meet precision |
-| PyDPF | [48/48 full-Dacca forward pairs exactly equal](pydpf_native_DPF_20261101.md); original failed checks retained | 0/36; shared IF2 job 65170880 running on gl1503; no gradient phase submitted |
+| PyDPF | [48/48 full-Dacca forward pairs exactly equal](pydpf_native_DPF_20261101.md); original failed checks retained | 0/36; [twelve complete IF2 fits audited; A/B/C submitted once](pydpf_warm_20261101.md), using the same physical warm results |
 | TFP | [72/72 full-Dacca forward pairs exactly equal](tfp_full_Dacca_20261101.md); finite values and memory pass, original time split fails | 0/36; [all twelve IF2 fits audited; A/B/C submitted once](tfp_prefix_20261101.md), using the same physical prefix |
 | particles | CPU checks and independent GPU evaluation complete | [24/24 results, figures and reproduction archive delivered](particles_20261101/report.md); 21 scores precise, three low-ESS A scores retained |
 
@@ -24,4 +24,4 @@ The [Cuthbert repeat diagnosis](cuthbert_repeats_20261101.md) retains 54 finite 
 
 Completed checks: [Cuthbert v2 and TFP CPU tests](validation_20261101.md). Diagnostic design and CPU controls: [PFJAX, PyDPF and TFP](gpu_diagnosis_20261101.md). Earlier results, failures and full test logs remain in the [archive](../archive/README.md).
 
-The [TFP saved-state and score audit preparation](tfp_gradient_audit_preparation_20261101.md) passes local saved-record controls. Actual A/B/C GPU results are still pending; no model or optimizer was run by these checks.
+The [TFP saved-state and score audit preparation](tfp_gradient_audit_preparation_20261101.md) passes local saved-record controls. Actual A/B/C jobs are running; their results are not yet audited. No model or optimizer was run by these preparation checks.

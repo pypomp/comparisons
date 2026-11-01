@@ -695,5 +695,20 @@
     "PF_calls": 0,
     "IF2_calls": 0,
     "optimizer_calls": 0
+  },
+  {
+    "path": "artifacts/experiments/dacca/pydpf_warm_and_gradients_20261101T1656.tar.gz",
+    "source": "Completed PyDPF shared IF2 with final swarms and histories, source and terminal hashes, saved-data audit, and actual A/B/C submission receipts; no gradient result.",
+    "sha256": "d644674640ae7acccbfa659e94276ec5a43b13c8556dd9a941f966ce8506564b",
+    "bytes": 11427918,
+    "files": 334,
+    "all_member_hashes_verified": true,
+    "extracted_warm_audit_byte_identical": true,
+    "warm_GPU_seconds": 20216,
+    "accepted_IF2_passes": 2100,
+    "failed_warm_rows": 0,
+    "gradient_results_claimed": false,
+    "PF_calls": 0,
+    "fit_calls": 0
   }
 ]
