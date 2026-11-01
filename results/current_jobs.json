@@ -1,7 +1,7 @@
 {
-  "observed_at_utc": "2026-11-01T06:57:04.826796+00:00",
-  "scheduler_source": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/scheduler_20261101T0656.json",
-  "scheduler_source_sha256": "9f05ac679266f512643d01d8d101a21e93d567c77a37978907c7ffcea69174e4",
+  "observed_at_utc": "2026-11-01T07:27:00.340448+00:00",
+  "scheduler_source": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/scheduler_20261101T0726.json",
+  "scheduler_source_sha256": "76a3dd8b8c8d92dc7c137519d5159c3ce4b346a0c0a9757f396dbb612dc8852e",
   "jobs": {
     "cuthbert": {
       "job_id": "65144479",
@@ -138,36 +138,28 @@
         6,
         7,
         8,
-        9
-      ],
-      "running_cases": [
+        9,
         10
       ],
-      "pending_cases": [
+      "running_cases": [
         11
       ],
-      "pending_reason": "JobArrayTaskLimit",
-      "state": "NINE_COMPLETED_ONE_RUNNING_ONE_PENDING",
+      "pending_cases": [],
+      "pending_reason": null,
+      "state": "TEN_COMPLETED_ONE_RUNNING",
       "time_limit_seconds": 3420,
       "requested_host_memory_GiB": 48,
       "max_concurrent_GPUs": 3,
       "squeue_rows": [
         [
           "65160224_11",
-          "PENDING",
-          "0:00",
-          "",
-          "(JobArrayTaskLimit)"
-        ],
-        [
-          "65160224_10",
           "RUNNING",
-          "5:31",
-          "gl1529",
-          "gl1529"
+          "23:59",
+          "gl1527",
+          "gl1527"
         ]
       ],
-      "observed_at_utc": "2026-11-01T06:57:04.826796+00:00",
+      "observed_at_utc": "2026-11-01T07:27:00.340448+00:00",
       "completed_case_records": [
         {
           "case": 1,
@@ -231,10 +223,17 @@
           "node": "gl1527",
           "allocation_GPU_seconds": 1467,
           "audit_sha256": "61b85c778490f1182492ea547fed51f50975374121fac8841f48b6d003a8ad01"
+        },
+        {
+          "case": 10,
+          "job": "65160224_10",
+          "node": "gl1529",
+          "allocation_GPU_seconds": 2053,
+          "audit_sha256": "93278a908a736e368b9a18536d5d34a922d242d1786384aff643ddd23dd7b365"
         }
       ]
     }
   },
-  "completed_jobs_scheduler_source": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/scheduler_20261101T0656.json",
-  "completed_jobs_scheduler_source_sha256": "9f05ac679266f512643d01d8d101a21e93d567c77a37978907c7ffcea69174e4"
+  "completed_jobs_scheduler_source": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/scheduler_20261101T0726.json",
+  "completed_jobs_scheduler_source_sha256": "76a3dd8b8c8d92dc7c137519d5159c3ce4b346a0c0a9757f396dbb612dc8852e"
 }

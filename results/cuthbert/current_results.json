@@ -559,22 +559,77 @@
       "physical_compile_seconds": 15.231772215105593,
       "audit_path": "cuthbert_formal_v4_collected/case09/audit.json",
       "audit_sha256": "61b85c778490f1182492ea547fed51f50975374121fac8841f48b6d003a8ad01"
+    },
+    {
+      "case": 10,
+      "start_id": 5,
+      "replicate": 0,
+      "methods": {
+        "A": {
+          "alpha": 1.0,
+          "logmeanlik": -3768.950268715559,
+          "MCSE": 0.15578046051255118,
+          "likelihood_ESS": 19.46614828356773,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 554.8437462239526,
+          "logical_fit_seconds": 554.8437462239526,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400,
+          "failure_reason": null
+        },
+        "B": {
+          "alpha": 1.0,
+          "logmeanlik": -3748.2627710726833,
+          "MCSE": 0.1436071147902255,
+          "likelihood_ESS": 20.90828955570947,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 555.1340335700661,
+          "logical_fit_seconds": 626.0655787200667,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400,
+          "failure_reason": null
+        },
+        "C": {
+          "alpha": 0.97,
+          "logmeanlik": -3745.913990098271,
+          "MCSE": 0.12894129564875675,
+          "likelihood_ESS": 22.757371357603343,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 555.190931672696,
+          "logical_fit_seconds": 626.1224768226966,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400,
+          "failure_reason": null
+        }
+      },
+      "allocation_GPU_seconds": 2053,
+      "node": "gl1529",
+      "job": "65160224_10",
+      "physical_kernel_seconds": 1736.1002566167153,
+      "physical_compile_seconds": 14.283875386696309,
+      "audit_path": "cuthbert_formal_v4_collected/case10/audit.json",
+      "audit_sha256": "93278a908a736e368b9a18536d5d34a922d242d1786384aff643ddd23dd7b365"
     }
   ],
   "expected_cases": 12,
   "expected_endpoints": 36,
-  "audited_endpoints": 30,
+  "audited_endpoints": 33,
   "partial": true,
   "uncompleted_cases": [
-    10,
     11
   ],
-  "original_PF_repetitions": 1836,
+  "original_PF_repetitions": 1944,
   "fit_failures": 2,
-  "score_precision_passed": 27,
+  "score_precision_passed": 30,
   "floor_saturated": 0,
-  "completed_allocation_GPU_seconds": 19128,
+  "completed_allocation_GPU_seconds": 21181,
   "original_budget_GPU_seconds": 42480,
-  "validation_and_completed_plus_remaining_limits_GPU_seconds": 27168,
+  "validation_and_completed_plus_remaining_limits_GPU_seconds": 25801,
   "timing_note": "Sum of one-GPU allocation seconds, not elapsed wall time; shared work is counted once within each physical case."
 }
