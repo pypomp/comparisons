@@ -1,7 +1,7 @@
 {
-  "observed_at_utc": "2026-11-01T03:22:22.804326+00:00",
-  "scheduler_source": "work/implementation-comparison-20261030/scheduler_20261101T032222.json",
-  "scheduler_source_sha256": "1b800c2379771dee34d569d129b980f39f9d27028f829b7d7c88f2fcbf2777da",
+  "observed_at_utc": "2026-11-01T03:42:12.168490+00:00",
+  "scheduler_source": "work/implementation-comparison-20261030/scheduler_20261101T034212.json",
+  "scheduler_source_sha256": "a493992824a4b500c6d52b7ba01b08c9fd44c81166464fe2309f3b46e516214e",
   "jobs": {
     "cuthbert": {
       "job_id": "65144479",
@@ -56,36 +56,36 @@
     },
     "tfp": {
       "job_id": "65151858",
-      "state": "RUNNING",
-      "exit_code": "0:0",
-      "elapsed_seconds": 497,
+      "state": "FAILED",
+      "exit_code": "1:0",
+      "elapsed_seconds": 1203,
       "allocated_node": "gl1524",
       "reason": null,
       "requested_host_memory_GiB": 48,
       "sacct_row": [
         "65151858",
-        "RUNNING",
-        "0:0",
-        "497",
+        "FAILED",
+        "1:0",
+        "1203",
         "gl1524",
         "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1"
       ]
     },
     "cuthbert_gradient_diagnosis": {
       "job_id": "65156615",
-      "state": "PENDING",
+      "state": "COMPLETED",
       "exit_code": "0:0",
-      "elapsed_seconds": 0,
-      "allocated_node": null,
-      "reason": "Priority",
+      "elapsed_seconds": 321,
+      "allocated_node": "gl1524",
+      "reason": null,
       "requested_host_memory_GiB": 48,
       "sacct_row": [
         "65156615",
-        "PENDING",
+        "COMPLETED",
         "0:0",
-        "0",
-        "None assigned",
-        ""
+        "321",
+        "gl1524",
+        "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1"
       ]
     },
     "cuthbert_ABC_case0": {
@@ -94,7 +94,7 @@
       "exit_code": "0:0",
       "elapsed_seconds": 0,
       "allocated_node": null,
-      "reason": "None",
+      "reason": "Priority",
       "requested_host_memory_GiB": 48,
       "sacct_row": [
         "65158659_0",

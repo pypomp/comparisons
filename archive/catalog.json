@@ -363,5 +363,23 @@
     "bytes": 6425049,
     "files": 131,
     "all_member_hashes_verified": true
+  },
+  {
+    "path": "artifacts/validation/tfp_gpu_20261101.tar.gz",
+    "source": "TFP GPU diagnostic arrays, all timeouts, source references, collection and repeat-pair audit.",
+    "sha256": "008bffcef241a26e678e1854b1c4f485078026f767b4bda0c27ede542623e846",
+    "bytes": 575142,
+    "files": 50,
+    "all_member_hashes_verified": true,
+    "audit_reproduced_byte_for_byte": true
+  },
+  {
+    "path": "artifacts/validation/cuthbert_repeats_20261101.tar.gz",
+    "source": "Cuthbert GPU repeated gradients, original self controls, all failed comparisons, source references and audit.",
+    "sha256": "a5bd00d6d7e72754c9f2d29ec352c020471fc4d71911386a8baab629945d0a27",
+    "bytes": 295542,
+    "files": 49,
+    "all_member_hashes_verified": true,
+    "audit_reproduced_byte_for_byte": true
   }
 ]

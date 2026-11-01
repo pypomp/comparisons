@@ -1,0 +1,163 @@
+{
+  "integrity_audit_passed": true,
+  "scheduler_row": [
+    "65151858",
+    "FAILED",
+    "1:0",
+    "1203",
+    "gl1524",
+    "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1"
+  ],
+  "actual_GPU_seconds": 1203,
+  "prior_validation_GPU_seconds": 432,
+  "validation_GPU_seconds_total": 1635,
+  "referenced_source_files_verified": 3090,
+  "transferred_files_verified": 28,
+  "terminal_manifest_available": true,
+  "terminal_files_verified": 22,
+  "raw_NPZ_files": 14,
+  "stored_array_comparisons_recomputed": 12,
+  "additional_cross_repeat_pairs": 20,
+  "formal_fit_calls": 0,
+  "scope": "Original Dacca, T600, J5000, one published parameter vector and one seed; alpha1 only. Each mode compares unchanged native TFP PF with the added public argument. Exact-equality failures are descriptive and remain preserved.",
+  "modes": {
+    "default": {
+      "diagnosis_complete": false,
+      "saved_arrays": 1,
+      "expected_arrays": 8,
+      "original_arrays": 1,
+      "candidate_arrays": 0,
+      "all_saved_values_finite": true,
+      "within_function_summary": {
+        "original": {
+          "pairs": 0,
+          "exact_increment_pairs": 0,
+          "exact_gradient_pairs": 0,
+          "maximum_gradient_difference": null
+        },
+        "public_alpha1": {
+          "pairs": 0,
+          "exact_increment_pairs": 0,
+          "exact_gradient_pairs": 0,
+          "maximum_gradient_difference": null
+        }
+      },
+      "cross_pairs": 0,
+      "exact_increment_pairs": 0,
+      "exact_gradient_pairs": 0,
+      "maximum_gradient_difference": null,
+      "maximum_relative_gradient_L2_difference": null
+    },
+    "deterministic": {
+      "diagnosis_complete": false,
+      "saved_arrays": 7,
+      "expected_arrays": 8,
+      "original_arrays": 4,
+      "candidate_arrays": 3,
+      "all_saved_values_finite": true,
+      "within_function_summary": {
+        "original": {
+          "pairs": 6,
+          "exact_increment_pairs": 6,
+          "exact_gradient_pairs": 6,
+          "maximum_gradient_difference": 0.0
+        },
+        "public_alpha1": {
+          "pairs": 3,
+          "exact_increment_pairs": 3,
+          "exact_gradient_pairs": 3,
+          "maximum_gradient_difference": 0.0
+        }
+      },
+      "cross_pairs": 12,
+      "exact_increment_pairs": 12,
+      "exact_gradient_pairs": 12,
+      "maximum_gradient_difference": 0.0,
+      "maximum_relative_gradient_L2_difference": 0.0
+    },
+    "no_checkpoint": {
+      "diagnosis_complete": false,
+      "saved_arrays": 6,
+      "expected_arrays": 8,
+      "original_arrays": 4,
+      "candidate_arrays": 2,
+      "all_saved_values_finite": true,
+      "within_function_summary": {
+        "original": {
+          "pairs": 6,
+          "exact_increment_pairs": 6,
+          "exact_gradient_pairs": 0,
+          "maximum_gradient_difference": 2.384185791015625e-07
+        },
+        "public_alpha1": {
+          "pairs": 1,
+          "exact_increment_pairs": 1,
+          "exact_gradient_pairs": 0,
+          "maximum_gradient_difference": 1.6391277313232422e-07
+        }
+      },
+      "cross_pairs": 8,
+      "exact_increment_pairs": 8,
+      "exact_gradient_pairs": 0,
+      "maximum_gradient_difference": 2.384185791015625e-07,
+      "maximum_relative_gradient_L2_difference": 5.889317596558536e-07
+    }
+  },
+  "subprocesses": {
+    "default": {
+      "attempted": true,
+      "command": [
+        "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/competitor_estimation_20261028/tfp/venv/bin/python",
+        "/gpfs/accounts/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/other_gpu_diagnosis_v1/tfp_diagnose.py",
+        "--campaign-root",
+        "/gpfs/accounts/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030",
+        "--output",
+        "/gpfs/accounts/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/other_gpu_diagnosis_v1/results/tfp/default",
+        "--device",
+        "gpu",
+        "--mode",
+        "default"
+      ],
+      "elapsed_seconds": 350.1644375700271,
+      "returncode": 124,
+      "timed_out": true
+    },
+    "deterministic": {
+      "attempted": true,
+      "command": [
+        "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/competitor_estimation_20261028/tfp/venv/bin/python",
+        "/gpfs/accounts/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/other_gpu_diagnosis_v1/tfp_diagnose.py",
+        "--campaign-root",
+        "/gpfs/accounts/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030",
+        "--output",
+        "/gpfs/accounts/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/other_gpu_diagnosis_v1/results/tfp/deterministic",
+        "--device",
+        "gpu",
+        "--mode",
+        "deterministic"
+      ],
+      "elapsed_seconds": 350.1885611569742,
+      "returncode": 124,
+      "timed_out": true
+    },
+    "no_checkpoint": {
+      "attempted": true,
+      "command": [
+        "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/competitor_estimation_20261028/tfp/venv/bin/python",
+        "/gpfs/accounts/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/other_gpu_diagnosis_v1/tfp_diagnose.py",
+        "--campaign-root",
+        "/gpfs/accounts/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030",
+        "--output",
+        "/gpfs/accounts/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/other_gpu_diagnosis_v1/results/tfp/no_checkpoint",
+        "--device",
+        "gpu",
+        "--mode",
+        "no_checkpoint"
+      ],
+      "elapsed_seconds": 350.21531635406427,
+      "returncode": 124,
+      "timed_out": true
+    }
+  },
+  "source_manifest_sha256": "7b3ab3115d147deee3033928fb13ed33417c49d9d8132e6932fb0cca80c69df7"
+}

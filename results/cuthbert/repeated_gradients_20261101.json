@@ -1,0 +1,392 @@
+{
+  "integrity_audit_passed": true,
+  "scheduler_row": [
+    "65156615",
+    "COMPLETED",
+    "0:0",
+    "321",
+    "gl1524",
+    "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1"
+  ],
+  "source_files_verified": 17,
+  "referenced_source_files_verified": 571,
+  "transferred_files_verified": 19,
+  "terminal_manifest_available": true,
+  "terminal_files_verified": 13,
+  "raw_evaluations": 54,
+  "expected_evaluations": 54,
+  "all_saved_evaluations_finite": true,
+  "original_comparisons_recomputed": 48,
+  "all_pair_comparisons": 162,
+  "formal_fit_calls": 0,
+  "production_source_changed": false,
+  "interpretation": "Retain the original tolerance outcomes as diagnostics. They are not a standalone stop condition for the authorized empirical ABC comparison. This diagnostic uses its own seed at cases0,4,8; it does not replace the earlier 24 planned-start comparisons.",
+  "groups": [
+    {
+      "J": 32,
+      "case": 0,
+      "evaluations": {
+        "original": 3,
+        "public_v3": 3,
+        "original_scan_control": 3
+      },
+      "summary": [
+        {
+          "kind": "cross",
+          "left": "original",
+          "right": "original_scan_control",
+          "pairs": 9,
+          "exact_forward": 9,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 9,
+          "max_gradient_absolute_difference": 0.00146484375
+        },
+        {
+          "kind": "cross",
+          "left": "original",
+          "right": "public_v3",
+          "pairs": 9,
+          "exact_forward": 9,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 9,
+          "max_gradient_absolute_difference": 0.00146484375
+        },
+        {
+          "kind": "within",
+          "left": "original",
+          "right": "original",
+          "pairs": 3,
+          "exact_forward": 3,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 3,
+          "max_gradient_absolute_difference": 0.0009765625
+        },
+        {
+          "kind": "within",
+          "left": "original_scan_control",
+          "right": "original_scan_control",
+          "pairs": 3,
+          "exact_forward": 3,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 3,
+          "max_gradient_absolute_difference": 0.00146484375
+        },
+        {
+          "kind": "within",
+          "left": "public_v3",
+          "right": "public_v3",
+          "pairs": 3,
+          "exact_forward": 3,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 3,
+          "max_gradient_absolute_difference": 0.000274658203125
+        }
+      ]
+    },
+    {
+      "J": 32,
+      "case": 4,
+      "evaluations": {
+        "original": 3,
+        "public_v3": 3,
+        "original_scan_control": 3
+      },
+      "summary": [
+        {
+          "kind": "cross",
+          "left": "original",
+          "right": "original_scan_control",
+          "pairs": 9,
+          "exact_forward": 9,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 0,
+          "max_gradient_absolute_difference": 0.0009765625
+        },
+        {
+          "kind": "cross",
+          "left": "original",
+          "right": "public_v3",
+          "pairs": 9,
+          "exact_forward": 9,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 3,
+          "max_gradient_absolute_difference": 0.0009765625
+        },
+        {
+          "kind": "within",
+          "left": "original",
+          "right": "original",
+          "pairs": 3,
+          "exact_forward": 3,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 3,
+          "max_gradient_absolute_difference": 0.00048828125
+        },
+        {
+          "kind": "within",
+          "left": "original_scan_control",
+          "right": "original_scan_control",
+          "pairs": 3,
+          "exact_forward": 3,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 1,
+          "max_gradient_absolute_difference": 0.0009765625
+        },
+        {
+          "kind": "within",
+          "left": "public_v3",
+          "right": "public_v3",
+          "pairs": 3,
+          "exact_forward": 3,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 0,
+          "max_gradient_absolute_difference": 0.0009765625
+        }
+      ]
+    },
+    {
+      "J": 32,
+      "case": 8,
+      "evaluations": {
+        "original": 3,
+        "public_v3": 3,
+        "original_scan_control": 3
+      },
+      "summary": [
+        {
+          "kind": "cross",
+          "left": "original",
+          "right": "original_scan_control",
+          "pairs": 9,
+          "exact_forward": 9,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 9,
+          "max_gradient_absolute_difference": 0.001953125
+        },
+        {
+          "kind": "cross",
+          "left": "original",
+          "right": "public_v3",
+          "pairs": 9,
+          "exact_forward": 9,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 9,
+          "max_gradient_absolute_difference": 0.00146484375
+        },
+        {
+          "kind": "within",
+          "left": "original",
+          "right": "original",
+          "pairs": 3,
+          "exact_forward": 3,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 3,
+          "max_gradient_absolute_difference": 0.00146484375
+        },
+        {
+          "kind": "within",
+          "left": "original_scan_control",
+          "right": "original_scan_control",
+          "pairs": 3,
+          "exact_forward": 3,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 3,
+          "max_gradient_absolute_difference": 0.001953125
+        },
+        {
+          "kind": "within",
+          "left": "public_v3",
+          "right": "public_v3",
+          "pairs": 3,
+          "exact_forward": 3,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 3,
+          "max_gradient_absolute_difference": 0.00048828125
+        }
+      ]
+    },
+    {
+      "J": 5000,
+      "case": 0,
+      "evaluations": {
+        "original": 3,
+        "public_v3": 3,
+        "original_scan_control": 3
+      },
+      "summary": [
+        {
+          "kind": "cross",
+          "left": "original",
+          "right": "original_scan_control",
+          "pairs": 9,
+          "exact_forward": 9,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 7,
+          "max_gradient_absolute_difference": 0.025390625
+        },
+        {
+          "kind": "cross",
+          "left": "original",
+          "right": "public_v3",
+          "pairs": 9,
+          "exact_forward": 9,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 5,
+          "max_gradient_absolute_difference": 0.03076171875
+        },
+        {
+          "kind": "within",
+          "left": "original",
+          "right": "original",
+          "pairs": 3,
+          "exact_forward": 3,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 2,
+          "max_gradient_absolute_difference": 0.021484375
+        },
+        {
+          "kind": "within",
+          "left": "original_scan_control",
+          "right": "original_scan_control",
+          "pairs": 3,
+          "exact_forward": 3,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 3,
+          "max_gradient_absolute_difference": 0.01611328125
+        },
+        {
+          "kind": "within",
+          "left": "public_v3",
+          "right": "public_v3",
+          "pairs": 3,
+          "exact_forward": 3,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 0,
+          "max_gradient_absolute_difference": 0.03173828125
+        }
+      ]
+    },
+    {
+      "J": 5000,
+      "case": 4,
+      "evaluations": {
+        "original": 3,
+        "public_v3": 3,
+        "original_scan_control": 3
+      },
+      "summary": [
+        {
+          "kind": "cross",
+          "left": "original",
+          "right": "original_scan_control",
+          "pairs": 9,
+          "exact_forward": 9,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 0,
+          "max_gradient_absolute_difference": 3.353515625
+        },
+        {
+          "kind": "cross",
+          "left": "original",
+          "right": "public_v3",
+          "pairs": 9,
+          "exact_forward": 9,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 0,
+          "max_gradient_absolute_difference": 3.63671875
+        },
+        {
+          "kind": "within",
+          "left": "original",
+          "right": "original",
+          "pairs": 3,
+          "exact_forward": 3,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 0,
+          "max_gradient_absolute_difference": 3.767578125
+        },
+        {
+          "kind": "within",
+          "left": "original_scan_control",
+          "right": "original_scan_control",
+          "pairs": 3,
+          "exact_forward": 3,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 0,
+          "max_gradient_absolute_difference": 1.95703125
+        },
+        {
+          "kind": "within",
+          "left": "public_v3",
+          "right": "public_v3",
+          "pairs": 3,
+          "exact_forward": 3,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 0,
+          "max_gradient_absolute_difference": 2.37890625
+        }
+      ]
+    },
+    {
+      "J": 5000,
+      "case": 8,
+      "evaluations": {
+        "original": 3,
+        "public_v3": 3,
+        "original_scan_control": 3
+      },
+      "summary": [
+        {
+          "kind": "cross",
+          "left": "original",
+          "right": "original_scan_control",
+          "pairs": 9,
+          "exact_forward": 9,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 0,
+          "max_gradient_absolute_difference": 3.7978515625
+        },
+        {
+          "kind": "cross",
+          "left": "original",
+          "right": "public_v3",
+          "pairs": 9,
+          "exact_forward": 9,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 0,
+          "max_gradient_absolute_difference": 3.1455078125
+        },
+        {
+          "kind": "within",
+          "left": "original",
+          "right": "original",
+          "pairs": 3,
+          "exact_forward": 3,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 0,
+          "max_gradient_absolute_difference": 2.73828125
+        },
+        {
+          "kind": "within",
+          "left": "original_scan_control",
+          "right": "original_scan_control",
+          "pairs": 3,
+          "exact_forward": 3,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 0,
+          "max_gradient_absolute_difference": 1.9873046875
+        },
+        {
+          "kind": "within",
+          "left": "public_v3",
+          "right": "public_v3",
+          "pairs": 3,
+          "exact_forward": 3,
+          "exact_gradient": 0,
+          "original_tolerance_passes": 0,
+          "max_gradient_absolute_difference": 1.5634765625
+        }
+      ]
+    }
+  ]
+}
