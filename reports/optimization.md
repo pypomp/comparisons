@@ -9,9 +9,9 @@ The new experiment has a different status:
 | Package | New endpoints | State |
 |---|---:|---|
 | Cuthbert | 36/36 | Complete report and audit; two A fits failed, three A scores low precision |
-| PFJAX | 27/36 | [Cases 0–8 audited](pfjax_cases5_8_and_tfp_preparation_20261101.md); case8 A failed after 116 updates and scored at the density floor; B is worse than A in case1; three remaining cases running |
+| PFJAX | 36/36 | [Final report, figures and verified reproduction archive](pfjax_20261101/report.md); one failed A fit with floor score, 35 other scores meet precision; B is worse than A in case1 |
 | PyDPF | 0/36 | New shared IF2 job 65170880 running; A/B/C not submitted |
-| TFP | 0/36 | [Full-Dacca numerics reviewed; cost allocation revised](tfp_full_Dacca_20261101.md); shared prefix 65171217 submitted, A/B/C not submitted |
+| TFP | 0/36 | [Full-Dacca numerics reviewed; cost allocation revised](tfp_full_Dacca_20261101.md); shared prefix 65171217 running, A/B/C not submitted |
 | particles | 24/24 | [Final report, figures and full reproduction archive](particles_20261101/report.md) complete; three low-ESS scores retained |
 
 For new particles, the median independent log likelihood is −4169.070668 for A (1800-second external Nelder-Mead) and −3784.099127 for B (900-second public IF2, then Nelder-Mead to the same total budget). B is higher in all twelve observed pairs. Precision passes are 9/12 for A and 12/12 for B; A tasks 0, 2 and 12 reached R=288 and remain low precision. There were no failed fits or density-floor scores. These findings apply to the recorded starts and budgets, not universal optimizer superiority.
@@ -23,3 +23,5 @@ The new particles fits used 43,647 CPU seconds, plus 155 CPU seconds for the ear
 Median synchronized fitting-kernel times among complete fits are 555.756 seconds for A (10 fits), 627.436 for B and 627.586 for C (12 each). B/C include their IF2 prefix, while A does not; these are not equal total workloads. Failed A times are retained separately. The twelve allocations used 23,034 GPU seconds; the v3 check and repeat diagnosis bring formal-budget usage to 24,234 of 42,480 seconds. [All endpoint scores, failures and times](../results/cuthbert/endpoints.csv) and [complete audit](../results/cuthbert/final_audit_20261101.json) remain separate from the ordinary-PF timing.
 
 Cuthbert's forward-PF agreement was accepted for proceeding with this empirical experiment. The [test-method review](reference_tests_20261101.md) and [original self-repeat diagnosis](cuthbert_repeats_20261101.md) explain why the old elementwise gradient threshold alone could not distinguish an extension error. This decision does not certify derivative correctness or erase the [earlier v3 failures](cuthbert_v3_20261101.md).
+
+The [complete PFJAX report](pfjax_20261101/report.md) retains all 36 endpoints and 1,548 original PF values. A/B/C all-endpoint median log mean likelihoods are −3793.495698, −3748.631853 and −3745.089672. C exceeds B in all twelve observed pairs (median difference 3.762021); B exceeds A in eleven. A case8 failed after 116 updates and scored at the density floor, which is retained separately from the 35 nonfloor scores meeting precision. Complete-fit median fitting-kernel times are 529.630 seconds for A (11 fits), 569.591 for B and 569.732 for C (12 each). B/C include the full IF2 prefix. Formal allocations used 20,481 GPU seconds; with 841 seconds of checks charged to this experiment, usage is 21,322 of 42,480 seconds.

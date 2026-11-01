@@ -24,4 +24,6 @@ The [completed TFP full-Dacca check](tfp_full_Dacca_20261101.md) has 72 exactly 
 
 The [latest preparation checks](pfjax_case4_and_preparation_20261101.md) cover PyDPF saved-state auditing and TFP failure-proposal recording on CPU. They make no new claim about a completed GPU prefix or deployed gradient code.
 
-The [TFP prefix-audit and gradient-driver controls](pfjax_cases5_8_and_tfp_preparation_20261101.md) use saved arrays and synthetic CPU gradients. They retain local preparation failures and do not certify the still-pending prefix or deploy new production code. The same report records PFJAX case8 A's real nonfinite proposal and density-floor score separately from prior consistency checks.
+The [TFP prefix-audit and gradient-driver controls](pfjax_cases5_8_and_tfp_preparation_20261101.md) use saved arrays and synthetic CPU gradients. They retain local preparation failures and do not certify the prefix (which was pending at that dated snapshot) or deploy new production code. The same report records PFJAX case8 A's real nonfinite proposal and density-floor score separately from prior consistency checks.
+
+The [completed PFJAX review](pfjax_20261101/report.md) audits all twelve saved cases, one rejected nonfinite proposal, the floor score, all independent score values and resource costs. This saved-data audit and verified source restoration do not resolve the original execution-mode discrepancy or certify mathematical derivatives. Earlier failed checks retain their original status.

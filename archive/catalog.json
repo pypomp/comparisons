@@ -628,5 +628,27 @@
     "extracted_TFP_synthetic_prefix_core_identical": true,
     "PF_calls": 0,
     "fit_calls": 0
+  },
+  {
+    "path": "artifacts/experiments/dacca/pfjax_review_20261101.tar.gz",
+    "source": "Complete PFJAX public-interface Dacca review: 12 cases, 36 endpoints, 1548 raw independent PF values, one failed fit and density-floor score; full source/diff, validation failures, saved-data audits and figures.",
+    "sha256": "4a41f20baf0f2750f488059ca4a1fbe29fc2591c1f5998e4fe6f2438ea4771ba",
+    "bytes": 119903005,
+    "files": 1152,
+    "all_member_hashes_verified": true,
+    "all_case_audit_reproduced_byte_for_byte": true,
+    "rebuilt_outputs_verified": [
+      "endpoints.pdf",
+      "endpoints.png",
+      "likelihood_iqr.pdf",
+      "likelihood_iqr.png",
+      "summary.json",
+      "timing.pdf",
+      "timing.png"
+    ],
+    "patched_source_files_verified": 197,
+    "experiments_rerun": false,
+    "review_ready": true,
+    "upstream_release": false
   }
 ]

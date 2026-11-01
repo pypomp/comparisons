@@ -12,6 +12,8 @@ Particle filtering and likelihood optimization for the Dacca cholera model. This
 
 [Study design](reports/dacca_comparison.md) describes the model and comparison. [Experiment status](reports/status.md) lists completed and unfinished work. The [completed Cuthbert comparison](reports/cuthbert_20261101/report.md) contains all 36 audited endpoints, including two failed A fits and three low-precision A scores. C exceeds B in all twelve observed pairs. The [completed particles comparison](reports/particles_20261101/report.md) includes all 24 estimates, independent scores, figures and a verified reproduction archive, with three low-precision scores retained.
 
+The [completed PFJAX comparison](reports/pfjax_20261101/report.md) includes all 36 endpoints, one failed A fit and its density-floor score, and a verified archive of source, raw records and figures. PyDPF and TFP remain in progress.
+
 ## Package changes
 
 Each directory contains the changed files, a diff against the recorded original version, and validation programs. These changes are local and have not been submitted upstream.
