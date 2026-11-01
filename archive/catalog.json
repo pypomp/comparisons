@@ -323,5 +323,13 @@
     "bytes": 36134821,
     "files": 3709,
     "purpose": "GPU diagnostic setup and completed CPU controls; GPU jobs pending, no optimization results"
+  },
+  {
+    "path": "artifacts/validation/queue_20261101.tar.gz",
+    "source": "work/implementation-comparison-20261030/queue_analysis_20261101",
+    "sha256": "c237f065de170b5572385a9555f86dc0ec9292576ce42319f5e3c0b1b8c7dcd7",
+    "bytes": 23226,
+    "files": 8,
+    "purpose": "Queue inspection and same-job host-memory adjustment; includes original scheduler commands and unchanged-source check. No numerical results."
   }
 ]

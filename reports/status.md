@@ -1,10 +1,10 @@
 # Experiment status
 
-The [saved scheduler query](../results/current_jobs.json) is from 02:07 UTC on 1 November 2026. All four GPU checks were pending for priority, with no assigned node. This page records that query; it does not poll the cluster.
+The [saved scheduler query](../results/current_jobs.json) is from 02:28 UTC on 1 November 2026. Cuthbert v3 was running on gl1516; the other three GPU checks were pending for priority, without estimated start times. The four existing jobs now request 48 GiB of host memory. See the [queue inspection and adjustment](queue_20261101.md). This page records that query; it does not poll the cluster.
 
 | Package | GPU check | New optimization results |
 |---|---|---|
-| Cuthbert v3 | 65144479 pending | A/B/C prepared; 0/36 estimates; not submitted |
+| Cuthbert v3 | 65144479 running, gl1516 | A/B/C prepared; 0/36 estimates; not submitted |
 | PFJAX | 65151851 pending | 0/36; earlier dependent jobs cancelled before starting |
 | PyDPF | 65151857 pending | 0/36; earlier dependent jobs cancelled before starting |
 | TFP | 65151858 pending | 0/36; earlier dependent jobs cancelled before starting |

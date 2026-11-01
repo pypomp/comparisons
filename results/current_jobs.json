@@ -1,29 +1,32 @@
 {
-  "observed_at_utc": "2026-11-01T02:07:32.653016+00:00",
-  "scheduler_source": "work/implementation-comparison-20261030/scheduler_20261101T0207.json",
-  "scheduler_source_sha256": "8859451ef9263a873634589a6e4a153f66503d3653db2327f0ac56ce7e9eee0d",
+  "observed_at_utc": "2026-11-01T02:28:08.109113+00:00",
+  "scheduler_source": "work/implementation-comparison-20261030/queue_analysis_20261101/post_adjustment.json",
+  "scheduler_source_sha256": "d5dd50c5bb6ea36262521bade95596ab41293b78b95d813267de8cad3f4667aa",
   "jobs": {
     "cuthbert": {
       "job_id": "65144479",
-      "state": "PENDING",
-      "reason": "Priority",
-      "elapsed_seconds": 0,
-      "allocated_node": null,
-      "sacct_row": [
-        "65144479",
-        "PENDING",
-        "0:0",
-        "0",
-        "None assigned",
-        ""
-      ],
-      "squeue_row": [
-        "65144479",
-        "PENDING",
-        "0:00",
-        "",
-        "(Priority)"
-      ]
+      "state": "RUNNING",
+      "reason": "None",
+      "elapsed_seconds": 89,
+      "allocated_node": "gl1516",
+      "start_time_scheduler": "2026-10-31T22:26:40",
+      "scheduler_timezone": "America/Detroit",
+      "expected_start": null,
+      "requested_host_memory_GiB": 48,
+      "cpus": 4,
+      "gpu": "A40",
+      "sacct": {
+        "JobID": "65144479",
+        "State": "RUNNING",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "89",
+        "Start": "2026-10-31T22:26:40",
+        "End": "Unknown",
+        "NodeList": "gl1516",
+        "ReqMem": "48G",
+        "ReqTRES": "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1",
+        "AllocTRES": "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1"
+      }
     },
     "pfjax": {
       "job_id": "65151851",
@@ -31,21 +34,24 @@
       "reason": "Priority",
       "elapsed_seconds": 0,
       "allocated_node": null,
-      "sacct_row": [
-        "65151851",
-        "PENDING",
-        "0:0",
-        "0",
-        "None assigned",
-        ""
-      ],
-      "squeue_row": [
-        "65151851",
-        "PENDING",
-        "0:00",
-        "",
-        "(Priority)"
-      ]
+      "start_time_scheduler": null,
+      "scheduler_timezone": "America/Detroit",
+      "expected_start": null,
+      "requested_host_memory_GiB": 48,
+      "cpus": 4,
+      "gpu": "A40",
+      "sacct": {
+        "JobID": "65151851",
+        "State": "PENDING",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "0",
+        "Start": "Unknown",
+        "End": "Unknown",
+        "NodeList": "None assigned",
+        "ReqMem": "48G",
+        "ReqTRES": "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1",
+        "AllocTRES": ""
+      }
     },
     "pydpf": {
       "job_id": "65151857",
@@ -53,21 +59,24 @@
       "reason": "Priority",
       "elapsed_seconds": 0,
       "allocated_node": null,
-      "sacct_row": [
-        "65151857",
-        "PENDING",
-        "0:0",
-        "0",
-        "None assigned",
-        ""
-      ],
-      "squeue_row": [
-        "65151857",
-        "PENDING",
-        "0:00",
-        "",
-        "(Priority)"
-      ]
+      "start_time_scheduler": null,
+      "scheduler_timezone": "America/Detroit",
+      "expected_start": null,
+      "requested_host_memory_GiB": 48,
+      "cpus": 4,
+      "gpu": "A40",
+      "sacct": {
+        "JobID": "65151857",
+        "State": "PENDING",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "0",
+        "Start": "Unknown",
+        "End": "Unknown",
+        "NodeList": "None assigned",
+        "ReqMem": "48G",
+        "ReqTRES": "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1",
+        "AllocTRES": ""
+      }
     },
     "tfp": {
       "job_id": "65151858",
@@ -75,24 +84,29 @@
       "reason": "Priority",
       "elapsed_seconds": 0,
       "allocated_node": null,
-      "sacct_row": [
-        "65151858",
-        "PENDING",
-        "0:0",
-        "0",
-        "None assigned",
-        ""
-      ],
-      "squeue_row": [
-        "65151858",
-        "PENDING",
-        "0:00",
-        "",
-        "(Priority)"
-      ]
+      "start_time_scheduler": null,
+      "scheduler_timezone": "America/Detroit",
+      "expected_start": null,
+      "requested_host_memory_GiB": 48,
+      "cpus": 4,
+      "gpu": "A40",
+      "sacct": {
+        "JobID": "65151858",
+        "State": "PENDING",
+        "ExitCode": "0:0",
+        "ElapsedRaw": "0",
+        "Start": "Unknown",
+        "End": "Unknown",
+        "NodeList": "None assigned",
+        "ReqMem": "48G",
+        "ReqTRES": "billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1",
+        "AllocTRES": ""
+      }
     }
   },
+  "resource_adjustment_source": "work/implementation-comparison-20261030/queue_analysis_20261101/memory_adjustment.json",
+  "resource_adjustment_sha256": "dd4c90a3f660b7adec5d5fb83a21f9d87daee160d71e46e0aa8fee6a2a7cb061",
   "formal_ABC_submitted": false,
   "new_GPU_results_collected": false,
-  "note": "Scheduler snapshot only. Pending jobs have no validation result; completed diagnostic processes still require numerical review."
+  "note": "Scheduler snapshot. Running is not a validation result. Frozen submission scripts retain their original 80 GiB request; the recorded scheduler override sets 48 GiB."
 }
