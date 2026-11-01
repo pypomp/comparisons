@@ -1,6 +1,6 @@
 # Results and tests
 
-The original repository snapshot is from 31 October 2026. A [1 November validation update](validation_20261101.md) adds the completed Cuthbert v2 GPU diagnosis and all 515 TFP CPU test-file pairs. A [further diagnostic update](gpu_diagnosis_20261101.md) records new CPU controls and submitted GPU checks for PFJAX, PyDPF and TFP. These three checks and Cuthbert v3 remained pending at 00:30 UTC on 1 November. This page is not a live job monitor. Earlier job records and failures remain [archived](../archive/README.md).
+The original repository snapshot is from 31 October 2026. A [1 November validation update](validation_20261101.md) adds the completed Cuthbert v2 GPU diagnosis and all 515 TFP CPU test-file pairs. A [further diagnostic update](gpu_diagnosis_20261101.md) records new CPU controls and submitted GPU checks for PFJAX, PyDPF and TFP. The [scheduler query at 01:03 UTC on 1 November](../results/current_jobs.json) confirms that these three checks and Cuthbert v3 remained pending for priority, with no allocated node or new result to collect. This page is not a live job monitor. Earlier job records and failures remain [archived](../archive/README.md).
 
 The [Dacca report](dacca_comparison.md) describes the model and experiment design. The [source review](../archive/README.md) identifies the package functions used. Dynamax is excluded from the current comparison; its earlier 36 estimates remain in the historical reports and figures.
 

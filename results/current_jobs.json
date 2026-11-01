@@ -1,0 +1,98 @@
+{
+  "observed_at_utc": "2026-11-01T01:03:13.842811+00:00",
+  "scheduler_source": "work/implementation-comparison-20261030/scheduler_20261101T010313.json",
+  "scheduler_source_sha256": "7c10d90a4b9bcffdedec8d74ad04a578ea767cbb18505f0f75fe96ae3354c6e6",
+  "jobs": {
+    "cuthbert": {
+      "job_id": "65144479",
+      "state": "PENDING",
+      "reason": "Priority",
+      "elapsed_seconds": 0,
+      "allocated_node": null,
+      "sacct_row": [
+        "65144479",
+        "PENDING",
+        "0:0",
+        "0",
+        "None assigned",
+        ""
+      ],
+      "squeue_row": [
+        "65144479",
+        "PENDING",
+        "0:00",
+        "",
+        "(Priority)"
+      ]
+    },
+    "pfjax": {
+      "job_id": "65151851",
+      "state": "PENDING",
+      "reason": "Priority",
+      "elapsed_seconds": 0,
+      "allocated_node": null,
+      "sacct_row": [
+        "65151851",
+        "PENDING",
+        "0:0",
+        "0",
+        "None assigned",
+        ""
+      ],
+      "squeue_row": [
+        "65151851",
+        "PENDING",
+        "0:00",
+        "",
+        "(Priority)"
+      ]
+    },
+    "pydpf": {
+      "job_id": "65151857",
+      "state": "PENDING",
+      "reason": "Priority",
+      "elapsed_seconds": 0,
+      "allocated_node": null,
+      "sacct_row": [
+        "65151857",
+        "PENDING",
+        "0:0",
+        "0",
+        "None assigned",
+        ""
+      ],
+      "squeue_row": [
+        "65151857",
+        "PENDING",
+        "0:00",
+        "",
+        "(Priority)"
+      ]
+    },
+    "tfp": {
+      "job_id": "65151858",
+      "state": "PENDING",
+      "reason": "Priority",
+      "elapsed_seconds": 0,
+      "allocated_node": null,
+      "sacct_row": [
+        "65151858",
+        "PENDING",
+        "0:0",
+        "0",
+        "None assigned",
+        ""
+      ],
+      "squeue_row": [
+        "65151858",
+        "PENDING",
+        "0:00",
+        "",
+        "(Priority)"
+      ]
+    }
+  },
+  "formal_ABC_submitted": false,
+  "new_GPU_results_collected": false,
+  "note": "Scheduler snapshot only. Pending jobs have no validation result; completed diagnostic processes still require numerical review."
+}
