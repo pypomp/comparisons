@@ -406,5 +406,20 @@
     "all_member_hashes_verified": true,
     "audit_reproduced_byte_for_byte": true,
     "experiments_rerun": false
+  },
+  {
+    "path": "artifacts/experiments/dacca/cuthbert_cases4_6_20261101T0626.tar.gz",
+    "source": "Cuthbert cases [4, 5, 6]: full source, original raw results and checkpoints, scheduler costs and independently recalculated audits.",
+    "sha256": "47348dbbe2b6f2915fcf2a60b44b5decf674933eab039b976971a98a7fbf4d56",
+    "bytes": 17456860,
+    "files": 827,
+    "cases": [
+      4,
+      5,
+      6
+    ],
+    "all_member_hashes_verified": true,
+    "audit_reproduced_byte_for_byte": true,
+    "experiments_rerun": false
   }
 ]

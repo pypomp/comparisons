@@ -1,7 +1,7 @@
 {
   "files": {
     "THIRD_PARTY.md": "58c15cdbddba35cf543f386471c394d95ef1fa3e8afcd812371ec4c6ebacbd12",
-    "README.md": "57fbb0b16fff27ffe5dc0620c10709c1415f95467fe692df8b1b97d113ba2c95",
+    "README.md": "2bc4501d45c08e03d14e952b87f99480811683f1b96f7c237937f3d01ae73b70",
     ".gitignore": "a97f4dfcbc2fe616ada25204c84c2e3248a532bb8fc670e571016adab96870fc",
     "AGENTS.md": "c85baf27cad7316074e602e31c407eccb4678bd75b9eff2625871c2b03879e6f",
     "archive/reorganization.json": "7ba097f2b9192442a167a8afb268aee8a86ceb5d6bd7bf3ccd4f35659e843a20",
@@ -9,7 +9,7 @@
     "archive/history.json": "301a126979e010b627ac3e3efa33747d9c8d28aefb66240e03b9cb96d5c107ff",
     "archive/README.md": "d0b164b82a826c9a6a09c94378465f3d131d7babe19b90694e70520fc7d711cb",
     "archive/files.json.gz": "6d1395407c6809c0888da9ae587cd377921fcd8840af7ea376ecc3b43f31fbb3",
-    "archive/catalog.json": "a98ecfcd4de57a5d8958c2cb81dfeb81b66bfac9d95492a35ab2a2cc4e079b97",
+    "archive/catalog.json": "e3e63bad94cd66902c72b9ddc84a5c880f1b34b8506c1de6f8e0dfba2ec421f8",
     "archive/licenses/PyPOMP": "4859045e896e5131efd0ed0772ae72cf4295d71f72357cac27713346bec73b9e",
     "experiments/dacca/original_paths.json": "e99e0e93a4dc2d6cdcbdb442eb6cb62c5c251bda6ebac2933dede79f74ce3b9a",
     "experiments/dacca/README.md": "fd1b8c8eba7616ec0324976ad3e7272cfec44f17ba8cd5abe9f110faf063dbf0",
@@ -154,15 +154,15 @@
     "packages/pydpf/validation/check_dacca.py": "ae36ec9f06871158ab66feec9e499ba8d04bf860ef09d084e69f187b9c9eb703",
     "packages/pydpf/validation/dacca_model.py": "b9280b9c911742793f88d234ae62252f38381ff489fc09320ba381b909d62e7e",
     "reports/validation_20261101.md": "f15690b0df6f0fe0df1e1833a5bf778d9f15fc8ed0551bf7dd8a87627ad2caa9",
-    "reports/status.md": "f08f9606f4438ef8fe37122d4a9f0b3f1685b821d196ed0a3ac982a7f39881b2",
+    "reports/status.md": "ef1d916c9ab217e8d00c956deb6b6e451fc7d35c52600fa6ed8e0ebf932f404b",
     "reports/dacca_comparison.md": "9452d252e7163873646bd69bcea5e078451c20d6d581abea61f2aed0a6ce6a82",
     "reports/gpu_diagnosis_20261101.md": "7efcf83ad9b79d88f4dbbcbca23e8452297132f292a66825bb2045757b172a07",
     "results/validation_20261101/other_packages_local_review.json": "d0be5caa62aa60d2c666bcf74048414070fce70a9eacddded09efde94555a32f",
-    "results/current_jobs.json": "dcd00dd5962920dd898d95947f3e497549d6d03a125ed8834976e252610bdc6f",
+    "results/current_jobs.json": "ba6b20642157dce2fc7e02b2ca249d1404df74a0f33ccaf3040e73a5468e3385",
     "Makefile": "a7d5c1346fcd18b33da6412de962ad3e0f678b559efb89d8d5527e41ab0bb4ec",
     "docs/conventions.md": "fc8ac34046ea045d7da15a8380019671a40b5d44ee41271005493756807ef153",
     "reports/correctness.md": "af871887366db24b65aef18799ee7c8e4c55d38a48a140f792ece8da6c839b76",
-    "reports/optimization.md": "0802893a54f5741f91be946d2e31a4e2f5d809e7273370ecfc9e5a0249528edd",
+    "reports/optimization.md": "a61f92f1de03b0c9df00f015f9e3e0769a77ea8d24bbc78f3c30a53e5f47a671",
     "reports/timing.md": "e79fad532fc670e37c262a97ae72b334321279c776566a79f7abfa83c909bf33",
     "reports/queue_20261101.md": "d33b5a49f05e2848b1fd0259c8eab1414af8203a29edf79e6e7a8e74dceb200c",
     "reports/cuthbert_v3_20261101.md": "f83de07ec1d9e2e6acded1d5108e40496d6b975c897c71d45b8d1f96a70636f2",
@@ -187,7 +187,8 @@
     "results/cuthbert/submission_cases1_11_20261101.json": "8754f7568d50e755dbd6b8bf2683a355d443f30239537bbb21a74f386a09ede4",
     "results/cuthbert/scheduler_cases1_11_20261101.json": "5891c379ea912973a3301cc610218b7be442c2b77afcafbdbee68d89b2dfb704",
     "reports/cuthbert_cases0_3_20261101.md": "4dd5c662ad8badaa94f760f5353f4e3197ee24a7908c18456fd14c919fdf67da",
-    "results/cuthbert/current_results.json": "6a1ac1a1c4ef0a2debc0d22740aebac1ff2c96c003ac73ffbb092bb0c06a486a",
-    "results/cuthbert/endpoints.csv": "14c685e35474df6fd1968464dfc4710df258601e17cd0a9617f7a5a65ee22d6f"
+    "results/cuthbert/current_results.json": "cff775c16fd7434b507fbe212b278f12d68ef49a30eb64cc1d053e2d900a346c",
+    "results/cuthbert/endpoints.csv": "75283d21ed0458c6640c7c6d5cd413c52d25b3985ec1f4e6c064ff07749ff810",
+    "reports/cuthbert_cases0_6_20261101.md": "c594f3e9085f7209fd50f1c72ab71af704e63c35369ac8a12b9b53f9379946cc"
   }
 }
