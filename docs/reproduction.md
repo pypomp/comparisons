@@ -2,6 +2,8 @@
 
 Run these commands from the repository root. Recovery and table checks need Python 3.9 or later and Git, with no numerical libraries or network access.
 
+The Makefile provides shortcuts for the commands below: `make prepare PACKAGE=cuthbert`, `make tables`, `make check` and `make check-archives`. Set `BUILD` to a fresh directory when repeating recovery or table generation. `make help` lists the commands.
+
 ## Restore a package
 
 ```bash

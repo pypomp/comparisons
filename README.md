@@ -1,36 +1,53 @@
 # comparisons
 
-Particle filtering and likelihood optimization for the Dacca cholera model. This repository contains changes to five packages, experiment programs and a short report. The work is local and has not been submitted upstream.
+Particle filtering and likelihood optimization for the Dacca cholera model. This repository contains changes to Cuthbert, PFJAX, PyDPF, TensorFlow Probability and particles, together with the programs and records used to compare them.
 
-[Report](reports/dacca_comparison.md) · [Functions used](docs/package_calls.md) · [Results and tests](reports/status.md) · [Reproduce](docs/reproduction.md)
+## Reports
 
-| Package | Code used and added | Review |
+| Question | Report |
+|---|---|
+| Does the modified code pass comparisons with the original package? | [Correctness](reports/correctness.md) |
+| How long does an ordinary particle filter take? | [PF runtime](reports/timing.md) |
+| Do IF2 initialization and gradient discounting improve optimization? | [Likelihood optimization](reports/optimization.md) |
+
+[Study design](reports/dacca_comparison.md) describes the model and comparison. [Experiment status](reports/status.md) lists completed and unfinished work. The new GPU optimization runs are unfinished; the particles comparison has 24 estimates and independent scores, including three low-precision scores.
+
+## Package changes
+
+Each directory contains the changed files, a diff against the recorded original version, and validation programs. These changes are local and have not been submitted upstream.
+
+| Package | Original code used | Our additions |
 |---|---|---|
-| Cuthbert | Original PF updates and α=1 correction; added IF2, discounting and observation-time loop | [Code](packages/cuthbert/README.md) · [Diff](packages/cuthbert/review/full.patch) |
-| PFJAX | Original full PF; added IF2 and gradient correction, including α=1 | [Code](packages/pfjax/README.md) · [Diff](packages/pfjax/review/full.patch) |
-| PyDPF | Original `ParticleFilter` and `StopGradientDPF`; added IF2 and discounting | [Code](packages/pydpf/README.md) · [Diff](packages/pydpf/review/full.patch) |
-| TFP | Original SMC and differentiable PF; added IF2 and discounting | [Code](packages/tfp/README.md) · [Diff](packages/tfp/review/full.patch) |
-| particles | Original `SMC` and `Bootstrap`; added IF2, with external Nelder-Mead | [Code](packages/particles/README.md) · [Diff](packages/particles/review/full.patch) |
+| [Cuthbert](packages/cuthbert/README.md) | PF updates and α=1 derivative correction | IF2, gradient discounting and the observation-time loop |
+| [PFJAX](packages/pfjax/README.md) | Full PF and resampling | IF2 and derivative correction, including α=1 |
+| [PyDPF](packages/pydpf/README.md) | `ParticleFilter` and `StopGradientDPF` | IF2 and gradient discounting |
+| [TFP](packages/tfp/README.md) | SMC and differentiable `particle_filter` | IF2 and gradient discounting |
+| [particles](packages/particles/README.md) | `SMC` and `Bootstrap` | IF2; the experiment uses external Nelder-Mead |
 
-The new GPU optimization comparisons are unfinished. The new particles experiment has 24 fitted vectors and independent scores, including three low-precision scores. [Results](results/README.md) separates these from the earlier experiments. Final evaluation uses the fixed original PyPOMP PF.
+The [function table](docs/package_calls.md) gives the calls and external optimizers. Final scores use the fixed original PyPOMP PF. Earlier PyPOMP and pypfilt comparisons are retained with their own protocols. Dynamax is retained only in the historical records.
 
-Each package directory contains only its description, changed files, complete diff, validation programs and version. Full source trees, raw data, failures, test logs and earlier reports are preserved in the [archive](archive/README.md). Dynamax remains in that history and is excluded from the main comparison.
+## Reproduce saved results
+
+Python 3.9 or later and Git are sufficient for source recovery and table regeneration. Run from the repository root:
 
 ```bash
-python3 scripts/prepare.py cuthbert --output build/cuthbert
-python3 scripts/reproduce.py --output build/tables
-python3 scripts/verify.py --archives
+make help
+make prepare PACKAGE=cuthbert
+make tables
+make check
 ```
 
-These commands reconstruct source code, rebuild tables from saved scores and check all files and archives. They do not fit models or submit jobs. Numerical reruns require the recorded environments and launch paths described in [Reproduction](docs/reproduction.md).
+These commands restore source, rebuild tables from saved scores and verify files. Numerical reruns require the recorded environments and launch paths; see [Reproduction](docs/reproduction.md). Large archives in `artifacts/` are excluded from Git and must be copied separately using [the catalog](archive/catalog.json).
+
+## Files
 
 | Directory | Contents |
 |---|---|
-| `packages/` | Changes to the five packages |
-| `experiments/dacca/` | Protocols and experiment programs |
-| `results/` | Endpoint records and summary tables |
-| `reports/` | Dacca report and dated test status |
-| `archive/` | Archive index, file hashes and recovery instructions |
-| `artifacts/` | Full archives stored locally, excluded from Git |
+| `packages/` | Package changes, diffs and validation programs |
+| `experiments/dacca/` | Protocols, fitting programs and independent scoring |
+| `results/` | Saved estimates, checks and summary tables |
+| `reports/` | Study design, results and dated test reports |
+| `scripts/` | Source recovery, table generation and file checks |
+| `archive/` | Index and checksums for full sources, logs and earlier records |
 
-Run `python3 scripts/browse.py` to browse at `http://127.0.0.1:8765/`. Sharing Git alone does not include the archives; copy the files in [the catalog](archive/catalog.json) as well. See [source and license notices](THIRD_PARTY.md).
+[Repository conventions](docs/conventions.md) describe file organization and the examples used. [Source and license notices](THIRD_PARTY.md) identify the original packages. To browse locally, run `make browse` and open `http://127.0.0.1:8765/`.

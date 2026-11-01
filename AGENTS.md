@@ -20,3 +20,5 @@ This is a local comparison repository. Preserve imported evidence and its SHA256
 - Do not create a remote, send messages, push or open a PR without explicit user instructions.
 
 - Keep the main tree small: changed code, full diffs, protocols, principal programs, result tables and a short report. Archive logs, complete source trees and prior reports with hashes and recovery instructions. Never discard failures to simplify presentation.
+
+- Follow docs/conventions.md for organization and prose. Keep library changes in the original package style; the Makefile only calls local recovery, table and verification scripts. Keep measured results in the relevant correctness, timing or optimization report and link to them from the study description.
