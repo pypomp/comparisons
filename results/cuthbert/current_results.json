@@ -16,7 +16,8 @@
           "logical_fit_seconds": 557.5409111175686,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         },
         "B": {
           "alpha": 1.0,
@@ -29,7 +30,8 @@
           "logical_fit_seconds": 629.2961537135998,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         },
         "C": {
           "alpha": 0.97,
@@ -42,7 +44,8 @@
           "logical_fit_seconds": 629.7791481491877,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         }
       },
       "allocation_GPU_seconds": 1882,
@@ -69,7 +72,8 @@
           "logical_fit_seconds": 556.8225194737315,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         },
         "B": {
           "alpha": 1.0,
@@ -82,7 +86,8 @@
           "logical_fit_seconds": 627.8379782726988,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         },
         "C": {
           "alpha": 0.97,
@@ -95,7 +100,8 @@
           "logical_fit_seconds": 628.1846192739904,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         }
       },
       "allocation_GPU_seconds": 2048,
@@ -122,7 +128,8 @@
           "logical_fit_seconds": 554.2602130174637,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         },
         "B": {
           "alpha": 1.0,
@@ -135,7 +142,8 @@
           "logical_fit_seconds": 625.2553098676726,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         },
         "C": {
           "alpha": 0.97,
@@ -148,7 +156,8 @@
           "logical_fit_seconds": 625.2917548129335,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         }
       },
       "allocation_GPU_seconds": 2048,
@@ -175,7 +184,8 @@
           "logical_fit_seconds": 556.6673379912972,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         },
         "B": {
           "alpha": 1.0,
@@ -188,7 +198,8 @@
           "logical_fit_seconds": 627.5946339033544,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         },
         "C": {
           "alpha": 0.97,
@@ -201,7 +212,8 @@
           "logical_fit_seconds": 627.7092655198649,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         }
       },
       "allocation_GPU_seconds": 2048,
@@ -228,7 +240,8 @@
           "logical_fit_seconds": 554.0214901259169,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         },
         "B": {
           "alpha": 1.0,
@@ -241,7 +254,8 @@
           "logical_fit_seconds": 625.1553212841973,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         },
         "C": {
           "alpha": 0.97,
@@ -254,7 +268,8 @@
           "logical_fit_seconds": 624.925646064803,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         }
       },
       "allocation_GPU_seconds": 2000,
@@ -281,7 +296,8 @@
           "logical_fit_seconds": 556.6681674532592,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         },
         "B": {
           "alpha": 1.0,
@@ -294,7 +310,8 @@
           "logical_fit_seconds": 627.7160563077778,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         },
         "C": {
           "alpha": 0.97,
@@ -307,7 +324,8 @@
           "logical_fit_seconds": 627.6764420652762,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         }
       },
       "allocation_GPU_seconds": 2000,
@@ -334,7 +352,8 @@
           "logical_fit_seconds": 554.7851551612839,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         },
         "B": {
           "alpha": 1.0,
@@ -347,7 +366,8 @@
           "logical_fit_seconds": 625.5851122895256,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         },
         "C": {
           "alpha": 0.97,
@@ -360,7 +380,8 @@
           "logical_fit_seconds": 625.6043451596051,
           "fit_failed": false,
           "floor_saturated": false,
-          "iterations_completed": 400
+          "iterations_completed": 400,
+          "failure_reason": null
         }
       },
       "allocation_GPU_seconds": 2000,
@@ -370,25 +391,190 @@
       "physical_compile_seconds": 16.33549245633185,
       "audit_path": "cuthbert_formal_v4_collected/case06/audit.json",
       "audit_sha256": "24c94adbc4adb1e3ef263cba89dd7adc98727272534acd3ccd5131da83cbce9c"
+    },
+    {
+      "case": 7,
+      "start_id": 3,
+      "replicate": 1,
+      "methods": {
+        "A": {
+          "alpha": 1.0,
+          "logmeanlik": -4250.237729970952,
+          "MCSE": 0.1252217364614952,
+          "likelihood_ESS": 23.243547803498828,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 554.4040491972119,
+          "logical_fit_seconds": 554.4040491972119,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400,
+          "failure_reason": null
+        },
+        "B": {
+          "alpha": 1.0,
+          "logmeanlik": -3748.0645267872933,
+          "MCSE": 0.16449658758394406,
+          "likelihood_ESS": 18.489325011488525,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 554.5837614256889,
+          "logical_fit_seconds": 625.6415535500273,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400,
+          "failure_reason": null
+        },
+        "C": {
+          "alpha": 0.97,
+          "logmeanlik": -3745.7099405427894,
+          "MCSE": 0.14215723340559086,
+          "likelihood_ESS": 21.08587864149974,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 554.3692801259458,
+          "logical_fit_seconds": 625.4270722502843,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400,
+          "failure_reason": null
+        }
+      },
+      "allocation_GPU_seconds": 2043,
+      "node": "gl1516",
+      "job": "65160224_7",
+      "physical_kernel_seconds": 1734.414882873185,
+      "physical_compile_seconds": 32.22730019874871,
+      "audit_path": "cuthbert_formal_v4_collected/case07/audit.json",
+      "audit_sha256": "bc475e5aa7bc4e1990e235213d18e53ed4a3798183d5ced361a359a3a8c8d668"
+    },
+    {
+      "case": 8,
+      "start_id": 4,
+      "replicate": 0,
+      "methods": {
+        "A": {
+          "alpha": 1.0,
+          "logmeanlik": -4577.584558507243,
+          "MCSE": 0.5089585089578847,
+          "likelihood_ESS": 3.8224612622472307,
+          "repetitions": 288,
+          "precision_passed": false,
+          "gradient_seconds": 61.25997432973236,
+          "logical_fit_seconds": 61.25997432973236,
+          "fit_failed": true,
+          "floor_saturated": false,
+          "iterations_completed": 43,
+          "failure_reason": "Nonfinite loss/gradient/estimation or natural parameter/Adam state at zero-based update 43"
+        },
+        "B": {
+          "alpha": 1.0,
+          "logmeanlik": -3745.1066711082203,
+          "MCSE": 0.14082213611544805,
+          "likelihood_ESS": 21.250464822949823,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 556.3871455630288,
+          "logical_fit_seconds": 627.2769775930792,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400,
+          "failure_reason": null
+        },
+        "C": {
+          "alpha": 0.97,
+          "logmeanlik": -3744.175548020813,
+          "MCSE": 0.1819195494766714,
+          "likelihood_ESS": 16.679676143297392,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 556.6053930493072,
+          "logical_fit_seconds": 627.4952250793576,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400,
+          "failure_reason": null
+        }
+      },
+      "allocation_GPU_seconds": 1592,
+      "node": "gl1527",
+      "job": "65160224_8",
+      "physical_kernel_seconds": 1245.1423449721187,
+      "physical_compile_seconds": 15.24192189797759,
+      "audit_path": "cuthbert_formal_v4_collected/case08/audit.json",
+      "audit_sha256": "91ca1cb60153f7f331a8bb2df533701d05ae0e1d6f04c1f485b49f3cea4f5cd6"
+    },
+    {
+      "case": 9,
+      "start_id": 4,
+      "replicate": 1,
+      "methods": {
+        "A": {
+          "alpha": 1.0,
+          "logmeanlik": -4713.211742447368,
+          "MCSE": 0.9222164004437572,
+          "likelihood_ESS": 1.175085031390968,
+          "repetitions": 288,
+          "precision_passed": false,
+          "gradient_seconds": 85.18163225334138,
+          "logical_fit_seconds": 85.18163225334138,
+          "fit_failed": true,
+          "floor_saturated": false,
+          "iterations_completed": 60,
+          "failure_reason": "Nonfinite loss/gradient/estimation or natural parameter/Adam state at zero-based update 60"
+        },
+        "B": {
+          "alpha": 1.0,
+          "logmeanlik": -3746.3586636908176,
+          "MCSE": 0.12738136732308186,
+          "likelihood_ESS": 22.960495029072437,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 557.3956286590546,
+          "logical_fit_seconds": 628.3010607101023,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400,
+          "failure_reason": null
+        },
+        "C": {
+          "alpha": 0.97,
+          "logmeanlik": -3744.3939578509166,
+          "MCSE": 0.14681832592541105,
+          "likelihood_ESS": 20.51928930396186,
+          "repetitions": 36,
+          "precision_passed": true,
+          "gradient_seconds": 557.3327928027138,
+          "logical_fit_seconds": 628.2382248537615,
+          "fit_failed": false,
+          "floor_saturated": false,
+          "iterations_completed": 400,
+          "failure_reason": null
+        }
+      },
+      "allocation_GPU_seconds": 1467,
+      "node": "gl1527",
+      "job": "65160224_9",
+      "physical_kernel_seconds": 1270.8154857661575,
+      "physical_compile_seconds": 15.231772215105593,
+      "audit_path": "cuthbert_formal_v4_collected/case09/audit.json",
+      "audit_sha256": "61b85c778490f1182492ea547fed51f50975374121fac8841f48b6d003a8ad01"
     }
   ],
   "expected_cases": 12,
   "expected_endpoints": 36,
-  "audited_endpoints": 21,
+  "audited_endpoints": 30,
   "partial": true,
   "uncompleted_cases": [
-    7,
-    8,
-    9,
     10,
     11
   ],
-  "original_PF_repetitions": 1008,
-  "fit_failures": 0,
-  "score_precision_passed": 20,
+  "original_PF_repetitions": 1836,
+  "fit_failures": 2,
+  "score_precision_passed": 27,
   "floor_saturated": 0,
-  "completed_allocation_GPU_seconds": 14026,
+  "completed_allocation_GPU_seconds": 19128,
   "original_budget_GPU_seconds": 42480,
-  "validation_and_completed_plus_remaining_limits_GPU_seconds": 32326,
+  "validation_and_completed_plus_remaining_limits_GPU_seconds": 27168,
   "timing_note": "Sum of one-GPU allocation seconds, not elapsed wall time; shared work is counted once within each physical case."
 }

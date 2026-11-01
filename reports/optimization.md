@@ -8,7 +8,7 @@ The new experiment has a different status:
 
 | Package | New endpoints | State |
 |---|---:|---|
-| Cuthbert | 21/36 | Seven cases audited; 20 precise scores and one retained low-precision score; five cases unfinished |
+| Cuthbert | 30/36 | Ten cases audited; two A fits failed, three A scores low precision; two cases unfinished |
 | PFJAX | 0/36 | Dependent formal job cancelled before starting after GPU validation failure |
 | PyDPF | 0/36 | Dependent formal jobs cancelled before starting after GPU validation failure |
 | TFP | 0/36 | Dependent formal jobs cancelled before starting after GPU validation failure |
@@ -18,8 +18,8 @@ For new particles, the median independent log likelihood is −4169.070668 for A
 
 The new particles fits used 43,647 CPU seconds, plus 155 CPU seconds for the earlier checks. Independent A40 scoring used 96 seconds and is counted separately. [Audit](../results/particles/audit.json) · [24 endpoint records](../results/particles/endpoints.csv).
 
-The [seven completed Cuthbert cases](cuthbert_cases0_6_20261101.md) include both repeats for starts 0-2 and the first repeat for start 3. All 21 fits completed their updates. All 1,008 original PF values have been recalculated. Case 6 A reached R=288 but has likelihood ESS=1.925, below the required 10; it is retained as a low-precision score. The other twenty scores pass. C has the highest estimated likelihood in all seven observed cases, followed by B and A; five cases remain unfinished.
+The [ten audited Cuthbert cases](cuthbert_cases0_9_20261101.md) cover five starting vectors with two repeats each. B and C completed 400 Adam updates in every observed case after their shared 175-pass IF2 initialization. Direct A completed eight fits and failed after 43 and 60 accepted updates in cases 8 and 9. Failed fits are evaluated at their last valid parameters and remain in the record. A scores for cases 6, 8 and 9 reached R=288 but remain below the ESS requirement; the other 27 scores pass. All 1,836 original PF values were recalculated. C's estimated likelihood exceeds B's in all ten observed pairs; two planned cases remain unfinished.
 
-Completed one-GPU allocations used 14,026 GPU seconds in total. Cases 4-6 each used 2,000 seconds and overlapped in wall time, for 6,000 GPU seconds of resource cost. Their local timestamps cross the daylight-saving change; timing uses Slurm ElapsedRaw. The v3 check, repeat diagnosis, completed jobs and five remaining allocation limits sum to 32,326 seconds, within 42,480 seconds. [Per-endpoint scores and times](../results/cuthbert/endpoints.csv) and [case-level costs](../results/cuthbert/current_results.json) are kept separate.
+Completed allocations used 19,128 GPU seconds. The shorter times for case 8 A (61.260 seconds) and case 9 A (85.182 seconds) are failed-run costs, not successful 400-update latencies. The v3 check, repeat diagnosis, completed jobs and remaining allocation limits total 27,168 seconds, within 42,480 seconds. [Endpoint scores, failures and times](../results/cuthbert/endpoints.csv) and [case-level costs](../results/cuthbert/current_results.json) remain separate.
 
 Cuthbert's forward-PF agreement was accepted for proceeding with this empirical experiment. The [test-method review](reference_tests_20261101.md) and [original self-repeat diagnosis](cuthbert_repeats_20261101.md) explain why the old elementwise gradient threshold alone could not distinguish an extension error. This decision does not certify derivative correctness or erase the [earlier v3 failures](cuthbert_v3_20261101.md).
