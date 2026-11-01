@@ -1,6 +1,6 @@
 # Experiment status
 
-The [saved scheduler queries](../results/current_jobs.json) are from 04:33–04:34 UTC on 1 November 2026. This page is a recorded snapshot, not a live cluster view.
+The [saved scheduler queries](../results/current_jobs.json) are from 04:57 UTC on 1 November 2026 (the detailed partition query is from 04:34 UTC). This page is a recorded snapshot, not a live cluster view.
 
 | Package | GPU check | New optimization results |
 |---|---|---|

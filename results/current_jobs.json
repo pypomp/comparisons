@@ -1,7 +1,7 @@
 {
-  "observed_at_utc": "2026-11-01T04:34:35.645125+00:00",
-  "scheduler_source": "work/implementation-comparison-20261030/cuthbert_formal_v4_stage2/scheduler_after_submission.json",
-  "scheduler_source_sha256": "5891c379ea912973a3301cc610218b7be442c2b77afcafbdbee68d89b2dfb704",
+  "observed_at_utc": "2026-11-01T04:57:11.020581+00:00",
+  "scheduler_source": "work/implementation-comparison-20261030/scheduler_20261101T0456.json",
+  "scheduler_source_sha256": "07239e19ef4fb9d440589b795ca80e23ab43b585c4d3b40fed87e6bb4a7d1a1f",
   "jobs": {
     "cuthbert": {
       "job_id": "65144479",
@@ -227,9 +227,13 @@
           "N/A"
         ]
       ],
-      "note": "squeue --array confirms all eleven tasks; the immediate sacct aggregate lists only 7-11, so that aggregate is not used to infer missing tasks."
+      "note": "All eleven remain pending by current squeue. Detailed per-task and partition queries above were captured at 04:34 UTC. The immediate sacct aggregate lists only 7-11, so it is not used to infer missing tasks.",
+      "latest_squeue_row": "65160224_[1-11]|PENDING|0:00||(PartitionDown)",
+      "latest_squeue_captured_at_utc": "2026-11-01T04:57:11.020581+00:00",
+      "partition_state_last_queried_utc": "2026-11-01T04:34:35.645125+00:00",
+      "estimated_start_last_queried_utc": "2026-11-01T04:34:35.645125+00:00"
     }
   },
-  "completed_jobs_scheduler_source": "work/implementation-comparison-20261030/scheduler_20261101T0433_stage2.json",
-  "completed_jobs_scheduler_source_sha256": "3149b1f7baa072c922e10df2c54f62d1765d1691c3c57c0f0aa3c8f8da52998b"
+  "completed_jobs_scheduler_source": "work/implementation-comparison-20261030/scheduler_20261101T0456.json",
+  "completed_jobs_scheduler_source_sha256": "07239e19ef4fb9d440589b795ca80e23ab43b585c4d3b40fed87e6bb4a7d1a1f"
 }
