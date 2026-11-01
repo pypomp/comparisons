@@ -1,7 +1,7 @@
 {
-  "observed_at_utc": "2026-11-01T04:57:11.020581+00:00",
-  "scheduler_source": "work/implementation-comparison-20261030/scheduler_20261101T0456.json",
-  "scheduler_source_sha256": "07239e19ef4fb9d440589b795ca80e23ab43b585c4d3b40fed87e6bb4a7d1a1f",
+  "observed_at_utc": "2026-11-01T05:26:59.365209+00:00",
+  "scheduler_source": "work/implementation-comparison-20261030/scheduler_20261101T0526.json",
+  "scheduler_source_sha256": "5396d62e18648c9f4e2d7adbf52e3c4e45632b5ddb27ffae55a8a22ad2fd3a3f",
   "jobs": {
     "cuthbert": {
       "job_id": "65144479",
@@ -129,111 +129,173 @@
         10,
         11
       ],
-      "state": "PENDING",
-      "reason": "PartitionDown",
-      "partition_state": "DOWN",
+      "state": "RUNNING_AND_PENDING",
+      "running_cases": [
+        1,
+        2,
+        3
+      ],
+      "pending_cases": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "pending_reason": "JobArrayTaskLimit",
       "estimated_start": null,
-      "elapsed_seconds": 0,
       "requested_host_memory_GiB": 48,
       "time_limit_seconds": 3420,
       "max_concurrent_GPUs": 3,
       "squeue_rows": [
         [
           "65160224_1",
-          "PENDING",
-          "0:00",
-          "",
-          "(PartitionDown)",
-          "N/A"
+          "RUNNING",
+          "18:22",
+          "gl1516",
+          "gl1516"
         ],
         [
           "65160224_2",
-          "PENDING",
-          "0:00",
-          "",
-          "(PartitionDown)",
-          "N/A"
+          "RUNNING",
+          "18:22",
+          "gl1516",
+          "gl1516"
         ],
         [
           "65160224_3",
-          "PENDING",
-          "0:00",
-          "",
-          "(PartitionDown)",
-          "N/A"
+          "RUNNING",
+          "18:22",
+          "gl1516",
+          "gl1516"
         ],
         [
           "65160224_4",
           "PENDING",
           "0:00",
           "",
-          "(PartitionDown)",
-          "N/A"
+          "(JobArrayTaskLimit)"
         ],
         [
           "65160224_5",
           "PENDING",
           "0:00",
           "",
-          "(PartitionDown)",
-          "N/A"
+          "(JobArrayTaskLimit)"
         ],
         [
           "65160224_6",
           "PENDING",
           "0:00",
           "",
-          "(PartitionDown)",
-          "N/A"
+          "(JobArrayTaskLimit)"
         ],
         [
           "65160224_7",
           "PENDING",
           "0:00",
           "",
-          "(PartitionDown)",
-          "N/A"
+          "(JobArrayTaskLimit)"
         ],
         [
           "65160224_8",
           "PENDING",
           "0:00",
           "",
-          "(PartitionDown)",
-          "N/A"
+          "(JobArrayTaskLimit)"
         ],
         [
           "65160224_9",
           "PENDING",
           "0:00",
           "",
-          "(PartitionDown)",
-          "N/A"
+          "(JobArrayTaskLimit)"
         ],
         [
           "65160224_10",
           "PENDING",
           "0:00",
           "",
-          "(PartitionDown)",
-          "N/A"
+          "(JobArrayTaskLimit)"
         ],
         [
           "65160224_11",
           "PENDING",
           "0:00",
           "",
-          "(PartitionDown)",
-          "N/A"
+          "(JobArrayTaskLimit)"
         ]
       ],
-      "note": "All eleven remain pending by current squeue. Detailed per-task and partition queries above were captured at 04:34 UTC. The immediate sacct aggregate lists only 7-11, so it is not used to infer missing tasks.",
-      "latest_squeue_row": "65160224_[1-11]|PENDING|0:00||(PartitionDown)",
-      "latest_squeue_captured_at_utc": "2026-11-01T04:57:11.020581+00:00",
-      "partition_state_last_queried_utc": "2026-11-01T04:34:35.645125+00:00",
-      "estimated_start_last_queried_utc": "2026-11-01T04:34:35.645125+00:00"
+      "observed_at_utc": "2026-11-01T05:26:59.365209+00:00",
+      "live_progress_observed_at_utc": "2026-11-01T05:27:28.352363+00:00",
+      "live_progress_source": "work/implementation-comparison-20261030/cuthbert_cases123_health_20261101T0526.json",
+      "live_progress_source_sha256": "1e3e80ba327ae9047e5804340c16aa7670aeef21b8f08e12a80c01abe00c4053",
+      "live_progress": {
+        "1": {
+          "IF2_completed": 175,
+          "arms": {
+            "A": null,
+            "B": {
+              "attempted": 400,
+              "accepted": 400,
+              "fit_failed": false,
+              "fit_seconds": 556.7575556077063
+            },
+            "C": {
+              "attempted": 230,
+              "accepted": 230,
+              "fit_failed": false,
+              "fit_seconds": 320.3283078940585
+            }
+          },
+          "complete": false
+        },
+        "2": {
+          "IF2_completed": 175,
+          "arms": {
+            "A": {
+              "attempted": 240,
+              "accepted": 240,
+              "fit_failed": false,
+              "fit_seconds": 332.5521682575345
+            },
+            "B": null,
+            "C": {
+              "attempted": 400,
+              "accepted": 400,
+              "fit_failed": false,
+              "fit_seconds": 554.304480352439
+            }
+          },
+          "complete": false
+        },
+        "3": {
+          "IF2_completed": 175,
+          "arms": {
+            "A": {
+              "attempted": 400,
+              "accepted": 400,
+              "fit_failed": false,
+              "fit_seconds": 556.6673379912972
+            },
+            "B": {
+              "attempted": 240,
+              "accepted": 240,
+              "fit_failed": false,
+              "fit_seconds": 333.9823130602017
+            },
+            "C": null
+          },
+          "complete": false
+        }
+      },
+      "not_terminal_results": true,
+      "note": "Three existing tasks are running; the remaining eight wait for the array concurrency limit. The earlier PartitionDown record remains in the dated submission snapshot."
     }
   },
-  "completed_jobs_scheduler_source": "work/implementation-comparison-20261030/scheduler_20261101T0456.json",
-  "completed_jobs_scheduler_source_sha256": "07239e19ef4fb9d440589b795ca80e23ab43b585c4d3b40fed87e6bb4a7d1a1f"
+  "completed_jobs_scheduler_source": "work/implementation-comparison-20261030/scheduler_20261101T0526.json",
+  "completed_jobs_scheduler_source_sha256": "5396d62e18648c9f4e2d7adbf52e3c4e45632b5ddb27ffae55a8a22ad2fd3a3f"
 }

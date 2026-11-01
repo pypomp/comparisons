@@ -8,7 +8,7 @@ The new experiment has a different status:
 
 | Package | New endpoints | State |
 |---|---:|---|
-| Cuthbert | 3/36 | First A/B/C case audited; remaining cases submitted as 65160224, pending while spgpu is DOWN |
+| Cuthbert | 3/36 | First A/B/C case audited; cases 1–3 running as 65160224; eight more wait for the concurrency limit |
 | PFJAX | 0/36 | Dependent formal job cancelled before starting after GPU validation failure |
 | PyDPF | 0/36 | Dependent formal jobs cancelled before starting after GPU validation failure |
 | TFP | 0/36 | Dependent formal jobs cancelled before starting after GPU validation failure |
@@ -20,6 +20,6 @@ The new particles fits used 43,647 CPU seconds, plus 155 CPU seconds for the ear
 
 The [first Cuthbert case](cuthbert_case0_20261101.md) gives independent log mean likelihoods of −3749.346585 (A), −3747.740628 (B) and −3744.844912 (C). All three completed 400 Adam updates; B/C shared the completed 175-pass IF2 result. Their 36-repeat scores all satisfy the precision requirement. These are three endpoints from one case; an overall method comparison awaits all twelve cases.
 
-The full first allocation used 1,882 seconds on an A40. Cases 1–11 were then submitted once as array 65160224, retaining the same 57-minute limit and all scientific settings. Actual v3 validation, diagnosis and case 0 costs plus the remaining allocation limits total 40,702 seconds, within 42,480 seconds. The partition is currently DOWN and supplies no start estimate. [Cost and submission record](../results/cuthbert/submission_cases1_11_20261101.json).
+The full first allocation used 1,882 seconds on an A40. Cases 1–11 were then submitted once as array 65160224, retaining the same 57-minute limit and all scientific settings. Actual v3 validation, diagnosis and case 0 costs plus the remaining allocation limits total 40,702 seconds, within 42,480 seconds. The query at 05:27 UTC shows three cases running and eight waiting for the existing array concurrency limit. No additional endpoints have been collected. [Cost and submission record](../results/cuthbert/submission_cases1_11_20261101.json).
 
 Cuthbert's forward-PF agreement was accepted for proceeding with this empirical experiment. The [test-method review](reference_tests_20261101.md) and [original self-repeat diagnosis](cuthbert_repeats_20261101.md) explain why the old elementwise gradient threshold alone could not distinguish an extension error. This decision does not certify derivative correctness or erase the [earlier v3 failures](cuthbert_v3_20261101.md).
