@@ -1,11 +1,11 @@
 # Experiment status
 
-The [saved scheduler queries](../results/current_jobs.json) are from 07:56 UTC on 1 November 2026. This page is a recorded snapshot, not a live cluster view.
+The [saved scheduler queries](../results/current_jobs.json) include the 08:26 UTC query on 1 November 2026 and the separate PFJAX post-submission query. This page is a recorded snapshot, not a live cluster view.
 
 | Package | GPU check | New optimization results |
 |---|---|---|
 | Cuthbert v3 | Earlier failed checks retained; the repeat diagnosis shows that the old gradient rule also rejects original self-repeats | 36/36 endpoints audited; two A fits failed and three A scores are low precision; final report, figures and reproduction archive prepared |
-| PFJAX | 65151851 completed and reviewed; repeated gradients vary | 0/36; full-scale validation still required |
+| PFJAX | [Full Dacca check 65168298 submitted](pfjax_check_v3_20261101.md); running at its saved query | 0/36; awaiting full-scale output and cost review |
 | PyDPF | 65151857 completed and reviewed; deterministic controls agree on the tested linear model | 0/36; earlier dependent jobs cancelled before starting |
 | TFP | 65151858 failed after three subprocess timeouts; partial arrays reviewed | 0/36; earlier dependent jobs cancelled before starting |
 | particles | CPU checks and independent GPU evaluation complete | 24/24 estimates audited; 21 scores meet the precision requirement; final figures pending |

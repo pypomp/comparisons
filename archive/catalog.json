@@ -484,5 +484,14 @@
     "experiments_rerun": false,
     "review_ready": true,
     "upstream_release": false
+  },
+  {
+    "path": "artifacts/validation/pfjax_check_v3_setup_20261101.tar.gz",
+    "source": "PFJAX full Dacca GPU check setup: source, CPU preflight, preserved local setup failures, submission and prepared audit. No GPU result or formal fit.",
+    "sha256": "5bff2963116256799aa5e4b4d1c8177523fbed4bafe6421c18222d4a82b00f87",
+    "bytes": 23522898,
+    "files": 445,
+    "all_member_hashes_verified": true,
+    "GPU_results_included": false
   }
 ]
