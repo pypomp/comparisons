@@ -355,5 +355,13 @@
     "bytes": 389071,
     "files": 147,
     "purpose": "Gradient-test interpretation, saved Cuthbert gradient scales and completed PyDPF repeatability diagnosis; raw comparisons and source records preserved."
+  },
+  {
+    "path": "artifacts/validation/reference_tests_and_ABC_20261101.tar.gz",
+    "source": "Reference tests, exact saved-array recalculation and first complete Cuthbert ABC submission. Historical failed validations preserved.",
+    "sha256": "c32e80e76449b6a934a679e4261e2a5ea640fdbdcc09ad1ed266dfa21827f675",
+    "bytes": 6425049,
+    "files": 131,
+    "all_member_hashes_verified": true
   }
 ]

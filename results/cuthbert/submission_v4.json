@@ -1,0 +1,37 @@
+{
+  "job_id": "65158659",
+  "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/implementation_comparison_20261030/cuthbert_formal_v4",
+  "array": "0",
+  "cases_submitted": [
+    0
+  ],
+  "cases_remaining": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "all_expected_endpoints": 36,
+  "submitted_case_endpoints": 3,
+  "stage": "first full case; later cases after actual cost review",
+  "submitted_at_utc": "2026-11-01T03:21:48.705843+00:00",
+  "source_manifest_sha256": "51d539aaed83a56b81a078e5677f7e98ebec62fa323384b827a7a82e45c67913",
+  "time_limit_per_case_seconds": 3420,
+  "host_memory_GiB": 48,
+  "GPU": "A40",
+  "account": "ionides3",
+  "package_source_revision": "v3 unchanged",
+  "all12_cases_allocation_seconds_upper": 41040,
+  "new_validation_and_all12_cases_seconds_upper": 42339,
+  "existing_repeatability_job": "65156615",
+  "old_gate_state": "FAILED1:0 retained",
+  "forecast_seconds": 3419.4692725888453,
+  "submission_stdout": "65158659\n"
+}

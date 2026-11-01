@@ -35,3 +35,5 @@ The user accepts forward-likelihood agreement as sufficient to proceed with the 
 The already submitted repeatability job remains useful; it does not change queued production source. The independent time-budget issue still needs a feasible submission plan. The previous submit program also depends on a failed job, so it cannot simply be rerun. Any replacement submission protocol must document this decision and preserve the scientific iteration counts, all previous evidence and total authorized allocation.
 
 The same review recovered the completed [PyDPF repeatability diagnosis](pydpf_gpu_20261101.md). Full records and the recomputation programs are archived under `artifacts/validation/gradient_test_review_20261101.tar.gz`, with its SHA256 in the [catalog](../archive/catalog.json).
+
+The subsequent [comparison with existing PyPOMP tests](reference_tests_20261101.md) records the reference revisions, applies the unchanged CuTe comparison arithmetic to all24 saved pairs, and documents the revised empirical A/B/C submission.
