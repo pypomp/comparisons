@@ -11,7 +11,7 @@ The new experiment has a different status:
 | Cuthbert | 36/36 | Complete report and audit; two A fits failed, three A scores low precision |
 | PFJAX | 36/36 | [Final report, figures and verified reproduction archive](pfjax_20261101/report.md); one failed A fit with floor score, 35 other scores meet precision; B is worse than A in case1 |
 | PyDPF | 0/36 | [Twelve complete IF2 fits audited; A/B/C submitted](pydpf_warm_20261101.md); no gradient endpoints yet |
-| TFP | 0/36 | [Twelve complete IF2 fits audited; A/B/C submitted](tfp_prefix_20261101.md); no gradient endpoints yet |
+| TFP | 12/36 | [B completed and audited](tfp_B_20261101.md); twelve complete fits and precise nonfloor scores; A/C pending completion |
 | particles | 24/24 | [Final report, figures and full reproduction archive](particles_20261101/report.md) complete; three low-ESS scores retained |
 
 For new particles, the median independent log likelihood is −4169.070668 for A (1800-second external Nelder-Mead) and −3784.099127 for B (900-second public IF2, then Nelder-Mead to the same total budget). B is higher in all twelve observed pairs. Precision passes are 9/12 for A and 12/12 for B; A tasks 0, 2 and 12 reached R=288 and remain low precision. There were no failed fits or density-floor scores. These findings apply to the recorded starts and budgets, not universal optimizer superiority.

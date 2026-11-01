@@ -765,5 +765,25 @@
     "actual_GPU_all_methods_audit_completed": false,
     "PF_calls": 0,
     "optimizer_steps": 0
+  },
+  {
+    "path": "artifacts/experiments/dacca/tfp_B_20261101T1926.tar.gz",
+    "source": "TFP B completed phase, raw states and independent scores, frozen sources, physical prefix and saved-data audit programs.",
+    "sha256": "dfff138eb28132f61488cedfe9e0d0402145f169dd8de81d5f760fde839e6b44",
+    "bytes": 38562591,
+    "files": 6478,
+    "all_member_hashes_verified": true,
+    "extracted_phase_audit_byte_identical": true,
+    "extracted_metadata_audit_byte_identical": true,
+    "endpoint_count": 12,
+    "raw_values": 432,
+    "complete_fits": 12,
+    "failed_fits": 0,
+    "nonfloor_precision_passed": 12,
+    "actual_B_GPU_seconds": 9468,
+    "physical_prefix_GPU_seconds": 12747,
+    "all_methods_complete": false,
+    "PF_calls": 0,
+    "optimizer_steps": 0
   }
 ]
