@@ -9,7 +9,7 @@
     "archive/history.json": "301a126979e010b627ac3e3efa33747d9c8d28aefb66240e03b9cb96d5c107ff",
     "archive/README.md": "d0b164b82a826c9a6a09c94378465f3d131d7babe19b90694e70520fc7d711cb",
     "archive/files.json.gz": "6d1395407c6809c0888da9ae587cd377921fcd8840af7ea376ecc3b43f31fbb3",
-    "archive/catalog.json": "880bf7f26bb886657b76a3d3815e87610091c8cf7ecd2e479eca8a06cfddd183",
+    "archive/catalog.json": "d841dfa7ddb8e38d3c2cbc39295e6afb81d3fcf9bc1e2444a4fb9670e4e451d6",
     "archive/licenses/PyPOMP": "4859045e896e5131efd0ed0772ae72cf4295d71f72357cac27713346bec73b9e",
     "experiments/dacca/original_paths.json": "e99e0e93a4dc2d6cdcbdb442eb6cb62c5c251bda6ebac2933dede79f74ce3b9a",
     "experiments/dacca/README.md": "fd1b8c8eba7616ec0324976ad3e7272cfec44f17ba8cd5abe9f110faf063dbf0",
@@ -154,14 +154,14 @@
     "packages/pydpf/validation/check_dacca.py": "ae36ec9f06871158ab66feec9e499ba8d04bf860ef09d084e69f187b9c9eb703",
     "packages/pydpf/validation/dacca_model.py": "b9280b9c911742793f88d234ae62252f38381ff489fc09320ba381b909d62e7e",
     "reports/validation_20261101.md": "f15690b0df6f0fe0df1e1833a5bf778d9f15fc8ed0551bf7dd8a87627ad2caa9",
-    "reports/status.md": "dd64521f754cac325ae4b561e100106d4c6c6050050998bbc6a4aa98d7602532",
+    "reports/status.md": "f479c057e8256b0954446a2a1b313f0a72f87481f61f8c414ec4adc59d0a334f",
     "reports/dacca_comparison.md": "9452d252e7163873646bd69bcea5e078451c20d6d581abea61f2aed0a6ce6a82",
     "reports/gpu_diagnosis_20261101.md": "7efcf83ad9b79d88f4dbbcbca23e8452297132f292a66825bb2045757b172a07",
     "results/validation_20261101/other_packages_local_review.json": "d0be5caa62aa60d2c666bcf74048414070fce70a9eacddded09efde94555a32f",
-    "results/current_jobs.json": "2b232f7d3f9de5098ab6ab40a48c82b4b8e69dc6600c91c24add1e0f0b9f2660",
+    "results/current_jobs.json": "ecd33c0ffd246e4ba0b3b3e95f9a861ce3b994cb0c5786670dde0d168c420a98",
     "Makefile": "a7d5c1346fcd18b33da6412de962ad3e0f678b559efb89d8d5527e41ab0bb4ec",
     "docs/conventions.md": "fc8ac34046ea045d7da15a8380019671a40b5d44ee41271005493756807ef153",
-    "reports/correctness.md": "cda59ba2a15eecb16b6d2a263850308ff77e9e6510ec24a94777807af433ab21",
+    "reports/correctness.md": "325f1758c9f812e21bfe02db9fa15061956ab3ab320f359dc93eb78f0e9ca636",
     "reports/optimization.md": "91202c1cf94782a8a7e59ad0c325ea2d0aae8437ebd1002c701ff51f36e64b4c",
     "reports/timing.md": "e79fad532fc670e37c262a97ae72b334321279c776566a79f7abfa83c909bf33",
     "reports/queue_20261101.md": "d33b5a49f05e2848b1fd0259c8eab1414af8203a29edf79e6e7a8e74dceb200c",
@@ -206,6 +206,8 @@
     "results/cuthbert/review_package_20261101.json": "524f068471e4bb4769116748dff295426d3b76e312ec28cadd3c2829cc745677",
     "scripts/analyze_cuthbert.py": "251dda2d1fb8ece24ce8c125b7793c844183525a687de1e88ed38637901652b5",
     "results/pfjax/check_v3_submission_20261101.json": "ac2244c4cc4ae21107014addad8dfcbf0e1c0c1c30cdaf0a24da5c1f97e00cc1",
-    "reports/pfjax_check_v3_20261101.md": "02bae5ffaa84f49c472e8dcec2daf68d81376b9da1abea785920044fb1e934c5"
+    "reports/pfjax_check_v3_20261101.md": "02bae5ffaa84f49c472e8dcec2daf68d81376b9da1abea785920044fb1e934c5",
+    "results/pfjax/forward_checks_20261101.json": "bf21d87420db8a9b04f7d4a185689ab77071920447e12c6b9d5e93e8e4360602",
+    "reports/pfjax_forward_20261101.md": "7cb4dc066593d166a432365ccc8c5cf7b5dcce3c0e24d5047f458b3797f4150e"
   }
 }

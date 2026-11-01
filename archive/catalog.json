@@ -493,5 +493,17 @@
     "files": 445,
     "all_member_hashes_verified": true,
     "GPU_results_included": false
+  },
+  {
+    "path": "artifacts/validation/pfjax_forward_checks_20261101T0856.tar.gz",
+    "source": "Failed PFJAX full Dacca check: complete raw results, source and audit; separate forward/differentiation diagnostic setup and CPU controls.",
+    "sha256": "15886a4866e19def899c2d7dada5eaa3522b2ef7b91c04b9647e6c7d68f706a9",
+    "bytes": 31653781,
+    "files": 666,
+    "all_member_hashes_verified": true,
+    "extracted_GPU_record_audit_identical": true,
+    "extracted_CPU_control_audit_identical": true,
+    "new_diagnosis_GPU_results_included": false,
+    "formal_fits_or_scores_rerun": false
   }
 ]
