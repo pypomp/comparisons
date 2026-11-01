@@ -1,6 +1,6 @@
 # Experiment status
 
-The [saved scheduler query](../results/current_jobs.json) was captured at 15:57 UTC on 1 November 2026. This page is a recorded snapshot, not a live cluster view.
+The [saved scheduler query](../results/current_jobs.json) was captured at 16:27 UTC on 1 November 2026. This page is a recorded snapshot, not a live cluster view.
 
 | Package | GPU check | New optimization results |
 |---|---|---|
@@ -23,3 +23,5 @@ The [Cuthbert repeat diagnosis](cuthbert_repeats_20261101.md) retains 54 finite 
 | Does IF2 initialization or gradient discounting improve the fitted likelihood? | [Optimization](optimization.md) |
 
 Completed checks: [Cuthbert v2 and TFP CPU tests](validation_20261101.md). Diagnostic design and CPU controls: [PFJAX, PyDPF and TFP](gpu_diagnosis_20261101.md). Earlier results, failures and full test logs remain in the [archive](../archive/README.md).
+
+The [TFP saved-state and score audit preparation](tfp_gradient_audit_preparation_20261101.md) passes local saved-record controls. Actual A/B/C GPU results are still pending; no model or optimizer was run by these checks.

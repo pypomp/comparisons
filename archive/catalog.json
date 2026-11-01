@@ -680,5 +680,20 @@
     "gradient_results_claimed": false,
     "PF_calls": 0,
     "fit_calls": 0
+  },
+  {
+    "path": "artifacts/validation/tfp_gradient_audit_preparation_20261101T1626.tar.gz",
+    "source": "TFP gradient saved-state and independent-score audit preparation, frozen runtime source, synthetic records and retained local metadata failure; no new GPU result.",
+    "sha256": "0a8be270adde4fe065b033ae3a4fc1b1ed57df508fd34540b3e7a825acf27ac0",
+    "bytes": 16983768,
+    "files": 3296,
+    "all_member_hashes_verified": true,
+    "extracted_saved_core_audits_byte_identical": true,
+    "extracted_controls_identical_except_absolute_missing_path": true,
+    "corruption_controls_refused": 13,
+    "real_GPU_gradient_audit_completed": false,
+    "PF_calls": 0,
+    "IF2_calls": 0,
+    "optimizer_calls": 0
   }
 ]
