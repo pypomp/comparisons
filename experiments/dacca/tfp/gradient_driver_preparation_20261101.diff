@@ -1,0 +1,28 @@
+--- tfp_formal_v3/run.py
++++ prepared/run.py
+@@ -149,7 +149,9 @@
+         if not engine.active.numpy().any():break
+         write(out/'inflight.json',{'iteration':i,'domain':domain})
+         old_state=engine.snapshot();old_active=engine.active.numpy().copy();t=time.perf_counter()
+-        try:value=sync(engine.step(seed(domain,i),ids,tf.constant(rates[i])))
++        try:
++            returned=engine.step(seed(domain,i),ids,tf.constant(rates[i]))
++            value=sync(returned[:4])
+         except Exception as exc:
+             seconds=time.perf_counter()-t;calls.append(seconds)
+             engine.restore(old_state);engine.active.assign(tf.zeros_like(engine.active))
+@@ -162,7 +164,13 @@
+         seconds=time.perf_counter()-t
+         params,loss,g,new_active=value
+         for row in np.flatnonzero(old_active & ~new_active):failed_iteration[row]=i
+-        if (old_active & ~new_active).any():save(out/f'failure_{i:04d}.npz',{'parameters':params,'loss':loss,'gradient':g,'active':new_active})
++        if (old_active & ~new_active).any():
++            proposal={k:v.numpy() for k,v in returned[4].items()}
++            proposal.update(parameters=params,active=new_active,
++                natural_proposed=m.natural(returned[4]['parameters_proposed']).numpy(),
++                root_key=seed(domain,i).numpy(),members=ids.numpy(),rates=rates[i],
++                failed_rows=old_active & ~new_active,iteration=np.array(i))
++            save(out/f'failure_{i:04d}.npz',proposal)
+         calls.append(seconds)
+         append(out/'calls.jsonl',{'iteration':i,'synchronized_seconds':seconds,'active':new_active.tolist()})
+         save(out/'checkpoint.npz',engine.snapshot())

@@ -615,5 +615,18 @@
     "extracted_PyDPF_saved_CPU_core_identical": true,
     "PF_calls": 0,
     "fit_calls": 0
+  },
+  {
+    "path": "artifacts/validation/pfjax_cases5_8_and_tfp_preparation_20261101T1156.tar.gz",
+    "source": "PFJAX cases5-8: twelve retained endpoints and 684 raw PF values, including one numerical fit failure and density-floor score; TFP local audit and synthetic driver preparation, including failed preparation attempts.",
+    "sha256": "b629ab3fe317f47ec9bfed1f53a6c7326c5a0bffa6e13edb81495d8f305e515e",
+    "bytes": 59059173,
+    "files": 7028,
+    "all_member_hashes_verified": true,
+    "four_extracted_case_audits_byte_identical": true,
+    "extracted_TFP_saved_driver_audit_byte_identical": true,
+    "extracted_TFP_synthetic_prefix_core_identical": true,
+    "PF_calls": 0,
+    "fit_calls": 0
   }
 ]
