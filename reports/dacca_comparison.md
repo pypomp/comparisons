@@ -2,7 +2,7 @@
 
 We compare particle-filter implementations and examine whether IF2 initialization and gradient discounting improve likelihood optimization within each package. The code extends Cuthbert, PFJAX, PyDPF, TensorFlow Probability and particles. PyPOMP supplies the fixed PF used for independent evaluation.
 
-The new GPU optimization experiments are unfinished. [Experiment status](status.md) records their progress. Results are reported separately as [correctness](correctness.md), [ordinary PF runtime](timing.md) and [likelihood optimization](optimization.md).
+The five new public-interface comparisons are complete. [Experiment status](status.md) links their final reports and retains all numerical failures, low-precision scores and density-floor outcomes. Results are reported separately as [correctness](correctness.md), [ordinary PF runtime](timing.md) and [likelihood optimization](optimization.md).
 
 ## Model
 

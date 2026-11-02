@@ -1,0 +1,85 @@
+{
+  "all_authorized_scopes_delivered": true,
+  "packages": [
+    {
+      "package": "cuthbert",
+      "endpoints": 36,
+      "raw_values": 2052,
+      "failed_fits": 2,
+      "nonfloor_precision_passed": 33,
+      "low_precision_scores": 3,
+      "floor_scores": 0,
+      "report": "reports/cuthbert_20261101/report.md",
+      "source": "results/cuthbert/current_results.json",
+      "source_sha256": "077e65b43b2918be12c1c437f9544195f58882fc3fea8817c07a9e49af44904a"
+    },
+    {
+      "package": "pfjax",
+      "endpoints": 36,
+      "raw_values": 1548,
+      "failed_fits": 1,
+      "nonfloor_precision_passed": 35,
+      "low_precision_scores": 0,
+      "floor_scores": 1,
+      "report": "reports/pfjax_20261101/report.md",
+      "source": "results/pfjax/current_results.json",
+      "source_sha256": "5833dea5b83f678ded74d7d5cd9f0c9749df9e08822c538128e7fb1d161bf4d7"
+    },
+    {
+      "package": "tfp",
+      "endpoints": 36,
+      "raw_values": 1332,
+      "failed_fits": 1,
+      "nonfloor_precision_passed": 35,
+      "low_precision_scores": 0,
+      "floor_scores": 1,
+      "report": "reports/tfp_20261101/report.md",
+      "source": "results/tfp/current_results.json",
+      "source_sha256": "986d549e195e604d09a527636ca3ff5e28debb1e29a534da55f6bc1c8fa3f09f"
+    },
+    {
+      "package": "pydpf",
+      "endpoints": 36,
+      "raw_values": 1548,
+      "failed_fits": 0,
+      "nonfloor_precision_passed": 34,
+      "low_precision_scores": 1,
+      "floor_scores": 1,
+      "report": "reports/pydpf_20261102/report.md",
+      "source": "results/pydpf/current_results.json",
+      "source_sha256": "f2c2d0e0445f985edcdff2ab5b9f7c5e88560733c30397f4712a684fa40b8c07"
+    },
+    {
+      "package": "particles",
+      "endpoints": 24,
+      "raw_values": 1692,
+      "failed_fits": 0,
+      "nonfloor_precision_passed": 21,
+      "low_precision_scores": 3,
+      "floor_scores": 0,
+      "report": "reports/particles_20261101/report.md",
+      "source": "results/particles/audit.json",
+      "source_sha256": "5270e6de32227348260684d37e7c7a22edd23643c05732834a2c7a3b4e1b5afb"
+    }
+  ],
+  "totals": {
+    "endpoints": 168,
+    "raw_values": 8172,
+    "failed_fits": 4,
+    "nonfloor_precision_passed": 158,
+    "low_precision_scores": 7,
+    "floor_scores": 3
+  },
+  "interpretation": "Coverage totals only; package IF2 algorithms, workloads and CPU/GPU timing units differ. No pooled performance ranking.",
+  "separate_maze": {
+    "delivered": true,
+    "outcome": "verified_budget_limit_before_training",
+    "fitted_models": 0,
+    "held_out_RMSE": false,
+    "report": "reports/pydpf_maze_20261101/report.md",
+    "original_job_state": "FAILED1:0",
+    "actual_GPU_seconds": 1475
+  },
+  "further_automatic_experiments_authorized": false,
+  "numerical_calls_in_index": 0
+}

@@ -4,13 +4,13 @@ The [Dacca protocol](../experiments/dacca/README.md) defines A, B and C, their i
 
 The [earlier completed comparison](../archive/README.md) contains 968 fitted parameter vectors and 37,584 individual PF evaluations. It includes the two-package paper experiment and six other packages, with their different scopes explicitly retained. Its final reports, full-range figures, optional 1.5-IQR display figures, old failed fits, low-precision scores and density-floor outcomes are preserved. PFJAX's corrected evaluation_v2 alone supplies its final scores; the superseded scores remain as history.
 
-The new experiment has a different status:
+All five new public-interface comparisons are now complete; the earlier experiment retains its separate scope:
 
 | Package | New endpoints | State |
 |---|---:|---|
 | Cuthbert | 36/36 | Complete report and audit; two A fits failed, three A scores low precision |
 | PFJAX | 36/36 | [Final report, figures and verified reproduction archive](pfjax_20261101/report.md); one failed A fit with floor score, 35 other scores meet precision; B is worse than A in case1 |
-| PyDPF | 24/36 | [A/B completed and audited](pydpf_AB_20261102.md); all 24 fits complete, one low-ESS A score and one B floor score retained; C pending |
+| PyDPF | 36/36 | [Final report, figures and verified reproduction archive](pydpf_20261102/report.md); all 36 fits complete, 34 precise nonfloor scores, one low-ESS A score and one B floor score |
 | TFP | 36/36 | [Final report, figures and verified reproduction archive](tfp_20261101/report.md); 35 complete fits, one failed A fit with floor score; 35 other scores meet precision |
 | particles | 24/24 | [Final report, figures and full reproduction archive](particles_20261101/report.md) complete; three low-ESS scores retained |
 
@@ -29,3 +29,7 @@ The [complete PFJAX report](pfjax_20261101/report.md) retains all 36 endpoints a
 The [complete TFP report](tfp_20261101/report.md) retains 36 endpoints and 1,332 original PF values. A/B/C median log mean likelihoods over all twelve endpoints are −3809.127311, −3746.926753 and −3744.294332. C exceeds B in all twelve observed pairs, with median difference 2.391187. A case6 failed after 64 accepted updates: its loss was finite and 23 gradients were NaN; its independent score is at the density floor. The remaining 35 fits completed and their scores meet precision. These are results for six starts and two repetitions, not universal superiority.
 
 TFP fitting uses entire B12 batches. Gradient kernel seconds are 10,348.495 / 9,229.294 / 10,429.009 for A/B/C; B/C logical costs including the shared IF2 prefix are 21,791.111 / 22,990.826 seconds. They are not per-endpoint times and are not multiplied by twelve. Formal allocations cost 43,479 GPU seconds within 72,000; the prior 2,336 validation seconds are separate. The physical prefix is counted once, and the failed A member is not successful acceleration.
+
+The [complete PyDPF report](pydpf_20261102/report.md) retains 36 complete 400-update fits and 1,548 original independent PF values. A/B/C all-endpoint medians are -3806.946514 / -3746.804253 / -3744.445235. C exceeds B in 12/12 observed pairs; median C-B is 2.240650 including the B-floor pair. Among 11 precise nonfloor pairs the median is 2.031365, with all 11 positive. B exceeds A in 11/12 pairs; B case 7 is at the density floor, and A case 9 remains low ESS at R=288. These are six-start/two-repetition observations, not universal optimizer superiority.
+
+PyDPF B12 gradient-kernel seconds are 24,031.036 / 20,411.694 / 20,170.608; B/C logical kernel costs including IF2 are 40,525.585 / 40,284.499. Shared IF2 is counted once physically. Successful allocations used 86,308 GPU seconds; including the 181-second earlier startup failure gives 86,489 of 108,000. Validation 2,522 seconds is separate. Batch costs are not per-endpoint costs or multiplied by twelve; A/B total work differs.

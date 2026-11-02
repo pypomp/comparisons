@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "endpoints": 36,
+  "complete_fits": 36,
+  "failed_fits": 0,
+  "raw_values": 1548,
+  "nonfloor_precision_passed": 34,
+  "floor_saturated": 1,
+  "B_C_initial_parameters_empty_Adam_and_paired_seed_prefix_equal": true,
+  "B_C_recorded_generator_after_hash_prefix_equal": true,
+  "planned_distinct_Torch_seeds": 812,
+  "score_keys_unique": 1627,
+  "random_scope": "Torch IF2/gradient seeds are checked within Torch; JAX score roots/chunks/repeat keys are checked within JAX. Different train/score roots are fixed; no assertion equates generator spaces or enumerates internal draws.",
+  "physical_warm_GPU_seconds": 20216,
+  "gradient_allocation_GPU_seconds": 66092,
+  "prior_failed_startup_GPU_seconds": 181,
+  "total_formal_GPU_seconds": 86489,
+  "original_budget_GPU_seconds": 108000,
+  "separate_validation_GPU_seconds": 2522,
+  "PF_calls": 0,
+  "optimizer_steps": 0
+}
