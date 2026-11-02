@@ -69,6 +69,11 @@ def tables():
     assert len(tfp_rows) == tfp['audited_endpoints']
     assert len({(r['case'], r['method']) for r in tfp_rows}) == len(tfp_rows)
     assert sum(r['repetitions'] for r in tfp_rows) == tfp['original_PF_repetitions']
+    pydpf = json.loads((ROOT / 'results/pydpf/current_results.json').read_text())
+    pydpf_rows = pydpf['endpoints']
+    assert len(pydpf_rows) == pydpf['audited_endpoints']
+    assert len({(r['case'], r['method']) for r in pydpf_rows}) == len(pydpf_rows)
+    assert sum(r['repetitions'] for r in pydpf_rows) == pydpf['original_PF_repetitions']
     return {
         'particles_summary.csv': csv_bytes(summarize(new, ['method'], 'repetitions')),
         'previous_summary.csv': csv_bytes(summarize(main, ['experiment_scope', 'package', 'method'], 'raw_repetitions')),
@@ -76,6 +81,7 @@ def tables():
         'cuthbert/endpoints.csv': csv_bytes(current_rows),
         'pfjax/endpoints.csv': csv_bytes(pfjax_rows),
         'tfp/endpoints.csv': csv_bytes(tfp_rows),
+        'pydpf/endpoints.csv': csv_bytes(pydpf_rows),
     }
 
 

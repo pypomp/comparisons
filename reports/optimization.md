@@ -10,7 +10,7 @@ The new experiment has a different status:
 |---|---:|---|
 | Cuthbert | 36/36 | Complete report and audit; two A fits failed, three A scores low precision |
 | PFJAX | 36/36 | [Final report, figures and verified reproduction archive](pfjax_20261101/report.md); one failed A fit with floor score, 35 other scores meet precision; B is worse than A in case1 |
-| PyDPF | 0/36 | [Twelve complete IF2 fits audited; A/B/C submitted](pydpf_warm_20261101.md); no gradient endpoints yet |
+| PyDPF | 24/36 | [A/B completed and audited](pydpf_AB_20261102.md); all 24 fits complete, one low-ESS A score and one B floor score retained; C pending |
 | TFP | 36/36 | [Final report, figures and verified reproduction archive](tfp_20261101/report.md); 35 complete fits, one failed A fit with floor score; 35 other scores meet precision |
 | particles | 24/24 | [Final report, figures and full reproduction archive](particles_20261101/report.md) complete; three low-ESS scores retained |
 

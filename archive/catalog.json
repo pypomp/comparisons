@@ -843,5 +843,33 @@
     "verified_budget_limit": true,
     "PF_calls_in_review": 0,
     "optimizer_steps_in_review": 0
+  },
+  {
+    "path": "artifacts/experiments/dacca/pydpf_AB_20261102T0107.tar.gz",
+    "source": "PyDPF A/B completed phases: frozen source, raw states, independent scores, physical warm prefix and saved-data audit programs.",
+    "sha256": "0d9739b20ba5762f117409b71746dc3c625712d18233705b2f317915978f5e60",
+    "bytes": 12929392,
+    "files": 1423,
+    "all_member_hashes_verified": true,
+    "extracted_audits_byte_identical": [
+      "warm",
+      "A",
+      "B"
+    ],
+    "endpoint_count": 24,
+    "raw_values": 1116,
+    "complete_fits": 24,
+    "failed_fits": 0,
+    "nonfloor_precision_passed": 22,
+    "low_ESS_scores": 1,
+    "floor_saturated_scores": 1,
+    "actual_A_GPU_seconds": 24512,
+    "actual_B_GPU_seconds": 20861,
+    "physical_warm_GPU_seconds": 20216,
+    "prior_startup_failure_GPU_seconds": 181,
+    "budget_including_reserved_C": 93670,
+    "all_methods_complete": false,
+    "PF_calls": 0,
+    "optimizer_steps": 0
   }
 ]
