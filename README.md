@@ -2,6 +2,10 @@
 
 We compare particle filters and likelihood optimization for the Dacca cholera model, using the original package functions and our additions for IF2 and discounted gradients.
 
+![Dacca final likelihood distributions for Cuthbert, PFJAX, TFP and PyDPF](reports/dacca_native_figures_20261102T0718/likelihood_distributions.png)
+
+Independent log(mean likelihood), higher is better. Each method has twelve runs. The view is zoomed; all scores enter the boxes and densities. [Full range, paired differences and PDF versions](reports/figures.md).
+
 | Read | Contents |
 |---|---|
 | [Results and figures](reports/optimization.md) | Twelve runs per method, independent likelihoods and fitting times |
