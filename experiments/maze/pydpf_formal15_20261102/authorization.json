@@ -1,0 +1,23 @@
+{
+  "UTC": "2026-11-02T18:30:02.285680+00:00",
+  "user_instruction": "先跑15组，验证通过后开始正式训练，预算按实际耗时来估。",
+  "arms": [
+    "native_dpf",
+    "native_stop",
+    "discount097"
+  ],
+  "initialization_seeds": [
+    0,
+    10,
+    20,
+    30,
+    40
+  ],
+  "repetitions_per_initialization": 1,
+  "fits": 15,
+  "epochs": 100,
+  "automatic_submission_after_actual_validation_and_cost_review": true,
+  "validation_job_retained": "65238998",
+  "original_36_fit_submission_prohibited": true,
+  "budget_basis": "Actual full-size GPU warm complete-step/evaluation timings plus separately reported measured startup and documented headroom; not the old30-hour ceiling or fixed45-minute estimate."
+}

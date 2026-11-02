@@ -1,9 +1,15 @@
 # Results
 
-[New particles endpoint records](particles/endpoints.csv) · [Original audit](particles/audit.json) · [Recomputed summary](particles_summary.csv)
+The main comparison contains 168 final estimates, with six starts × two repetitions per method. It uses native PFJAX A/B and reports our earlier α=1 correction separately.
 
-The new particles comparison has 24 endpoint records and 1,692 raw PF repeats. All 24 fits succeeded; 21 scores meet the precision requirement. Low-precision A tasks 0, 2 and 12 remain in the records and the median. There are no new GPU optimization results in this repository snapshot.
+| Table | Contents |
+|---|---|
+| [Likelihoods](overview_20261102/likelihood.csv) | Medians, failures, floors and precision |
+| [Paired differences](overview_20261102/paired_differences.csv) | C−B; CPU particles B−A |
+| [Fitting times](overview_20261102/fit_times.csv) | Times per fit or per batch, with units stated |
+| [PFJAX five methods](overview_20261102/pfjax_five_methods.csv) | Native A/B, added-α=1 A/B and C |
+| [PFJAX individual records](pfjax_native/native_and_extension_20261102.csv) | All sixty scores and fitting times |
 
-[Earlier summary](previous_summary.csv) describes 932 estimates from the completed earlier experiments. The original 968-row table, including 36 Dynamax records, and all 37,584 individual PF values are retained in the archive. Dynamax is excluded from this main summary by the user's decision. Other failures and low-precision scores remain included. Each row's finite-score count is the denominator for its median. The table is grouped by experiment, package and method, not ranked across different budgets or hardware.
+Endpoint sources: [Cuthbert](cuthbert/endpoints.csv), [PFJAX native](pfjax_native/final_comparison_20261102.csv), [PFJAX extension](pfjax/endpoints.csv), [TFP](tfp/endpoints.csv), [PyDPF](pydpf/endpoints.csv), [particles](particles/endpoints.csv).
 
-Both summary CSV files can be rebuilt using `python3 scripts/reproduce.py --output build/tables`. They summarize saved endpoint estimates; this command does not run PF evaluations. Individual repetitions, checkpoints, old and corrected scoring records, original scientific figures and their plotting programs remain in [the archive](../archive/README.md).
+Run `make overview` to regenerate the summary and `make check` to verify it. Medians include all finite scores, including scores at the density floor and those from failed fits. Individual PF evaluations, checkpoints and older tables are [archived](../archive/README.md).

@@ -1,0 +1,489 @@
+{
+  "protocol": {
+    "version": 1,
+    "created_UTC": "2026-11-02T18:03:41.900326+00:00",
+    "authorization": "User requested formal Ed maze experiment and selected native DPF / StopGradientDPF / alpha .97, with held-out localization error as primary.",
+    "scope": "Supervised maze comparison inside PyDPF; not MLE, IF2, IFAD or PyPOMP speed comparison",
+    "arms": [
+      "native_dpf",
+      "native_stop",
+      "discount097"
+    ],
+    "initialization_seeds": [
+      0,
+      10,
+      20,
+      30,
+      40,
+      50
+    ],
+    "training_repetitions": 2,
+    "cases": 12,
+    "fits": 36,
+    "epochs": 100,
+    "particles": 100,
+    "time_extent": 99,
+    "T": 100,
+    "batch_size": 64,
+    "training_batches_per_epoch": 15,
+    "updates_per_complete_fit": 1500,
+    "split": {
+      "seed": 20261101,
+      "train": 900,
+      "validation": 400,
+      "test": 700
+    },
+    "normalization": "Original scalar image normalization, using training images only; no validation or test images in estimated mean/std",
+    "native_settings": {
+      "optimizer": "AdamW",
+      "encoder_lr": 0.005,
+      "flow_prior_lr": 0.001,
+      "weight_decay": 0.01,
+      "betas": [
+        0.8,
+        0.99
+      ],
+      "eps": 1e-09,
+      "scheduler": "ExponentialLR",
+      "gamma": 0.99,
+      "loss": "Mean all-time normalized position squared error + sine/cosine direction error + image reconstruction MSE",
+      "dtype": "float32",
+      "strict_determinism": true,
+      "tf32_matmul": false,
+      "tf32_cudnn": true,
+      "cudnn_benchmark": false
+    },
+    "selection": "Lowest validation final-time position MSE; earliest epoch on ties. Common original ordinary PF with systematic resampling. Test never used for selection.",
+    "evaluation": {
+      "filter": "upstream ParticleFilter + SystematicResampler",
+      "J": 100,
+      "repetitions": 3,
+      "primary": "sqrt(mean squared final-time position distance across 700 trajectories and 3 independent PF streams)); original coordinate units",
+      "secondary": [
+        "RMSE at each PF repeat",
+        "training failure count",
+        "validation RMSE by epoch",
+        "actual full allocation cost"
+      ],
+      "baseline_untrained": false
+    },
+    "pairing": "Same initialization for both repetitions at each seed. Same minibatch order, private RNG and default RNG across arms per case. Training repetitions use distinct streams. Same validation and test streams across arms.",
+    "seeds": {
+      "order": 210000000,
+      "train": 310000000,
+      "validation": 410000000,
+      "test": 510000000,
+      "default_offset": 1000000000
+    },
+    "execution": "External four-FCNN CUDA Graph adapter only; native filter/model/loss unchanged. Separate cached graph per B=64 and B=4; inference delegates to original forward.",
+    "equivalence": {
+      "forward_loss_state_RNG": "bitwise",
+      "gradient_relative_L2": 2e-06,
+      "gradient_max_abs": 2e-06,
+      "finite": true,
+      "optimizer_parameters_and_moments_after_step": "bitwise",
+      "updated_parameter_and_tail_batch": true
+    },
+    "resources": {
+      "scope_cap_GPU_seconds": 108000,
+      "bridge_cap_seconds": 1200,
+      "per_formal_fit_cap_seconds": 2700,
+      "planned_maximum_GPU_seconds": 98400,
+      "validation_distinct_from_formal": true,
+      "cost_acceptance": "1.35 * (1400 * max warm B64 train-step + 100 * max B4 train-step + 700 * max validation batch + 33 * max test batch) + 600 <=2700 per arm; measured driver/serialization included in train-step timer",
+      "automatic_retry": false
+    },
+    "failures": "Retain exceptions, nonfinite gradients/proposals and last valid checkpoint. No retries or selecting successful runs. If a completed validation checkpoint exists, evaluate it once and flag incomplete fit; otherwise test unavailable.",
+    "reporting": "All 12 cases per arm retained. Show RMSE distribution and paired differences. Descriptive six-initialization/two-repetition results; no expected ordering or universal superiority. Equal epochs/updates, not equal runtime.",
+    "data": {
+      "csv": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/pydpf_maze_20261101/data/maze_data.csv",
+      "csv_sha256": "481223e5c6a6e3d7a947b1396a0efa6cd8b36d6e2304c931c477aa19d5b3b0cb",
+      "doi": "10.5281/zenodo.23039951",
+      "upstream_commit": "a7487ce1c344c70e1a244e75725b950deb15e146"
+    },
+    "preflight": "New CPU saved optimizer-chain checks and one GPU bridge/cost allocation, all three arms B64/B4 and evaluation/restore; formal jobs only after saved audit and cost pass. No extension of old completed budgets."
+  },
+  "CPU_audits": {
+    "cpu_bridge_audit_native_dpf.json": {
+      "passed": true,
+      "arm": "native_dpf",
+      "CPU_only": true,
+      "checks": [
+        {
+          "exact": {
+            "loss": true,
+            "outputs": true,
+            "components": true,
+            "model_after_forward": true,
+            "rng": true,
+            "after_step": true
+          },
+          "gradient_elements": 403958,
+          "gradient_bitwise": true,
+          "finite": true,
+          "relative_L2": 0.0,
+          "max_abs": 0.0,
+          "passed": true
+        },
+        {
+          "exact": {
+            "loss": true,
+            "outputs": true,
+            "components": true,
+            "model_after_forward": true,
+            "rng": true,
+            "after_step": true
+          },
+          "gradient_elements": 403958,
+          "gradient_bitwise": true,
+          "finite": true,
+          "relative_L2": 0.0,
+          "max_abs": 0.0,
+          "passed": true
+        },
+        {
+          "exact": {
+            "loss": true,
+            "outputs": true,
+            "components": true,
+            "model_after_forward": true,
+            "rng": true,
+            "after_step": true
+          },
+          "gradient_elements": 403958,
+          "gradient_bitwise": true,
+          "finite": true,
+          "relative_L2": 0.0,
+          "max_abs": 0.0,
+          "passed": true
+        }
+      ],
+      "self_repeat": {
+        "exact": {
+          "loss": true,
+          "outputs": true,
+          "components": true,
+          "model_after_forward": true,
+          "rng": true,
+          "after_step": true
+        },
+        "gradient_elements": 403958,
+        "gradient_bitwise": true,
+        "finite": true,
+        "relative_L2": 0.0,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "restore": {
+        "exact": {
+          "loss": true,
+          "outputs": true,
+          "components": true,
+          "model_after_forward": true,
+          "rng": true,
+          "after_step": true
+        },
+        "gradient_elements": 403958,
+        "gradient_bitwise": true,
+        "finite": true,
+        "relative_L2": 0.0,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "result_sha256": "8852b7ef49ff6baf7cc77e3a5c2ada89825640b34e4c21806092c29d9b636780",
+      "all_evaluations_exact": true
+    },
+    "cpu_bridge_audit_discount097.json": {
+      "passed": true,
+      "arm": "discount097",
+      "CPU_only": true,
+      "checks": [
+        {
+          "exact": {
+            "loss": true,
+            "outputs": true,
+            "components": true,
+            "model_after_forward": true,
+            "rng": true,
+            "after_step": true
+          },
+          "gradient_elements": 403958,
+          "gradient_bitwise": true,
+          "finite": true,
+          "relative_L2": 0.0,
+          "max_abs": 0.0,
+          "passed": true
+        },
+        {
+          "exact": {
+            "loss": true,
+            "outputs": true,
+            "components": true,
+            "model_after_forward": true,
+            "rng": true,
+            "after_step": true
+          },
+          "gradient_elements": 403958,
+          "gradient_bitwise": true,
+          "finite": true,
+          "relative_L2": 0.0,
+          "max_abs": 0.0,
+          "passed": true
+        },
+        {
+          "exact": {
+            "loss": true,
+            "outputs": true,
+            "components": true,
+            "model_after_forward": true,
+            "rng": true,
+            "after_step": true
+          },
+          "gradient_elements": 403958,
+          "gradient_bitwise": true,
+          "finite": true,
+          "relative_L2": 0.0,
+          "max_abs": 0.0,
+          "passed": true
+        }
+      ],
+      "self_repeat": {
+        "exact": {
+          "loss": true,
+          "outputs": true,
+          "components": true,
+          "model_after_forward": true,
+          "rng": true,
+          "after_step": true
+        },
+        "gradient_elements": 403958,
+        "gradient_bitwise": true,
+        "finite": true,
+        "relative_L2": 0.0,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "restore": {
+        "exact": {
+          "loss": true,
+          "outputs": true,
+          "components": true,
+          "model_after_forward": true,
+          "rng": true,
+          "after_step": true
+        },
+        "gradient_elements": 403958,
+        "gradient_bitwise": true,
+        "finite": true,
+        "relative_L2": 0.0,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "result_sha256": "10b89fc4936c92170f037a96ba67b2ed0cbd1586e2362c7e55eda92ae9e0c9c1",
+      "all_evaluations_exact": true
+    },
+    "cpu_bridge_audit_native_stop.json": {
+      "passed": true,
+      "arm": "native_stop",
+      "CPU_only": true,
+      "checks": [
+        {
+          "exact": {
+            "loss": true,
+            "outputs": true,
+            "components": true,
+            "model_after_forward": true,
+            "rng": true,
+            "after_step": true
+          },
+          "gradient_elements": 403958,
+          "gradient_bitwise": true,
+          "finite": true,
+          "relative_L2": 0.0,
+          "max_abs": 0.0,
+          "passed": true
+        },
+        {
+          "exact": {
+            "loss": true,
+            "outputs": true,
+            "components": true,
+            "model_after_forward": true,
+            "rng": true,
+            "after_step": true
+          },
+          "gradient_elements": 403958,
+          "gradient_bitwise": true,
+          "finite": true,
+          "relative_L2": 0.0,
+          "max_abs": 0.0,
+          "passed": true
+        },
+        {
+          "exact": {
+            "loss": true,
+            "outputs": true,
+            "components": true,
+            "model_after_forward": true,
+            "rng": true,
+            "after_step": true
+          },
+          "gradient_elements": 403958,
+          "gradient_bitwise": true,
+          "finite": true,
+          "relative_L2": 0.0,
+          "max_abs": 0.0,
+          "passed": true
+        }
+      ],
+      "self_repeat": {
+        "exact": {
+          "loss": true,
+          "outputs": true,
+          "components": true,
+          "model_after_forward": true,
+          "rng": true,
+          "after_step": true
+        },
+        "gradient_elements": 403958,
+        "gradient_bitwise": true,
+        "finite": true,
+        "relative_L2": 0.0,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "restore": {
+        "exact": {
+          "loss": true,
+          "outputs": true,
+          "components": true,
+          "model_after_forward": true,
+          "rng": true,
+          "after_step": true
+        },
+        "gradient_elements": 403958,
+        "gradient_bitwise": true,
+        "finite": true,
+        "relative_L2": 0.0,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "result_sha256": "01c7842d171a48019e8238cba6746ceb5cb9f3dbd71afaeb4cb6828af8e7a5fb",
+      "all_evaluations_exact": true
+    },
+    "cpu_training_audit_discount097.json": {
+      "passed": true,
+      "CPU_only": true,
+      "identity": {
+        "arm": "discount097",
+        "case": 0,
+        "initialization_seed": 0,
+        "repetition": 0,
+        "data_sha256": "a208def1ab6430cba887528d3db6f08cd9015319399a6bbc4876edde679d02fe",
+        "protocol_sha256": "d24be6417fc86ba100902293e80275e1d4c82ebac671a44ee575a5e81be02e63",
+        "CPU_fixture": true,
+        "epochs": 2,
+        "particles": 8,
+        "batch_size": 4
+      },
+      "updates": 4,
+      "validation_selected_epoch": 0,
+      "recomputed_test_RMSE": 601.9156872246984
+    },
+    "cpu_training_audit_native_stop.json": {
+      "passed": true,
+      "CPU_only": true,
+      "identity": {
+        "arm": "native_stop",
+        "case": 0,
+        "initialization_seed": 0,
+        "repetition": 0,
+        "data_sha256": "a208def1ab6430cba887528d3db6f08cd9015319399a6bbc4876edde679d02fe",
+        "protocol_sha256": "d24be6417fc86ba100902293e80275e1d4c82ebac671a44ee575a5e81be02e63",
+        "CPU_fixture": true,
+        "epochs": 2,
+        "particles": 8,
+        "batch_size": 4
+      },
+      "updates": 4,
+      "validation_selected_epoch": 1,
+      "recomputed_test_RMSE": 715.4519009172047
+    },
+    "cpu_training_audit_native_dpf.json": {
+      "passed": true,
+      "CPU_only": true,
+      "identity": {
+        "arm": "native_dpf",
+        "case": 0,
+        "initialization_seed": 0,
+        "repetition": 0,
+        "data_sha256": "a208def1ab6430cba887528d3db6f08cd9015319399a6bbc4876edde679d02fe",
+        "protocol_sha256": "d24be6417fc86ba100902293e80275e1d4c82ebac671a44ee575a5e81be02e63",
+        "CPU_fixture": true,
+        "epochs": 2,
+        "particles": 8,
+        "batch_size": 4
+      },
+      "updates": 4,
+      "validation_selected_epoch": 0,
+      "recomputed_test_RMSE": 611.4357205966539
+    }
+  },
+  "jobs": {
+    "bridge": {
+      "UTC": "2026-11-02T18:11:53.822598+00:00",
+      "stage": "bridge",
+      "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/pydpf_maze_formal_20261102",
+      "manifest_sha256": "57960b2249ca35c49b6e4efc523b3a38f10572c4a17d66bb050268bdb29db23c",
+      "cap_seconds": 1200,
+      "task_count": 1,
+      "automatic_retry": false,
+      "job_id": "65238998"
+    }
+  },
+  "status": {
+    "stage": "GPU_training_equivalence_bridge_submitted",
+    "formal_submitted": false,
+    "GPU_bridge_submitted": true,
+    "old_scopes_unchanged": true,
+    "CPU_three_arm_bridge_passed": true,
+    "CPU_three_arm_training_driver_passed": true,
+    "bridge_job_id": "65238998",
+    "frozen_source_files": 70,
+    "manifest_sha256": "57960b2249ca35c49b6e4efc523b3a38f10572c4a17d66bb050268bdb29db23c",
+    "last_scheduler": {
+      "UTC": "2026-11-02T18:12:56.383130+00:00",
+      "state": "PENDING",
+      "reason": "Priority",
+      "ElapsedRaw": 0
+    },
+    "scope_cap_GPU_seconds": 108000,
+    "planned_allocation_cap_seconds": 98400,
+    "monitor": {
+      "id": "maze-formal",
+      "status": "ACTIVE",
+      "interval_minutes": 30
+    }
+  },
+  "package": {
+    "passed": true,
+    "archive": "artifacts/validation/pydpf_maze_formal_preparation_20261102.tar.gz",
+    "sha256": "11f41baa87aa089c90b0b268f8209bc7bd2e780b0aba81f675276a18bdfcd452",
+    "bytes": 480323894,
+    "member_files": 291,
+    "all_member_SHA_verified": true,
+    "extracted_CPU_audits_byte_equal": {
+      "bridge_native_dpf": "6a26881d31a451d31fc5fa0ae8eeb15e207e00fddd939affab6afd01cdad6ba7",
+      "bridge_native_stop": "1a2554101f4a1288fab70c06f1a6529019a8a75a6b178190fd395823b6b6901e",
+      "bridge_discount097": "488f7019149ee5b2435a5301051415e6d6aa62efdc1decb657262888825828ce",
+      "training_native_dpf": "bd1e22ea139746322c11375df8d397ddf1788552dc8ea71ae88f520f0a080098",
+      "training_native_stop": "23536a5e68b3e0a7c901506433c48a98683e83801657636ebc69c8af6f6e8ddf",
+      "training_discount097": "3b86f2d48614ebfdcab938d45ef0b3e67f8c0f5b69001cbd95075b3d671ed424"
+    },
+    "frozen_source_files": 70,
+    "GPU_results_included": false,
+    "model_calls_during_recovery": 0,
+    "formal_fits_completed": 0,
+    "first_CPU_harness_failure_retained": true
+  }
+}

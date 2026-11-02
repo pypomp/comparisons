@@ -1,0 +1,19 @@
+{
+  "base": "97652aa1bdff73a92c0286549b010e99cc6f7264",
+  "patch_sha256": "2237dc330ac5c0c127a78815dc547c8e6fabf8a47416d2fe267459fd4180c055",
+  "changed_files": {
+    "PARAMETER_ESTIMATION.md": "c708ee57ca428306af1c4e1f2430cf3eed233112830ab41499e958cd1ee8f4d3",
+    "docs/iterated_filter.qmd": "3a3ec0da920390065d69f0f3762119c44646bfde18f269436560a0fc3586b939",
+    "examples/iterated_filter.py": "3242522c5f1462ec69051c195c38cb769fb7d8968516998826abe2ae79c59a61",
+    "mkdocs.yml": "f6cf81d741e4ea64a884e87501e0d66e2896388202890d450daf95072a6ec8eb",
+    "src/pfjax/__init__.py": "c75cdcdbbc2fc1adbbb642a3d0dbb29d1eda2703999502b0bc81f3cabc48dbd5",
+    "src/pfjax/iterated_filter.py": "cf340e3310012ea810b7a51f6239a206367e77a7fff92b0d15a74a275fbc602f",
+    "src/pfjax/particle_filter.py": "f4634f8c944d23016116f3e82186c6e99a2edea2c1aa1f3d793340f7947f1435",
+    "src/pfjax/particle_filter_mop.py": "2637c5cd3a345c549d530bd685716dc5f411bec1a1a20f5ea8d6749637ecaf45",
+    "tests/data/upstream_reference.json": "c7d8467acb44265bb941373d3a90034f988e21333ff4e11b66f488b19ce55728",
+    "tests/data/upstream_reference.npz": "129f4c8b9304123b9b3539c8c5fb30d12d56fcaba736959fa1c2a9c41ea73515",
+    "tests/test_iterated_filter.py": "72fc5511b7bbbeea70bba9f3daa2a5017fc860d5969ee09cdca8af359e8c62ef"
+  },
+  "clean_application_exact": true,
+  "library_code_identical_to_experiment_revision": true
+}

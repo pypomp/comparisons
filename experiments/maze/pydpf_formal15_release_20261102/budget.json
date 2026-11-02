@@ -1,0 +1,116 @@
+{
+  "passed": true,
+  "fit_count": 15,
+  "method_count": 3,
+  "paired_seeds": 5,
+  "GPU": "A40, same type as bridge validation",
+  "methods": {
+    "native_dpf": {
+      "warm_complete_step_seconds": [
+        0.7001171428710222,
+        0.7017712015658617,
+        0.7051709871739149
+      ],
+      "tail_step_seconds": 0.6687375279143453,
+      "evaluation_seconds_by_batch": {
+        "4": 0.36308040749281645,
+        "16": 0.36484665982425213,
+        "60": 0.3662298247218132,
+        "64": 0.3668304570019245
+      },
+      "train_center_seconds": 1049.353434983641,
+      "train_upper_seconds": 1054.1131348349154,
+      "evaluation_seconds": 268.6865433678031,
+      "checkpoint_write_allowance_seconds": 4.492651021108031,
+      "cold_step_excess_seconds": 11.465799565427005,
+      "graph_setup_seconds": 2.419826013967395,
+      "arm_unattributed_body_seconds": 16.641443611122668,
+      "shared_unattributed_allocation_seconds_charged_per_fit": 101.6034683296457,
+      "per_fit_forecast_seconds": 1454.6631668927148,
+      "per_fit_request_before_rounding_seconds": 1923.9751819723288,
+      "requested_seconds": 1980,
+      "requested_minutes": 33,
+      "fits": 5,
+      "estimated_GPU_seconds": 7273.315834463574,
+      "reserved_GPU_seconds": 9900
+    },
+    "native_stop": {
+      "warm_complete_step_seconds": [
+        0.7458816263824701,
+        0.7519921027123928,
+        0.7475775219500065
+      ],
+      "tail_step_seconds": 0.7107367105782032,
+      "evaluation_seconds_by_batch": {
+        "4": 0.3628962244838476,
+        "16": 0.365322383120656,
+        "60": 0.3661078168079257,
+        "64": 0.36617552395910025
+      },
+      "train_center_seconds": 1117.6822017878294,
+      "train_upper_seconds": 1123.8626148551702,
+      "evaluation_seconds": 268.32114185672253,
+      "checkpoint_write_allowance_seconds": 5.380209770053625,
+      "cold_step_excess_seconds": 5.935172752477229,
+      "graph_setup_seconds": 0.17838600929826498,
+      "arm_unattributed_body_seconds": 13.699926386587322,
+      "shared_unattributed_allocation_seconds_charged_per_fit": 101.6034683296457,
+      "per_fit_forecast_seconds": 1512.800506892614,
+      "per_fit_request_before_rounding_seconds": 2008.1283082286363,
+      "requested_seconds": 2040,
+      "requested_minutes": 34,
+      "fits": 5,
+      "estimated_GPU_seconds": 7564.00253446307,
+      "reserved_GPU_seconds": 10200
+    },
+    "discount097": {
+      "warm_complete_step_seconds": [
+        0.7532244408503175,
+        0.7562617128714919,
+        0.753336563706398
+      ],
+      "tail_step_seconds": 0.7186962692067027,
+      "evaluation_seconds_by_batch": {
+        "4": 0.3629929991438985,
+        "16": 0.3650929443538189,
+        "60": 0.3653216026723385,
+        "64": 0.36615377850830555
+      },
+      "train_center_seconds": 1126.5408161096275,
+      "train_upper_seconds": 1130.636024940759,
+      "evaluation_seconds": 268.2821397036314,
+      "checkpoint_write_allowance_seconds": 4.757440477609634,
+      "cold_step_excess_seconds": 5.579658688977361,
+      "graph_setup_seconds": 0.1775078997015953,
+      "arm_unattributed_body_seconds": 14.781819155439734,
+      "shared_unattributed_allocation_seconds_charged_per_fit": 101.6034683296457,
+      "per_fit_forecast_seconds": 1521.722850364633,
+      "per_fit_request_before_rounding_seconds": 2017.1045209884644,
+      "requested_seconds": 2040,
+      "requested_minutes": 34,
+      "fits": 5,
+      "estimated_GPU_seconds": 7608.6142518231645,
+      "reserved_GPU_seconds": 10200
+    }
+  },
+  "bridge_actual_GPU_seconds": 266,
+  "training_forecast_GPU_seconds": 22445.93262074981,
+  "training_requested_GPU_seconds": 30300,
+  "training_forecast_GPU_hours": 6.234981283541614,
+  "training_requested_GPU_hours": 8.416666666666666,
+  "forecast_total_including_bridge_seconds": 22711.93262074981,
+  "requested_total_including_bridge_seconds": 30566,
+  "no_queue_time_in_GPU_hours": true,
+  "headroom_fraction_on_recurring_upper": 0.35,
+  "startup_allocation_is_conservative_unattributed_not_causally_measured": true,
+  "inference_shape_samples_per_method": 1,
+  "limitations": [
+    "No formal100-epoch timing yet.",
+    "Input batch transfer, per-step RNG/log writes and long-run variability are covered by headroom, not separately measured.",
+    "Whole bridge unattributed residual charged per fit; not an isolated process-startup measurement."
+  ],
+  "source_manifest_sha256": "57960b2249ca35c49b6e4efc523b3a38f10572c4a17d66bb050268bdb29db23c",
+  "bridge_audit_sha256": "8a356e1e9dfbeac8d2e90cc6d40405f46fbecaf83211ec40e5434b8d789e8df7",
+  "collection_sha256": "b4bc43c6f020b6edca1dde03b2fd985a9c47c4d514b69e997a9778e2b564a509",
+  "protocol_15_sha256": "9682f7968599c23a76cbfc274463092bb49115529c082a2e6c27e53891f11d55"
+}

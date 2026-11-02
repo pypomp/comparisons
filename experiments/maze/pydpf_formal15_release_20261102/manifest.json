@@ -1,0 +1,16 @@
+{
+  "files": {
+    "protocol.json": "9682f7968599c23a76cbfc274463092bb49115529c082a2e6c27e53891f11d55",
+    "authorization.json": "fb797f61d4ce062398abf8cd7bcd4e45ca6907ef34ed39709e96566eb11a2f4f",
+    "README.md": "35eaf69f4b359906ecebfbbc00cb83eee689efdf542bd60a48e574b982243464",
+    "estimate_budget.py": "6eee3db4e912aafefd78a4a2951180a9caf510dd9830963defb5e234f57d1fd7",
+    "budget.json": "8be562b8fe46710ca95ba5293d88db5e729a80ede4cfc468e526cac23bc53405",
+    "guard.py": "832b62ba238709230e517b68c7ef72e6f98d98d694a601509e94871802e50fd9",
+    "train.sbatch": "116b61f3a1dd5e2d73364a08d57d340b3929daa909683d825fa015dd899bf1c9",
+    "check_selection.py": "8a99a4ec85012601c3212fa9ca02baeed63ec523d0e95ed3111211f1b7baeb2b",
+    "selection_controls.json": "1f325d24249bdafd07d2b95d24d598db7259f6622adcb0a32dfca67c897cb22d",
+    "check_budget.py": "a831b0f467802b025c6dd1d83cc80b0c43e0778be6c7b5b1e80b24f08e57e966",
+    "budget_controls.json": "9f69ce9303af67d05160ffbfe78a22b7bf8e8084ea0661e42dcfe79567632795"
+  },
+  "parent_numerical_manifest_sha256": "57960b2249ca35c49b6e4efc523b3a38f10572c4a17d66bb050268bdb29db23c"
+}

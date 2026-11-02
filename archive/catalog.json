@@ -54,250 +54,291 @@
     "bytes": 1859105
   },
   {
-    "path": "artifacts/experiments/legacy_dacca/pydpf/reproduction.tar.gz",
+    "path": "artifacts/history/previous/experiments/legacy_dacca/pydpf/reproduction.tar.gz",
     "source": "outputs/competitor_estimation/pydpf/formal_v1_final/reproduction.tar.gz",
     "sha256": "91e63a49f41c557ba1b7cbd14a6b8dfb7710f91d1b23acdeded5498b94f640e5",
-    "bytes": 11870028
+    "bytes": 11870028,
+    "previous_path": "artifacts/experiments/legacy_dacca/pydpf/reproduction.tar.gz"
   },
   {
-    "path": "artifacts/experiments/legacy_dacca/tfp/reproduction.tar.gz",
+    "path": "artifacts/history/previous/experiments/legacy_dacca/tfp/reproduction.tar.gz",
     "source": "outputs/competitor_estimation/tfp/formal_v2_final/reproduction.tar.gz",
     "sha256": "7f4f172f6de4b226440421956df5745017ba7bec42b688fd039928b03d9028d2",
-    "bytes": 16015310
+    "bytes": 16015310,
+    "previous_path": "artifacts/experiments/legacy_dacca/tfp/reproduction.tar.gz"
   },
   {
-    "path": "artifacts/experiments/legacy_dacca/dynamax/reproduction.tar.gz",
+    "path": "artifacts/history/previous/experiments/legacy_dacca/dynamax/reproduction.tar.gz",
     "source": "outputs/competitor_estimation/dynamax/dacca_formal_final/reproduction.tar.gz",
     "sha256": "8753555c1962c9f9861bdb51f216014bf7bdf769915c601b4647002beb3ef10e",
-    "bytes": 14515969
+    "bytes": 14515969,
+    "previous_path": "artifacts/experiments/legacy_dacca/dynamax/reproduction.tar.gz"
   },
   {
-    "path": "artifacts/experiments/legacy_dacca/pfjax/reproduction.tar.gz",
+    "path": "artifacts/history/previous/experiments/legacy_dacca/pfjax/reproduction.tar.gz",
     "source": "outputs/competitor_estimation/pfjax/evaluation_v2/reproduction.tar.gz",
     "sha256": "27033e0a37005b901eb14d97efb99a2cf8c26986c992fb853e44bb0e8b362274",
-    "bytes": 11794113
+    "bytes": 11794113,
+    "previous_path": "artifacts/experiments/legacy_dacca/pfjax/reproduction.tar.gz"
   },
   {
-    "path": "artifacts/experiments/legacy_dacca/pypfilt/pypfilt_dacca_formal_reproduction.tar.gz",
+    "path": "artifacts/history/previous/experiments/legacy_dacca/pypfilt/pypfilt_dacca_formal_reproduction.tar.gz",
     "source": "outputs/competitor_estimation/pypfilt/formal_v1/pypfilt_dacca_formal_reproduction.tar.gz",
     "sha256": "dbede637e5553718b194beb0ab430c9dcbd2ff49952dedbf7a31c746cb92cfe2",
-    "bytes": 19779090
+    "bytes": 19779090,
+    "previous_path": "artifacts/experiments/legacy_dacca/pypfilt/pypfilt_dacca_formal_reproduction.tar.gz"
   },
   {
-    "path": "artifacts/experiments/legacy_dacca/particles/particles_dacca_formal_reproduction.tar.gz",
+    "path": "artifacts/history/previous/experiments/legacy_dacca/particles/particles_dacca_formal_reproduction.tar.gz",
     "source": "outputs/competitor_estimation/particles/formal_v1/particles_dacca_formal_reproduction.tar.gz",
     "sha256": "939b86aaf9f83bb44fc82b3a3d01e271cc5a394a75380361bae1f702992ca8b5",
-    "bytes": 31686503
+    "bytes": 31686503,
+    "previous_path": "artifacts/experiments/legacy_dacca/particles/particles_dacca_formal_reproduction.tar.gz"
   },
   {
-    "path": "artifacts/experiments/legacy_dacca/paper_cuthbert_pypomp/reproduction.tar.gz",
+    "path": "artifacts/history/previous/experiments/legacy_dacca/paper_cuthbert_pypomp/reproduction.tar.gz",
     "source": "outputs/cuthbert_dacca_paper/audited_v2/reproduction.tar.gz",
     "sha256": "239ee17ad6ca20adb353455a398ffb9c946019f5eca1c17b1f8d7edfb4d913d4",
-    "bytes": 67390429
+    "bytes": 67390429,
+    "previous_path": "artifacts/experiments/legacy_dacca/paper_cuthbert_pypomp/reproduction.tar.gz"
   },
   {
-    "path": "artifacts/experiments/legacy_dacca/pfjax/superseded_scores/reproduction.tar.gz",
+    "path": "artifacts/history/previous/experiments/legacy_dacca/pfjax/superseded_scores/reproduction.tar.gz",
     "source": "outputs/competitor_estimation/pfjax/formal_v1/history/score_v1_before_independence_fix/reproduction.tar.gz",
     "sha256": "637ea0eefb9097cb438379d7c252275e8bc190247be9444d5da5ebc64f6f00b9",
-    "bytes": 11665607
+    "bytes": 11665607,
+    "previous_path": "artifacts/experiments/legacy_dacca/pfjax/superseded_scores/reproduction.tar.gz"
   },
   {
-    "path": "artifacts/experiments/history/cuthbert_case_comparison_review.zip",
+    "path": "artifacts/history/previous/experiments/history/cuthbert_case_comparison_review.zip",
     "source": "outputs/cuthbert_case_comparison_review.zip",
     "sha256": "a5da7cf38dacf310ff829c52b592a52ceb554f37cbdd3b4a11d90a49a5a12257",
-    "bytes": 1941254
+    "bytes": 1941254,
+    "previous_path": "artifacts/experiments/history/cuthbert_case_comparison_review.zip"
   },
   {
-    "path": "artifacts/experiments/history/cuthbert_common_warm_review.zip",
+    "path": "artifacts/history/previous/experiments/history/cuthbert_common_warm_review.zip",
     "source": "outputs/cuthbert_common_warm_review.zip",
     "sha256": "4fbac535f55fd7d3ad4aeb97b4819d4ac4e25e459b275ec2967899365d8d1f92",
-    "bytes": 2337764
+    "bytes": 2337764,
+    "previous_path": "artifacts/experiments/history/cuthbert_common_warm_review.zip"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/cuthbert_gate_v3/deployment.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/cuthbert_gate_v3/deployment.tar.gz",
     "source": "work/implementation-comparison-20261030/cuthbert_gate_v3/deployment.tar.gz",
     "sha256": "158e7a064c766c40b9f1f6cb15b9f6f3b0909ed08a0d3aa8527c896bbc98651b",
-    "bytes": 8296824
+    "bytes": 8296824,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/cuthbert_gate_v3/deployment.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/cuthbert_gpu_diagnosis_v1/deployment.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/cuthbert_gpu_diagnosis_v1/deployment.tar.gz",
     "source": "work/implementation-comparison-20261030/cuthbert_gpu_diagnosis_v1/deployment.tar.gz",
     "sha256": "9f0ca9c6992337195610e6c2c63a6a5d57845e065749f9dce8671256faf283c5",
-    "bytes": 13927866
+    "bytes": 13927866,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/cuthbert_gpu_diagnosis_v1/deployment.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/jax_formal_v1.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/jax_formal_v1.tar.gz",
     "source": "work/implementation-comparison-20261030/jax_formal_v1.tar.gz",
     "sha256": "4bbe8f099d2ff205dcfbbaf5f9917cf98baf2d51d11fac0677496cf6a8694cce",
-    "bytes": 6359671
+    "bytes": 6359671,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/jax_formal_v1.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/jax_formal_v2.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/jax_formal_v2.tar.gz",
     "source": "work/implementation-comparison-20261030/jax_formal_v2.tar.gz",
     "sha256": "8a334c06f8a827d6ddb251e9663e57f35cc39eff5dbadccc09e201701dc72bb8",
-    "bytes": 6359814
+    "bytes": 6359814,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/jax_formal_v2.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/jax_gate_v1.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/jax_gate_v1.tar.gz",
     "source": "work/implementation-comparison-20261030/jax_gate_v1.tar.gz",
     "sha256": "d4932ead737ece2b454c6559a3133231f9b6e6c41f21e70687843ce875ee1f73",
-    "bytes": 37220437
+    "bytes": 37220437,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/jax_gate_v1.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/jax_gate_v2.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/jax_gate_v2.tar.gz",
     "source": "work/implementation-comparison-20261030/jax_gate_v2.tar.gz",
     "sha256": "a233c85b29412f5a92f1f0c7d6be7e177f640f8cadcd3c4bc07c0d3e3e3ded22",
-    "bytes": 37309298
+    "bytes": 37309298,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/jax_gate_v2.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/jax_gate_v2_dependencies.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/jax_gate_v2_dependencies.tar.gz",
     "source": "work/implementation-comparison-20261030/jax_gate_v2_dependencies.tar.gz",
     "sha256": "8da16b88ed0bdd6b152e7a266c3dac66f221b15c89b293d68e9b8168ec1af140",
-    "bytes": 91417
+    "bytes": 91417,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/jax_gate_v2_dependencies.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/attempts/65096422/deployment.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/particles/attempts/65096422/deployment.tar.gz",
     "source": "work/implementation-comparison-20261030/particles/attempts/65096422/deployment.tar.gz",
     "sha256": "acda56fa530eddd6c11e9c8649f7ddfed9532b086e2169fc083165641016c2cd",
-    "bytes": 10250636
+    "bytes": 10250636,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/attempts/65096422/deployment.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/attempts/65096422/remote_failure.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/particles/attempts/65096422/remote_failure.tar.gz",
     "source": "work/implementation-comparison-20261030/particles/attempts/65096422/remote_failure.tar.gz",
     "sha256": "4e81ac6d1f35e96202d64e5e39ba2cd029ee1c5fbfc127b8265d85938603a69a",
-    "bytes": 879
+    "bytes": 879,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/attempts/65096422/remote_failure.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/deployment.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/particles/deployment.tar.gz",
     "source": "work/implementation-comparison-20261030/particles/deployment.tar.gz",
     "sha256": "acda56fa530eddd6c11e9c8649f7ddfed9532b086e2169fc083165641016c2cd",
-    "bytes": 10250636
+    "bytes": 10250636,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/deployment.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/environment_fix.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/particles/environment_fix.tar.gz",
     "source": "work/implementation-comparison-20261030/particles/environment_fix.tar.gz",
     "sha256": "828e8ddca50291f2a2677360d5f4ffd7f646da3433e6e353f259a6e5dc26b9e3",
-    "bytes": 13771
+    "bytes": 13771,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/environment_fix.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/formal_v1/deployment.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/particles/formal_v1/deployment.tar.gz",
     "source": "work/implementation-comparison-20261030/particles/formal_v1/deployment.tar.gz",
     "sha256": "c68c300b2e3ec926ec1bbd5d24c9277ac4308504be5176febb05343d539fff3b",
-    "bytes": 10288602
+    "bytes": 10288602,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/formal_v1/deployment.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/formal_v1/partial_audit/tasks0_1_2_3_4_5_raw.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/particles/formal_v1/partial_audit/tasks0_1_2_3_4_5_raw.tar.gz",
     "source": "work/implementation-comparison-20261030/particles/formal_v1/partial_audit/tasks0_1_2_3_4_5_raw.tar.gz",
     "sha256": "964c247662b409518c0f19d57a2cb5e5ca5b29d457f01378a84404d9ab7f3e2c",
-    "bytes": 75217785
+    "bytes": 75217785,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/formal_v1/partial_audit/tasks0_1_2_3_4_5_raw.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/formal_v1/submission_patch.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/particles/formal_v1/submission_patch.tar.gz",
     "source": "work/implementation-comparison-20261030/particles/formal_v1/submission_patch.tar.gz",
     "sha256": "a4662c7c0bb4b9365f3c263116338a9ca8b2fd93b912c75219280855a88b714a",
-    "bytes": 14781
+    "bytes": 14781,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/formal_v1/submission_patch.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/preflight_results.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/particles/preflight_results.tar.gz",
     "source": "work/implementation-comparison-20261030/particles/preflight_results.tar.gz",
     "sha256": "b3621016685a20105496d62deec2ebfa88197b2443bc3a1fe7b8d6459b91c2ef",
-    "bytes": 498876
+    "bytes": 498876,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/particles/preflight_results.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/pydpf/deployment.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/pydpf/deployment.tar.gz",
     "source": "work/implementation-comparison-20261030/pydpf/deployment.tar.gz",
     "sha256": "8074fcd0a8594246fcae238d7247b24c260d98cb01a581b60a1697a0f0a0c6e6",
-    "bytes": 2036803
+    "bytes": 2036803,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/pydpf/deployment.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/pydpf/formal_v1/deployment.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/pydpf/formal_v1/deployment.tar.gz",
     "source": "work/implementation-comparison-20261030/pydpf/formal_v1/deployment.tar.gz",
     "sha256": "5eb41d649acc1cb38c3fba2b959f1118aaaff73a4d7065f1f22ae3de668cd215",
-    "bytes": 6601245
+    "bytes": 6601245,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/pydpf/formal_v1/deployment.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/pydpf/preflight_65096176_raw.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/pydpf/preflight_65096176_raw.tar.gz",
     "source": "work/implementation-comparison-20261030/pydpf/preflight_65096176_raw.tar.gz",
     "sha256": "898cd6fa2b4f7975596d4559f878952ed63bf97d2fa83434fde93b617b891e4c",
-    "bytes": 3882
+    "bytes": 3882,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/pydpf/preflight_65096176_raw.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/pydpf/repair_v2/deployment.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/pydpf/repair_v2/deployment.tar.gz",
     "source": "work/implementation-comparison-20261030/pydpf/repair_v2/deployment.tar.gz",
     "sha256": "cfddb7e768aed1ad63fd26eb9f8cbe59d709c3b26b0b4ef8f126504902e3bcb8",
-    "bytes": 2030445
+    "bytes": 2030445,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/pydpf/repair_v2/deployment.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/recovery_20261031/jax/raw.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/recovery_20261031/jax/raw.tar.gz",
     "source": "work/implementation-comparison-20261030/recovery_20261031/jax/raw.tar.gz",
     "sha256": "8ab0ea483ba4cc92f6c772a24dad212cd8d64c98a83e1fa7789263ba7e08bc1b",
-    "bytes": 50101
+    "bytes": 50101,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/recovery_20261031/jax/raw.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/recovery_20261031/particles/raw.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/recovery_20261031/particles/raw.tar.gz",
     "source": "work/implementation-comparison-20261030/recovery_20261031/particles/raw.tar.gz",
     "sha256": "7d3ec86f15b6f03bede1fb5bc01f4e37d2e3c6ba720227da6a57e7543d416fcc",
-    "bytes": 215809210
+    "bytes": 215809210,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/recovery_20261031/particles/raw.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/recovery_20261031/pydpf/raw.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/recovery_20261031/pydpf/raw.tar.gz",
     "source": "work/implementation-comparison-20261030/recovery_20261031/pydpf/raw.tar.gz",
     "sha256": "107a5052a2db556361e0d2c5c64afcbbb4f38b54b9a631ebe8c421e98f5499b5",
-    "bytes": 34429
+    "bytes": 34429,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/recovery_20261031/pydpf/raw.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/recovery_20261031/tfp/raw.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/recovery_20261031/tfp/raw.tar.gz",
     "source": "work/implementation-comparison-20261030/recovery_20261031/tfp/raw.tar.gz",
     "sha256": "8895e845d55805502c01040d2b3887a2e24c89ef1f128d0b5743da54a6d33e37",
-    "bytes": 158074
+    "bytes": 158074,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/recovery_20261031/tfp/raw.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/tfp/formal_v1/payload.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/tfp/formal_v1/payload.tar.gz",
     "source": "work/implementation-comparison-20261030/tfp/formal_v1/payload.tar.gz",
     "sha256": "01bdf7f4f2598cdda3f60b5ff04e0466275a4a286f7b4ae36c549c8124500b0e",
-    "bytes": 10650066
+    "bytes": 10650066,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/tfp/formal_v1/payload.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/tfp/formal_v2/payload.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/tfp/formal_v2/payload.tar.gz",
     "source": "work/implementation-comparison-20261030/tfp/formal_v2/payload.tar.gz",
     "sha256": "b78e52ed2540d62fcbf6834d61ceefa42f4f08b636ada45fd8137ac2d11ef729",
-    "bytes": 10650391
+    "bytes": 10650391,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/tfp/formal_v2/payload.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/snapshot_20261031/tfp/validation_payload.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/snapshot_20261031/tfp/validation_payload.tar.gz",
     "source": "work/implementation-comparison-20261030/tfp/validation_payload.tar.gz",
     "sha256": "73f2ee5981d9e53be92711158bb7010f9913baf4c6a33492f3d5190df9c7a883",
-    "bytes": 10640758
+    "bytes": 10640758,
+    "previous_path": "artifacts/experiments/public_interfaces/snapshot_20261031/tfp/validation_payload.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/upstream_test_sources/tfp.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/upstream_test_sources/tfp.tar.gz",
     "source": "work/implementation-comparison-20261030/upstream_repositories/tfp.tar.gz",
     "sha256": "73cf3e52d3b5ee48fc919631e7fa3621849b8ce8d453017016a5148815856bc2",
-    "bytes": 43289254
+    "bytes": 43289254,
+    "previous_path": "artifacts/experiments/public_interfaces/upstream_test_sources/tfp.tar.gz"
   },
   {
-    "path": "artifacts/experiments/public_interfaces/upstream_test_sources/pydpf.tar.gz",
+    "path": "artifacts/history/previous/experiments/public_interfaces/upstream_test_sources/pydpf.tar.gz",
     "source": "work/implementation-comparison-20261030/upstream_repositories/pydpf.tar.gz",
     "sha256": "9b9f5c4472e13959d4b9df9d2b66b7dfe276cdf9c55a4dfb5980bb7370dbe19b",
-    "bytes": 144835
+    "bytes": 144835,
+    "previous_path": "artifacts/experiments/public_interfaces/upstream_test_sources/pydpf.tar.gz"
   },
   {
-    "path": "artifacts/experiments/history/cuthbert_implementation_v2/review_bundle.zip",
+    "path": "artifacts/history/previous/experiments/history/cuthbert_implementation_v2/review_bundle.zip",
     "source": "outputs/competitor_estimation/cuthbert_implementation_v2/review_bundle.zip",
     "sha256": "fb3a14a2b6ef0d5a50cf6cd9f22cb16e0995fad0919b7da95315dba4cde4abf8",
-    "bytes": 4198770
+    "bytes": 4198770,
+    "previous_path": "artifacts/experiments/history/cuthbert_implementation_v2/review_bundle.zip"
   },
   {
-    "path": "artifacts/experiments/history/pfjax_implementation_v1/review_bundle.zip",
+    "path": "artifacts/history/previous/experiments/history/pfjax_implementation_v1/review_bundle.zip",
     "source": "outputs/competitor_estimation/pfjax_implementation_v1/review_bundle.zip",
     "sha256": "aeeb0aa82f93a637166102157e4623684d4d2c47564d042e4b74da55aa61e739",
-    "bytes": 11847397
+    "bytes": 11847397,
+    "previous_path": "artifacts/experiments/history/pfjax_implementation_v1/review_bundle.zip"
   },
   {
-    "path": "artifacts/experiments/history/pfjax_implementation_v1/upstream.tar.gz",
+    "path": "artifacts/history/previous/experiments/history/pfjax_implementation_v1/upstream.tar.gz",
     "source": "outputs/competitor_estimation/pfjax_implementation_v1/upstream.tar.gz",
     "sha256": "a48f804ed463a0edcc097ae8d18a91aed9ad8aa7b08a0f6f55033bf7cc8d8b6d",
-    "bytes": 11622728
+    "bytes": 11622728,
+    "previous_path": "artifacts/experiments/history/pfjax_implementation_v1/upstream.tar.gz"
   },
   {
     "path": "artifacts/history/comparisons_20261031_before_simplification.tar.gz",
@@ -309,91 +350,101 @@
     "created_utc": "2026-11-01T00:00:32.826885+00:00"
   },
   {
-    "path": "artifacts/validation/20261101_completed_checks.tar.gz",
+    "path": "artifacts/history/previous/validation/20261101_completed_checks.tar.gz",
     "source": "work/implementation-comparison-20261030/completed_checks_20261101",
     "sha256": "bd749ff14809f28965218b2e2678b15f99b27e343a711038ccafaed9200310e9",
     "bytes": 9002271,
     "files": 6253,
-    "description": "Completed Cuthbert v2 GPU diagnosis and all515 paired TFP CPU test files; includes failures and audit script"
+    "description": "Completed Cuthbert v2 GPU diagnosis and all515 paired TFP CPU test files; includes failures and audit script",
+    "previous_path": "artifacts/validation/20261101_completed_checks.tar.gz"
   },
   {
-    "path": "artifacts/validation/gpu_diagnostics_20261101_setup.tar.gz",
+    "path": "artifacts/history/previous/validation/gpu_diagnostics_20261101_setup.tar.gz",
     "source": "work/implementation-comparison-20261030/other_gpu_diagnosis_v1 and referenced frozen package sources",
     "sha256": "bb9056e54989ceda7a4210bd712ebb98ea37f93ba834deea87eca27c50a3cc49",
     "bytes": 36134821,
     "files": 3709,
-    "purpose": "GPU diagnostic setup and completed CPU controls; GPU jobs pending, no optimization results"
+    "purpose": "GPU diagnostic setup and completed CPU controls; GPU jobs pending, no optimization results",
+    "previous_path": "artifacts/validation/gpu_diagnostics_20261101_setup.tar.gz"
   },
   {
-    "path": "artifacts/validation/queue_20261101.tar.gz",
+    "path": "artifacts/history/previous/validation/queue_20261101.tar.gz",
     "source": "work/implementation-comparison-20261030/queue_analysis_20261101",
     "sha256": "c237f065de170b5572385a9555f86dc0ec9292576ce42319f5e3c0b1b8c7dcd7",
     "bytes": 23226,
     "files": 8,
-    "purpose": "Queue inspection and same-job host-memory adjustment; includes original scheduler commands and unchanged-source check. No numerical results."
+    "purpose": "Queue inspection and same-job host-memory adjustment; includes original scheduler commands and unchanged-source check. No numerical results.",
+    "previous_path": "artifacts/validation/queue_20261101.tar.gz"
   },
   {
-    "path": "artifacts/validation/cuthbert_v3_20261101.tar.gz",
+    "path": "artifacts/history/previous/validation/cuthbert_v3_20261101.tar.gz",
     "source": "work/implementation-comparison-20261030",
     "sha256": "e99eda0615d0f4d0c453857a88df330c8403f7698ae3b6eb748202d99cc3c7df",
     "bytes": 8559656,
     "files": 656,
-    "purpose": "Collected failed Cuthbert v3 GPU checks, exact source, review, actual cost and targeted follow-up diagnosis setup. No optimization results."
+    "purpose": "Collected failed Cuthbert v3 GPU checks, exact source, review, actual cost and targeted follow-up diagnosis setup. No optimization results.",
+    "previous_path": "artifacts/validation/cuthbert_v3_20261101.tar.gz"
   },
   {
-    "path": "artifacts/validation/pfjax_gpu_20261101.tar.gz",
+    "path": "artifacts/history/previous/validation/pfjax_gpu_20261101.tar.gz",
     "source": "work/implementation-comparison-20261030",
     "sha256": "416b9f8ad6c658bdb9e8f601e9c69bdb3c1c97bae0ca68dd1f9c60acf8c7f9b9",
     "bytes": 3839558,
     "files": 74,
-    "purpose": "Collected PFJAX GPU diagnosis including all raw repeats, histories, failed comparisons and independent recomputation."
+    "purpose": "Collected PFJAX GPU diagnosis including all raw repeats, histories, failed comparisons and independent recomputation.",
+    "previous_path": "artifacts/validation/pfjax_gpu_20261101.tar.gz"
   },
   {
-    "path": "artifacts/validation/gradient_test_review_20261101.tar.gz",
+    "path": "artifacts/history/previous/validation/gradient_test_review_20261101.tar.gz",
     "source": "work/implementation-comparison-20261030",
     "sha256": "65c88390a27c09e1b92e1cead3bf60196da6fe05faf2864d316983da62ea79cf",
     "bytes": 389071,
     "files": 147,
-    "purpose": "Gradient-test interpretation, saved Cuthbert gradient scales and completed PyDPF repeatability diagnosis; raw comparisons and source records preserved."
+    "purpose": "Gradient-test interpretation, saved Cuthbert gradient scales and completed PyDPF repeatability diagnosis; raw comparisons and source records preserved.",
+    "previous_path": "artifacts/validation/gradient_test_review_20261101.tar.gz"
   },
   {
-    "path": "artifacts/validation/reference_tests_and_ABC_20261101.tar.gz",
+    "path": "artifacts/history/previous/validation/reference_tests_and_ABC_20261101.tar.gz",
     "source": "Reference tests, exact saved-array recalculation and first complete Cuthbert ABC submission. Historical failed validations preserved.",
     "sha256": "c32e80e76449b6a934a679e4261e2a5ea640fdbdcc09ad1ed266dfa21827f675",
     "bytes": 6425049,
     "files": 131,
-    "all_member_hashes_verified": true
+    "all_member_hashes_verified": true,
+    "previous_path": "artifacts/validation/reference_tests_and_ABC_20261101.tar.gz"
   },
   {
-    "path": "artifacts/validation/tfp_gpu_20261101.tar.gz",
+    "path": "artifacts/history/previous/validation/tfp_gpu_20261101.tar.gz",
     "source": "TFP GPU diagnostic arrays, all timeouts, source references, collection and repeat-pair audit.",
     "sha256": "008bffcef241a26e678e1854b1c4f485078026f767b4bda0c27ede542623e846",
     "bytes": 575142,
     "files": 50,
     "all_member_hashes_verified": true,
-    "audit_reproduced_byte_for_byte": true
+    "audit_reproduced_byte_for_byte": true,
+    "previous_path": "artifacts/validation/tfp_gpu_20261101.tar.gz"
   },
   {
-    "path": "artifacts/validation/cuthbert_repeats_20261101.tar.gz",
+    "path": "artifacts/history/previous/validation/cuthbert_repeats_20261101.tar.gz",
     "source": "Cuthbert GPU repeated gradients, original self controls, all failed comparisons, source references and audit.",
     "sha256": "a5bd00d6d7e72754c9f2d29ec352c020471fc4d71911386a8baab629945d0a27",
     "bytes": 295542,
     "files": 49,
     "all_member_hashes_verified": true,
-    "audit_reproduced_byte_for_byte": true
+    "audit_reproduced_byte_for_byte": true,
+    "previous_path": "artifacts/validation/cuthbert_repeats_20261101.tar.gz"
   },
   {
-    "path": "artifacts/experiments/dacca/cuthbert_case0_20261101.tar.gz",
+    "path": "artifacts/history/previous/experiments/dacca/cuthbert_case0_20261101.tar.gz",
     "source": "First Cuthbert A/B/C case: complete source, checkpoints, original PF scores, audit history and next eleven submissions.",
     "sha256": "b6a9ae249970a755ddfcc620c405726eef728773fa4ced6c8f64636faed3204f",
     "bytes": 15607838,
     "files": 744,
     "all_member_hashes_verified": true,
     "audit_reproduced_byte_for_byte": true,
-    "experiments_rerun": false
+    "experiments_rerun": false,
+    "previous_path": "artifacts/experiments/dacca/cuthbert_case0_20261101.tar.gz"
   },
   {
-    "path": "artifacts/experiments/dacca/cuthbert_cases1_3_20261101T0556.tar.gz",
+    "path": "artifacts/history/previous/experiments/dacca/cuthbert_cases1_3_20261101T0556.tar.gz",
     "source": "Cuthbert cases [1, 2, 3]: full source, original raw results and checkpoints, scheduler costs and independently recalculated audits.",
     "sha256": "09b5bdc711b1d89bee7fa5c712565920e20eed8b7d0a92cff6bb75ee68f06119",
     "bytes": 17370422,
@@ -405,10 +456,11 @@
     ],
     "all_member_hashes_verified": true,
     "audit_reproduced_byte_for_byte": true,
-    "experiments_rerun": false
+    "experiments_rerun": false,
+    "previous_path": "artifacts/experiments/dacca/cuthbert_cases1_3_20261101T0556.tar.gz"
   },
   {
-    "path": "artifacts/experiments/dacca/cuthbert_cases4_6_20261101T0626.tar.gz",
+    "path": "artifacts/history/previous/experiments/dacca/cuthbert_cases4_6_20261101T0626.tar.gz",
     "source": "Cuthbert cases [4, 5, 6]: full source, original raw results and checkpoints, scheduler costs and independently recalculated audits.",
     "sha256": "47348dbbe2b6f2915fcf2a60b44b5decf674933eab039b976971a98a7fbf4d56",
     "bytes": 17456860,
@@ -420,10 +472,11 @@
     ],
     "all_member_hashes_verified": true,
     "audit_reproduced_byte_for_byte": true,
-    "experiments_rerun": false
+    "experiments_rerun": false,
+    "previous_path": "artifacts/experiments/dacca/cuthbert_cases4_6_20261101T0626.tar.gz"
   },
   {
-    "path": "artifacts/experiments/dacca/cuthbert_cases7_9_20261101T0656.tar.gz",
+    "path": "artifacts/history/previous/experiments/dacca/cuthbert_cases7_9_20261101T0656.tar.gz",
     "source": "Cuthbert cases [7, 8, 9]: full source, original raw results and checkpoints, scheduler costs and independently recalculated audits.",
     "sha256": "3673262126002459bff37ab1a36ce267670398ef1b83a3d7e11e9c187219d99a",
     "bytes": 17390967,
@@ -435,10 +488,11 @@
     ],
     "all_member_hashes_verified": true,
     "audit_reproduced_byte_for_byte": true,
-    "experiments_rerun": false
+    "experiments_rerun": false,
+    "previous_path": "artifacts/experiments/dacca/cuthbert_cases7_9_20261101T0656.tar.gz"
   },
   {
-    "path": "artifacts/experiments/dacca/cuthbert_cases10_10_20261101T0726.tar.gz",
+    "path": "artifacts/history/previous/experiments/dacca/cuthbert_cases10_10_20261101T0726.tar.gz",
     "source": "Cuthbert cases [10]: full source, original raw results and checkpoints, scheduler costs and independently recalculated audits.",
     "sha256": "754d92a1ffdb308417d99545a75c4324b3e2f6ba4b2d958fdfa1e96af77de494",
     "bytes": 15623191,
@@ -448,10 +502,11 @@
     ],
     "all_member_hashes_verified": true,
     "audit_reproduced_byte_for_byte": true,
-    "experiments_rerun": false
+    "experiments_rerun": false,
+    "previous_path": "artifacts/experiments/dacca/cuthbert_cases10_10_20261101T0726.tar.gz"
   },
   {
-    "path": "artifacts/experiments/dacca/cuthbert_cases11_11_20261101T0756.tar.gz",
+    "path": "artifacts/history/previous/experiments/dacca/cuthbert_cases11_11_20261101T0756.tar.gz",
     "source": "Cuthbert cases [11]: full source, original raw results and checkpoints, scheduler costs and independently recalculated audits.",
     "sha256": "aa4f941df74d99dfa9eb90b2ff3450acc657915f133f7da8b4e237b9f95e2382",
     "bytes": 15578975,
@@ -461,7 +516,8 @@
     ],
     "all_member_hashes_verified": true,
     "audit_reproduced_byte_for_byte": true,
-    "experiments_rerun": false
+    "experiments_rerun": false,
+    "previous_path": "artifacts/experiments/dacca/cuthbert_cases11_11_20261101T0756.tar.gz"
   },
   {
     "path": "artifacts/experiments/dacca/cuthbert_review_20261101.tar.gz",
@@ -486,16 +542,17 @@
     "upstream_release": false
   },
   {
-    "path": "artifacts/validation/pfjax_check_v3_setup_20261101.tar.gz",
+    "path": "artifacts/history/previous/validation/pfjax_check_v3_setup_20261101.tar.gz",
     "source": "PFJAX full Dacca GPU check setup: source, CPU preflight, preserved local setup failures, submission and prepared audit. No GPU result or formal fit.",
     "sha256": "5bff2963116256799aa5e4b4d1c8177523fbed4bafe6421c18222d4a82b00f87",
     "bytes": 23522898,
     "files": 445,
     "all_member_hashes_verified": true,
-    "GPU_results_included": false
+    "GPU_results_included": false,
+    "previous_path": "artifacts/validation/pfjax_check_v3_setup_20261101.tar.gz"
   },
   {
-    "path": "artifacts/validation/pfjax_forward_checks_20261101T0856.tar.gz",
+    "path": "artifacts/history/previous/validation/pfjax_forward_checks_20261101T0856.tar.gz",
     "source": "Failed PFJAX full Dacca check: complete raw results, source and audit; separate forward/differentiation diagnostic setup and CPU controls.",
     "sha256": "15886a4866e19def899c2d7dada5eaa3522b2ef7b91c04b9647e6c7d68f706a9",
     "bytes": 31653781,
@@ -504,10 +561,11 @@
     "extracted_GPU_record_audit_identical": true,
     "extracted_CPU_control_audit_identical": true,
     "new_diagnosis_GPU_results_included": false,
-    "formal_fits_or_scores_rerun": false
+    "formal_fits_or_scores_rerun": false,
+    "previous_path": "artifacts/validation/pfjax_forward_checks_20261101T0856.tar.gz"
   },
   {
-    "path": "artifacts/validation/pfjax_controls_and_next_runs_20261101T0926.tar.gz",
+    "path": "artifacts/history/previous/validation/pfjax_controls_and_next_runs_20261101T0926.tar.gz",
     "source": "Completed PFJAX forward controls, full raw GPU records and analysis; first formal case source and submission; PyDPF full-scale check setup and CPU controls.",
     "sha256": "ba21281f2add3be6ebe181eef6a03ba0668e4a061b31d4eb9d6dc65e7334b982",
     "bytes": 40181410,
@@ -518,10 +576,11 @@
     "new_diagnosis_GPU_results_included": true,
     "new_PyDPF_GPU_results_included": false,
     "extracted_formal_acceptance_check_passed": true,
-    "formal_fits_or_scores_rerun": false
+    "formal_fits_or_scores_rerun": false,
+    "previous_path": "artifacts/validation/pfjax_controls_and_next_runs_20261101T0926.tar.gz"
   },
   {
-    "path": "artifacts/validation/pydpf_and_pfjax_20261101T0956.tar.gz",
+    "path": "artifacts/history/previous/validation/pydpf_and_pfjax_20261101T0956.tar.gz",
     "source": "PyDPF full-scale GPU records and native-DPF audit; original failed comparison; formal IF2 source and submission; PFJAX case0 audit when available.",
     "sha256": "8c47609ccf947161ce68ae55646cb670f57af0ef83d68cbf2da5e57d60f6c327",
     "bytes": 37937902,
@@ -531,10 +590,11 @@
     "PFJAX_case0_included": true,
     "extracted_PFJAX_case_audit_identical": true,
     "extracted_formal_acceptance_check_passed": true,
-    "formal_fits_or_scores_rerun": false
+    "formal_fits_or_scores_rerun": false,
+    "previous_path": "artifacts/validation/pydpf_and_pfjax_20261101T0956.tar.gz"
   },
   {
-    "path": "artifacts/validation/pydpf_startup_and_tfp_20261101T1026.tar.gz",
+    "path": "artifacts/history/previous/validation/pydpf_startup_and_tfp_20261101T1026.tar.gz",
     "source": "PyDPF stopped startup failure and independent test revision; TFP full-Dacca check source and CPU preflight; optional audited PFJAX cases.",
     "sha256": "04d2a973bf846f32fea202bd6f775cca67ad749e9dc494f9e6117738fa86e59f",
     "bytes": 25722955,
@@ -544,15 +604,17 @@
     "extracted_formal_acceptance_check_passed": true,
     "PFJAX_cases": [],
     "extracted_PFJAX_case_audits_identical": true,
-    "formal_fits_or_scores_rerun": false
+    "formal_fits_or_scores_rerun": false,
+    "previous_path": "artifacts/validation/pydpf_startup_and_tfp_20261101T1026.tar.gz"
   },
   {
-    "path": "artifacts/validation/repository_update_20261101T1026.tar.gz",
+    "path": "artifacts/history/previous/validation/repository_update_20261101T1026.tar.gz",
     "sha256": "5720763b081a09d15f101e0b33e5eaef396fc58cdee96e78fc47dbd8f2925530",
     "bytes": 11951,
     "files": 9,
     "all_member_hashes_verified": true,
-    "source": "Local report update, preserved Python3.9 loading errors before execution, and successful integrity check; no numerical experiment."
+    "source": "Local report update, preserved Python3.9 loading errors before execution, and successful integrity check; no numerical experiment.",
+    "previous_path": "artifacts/validation/repository_update_20261101T1026.tar.gz"
   },
   {
     "path": "artifacts/experiments/dacca/particles_review_20261101.tar.gz",
@@ -582,7 +644,7 @@
     "review_ready": true
   },
   {
-    "path": "artifacts/validation/tfp_and_pfjax_20261101T1056.tar.gz",
+    "path": "artifacts/history/previous/validation/tfp_and_pfjax_20261101T1056.tar.gz",
     "source": "TFP full-Dacca GPU records and revised shared-prefix source/submission; PFJAX case1 complete raw scores and pairing audit.",
     "sha256": "e1a9310a1456d8a974b8b31a051d3819e6a43c0755a3a5631308aeecb9f77504",
     "bytes": 59544049,
@@ -591,10 +653,11 @@
     "extracted_two_audits_byte_identical": true,
     "extracted_TFP_acceptance_passed": true,
     "PF_calls": 0,
-    "fit_calls": 0
+    "fit_calls": 0,
+    "previous_path": "artifacts/validation/tfp_and_pfjax_20261101T1056.tar.gz"
   },
   {
-    "path": "artifacts/experiments/dacca/pfjax_cases2_3_20261101T1056.tar.gz",
+    "path": "artifacts/history/previous/experiments/dacca/pfjax_cases2_3_20261101T1056.tar.gz",
     "source": "PFJAX cases2/3 stopped results: six endpoints, 216 raw scores, full source and pairing/cost audits.",
     "sha256": "4895cbaac381476d51de4ef475570446cd1bb0259b923d9fe129ce91efbcd91f",
     "bytes": 30774339,
@@ -602,10 +665,11 @@
     "all_member_hashes_verified": true,
     "two_extracted_audits_byte_identical": true,
     "PF_calls": 0,
-    "fit_calls": 0
+    "fit_calls": 0,
+    "previous_path": "artifacts/experiments/dacca/pfjax_cases2_3_20261101T1056.tar.gz"
   },
   {
-    "path": "artifacts/validation/pfjax_case4_and_audit_preparation_20261101T1126.tar.gz",
+    "path": "artifacts/history/previous/validation/pfjax_case4_and_audit_preparation_20261101T1126.tar.gz",
     "source": "PFJAX case4: three audited endpoints, 108 raw scores; PyDPF saved-state audit preparation and TFP synthetic CPU failure-proposal recording, not new formal results.",
     "sha256": "caaa913271794fb1f0d6f3631d6b60e2fbe6e085e4f35b1400015a30263aa32b",
     "bytes": 53776756,
@@ -614,10 +678,11 @@
     "extracted_PFJAX_and_TFP_saved_audits_byte_identical": true,
     "extracted_PyDPF_saved_CPU_core_identical": true,
     "PF_calls": 0,
-    "fit_calls": 0
+    "fit_calls": 0,
+    "previous_path": "artifacts/validation/pfjax_case4_and_audit_preparation_20261101T1126.tar.gz"
   },
   {
-    "path": "artifacts/validation/pfjax_cases5_8_and_tfp_preparation_20261101T1156.tar.gz",
+    "path": "artifacts/history/previous/validation/pfjax_cases5_8_and_tfp_preparation_20261101T1156.tar.gz",
     "source": "PFJAX cases5-8: twelve retained endpoints and 684 raw PF values, including one numerical fit failure and density-floor score; TFP local audit and synthetic driver preparation, including failed preparation attempts.",
     "sha256": "b629ab3fe317f47ec9bfed1f53a6c7326c5a0bffa6e13edb81495d8f305e515e",
     "bytes": 59059173,
@@ -627,7 +692,8 @@
     "extracted_TFP_saved_driver_audit_byte_identical": true,
     "extracted_TFP_synthetic_prefix_core_identical": true,
     "PF_calls": 0,
-    "fit_calls": 0
+    "fit_calls": 0,
+    "previous_path": "artifacts/validation/pfjax_cases5_8_and_tfp_preparation_20261101T1156.tar.gz"
   },
   {
     "path": "artifacts/experiments/dacca/pfjax_review_20261101.tar.gz",
@@ -652,7 +718,7 @@
     "upstream_release": false
   },
   {
-    "path": "artifacts/validation/tfp_gradient_guard_preparation_20261101T1256.tar.gz",
+    "path": "artifacts/history/previous/validation/tfp_gradient_guard_preparation_20261101T1256.tar.gz",
     "source": "TFP local gradient submission preparation and tested prefix-file/duplicate-attempt checks; original frozen prefix sources and prior synthetic recording controls retained. No completed GPU prefix or new job.",
     "sha256": "b893dc5da4ea10f1348ee733c1bd0a389bd0f5688cbfc596313bb17a8fb2154d",
     "bytes": 27518447,
@@ -663,10 +729,11 @@
     "PF_calls": 0,
     "fit_calls": 0,
     "GPU_results_added": false,
-    "deployed": false
+    "deployed": false,
+    "previous_path": "artifacts/validation/tfp_gradient_guard_preparation_20261101T1256.tar.gz"
   },
   {
-    "path": "artifacts/experiments/dacca/tfp_prefix_and_gradient_submission_20261101T1556.tar.gz",
+    "path": "artifacts/history/previous/experiments/dacca/tfp_prefix_and_gradient_submission_20261101T1556.tar.gz",
     "source": "Audited completed TFP physical IF2 prefix and three previously unrun gradient-phase submissions with unchanged scientific settings and complete proposal records.",
     "sha256": "0c6c04036f3240f0f5708a61876b385654557c8a832863b7765c7f145c179f54",
     "bytes": 42305926,
@@ -679,10 +746,11 @@
     "prefix_failed_rows": 0,
     "gradient_results_claimed": false,
     "PF_calls": 0,
-    "fit_calls": 0
+    "fit_calls": 0,
+    "previous_path": "artifacts/experiments/dacca/tfp_prefix_and_gradient_submission_20261101T1556.tar.gz"
   },
   {
-    "path": "artifacts/validation/tfp_gradient_audit_preparation_20261101T1626.tar.gz",
+    "path": "artifacts/history/previous/validation/tfp_gradient_audit_preparation_20261101T1626.tar.gz",
     "source": "TFP gradient saved-state and independent-score audit preparation, frozen runtime source, synthetic records and retained local metadata failure; no new GPU result.",
     "sha256": "0a8be270adde4fe065b033ae3a4fc1b1ed57df508fd34540b3e7a825acf27ac0",
     "bytes": 16983768,
@@ -694,10 +762,11 @@
     "real_GPU_gradient_audit_completed": false,
     "PF_calls": 0,
     "IF2_calls": 0,
-    "optimizer_calls": 0
+    "optimizer_calls": 0,
+    "previous_path": "artifacts/validation/tfp_gradient_audit_preparation_20261101T1626.tar.gz"
   },
   {
-    "path": "artifacts/experiments/dacca/pydpf_warm_and_gradients_20261101T1656.tar.gz",
+    "path": "artifacts/history/previous/experiments/dacca/pydpf_warm_and_gradients_20261101T1656.tar.gz",
     "source": "Completed PyDPF shared IF2 with final swarms and histories, source and terminal hashes, saved-data audit, and actual A/B/C submission receipts; no gradient result.",
     "sha256": "d644674640ae7acccbfa659e94276ec5a43b13c8556dd9a941f966ce8506564b",
     "bytes": 11427918,
@@ -709,10 +778,11 @@
     "failed_warm_rows": 0,
     "gradient_results_claimed": false,
     "PF_calls": 0,
-    "fit_calls": 0
+    "fit_calls": 0,
+    "previous_path": "artifacts/experiments/dacca/pydpf_warm_and_gradients_20261101T1656.tar.gz"
   },
   {
-    "path": "artifacts/validation/pydpf_gradient_core_preparation_20261101T1656.tar.gz",
+    "path": "artifacts/history/previous/validation/pydpf_gradient_core_preparation_20261101T1656.tar.gz",
     "source": "PyDPF gradient saved-core audit preparation and existing small CPU controls; production provenance and score wrapper still required.",
     "sha256": "c7ed9337f5b40edd7f4be81bf3353ece163fc81a5bf4cc969729e112c9b2aceb",
     "bytes": 6808513,
@@ -721,10 +791,11 @@
     "extracted_six_saved_core_audits_and_controls_byte_identical": true,
     "production_gradient_audit_ready": false,
     "PF_calls": 0,
-    "optimizer_steps": 0
+    "optimizer_steps": 0,
+    "previous_path": "artifacts/validation/pydpf_gradient_core_preparation_20261101T1656.tar.gz"
   },
   {
-    "path": "artifacts/validation/pydpf_gradient_audit_preparation_20261101T1726.tar.gz",
+    "path": "artifacts/history/previous/validation/pydpf_gradient_audit_preparation_20261101T1726.tar.gz",
     "source": "Retained first PyDPF audit preparation archive: member hashes pass; extracted missing-input control failed because its temporary PYTHONPATH hid Torch dependencies before the missing-collection check.",
     "sha256": "b8902a72a304728df30e265584893d758a94d58714bd395b63ce511f6d3db377",
     "bytes": 11635787,
@@ -732,10 +803,11 @@
     "all_member_hashes_verified": true,
     "extracted_control_reproduction_passed": false,
     "preparation_attempt_status": "FAILED; original retained",
-    "experiment_effect": false
+    "experiment_effect": false,
+    "previous_path": "artifacts/validation/pydpf_gradient_audit_preparation_20261101T1726.tar.gz"
   },
   {
-    "path": "artifacts/validation/pydpf_gradient_audit_preparation_20261101T1726_v2.tar.gz",
+    "path": "artifacts/history/previous/validation/pydpf_gradient_audit_preparation_20261101T1726_v2.tar.gz",
     "source": "PyDPF complete saved-phase and score audit preparation, aggregate checks, original small controls and audited warm dependency; no gradient result. First archive reproduction failure retained.",
     "sha256": "928c6e9e185301c10cc1cd483a14391fbded862a82c59f71418abbadb97aadf5",
     "bytes": 11663880,
@@ -746,10 +818,11 @@
     "prior_core_corruptions_refused": 9,
     "actual_GPU_gradient_audit_completed": false,
     "PF_calls": 0,
-    "optimizer_steps": 0
+    "optimizer_steps": 0,
+    "previous_path": "artifacts/validation/pydpf_gradient_audit_preparation_20261101T1726_v2.tar.gz"
   },
   {
-    "path": "artifacts/validation/tfp_all_methods_audit_preparation_20261101T1756.tar.gz",
+    "path": "artifacts/history/previous/validation/tfp_all_methods_audit_preparation_20261101T1756.tar.gz",
     "source": "TFP saved aggregate and complete-file audit preparation; frozen sources, stopped audited prefix, saved CPU controls and explicit synthetic score/pairing/metadata fixtures. No gradient result.",
     "sha256": "0c3ea9e1d7caeb3b3a55687fcd81ed62dcf3c66337cf93db316ea4bdf07b7c64",
     "bytes": 38252513,
@@ -764,10 +837,11 @@
     "synthetic_JAX_keys": 2922,
     "actual_GPU_all_methods_audit_completed": false,
     "PF_calls": 0,
-    "optimizer_steps": 0
+    "optimizer_steps": 0,
+    "previous_path": "artifacts/validation/tfp_all_methods_audit_preparation_20261101T1756.tar.gz"
   },
   {
-    "path": "artifacts/experiments/dacca/tfp_B_20261101T1926.tar.gz",
+    "path": "artifacts/history/previous/experiments/dacca/tfp_B_20261101T1926.tar.gz",
     "source": "TFP B completed phase, raw states and independent scores, frozen sources, physical prefix and saved-data audit programs.",
     "sha256": "dfff138eb28132f61488cedfe9e0d0402145f169dd8de81d5f760fde839e6b44",
     "bytes": 38562591,
@@ -784,7 +858,8 @@
     "physical_prefix_GPU_seconds": 12747,
     "all_methods_complete": false,
     "PF_calls": 0,
-    "optimizer_steps": 0
+    "optimizer_steps": 0,
+    "previous_path": "artifacts/experiments/dacca/tfp_B_20261101T1926.tar.gz"
   },
   {
     "path": "artifacts/experiments/dacca/tfp_review_20261101.tar.gz",
@@ -817,17 +892,18 @@
     "upstream_release": false
   },
   {
-    "path": "artifacts/experiments/maze/pydpf_maze_pilot_20261101_attempt1_failed.tar.gz",
+    "path": "artifacts/history/previous/experiments/maze/pydpf_maze_pilot_20261101_attempt1_failed.tar.gz",
     "sha256": "e92811b05ea4a1c5762c0cb6abf2220fb9201335cd7007dab0bece9e6fe12735",
     "bytes": 148647199,
     "source": "Retained first local maze archive attempt: member and audit/figure checks passed, package patch restoration failed because the full Dacca review patch expects omitted docs and a different source root.",
     "verification_passed": false,
     "experiment_affected": false,
     "PF_calls": 0,
-    "optimizer_steps": 0
+    "optimizer_steps": 0,
+    "previous_path": "artifacts/experiments/maze/pydpf_maze_pilot_20261101_attempt1_failed.tar.gz"
   },
   {
-    "path": "artifacts/experiments/maze/pydpf_maze_pilot_20261101.tar.gz",
+    "path": "artifacts/history/previous/experiments/maze/pydpf_maze_pilot_20261101.tar.gz",
     "source": "Independent PyDPF maze pilot: ten finite full-length GPU controls, three finite full-batch cost calls, original time-budget failure, zero trained models; source, raw arrays and all failures retained.",
     "sha256": "ab4b5234f29cc1a0386e606fdc693b66b4b6a54b59191f72283df41a26c5b4e1",
     "bytes": 148642307,
@@ -842,10 +918,11 @@
     "held_out_RMSE_available": false,
     "verified_budget_limit": true,
     "PF_calls_in_review": 0,
-    "optimizer_steps_in_review": 0
+    "optimizer_steps_in_review": 0,
+    "previous_path": "artifacts/experiments/maze/pydpf_maze_pilot_20261101.tar.gz"
   },
   {
-    "path": "artifacts/experiments/dacca/pydpf_AB_20261102T0107.tar.gz",
+    "path": "artifacts/history/previous/experiments/dacca/pydpf_AB_20261102T0107.tar.gz",
     "source": "PyDPF A/B completed phases: frozen source, raw states, independent scores, physical warm prefix and saved-data audit programs.",
     "sha256": "0d9739b20ba5762f117409b71746dc3c625712d18233705b2f317915978f5e60",
     "bytes": 12929392,
@@ -870,7 +947,8 @@
     "budget_including_reserved_C": 93670,
     "all_methods_complete": false,
     "PF_calls": 0,
-    "optimizer_steps": 0
+    "optimizer_steps": 0,
+    "previous_path": "artifacts/experiments/dacca/pydpf_AB_20261102T0107.tar.gz"
   },
   {
     "path": "artifacts/experiments/dacca/pydpf_review_20261102.tar.gz",
@@ -912,5 +990,290 @@
     "optimizer_steps": 0,
     "review_ready": true,
     "upstream_release": false
+  },
+  {
+    "path": "artifacts/history/previous/validation/pydpf_runtime_attribution_20261102.tar.gz",
+    "source": "Separate user-requested attribution of pristine native PyDPF plus frozen study Dacca callbacks; fixed-parameter timing only, no optimizer/IF2/endpoint score calls.",
+    "sha256": "e795f1272bff2f1522f0d572cf17249d6aa98badf16a43dd4ad16cb20c495844",
+    "bytes": 1379629,
+    "files": 164,
+    "all_member_hashes_verified": true,
+    "restored_saved_audit_byte_identical": true,
+    "actual_GPU_seconds": 422,
+    "maximum_GPU_seconds": 900,
+    "optimizer_steps": 0,
+    "IF2_passes": 0,
+    "endpoint_scores": 0,
+    "previous_path": "artifacts/validation/pydpf_runtime_attribution_20261102.tar.gz"
+  },
+  {
+    "path": "artifacts/history/previous/experiments/dacca/dacca_distributions_20261102.tar.gz",
+    "source": "Saved final endpoint CSV tables, plotting source, dated figures and inspection records",
+    "sha256": "6a73e50b20a54a04085cc3bb9a0c37992e13765b8e8c2daa8a3a8582a87be6cd",
+    "bytes": 678793,
+    "previous_path": "artifacts/experiments/dacca/dacca_distributions_20261102.tar.gz"
+  },
+  {
+    "path": "artifacts/history/previous/validation/function_performance_review_20261102.tar.gz",
+    "source": "Source inspection and saved-time calculations; no new PF, IF2, optimizer or cluster job.",
+    "sha256": "6469b95aebc31e34970e2f3ae78f483d0801c0b9dc66aab571678c5a0a046d38",
+    "bytes": 7465408,
+    "previous_path": "artifacts/validation/function_performance_review_20261102.tar.gz"
+  },
+  {
+    "path": "artifacts/history/previous/validation/pydpf_transition_fusion_20261102.tar.gz",
+    "source": "Dacca transition CUDA fusion; all four attempts, unchanged native PyDPF, saved paired numerical checks and timings; no fitting.",
+    "sha256": "16635687c11cf97bf4755a2e37bd37e060d166145b388158389be49798d3c61d",
+    "bytes": 19105705,
+    "previous_path": "artifacts/validation/pydpf_transition_fusion_20261102.tar.gz"
+  },
+  {
+    "path": "artifacts/history/previous/validation/pfjax_native_preflight_20261102.tar.gz",
+    "source": "Native PFJAX basic-PF autodiff supplement: frozen source, saved IF2 inputs, completed GPU preflight, original preparation failure, audit and first-case submission. No running fit results.",
+    "sha256": "07a90994bda1b369781996c8ad1525b26f213097b06b8848595eda74cca23d30",
+    "bytes": 10200233,
+    "files": 270,
+    "all_member_hashes_verified": true,
+    "extracted_preflight_audit_byte_identical": true,
+    "actual_preflight_GPU_seconds": 187,
+    "formal_endpoints_audited": 0,
+    "PF_calls_during_audit": 0,
+    "previous_path": "artifacts/validation/pfjax_native_preflight_20261102.tar.gz"
+  },
+  {
+    "path": "artifacts/history/previous/experiments/dacca/dacca_method_labels_20261102.tar.gz",
+    "source": "Package-specific method labels; unchanged saved endpoint data and box statistics, original Cuthbert gradient source comparison, plots and inspection. No numerical reruns.",
+    "sha256": "2c56f970e41809eae05e40b143c4c71c59603f01904f4190f9396b7fbef3b881",
+    "bytes": 685831,
+    "files": 20,
+    "all_member_hashes_verified": true,
+    "previous_path": "artifacts/experiments/dacca/dacca_method_labels_20261102.tar.gz"
+  },
+  {
+    "path": "artifacts/history/previous/experiments/dacca/pfjax_native_case00_20261102T0531.tar.gz",
+    "sha256": "292282a70bdf26b0516cbd8722033469416219dd87d61abb658ec5ce9621410e",
+    "bytes": 11562191,
+    "files": 381,
+    "all_member_hashes_verified": true,
+    "restored_case_audit_byte_identical": true,
+    "restored_comparison_review_byte_identical": true,
+    "numerical_experiments_rerun": false,
+    "native_endpoints_audited": 2,
+    "source": "Native PFJAX case 0 full collection, frozen source, preflight and saved IF2, original C saved collection, RAM review, actual remaining-case submission, report and audits; no running results.",
+    "previous_path": "artifacts/experiments/dacca/pfjax_native_case00_20261102T0531.tar.gz"
+  },
+  {
+    "path": "artifacts/validation/pydpf_backward_fusion_20261102.tar.gz",
+    "source": "Dacca-only Euler VJP CUDA optimization, unchanged upstream PyDPF and forward kernel, saved matched gradients/timings; no fitting.",
+    "sha256": "55b6d30f2f30589a10702801a553753b1ff67c2348aac2d085a902aace9012d7",
+    "bytes": 2383603
+  },
+  {
+    "path": "artifacts/history/previous/experiments/dacca/dacca_native_figures_20261102T0558.tar.gz",
+    "sha256": "fc02a09c2fdfaf0148424c42b686c3a9ce6d8625f21ef2095ca6e0d368a4128c",
+    "bytes": 1506206,
+    "files": 42,
+    "all_member_hashes_verified": true,
+    "restored_figures_and_data_byte_identical": [
+      "all_estimates.pdf",
+      "all_estimates.png",
+      "endpoints.csv",
+      "figure_data.json",
+      "likelihood_distributions.pdf",
+      "likelihood_distributions.png",
+      "paired_C_minus_B.pdf",
+      "paired_C_minus_B.png",
+      "paired_differences.csv"
+    ],
+    "source": "Saved native-comparison figure inputs, plotting code, reference excerpts, reports and visual checks. Full experimental raw records remain in their existing archives.",
+    "numerical_experiments_rerun": false,
+    "previous_path": "artifacts/experiments/dacca/dacca_native_figures_20261102T0558.tar.gz"
+  },
+  {
+    "path": "artifacts/history/previous/experiments/dacca/pfjax_native_nine_cases_20261102T0648.tar.gz",
+    "sha256": "4dbc71d4b61adb35625a4d114879654773bb7e7124effa8a851e72c42777c77a",
+    "bytes": 51979199,
+    "files": 1608,
+    "all_member_hashes_verified": true,
+    "restored_saved_audit_and_CSV_byte_identical": true,
+    "native_cases": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+    ],
+    "native_endpoints": 18,
+    "complete_twelve_case_review": false,
+    "numerical_experiments_rerun": false,
+    "source": "Nine stopped native A/B cases and corresponding original PFJAX collections, frozen source/references, prefix and original C, saved audits, memory review, submission receipts, local failures and partial report. No running result directory.",
+    "previous_path": "artifacts/experiments/dacca/pfjax_native_nine_cases_20261102T0648.tar.gz"
+  },
+  {
+    "path": "artifacts/experiments/dacca/pfjax_native_complete_20261102T0718.tar.gz",
+    "sha256": "f11420eb46c0d7f1597a392d99623fe45b2574e165520a5d00c352063ede3541",
+    "bytes": 57789384,
+    "files": 1945,
+    "all_member_hashes_verified": true,
+    "restored_saved_audit_and_CSV_byte_identical": true,
+    "restored_report_and_summary_byte_identical": true,
+    "restored_figure_files_byte_identical": [
+      "all_estimates.pdf",
+      "all_estimates.png",
+      "endpoints.csv",
+      "figure_data.json",
+      "likelihood_distributions.pdf",
+      "likelihood_distributions.png",
+      "paired_C_minus_B.pdf",
+      "paired_C_minus_B.png",
+      "paired_differences.csv"
+    ],
+    "native_cases": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "native_endpoints": 24,
+    "complete_twelve_case_review": true,
+    "numerical_experiments_rerun": false,
+    "source": "All twelve stopped native A/B cases and corresponding original PFJAX collections, full frozen source/references, prefix and original C, audits, memory changes, submission receipts, local failures, English/Chinese report and inspected figures. No numerical reruns."
+  },
+  {
+    "path": "artifacts/history/previous/validation/pydpf_maze_profile_20261102T0725.tar.gz",
+    "source": "Audited native maze profile, full trace/raw and retained failed profile; frozen pending CUDA Graph candidate and CPU controls. No candidate GPU results or fitting.",
+    "sha256": "00b97bef406d946dac2aeeccb4edeef5382a9fc441d168d54bcdf27adf48edd3",
+    "bytes": 157827006,
+    "previous_path": "artifacts/validation/pydpf_maze_profile_20261102T0725.tar.gz"
+  },
+  {
+    "path": "artifacts/history/previous/validation/pydpf_maze_execution_20261102.tar.gz",
+    "source": "Complete native maze performance diagnosis, failed full-filter CUDA Graph capture, all raw/trace/source/CPU controls/cost and exact recovered audits/figures; no fitting or verified speedup.",
+    "sha256": "1f9fbca16b94535f55d02469bbaa147329640079212722e21310d1d915258b1c",
+    "bytes": 179934121,
+    "previous_path": "artifacts/validation/pydpf_maze_execution_20261102.tar.gz"
+  },
+  {
+    "path": "artifacts/history/previous/validation/pydpf_maze_network_preparation_20261102T1657.tar.gz",
+    "source": "New network-only scope: frozen source, CPU saved controls, submission and scheduler, prior failure references. GPU comparison pending.",
+    "sha256": "feebfffac33a338561a40c8eed32b2f778a38b8baf7343ad6cc0e6e10b016a6b",
+    "bytes": 48410400,
+    "previous_path": "artifacts/validation/pydpf_maze_network_preparation_20261102T1657.tar.gz"
+  },
+  {
+    "path": "artifacts/validation/pydpf_maze_network_20261102.tar.gz",
+    "source": "Complete maze network-only GPU execution comparison and CPU controls, original sources, earlier full profile/trace and all failures; exact saved audits and report recovery. No fitting or held-out evaluation.",
+    "sha256": "a84b598d86df7c93660ce533326fbc4d633153c8849453ffae661ae3448533c8",
+    "bytes": 327927458
+  },
+  {
+    "path": "artifacts/validation/pydpf_maze_formal_preparation_20261102.tar.gz",
+    "source": "Formal supervised maze design, frozen original/added source, complete CPU optimizer-chain and training-driver records including first harness failure, actual bridge submission. No new GPU numerical or formal training results.",
+    "sha256": "11f41baa87aa089c90b0b268f8209bc7bd2e780b0aba81f675276a18bdfcd452",
+    "bytes": 480323894
+  },
+  {
+    "path": "artifacts/history/comparisons_organization_20261102T1810.tar.gz",
+    "source": "Current-document reorganization, before/after copies, unchanged-science hashes, saved-data summary code and inputs; no numerical experiments.",
+    "sha256": "f0818e3ad0931aa1e22351ee26b00e854fc0393fe3e602c72021f21dd1c62a82",
+    "bytes": 191039
+  },
+  {
+    "path": "artifacts/history/previous/validation/pydpf_maze_sample_size_review_20261102.tar.gz",
+    "source": "User sample-size concern, withdrawal of automatic36-fit maze submission, proposed15-fit design and local submission refusal; no new numerical calls.",
+    "sha256": "367620bcd89444713199bed99a0c38372e84512c590c96721dce0054fb579563",
+    "bytes": 9653,
+    "previous_path": "artifacts/validation/pydpf_maze_sample_size_review_20261102.tar.gz"
+  },
+  {
+    "path": "artifacts/validation/pypomp_pf_timing_review_20261102.tar.gz",
+    "source": "Review of existing paired PyPOMP/Cuthbert PF scoring timings, raw records, code, hardware and before/after report; no new PF or fitting.",
+    "sha256": "01383e678187cf1ed079e4c8ee7ce59bc360c3c8cae7f910b354492f85e856e3",
+    "bytes": 73309
+  },
+  {
+    "path": "artifacts/validation/pydpf_maze_formal15_preparation_20261102.tar.gz",
+    "source": "Explicit15-fit maze authorization, unchanged numerical-source selection overlay, measured-cost estimator and non-numerical refusal controls; original bridge pending, no formal fit or new GPU result.",
+    "sha256": "5295a315ef0d25883f1b3f87bc2a6e8f050480f46bf1e217402bdbb1bc40cd84",
+    "bytes": 29688
+  },
+  {
+    "path": "artifacts/history/previous/validation/pydpf_maze_formal15_bridge_submission_20261102T1845.tar.gz",
+    "sha256": "c96ba8f470ff6c871a20362e4242c35fafda6fa7e1f0fecce2b4e51938abde38",
+    "bytes": 1111650799,
+    "source": "Actual three-arm GPU maze training validation, full raw/source/log/failure history, 15-fit measured budget and one-time submission receipts; no running formal results. Extracted saved audit and budget reproduce exactly.",
+    "previous_path": "artifacts/validation/pydpf_maze_formal15_bridge_submission_20261102T1845.tar.gz"
+  },
+  {
+    "path": "artifacts/history/comparisons_before_trim_20261102.tar.gz",
+    "sha256": "9d2b9296fcbe724f6da26eee3280bb069db29edc790f2d9bc32d733280c2ee9f",
+    "bytes": 22519508,
+    "source": "Complete small-file tree before the 2 November report cleanup, including old reports, generated files and source copies; every member verified."
+  },
+  {
+    "path": "artifacts/validation/pydpf_maze_formal15_saved_audit_preparation_20261102T1915.tar.gz",
+    "sha256": "faf5ce6663767d52fe21d14f0827a6e3cd6bbb2f1b376737534ff74c22a8cd9c",
+    "bytes": 45655826,
+    "source": "Fifteen-fit maze saved-record, metadata, partial and aggregate audit preparation. Retained CPU fixture re-audits and synthetic controls only; no actual GPU training output. All restored latest audit/control JSON matches exactly."
+  },
+  {
+    "path": "artifacts/validation/package_upstream_review_20261102.tar.gz",
+    "source": "work/packages-pr-review-20261102",
+    "sha256": "c2a20574ddbba279fa05fb5d5bc291ef67b753e68bb3c673ae05506aca1d9f14",
+    "bytes": 275552,
+    "files": 170,
+    "all_members_verified": true,
+    "scope": "patch application, small CPU examples/tests, wheel builds and imports; original failures retained; not full CI"
+  },
+  {
+    "path": "artifacts/experiments/dacca/pypomp_pf_timing_A40_failed_20261102.tar.gz",
+    "source": "Failed PyPOMP single-PF timing job 65241013: full source, inputs, logs, claim, submission, no completed PF calls, and reproducible partial audit.",
+    "sha256": "dba69e79843a5f005c30077fc599405dd2cdb9405fd2d53ba17bf1f167e0b391",
+    "bytes": 25929600
+  },
+  {
+    "path": "artifacts/experiments/maze/pydpf_maze_formal15_first_seed_20261102T1945.tar.gz",
+    "sha256": "fcd965d72be395365b987f8f58ff68548013144f289eae23067beaf2204c7b4b",
+    "bytes": 1405869699,
+    "source": "First actual paired initialization of the fifteen-fit supervised maze study: three full 100-epoch fits, complete checkpoints/raw predictions/RNG/logs, frozen sources and saved audits. All archive member hashes and extracted three task audits, limited paired summary and bilingual reports match. No other running results, shared tensor cache or repeated numerical calls."
+  },
+  {
+    "path": "artifacts/experiments/maze/pydpf_maze_formal15_pairs_20261102T2015.tar.gz",
+    "sha256": "9705ad84bf0ba1459aef19d7b22fe46d13195f7f352598407e65f0ad72189a66",
+    "bytes": 1405351885,
+    "source": "New stopped paired maze fits ['native_dpf_02', 'native_stop_02', 'discount097_02'], complete raw/checkpoints/predictions/RNG/log/source. All member hashes and extracted new task audits plus cumulative 6-fit saved summary and bilingual reports match. Earlier raw collections remain in prior dated packages; no recollection or numerical rerun."
+  },
+  {
+    "path": "artifacts/experiments/dacca/pypomp_pf_timing_A40_keyfix_20261102.tar.gz",
+    "source": "User-authorized corrected PyPOMP A40 single-PF timing: complete source/raw/logs, typed-key diff, CPU preflight and saved audit.",
+    "sha256": "f87eec20381b1a2234454d18027ba364c807751303bc0edb9034fab6f049f6b7",
+    "bytes": 25935783
+  },
+  {
+    "path": "artifacts/validation/package_standalone_revisions_20261102.tar.gz",
+    "bytes": 127611151,
+    "sha256": "655c0ec083614abca2121059a9d72af24de88120fe53f49a73a62c2340fe7b7e",
+    "members": 4413,
+    "all_member_hashes_verified": true,
+    "restored_source_files": {
+      "cuthbert": 255,
+      "pfjax": 200,
+      "pydpf": 58,
+      "particles": 108,
+      "tfp": 1516
+    },
+    "source": "Independent local package revisions, complete upstream source and checks; no Dacca rerun"
   }
 ]

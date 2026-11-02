@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "allowed_selections": 15,
+  "excluded_arm_indices": 93,
+  "SSH_calls": 0,
+  "model_calls": 0,
+  "actual_task_collections": 0,
+  "limitation": "Only selection and syntax tested; real stopped-task transfer schema awaits first use."
+}

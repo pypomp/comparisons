@@ -1,0 +1,305 @@
+{
+  "passed": true,
+  "checks": {
+    "native_dpf": {
+      "passed": true,
+      "arm": "native_dpf",
+      "CPU_only": false,
+      "checks": [
+        {
+          "exact": {
+            "loss": true,
+            "outputs": true,
+            "components": true,
+            "model_after_forward": true,
+            "rng": true,
+            "after_step": true
+          },
+          "gradient_elements": 403958,
+          "gradient_bitwise": true,
+          "finite": true,
+          "relative_L2": 0.0,
+          "max_abs": 0.0,
+          "passed": true
+        },
+        {
+          "exact": {
+            "loss": true,
+            "outputs": true,
+            "components": true,
+            "model_after_forward": true,
+            "rng": true,
+            "after_step": true
+          },
+          "gradient_elements": 403958,
+          "gradient_bitwise": true,
+          "finite": true,
+          "relative_L2": 0.0,
+          "max_abs": 0.0,
+          "passed": true
+        },
+        {
+          "exact": {
+            "loss": true,
+            "outputs": true,
+            "components": true,
+            "model_after_forward": true,
+            "rng": true,
+            "after_step": true
+          },
+          "gradient_elements": 403958,
+          "gradient_bitwise": true,
+          "finite": true,
+          "relative_L2": 0.0,
+          "max_abs": 0.0,
+          "passed": true
+        }
+      ],
+      "self_repeat": {
+        "exact": {
+          "loss": true,
+          "outputs": true,
+          "components": true,
+          "model_after_forward": true,
+          "rng": true,
+          "after_step": true
+        },
+        "gradient_elements": 403958,
+        "gradient_bitwise": true,
+        "finite": true,
+        "relative_L2": 0.0,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "restore": {
+        "exact": {
+          "loss": true,
+          "outputs": true,
+          "components": true,
+          "model_after_forward": true,
+          "rng": true,
+          "after_step": true
+        },
+        "gradient_elements": 403958,
+        "gradient_bitwise": true,
+        "finite": true,
+        "relative_L2": 0.0,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "result_sha256": "c271b6047bb2818207b5f53ddce89a2c03e83ac995dbd6422b8cbe4e170f87b2",
+      "all_evaluations_exact": true
+    },
+    "native_stop": {
+      "passed": true,
+      "arm": "native_stop",
+      "CPU_only": false,
+      "checks": [
+        {
+          "exact": {
+            "loss": true,
+            "outputs": true,
+            "components": true,
+            "model_after_forward": true,
+            "rng": true,
+            "after_step": true
+          },
+          "gradient_elements": 403958,
+          "gradient_bitwise": true,
+          "finite": true,
+          "relative_L2": 0.0,
+          "max_abs": 0.0,
+          "passed": true
+        },
+        {
+          "exact": {
+            "loss": true,
+            "outputs": true,
+            "components": true,
+            "model_after_forward": true,
+            "rng": true,
+            "after_step": true
+          },
+          "gradient_elements": 403958,
+          "gradient_bitwise": true,
+          "finite": true,
+          "relative_L2": 0.0,
+          "max_abs": 0.0,
+          "passed": true
+        },
+        {
+          "exact": {
+            "loss": true,
+            "outputs": true,
+            "components": true,
+            "model_after_forward": true,
+            "rng": true,
+            "after_step": true
+          },
+          "gradient_elements": 403958,
+          "gradient_bitwise": true,
+          "finite": true,
+          "relative_L2": 0.0,
+          "max_abs": 0.0,
+          "passed": true
+        }
+      ],
+      "self_repeat": {
+        "exact": {
+          "loss": true,
+          "outputs": true,
+          "components": true,
+          "model_after_forward": true,
+          "rng": true,
+          "after_step": true
+        },
+        "gradient_elements": 403958,
+        "gradient_bitwise": true,
+        "finite": true,
+        "relative_L2": 0.0,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "restore": {
+        "exact": {
+          "loss": true,
+          "outputs": true,
+          "components": true,
+          "model_after_forward": true,
+          "rng": true,
+          "after_step": true
+        },
+        "gradient_elements": 403958,
+        "gradient_bitwise": true,
+        "finite": true,
+        "relative_L2": 0.0,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "result_sha256": "d30213e91ca55999f9213225d88a20b38c9c11b12411e80a67d9cbe338e6fbf5",
+      "all_evaluations_exact": true
+    },
+    "discount097": {
+      "passed": true,
+      "arm": "discount097",
+      "CPU_only": false,
+      "checks": [
+        {
+          "exact": {
+            "loss": true,
+            "outputs": true,
+            "components": true,
+            "model_after_forward": true,
+            "rng": true,
+            "after_step": true
+          },
+          "gradient_elements": 403958,
+          "gradient_bitwise": true,
+          "finite": true,
+          "relative_L2": 0.0,
+          "max_abs": 0.0,
+          "passed": true
+        },
+        {
+          "exact": {
+            "loss": true,
+            "outputs": true,
+            "components": true,
+            "model_after_forward": true,
+            "rng": true,
+            "after_step": true
+          },
+          "gradient_elements": 403958,
+          "gradient_bitwise": true,
+          "finite": true,
+          "relative_L2": 0.0,
+          "max_abs": 0.0,
+          "passed": true
+        },
+        {
+          "exact": {
+            "loss": true,
+            "outputs": true,
+            "components": true,
+            "model_after_forward": true,
+            "rng": true,
+            "after_step": true
+          },
+          "gradient_elements": 403958,
+          "gradient_bitwise": true,
+          "finite": true,
+          "relative_L2": 0.0,
+          "max_abs": 0.0,
+          "passed": true
+        }
+      ],
+      "self_repeat": {
+        "exact": {
+          "loss": true,
+          "outputs": true,
+          "components": true,
+          "model_after_forward": true,
+          "rng": true,
+          "after_step": true
+        },
+        "gradient_elements": 403958,
+        "gradient_bitwise": true,
+        "finite": true,
+        "relative_L2": 0.0,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "restore": {
+        "exact": {
+          "loss": true,
+          "outputs": true,
+          "components": true,
+          "model_after_forward": true,
+          "rng": true,
+          "after_step": true
+        },
+        "gradient_elements": 403958,
+        "gradient_bitwise": true,
+        "finite": true,
+        "relative_L2": 0.0,
+        "max_abs": 0.0,
+        "passed": true
+      },
+      "result_sha256": "5e71f9dcc20e0914dc24c71f2d6f166c6c7e01e886bb9d3b3ae2c6012ba4c8f8",
+      "all_evaluations_exact": true
+    }
+  },
+  "costs": {
+    "native_dpf": {
+      "warm_B64_step_seconds": 0.7051709871739149,
+      "tail_B4_step_seconds": 0.6687375279143453,
+      "evaluation_batch_seconds": 0.3668304570019245,
+      "forecast_seconds": 2386.0498107533904,
+      "cap_seconds": 2700,
+      "passed": true
+    },
+    "native_stop": {
+      "warm_B64_step_seconds": 0.7519921027123928,
+      "tail_B4_step_seconds": 0.7107367105782032,
+      "evaluation_batch_seconds": 0.36617552395910025,
+      "forecast_seconds": 2479.5635197882075,
+      "cap_seconds": 2700,
+      "passed": true
+    },
+    "discount097": {
+      "warm_B64_step_seconds": 0.7562617128714919,
+      "tail_B4_step_seconds": 0.7186962692067027,
+      "evaluation_batch_seconds": 0.36615377850830555,
+      "forecast_seconds": 2488.686105192918,
+      "cap_seconds": 2700,
+      "passed": true
+    }
+  },
+  "data_sha256": "c6087e5c5281a65c76b788e2e527c2bae7a0532656026cea33617c2654c99ff0",
+  "manifest_sha256": "57960b2249ca35c49b6e4efc523b3a38f10572c4a17d66bb050268bdb29db23c",
+  "collection_sha256": "b4bc43c6f020b6edca1dde03b2fd985a9c47c4d514b69e997a9778e2b564a509",
+  "actual_bridge_GPU_seconds": 266,
+  "planned_total_cap": 97466,
+  "formal_fits": 0,
+  "scope_cap": 108000
+}

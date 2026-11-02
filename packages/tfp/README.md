@@ -10,6 +10,8 @@ The new `iterated_filter` wraps the parameterized model and calls the original `
 
 For gradient optimization, we added `gradient_discount` to the existing `particle_filter`, `sequential_monte_carlo` and `SequentialMonteCarlo` calls. At α=1 the code retains the original derivative expression. Parameter updates use external Keras Adam.
 
+The original `particle_filter` already has `unbiased_gradients=True` and the stop-gradient resampling correction. These are upstream TFP features, not additions from this experiment. [The native-method review](../../reports/pfjax_native_AB_20261102.md) distinguishes this from PFJAX's added alpha=1 correction.
+
 The original source here is from the TFP 0.25.0 wheel. It is not a full development checkout.
 
 ## Validation and reproduction

@@ -1,0 +1,348 @@
+{
+  "review": {
+    "passed": true,
+    "scope": "Saved partial-study snapshot, not the final fifteen-outcome audit",
+    "authorized_fits": 15,
+    "completed_audited_fits": 6,
+    "remaining_outcomes": 9,
+    "complete_paired_seeds": [
+      0,
+      10
+    ],
+    "cases": [
+      0,
+      2
+    ],
+    "endpoints": [
+      {
+        "arm": "native_dpf",
+        "label": "Native DPF",
+        "legacy_case": 0,
+        "initialization_seed": 0,
+        "repetition": 0,
+        "task_id": "65241619_0",
+        "raw_job_id": "65241621",
+        "node": "gl1518",
+        "accepted_updates": 1500,
+        "completed_validation_epochs": 100,
+        "selected_epoch_zero_based": 39,
+        "selected_epoch_one_based": 40,
+        "selected_validation_MSE": 60391.49767524719,
+        "test_RMSE": 309.50951736717127,
+        "test_repeat_MSE": [
+          89299.41544307709,
+          98967.77049153192,
+          99121.23808796883
+        ],
+        "test_repeat_RMSE": [
+          298.8300778754995,
+          314.5914342310228,
+          314.8352554717607
+        ],
+        "test_trajectories": 700,
+        "independent_PF_streams": 3,
+        "actual_allocation_GPU_seconds": 1305,
+        "requested_seconds": 1980,
+        "original_forecast_seconds": 1454.6631668927148,
+        "training_kernel_seconds": 802.9881225768477,
+        "recorded_training_step_seconds": 946.3579966258258,
+        "test_evaluation_seconds": 34.42476582620293,
+        "transfer_files": 1904,
+        "full_audit_passed": true,
+        "failure_records": 0,
+        "audit_sha256": "3cb5db2d8b1ba2b3a0c331c50cc2587845287f3c908f9f7138437cc4d1503f9a"
+      },
+      {
+        "arm": "native_stop",
+        "label": "Native StopGradientDPF",
+        "legacy_case": 0,
+        "initialization_seed": 0,
+        "repetition": 0,
+        "task_id": "65241625_1",
+        "raw_job_id": "65241626",
+        "node": "gl1518",
+        "accepted_updates": 1500,
+        "completed_validation_epochs": 100,
+        "selected_epoch_zero_based": 73,
+        "selected_epoch_one_based": 74,
+        "selected_validation_MSE": 103625.12459517003,
+        "test_RMSE": 373.33705968873466,
+        "test_repeat_MSE": [
+          132034.73673221451,
+          143873.06348773956,
+          142233.8801911354
+        ],
+        "test_repeat_RMSE": [
+          363.3658442014253,
+          379.30602880489465,
+          377.13907274523467
+        ],
+        "test_trajectories": 700,
+        "independent_PF_streams": 3,
+        "actual_allocation_GPU_seconds": 1329,
+        "requested_seconds": 2040,
+        "original_forecast_seconds": 1512.800506892614,
+        "training_kernel_seconds": 858.6857185354456,
+        "recorded_training_step_seconds": 1001.7119786283001,
+        "test_evaluation_seconds": 10.982183018699288,
+        "transfer_files": 1904,
+        "full_audit_passed": true,
+        "failure_records": 0,
+        "audit_sha256": "760269eba3c86444f3ce4a9e4adbfe6bf78473b6035d851472e55199b132371b"
+      },
+      {
+        "arm": "discount097",
+        "label": "Added discounted gradient, alpha=0.97",
+        "legacy_case": 0,
+        "initialization_seed": 0,
+        "repetition": 0,
+        "task_id": "65241629_2",
+        "raw_job_id": "65243988",
+        "node": "gl1502",
+        "accepted_updates": 1500,
+        "completed_validation_epochs": 100,
+        "selected_epoch_zero_based": 70,
+        "selected_epoch_one_based": 71,
+        "selected_validation_MSE": 121077.629511199,
+        "test_RMSE": 401.0928777415612,
+        "test_repeat_MSE": [
+          148168.13895250662,
+          152670.36584567206,
+          181787.98492684227
+        ],
+        "test_repeat_RMSE": [
+          384.9261474003898,
+          390.7305540211465,
+          426.3660222471325
+        ],
+        "test_trajectories": 700,
+        "independent_PF_streams": 3,
+        "actual_allocation_GPU_seconds": 1572,
+        "requested_seconds": 2040,
+        "original_forecast_seconds": 1521.722850364633,
+        "training_kernel_seconds": 993.3464450351894,
+        "recorded_training_step_seconds": 1187.0306651005521,
+        "test_evaluation_seconds": 38.26932458207011,
+        "transfer_files": 1904,
+        "full_audit_passed": true,
+        "failure_records": 0,
+        "audit_sha256": "d4ba51205648d0a0babadb78aaabace4346707a087ecd7a10ec0116c0ef5b251"
+      },
+      {
+        "arm": "native_dpf",
+        "label": "Native DPF",
+        "legacy_case": 2,
+        "initialization_seed": 10,
+        "repetition": 0,
+        "task_id": "65241619_6",
+        "raw_job_id": "65241622",
+        "node": "gl1505",
+        "accepted_updates": 1500,
+        "completed_validation_epochs": 100,
+        "selected_epoch_zero_based": 53,
+        "selected_epoch_one_based": 54,
+        "selected_validation_MSE": 62970.42741310358,
+        "test_RMSE": 279.63026842817595,
+        "test_repeat_MSE": [
+          70595.62269159318,
+          96812.6101018279,
+          67171.02827022008
+        ],
+        "test_repeat_RMSE": [
+          265.69836787529044,
+          311.14724826330684,
+          259.17374147513493
+        ],
+        "test_trajectories": 700,
+        "independent_PF_streams": 3,
+        "actual_allocation_GPU_seconds": 1574,
+        "requested_seconds": 1980,
+        "original_forecast_seconds": 1454.6631668927148,
+        "training_kernel_seconds": 943.3044969728217,
+        "recorded_training_step_seconds": 1148.6956609636545,
+        "test_evaluation_seconds": 35.58803685288876,
+        "transfer_files": 1904,
+        "full_audit_passed": true,
+        "failure_records": 0,
+        "audit_sha256": "eda02511ede44e049a33c8442aaa307fad32a7551404bec7c15b4ff0af07ba18"
+      },
+      {
+        "arm": "native_stop",
+        "label": "Native StopGradientDPF",
+        "legacy_case": 2,
+        "initialization_seed": 10,
+        "repetition": 0,
+        "task_id": "65241625_7",
+        "raw_job_id": "65241627",
+        "node": "gl1518",
+        "accepted_updates": 1500,
+        "completed_validation_epochs": 100,
+        "selected_epoch_zero_based": 69,
+        "selected_epoch_one_based": 70,
+        "selected_validation_MSE": 48410.554995856284,
+        "test_RMSE": 323.2293632794159,
+        "test_repeat_MSE": [
+          111966.58552968706,
+          102242.6113000025,
+          99222.46702836036
+        ],
+        "test_repeat_RMSE": [
+          334.61408447596324,
+          319.7539855889251,
+          314.9959793844365
+        ],
+        "test_trajectories": 700,
+        "independent_PF_streams": 3,
+        "actual_allocation_GPU_seconds": 1323,
+        "requested_seconds": 2040,
+        "original_forecast_seconds": 1512.800506892614,
+        "training_kernel_seconds": 855.67063880153,
+        "recorded_training_step_seconds": 998.4610262243077,
+        "test_evaluation_seconds": 32.239292732439935,
+        "transfer_files": 1904,
+        "full_audit_passed": true,
+        "failure_records": 0,
+        "audit_sha256": "8714594ca0f647e12c7a4f0b3ac197150305f713a4b58ae3f3eb409f598658ec"
+      },
+      {
+        "arm": "discount097",
+        "label": "Added discounted gradient, alpha=0.97",
+        "legacy_case": 2,
+        "initialization_seed": 10,
+        "repetition": 0,
+        "task_id": "65241629_8",
+        "raw_job_id": "65244003",
+        "node": "gl1502",
+        "accepted_updates": 1500,
+        "completed_validation_epochs": 100,
+        "selected_epoch_zero_based": 40,
+        "selected_epoch_one_based": 41,
+        "selected_validation_MSE": 60137.24860754013,
+        "test_RMSE": 288.90754419720554,
+        "test_repeat_MSE": [
+          79558.29477874347,
+          82321.03039915426,
+          88523.38210428305
+        ],
+        "test_repeat_RMSE": [
+          282.06079979100866,
+          286.9164170959101,
+          297.52879205932834
+        ],
+        "test_trajectories": 700,
+        "independent_PF_streams": 3,
+        "actual_allocation_GPU_seconds": 1565,
+        "requested_seconds": 2040,
+        "original_forecast_seconds": 1521.722850364633,
+        "training_kernel_seconds": 984.0672856103629,
+        "recorded_training_step_seconds": 1180.6543668573722,
+        "test_evaluation_seconds": 34.52747478056699,
+        "transfer_files": 1904,
+        "full_audit_passed": true,
+        "failure_records": 0,
+        "audit_sha256": "8d38424fc5c5e2d736f309611a81dbeefd45b42b40478b27966de86a1d93715a"
+      }
+    ],
+    "pairs": [
+      {
+        "legacy_case": 0,
+        "initialization_seed": 0,
+        "common_initial_model_empty_Adam_scheduler_RNG": true,
+        "common_training_orders": 100,
+        "common_training_call_seeds": 1500,
+        "common_validation_IDs_truth_and_seeds": true,
+        "common_test_IDs_truth_and_seeds": true,
+        "observed_training_RNG_after_hashes_equal": true,
+        "test_RMSE": {
+          "native_dpf": 309.50951736717127,
+          "native_stop": 373.33705968873466,
+          "discount097": 401.0928777415612
+        },
+        "differences_RMSE": {
+          "native_stop_minus_native_dpf": 63.827542321563385,
+          "discount097_minus_native_stop": 27.755818052826555,
+          "discount097_minus_native_dpf": 91.58336037438994
+        }
+      },
+      {
+        "legacy_case": 2,
+        "initialization_seed": 10,
+        "common_initial_model_empty_Adam_scheduler_RNG": true,
+        "common_training_orders": 100,
+        "common_training_call_seeds": 1500,
+        "common_validation_IDs_truth_and_seeds": true,
+        "common_test_IDs_truth_and_seeds": true,
+        "observed_training_RNG_after_hashes_equal": true,
+        "test_RMSE": {
+          "native_dpf": 279.63026842817595,
+          "native_stop": 323.2293632794159,
+          "discount097": 288.90754419720554
+        },
+        "differences_RMSE": {
+          "native_stop_minus_native_dpf": 43.599094851239954,
+          "discount097_minus_native_stop": -34.32181908221037,
+          "discount097_minus_native_dpf": 9.277275769029586
+        }
+      }
+    ],
+    "all_complete_pairs_reviewed": true,
+    "failures_in_reviewed_pairs": 0,
+    "lower_test_RMSE_is_better": true,
+    "final_five_seed_ranking_not_established": true,
+    "different_method_gradients_evolved_parameters_and_RNG_positions_not_required_equal": true,
+    "actual_completed_training_GPU_seconds": 8668,
+    "bridge_actual_GPU_seconds": 266,
+    "actual_completed_plus_bridge_GPU_seconds": 8934,
+    "remaining_requested_GPU_seconds": 18180,
+    "completed_plus_bridge_plus_remaining_limits_seconds": 27114,
+    "original_total_requested_GPU_seconds": 30566,
+    "original_forecast_training_GPU_seconds": 22445.93262074981,
+    "kernel_step_evaluation_IO_in_allocation_not_added_again": true,
+    "successful_full_gradients_and_proposals_not_all_saved": true,
+    "saved_hashes_cannot_reconstruct_missing_full_tensors": true,
+    "source_manifest_sha256": "57960b2249ca35c49b6e4efc523b3a38f10572c4a17d66bb050268bdb29db23c",
+    "overlay_manifest_sha256": "e9670ae8e1df4fe1a9e91e26d89730a6b93371a8a2012566370ae34b7c8a946e",
+    "model_PF_optimizer_calls": 0
+  },
+  "package_verification": {
+    "passed": true,
+    "archive": "artifacts/experiments/maze/pydpf_maze_formal15_pairs_20261102T2015.tar.gz",
+    "sha256": "9705ad84bf0ba1459aef19d7b22fe46d13195f7f352598407e65f0ad72189a66",
+    "bytes": 1405351885,
+    "members": 5896,
+    "all_member_SHA_verified": true,
+    "new_raw_fit_collections": [
+      "native_dpf_02",
+      "native_stop_02",
+      "discount097_02"
+    ],
+    "prior_raw_collections_not_recollected": true,
+    "recovered_new_saved_audits_byte_equal": {
+      "native_dpf_02": "eda02511ede44e049a33c8442aaa307fad32a7551404bec7c15b4ff0af07ba18",
+      "native_stop_02": "8714594ca0f647e12c7a4f0b3ac197150305f713a4b58ae3f3eb409f598658ec",
+      "discount097_02": "8d38424fc5c5e2d736f309611a81dbeefd45b42b40478b27966de86a1d93715a"
+    },
+    "recovered_cumulative_summary_and_bilingual_reports_byte_equal": true,
+    "cumulative_reviewed_fits": 6,
+    "original_source_files": 70,
+    "overlay_files": 11,
+    "every_new_raw_checkpoint_prediction_RNG_log_included": true,
+    "duplicate_transport_gzip_retained_locally": true,
+    "model_PF_optimizer_SSH_calls_during_packaging_and_recovery": 0
+  },
+  "scheduler": {
+    "UTC": "2026-11-02T20:16:00.670203+00:00",
+    "jobs": [
+      "65241619",
+      "65241625",
+      "65241629"
+    ],
+    "sacct": "65241619_0|COMPLETED|0:0|1305|gl1518|33|billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65241619_0.batch|COMPLETED|0:0|1305|gl1518||cpu=4,gres/gpu=1,mem=48G,node=1\n65241619_0.extern|COMPLETED|0:0|1305|gl1518||billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65241619_6|COMPLETED|0:0|1574|gl1505|33|billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65241619_6.batch|COMPLETED|0:0|1574|gl1505||cpu=4,gres/gpu=1,mem=48G,node=1\n65241619_6.extern|COMPLETED|0:0|1574|gl1505||billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65241619_24|PENDING|0:0|0|None assigned|33|\n65241625_1|COMPLETED|0:0|1329|gl1518|34|billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65241625_1.batch|COMPLETED|0:0|1329|gl1518||cpu=4,gres/gpu=1,mem=48G,node=1\n65241625_1.extern|COMPLETED|0:0|1329|gl1518||billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65241625_7|COMPLETED|0:0|1323|gl1518|34|billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65241625_7.batch|COMPLETED|0:0|1323|gl1518||cpu=4,gres/gpu=1,mem=48G,node=1\n65241625_7.extern|COMPLETED|0:0|1323|gl1518||billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65241625_25|PENDING|0:0|0|None assigned|34|\n65241629_2|COMPLETED|0:0|1572|gl1502|34|billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65241629_2.batch|COMPLETED|0:0|1572|gl1502||cpu=4,gres/gpu=1,mem=48G,node=1\n65241629_2.extern|COMPLETED|0:0|1572|gl1502||billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65241629_8|COMPLETED|0:0|1565|gl1502|34|billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65241629_8.batch|COMPLETED|0:0|1565|gl1502||cpu=4,gres/gpu=1,mem=48G,node=1\n65241629_8.extern|COMPLETED|0:0|1565|gl1502||billing=18078,cpu=4,gres/gpu=1,mem=48G,node=1\n65241629_26|PENDING|0:0|0|None assigned|34|\n",
+    "sacct_returncode": 0,
+    "sacct_stderr": "",
+    "squeue": "65241625_19|PENDING|0:00|(JobArrayTaskLimit)\n65241625_13|PENDING|0:00|(JobArrayTaskLimit)\n65241619_24|PENDING|0:00|(JobArrayTaskLimit)\n65241619_18|PENDING|0:00|(JobArrayTaskLimit)\n65241619_12|PENDING|0:00|(JobArrayTaskLimit)\n65241625_25|PENDING|0:00|(JobArrayTaskLimit)\n65241629_14|PENDING|0:00|(JobArrayTaskLimit)\n65241629_26|PENDING|0:00|(JobArrayTaskLimit)\n65241629_20|PENDING|0:00|(JobArrayTaskLimit)\n",
+    "squeue_returncode": 0,
+    "squeue_stderr": ""
+  },
+  "remaining_results_not_collected_in_this_snapshot": true
+}

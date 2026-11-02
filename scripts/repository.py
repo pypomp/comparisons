@@ -47,6 +47,39 @@ def history_bytes(name):
     return data
 
 
+def recent_history():
+    """The small-file snapshot made before the latest report cleanup."""
+    rec = json.loads((ROOT / 'archive/trim.json').read_text())
+    with gzip.open(ROOT / rec['manifest'], 'rt') as f:
+        return rec, json.load(f)
+
+
+def saved_bytes(name):
+    """Read a current file, or its verified archived copy if it was retired."""
+    relative(name)
+    path = ROOT / name
+    if path.is_file() and not path.is_symlink():
+        return path.read_bytes()
+    rec, files = recent_history()
+    if name not in rec['removed_paths'] or name not in files:
+        raise FileNotFoundError(name)
+    with tarfile.open(ROOT / rec['path']) as tf:
+        data = tf.extractfile(name).read()
+    if len(data) != files[name]['bytes'] or hashlib.sha256(data).hexdigest() != files[name]['sha256']:
+        raise ValueError(f'Archived file checksum mismatch: {name}')
+    return data
+
+
+def archive_record(name):
+    """Resolve a current archive path or its retained former path."""
+    relative(name)
+    records = json.loads((ROOT / 'archive/catalog.json').read_text())
+    found = [r for r in records if name in (r['path'], r.get('previous_path'))]
+    if len(found) != 1:
+        raise FileNotFoundError(name)
+    return found[0]
+
+
 def restore(destination, prefix='', strip_prefix=False):
     """Restore selected regular files into a new directory; never overwrite."""
     destination = Path(os.path.abspath(destination))

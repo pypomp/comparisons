@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "UTC": "2026-11-02T18:50:54.190506+00:00",
+  "job": "65238998",
+  "source_files": 70,
+  "transfer_files": 166,
+  "terminal_files": 89,
+  "terminal_complete_list_verified": true,
+  "unique_bridge_claim_verified": true,
+  "source_manifest_sha256": "57960b2249ca35c49b6e4efc523b3a38f10572c4a17d66bb050268bdb29db23c",
+  "audit_sha256": "8a356e1e9dfbeac8d2e90cc6d40405f46fbecaf83211ec40e5434b8d789e8df7",
+  "budget_sha256": "8be562b8fe46710ca95ba5293d88db5e729a80ede4cfc468e526cac23bc53405",
+  "failure_records_found": [],
+  "bridge_actual_GPU_seconds": 266,
+  "authorized_fits": 15,
+  "training_forecast_GPU_hours": 6.234981283541614,
+  "training_requested_GPU_hours": 8.416666666666666,
+  "approval_basis": "Explicit user authorization for 15fits after actual validation, reviewed exact GPU forward/gradient/AdamW and actual timing. No further confirmation needed.",
+  "formal_training_completed": 0
+}

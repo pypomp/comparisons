@@ -1,0 +1,11 @@
+{
+  "archive_integrity_passed": true,
+  "experiment_success": false,
+  "archive": "artifacts/experiments/dacca/pypomp_pf_timing_A40_failed_20261102.tar.gz",
+  "sha256": "dba69e79843a5f005c30077fc599405dd2cdb9405fd2d53ba17bf1f167e0b391",
+  "bytes": 25929600,
+  "members": 270,
+  "all_member_hashes_verified": true,
+  "restored_partial_audit_byte_identical": true,
+  "numerical_calls": 0
+}

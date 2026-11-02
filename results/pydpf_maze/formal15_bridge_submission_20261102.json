@@ -1,0 +1,622 @@
+{
+  "summary": {
+    "UTC": "2026-11-02T18:56:13.522547+00:00",
+    "GPU_validation": {
+      "passed": true,
+      "checks": {
+        "native_dpf": {
+          "passed": true,
+          "arm": "native_dpf",
+          "CPU_only": false,
+          "checks": [
+            {
+              "exact": {
+                "loss": true,
+                "outputs": true,
+                "components": true,
+                "model_after_forward": true,
+                "rng": true,
+                "after_step": true
+              },
+              "gradient_elements": 403958,
+              "gradient_bitwise": true,
+              "finite": true,
+              "relative_L2": 0.0,
+              "max_abs": 0.0,
+              "passed": true
+            },
+            {
+              "exact": {
+                "loss": true,
+                "outputs": true,
+                "components": true,
+                "model_after_forward": true,
+                "rng": true,
+                "after_step": true
+              },
+              "gradient_elements": 403958,
+              "gradient_bitwise": true,
+              "finite": true,
+              "relative_L2": 0.0,
+              "max_abs": 0.0,
+              "passed": true
+            },
+            {
+              "exact": {
+                "loss": true,
+                "outputs": true,
+                "components": true,
+                "model_after_forward": true,
+                "rng": true,
+                "after_step": true
+              },
+              "gradient_elements": 403958,
+              "gradient_bitwise": true,
+              "finite": true,
+              "relative_L2": 0.0,
+              "max_abs": 0.0,
+              "passed": true
+            }
+          ],
+          "self_repeat": {
+            "exact": {
+              "loss": true,
+              "outputs": true,
+              "components": true,
+              "model_after_forward": true,
+              "rng": true,
+              "after_step": true
+            },
+            "gradient_elements": 403958,
+            "gradient_bitwise": true,
+            "finite": true,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "passed": true
+          },
+          "restore": {
+            "exact": {
+              "loss": true,
+              "outputs": true,
+              "components": true,
+              "model_after_forward": true,
+              "rng": true,
+              "after_step": true
+            },
+            "gradient_elements": 403958,
+            "gradient_bitwise": true,
+            "finite": true,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "passed": true
+          },
+          "result_sha256": "c271b6047bb2818207b5f53ddce89a2c03e83ac995dbd6422b8cbe4e170f87b2",
+          "all_evaluations_exact": true
+        },
+        "native_stop": {
+          "passed": true,
+          "arm": "native_stop",
+          "CPU_only": false,
+          "checks": [
+            {
+              "exact": {
+                "loss": true,
+                "outputs": true,
+                "components": true,
+                "model_after_forward": true,
+                "rng": true,
+                "after_step": true
+              },
+              "gradient_elements": 403958,
+              "gradient_bitwise": true,
+              "finite": true,
+              "relative_L2": 0.0,
+              "max_abs": 0.0,
+              "passed": true
+            },
+            {
+              "exact": {
+                "loss": true,
+                "outputs": true,
+                "components": true,
+                "model_after_forward": true,
+                "rng": true,
+                "after_step": true
+              },
+              "gradient_elements": 403958,
+              "gradient_bitwise": true,
+              "finite": true,
+              "relative_L2": 0.0,
+              "max_abs": 0.0,
+              "passed": true
+            },
+            {
+              "exact": {
+                "loss": true,
+                "outputs": true,
+                "components": true,
+                "model_after_forward": true,
+                "rng": true,
+                "after_step": true
+              },
+              "gradient_elements": 403958,
+              "gradient_bitwise": true,
+              "finite": true,
+              "relative_L2": 0.0,
+              "max_abs": 0.0,
+              "passed": true
+            }
+          ],
+          "self_repeat": {
+            "exact": {
+              "loss": true,
+              "outputs": true,
+              "components": true,
+              "model_after_forward": true,
+              "rng": true,
+              "after_step": true
+            },
+            "gradient_elements": 403958,
+            "gradient_bitwise": true,
+            "finite": true,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "passed": true
+          },
+          "restore": {
+            "exact": {
+              "loss": true,
+              "outputs": true,
+              "components": true,
+              "model_after_forward": true,
+              "rng": true,
+              "after_step": true
+            },
+            "gradient_elements": 403958,
+            "gradient_bitwise": true,
+            "finite": true,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "passed": true
+          },
+          "result_sha256": "d30213e91ca55999f9213225d88a20b38c9c11b12411e80a67d9cbe338e6fbf5",
+          "all_evaluations_exact": true
+        },
+        "discount097": {
+          "passed": true,
+          "arm": "discount097",
+          "CPU_only": false,
+          "checks": [
+            {
+              "exact": {
+                "loss": true,
+                "outputs": true,
+                "components": true,
+                "model_after_forward": true,
+                "rng": true,
+                "after_step": true
+              },
+              "gradient_elements": 403958,
+              "gradient_bitwise": true,
+              "finite": true,
+              "relative_L2": 0.0,
+              "max_abs": 0.0,
+              "passed": true
+            },
+            {
+              "exact": {
+                "loss": true,
+                "outputs": true,
+                "components": true,
+                "model_after_forward": true,
+                "rng": true,
+                "after_step": true
+              },
+              "gradient_elements": 403958,
+              "gradient_bitwise": true,
+              "finite": true,
+              "relative_L2": 0.0,
+              "max_abs": 0.0,
+              "passed": true
+            },
+            {
+              "exact": {
+                "loss": true,
+                "outputs": true,
+                "components": true,
+                "model_after_forward": true,
+                "rng": true,
+                "after_step": true
+              },
+              "gradient_elements": 403958,
+              "gradient_bitwise": true,
+              "finite": true,
+              "relative_L2": 0.0,
+              "max_abs": 0.0,
+              "passed": true
+            }
+          ],
+          "self_repeat": {
+            "exact": {
+              "loss": true,
+              "outputs": true,
+              "components": true,
+              "model_after_forward": true,
+              "rng": true,
+              "after_step": true
+            },
+            "gradient_elements": 403958,
+            "gradient_bitwise": true,
+            "finite": true,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "passed": true
+          },
+          "restore": {
+            "exact": {
+              "loss": true,
+              "outputs": true,
+              "components": true,
+              "model_after_forward": true,
+              "rng": true,
+              "after_step": true
+            },
+            "gradient_elements": 403958,
+            "gradient_bitwise": true,
+            "finite": true,
+            "relative_L2": 0.0,
+            "max_abs": 0.0,
+            "passed": true
+          },
+          "result_sha256": "5e71f9dcc20e0914dc24c71f2d6f166c6c7e01e886bb9d3b3ae2c6012ba4c8f8",
+          "all_evaluations_exact": true
+        }
+      },
+      "costs": {
+        "native_dpf": {
+          "warm_B64_step_seconds": 0.7051709871739149,
+          "tail_B4_step_seconds": 0.6687375279143453,
+          "evaluation_batch_seconds": 0.3668304570019245,
+          "forecast_seconds": 2386.0498107533904,
+          "cap_seconds": 2700,
+          "passed": true
+        },
+        "native_stop": {
+          "warm_B64_step_seconds": 0.7519921027123928,
+          "tail_B4_step_seconds": 0.7107367105782032,
+          "evaluation_batch_seconds": 0.36617552395910025,
+          "forecast_seconds": 2479.5635197882075,
+          "cap_seconds": 2700,
+          "passed": true
+        },
+        "discount097": {
+          "warm_B64_step_seconds": 0.7562617128714919,
+          "tail_B4_step_seconds": 0.7186962692067027,
+          "evaluation_batch_seconds": 0.36615377850830555,
+          "forecast_seconds": 2488.686105192918,
+          "cap_seconds": 2700,
+          "passed": true
+        }
+      },
+      "data_sha256": "c6087e5c5281a65c76b788e2e527c2bae7a0532656026cea33617c2654c99ff0",
+      "manifest_sha256": "57960b2249ca35c49b6e4efc523b3a38f10572c4a17d66bb050268bdb29db23c",
+      "collection_sha256": "b4bc43c6f020b6edca1dde03b2fd985a9c47c4d514b69e997a9778e2b564a509",
+      "actual_bridge_GPU_seconds": 266,
+      "planned_total_cap": 97466,
+      "formal_fits": 0,
+      "scope_cap": 108000
+    },
+    "metadata_review": {
+      "passed": true,
+      "UTC": "2026-11-02T18:50:54.190506+00:00",
+      "job": "65238998",
+      "source_files": 70,
+      "transfer_files": 166,
+      "terminal_files": 89,
+      "terminal_complete_list_verified": true,
+      "unique_bridge_claim_verified": true,
+      "source_manifest_sha256": "57960b2249ca35c49b6e4efc523b3a38f10572c4a17d66bb050268bdb29db23c",
+      "audit_sha256": "8a356e1e9dfbeac8d2e90cc6d40405f46fbecaf83211ec40e5434b8d789e8df7",
+      "budget_sha256": "8be562b8fe46710ca95ba5293d88db5e729a80ede4cfc468e526cac23bc53405",
+      "failure_records_found": [],
+      "bridge_actual_GPU_seconds": 266,
+      "authorized_fits": 15,
+      "training_forecast_GPU_hours": 6.234981283541614,
+      "training_requested_GPU_hours": 8.416666666666666,
+      "approval_basis": "Explicit user authorization for 15fits after actual validation, reviewed exact GPU forward/gradient/AdamW and actual timing. No further confirmation needed.",
+      "formal_training_completed": 0
+    },
+    "measured_budget": {
+      "passed": true,
+      "fit_count": 15,
+      "method_count": 3,
+      "paired_seeds": 5,
+      "GPU": "A40, same type as bridge validation",
+      "methods": {
+        "native_dpf": {
+          "warm_complete_step_seconds": [
+            0.7001171428710222,
+            0.7017712015658617,
+            0.7051709871739149
+          ],
+          "tail_step_seconds": 0.6687375279143453,
+          "evaluation_seconds_by_batch": {
+            "4": 0.36308040749281645,
+            "16": 0.36484665982425213,
+            "60": 0.3662298247218132,
+            "64": 0.3668304570019245
+          },
+          "train_center_seconds": 1049.353434983641,
+          "train_upper_seconds": 1054.1131348349154,
+          "evaluation_seconds": 268.6865433678031,
+          "checkpoint_write_allowance_seconds": 4.492651021108031,
+          "cold_step_excess_seconds": 11.465799565427005,
+          "graph_setup_seconds": 2.419826013967395,
+          "arm_unattributed_body_seconds": 16.641443611122668,
+          "shared_unattributed_allocation_seconds_charged_per_fit": 101.6034683296457,
+          "per_fit_forecast_seconds": 1454.6631668927148,
+          "per_fit_request_before_rounding_seconds": 1923.9751819723288,
+          "requested_seconds": 1980,
+          "requested_minutes": 33,
+          "fits": 5,
+          "estimated_GPU_seconds": 7273.315834463574,
+          "reserved_GPU_seconds": 9900
+        },
+        "native_stop": {
+          "warm_complete_step_seconds": [
+            0.7458816263824701,
+            0.7519921027123928,
+            0.7475775219500065
+          ],
+          "tail_step_seconds": 0.7107367105782032,
+          "evaluation_seconds_by_batch": {
+            "4": 0.3628962244838476,
+            "16": 0.365322383120656,
+            "60": 0.3661078168079257,
+            "64": 0.36617552395910025
+          },
+          "train_center_seconds": 1117.6822017878294,
+          "train_upper_seconds": 1123.8626148551702,
+          "evaluation_seconds": 268.32114185672253,
+          "checkpoint_write_allowance_seconds": 5.380209770053625,
+          "cold_step_excess_seconds": 5.935172752477229,
+          "graph_setup_seconds": 0.17838600929826498,
+          "arm_unattributed_body_seconds": 13.699926386587322,
+          "shared_unattributed_allocation_seconds_charged_per_fit": 101.6034683296457,
+          "per_fit_forecast_seconds": 1512.800506892614,
+          "per_fit_request_before_rounding_seconds": 2008.1283082286363,
+          "requested_seconds": 2040,
+          "requested_minutes": 34,
+          "fits": 5,
+          "estimated_GPU_seconds": 7564.00253446307,
+          "reserved_GPU_seconds": 10200
+        },
+        "discount097": {
+          "warm_complete_step_seconds": [
+            0.7532244408503175,
+            0.7562617128714919,
+            0.753336563706398
+          ],
+          "tail_step_seconds": 0.7186962692067027,
+          "evaluation_seconds_by_batch": {
+            "4": 0.3629929991438985,
+            "16": 0.3650929443538189,
+            "60": 0.3653216026723385,
+            "64": 0.36615377850830555
+          },
+          "train_center_seconds": 1126.5408161096275,
+          "train_upper_seconds": 1130.636024940759,
+          "evaluation_seconds": 268.2821397036314,
+          "checkpoint_write_allowance_seconds": 4.757440477609634,
+          "cold_step_excess_seconds": 5.579658688977361,
+          "graph_setup_seconds": 0.1775078997015953,
+          "arm_unattributed_body_seconds": 14.781819155439734,
+          "shared_unattributed_allocation_seconds_charged_per_fit": 101.6034683296457,
+          "per_fit_forecast_seconds": 1521.722850364633,
+          "per_fit_request_before_rounding_seconds": 2017.1045209884644,
+          "requested_seconds": 2040,
+          "requested_minutes": 34,
+          "fits": 5,
+          "estimated_GPU_seconds": 7608.6142518231645,
+          "reserved_GPU_seconds": 10200
+        }
+      },
+      "bridge_actual_GPU_seconds": 266,
+      "training_forecast_GPU_seconds": 22445.93262074981,
+      "training_requested_GPU_seconds": 30300,
+      "training_forecast_GPU_hours": 6.234981283541614,
+      "training_requested_GPU_hours": 8.416666666666666,
+      "forecast_total_including_bridge_seconds": 22711.93262074981,
+      "requested_total_including_bridge_seconds": 30566,
+      "no_queue_time_in_GPU_hours": true,
+      "headroom_fraction_on_recurring_upper": 0.35,
+      "startup_allocation_is_conservative_unattributed_not_causally_measured": true,
+      "inference_shape_samples_per_method": 1,
+      "limitations": [
+        "No formal100-epoch timing yet.",
+        "Input batch transfer, per-step RNG/log writes and long-run variability are covered by headroom, not separately measured.",
+        "Whole bridge unattributed residual charged per fit; not an isolated process-startup measurement."
+      ],
+      "source_manifest_sha256": "57960b2249ca35c49b6e4efc523b3a38f10572c4a17d66bb050268bdb29db23c",
+      "bridge_audit_sha256": "8a356e1e9dfbeac8d2e90cc6d40405f46fbecaf83211ec40e5434b8d789e8df7",
+      "collection_sha256": "b4bc43c6f020b6edca1dde03b2fd985a9c47c4d514b69e997a9778e2b564a509",
+      "protocol_15_sha256": "9682f7968599c23a76cbfc274463092bb49115529c082a2e6c27e53891f11d55"
+    },
+    "actual_submissions": {
+      "native_dpf": {
+        "arm": "native_dpf",
+        "indices": [
+          0,
+          6,
+          12,
+          18,
+          24
+        ],
+        "task_mapping": [
+          {
+            "array_index": 0,
+            "legacy_case": 0,
+            "seed": 0,
+            "repetition": 0,
+            "arm": "native_dpf"
+          },
+          {
+            "array_index": 6,
+            "legacy_case": 2,
+            "seed": 10,
+            "repetition": 0,
+            "arm": "native_dpf"
+          },
+          {
+            "array_index": 12,
+            "legacy_case": 4,
+            "seed": 20,
+            "repetition": 0,
+            "arm": "native_dpf"
+          },
+          {
+            "array_index": 18,
+            "legacy_case": 6,
+            "seed": 30,
+            "repetition": 0,
+            "arm": "native_dpf"
+          },
+          {
+            "array_index": 24,
+            "legacy_case": 8,
+            "seed": 40,
+            "repetition": 0,
+            "arm": "native_dpf"
+          }
+        ],
+        "seconds_per_task": 1980,
+        "UTC": "2026-11-02T18:51:13.317650+00:00",
+        "job_name": "maze15-native_dpf-20261102",
+        "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/pydpf_maze_formal_20261102",
+        "array_job_id": "65241619"
+      },
+      "native_stop": {
+        "arm": "native_stop",
+        "indices": [
+          1,
+          7,
+          13,
+          19,
+          25
+        ],
+        "task_mapping": [
+          {
+            "array_index": 1,
+            "legacy_case": 0,
+            "seed": 0,
+            "repetition": 0,
+            "arm": "native_stop"
+          },
+          {
+            "array_index": 7,
+            "legacy_case": 2,
+            "seed": 10,
+            "repetition": 0,
+            "arm": "native_stop"
+          },
+          {
+            "array_index": 13,
+            "legacy_case": 4,
+            "seed": 20,
+            "repetition": 0,
+            "arm": "native_stop"
+          },
+          {
+            "array_index": 19,
+            "legacy_case": 6,
+            "seed": 30,
+            "repetition": 0,
+            "arm": "native_stop"
+          },
+          {
+            "array_index": 25,
+            "legacy_case": 8,
+            "seed": 40,
+            "repetition": 0,
+            "arm": "native_stop"
+          }
+        ],
+        "seconds_per_task": 2040,
+        "UTC": "2026-11-02T18:51:16.484867+00:00",
+        "job_name": "maze15-native_stop-20261102",
+        "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/pydpf_maze_formal_20261102",
+        "array_job_id": "65241625"
+      },
+      "discount097": {
+        "arm": "discount097",
+        "indices": [
+          2,
+          8,
+          14,
+          20,
+          26
+        ],
+        "task_mapping": [
+          {
+            "array_index": 2,
+            "legacy_case": 0,
+            "seed": 0,
+            "repetition": 0,
+            "arm": "discount097"
+          },
+          {
+            "array_index": 8,
+            "legacy_case": 2,
+            "seed": 10,
+            "repetition": 0,
+            "arm": "discount097"
+          },
+          {
+            "array_index": 14,
+            "legacy_case": 4,
+            "seed": 20,
+            "repetition": 0,
+            "arm": "discount097"
+          },
+          {
+            "array_index": 20,
+            "legacy_case": 6,
+            "seed": 30,
+            "repetition": 0,
+            "arm": "discount097"
+          },
+          {
+            "array_index": 26,
+            "legacy_case": 8,
+            "seed": 40,
+            "repetition": 0,
+            "arm": "discount097"
+          }
+        ],
+        "seconds_per_task": 2040,
+        "UTC": "2026-11-02T18:51:19.681936+00:00",
+        "job_name": "maze15-discount097-20261102",
+        "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/pydpf_maze_formal_20261102",
+        "array_job_id": "65241629"
+      }
+    },
+    "formal_results_collected": 0,
+    "formal_training_audited": 0,
+    "no_model_calls_during_review": true
+  },
+  "package": {
+    "passed": true,
+    "archive": "artifacts/validation/pydpf_maze_formal15_bridge_submission_20261102T1845.tar.gz",
+    "sha256": "c96ba8f470ff6c871a20362e4242c35fafda6fa7e1f0fecce2b4e51938abde38",
+    "bytes": 1111650799,
+    "members": 533,
+    "all_member_SHA_verified": true,
+    "extracted_GPU_saved_audit_byte_equal": true,
+    "extracted_actual_budget_byte_equal": true,
+    "original_source_files": 70,
+    "frozen_overlay_files": 11,
+    "GPU_bridge_results": true,
+    "formal_results_included": false,
+    "model_PF_optimizer_calls_during_recovery": 0
+  }
+}

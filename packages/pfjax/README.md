@@ -10,6 +10,8 @@ The new `iterated_filter` calls the original `particle_filter`. We added an `ini
 
 The new `particle_filter_mop` adds the resampling derivative correction, including at α=1. This is our addition, not PFJAX's original optimal-transport or score estimator. The experiment uses external Optax Adam.
 
+The [completed native A/B supplement](../../reports/dacca_native_figures_20261102T0718/report.md) uses a separate unchanged source snapshot: direct autodiff through the basic PF and native multinomial resampler, which PFJAX documents as a biased-gradient baseline. Native B reuses the existing IF2 endpoint. All twelve cases are audited: 24 new A/B fits completed 400 updates and their independent scores meet precision. Existing C is reused. The current figures select these native A/B results; the earlier alpha=1 extension results remain a separate comparison.
+
 The earlier PFJAX experiment used an IF2 filtering loop we wrote ourselves. The new code calls the package's full PF. The earlier results therefore need to be read with their own source code.
 
 ## Validation and reproduction

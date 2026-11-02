@@ -1,0 +1,323 @@
+{
+  "authorization": {
+    "UTC": "2026-11-02T18:30:02.285680+00:00",
+    "user_instruction": "先跑15组，验证通过后开始正式训练，预算按实际耗时来估。",
+    "arms": [
+      "native_dpf",
+      "native_stop",
+      "discount097"
+    ],
+    "initialization_seeds": [
+      0,
+      10,
+      20,
+      30,
+      40
+    ],
+    "repetitions_per_initialization": 1,
+    "fits": 15,
+    "epochs": 100,
+    "automatic_submission_after_actual_validation_and_cost_review": true,
+    "validation_job_retained": "65238998",
+    "original_36_fit_submission_prohibited": true,
+    "budget_basis": "Actual full-size GPU warm complete-step/evaluation timings plus separately reported measured startup and documented headroom; not the old30-hour ceiling or fixed45-minute estimate."
+  },
+  "protocol": {
+    "version": 2,
+    "created_UTC": "2026-11-02T18:30:02.285680+00:00",
+    "authorization": "先跑15组，验证通过后开始正式训练，预算按实际耗时来估。",
+    "scope": "Supervised maze comparison inside PyDPF; not MLE, IF2, IFAD or PyPOMP speed comparison",
+    "arms": [
+      "native_dpf",
+      "native_stop",
+      "discount097"
+    ],
+    "initialization_seeds": [
+      0,
+      10,
+      20,
+      30,
+      40
+    ],
+    "training_repetitions": 1,
+    "cases": 5,
+    "fits": 15,
+    "epochs": 100,
+    "particles": 100,
+    "time_extent": 99,
+    "T": 100,
+    "batch_size": 64,
+    "training_batches_per_epoch": 15,
+    "updates_per_complete_fit": 1500,
+    "split": {
+      "seed": 20261101,
+      "train": 900,
+      "validation": 400,
+      "test": 700
+    },
+    "normalization": "Original scalar image normalization, using training images only; no validation or test images in estimated mean/std",
+    "native_settings": {
+      "optimizer": "AdamW",
+      "encoder_lr": 0.005,
+      "flow_prior_lr": 0.001,
+      "weight_decay": 0.01,
+      "betas": [
+        0.8,
+        0.99
+      ],
+      "eps": 1e-09,
+      "scheduler": "ExponentialLR",
+      "gamma": 0.99,
+      "loss": "Mean all-time normalized position squared error + sine/cosine direction error + image reconstruction MSE",
+      "dtype": "float32",
+      "strict_determinism": true,
+      "tf32_matmul": false,
+      "tf32_cudnn": true,
+      "cudnn_benchmark": false
+    },
+    "selection": "Lowest validation final-time position MSE; earliest epoch on ties. Common original ordinary PF with systematic resampling. Test never used for selection.",
+    "evaluation": {
+      "filter": "upstream ParticleFilter + SystematicResampler",
+      "J": 100,
+      "repetitions": 3,
+      "primary": "sqrt(mean squared final-time position distance across 700 trajectories and 3 independent PF streams)); original coordinate units",
+      "secondary": [
+        "RMSE at each PF repeat",
+        "training failure count",
+        "validation RMSE by epoch",
+        "actual full allocation cost"
+      ],
+      "baseline_untrained": false
+    },
+    "pairing": "Same initialization, minibatch order, private/default RNG and validation/test seeds across methods for each of five cases. Different cases have different training streams; one training repetition each.",
+    "seeds": {
+      "order": 210000000,
+      "train": 310000000,
+      "validation": 410000000,
+      "test": 510000000,
+      "default_offset": 1000000000
+    },
+    "execution": "External four-FCNN CUDA Graph adapter only; native filter/model/loss unchanged. Separate cached graph per B=64 and B=4; inference delegates to original forward.",
+    "equivalence": {
+      "forward_loss_state_RNG": "bitwise",
+      "gradient_relative_L2": 2e-06,
+      "gradient_max_abs": 2e-06,
+      "finite": true,
+      "optimizer_parameters_and_moments_after_step": "bitwise",
+      "updated_parameter_and_tail_batch": true
+    },
+    "resources": {
+      "budget_from_actual_bridge": true,
+      "budget_record": "budget.json, created only after actual stopped bridge saved audit passes",
+      "arrays": 3,
+      "tasks_per_array": 5,
+      "max_concurrent_per_array": 1,
+      "maximum_concurrent_tasks": 3,
+      "allocation_rounding_seconds": 60,
+      "automatic_retry": false,
+      "point_forecast": "Measured median full B64 step and measuredB4 step, shape-specific warm ordinaryPF evaluations for600B64+100B16validation and30B64+3B60test calls; separately list cold/setup/launch/checkpoint allowances.",
+      "request_limit": "Compute each arm requested seconds from measured upper warm costs plus35percent recurring-work headroom and explicitly documented startup/serialization allowance, round up towholeminute. Original2700seconds remains a safety ceiling, not a runtime forecast.",
+      "bridge_cost_separate": true
+    },
+    "failures": "Retain exceptions, nonfinite gradients/proposals and last valid checkpoint. No retries or selecting successful runs. If a completed validation checkpoint exists, evaluate it once and flag incomplete fit; otherwise test unavailable.",
+    "reporting": "All5paired initializations per method retained. Individual RMSE points and paired differences; no smooth population density or assumed ordering. Equalepochs, not equalruntime. Five initializations do not estimate within-initialization repeat variation separately.",
+    "data": {
+      "csv": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/pydpf_maze_20261101/data/maze_data.csv",
+      "csv_sha256": "481223e5c6a6e3d7a947b1396a0efa6cd8b36d6e2304c931c477aa19d5b3b0cb",
+      "doi": "10.5281/zenodo.23039951",
+      "upstream_commit": "a7487ce1c344c70e1a244e75725b950deb15e146"
+    },
+    "preflight": "New CPU saved optimizer-chain checks and one GPU bridge/cost allocation, all three arms B64/B4 and evaluation/restore; formal jobs only after saved audit and cost pass. No extension of old completed budgets.",
+    "legacy_case_ids": [
+      0,
+      2,
+      4,
+      6,
+      8
+    ],
+    "numerical_source": "Unmodified parent frozen70-file source; original train.py --case uses these five even indices, giving seeds0/10/20/30/40 and repetition0.",
+    "prior_protocol_retained": "Parent protocol.json remains immutable historical36-fit design. This overlay defines the actual15-task selection and measured budget.",
+    "selected_tasks": [
+      {
+        "array_index": 0,
+        "legacy_case": 0,
+        "seed": 0,
+        "repetition": 0,
+        "arm": "native_dpf"
+      },
+      {
+        "array_index": 1,
+        "legacy_case": 0,
+        "seed": 0,
+        "repetition": 0,
+        "arm": "native_stop"
+      },
+      {
+        "array_index": 2,
+        "legacy_case": 0,
+        "seed": 0,
+        "repetition": 0,
+        "arm": "discount097"
+      },
+      {
+        "array_index": 6,
+        "legacy_case": 2,
+        "seed": 10,
+        "repetition": 0,
+        "arm": "native_dpf"
+      },
+      {
+        "array_index": 7,
+        "legacy_case": 2,
+        "seed": 10,
+        "repetition": 0,
+        "arm": "native_stop"
+      },
+      {
+        "array_index": 8,
+        "legacy_case": 2,
+        "seed": 10,
+        "repetition": 0,
+        "arm": "discount097"
+      },
+      {
+        "array_index": 12,
+        "legacy_case": 4,
+        "seed": 20,
+        "repetition": 0,
+        "arm": "native_dpf"
+      },
+      {
+        "array_index": 13,
+        "legacy_case": 4,
+        "seed": 20,
+        "repetition": 0,
+        "arm": "native_stop"
+      },
+      {
+        "array_index": 14,
+        "legacy_case": 4,
+        "seed": 20,
+        "repetition": 0,
+        "arm": "discount097"
+      },
+      {
+        "array_index": 18,
+        "legacy_case": 6,
+        "seed": 30,
+        "repetition": 0,
+        "arm": "native_dpf"
+      },
+      {
+        "array_index": 19,
+        "legacy_case": 6,
+        "seed": 30,
+        "repetition": 0,
+        "arm": "native_stop"
+      },
+      {
+        "array_index": 20,
+        "legacy_case": 6,
+        "seed": 30,
+        "repetition": 0,
+        "arm": "discount097"
+      },
+      {
+        "array_index": 24,
+        "legacy_case": 8,
+        "seed": 40,
+        "repetition": 0,
+        "arm": "native_dpf"
+      },
+      {
+        "array_index": 25,
+        "legacy_case": 8,
+        "seed": 40,
+        "repetition": 0,
+        "arm": "native_stop"
+      },
+      {
+        "array_index": 26,
+        "legacy_case": 8,
+        "seed": 40,
+        "repetition": 0,
+        "arm": "discount097"
+      }
+    ]
+  },
+  "selection_controls": {
+    "passed": true,
+    "selected_tasks_validated": 15,
+    "unselected_legacy_tasks_rejected": [
+      3,
+      4,
+      5,
+      9,
+      10,
+      11,
+      15,
+      16,
+      17,
+      21,
+      22,
+      23,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35
+    ],
+    "tamper_controls_rejected": [
+      "fits",
+      "cases",
+      "training_repetitions",
+      "wrong_seed",
+      "wrong_case",
+      "duplicate_task",
+      "wrong_method_name",
+      "wrong_limit",
+      "old_release_count",
+      "wrong_budget"
+    ],
+    "model_calls": 0,
+    "GPU_calls": 0,
+    "numeric_source_or_old_frozen_protocol_modified": false,
+    "runtime_source_hash_and_actual_scontrol_checks_not_exercised_by_synthetic_control": true
+  },
+  "budget_controls": {
+    "passed": true,
+    "synthetic_only": true,
+    "actual_GPU_forecast_available": false,
+    "cases_checked": [
+      "15fits",
+      "full_and_tail_training_counts",
+      "shape_specific_validation_test_counts",
+      "bridge_cost_once",
+      "GPU_seconds_to_hours",
+      "minute_rounding",
+      "JSON_recompute_equality"
+    ],
+    "refused": [
+      "failed_audit",
+      "running_allocation",
+      "over_safety_ceiling"
+    ],
+    "model_calls": 0,
+    "GPU_calls": 0
+  },
+  "bridge_job": "65238998",
+  "last_scheduler": {
+    "UTC": "2026-11-02T18:27:44.546713+00:00",
+    "state": "PENDING",
+    "ElapsedRaw": 0,
+    "reason": "Priority"
+  },
+  "actual_budget_available": false,
+  "formal_submitted": false,
+  "frozen_numerical_manifest_sha256": "57960b2249ca35c49b6e4efc523b3a38f10572c4a17d66bb050268bdb29db23c",
+  "numeric_code_unchanged": true
+}

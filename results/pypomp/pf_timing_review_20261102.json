@@ -1,0 +1,138 @@
+{
+  "passed": true,
+  "scope": "Recomputed summary of five previously saved paired scoring calls",
+  "job": 64920486,
+  "hardware": "NVIDIA RTX PRO 6000 (remaining name truncated in saved nvidia-smi log)",
+  "T": 600,
+  "J": 8192,
+  "float_dtype": "float32",
+  "independent_filters_per_call": 32,
+  "timing_unit": "seconds for the entire synchronized batch, including host return",
+  "parameter_pairs": 5,
+  "rows": [
+    {
+      "label": "start0-rep0-ADPF",
+      "parameters_sha256": "080750c3881f5146a1eb474e3bd1cc1fce12258bfc1a9dc87b1d0615b673e41d",
+      "pypomp_batch_seconds": 0.08498698566108942,
+      "cuthbert_batch_seconds": 0.5170013895258307,
+      "cuthbert_over_pypomp": 6.083300701916006
+    },
+    {
+      "label": "start0-rep0-ADPF_ESS",
+      "parameters_sha256": "72d5b6aa97e6d7beda56f2b4b4d929dfc07cd462d2a098815e4d2cb2cf741146",
+      "pypomp_batch_seconds": 0.08487358968704939,
+      "cuthbert_batch_seconds": 0.5140634914860129,
+      "cuthbert_over_pypomp": 6.05681335479619
+    },
+    {
+      "label": "start0-rep0-IF2",
+      "parameters_sha256": "c0c08e6acdc41bb81917f420edf1a5f655dea1971ead1cd5db2b2ea4414831a1",
+      "pypomp_batch_seconds": 0.08501663710922003,
+      "cuthbert_batch_seconds": 0.5199381662532687,
+      "cuthbert_over_pypomp": 6.115722568340469
+    },
+    {
+      "label": "start0-rep0-IF2_ADPF",
+      "parameters_sha256": "4565b1cc8d6d0162daa17dfcbaff6d3bd730561a1dafef998ad9efcceeecf275",
+      "pypomp_batch_seconds": 0.08496984280645847,
+      "cuthbert_batch_seconds": 0.5076654655858874,
+      "cuthbert_over_pypomp": 5.974654640026006
+    },
+    {
+      "label": "start0-rep0-IFAD",
+      "parameters_sha256": "7e553b5a5e8c6cc74f133f8da970a176c22b134670abe5171e2b9fe7693292dd",
+      "pypomp_batch_seconds": 0.0850434536114335,
+      "cuthbert_batch_seconds": 0.5192966759204865,
+      "cuthbert_over_pypomp": 6.106251026600718
+    }
+  ],
+  "median_pypomp_batch_seconds": 0.08498698566108942,
+  "median_cuthbert_batch_seconds": 0.5170013895258307,
+  "median_pair_time_ratio": 6.083300701916006,
+  "dedicated_repeated_benchmark": false,
+  "matched_A40_J5000_B1_record_in_current_timing_study": false,
+  "compile_and_first_execution": {
+    "IF2": {
+      "compile_seconds": 0.5369169749319553,
+      "first_execution_seconds": 0.140675138682127,
+      "memory": "CompiledMemoryStats(generated_code_size_in_bytes=437788, argument_size_in_bytes=94224, output_size_in_bytes=94237, alias_size_in_bytes=0, temp_size_in_bytes=323672, host_generated_code_size_in_bytes=0, host_argument_size_in_bytes=0, host_output_size_in_bytes=0, host_alias_size_in_bytes=0, host_temp_size_in_bytes=0)",
+      "estimated_bytes": 512133
+    },
+    "ADPF": {
+      "compile_seconds": 1.6826544450595975,
+      "first_execution_seconds": 0.6926783863455057,
+      "memory": "CompiledMemoryStats(generated_code_size_in_bytes=872424, argument_size_in_bytes=292, output_size_in_bytes=345, alias_size_in_bytes=0, temp_size_in_bytes=23998784, host_generated_code_size_in_bytes=0, host_argument_size_in_bytes=0, host_output_size_in_bytes=0, host_alias_size_in_bytes=0, host_temp_size_in_bytes=0)",
+      "estimated_bytes": 23999421
+    },
+    "ADPF_ESS": {
+      "compile_seconds": 1.8603148963302374,
+      "first_execution_seconds": 0.7330813771113753,
+      "memory": "CompiledMemoryStats(generated_code_size_in_bytes=872424, argument_size_in_bytes=292, output_size_in_bytes=345, alias_size_in_bytes=0, temp_size_in_bytes=23993152, host_generated_code_size_in_bytes=0, host_argument_size_in_bytes=0, host_output_size_in_bytes=0, host_alias_size_in_bytes=0, host_temp_size_in_bytes=0)",
+      "estimated_bytes": 23993789
+    },
+    "DMOP": {
+      "compile_seconds": 1.6678919875994325,
+      "first_execution_seconds": 0.6949323853477836,
+      "memory": "CompiledMemoryStats(generated_code_size_in_bytes=872424, argument_size_in_bytes=292, output_size_in_bytes=345, alias_size_in_bytes=0, temp_size_in_bytes=23998528, host_generated_code_size_in_bytes=0, host_argument_size_in_bytes=0, host_output_size_in_bytes=0, host_alias_size_in_bytes=0, host_temp_size_in_bytes=0)",
+      "estimated_bytes": 23999165
+    },
+    "native_endpoint_PF": {
+      "compile_seconds": 3.0968589102849364,
+      "first_execution_seconds": 0.08937517460435629,
+      "memory": "CompiledMemoryStats(generated_code_size_in_bytes=440376, argument_size_in_bytes=100, output_size_in_bytes=128, alias_size_in_bytes=0, temp_size_in_bytes=21096768, host_generated_code_size_in_bytes=0, host_argument_size_in_bytes=0, host_output_size_in_bytes=0, host_alias_size_in_bytes=0, host_temp_size_in_bytes=0)",
+      "estimated_bytes": 21096996
+    },
+    "cuthbert_endpoint_PF": {
+      "compile_seconds": 0.8438814794644713,
+      "first_execution_seconds": 0.5382293490692973,
+      "memory": "CompiledMemoryStats(generated_code_size_in_bytes=437164, argument_size_in_bytes=100, output_size_in_bytes=128, alias_size_in_bytes=0, temp_size_in_bytes=28471656, host_generated_code_size_in_bytes=0, host_argument_size_in_bytes=0, host_output_size_in_bytes=0, host_alias_size_in_bytes=0, host_temp_size_in_bytes=0)",
+      "estimated_bytes": 28471884
+    }
+  },
+  "source_and_record_sha256": {
+    "outputs/cuthbert_dacca/PF_timing_existing_records.json": "f48e9aade9959833629d61fa79a50bb0318641eaa37d2757079ba3495709b5ce",
+    "work/cuthbert-dacca/benchmark_manifest.json": "b9cf2eddc091a222503dc79f61ba68c11b5ebdcf820d227acb0a9fd4dde0bdb6",
+    "work/cuthbert-dacca/protocol.json": "2778e885f96ca78c561c8449cee5cd810d889033fcb8ab775537deb91eb1b77e",
+    "work/cuthbert-dacca/run.py": "59d2f599b33805205050ba2fd6f919936f71aad1340b7bb3825b604f7f87e7d0",
+    "work/cuthbert-dacca/validate.py": "def2e62977b57eb76785d7ea2de8f97562cae5acbfde1c1ac8ad9935bbe152c6",
+    "work/cuthbert-dacca/kernels.py": "687f3f2574f6343596f227c479dcc8ae4576e84d66e8c09ffacac2f46dcf6ee8",
+    "work/cuthbert-dacca/model.py": "6ee02afb99eaac9657dcce789ed0aaaf67099962c29e700aa51639e17ce17900",
+    "work/cuthbert-dacca/PYPOMP_LICENSE": "4859045e896e5131efd0ed0772ae72cf4295d71f72357cac27713346bec73b9e",
+    "work/cuthbert-dacca/CUTHBERT_LICENSE": "e1b815293ea8bdcd59a5aa814ebde70e642b374acd7b5631f96356feadc4afbb",
+    "work/cuthbert-dacca/results/benchmark/runtime.json": "eea3db9de0c822def83a5b3ee375a41a2a2dc433fae970ee3e55328958e6bd1f",
+    "work/cuthbert-dacca/results/benchmark/compilation.json": "044c67e01d8b30bf389ff5d22dfba767fd2c433716ef6fbf9043a00e1edb19bd",
+    "work/cuthbert-dacca/results/benchmark/terminal_manifest.json": "fdb50ed49c0746749701dfb2a4c0c2587245890ca8b970bbafbea118e28c8ccb",
+    "work/cuthbert-dacca/results/benchmark/final_audit.json": "3b3a405448aeac9f83837a0d52038cacc9271397ef9a673fafa03ae2c347b15c",
+    "work/cuthbert-dacca/logs/benchmark-64920486.log": "67354e7be24001fe722b38d1fa900c97edec8e19b20d800e259b54d342763533",
+    "work/cuthbert-dacca/results/benchmark/held_out/start0-rep0/ADPF/evaluation/score.json": "fa0ad6035a9e6d412ff2b235d33f0688e006aa1be336394cca4af4eb2ef960ce",
+    "work/cuthbert-dacca/results/benchmark/held_out/start0-rep0/ADPF/evaluation/raw-0.npz": "7c97356d9c56cd44db7eadd74c045cda30e7f8aabd80925fc19c182b394b5184",
+    "work/cuthbert-dacca/results/benchmark/cross_checks/start0-rep0-ADPF/score.json": "6f03d3b3f7612e841fe1e2187d390aad7e209a72748f2f567825070631f98c98",
+    "work/cuthbert-dacca/results/benchmark/cross_checks/start0-rep0-ADPF/raw-0.npz": "78179f1201755d381e94855b59b44032c40f3f9c328ab5f290fcac6ed79f6593",
+    "work/cuthbert-dacca/results/benchmark/held_out/start0-rep0/ADPF_ESS/evaluation/score.json": "2d9904219db6fc3f03bb2c38dbfbee0690ebc1c8af8b511105ef39a05cfb7659",
+    "work/cuthbert-dacca/results/benchmark/held_out/start0-rep0/ADPF_ESS/evaluation/raw-0.npz": "5db79e3ec114b8c6c2e0480e71cb9717714c4c7c290b5352a8113af7233afbb0",
+    "work/cuthbert-dacca/results/benchmark/cross_checks/start0-rep0-ADPF_ESS/score.json": "06f49bfb85a6f9690537d91595112ab02682118f969645c3a0dbe3a0931ac967",
+    "work/cuthbert-dacca/results/benchmark/cross_checks/start0-rep0-ADPF_ESS/raw-0.npz": "fffbc339f3f9bdc9c24919a414f2dc452bfa14e1576a5242829f6c082f468582",
+    "work/cuthbert-dacca/results/benchmark/held_out/start0-rep0/IF2/evaluation/score.json": "ceeedaff8a9107963a4f02a63158f06ad53a46b1c060270122016cf10f056ae9",
+    "work/cuthbert-dacca/results/benchmark/held_out/start0-rep0/IF2/evaluation/raw-0.npz": "8b3f8639e8fb7ba2793f9e3d34eb228e855833c7a9ffae3cc975e6277da8a862",
+    "work/cuthbert-dacca/results/benchmark/cross_checks/start0-rep0-IF2/score.json": "a0982b4465861ee8f827f517d5ccae628fee59fd9ed577154b7be7b579c7e09f",
+    "work/cuthbert-dacca/results/benchmark/cross_checks/start0-rep0-IF2/raw-0.npz": "fc95e34eab3df0d64fddf00e7043894bbb9c5686725b683eee2fa4cfe7560bff",
+    "work/cuthbert-dacca/results/benchmark/held_out/start0-rep0/IF2_ADPF/evaluation/score.json": "b7f51e5562d38b3fc7623ce672d42323ca8c9c44dd2b6c3b092d042a60a48248",
+    "work/cuthbert-dacca/results/benchmark/held_out/start0-rep0/IF2_ADPF/evaluation/raw-0.npz": "22133fd9dfabedbbeb9962903edfadc8437b6e3727f0c859fadc9926b78894e4",
+    "work/cuthbert-dacca/results/benchmark/cross_checks/start0-rep0-IF2_ADPF/score.json": "526a39cbaa2b75bb46f1e4445c7612899520c573ef3f41bcc764387ef1c90db7",
+    "work/cuthbert-dacca/results/benchmark/cross_checks/start0-rep0-IF2_ADPF/raw-0.npz": "e06951b800cf15aa9ebaaa3940e2f6f815ddd6fd1444dc9f26acf51a9ea77be2",
+    "work/cuthbert-dacca/results/benchmark/held_out/start0-rep0/IFAD/evaluation/score.json": "feeb3b4564ff4dfa4cbe02d217c4026536de00dea8ce5711b1e295a350d57ff8",
+    "work/cuthbert-dacca/results/benchmark/held_out/start0-rep0/IFAD/evaluation/raw-0.npz": "aade2036f8e0bd677f96cac44588cdf2b63eee747130fde47486cb6d536e4867",
+    "work/cuthbert-dacca/results/benchmark/cross_checks/start0-rep0-IFAD/score.json": "d5b60f76d8be7654b7a29d6a0605134e04ff6ef43a6678f9738f8b6685b6ab17",
+    "work/cuthbert-dacca/results/benchmark/cross_checks/start0-rep0-IFAD/raw-0.npz": "5426c497e520f21504ae1e4189cf54ab9f7bdac25165a1fc5b60e275b5065295"
+  },
+  "caveats": [
+    "Different hardware, particle count, batch size and wrapper from the current five-package table.",
+    "Five distinct parameter vectors, one saved call per library per vector; not seven repeats of a fixed call.",
+    "Cuthbert uses the earlier study wrapper and scan_final; PyPOMP uses native functional.pfilter batching.",
+    "Do not divide the batch time by 32 and label it isolated single-PF latency.",
+    "The recorded terminal verifies the job and source manifest; per-score hashes here are recorded from the saved local files."
+  ],
+  "new_PF_calls": 0,
+  "new_optimizer_updates": 0,
+  "new_submissions": 0
+}

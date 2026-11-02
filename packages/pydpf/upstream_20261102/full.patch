@@ -1,0 +1,1329 @@
+diff --git a/PARAMETER_ESTIMATION.md b/PARAMETER_ESTIMATION.md
+new file mode 100644
+index 0000000..6a5df4d
+--- /dev/null
++++ b/PARAMETER_ESTIMATION.md
+@@ -0,0 +1,14 @@
++# Installing and testing the parameter-estimation additions
++
++IF2 supports vector-valued bootstrap states and model factories. StopGradientDPF accepts an optional alpha; its default remains one. The optimizer is external.
++
++From this repository root, in a Python environment compatible with its package metadata:
++
++```sh
++python -m pip install ./pydpf
++python -m pip install pytest
++python examples/if2_and_discount.py
++python -m pytest tests
++```
++
++The example uses a small model and runs on CPU. It does not require Dacca data or a neighboring repository. Tests retain independent particle recursions and small upstream regression data with recorded source and dependency versions. GPU execution and the full upstream CI matrix are separate checks.
+diff --git a/docs/source/index.rst b/docs/source/index.rst
+index 43e2dd0..52c67f3 100644
+--- a/docs/source/index.rst
++++ b/docs/source/index.rst
+@@ -35,3 +35,8 @@ Documentation Index
+    api/index
+    basics
+    tutorial
++
++.. toctree::
++   :maxdepth: 1
++
++   iterated_filtering
+diff --git a/docs/source/iterated_filtering.rst b/docs/source/iterated_filtering.rst
+new file mode 100644
+index 0000000..12db017
+--- /dev/null
++++ b/docs/source/iterated_filtering.rst
+@@ -0,0 +1,104 @@
++IF2 and discounted particle-filter gradients
++============================================
++
++This local extension adds parameter perturbations to the existing bootstrap
++``ParticleFilter`` and an optional ``alpha`` argument to ``StopGradientDPF``.
++It does not replace the particle filter or add an optimizer. Training still
++uses an ordinary Torch training loop, as in the existing PyDPF tutorial.
++
++Using an existing model
++-----------------------
++
++Provide ``model_factory(parameters)`` returning a normal ``FilteringModel``.
++Its prior and dynamic components implement ``sample`` and its observation
++component implements ``fitness`` (the existing ``score`` spelling also works).
++The factory applies parameter transformations and captures the resulting
++parameters in these components. It must support a parameter tensor with one
++row per particle, of shape ``(batch, particles, coordinates)``. A module that
++only reads one global ``torch.nn.Parameter`` needs a model adapter first;
++the extension does not automatically rewrite arbitrary PyDPF models.
++
++The IF2 module handles parameter perturbation, ancestor selection, and the
++iteration over complete filtering passes. Model callbacks contain none of
++these operations. They use the existing PyDPF argument conventions, including
++time, control and series metadata. This version supports vector-valued states
++and parameters, bootstrap proposals, and unconditional systematic or
++multinomial resampling.
++
++The example in ``examples/if2_and_discount.py`` uses the same factory for a
++normal ``StopGradientDPF`` and ``IteratedFiltering``:
++
++.. code-block:: python
++
++    warm = pydpf.IteratedFiltering(
++        model_factory,
++        perturbation_scale=process_scales,
++        initial_scale=initial_scales,
++        generator=generator,
++    )(initial_parameters, observations, n_particles=64, n_iterations=3)
++    if not warm.success:
++        raise RuntimeError(warm.failure_reason)
++
++The parameter swarm is appended to the model state. The original filter
++resamples this joined state, so state and parameters use the same ancestors.
++After the last observation, a further call to the original resampler produces
++an equally weighted parameter swarm for the next pass. The swarm is retained
++in full; its mean is not used to recreate the next swarm.
++
++``initial_scale`` is applied at the beginning of each pass. Process
++perturbations are applied before sampling the prior at observation zero and
++before subsequent transitions. A coordinate that should change only at
++initialization must have process scale zero. If a model requires distinct
++parameter values for its unobserved initial state and a transition before its
++first observation, this single-prior interface may need a separate adapter.
++
++``cooling_rate**(m/cooling_interval)`` controls the scales in pass ``m``.
++With ``within_pass_cooling=True``, observation ``t`` instead uses
++``cooling_rate**((m+t/T)/cooling_interval)``. The caller supplies the scales and
++cooling; no Dacca dimensions, parameter names, or paper settings are built in.
++
++Failure of one pass stops the whole batch, reports ``success=False`` and keeps
++the preceding valid swarm. Successful-pass histories and counts remain
++available. This interface does not perform the historical benchmark driver's
++per-row isolation, checkpoint recovery, or automatic retries.
++
++Adding the gradient discount
++----------------------------
++
++.. code-block:: python
++
++    pf = pydpf.StopGradientDPF(
++        SSM=model_factory(parameters),
++        resampling_generator=generator,
++        alpha=0.97,
++    )
++
++The default ``alpha=1`` retains the existing resampling computation.
++For ``alpha<1``, the derivative inherited from the selected log weights is
++multiplied by ``alpha``. Derivatives through the sampled states remain.
++The forward arithmetic is retained from the original stop-gradient resampler,
++including its floating-point rounding. Thus alpha zero does not disable all
++gradients, and finite differences of the forward likelihood are not a test
++for the discounted derivative.
++
++Discounting is restricted to pathwise bootstrap models and unconditional
++systematic/multinomial resampling at every observation. Combining it with
++guided proposals, conditional resampling, other resamplers, or transition-score
++REINFORCE is not validated here. The default alpha-one API keeps its original
++supported configuration choices.
++
++IFAD and endpoint evaluation
++----------------------------
++
++Use the IF2 parameters as the initial values in the normal Torch optimizer
++loop, then use ``StopGradientDPF(alpha=0.97)`` for the likelihood gradient.
++Call ``pf.update()`` as instructed by the original training tutorial when
++reusing modules with cached derived quantities. Adam remains ``torch.optim.Adam``;
++neither it nor the complete IFAD training loop is called a native PyDPF MLE
++routine. No new general training-loop API is introduced in this patch.
++
++After fitting, evaluate fixed parameters with the ordinary PF and fresh random
++draws. Keep each log likelihood; use log(mean likelihood) for repeated PF
++evaluation, not the arithmetic mean of the log likelihoods. IF2's perturbed
++model likelihoods and training objectives are not endpoint scores. The small
++example only demonstrates execution and does not assess score precision.
+diff --git a/docs/source/tutorial.rst b/docs/source/tutorial.rst
+index ff91aa4..dce1b1e 100644
+--- a/docs/source/tutorial.rst
++++ b/docs/source/tutorial.rst
+@@ -232,6 +232,9 @@ in which case the forward pass returns a dictionary of the same keys where each
+ 
+ Training a DPF
+ ==============
++The local :doc:`iterated_filtering` extension describes an IF2 initialization
++and an optional gradient discount, using the same model and training interfaces.
++
+ The training procedure is much the same as base ``torch``, and like base ``torch`` we do not implement training loops in ``PyDPF`` instead we leave it up to the users to design a
+ routine that suits their needs. The only difference to a generic ``torch`` training loop is that it is safest to always call ``DPF.update()`` after any backwards pass or
+ optimiser step to ensure that the cache is properly invalidated and the computation graph cleared.
+@@ -279,4 +282,4 @@ References
+ 
+ .. [1] Doucet and Johansen (2011), *A tutorial on particle filtering and smoothing: Fifteen years later*
+ .. [2] Gordon, Salmond and Smith (1993), *Novel Approach to Nonlinear and Non-Gaussian Bayesian State Estimation*
+-.. [3] Karkus, Hsu and Lee (2018), *Particle Filter Networks with Application to Visual Localization*
+\ No newline at end of file
++.. [3] Karkus, Hsu and Lee (2018), *Particle Filter Networks with Application to Visual Localization*
+diff --git a/examples/if2_and_discount.py b/examples/if2_and_discount.py
+new file mode 100644
+index 0000000..a62b662
+--- /dev/null
++++ b/examples/if2_and_discount.py
+@@ -0,0 +1,118 @@
++"""Use one model with the original ADPF, IF2, and discounted ADPF interfaces."""
++
++import json
++
++import torch
++import pydpf
++
++
++def model_factory(
++    parameters, generator, *, dimension=1, nonlinear=False, package=pydpf
++):
++    """Build ordinary PyDPF model components; no parameter perturbations here.
++
++    Parameter rows may be shared across particles (B, P) or specific to each
++    particle (B, J, P). The latter is required for the IF2 extension.
++    """
++    theta = parameters[:, None, :] if parameters.ndim == 2 else parameters
++    coefficient = torch.tanh(theta[..., :1])
++    location = theta[..., 1 : dimension + 1]
++    scale = 0.1 * theta[..., -1:].exp()
++
++    def noise(shape):
++        return torch.randn(
++            shape, generator=generator, device=theta.device, dtype=theta.dtype
++        )
++
++    class Prior(package.Module):
++        def sample(self, batch_size, n_particles, **data):
++            return location + 0.3 * noise((batch_size, n_particles, dimension))
++
++    class Dynamic(package.Module):
++        def sample(self, prev_state, **data):
++            state = torch.sin(prev_state) if nonlinear else prev_state
++            return coefficient * state + location + scale * noise(prev_state.shape)
++
++    class Observation(package.Module):
++        def fitness(self, state, observation, **data):
++            residual = (observation[:, :1] - state.sum(dim=-1)) / 0.6
++            return -0.5 * residual.square() - torch.log(
++                theta.new_tensor(0.6 * (2 * torch.pi) ** 0.5)
++            )
++
++    return package.FilteringModel(
++        prior_model=Prior(), dynamic_model=Dynamic(), observation_model=Observation()
++    )
++
++
++def log_likelihood(parameters, observation, generator, *, alpha=1.0):
++    """Use PyDPF's existing filter/likelihood outputs and the added alpha option."""
++    pf = pydpf.StopGradientDPF(
++        SSM=model_factory(parameters, generator),
++        resampling_generator=generator,
++        alpha=alpha,
++    )
++    pf.update()  # Native PyDPF cache maintenance, as in its training tutorial.
++    factors = pf(
++        n_particles=64,
++        time_extent=len(observation) - 1,
++        aggregation_function=pydpf.LogLikelihoodFactors(),
++        observation=observation,
++    )
++    if factors.shape[0] != len(observation):
++        raise RuntimeError("Incomplete filtering trajectory")
++    return factors.sum(dim=0).reshape(parameters.shape[0])
++
++
++def main():
++    """Demonstrate composition, not an optimization-method comparison."""
++    observation = torch.linspace(-0.4, 0.8, 12).reshape(12, 1, 1)
++    initial = torch.tensor([[0.2, 0.0, -0.2]])
++    fit_generator = torch.Generator().manual_seed(20261029)
++    warm = pydpf.IteratedFiltering(
++        lambda theta: model_factory(theta, fit_generator),
++        generator=fit_generator,
++        perturbation_scale=torch.tensor([0.02, 0.02, 0.0]),
++        initial_scale=torch.tensor([0.0, 0.0, 0.03]),
++    )(initial, observation, n_particles=64, n_iterations=3)
++    if not warm.success:
++        raise RuntimeError(warm.failure_reason)
++
++    # This is an external Torch optimizer, following PyDPF's tutorial.
++    parameters = torch.nn.Parameter(warm.parameters.clone())
++    optimizer = torch.optim.Adam([parameters], lr=0.002)
++    for _ in range(3):
++        optimizer.zero_grad(set_to_none=True)
++        loss = -log_likelihood(parameters, observation, fit_generator, alpha=0.97).sum()
++        loss.backward()
++        if not torch.isfinite(loss) or not torch.isfinite(parameters.grad).all():
++            raise RuntimeError("Nonfinite loss or gradient")
++        optimizer.step()
++        if not torch.isfinite(parameters).all():
++            raise RuntimeError("Nonfinite parameter update")
++
++    evaluation_generator = torch.Generator().manual_seed(20261030)
++    with torch.no_grad():
++        raw = torch.stack(
++            [
++                log_likelihood(parameters, observation, evaluation_generator)
++                for _ in range(4)
++            ]
++        )
++        score = torch.logsumexp(raw, dim=0) - torch.log(raw.new_tensor(len(raw)))
++    print(
++        json.dumps(
++            {
++                "example_completed": True,
++                "if2_passes": warm.completed_iterations,
++                "adam_updates": 3,
++                "score_replicates": 4,
++                "log_mean_likelihood": score.tolist(),
++                "score_precision_assessed": False,
++            }
++        )
++    )
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/pydpf/pydpf/__init__.py b/pydpf/pydpf/__init__.py
+index eecd094..9a2914c 100644
+--- a/pydpf/pydpf/__init__.py
++++ b/pydpf/pydpf/__init__.py
+@@ -8,6 +8,7 @@ from .outputs import *
+ from .conditional_resampling import *
+ from .gradient_regularisation import *
+ from .model_based_api import *
++from .iterated_filtering import IteratedFiltering, IF2Result
+ from .Kalman import *
+ import torch
+ import warnings
+@@ -18,4 +19,4 @@ if not torch.cuda.is_available():
+         "degraded. If you have a CUDA-capable GPU, install a CUDA build of "
+         "PyTorch from https://pytorch.org/get-started/locally/.",
+         stacklevel=2,
+-    )
+\ No newline at end of file
++    )
+diff --git a/pydpf/pydpf/filtering.py b/pydpf/pydpf/filtering.py
+index d43fdb0..c0fa91e 100644
+--- a/pydpf/pydpf/filtering.py
++++ b/pydpf/pydpf/filtering.py
+@@ -685,6 +685,11 @@ class StopGradientDPF(ParticleFilter):
+     use_REINFORCE_for_initial_proposal: bool. Default False.
+         Whether to use the REINFORCE estimator for the gradient due to the initial particle proposal process.
+ 
++    alpha: float. Default 1.
++        Discount inherited weight derivatives. Values below one are currently
++        supported only for pathwise bootstrap filtering with resampling at every
++        observation. This does not add an optimizer.
++
+     Notes
+     -----
+     See [1]_. If ``use_REINFORCE_for_proposal`` is ``True`` then this DPF is as described in [1]_ and the proposal model cannot be learned. Otherwise, it is as in [2]_.
+@@ -701,10 +706,14 @@ class StopGradientDPF(ParticleFilter):
+                  multinomial:bool = False,
+                  *,
+                  use_REINFORCE_for_proposal: bool = False,
+-                 use_REINFORCE_for_initial_proposal: bool = False
++                 use_REINFORCE_for_initial_proposal: bool = False,
++                 alpha: float = 1.0
+                  ) -> None:
++        if alpha != 1 and (use_REINFORCE_for_proposal or use_REINFORCE_for_initial_proposal
++                           or SSM is None or SSM.has_proposal or SSM.has_initial_proposal):
++            raise ValueError('Discounting currently requires a pathwise bootstrap FilteringModel')
+         base_resampler = MultinomialResampler(resampling_generator) if multinomial else SystematicResampler(resampling_generator)
+-        resampler = StopGradientResampler(base_resampler)
++        resampler = StopGradientResampler(base_resampler, alpha=alpha)
+         super().__init__(resampler, SSM, use_REINFORCE_for_proposal=use_REINFORCE_for_proposal, use_REINFORCE_for_initial_proposal=use_REINFORCE_for_initial_proposal)
+ 
+ class MarginalStopGradientDPF(MarginalParticleFilter):
+diff --git a/pydpf/pydpf/iterated_filtering.py b/pydpf/pydpf/iterated_filtering.py
+new file mode 100644
+index 0000000..cf4edd5
+--- /dev/null
++++ b/pydpf/pydpf/iterated_filtering.py
+@@ -0,0 +1,268 @@
++"""IF2 parameter perturbations using the existing bootstrap ParticleFilter."""
++
++from math import isfinite
++from typing import Callable, NamedTuple
++
++import torch
++from torch import Tensor
++
++from .base import DivergenceError, Module
++from .filtering import ParticleFilter
++from .model_based_api import FilteringModel
++from .resampling import MultinomialResampler, SystematicResampler
++
++
++class IF2Result(NamedTuple):
++    """Last valid parameter swarm, its means, and perturbed-model likelihoods.
++
++    A failed pass stops the whole batch and preserves the preceding swarm.
++    ``completed_iterations`` counts complete accepted passes, not individual rows.
++    These likelihoods must not be used as endpoint scores for the static model.
++    """
++
++    parameters: Tensor
++    parameter_swarm: Tensor
++    parameter_history: Tensor
++    perturbed_log_likelihoods: Tensor
++    completed_iterations: int
++    success: bool
++    failure_reason: str | None
++
++
++class _LastState(Module):
++    def forward(self, state, weight, likelihood, **data):
++        self.state, self.weight = state, weight
++        return likelihood
++
++
++class IteratedFiltering(Module):
++    """Fit a bootstrap model by perturbing parameters carried by its particles.
++
++    ``model_factory(parameters)`` must return a ``FilteringModel`` accepting
++    parameters of shape (batch, particles, coordinates). Model states must have
++    shape (batch, particles, state_dimension), with the same dtype and device.
++    The original prior.sample, dynamic.sample and observation.fitness/score
++    interfaces are used; no model callback implements parameter perturbations.
++    Parameter constraints belong in the factory, which must be side-effect free
++    apart from the random draws made by its samplers.
++
++    The initial scale is applied before each pass. The process scale is applied
++    before the prior at observation zero and before each later transition.
++    Initial-value-only coordinates therefore use zero process scale. A prior
++    requiring separate parameters before and after a pre-observation transition
++    is outside this interface; adapt that model explicitly rather than assume
++    that the two parameter values are interchangeable.
++
++    Pass m, observation t uses cooling_rate ** ((m + t/T) / cooling_interval)
++    when within_pass_cooling is True; otherwise t/T is omitted. Cooling starts
++    at m=0. A full terminal parameter swarm is retained between passes.
++
++    All stochastic model callbacks must use the generator controlled by the
++    caller if exact replay is required. A failed batch is not retried here.
++    """
++
++    def __init__(
++        self,
++        model_factory: Callable[[Tensor], FilteringModel],
++        *,
++        perturbation_scale,
++        initial_scale=0.0,
++        generator: torch.Generator = torch.default_generator,
++        cooling_rate: float = 0.9,
++        cooling_interval: float = 1.0,
++        within_pass_cooling: bool = False,
++        multinomial: bool = False,
++    ):
++        super().__init__()
++        if not isfinite(cooling_rate) or not 0 < cooling_rate <= 1:
++            raise ValueError("cooling_rate must be finite and in (0, 1]")
++        if not isfinite(cooling_interval) or cooling_interval <= 0:
++            raise ValueError("cooling_interval must be finite and positive")
++        self.model_factory = model_factory
++        self.perturbation_scale, self.initial_scale = perturbation_scale, initial_scale
++        self.generator = generator
++        self.cooling_rate, self.cooling_interval = cooling_rate, cooling_interval
++        self.within_pass_cooling, self.multinomial = within_pass_cooling, multinomial
++
++    @torch.no_grad()
++    def forward(
++        self,
++        initial_parameters: Tensor,
++        observation: Tensor,
++        n_particles: int,
++        n_iterations: int,
++        *,
++        control: Tensor | None = None,
++        time: Tensor | None = None,
++        series_metadata: Tensor | None = None,
++    ) -> IF2Result:
++        """Run complete PF passes; return failure if a pass is incomplete/nonfinite."""
++        for name, value, minimum in [
++            ("n_particles", n_particles, 1),
++            ("n_iterations", n_iterations, 0),
++        ]:
++            if isinstance(value, bool) or not isinstance(value, int) or value < minimum:
++                raise ValueError(f"{name} must be an integer >= {minimum}")
++        p = initial_parameters.detach().clone()
++        if p.ndim != 2 or min(p.shape) < 1 or not p.is_floating_point():
++            raise ValueError(
++                "initial_parameters must be a nonempty floating (B, P) tensor"
++            )
++        if not torch.isfinite(p).all():
++            raise ValueError("initial_parameters must be finite")
++        if (
++            observation.ndim < 3
++            or observation.shape[0] < 1
++            or observation.shape[1] != p.shape[0]
++        ):
++            raise ValueError("observation must have shape (T, B, ...) with T > 0")
++        if (
++            observation.device != p.device
++            or torch.device(self.generator.device) != p.device
++        ):
++            raise ValueError(
++                "parameters, observations and generator must share a device"
++            )
++
++        def scales(value):
++            result = torch.as_tensor(value, dtype=p.dtype, device=p.device)
++            try:
++                result = torch.broadcast_to(result, p.shape)[:, None, :]
++            except RuntimeError as exc:
++                raise ValueError("scales must broadcast to (B, P)") from exc
++            if not torch.isfinite(result).all() or (result < 0).any():
++                raise ValueError("scales must be finite and nonnegative")
++            return result
++
++        process_scale, initial_scale = (
++            scales(self.perturbation_scale),
++            scales(self.initial_scale),
++        )
++        batch, coordinates = p.shape
++        length = observation.shape[0]
++        swarm = p[:, None, :].expand(batch, n_particles, coordinates).clone()
++        history, likelihoods, failure = [p], [], None
++        resampler_type = (
++            MultinomialResampler if self.multinomial else SystematicResampler
++        )
++
++        def model(parameters):
++            ssm = self.model_factory(parameters)
++            if (
++                not isinstance(ssm, FilteringModel)
++                or ssm.has_proposal
++                or ssm.has_initial_proposal
++            ):
++                raise ValueError("model_factory must return a bootstrap FilteringModel")
++            return ssm
++
++        # Reject unsupported models even when zero iterations are requested.
++        model(swarm)
++
++        def perturb(parameters, scale, cooling):
++            noise = torch.randn(
++                parameters.shape,
++                device=p.device,
++                dtype=p.dtype,
++                generator=self.generator,
++            )
++            return parameters + noise * scale * cooling
++
++        def pack(state, parameters):
++            if (
++                state.ndim != 3
++                or state.shape[:2] != parameters.shape[:2]
++                or state.shape[-1] < 1
++            ):
++                raise ValueError("model states must have shape (B, J, state_dimension)")
++            if state.dtype != parameters.dtype or state.device != parameters.device:
++                raise ValueError(
++                    "model states and parameters must have the same dtype and device"
++                )
++            return torch.cat((state, parameters), dim=-1)
++
++        for iteration in range(n_iterations):
++
++            def cooling(t):
++                within = t / length if self.within_pass_cooling else 0.0
++                return self.cooling_rate ** (
++                    (iteration + within) / self.cooling_interval
++                )
++
++            initial = perturb(swarm, initial_scale, cooling(0))
++
++            class Prior(Module):
++                def sample(self, batch_size, n_particles, **data):
++                    parameters = perturb(initial, process_scale, cooling(0))
++                    state = model(parameters).prior_model.sample(
++                        batch_size=batch_size, n_particles=n_particles, **data
++                    )
++                    return pack(state, parameters)
++
++            class Dynamic(Module):
++                def sample(self, prev_state, t, **data):
++                    parameters = perturb(
++                        prev_state[..., -coordinates:], process_scale, cooling(t)
++                    )
++                    state = model(parameters).dynamic_model.sample(
++                        prev_state=prev_state[..., :-coordinates], t=t, **data
++                    )
++                    return pack(state, parameters)
++
++            class Observation(Module):
++                def fitness(self, state, observation, **data):
++                    ssm = model(state[..., -coordinates:])
++                    fitness = ParticleFilter._get_fitness_func(ssm)
++                    return fitness(
++                        state=state[..., :-coordinates], observation=observation, **data
++                    )
++
++            ssm = FilteringModel(
++                prior_model=Prior(),
++                dynamic_model=Dynamic(),
++                observation_model=Observation(),
++            )
++            pf = ParticleFilter(resampler=resampler_type(self.generator), SSM=ssm)
++            last = _LastState()
++            try:
++                factors = pf(
++                    n_particles=n_particles,
++                    time_extent=length - 1,
++                    aggregation_function=last,
++                    observation=observation,
++                    control=control,
++                    time=time,
++                    series_metadata=series_metadata,
++                )
++                if factors.shape[0] != length:
++                    raise DivergenceError("incomplete IF2 trajectory")
++                valid_weights = (
++                    not torch.isnan(last.weight).any()
++                    and not torch.isposinf(last.weight).any()
++                    and torch.isfinite(last.weight).any(dim=1).all()
++                )
++                if not valid_weights or not all(
++                    torch.isfinite(x).all() for x in (factors, last.state)
++                ):
++                    raise DivergenceError("nonfinite IF2 state, weights or likelihood")
++                terminal, _ = resampler_type(self.generator)(last.state, last.weight)
++                proposal = terminal[..., -coordinates:]
++                if not torch.isfinite(proposal).all():
++                    raise DivergenceError("nonfinite terminal parameter swarm")
++            except DivergenceError as exc:
++                failure = str(exc)
++                break
++            swarm = proposal.detach().clone()
++            history.append(swarm.mean(dim=1))
++            likelihoods.append(factors.sum(dim=0).reshape(batch))
++
++        ll = torch.stack(likelihoods) if likelihoods else p.new_empty((0, batch))
++        return IF2Result(
++            history[-1],
++            swarm,
++            torch.stack(history),
++            ll,
++            len(likelihoods),
++            failure is None,
++            failure,
++        )
+diff --git a/pydpf/pydpf/resampling.py b/pydpf/pydpf/resampling.py
+index 1bbfe38..9892dde 100644
+--- a/pydpf/pydpf/resampling.py
++++ b/pydpf/pydpf/resampling.py
+@@ -8,7 +8,7 @@ from typing import Tuple, Any
+ from .utils import batched_select, multiple_unsqueeze, normalise
+ from .base import Module
+ from . import optimal_transport
+-from math import sqrt, log
++from math import sqrt, log, isfinite
+ from .distributions.Gaussian import  StandardGaussian
+ 
+ 
+@@ -158,8 +158,12 @@ class StopGradientResampler(Module):
+ 
+     Parameters
+     ----------
+-    generator: torch.Generator
+-        The generator to track the random state of the resampling process.
++    base_resampler: Module
++        The underlying resampling module.
++    alpha: float. Default 1.
++        Discount inherited log-weight derivatives. The default retains the existing
++        estimator. Values below one require unconditional systematic or multinomial
++        resampling at every observation; they do not remove pathwise state derivatives.
+ 
+     Notes
+     -----
+@@ -172,8 +176,13 @@ class StopGradientResampler(Module):
+     ----------
+     .. [1] Scibior A, Wood F (2021). “Differentiable particle filtering without modifying the forward pass.” arXiv:2106.10314
+     '''
+-    def __init__(self, base_resampler:Module):
++    def __init__(self, base_resampler:Module, *, alpha:float = 1.0):
+         super().__init__()
++        if not isfinite(alpha) or not 0 <= alpha <= 1:
++            raise ValueError('alpha must be finite and in [0, 1]')
++        if alpha != 1 and type(base_resampler) not in (SystematicResampler, MultinomialResampler):
++            raise ValueError('Discounting requires unconditional systematic or multinomial resampling')
++        self.alpha = float(alpha)
+         self.cache = {}
+         self.base_resampler = base_resampler
+         self._need_weight_output = True
+@@ -187,7 +196,12 @@ class StopGradientResampler(Module):
+             resampled_weight = batched_select(self.base_resampler.cache['used_weight'], self.base_resampler.cache['sampled_indices'])
+             self.cache = self.base_resampler.cache
+             self.cache['used_weight'] = self.cache['used_weight'].detach()
+-            return state, new_weight + resampled_weight - resampled_weight.detach()
++            corrected_weight = new_weight + resampled_weight - resampled_weight.detach()
++            if self.alpha == 1:
++                return state, corrected_weight
++            # Keep the original forward rounding; discount only inherited weight derivatives.
++            correction = resampled_weight - resampled_weight.detach()
++            return state, corrected_weight.detach() + self.alpha * correction
+ 
+         if self._need_weight_output:
+             self.base_resampler._need_weight_output = True
+diff --git a/tests/data/upstream_reference.json b/tests/data/upstream_reference.json
+new file mode 100644
+index 0000000..78e5538
+--- /dev/null
++++ b/tests/data/upstream_reference.json
+@@ -0,0 +1,15 @@
++{
++  "base": "a7487ce1c344c70e1a244e75725b950deb15e146",
++  "numpy": "2.5.4",
++  "backend_version": "2.9.1",
++  "arrays": 30,
++  "fixture_sha256": "21e4a24bf997109b2cc902048a93a6ee591848a48729d8598169232f98127c49",
++  "description": "Small CPU default-filter outputs and derivatives from unmodified upstream; independent recursions also checked in tests.",
++  "source_sha256": {
++    "docs/source/tutorial.rst": "c38ed2701e88721f248d58e5908f3ca623cfdfb82c8959ba56a6af0e76032223",
++    "pydpf/pydpf/__init__.py": "84b578f3c9ddf555aebc76085a8eb5058299a79adfc3038b3be44dec82442b16",
++    "pydpf/pydpf/filtering.py": "4d0a1f5e12304556a6ffd7589c4b3154da6d32b68aab311c4877aa7746364f5e",
++    "pydpf/pydpf/resampling.py": "652b098522ab6fc7f275613b6be96f106ee257b68fa92c460f26344756de1c96"
++  },
++  "scope": "CPU default PF regression values; exact checks use recorded dependency versions. Independent recursions in the test file cover IF2 and discount derivatives."
++}
+diff --git a/tests/data/upstream_reference.npz b/tests/data/upstream_reference.npz
+new file mode 100644
+index 0000000000000000000000000000000000000000..252ddc161af5ca8b3bc8bf4a400a2e4a3191401d
+GIT binary patch
+literal 20150
+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
+
+literal 0
+HcmV?d00001
+
+diff --git a/tests/test_estimation_extension.py b/tests/test_estimation_extension.py
+new file mode 100644
+index 0000000..33bc3af
+--- /dev/null
++++ b/tests/test_estimation_extension.py
+@@ -0,0 +1,337 @@
++"""Compare with pinned upstream code and explicit particle recursions."""
++
++from math import log
++from pathlib import Path
++import sys
++
++import numpy as np
++import pytest
++import torch
++import pydpf
++from pydpf.utils import normalise, batched_select
++
++sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "examples"))
++from if2_and_discount import model_factory
++
++def reference(name):
++    with np.load(Path(__file__).parent / "data/upstream_reference.npz") as saved:
++        return torch.from_numpy(saved[name].copy())
++
++
++torch.set_num_threads(1)
++
++
++def data(dimension=1, dtype=torch.float32):
++    theta = torch.zeros((2, dimension + 2), dtype=dtype)
++    theta[:, 0] = torch.tensor([0.2, -0.3])
++    theta[:, -1] = -0.4
++    obs = torch.linspace(-0.5, 1.0, 10, dtype=dtype).reshape(5, 2, 1)
++    return theta, obs
++
++
++def native(
++    theta,
++    obs,
++    generator,
++    *,
++    package=pydpf,
++    alpha=None,
++    multinomial=False,
++    dimension=1,
++    nonlinear=False,
++):
++    kw = {} if alpha is None else {"alpha": alpha}
++    pf = package.StopGradientDPF(
++        SSM=model_factory(
++            theta, generator, package=package, dimension=dimension, nonlinear=nonlinear
++        ),
++        resampling_generator=generator,
++        multinomial=multinomial,
++        **kw,
++    )
++    return pf(
++        n_particles=24,
++        time_extent=len(obs) - 1,
++        aggregation_function=package.LogLikelihoodFactors(),
++        observation=obs,
++    )
++
++
++@pytest.mark.parametrize("multinomial", [False, True])
++@pytest.mark.parametrize("dtype", [torch.float32, torch.float64])
++def test_default_and_alpha_one_match_pristine_upstream(multinomial, dtype):
++    theta, obs = data(dtype=dtype)
++    theta.requires_grad_()
++    prefix = f"native_{int(multinomial)}_{str(dtype).split('.')[-1]}"
++    records = [tuple(reference(prefix + suffix) for suffix in ("_ll", "_gradient", "_rng"))]
++    for package, alpha in [(pydpf, None), (pydpf, 1.0)]:
++        g = torch.Generator().manual_seed(123)
++        value = native(
++            theta, obs, g, package=package, alpha=alpha, multinomial=multinomial
++        )
++        gradient = torch.autograd.grad(value.sum(), theta)[0]
++        records.append((value.detach(), gradient, g.get_state()))
++    for value in records[1:]:
++        for a, b in zip(records[0], value):
++            torch.testing.assert_close(a, b, rtol=0, atol=0)
++
++
++def explicit_gradient(theta, obs, generator, alpha, multinomial):
++    """Direct bootstrap recursion with the inherited-weight derivative written out."""
++    ssm = model_factory(theta, generator)
++    state = ssm.prior_model.sample(batch_size=len(theta), n_particles=24)
++    weights, factor = normalise(ssm.observation_model.fitness(state, obs[0]))
++    factors = [(factor - log(24)).float()]
++    sampler = (
++        pydpf.MultinomialResampler(generator)
++        if multinomial
++        else pydpf.SystematicResampler(generator)
++    )
++    for t in range(1, len(obs)):
++        ancestors, uniform = sampler(state, weights)
++        inherited = batched_select(weights, sampler.cache["sampled_indices"])
++        # Native forward arithmetic, with the specified derivative attached.
++        primal = (uniform + inherited - inherited.detach()).detach()
++        corrected = primal + alpha * (inherited - inherited.detach())
++        state = ssm.dynamic_model.sample(ancestors, t=t)
++        weights, factor = normalise(
++            corrected + ssm.observation_model.fitness(state, obs[t])
++        )
++        factors.append(factor.float())
++    return torch.stack(factors)
++
++
++@pytest.mark.parametrize("alpha", [0.0, 0.5, 0.97, 1.0])
++@pytest.mark.parametrize("multinomial", [False, True])
++def test_discounted_forward_and_explicit_gradient(alpha, multinomial):
++    theta, obs = data(dtype=torch.float64)
++    theta.requires_grad_()
++    value = native(
++        theta,
++        obs,
++        torch.Generator().manual_seed(31),
++        alpha=alpha,
++        multinomial=multinomial,
++    )
++    expected = explicit_gradient(
++        theta, obs, torch.Generator().manual_seed(31), alpha, multinomial
++    )
++    torch.testing.assert_close(value, reference(f"forward_{int(multinomial)}"), rtol=0, atol=0)
++    torch.testing.assert_close(value, expected, rtol=0, atol=0)
++    actual_grad = torch.autograd.grad(value.sum(), theta)[0]
++    expected_grad = torch.autograd.grad(expected.sum(), theta)[0]
++    torch.testing.assert_close(actual_grad, expected_grad, rtol=1e-10, atol=1e-10)
++    assert actual_grad.abs().sum() > 0  # alpha=0 still has state-path derivatives.
++
++
++@pytest.mark.parametrize("grad_enabled", [False, True])
++@pytest.mark.parametrize("need_weight", [False, True])
++def test_resampler_default_branches_and_cache(grad_enabled, need_weight):
++    values = []
++    for package in [pydpf]:
++        resampler = package.StopGradientResampler(
++            package.SystematicResampler(torch.Generator().manual_seed(3))
++        )
++        resampler._need_weight_output = need_weight
++        state = torch.arange(10.0).reshape(2, 5, 1).requires_grad_()
++        weight = (
++            torch.randn((2, 5), generator=torch.Generator().manual_seed(4))
++            .log_softmax(1)
++            .requires_grad_()
++        )
++        with torch.set_grad_enabled(grad_enabled):
++            result = resampler(state, weight)
++        values.append((result, resampler.cache))
++    prefix = f"resample_{int(grad_enabled)}_{int(need_weight)}"
++    expected = (reference(prefix + "_state"), reference(prefix + "_weight"))
++    if not need_weight:
++        expected = torch.stack(expected)
++    torch.testing.assert_close(values[0][0], expected, rtol=0, atol=0)
++    with np.load(Path(__file__).parent / "data/upstream_reference.npz") as saved:
++        cache = {key.removeprefix(prefix + "_cache_"): reference(key)
++                 for key in saved.files if key.startswith(prefix + "_cache_")}
++    torch.testing.assert_close(values[0][1], cache, rtol=0, atol=0)
++
++
++def explicit_if2(
++    initial,
++    obs,
++    generator,
++    scale,
++    initial_scale,
++    *,
++    dimension,
++    nonlinear,
++    passes,
++    rate,
++    interval,
++    within,
++    multinomial,
++):
++    """Independent time loop: no ParticleFilter or IteratedFiltering call."""
++    swarm = initial[:, None, :].expand(2, 24, -1).clone()
++    histories, likelihoods = [initial], []
++    sampler = (
++        pydpf.MultinomialResampler(generator)
++        if multinomial
++        else pydpf.SystematicResampler(generator)
++    )
++
++    def noise():
++        return torch.randn(swarm.shape, generator=generator, dtype=swarm.dtype)
++
++    for m in range(passes):
++        parameters = swarm + noise() * initial_scale * rate ** (m / interval)
++        parameters = parameters + noise() * scale * rate ** (m / interval)
++        ssm = model_factory(
++            parameters, generator, dimension=dimension, nonlinear=nonlinear
++        )
++        state = ssm.prior_model.sample(2, 24)
++        weights, ll = normalise(ssm.observation_model.fitness(state, obs[0]))
++        factors = [(ll - log(24)).float()]
++        for t in range(1, len(obs)):
++            joined, uniform = sampler(torch.cat((state, parameters), -1), weights)
++            parameters = joined[..., dimension:] + noise() * scale * rate ** (
++                (m + (t / len(obs) if within else 0)) / interval
++            )
++            ssm = model_factory(
++                parameters, generator, dimension=dimension, nonlinear=nonlinear
++            )
++            state = ssm.dynamic_model.sample(joined[..., :dimension], t=t)
++            weights, ll = normalise(
++                uniform + ssm.observation_model.fitness(state, obs[t])
++            )
++            factors.append(ll.float())
++        terminal, _ = sampler(torch.cat((state, parameters), -1), weights)
++        swarm = terminal[..., dimension:]
++        histories.append(swarm.mean(1))
++        likelihoods.append(torch.stack(factors).sum(0).reshape(2))
++    return swarm, torch.stack(histories), torch.stack(likelihoods)
++
++
++@pytest.mark.parametrize("dimension,nonlinear", [(1, False), (3, True)])
++@pytest.mark.parametrize("multinomial", [False, True])
++@pytest.mark.parametrize("within", [False, True])
++def test_if2_full_swarm_cooling_and_model_dimensions(
++    dimension, nonlinear, multinomial, within
++):
++    theta, obs = data(dimension)
++    scale = torch.full((dimension + 2,), 0.03)
++    scale[-1] = 0
++    initial_scale = torch.zeros_like(scale)
++    initial_scale[-1] = 0.04
++    generator = torch.Generator().manual_seed(1234)
++    result = pydpf.IteratedFiltering(
++        lambda p: model_factory(p, generator, dimension=dimension, nonlinear=nonlinear),
++        generator=generator,
++        perturbation_scale=scale,
++        initial_scale=initial_scale,
++        cooling_rate=0.5,
++        cooling_interval=2,
++        within_pass_cooling=within,
++        multinomial=multinomial,
++    )(theta, obs, n_particles=24, n_iterations=3)
++    expected_generator = torch.Generator().manual_seed(1234)
++    expected = explicit_if2(
++        theta,
++        obs,
++        expected_generator,
++        scale,
++        initial_scale,
++        dimension=dimension,
++        nonlinear=nonlinear,
++        passes=3,
++        rate=0.5,
++        interval=2,
++        within=within,
++        multinomial=multinomial,
++    )
++    assert result.success and result.completed_iterations == 3
++    for a, b in zip(
++        (
++            result.parameter_swarm,
++            result.parameter_history,
++            result.perturbed_log_likelihoods,
++        ),
++        expected,
++    ):
++        torch.testing.assert_close(a, b, rtol=0, atol=0)
++    assert torch.equal(generator.get_state(), expected_generator.get_state())
++
++
++def test_zero_iterations_and_frozen_coordinates():
++    theta, obs = data()
++    generator = torch.Generator().manual_seed(3)
++    obj = pydpf.IteratedFiltering(
++        lambda p: model_factory(p, generator), generator=generator, perturbation_scale=0
++    )
++    state = generator.get_state().clone()
++    result = obj(theta, obs, n_particles=24, n_iterations=0)
++    assert result.success and result.completed_iterations == 0
++    assert torch.equal(generator.get_state(), state)
++    assert result.perturbed_log_likelihoods.shape == (0, 2)
++    result = obj(theta, obs, n_particles=24, n_iterations=2)
++    torch.testing.assert_close(
++        result.parameter_swarm, theta[:, None].expand(2, 24, 3), rtol=0, atol=0
++    )
++
++
++def test_failed_pass_retains_preceding_swarm():
++    theta, obs = data()
++    generator = torch.Generator().manual_seed(3)
++
++    def factory(p):
++        ssm = model_factory(p, generator)
++        sample = ssm.dynamic_model.sample
++        ssm.dynamic_model.sample = lambda prev_state, **kw: sample(
++            prev_state, **kw
++        ) * float("nan")
++        return ssm
++
++    result = pydpf.IteratedFiltering(
++        factory, generator=generator, perturbation_scale=0.02
++    )(theta, obs, n_particles=24, n_iterations=3)
++    assert not result.success and result.completed_iterations == 0
++    assert result.failure_reason
++    torch.testing.assert_close(
++        result.parameter_swarm, theta[:, None].expand(2, 24, 3), rtol=0, atol=0
++    )
++
++
++@pytest.mark.parametrize("alpha", [-0.1, 1.01, float("nan"), float("inf")])
++def test_invalid_alpha(alpha):
++    theta, _ = data()
++    g = torch.Generator()
++    with pytest.raises(ValueError):
++        pydpf.StopGradientDPF(SSM=model_factory(theta, g), alpha=alpha)
++
++
++@pytest.mark.parametrize("scale", [-0.1, float("nan"), [0.1, 0.2]])
++def test_invalid_perturbation_scales(scale):
++    theta, obs = data()
++    g = torch.Generator()
++    with pytest.raises(ValueError):
++        pydpf.IteratedFiltering(
++            lambda p: model_factory(p, g), generator=g, perturbation_scale=scale
++        )(theta, obs, 24, 1)
++
++
++def test_discount_and_if2_reject_guided_proposals():
++    theta, obs = data()
++    g = torch.Generator()
++
++    def factory(p):
++        ssm = model_factory(p, g)
++        ssm.proposal_model = ssm.dynamic_model
++        return ssm
++
++    with pytest.raises(ValueError):
++        pydpf.StopGradientDPF(SSM=factory(theta), alpha=0.97)
++    with pytest.raises(ValueError):
++        pydpf.IteratedFiltering(factory, generator=g, perturbation_scale=0.01)(
++            theta, obs, 24, 1
++        )
++    with pytest.raises(ValueError):
++        pydpf.StopGradientDPF(
++            SSM=model_factory(theta, g), alpha=0.97, use_REINFORCE_for_proposal=True
++        )

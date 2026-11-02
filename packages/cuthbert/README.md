@@ -2,7 +2,7 @@
 
 Local revision 3, based on the original version recorded in [source details](version.json). The changes have not been submitted upstream.
 
-The [completed A/B/C experiment](../../reports/cuthbert_20261101/report.md) contains all 36 audited endpoints. The earlier v3 gradient comparisons and timeouts remain failed; original self-repeat controls also failed the old gradient rule. The empirical experiment proceeded after forward-likelihood agreement was accepted. See [correctness](../../reports/correctness.md).
+All 36 final estimates in the [completed A/B/C experiment](../../reports/cuthbert_20261101/report.md) have been checked. The earlier v3 gradient comparisons failed or timed out. Repeated evaluations of the unchanged original code also failed the earlier gradient criterion. The optimization experiment proceeded after agreement in forward likelihoods was accepted. See [correctness](../../reports/correctness.md).
 
 ## Original code and IF2
 
@@ -15,6 +15,8 @@ IF2 adds a parameter vector to each state particle, applies random-walk perturba
 ## Experiment calls
 
 The completed A/B/C experiment calls `iterated_filtering.fit` and `dmop.log_likelihood`, with external Optax `scale_by_adam` for parameter updates. It does not call the combined `ifad.fit` function.
+
+In the [distribution plots](../../reports/dacca_native_figures_20261102T0718/report.md), B is labelled IF2 + native stop-gradient PF because the alpha=1 branch calls the original `stop_gradient_decorator`. We added IF2, the loop over observations and the calling interface. Adam is external.
 
 ## Validation and reproduction
 

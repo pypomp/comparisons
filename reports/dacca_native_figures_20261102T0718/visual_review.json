@@ -1,0 +1,29 @@
+{
+  "reviewed_at_utc": "2026-11-02T07:29:36.365548+00:00",
+  "PNG_and_rendered_PDF_checked": true,
+  "figures": [
+    "likelihood_distributions",
+    "all_estimates",
+    "paired_C_minus_B"
+  ],
+  "review": [
+    "All four packages show twelve cases per method.",
+    "Labels, ticks, symbols and captions are readable without overlap or clipping.",
+    "PFJAX zoom excludes ten A points and one B point; displayed counts agree with data.",
+    "Full-range figure retains every selected point, failures and floor scores.",
+    "Paired figure retains all 48 pairs, including the PyDPF floor difference in its separate axis window.",
+    "No observation was removed from medians, boxes or density calculations.",
+    "Wording names original functions and external Adam; no three-proven-advantages or author-approval claim."
+  ],
+  "files": {
+    "likelihood_distributions.pdf": "098e316d16cf96f0609319ca63bbdafc12be7b597b91e7f7b16d1ccee1aeaf35",
+    "paired_C_minus_B.pdf": "a0705730e0cce4be795de67ac37cb0e146bd09496727f31fe86a2bfb8506d1f2",
+    "likelihood_distributions.png": "e75eb12e2011b2096dacf7e2973173c7ad49214fd820c3939378460c386b0a00",
+    "paired_C_minus_B.png": "e78539320c825258f89550e20e76ae36579f8575f7f923c2fdf1bd15a4445306",
+    "all_estimates.pdf": "d931957e252acce59a848545b8d45f3c287e93d39ba98508f00c8dc8ea8fbf55",
+    "all_estimates.png": "bf041d675e03e0b75fe1f1f0901f7a3e85a1130b891d9ddf3723e66db3cc0845"
+  },
+  "source_files_verified": 211,
+  "PF_calls": 0,
+  "optimizer_updates": 0
+}

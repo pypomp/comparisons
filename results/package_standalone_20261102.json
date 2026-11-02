@@ -1,0 +1,354 @@
+{
+  "date": "2026-11-02",
+  "scope": "Independent local installation revisions",
+  "remote_actions": false,
+  "commits_created": false,
+  "dacca_or_maze_reruns": false,
+  "library_code_identical_to_experiment_revision": true,
+  "packages": {
+    "cuthbert": {
+      "base": "c737efe3098b2b5ecaa7d8b976e7cea246998b17",
+      "tests_passed": 1540,
+      "tests": {
+        "command": [
+          "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/cuthbert",
+        "pythonpath": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/cuthbert:/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-probe-deps:/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-quality-tools",
+        "timeout_seconds": 600,
+        "returncode": 0,
+        "seconds": 309.3559939999832
+      },
+      "wheel_build_install_example": {
+        "build": {
+          "command": [
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/bin/python",
+            "-c",
+            "import importlib,sys;print(importlib.import_module(sys.argv[1]).build_wheel(sys.argv[2]))",
+            "hatchling.build",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/wheels/cuthbert"
+          ],
+          "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/cuthbert/pkg/cuthbert",
+          "returncode": 0,
+          "seconds": 0.1323916669934988
+        },
+        "install": {
+          "command": [
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/bin/python",
+            "-m",
+            "pip",
+            "install",
+            "--no-index",
+            "--no-deps",
+            "--disable-pip-version-check",
+            "--target",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/installed/cuthbert",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/wheels/cuthbert/cuthbert-0.1.1-py3-none-any.whl",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/wheels/cuthbertlib/cuthbertlib-0.1.1-py3-none-any.whl"
+          ],
+          "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102",
+          "returncode": 0,
+          "seconds": 0.3462203339440748
+        },
+        "installed_example": {
+          "command": [
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/bin/python",
+            "-c",
+            "import importlib,pathlib,runpy,sys; m=importlib.import_module(sys.argv[1]); assert pathlib.Path(m.__file__).resolve().is_relative_to(pathlib.Path(sys.argv[2])); print(m.__file__); runpy.run_path(\"example.py\",run_name=\"__main__\")",
+            "cuthbert",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/installed/cuthbert"
+          ],
+          "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/installed_examples/cuthbert",
+          "returncode": 0,
+          "seconds": 3.4468033328885213
+        }
+      },
+      "patch_sha256": "6c88c9fc027f9fa7282226ec0c52a14ecb9826fad13025ee4da8caaf969ab9ae",
+      "clean_patch_application_exact": true,
+      "changed_files": 20
+    },
+    "pfjax": {
+      "base": "97652aa1bdff73a92c0286549b010e99cc6f7264",
+      "tests_passed": 72,
+      "tests": {
+        "command": [
+          "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/pfjax",
+        "pythonpath": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/pfjax/src:/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/pfjax/deps:/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-probe-deps",
+        "timeout_seconds": 600,
+        "returncode": 0,
+        "seconds": 90.50676783302333
+      },
+      "wheel_build_install_example": {
+        "build": {
+          "command": [
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/bin/python",
+            "-c",
+            "import importlib,sys;print(importlib.import_module(sys.argv[1]).build_wheel(sys.argv[2]))",
+            "uv_build",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/wheels/pfjax"
+          ],
+          "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/pfjax",
+          "returncode": 0,
+          "seconds": 0.0749580420088023
+        },
+        "install": {
+          "command": [
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/bin/python",
+            "-m",
+            "pip",
+            "install",
+            "--no-index",
+            "--no-deps",
+            "--disable-pip-version-check",
+            "--target",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/installed/pfjax",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/wheels/pfjax/pfjax-0.0.3rc1-py3-none-any.whl"
+          ],
+          "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102",
+          "returncode": 0,
+          "seconds": 0.2943811669247225
+        },
+        "installed_example": {
+          "command": [
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/bin/python",
+            "-c",
+            "import importlib,pathlib,runpy,sys; m=importlib.import_module(sys.argv[1]); assert pathlib.Path(m.__file__).resolve().is_relative_to(pathlib.Path(sys.argv[2])); print(m.__file__); runpy.run_path(\"example.py\",run_name=\"__main__\")",
+            "pfjax",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/installed/pfjax"
+          ],
+          "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/installed_examples/pfjax",
+          "returncode": 0,
+          "seconds": 5.291294374968857
+        }
+      },
+      "patch_sha256": "2237dc330ac5c0c127a78815dc547c8e6fabf8a47416d2fe267459fd4180c055",
+      "clean_patch_application_exact": true,
+      "changed_files": 11
+    },
+    "pydpf": {
+      "base": "a7487ce1c344c70e1a244e75725b950deb15e146",
+      "tests_passed": 34,
+      "tests": {
+        "command": [
+          "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/pydpf",
+        "pythonpath": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/pydpf/pydpf:/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/pydpf/local-deps",
+        "timeout_seconds": 600,
+        "returncode": 0,
+        "seconds": 1.9135986249893904
+      },
+      "wheel_build_install_example": {
+        "build": {
+          "command": [
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/bin/python",
+            "-c",
+            "import importlib,sys;print(importlib.import_module(sys.argv[1]).build_wheel(sys.argv[2]))",
+            "hatchling.build",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/wheels/pydpf"
+          ],
+          "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/pydpf/pydpf",
+          "returncode": 0,
+          "seconds": 0.13297104206867516
+        },
+        "install": {
+          "command": [
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/bin/python",
+            "-m",
+            "pip",
+            "install",
+            "--no-index",
+            "--no-deps",
+            "--disable-pip-version-check",
+            "--target",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/installed/pydpf",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/wheels/pydpf/pydpf-1.2.3-py3-none-any.whl"
+          ],
+          "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102",
+          "returncode": 0,
+          "seconds": 0.24127766699530184
+        },
+        "installed_example": {
+          "command": [
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/bin/python",
+            "-c",
+            "import importlib,pathlib,runpy,sys; m=importlib.import_module(sys.argv[1]); assert pathlib.Path(m.__file__).resolve().is_relative_to(pathlib.Path(sys.argv[2])); print(m.__file__); runpy.run_path(\"example.py\",run_name=\"__main__\")",
+            "pydpf",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/installed/pydpf"
+          ],
+          "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/installed_examples/pydpf",
+          "returncode": 0,
+          "seconds": 2.1468490000115708
+        }
+      },
+      "patch_sha256": "236844d15bb9a607a2ef47e83d1639da3b42bfbc1c749cfd2a7d80d9f3c74554",
+      "clean_patch_application_exact": true,
+      "changed_files": 12
+    },
+    "particles": {
+      "base": "3388c4bd30ab9acc5a27c970089230f93610b627",
+      "tests_passed": 34,
+      "tests": {
+        "command": [
+          "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "tests"
+        ],
+        "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/particles",
+        "pythonpath": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/particles:/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/particles/local-deps:/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/cuthbert-probe-deps",
+        "timeout_seconds": 600,
+        "returncode": 0,
+        "seconds": 1.696782375103794
+      },
+      "wheel_build_install_example": {
+        "build": {
+          "command": [
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/bin/python",
+            "-c",
+            "import importlib,sys;print(importlib.import_module(sys.argv[1]).build_wheel(sys.argv[2]))",
+            "setuptools.build_meta",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/wheels/particles"
+          ],
+          "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/particles",
+          "returncode": 0,
+          "seconds": 0.3496526660164818
+        },
+        "install": {
+          "command": [
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/bin/python",
+            "-m",
+            "pip",
+            "install",
+            "--no-index",
+            "--no-deps",
+            "--disable-pip-version-check",
+            "--target",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/installed/particles",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/wheels/particles/particles-0.4-py3-none-any.whl"
+          ],
+          "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102",
+          "returncode": 0,
+          "seconds": 0.29677708295639604
+        },
+        "installed_example": {
+          "command": [
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/bin/python",
+            "-c",
+            "import importlib,pathlib,runpy,sys; m=importlib.import_module(sys.argv[1]); assert pathlib.Path(m.__file__).resolve().is_relative_to(pathlib.Path(sys.argv[2])); print(m.__file__); runpy.run_path(\"example.py\",run_name=\"__main__\")",
+            "particles",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/installed/particles"
+          ],
+          "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/installed_examples/particles",
+          "returncode": 0,
+          "seconds": 0.9468316249549389
+        }
+      },
+      "patch_sha256": "c9c5c8d3ad365f68b815885d26c929c8f747fc3210893d8c04d6eb1674c7876d",
+      "clean_patch_application_exact": true,
+      "changed_files": 6
+    },
+    "tfp": {
+      "base": "v0.25.0",
+      "tests_passed": 7,
+      "tests": {
+        "command": [
+          "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/bin/python",
+          "-m",
+          "tensorflow_probability.python.experimental.mcmc.iterated_filter_test"
+        ],
+        "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/tfp",
+        "pythonpath": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/tfp:/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/lib/python3.12/site-packages",
+        "timeout_seconds": 600,
+        "returncode": 0,
+        "seconds": 18.447364249965176
+      },
+      "wheel_build_install_example": {
+        "build": {
+          "command": [
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/bin/python",
+            "setup.py",
+            "build",
+            "--build-base",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/tfp_build",
+            "bdist_wheel",
+            "--dist-dir",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/wheels/tfp"
+          ],
+          "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/tfp",
+          "returncode": 0,
+          "seconds": 1.2010528329992667
+        },
+        "install": {
+          "command": [
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/panel-cute-cpu/bin/python",
+            "-m",
+            "pip",
+            "install",
+            "--no-index",
+            "--no-deps",
+            "--disable-pip-version-check",
+            "--target",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/installed/tfp",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/wheels/tfp/tfp_nightly-0.25.0-py3-none-any.whl"
+          ],
+          "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102",
+          "returncode": 0,
+          "seconds": 1.6440984170185402
+        },
+        "installed_example": {
+          "command": [
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/competitor-estimation/tfp/local-venv/bin/python",
+            "-c",
+            "import importlib,pathlib,runpy,sys; m=importlib.import_module(sys.argv[1]); assert pathlib.Path(m.__file__).resolve().is_relative_to(pathlib.Path(sys.argv[2])); print(m.__file__); runpy.run_path(\"example.py\",run_name=\"__main__\")",
+            "tensorflow_probability",
+            "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/installed/tfp"
+          ],
+          "cwd": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/packages-upstream-20261102/installed_examples/tfp",
+          "returncode": 0,
+          "seconds": 5.31068774999585
+        }
+      },
+      "patch_sha256": "f9fd8e0acb223acda15b2c55e5d312afeb329d92f82ea20854d56c39ed577aae",
+      "clean_patch_application_exact": true,
+      "changed_files": 12
+    }
+  },
+  "limitations": [
+    "Dependencies were reused, not freshly resolved.",
+    "No new GPU checks.",
+    "TFP uses v0.25.0; Bazel was not executed.",
+    "PFJAX and particles full documentation strict checks retain upstream warnings.",
+    "Golden CPU references require validation across other dependency/backend versions."
+  ],
+  "preserved_local_failures": [
+    "Initial reference generator unpacked two returned values as three; corrected before saving PyDPF reference.",
+    "Portable PyDPF resampler test initially confused a state-only Tensor return with a (state,weight) tuple; corrected without numerical changes.",
+    "TFP test runner conversion had missing dependency/entrypoint and indentation errors; all corrected; original logs retained.",
+    "Initial binary patch filename normalization failed; corrected patch application compared all source bytes.",
+    "Initial docs tool download was sandbox blocked; same authorized install succeeded with network permission."
+  ]
+}

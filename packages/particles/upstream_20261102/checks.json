@@ -1,0 +1,14 @@
+{
+  "base": "3388c4bd30ab9acc5a27c970089230f93610b627",
+  "patch_sha256": "c9c5c8d3ad365f68b815885d26c929c8f747fc3210893d8c04d6eb1674c7876d",
+  "changed_files": {
+    "PARAMETER_ESTIMATION.md": "fd8581de7478bd545863b95f095f17e9c1c5564814fe54ed4703daefceab1d35",
+    "book/mle/if2_stochvol.py": "402fa62e1495f9c78c55a7029730caae332fc2b28ce635051528d4fa238b935f",
+    "docs/source/index.rst": "49751b4e49ebf7135a833b30281c21838c005dd1dc1a47029564bb26257820eb",
+    "docs/source/iterated_filtering.rst": "3bbfdd29bae71ce44702d34b09d43cae69191ad734d399b4cda3bf19740706fc",
+    "particles/iterated_filtering.py": "8a3094cae24f4715f0a79c622f4a185b0331f75e70c2b2e12e5f60af41864a83",
+    "tests/test_iterated_filtering.py": "9a9dd10bd3800c2fa871390a4508cd2d84674a4bc7e01c34d76a576b9201c95e"
+  },
+  "clean_application_exact": true,
+  "library_code_identical_to_experiment_revision": true
+}

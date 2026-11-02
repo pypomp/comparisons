@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "selected_tasks_validated": 15,
+  "unselected_legacy_tasks_rejected": [
+    3,
+    4,
+    5,
+    9,
+    10,
+    11,
+    15,
+    16,
+    17,
+    21,
+    22,
+    23,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35
+  ],
+  "tamper_controls_rejected": [
+    "fits",
+    "cases",
+    "training_repetitions",
+    "wrong_seed",
+    "wrong_case",
+    "duplicate_task",
+    "wrong_method_name",
+    "wrong_limit",
+    "old_release_count",
+    "wrong_budget"
+  ],
+  "model_calls": 0,
+  "GPU_calls": 0,
+  "numeric_source_or_old_frozen_protocol_modified": false,
+  "runtime_source_hash_and_actual_scontrol_checks_not_exercised_by_synthetic_control": true
+}

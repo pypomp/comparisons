@@ -1,0 +1,158 @@
+{
+  "native_dpf": {
+    "arm": "native_dpf",
+    "indices": [
+      0,
+      6,
+      12,
+      18,
+      24
+    ],
+    "task_mapping": [
+      {
+        "array_index": 0,
+        "legacy_case": 0,
+        "seed": 0,
+        "repetition": 0,
+        "arm": "native_dpf"
+      },
+      {
+        "array_index": 6,
+        "legacy_case": 2,
+        "seed": 10,
+        "repetition": 0,
+        "arm": "native_dpf"
+      },
+      {
+        "array_index": 12,
+        "legacy_case": 4,
+        "seed": 20,
+        "repetition": 0,
+        "arm": "native_dpf"
+      },
+      {
+        "array_index": 18,
+        "legacy_case": 6,
+        "seed": 30,
+        "repetition": 0,
+        "arm": "native_dpf"
+      },
+      {
+        "array_index": 24,
+        "legacy_case": 8,
+        "seed": 40,
+        "repetition": 0,
+        "arm": "native_dpf"
+      }
+    ],
+    "seconds_per_task": 1980,
+    "UTC": "2026-11-02T18:51:13.317650+00:00",
+    "job_name": "maze15-native_dpf-20261102",
+    "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/pydpf_maze_formal_20261102",
+    "array_job_id": "65241619"
+  },
+  "native_stop": {
+    "arm": "native_stop",
+    "indices": [
+      1,
+      7,
+      13,
+      19,
+      25
+    ],
+    "task_mapping": [
+      {
+        "array_index": 1,
+        "legacy_case": 0,
+        "seed": 0,
+        "repetition": 0,
+        "arm": "native_stop"
+      },
+      {
+        "array_index": 7,
+        "legacy_case": 2,
+        "seed": 10,
+        "repetition": 0,
+        "arm": "native_stop"
+      },
+      {
+        "array_index": 13,
+        "legacy_case": 4,
+        "seed": 20,
+        "repetition": 0,
+        "arm": "native_stop"
+      },
+      {
+        "array_index": 19,
+        "legacy_case": 6,
+        "seed": 30,
+        "repetition": 0,
+        "arm": "native_stop"
+      },
+      {
+        "array_index": 25,
+        "legacy_case": 8,
+        "seed": 40,
+        "repetition": 0,
+        "arm": "native_stop"
+      }
+    ],
+    "seconds_per_task": 2040,
+    "UTC": "2026-11-02T18:51:16.484867+00:00",
+    "job_name": "maze15-native_stop-20261102",
+    "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/pydpf_maze_formal_20261102",
+    "array_job_id": "65241625"
+  },
+  "discount097": {
+    "arm": "discount097",
+    "indices": [
+      2,
+      8,
+      14,
+      20,
+      26
+    ],
+    "task_mapping": [
+      {
+        "array_index": 2,
+        "legacy_case": 0,
+        "seed": 0,
+        "repetition": 0,
+        "arm": "discount097"
+      },
+      {
+        "array_index": 8,
+        "legacy_case": 2,
+        "seed": 10,
+        "repetition": 0,
+        "arm": "discount097"
+      },
+      {
+        "array_index": 14,
+        "legacy_case": 4,
+        "seed": 20,
+        "repetition": 0,
+        "arm": "discount097"
+      },
+      {
+        "array_index": 20,
+        "legacy_case": 6,
+        "seed": 30,
+        "repetition": 0,
+        "arm": "discount097"
+      },
+      {
+        "array_index": 26,
+        "legacy_case": 8,
+        "seed": 40,
+        "repetition": 0,
+        "arm": "discount097"
+      }
+    ],
+    "seconds_per_task": 2040,
+    "UTC": "2026-11-02T18:51:19.681936+00:00",
+    "job_name": "maze15-discount097-20261102",
+    "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/pydpf_maze_formal_20261102",
+    "array_job_id": "65241629"
+  }
+}

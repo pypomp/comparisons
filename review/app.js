@@ -50,6 +50,7 @@ function renderFile(f, asSource=false){activeFile=f;const isMD=f.suffix==='.md',
   if(f.text!==null)$('content').innerHTML=isMD&&!asSource?markdown(f.text,f.path):source(f.text,patch);
   else if(/\.(png|jpe?g)$/i.test(f.path))$('content').innerHTML='<img class="image-preview" src="'+raw(f.path)+'" alt="'+esc(f.path)+'">';
   else $('content').innerHTML='<div class="notice">Binary file or file larger than 2 MB. Download the original to inspect it. Sources and checksums are recorded in archive/.</div>';
+  if(f.archived)$('content').insertAdjacentHTML('afterbegin','<div class="notice">Archived record. <a href="/?path=README.md">Current comparison</a></div>');
   highlightLine();
 }
 function highlightLine(){document.querySelectorAll('.code-line.selected').forEach(e=>e.classList.remove('selected'));if(location.hash){const element=document.getElementById(location.hash.slice(1));if(element){element.classList.add('selected');element.scrollIntoView({block:'center'});}}}

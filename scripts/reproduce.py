@@ -8,7 +8,7 @@ import math
 import statistics
 from collections import defaultdict
 from pathlib import Path
-from repository import ROOT, history_bytes
+from repository import ROOT, history_bytes, saved_bytes
 
 
 def summarize(rows, keys, repeats):
@@ -47,7 +47,7 @@ def tables():
     assert sum(int(r['raw_repetitions']) for r in old) == 37584
     assert sum(int(r['repetitions']) for r in new) == 1692
     assert sum(r['precision_passed'] == 'True' for r in new) == 21
-    case0 = json.loads((ROOT / 'results/cuthbert/case0_20261101.json').read_text())
+    case0 = json.loads(saved_bytes('results/cuthbert/case0_20261101.json'))
     assert case0['passed'] and case0['endpoint_count'] == 3
     first_case = [dict(case=0, method=arm, **record)
                   for arm, record in case0['methods'].items()]

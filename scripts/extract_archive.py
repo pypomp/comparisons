@@ -6,15 +6,14 @@ import shutil
 import tarfile
 import zipfile
 from pathlib import Path
-from repository import ROOT, sha, relative
+from repository import ROOT, sha, relative, archive_record
 
 p = argparse.ArgumentParser(description=__doc__)
 p.add_argument('archive', help='Path under artifacts/, as listed in archive/catalog.json')
 p.add_argument('destination', type=Path)
 a = p.parse_args()
-catalog = {d['path']: d for d in json.loads((ROOT / 'archive/catalog.json').read_text())}
-rec = catalog[a.archive]
-src = ROOT / a.archive
+rec = archive_record(a.archive)
+src = ROOT / rec['path']
 assert sha(src) == rec['sha256'], 'Archive hash mismatch'
 if a.destination.exists():
     raise SystemExit('Destination already exists. Choose a new directory to preserve existing evidence.')

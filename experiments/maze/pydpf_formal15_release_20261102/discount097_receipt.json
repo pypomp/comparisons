@@ -1,0 +1,52 @@
+{
+  "arm": "discount097",
+  "indices": [
+    2,
+    8,
+    14,
+    20,
+    26
+  ],
+  "task_mapping": [
+    {
+      "array_index": 2,
+      "legacy_case": 0,
+      "seed": 0,
+      "repetition": 0,
+      "arm": "discount097"
+    },
+    {
+      "array_index": 8,
+      "legacy_case": 2,
+      "seed": 10,
+      "repetition": 0,
+      "arm": "discount097"
+    },
+    {
+      "array_index": 14,
+      "legacy_case": 4,
+      "seed": 20,
+      "repetition": 0,
+      "arm": "discount097"
+    },
+    {
+      "array_index": 20,
+      "legacy_case": 6,
+      "seed": 30,
+      "repetition": 0,
+      "arm": "discount097"
+    },
+    {
+      "array_index": 26,
+      "legacy_case": 8,
+      "seed": 40,
+      "repetition": 0,
+      "arm": "discount097"
+    }
+  ],
+  "seconds_per_task": 2040,
+  "UTC": "2026-11-02T18:51:19.681936+00:00",
+  "job_name": "maze15-discount097-20261102",
+  "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/pydpf_maze_formal_20261102",
+  "array_job_id": "65241629"
+}

@@ -1,0 +1,13 @@
+package,method,unit,complete_fits,gradient_kernel_seconds,logical_fit_kernel_seconds
+cuthbert,A,one complete fit; median,10,555.7555421076249,555.7555421076249
+cuthbert,B,one complete fit; median,12,556.5003190250136,627.4358057482168
+cuthbert,C,one complete fit; median,12,556.589635646902,627.5858335723169
+pfjax,A,one complete fit; median,12,523.2985366228968,523.2985366228968
+pfjax,B,one complete fit; median,12,523.1582532133907,563.2458609188907
+pfjax,C,one complete fit; median,12,529.6597192138433,569.7318033250049
+tfp,A,whole batch of 12; one measurement,11,10348.494745633565,10348.494745633565
+tfp,B,whole batch of 12; one measurement,12,9229.294115412049,21791.11090036109
+tfp,C,whole batch of 12; one measurement,12,10429.00946197845,22990.826246927492
+pydpf,A,whole batch of 12; one measurement,12,24031.036435765214,24031.036435765214
+pydpf,B,whole batch of 12; one measurement,12,20411.693552690558,40525.584884391166
+pydpf,C,whole batch of 12; one measurement,12,20170.607657810673,40284.49898951128

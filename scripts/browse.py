@@ -8,6 +8,7 @@ import mimetypes
 from pathlib import Path, PurePosixPath
 import subprocess
 from urllib.parse import parse_qs, urlsplit
+from repository import archive_record, recent_history, saved_bytes
 
 ROOT = Path(__file__).resolve().parents[1]
 MAX_TEXT = 2 * 1024 * 1024
@@ -39,11 +40,18 @@ class Handler(BaseHTTPRequestHandler):
 
     def allowed_file(self, name):
         if name not in self.server.paths:
-            raise FileNotFoundError(name)
+            rec = archive_record(name)
+            name = rec['path']
         path = ROOT / name
         if path.is_symlink() or not path.resolve().is_relative_to(ROOT):
             raise FileNotFoundError(name)
         return path
+
+    def archived_bytes(self, name):
+        rec, _ = recent_history()
+        if name not in rec['removed_paths']:
+            raise FileNotFoundError(name)
+        return saved_bytes(name)
 
     def do_GET(self):
         if self.headers.get('Host') not in {f'127.0.0.1:{self.server.server_port}', f'localhost:{self.server.server_port}'}:
@@ -75,11 +83,17 @@ class Handler(BaseHTTPRequestHandler):
                 matches = [n for n in self.server.paths if q in n.lower()]
                 self.json(dict(total=len(matches), paths=matches[:150]))
             elif url.path == '/api/file':
-                path = self.allowed_file(name)
-                size = path.stat().st_size
-                info = dict(path=name, size=size, suffix=path.suffix, text=None)
+                archived = False
+                try:
+                    path = self.allowed_file(name)
+                    size = path.stat().st_size
+                    data = path.read_bytes() if size <= MAX_TEXT else None
+                except FileNotFoundError:
+                    data = self.archived_bytes(name)
+                    size = len(data)
+                    archived = True
+                info = dict(path=name, size=size, suffix=Path(name).suffix, text=None, archived=archived)
                 if size <= MAX_TEXT:
-                    data = path.read_bytes()
                     info['sha256'] = hashlib.sha256(data).hexdigest()
                     try:
                         if b'\0' not in data:
@@ -88,7 +102,13 @@ class Handler(BaseHTTPRequestHandler):
                         pass
                 self.json(info)
             elif url.path == '/raw':
-                path = self.allowed_file(name)
+                try:
+                    path = self.allowed_file(name)
+                except FileNotFoundError:
+                    data = self.archived_bytes(name)
+                    mime = {'.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.pdf':'application/pdf'}.get(Path(name).suffix.lower(),'application/octet-stream')
+                    self.send_bytes(data, mime)
+                    return
                 # Raw HTML/SVG and scripts are downloads, never executable pages.
                 safe = {'.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.pdf': 'application/pdf'}
                 mime = safe.get(path.suffix.lower(), 'application/octet-stream')

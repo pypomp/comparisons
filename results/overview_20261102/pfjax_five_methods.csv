@@ -1,0 +1,6 @@
+method,endpoints,median_logmeanlik,complete_fits,failed_fits,floor_scores,low_precision_scores,median_complete_gradient_seconds,median_complete_logical_fit_seconds,timing_unit,timing_denominator
+Native A,12,-3859.159878877017,12,0,0,0,523.2985366228968,523.2985366228968,one complete fit; median,12
+Added alpha=1 A,12,-3793.4956976796702,11,1,1,0,529.6296065403149,529.6296065403149,one complete fit; median,11
+Native B,12,-3763.9266784152933,12,0,0,0,523.1582532133907,563.2458609188907,one complete fit; median,12
+Added alpha=1 B,12,-3748.631852682989,12,0,0,0,529.5194080262445,569.591492137406,one complete fit; median,12
+C: IFAD,12,-3745.0896717674796,12,0,0,0,529.6597192138433,569.7318033250049,one complete fit; median,12

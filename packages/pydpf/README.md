@@ -12,6 +12,10 @@ The gradient stage uses the original `StopGradientDPF` derivative correction, ex
 
 The copied original code includes the specified package subtree, root README and license, and a native tutorial. It is a subset of the upstream repository.
 
+## Dacca callback performance
+
+The later [forward and backward optimization](../../reports/pydpf_backward_fusion_20261102.md) changes our Dacca transition callbacks and leaves the package's filter unchanged. We compared individual call times and first derivatives with the old and new callbacks. The completed A/B/C fits were not rerun, so their final estimates and fitting times are unchanged. [Runtime](../../reports/timing.md) gives the units and limitations of the measurements.
+
 ## Validation and reproduction
 
 [Changed files](changes/) · [Complete diff](review/full.patch) · [Version](version.json) · [Validation programs](validation/)

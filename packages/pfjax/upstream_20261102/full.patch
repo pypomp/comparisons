@@ -1,0 +1,1021 @@
+diff --git a/PARAMETER_ESTIMATION.md b/PARAMETER_ESTIMATION.md
+new file mode 100644
+index 0000000..db13543
+--- /dev/null
++++ b/PARAMETER_ESTIMATION.md
+@@ -0,0 +1,14 @@
++# Installing and testing the parameter-estimation additions
++
++IF2 retains parameter particles. The optional MOP weight correction is an extension; ordinary basic-PF autodiff is unchanged.
++
++From this repository root, in a Python environment compatible with its package metadata:
++
++```sh
++python -m pip install .
++python -m pip install pytest pytest-env
++python examples/iterated_filter.py
++JAX_ENABLE_X64=true python -m pytest
++```
++
++The example uses a small model and runs on CPU. It does not require Dacca data or a neighboring repository. Tests retain independent particle recursions and small upstream regression data with recorded source and dependency versions. GPU execution and the full upstream CI matrix are separate checks.
+diff --git a/docs/iterated_filter.qmd b/docs/iterated_filter.qmd
+new file mode 100644
+index 0000000..a04c54d
+--- /dev/null
++++ b/docs/iterated_filter.qmd
+@@ -0,0 +1,123 @@
++---
++title: "Iterated filtering and discounted gradients"
++---
++
++IF2 and an added weight-gradient correction
++
++This candidate extends PFJAX commit 97652aa1bdff73a92c0286549b010e99cc6f7264.
++It is not an accepted upstream release. The original score, Rao-Blackwellized
++score and optimal-transport implementations are unchanged.
++
++IF2 interface
++
++    fit = pfjax.iterated_filter(
++        model, key, y_meas, parameter_particles, perturbation_scale, n_iter,
++        initial_scale=initial_scale, cooling_rate=.9, cooling_interval=1.,
++        within_pass_cooling=False)
++
++parameter_particles is a floating array of shape (J, P). The existing model
++supplies pf_init(key, y_init, theta) and pf_step(key, x_prev, y_curr, theta).
++theta is one length-P parameter vector, just as in an ordinary PFJAX model.
++Model state and observations can be PyTrees with array leaves. The model is
++responsible for parameter transforms, appropriate proposal importance weights
++and any transition performed inside pf_init. The extension neither invents a
++transition density nor derives one from a simulator.
++
++The wrapper perturbs parameters before pf_init and later pf_step calls. It
++adds state, parameters and a time index to each particle. The original
++particle_filter runs the time loop, weight accumulation and multinomial
++resampling. A last multinomial resampling returns equal-weight parameters.
++All J parameter vectors, not just their mean, enter the next IF2 pass.
++Initial-value parameters can have positive initial_scale and zero
++perturbation_scale. For parameters perturbed at observation zero, set their
++initial_scale too. No first-transition perturbation is silently inferred.
++
++The cooling factor is rate**((iteration + fraction)/interval), where fraction
++is t/n_obs if within_pass_cooling=True, otherwise zero; t=0 is initialization.
++The integer time is converted to the parameter dtype before division. This
++preserves float64 cooling when the parameter population is float64; candidate
++v1 inadvertently evaluated this fraction in float32. The float32 path is
++unchanged. A strict float64 regression and independent full-Dacca recursion
++cover this correction. Historical benchmark source and results are separate.
++iterated_filter folds iteration_offset+i into the root key. A split run uses
++the returned whole population, the same root key and the next offset.
++Scales and parameters may be JIT inputs. n_iter, iteration_offset, cooling
++constants and within_pass_cooling are fixed settings. This version has a
++single particle axis; callers may vmap independent filters.
++
++Returned history contains per-pass mean theta, perturbed loglik and valid.
++The perturbed likelihood is not a final fixed-parameter evaluation score.
++valid checks nonnegative finite scales, a nonnegative finite iteration, finite
++terminal parameters and finite likelihood. It is not a convergence or MCSE
++test. Nonfinite passes are not retried; all requested passes still execute.
++Callers must inspect valid before using a fit. No checkpoint writer or
++per-case recovery policy is included.
++
++The only change inside the original PF function is an optional keyword-only
++initial_particles=(states, logw) argument. It supplies the initialization at
++y_meas[0], bypassing pf_init but consuming the original initial key split.
++It does not resume a previous likelihood or support score/Fisher accumulators.
++This lets IF2 supply its exact whole parameter population without resampling
++that population a second time at the start or replacing the PF time loop.
++The original Python key-unpacking code is retained in this candidate. The
++earlier benchmark's array-slicing performance change is not folded into it.
++
++Gradient interface
++
++    result = pfjax.particle_filter_mop(
++        model, key, y_meas, theta, n_particles, alpha=.97)
++    gradient = jax.grad(lambda p: pfjax.particle_filter_mop(
++        model, key, y_meas, p, n_particles, alpha=.97)['loglik'])(theta)
++
++This is an added method, including at alpha=1. It uses the original PF model
++and resampler callbacks. It does not modify or call PFJAX's OT derivative or
++its score/RB accumulators. Require model._bootstrap=True, reparameterized
++state sampling, and no pf_aux. General proposals and other resamplers are
++not supported here. The bootstrap declaration is the model author's
++contract; the function cannot prove that the supplied sampler is appropriate.
++
++For ancestor indices a and previous log weights l, define
++    c = alpha * (l[a] - stop_gradient(l[a])).
++The wrapper adds c-logmeanexp(c) to the next measurement log weights.
++The subtraction accounts for the denominator when the original PF sums
++log-normalizers. Its derivative is the selected weight derivative minus
++its mean over the resampled population. State derivatives continue through
++the selected states. alpha=0 retains the original pathwise derivative;
++alpha=1 adds the correction; lower positive alpha discounts the inherited
++weight derivative. Forward PF values are unchanged mathematically. Floating
++arithmetic across different compiled graphs need not be bitwise identical.
++
++This is a gradient estimator; finite differences of its unchanged forward
++value do not validate the stop-gradient rule. No exact/unbiased gradient of
++finite-particle log likelihood, second-derivative estimator, or universal
++optimization improvement is claimed. Callers must check finite outputs.
++
++Original methods and the example
++
++PFJAX's stochastic-optimization tutorial uses particle_filter_rb(score=True)
++with external Optax Adam. Its score estimators need state transition log
++densities. OT uses resample_ot and changes the finite-particle filter; this
++candidate does not tune or replace it.
++
++examples/iterated_filter.py uses the unchanged built-in BMModel. It executes
++the original RB score plus Optax Adam, IF2 followed by that same RB score,
++and IF2 followed by the added discounted gradient plus Optax Adam. Three
++updates and four independent PF draws per endpoint are execution examples,
++not evidence of optimization quality. Optax is an example dependency.
++
++Scope and checks
++
++The new IF2 path rejects auxiliary PFs and uses multinomial resampling only.
++The MOP path rejects models without the explicit bootstrap declaration.
++The generic tests use linear/nonlinear models, 1/3 parameter dimensions,
++nested states, observation PyTrees, fixed coordinates, zero passes, split
++runs, bad settings and nonfinite likelihoods. Gradient derivatives are
++checked by independently propagating state tangents and weight derivatives.
++Pristine-source checks verify the default PF's values and gradients remain
++unchanged. Additional tests use the original Brownian PF and RB score tests.
++
++The Dacca check uses all 600 months and 20 Euler steps, J=8, two IF2 passes,
++one external Adam step and two independent ordinary PF draws. It does not
++reuse the historical IF2 random assignment, claim a historical trajectory
++replay, or assess score precision. The formal source and results stay frozen.
++GPU behavior, performance and the full upstream suite remain unverified.
+diff --git a/examples/iterated_filter.py b/examples/iterated_filter.py
+new file mode 100644
+index 0000000..be156aa
+--- /dev/null
++++ b/examples/iterated_filter.py
+@@ -0,0 +1,87 @@
++"""Use the unchanged BMModel with IF2, then an explicitly external optimizer.
++
++Three updates demonstrate each interface; this is not an accuracy comparison.
++Optax is needed only to run this example, not to import the extensions.
++"""
++
++import json
++
++import jax
++import jax.numpy as jnp
++import numpy as np
++import optax
++import pfjax as pf
++from pfjax.models import BMModel
++
++
++def main():
++    model = BMModel(dt=0.5, unconstrained_theta=True)
++    true_theta = jnp.array([0.02, -0.8, -1.2])
++    y, _ = pf.simulate(model, jax.random.PRNGKey(100), 12, jnp.asarray(0.0), true_theta)
++    initial = jnp.array([0.1, -0.5, -0.5])
++    population = jnp.broadcast_to(initial, (24, 3))
++    warm = jax.jit(
++        lambda p: pf.iterated_filter(
++            model, jax.random.PRNGKey(200), y, p, 0.04, 3, initial_scale=0.04
++        )
++    )(population)
++    if not np.all(warm["history"]["valid"]):
++        raise RuntimeError("IF2 returned invalid values")
++    results = {}
++    for name, start in [
++        ("original_RB_score", initial),
++        ("IF2_then_RB_score", warm["theta"]),
++        ("IF2_then_added_MOP", warm["theta"]),
++    ]:
++        optimizer = optax.adam(0.001)
++        theta, state = start, optimizer.init(start)
++        if name.endswith("MOP"):
++            get_gradient = jax.jit(
++                jax.grad(
++                    lambda p, k: pf.particle_filter_mop(model, k, y, p, 24, alpha=0.97)[
++                        "loglik"
++                    ]
++                )
++            )
++        else:
++            get_gradient = jax.jit(
++                lambda p, k: pf.particle_filter_rb(model, k, y, p, 24, score=True)[
++                    "score"
++                ]
++            )
++        for i in range(3):
++            gradient = get_gradient(
++                theta, jax.random.fold_in(jax.random.PRNGKey(300), i)
++            )
++            if not np.all(np.isfinite(gradient)):
++                raise RuntimeError("nonfinite gradient in " + name)
++            updates, state = optimizer.update(-gradient / len(y), state, theta)
++            theta = optax.apply_updates(theta, updates)
++        score_keys = jax.random.split(jax.random.PRNGKey(400), 4)
++        raw = jax.jit(
++            jax.vmap(lambda k: pf.particle_filter(model, k, y, theta, 24)["loglik"])
++        )(score_keys)
++        if not np.all(np.isfinite(raw)):
++            raise RuntimeError("nonfinite evaluation")
++        results[name] = {
++            "theta": np.asarray(theta).tolist(),
++            "raw_evaluation": np.asarray(raw).tolist(),
++        }
++    print(
++        json.dumps(
++            {
++                "completed": True,
++                "package": pf.__file__,
++                "model": "unchanged PFJAX BMModel",
++                "optimizer": "external Optax Adam",
++                "IF2_passes": 3,
++                "updates_per_example": 3,
++                "results": results,
++                "accuracy_comparison": False,
++            }
++        )
++    )
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/mkdocs.yml b/mkdocs.yml
+index 95b2d1c..b98df45 100644
+--- a/mkdocs.yml
++++ b/mkdocs.yml
+@@ -7,6 +7,7 @@ nav:
+   - pfjax.md
+   - gradient_comparisons.md
+   - stochopt_tutorial.md
++  - iterated_filter.md
+   - mcmc_tutorial.md
+ 
+ theme:
+diff --git a/src/pfjax/__init__.py b/src/pfjax/__init__.py
+index ddd349e..ac988cc 100644
+--- a/src/pfjax/__init__.py
++++ b/src/pfjax/__init__.py
+@@ -2,6 +2,8 @@
+ import re
+ from importlib.metadata import PackageNotFoundError, metadata, version
+ 
++from .iterated_filter import iterated_filter, iterated_filter_step
++from .particle_filter_mop import particle_filter_mop
+ from .loglik_full import loglik_full
+ from .models.base_model import BaseModel
+ from .particle_filter import particle_filter, particle_filter_rb
+@@ -30,6 +32,9 @@ except PackageNotFoundError:
+     __author__ = "unknown"
+ 
+ __all__ = [
++    "iterated_filter",
++    "iterated_filter_step",
++    "particle_filter_mop",
+     "BaseModel",
+     "simulate",
+     "loglik_full",
+diff --git a/src/pfjax/iterated_filter.py b/src/pfjax/iterated_filter.py
+new file mode 100644
+index 0000000..b8ab055
+--- /dev/null
++++ b/src/pfjax/iterated_filter.py
+@@ -0,0 +1,213 @@
++"""Iterated filtering using PFJAX's particle_filter and model callbacks."""
++
++import math
++import numbers
++
++import jax
++import jax.numpy as jnp
++from jax import random
++
++from . import utils
++from .particle_filter import particle_filter
++from .particle_resamplers import resample_multinomial
++
++
++def _settings(model, y_meas, parameter_particles, cooling_rate, cooling_interval):
++    if callable(getattr(model, "pf_aux", None)):
++        raise ValueError("iterated filtering does not support pf_aux")
++    if parameter_particles.ndim != 2 or min(parameter_particles.shape) < 1:
++        raise ValueError(
++            "parameter_particles must have shape (n_particles, n_parameters)"
++        )
++    if not jnp.issubdtype(parameter_particles.dtype, jnp.floating):
++        raise TypeError("parameters must have floating dtype")
++    leaves = jax.tree.leaves(y_meas)
++    if not leaves or any(y.ndim == 0 for y in leaves):
++        raise ValueError("observations need a leading time axis")
++    n_obs = leaves[0].shape[0]
++    if n_obs < 1 or any(y.shape[0] != n_obs for y in leaves):
++        raise ValueError("observation leaves need the same nonempty time axis")
++    for value, name in [
++        (cooling_rate, "cooling_rate"),
++        (cooling_interval, "cooling_interval"),
++    ]:
++        if (
++            isinstance(value, bool)
++            or not isinstance(value, numbers.Real)
++            or not math.isfinite(value)
++        ):
++            raise ValueError(name + " must be a fixed finite real number")
++    if not 0 < cooling_rate <= 1 or cooling_interval <= 0:
++        raise ValueError("require 0 < cooling_rate <= 1 and cooling_interval > 0")
++    return n_obs
++
++
++def iterated_filter_step(
++    model,
++    key,
++    y_meas,
++    parameter_particles,
++    perturbation_scale,
++    *,
++    initial_scale=0.0,
++    iteration=0,
++    cooling_rate=0.9,
++    cooling_interval=1.0,
++    within_pass_cooling=False,
++):
++    """Run one IF2 pass, retaining the entire terminal parameter population.
++
++    ``model`` supplies the ordinary ``pf_init`` and ``pf_step`` methods, each
++    taking a single parameter vector. State and observations may be PyTrees.
++    No transition density is required. Auxiliary filters are not supported.
++
++    Parameters have shape ``(J, P)``. Scales are nonnegative scalars or vectors
++    of length P in estimation coordinates; the model applies any transforms.
++    Before pf_init, initial_scale is applied once. Before each later pf_step,
++    perturbation_scale is applied. Use zero process scale for initial-value
++    parameters. The cooling factor is rate**((iteration + fraction)/interval),
++    with fraction=t/n_obs when within_pass_cooling is True, otherwise zero.
++    t=0 denotes initialization, so no transition precedes observation zero
++    unless the model's own pf_init implements one.
++
++    Calls the original PF loop with augmented (state, parameters, time) leaves.
++    Multinomial resampling jointly selects them; a final resampling converts
++    the last weighted population into equal-weight parameters for the next
++    pass. Returns parameter_particles, their mean theta, perturbed loglik and
++    valid. The loglik is not a fixed-parameter evaluation score. valid checks
++    settings and finite terminal values, not statistical convergence. Under
++    JIT invalid scales/nonfinite values produce valid=False; no retry occurs.
++    """
++    parameters = jnp.asarray(parameter_particles)
++    n_obs = _settings(model, y_meas, parameters, cooling_rate, cooling_interval)
++    n_particles, n_parameters = parameters.shape
++    scale = jnp.broadcast_to(
++        jnp.asarray(perturbation_scale, parameters.dtype), (n_parameters,)
++    )
++    initial_scale = jnp.broadcast_to(
++        jnp.asarray(initial_scale, parameters.dtype), (n_parameters,)
++    )
++    settings_valid = (
++        jnp.all(jnp.isfinite(scale) & (scale >= 0))
++        & jnp.all(jnp.isfinite(initial_scale) & (initial_scale >= 0))
++        & jnp.isfinite(iteration)
++        & (iteration >= 0)
++    )
++    init_key, filter_key, final_key = random.split(key, 3)
++    parameters = parameters + cooling_rate ** (
++        iteration / cooling_interval
++    ) * initial_scale * random.normal(
++        init_key, parameters.shape, dtype=parameters.dtype
++    )
++    # Exactly the keys particle_filter would allocate to initialization.
++    init_keys = random.split(filter_key, n_particles + 1)[1:]
++    states, logw = jax.vmap(model.pf_init, in_axes=(0, None, 0))(
++        init_keys, utils.tree_subset(y_meas, 0), parameters
++    )
++
++    class PerturbedModel:
++        def pf_step(self, key, x_prev, y_curr, theta):
++            perturb_key, state_key = random.split(key)
++            t = x_prev["time"] + 1
++            # Dividing the int32 clock produces float32 even when the
++            # parameter population is float64. Preserve its dtype for cooling.
++            fraction = (
++                t.astype(parameters.dtype) / n_obs if within_pass_cooling else 0.0
++            )
++            factor = cooling_rate ** ((iteration + fraction) / cooling_interval)
++            p = x_prev["parameters"] + factor * scale * random.normal(
++                perturb_key, (n_parameters,), dtype=parameters.dtype
++            )
++            x, w = model.pf_step(state_key, x_prev["state"], y_curr, p)
++            return {"state": x, "parameters": p, "time": t}, w
++
++    initial = {
++        "state": states,
++        "parameters": parameters,
++        "time": jnp.zeros(n_particles, dtype=jnp.int32),
++    }
++    result = particle_filter(
++        PerturbedModel(),
++        filter_key,
++        y_meas,
++        None,
++        n_particles,
++        initial_particles=(initial, logw),
++    )
++    # Only the parameter population is needed after the last observation.
++    final = resample_multinomial(
++        final_key, result["x_particles"]["parameters"], result["logw"]
++    )
++    parameters = final["x_particles"]
++    return {
++        "parameter_particles": parameters,
++        "theta": jnp.mean(parameters, axis=0),
++        "loglik": result["loglik"],
++        "valid": settings_valid
++        & jnp.all(jnp.isfinite(parameters))
++        & jnp.isfinite(result["loglik"]),
++    }
++
++
++def iterated_filter(
++    model,
++    key,
++    y_meas,
++    parameter_particles,
++    perturbation_scale,
++    n_iter,
++    *,
++    initial_scale=0.0,
++    cooling_rate=0.9,
++    cooling_interval=1.0,
++    within_pass_cooling=False,
++    iteration_offset=0,
++):
++    """Repeat IF2 passes without replacing the population by its mean.
++
++    Pass i uses fold_in(key, iteration_offset+i). With the returned whole
++    population, the same root key and the next iteration_offset reproduce a
++    split run. No optimizer or checkpoint writer is included. n_iter and the
++    cooling settings are static; parameters/scales may be JIT inputs. All
++    passes execute even if valid=False: callers must inspect the flags.
++    """
++    if (
++        isinstance(n_iter, bool)
++        or not isinstance(n_iter, numbers.Integral)
++        or n_iter < 0
++    ):
++        raise ValueError("n_iter must be a fixed nonnegative integer")
++    if (
++        isinstance(iteration_offset, bool)
++        or not isinstance(iteration_offset, numbers.Integral)
++        or iteration_offset < 0
++    ):
++        raise ValueError("iteration_offset must be a fixed nonnegative integer")
++    parameters = jnp.asarray(parameter_particles)
++    _settings(model, y_meas, parameters, cooling_rate, cooling_interval)
++
++    def one(parameters, i):
++        result = iterated_filter_step(
++            model,
++            random.fold_in(key, i),
++            y_meas,
++            parameters,
++            perturbation_scale,
++            initial_scale=initial_scale,
++            iteration=i,
++            cooling_rate=cooling_rate,
++            cooling_interval=cooling_interval,
++            within_pass_cooling=within_pass_cooling,
++        )
++        return result["parameter_particles"], {
++            k: result[k] for k in ["theta", "loglik", "valid"]
++        }
++
++    parameters, trace = jax.lax.scan(
++        one, parameters, jnp.arange(n_iter) + iteration_offset
++    )
++    return {
++        "parameter_particles": parameters,
++        "theta": jnp.mean(parameters, axis=0),
++        "history": trace,
++    }
+diff --git a/src/pfjax/particle_filter.py b/src/pfjax/particle_filter.py
+index 78b0707..b37c4e4 100644
+--- a/src/pfjax/particle_filter.py
++++ b/src/pfjax/particle_filter.py
+@@ -59,6 +59,8 @@ def particle_filter(
+     score=False,
+     fisher=False,
+     history=False,
++    *,
++    initial_particles=None,
+ ):
+     r"""
+     Basic particle filter.
+@@ -95,6 +97,14 @@ def particle_filter(
+         score: Whether or not to return an estimate of the score function at `theta`.  Only works if `resampler` has an output element named `ancestors`.
+         fisher: Whether or not to return an estimate of the Fisher information at `theta`.  Only works if `resampler` has an output element named `ancestors`.  If `True` returns score as well.
+         history: Whether to output the history of the filter or only the last step.
++        initial_particles: Optional pair ``(x_particles, logw)`` representing
++            initialized particles and unnormalized weights for ``y_meas[0]``.
++            Bypasses ``model.pf_init``. Each state leaf has leading dimension
++            ``n_particles``; weights have shape ``(n_particles,)``. The initial
++            PRNG split is still consumed, so supplying the result of the usual
++            initialization preserves subsequent random draws. This starts a
++            new filter, not a continuation of a previous likelihood. Not
++            supported with ``score=True`` or ``fisher=True``.
+ 
+     Returns:
+         Dictionary:
+@@ -109,6 +119,15 @@ def particle_filter(
+     n_obs = jtu.tree_leaves(y_meas)[0].shape[0]
+     has_aux = callable(getattr(model, "pf_aux", None))
+     has_acc = score or fisher
++    if initial_particles is not None:
++        if has_acc:
++            raise ValueError("initial_particles does not support score or fisher")
++        x_initial, logw_initial = initial_particles
++        if logw_initial.shape != (n_particles,):
++            raise ValueError("initial weights must have shape (n_particles,)")
++        leaves = jtu.tree_leaves(x_initial)
++        if not leaves or any(x.ndim == 0 or x.shape[0] != n_particles for x in leaves):
++            raise ValueError("initial state leaves must have leading n_particles axis")
+ 
+     # accumulator for derivatives
+     def accumulate_deriv(x_prev, x_curr, y_curr, acc_prev):
+@@ -235,7 +254,10 @@ def particle_filter(
+ 
+     # lax.scan initial value
+     key, *subkeys = random.split(key, num=n_particles + 1)
+-    x_particles, logw = jax.vmap(pf_init)(jnp.array(subkeys))
++    if initial_particles is None:
++        x_particles, logw = jax.vmap(pf_init)(jnp.array(subkeys))
++    else:
++        x_particles, logw = initial_particles
+     filter_init = {
+         "x_particles": x_particles,
+         "logw": logw,
+diff --git a/src/pfjax/particle_filter_mop.py b/src/pfjax/particle_filter_mop.py
+new file mode 100644
+index 0000000..f1ca3db
+--- /dev/null
++++ b/src/pfjax/particle_filter_mop.py
+@@ -0,0 +1,87 @@
++"""Added stop-gradient weight correction through the existing PFJAX callbacks.
++
++This is separate from PFJAX's original score/RB estimators and OT resampling.
++"""
++
++import math
++import numbers
++
++import jax
++import jax.numpy as jnp
++from jax.scipy.special import logsumexp
++
++from .particle_filter import particle_filter
++from .particle_resamplers import resample_multinomial
++
++
++def particle_filter_mop(
++    model, key, y_meas, theta, n_particles, *, alpha=1.0, history=False
++):
++    """Bootstrap PF with an added differentiable likelihood-weight recursion.
++
++    Uses the existing particle_filter, multinomial resampling and ordinary
++    model pf_init/pf_step. The model must declare _bootstrap=True, use
++    reparameterized state sampling, and have no pf_aux. General proposals,
++    score/Fisher accumulators and OT are outside this interface.
++
++    Forward values are those of the bootstrap PF. alpha=0 gives the original
++    pathwise derivative through selected states; alpha=1 adds the weight
++    correction; 0<alpha<1 discounts it at each resampling. State derivatives
++    are not stopped. This function and its alpha=1 correction are additions,
++    not an upstream PFJAX method. No exact/unbiased finite-particle gradient
++    of log likelihood is asserted. The numerical derivative of repeated
++    forward evaluations cannot validate a stop-gradient estimator.
++
++    For selected log weights l, c=alpha*(l-stop_gradient(l)). Before the next
++    measurement, c-logmeanexp(c) is added to its log weight. The denominator
++    removes the derivative counted by PFJAX's sum of log-normalizers.
++    Original state and resampling-history output shapes are preserved.
++    """
++    if not getattr(model, "_bootstrap", False) or callable(
++        getattr(model, "pf_aux", None)
++    ):
++        raise ValueError(
++            "particle_filter_mop requires a bootstrap model without pf_aux"
++        )
++    if (
++        isinstance(alpha, bool)
++        or not isinstance(alpha, numbers.Real)
++        or not math.isfinite(alpha)
++        or not 0 <= alpha <= 1
++    ):
++        raise ValueError("alpha must be a fixed finite number in [0, 1]")
++
++    class CorrectedModel:
++        def pf_init(self, key, y_init, theta):
++            x, w = model.pf_init(key, y_init, theta)
++            return {"state": x, "correction": jnp.zeros_like(w)}, w
++
++        def pf_step(self, key, x_prev, y_curr, theta):
++            x, w = model.pf_step(key, x_prev["state"], y_curr, theta)
++            return {"state": x, "correction": jnp.zeros_like(w)}, w + x_prev[
++                "correction"
++            ]
++
++    def resample(key, x_particles_prev, logw):
++        out = resample_multinomial(
++            key, x_particles_prev["state"], jax.lax.stop_gradient(logw)
++        )
++        selected = logw[out["ancestors"]]
++        correction = alpha * (selected - jax.lax.stop_gradient(selected))
++        correction -= logsumexp(correction) - jnp.log(logw.size)
++        return {
++            "x_particles": {"state": out["x_particles"], "correction": correction},
++            "ancestors": out["ancestors"],
++        }
++
++    result = particle_filter(
++        CorrectedModel(),
++        key,
++        y_meas,
++        theta,
++        n_particles,
++        resampler=resample,
++        history=history,
++    )
++    result["x_particles"] = result["x_particles"]["state"]
++    return result
+diff --git a/tests/data/upstream_reference.json b/tests/data/upstream_reference.json
+new file mode 100644
+index 0000000..2bb2dfa
+--- /dev/null
++++ b/tests/data/upstream_reference.json
+@@ -0,0 +1,13 @@
++{
++  "base": "97652aa1bdff73a92c0286549b010e99cc6f7264",
++  "numpy": "2.5.4",
++  "backend_version": "0.12.0.1",
++  "arrays": 24,
++  "fixture_sha256": "129f4c8b9304123b9b3539c8c5fb30d12d56fcaba736959fa1c2a9c41ea73515",
++  "description": "Small CPU default-filter outputs and derivatives from unmodified upstream; independent recursions also checked in tests.",
++  "source_sha256": {
++    "src/pfjax/__init__.py": "1e741e4d6f50f5114eb6ab0d1fb9b9f201357c0159f458b405e46ba080679921",
++    "src/pfjax/particle_filter.py": "2f2022c7ba76a35c2800b69767e6e0e3fc3dc8b2248751ddc36a4adab8cdfe88"
++  },
++  "scope": "CPU default PF regression values; exact checks use recorded dependency versions. Independent recursions in the test file cover IF2 and discount derivatives."
++}
+diff --git a/tests/data/upstream_reference.npz b/tests/data/upstream_reference.npz
+new file mode 100644
+index 0000000000000000000000000000000000000000..dfc41fcb5e5e4a788128dfb67548556c80fb6b9a
+GIT binary patch
+literal 6604
+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
+DXas53
+
+literal 0
+HcmV?d00001
+
+diff --git a/tests/test_iterated_filter.py b/tests/test_iterated_filter.py
+new file mode 100644
+index 0000000..c6da888
+--- /dev/null
++++ b/tests/test_iterated_filter.py
+@@ -0,0 +1,306 @@
++"""Checks for IF2 composition, native behavior and the weight derivative."""
++
++from pathlib import Path
++
++import jax
++import jax.numpy as jnp
++import numpy as np
++import pytest
++from jax import random
++from jax.scipy.special import logsumexp
++
++import pfjax as pf
++
++
++class Model:
++    _bootstrap = True
++
++    def __init__(self, nonlinear=False):
++        self.nonlinear = nonlinear
++
++    def pf_init(self, key, y_init, theta):
++        x = theta[0] + 0.3 * random.normal(key, (), dtype=theta.dtype)
++        return {"x": x, "sum": x}, -0.5 * (y_init - x) ** 2
++
++    def pf_step(self, key, x_prev, y_curr, theta):
++        a = 0.6 if theta.size == 1 else jax.nn.sigmoid(theta[1])
++        z = jnp.sin(x_prev["x"]) if self.nonlinear else x_prev["x"]
++        x = a * z + theta[0] + 0.2 * random.normal(key, (), dtype=theta.dtype)
++        return {"x": x, "sum": x_prev["sum"] + x}, -0.5 * (y_curr - x) ** 2
++
++
++def close_tree(a, b, exact=False):
++    assert jax.tree.structure(a) == jax.tree.structure(b)
++    for x, y in zip(jax.tree.leaves(a), jax.tree.leaves(b)):
++        if exact:
++            np.testing.assert_array_equal(x, y)
++        else:
++            np.testing.assert_allclose(x, y, rtol=2e-6, atol=2e-6)
++
++
++@pytest.mark.parametrize("history", [False, True])
++@pytest.mark.parametrize("compiled", [False, True])
++def test_native_unchanged(history, compiled):
++    model, key = Model(), random.PRNGKey(8)
++    y, p = jnp.array([0.1, 1.0, -0.2]), jnp.array([0.2])
++    new = lambda q: pf.particle_filter(model, key, y, q, 7, history=history)
++    if compiled:
++        new = jax.jit(new)
++    prefix = f"{int(history)}_{int(compiled)}_"
++    with np.load(Path(__file__).parent / "data/upstream_reference.npz") as saved:
++        result = new(p)
++        leaves = jax.tree_util.tree_flatten_with_path(result)[0]
++        assert {prefix + jax.tree_util.keystr(path) for path, _ in leaves} == {
++            key for key in saved.files if key.startswith(prefix) and not key.endswith("gradient")
++        }
++        for path, value in leaves:
++            np.testing.assert_array_equal(value, saved[prefix + jax.tree_util.keystr(path)])
++        np.testing.assert_array_equal(
++            jax.grad(lambda q: new(q)["loglik"])(p), saved[prefix + "gradient"]
++        )
++
++
++@pytest.mark.parametrize("n_obs", [1, 4])
++@pytest.mark.parametrize("compiled", [False, True])
++def test_initial_population(n_obs, compiled):
++    model, key, p = Model(), random.PRNGKey(3), jnp.array([0.2])
++    y = jnp.arange(n_obs) / 5
++
++    def supplied(p):
++        keys = random.split(key, 6)[1:]
++        initial = jax.vmap(model.pf_init, (0, None, None))(keys, y[0], p)
++        return pf.particle_filter(
++            model, key, y, p, 5, history=True, initial_particles=initial
++        )
++
++    ordinary = lambda p: pf.particle_filter(model, key, y, p, 5, history=True)
++    if compiled:
++        supplied, ordinary = jax.jit(supplied), jax.jit(ordinary)
++    close_tree(supplied(p), ordinary(p), exact=True)
++
++
++def manual_if2(model, key, y, particles, scale, initial_scale, iteration, within):
++    # Independent Python time loop: no call to IF2 or particle_filter.
++    j, p = particles.shape
++    ik, key, fk = random.split(key, 3)
++    particles = particles + 0.8 ** (iteration / 3) * initial_scale * random.normal(
++        ik, particles.shape, dtype=particles.dtype
++    )
++    keys = random.split(key, j + 1)
++    key = keys[0]
++    x, w = jax.vmap(model.pf_init, (0, None, 0))(keys[1:], y[0], particles)
++    ll = logsumexp(w)
++    for t in range(1, len(y)):
++        key, rk = random.split(key)
++        # Independently select joint ancestors without the resampler helper.
++        ancestors = random.choice(rk, jnp.arange(j), (j,), p=jax.nn.softmax(w))
++        particles = particles[ancestors]
++        x = jax.tree.map(lambda a: a[ancestors], x)
++        keys = random.split(key, j + 1)
++        key = keys[0]
++        perturb_keys, state_keys = jax.vmap(lambda k: random.split(k))(
++            keys[1:]
++        ).swapaxes(0, 1)
++        fraction = t / len(y) if within else 0.0
++        particles += (
++            0.8 ** ((iteration + fraction) / 3)
++            * scale
++            * jax.vmap(lambda k: random.normal(k, (p,), dtype=particles.dtype))(
++                perturb_keys
++            )
++        )
++        x, w = jax.vmap(model.pf_step, (0, 0, None, 0))(state_keys, x, y[t], particles)
++        ll += logsumexp(w)
++    ancestors = random.choice(fk, jnp.arange(j), (j,), p=jax.nn.softmax(w))
++    return particles[ancestors], ll - len(y) * jnp.log(j)
++
++
++@pytest.mark.parametrize("dimension", [1, 3])
++@pytest.mark.parametrize("within", [False, True])
++@pytest.mark.parametrize("n_obs", [1, 5])
++def test_if2_manual(dimension, within, n_obs):
++    model = Model(dimension == 3)
++    key, y = random.PRNGKey(20), jnp.linspace(-0.3, 0.9, n_obs)
++    particles = jnp.arange(6 * dimension, dtype=float).reshape(6, dimension) / 100
++    scale = jnp.full(dimension, 0.02).at[-1].set(0.0)
++    init_scale = jnp.full(dimension, 0.03)
++    reference = particles
++    for i in range(2):
++        ik = random.fold_in(key, i)
++        result = jax.jit(
++            lambda p: pf.iterated_filter_step(
++                model,
++                ik,
++                y,
++                p,
++                scale,
++                initial_scale=init_scale,
++                iteration=i,
++                cooling_rate=0.8,
++                cooling_interval=3.0,
++                within_pass_cooling=within,
++            )
++        )(particles)
++        reference, ll = manual_if2(
++            model, ik, y, reference, scale, init_scale, i, within
++        )
++        close_tree(result["parameter_particles"], reference)
++        close_tree(result["loglik"], ll)
++        assert result["valid"]
++        particles = result["parameter_particles"]
++
++
++def test_full_population_continuation_and_dynamic_scales():
++    m, key = Model(True), random.PRNGKey(37)
++    y, p = jnp.array([0.4, -0.2, 0.6]), jnp.arange(21, dtype=float).reshape(7, 3) / 100
++    f = jax.jit(
++        lambda p, s, n, offset: pf.iterated_filter(
++            m, key, y, p, s, n, initial_scale=0.0, iteration_offset=offset
++        ),
++        static_argnums=(2, 3),
++    )
++    scale = jnp.array([0.03, 0.0, 0.0])
++    full = f(p, scale, 3, 0)
++    first = f(p, scale, 1, 0)
++    split = f(first["parameter_particles"], scale, 2, 1)
++    close_tree(full["parameter_particles"], split["parameter_particles"], exact=True)
++    close_tree(full["history"]["loglik"][1:], split["history"]["loglik"], exact=True)
++    assert np.all(full["history"]["valid"])
++    # A frozen coordinate may be selected, but never changed by perturbation.
++    assert set(np.asarray(full["parameter_particles"][:, 2])).issubset(
++        set(np.asarray(p[:, 2]))
++    )
++    zero = f(p, scale, 0, 0)
++    close_tree(zero["parameter_particles"], p, exact=True)
++    assert zero["history"]["theta"].shape == (0, 3)
++    assert not np.any(f(p, jnp.array([-0.1, 0.0, 0.0]), 2, 0)["history"]["valid"])
++
++
++@pytest.mark.skipif(not jax.config.x64_enabled, reason="requires float64")
++def test_within_pass_cooling_preserves_float64_precision():
++    # Seven observations give fractions not representable in binary. An int32
++    # time / n_obs must not reduce a float64 parameter's cooling to float32.
++    model, key = Model(), random.PRNGKey(42)
++    y = jnp.linspace(-0.3, 0.9, 7, dtype=jnp.float64)
++    population = jnp.arange(12, dtype=jnp.float64).reshape(6, 2) / 100
++    scale = jnp.array([0.02, 0.03], dtype=jnp.float64)
++    start = jnp.zeros(2, dtype=jnp.float64)
++    result = jax.jit(
++        lambda q: pf.iterated_filter_step(
++            model,
++            key,
++            y,
++            q,
++            scale,
++            initial_scale=start,
++            iteration=2,
++            cooling_rate=0.8,
++            cooling_interval=3.0,
++            within_pass_cooling=True,
++        )
++    )(population)
++    expected, ll = manual_if2(model, key, y, population, scale, start, 2, True)
++    assert result["parameter_particles"].dtype == jnp.float64
++    np.testing.assert_allclose(
++        result["parameter_particles"], expected, rtol=0, atol=5e-14
++    )
++    np.testing.assert_allclose(result["loglik"], ll, rtol=0, atol=5e-13)
++
++
++def manual_gradient(model, key, y, theta, j, alpha):
++    # Propagate the state tangent and weight derivative as numerical arrays.
++    # No stop_gradient correction function or differentiated PF loop is used.
++    keys = random.split(key, j + 1)
++    key = keys[0]
++    init = lambda p: jax.vmap(model.pf_init, (0, None, None))(keys[1:], y[0], p)
++    x, w = init(theta)
++    dx, dw = jax.jacfwd(init)(theta)
++    total = jnp.sum(jax.nn.softmax(w)[:, None] * dw, axis=0)
++    for t in range(1, len(y)):
++        key, rk = random.split(key)
++        a = random.choice(rk, jnp.arange(j), (j,), p=jax.nn.softmax(w))
++        correction = alpha * (dw[a] - jnp.mean(dw[a], axis=0))
++        x, dx = jax.tree.map(lambda z: z[a], x), jax.tree.map(lambda z: z[a], dx)
++        keys = random.split(key, j + 1)
++        key = keys[0]
++        f = lambda x, p: jax.vmap(model.pf_step, (0, 0, None, None))(
++            keys[1:], x, y[t], p
++        )
++
++        def tangent(v, dstate):
++            return jax.jvp(f, (x, theta), (dstate, v))[1]
++
++        new_dx, dw = jax.vmap(tangent, in_axes=(0, -1), out_axes=-1)(
++            jnp.eye(theta.size), dx
++        )
++        x, w = f(x, theta)
++        dx, dw = new_dx, dw + correction
++        total += jnp.sum(jax.nn.softmax(w)[:, None] * dw, axis=0)
++    return total
++
++
++@pytest.mark.parametrize("alpha", [0.0, 0.5, 0.97, 1.0])
++@pytest.mark.parametrize("dimension", [1, 3])
++def test_mop_gradient_and_forward(alpha, dimension):
++    m, k, y, p = (
++        Model(dimension == 3),
++        random.PRNGKey(13),
++        jnp.array([0.7, -0.3, 0.1, 0.4]),
++        jnp.arange(dimension, dtype=float) / 10,
++    )
++    fn = lambda p: pf.particle_filter_mop(m, k, y, p, 9, alpha=alpha, history=True)
++    result = jax.jit(fn)(p)
++    native = jax.jit(lambda p: pf.particle_filter(m, k, y, p, 9, history=True))(p)
++    close_tree(result, native)
++    derivative = jax.jit(jax.grad(lambda p: fn(p)["loglik"]))(p)
++    expected = manual_gradient(m, k, y, p, 9, alpha)
++    close_tree(derivative, expected)
++    if alpha == 0.0:
++        assert np.linalg.norm(derivative) > 0.01  # state derivatives remain
++        close_tree(
++            derivative,
++            jax.grad(lambda p: pf.particle_filter(m, k, y, p, 9)["loglik"])(p),
++        )
++
++
++def test_invalid_configuration_and_nonfinite():
++    m, k, y, p = Model(), random.PRNGKey(1), jnp.ones(3), jnp.ones((4, 1))
++    for alpha in [True, -1, 1.1, float("nan")]:
++        with pytest.raises(ValueError):
++            pf.particle_filter_mop(m, k, y, p[0], 4, alpha=alpha)
++    m.pf_aux = lambda *args: 0.0
++    with pytest.raises(ValueError):
++        pf.iterated_filter_step(m, k, y, p, 0.1)
++    with pytest.raises(ValueError):
++        pf.particle_filter_mop(m, k, y, p[0], 4)
++    del m.pf_aux
++    with pytest.raises(ValueError):
++        pf.particle_filter(
++            m, k, y, p[0], 4, score=True, initial_particles=(p, jnp.zeros(4))
++        )
++    with pytest.raises(ValueError):
++        pf.particle_filter(m, k, y, p[0], 4, initial_particles=(p, jnp.zeros(3)))
++    for rate in [0.0, 1.1, float("inf")]:
++        with pytest.raises(ValueError):
++            pf.iterated_filter_step(m, k, y, p, 0.1, cooling_rate=rate)
++
++    class Bad(Model):
++        def pf_step(self, key, x_prev, y_curr, theta):
++            return x_prev, jnp.asarray(-jnp.inf)
++
++    bad = jax.jit(lambda p: pf.iterated_filter_step(Bad(), k, y, p, 0.1))(p)
++    assert not bad["valid"]
++
++
++def test_observation_pytree():
++    class DictModel(Model):
++        def pf_init(self, key, y_init, theta):
++            return super().pf_init(key, y_init["y"], theta)
++
++        def pf_step(self, key, x_prev, y_curr, theta):
++            return super().pf_step(key, x_prev, y_curr["y"], theta)
++
++    k, y, p = random.PRNGKey(4), jnp.ones(3), jnp.zeros((5, 1))
++    a = pf.iterated_filter_step(Model(), k, y, p, 0.02)
++    b = pf.iterated_filter_step(DictModel(), k, {"y": y}, p, 0.02)
++    close_tree(a, b, exact=True)

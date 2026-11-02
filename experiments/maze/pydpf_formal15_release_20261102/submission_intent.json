@@ -1,0 +1,9 @@
+{
+  "UTC": "2026-11-02T18:51:04.472515+00:00",
+  "fits": 15,
+  "overlay_manifest_sha256": "e9670ae8e1df4fe1a9e91e26d89730a6b93371a8a2012566370ae34b7c8a946e",
+  "release_sha256": "eb3a27a68c6cef55a38f9ac7be19b13eb0ec407b25e4ec3d916673b2a5c79990",
+  "budget_sha256": "8be562b8fe46710ca95ba5293d88db5e729a80ede4cfc468e526cac23bc53405",
+  "reserved_total": 30566,
+  "remote": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/pydpf_maze_formal_20261102"
+}

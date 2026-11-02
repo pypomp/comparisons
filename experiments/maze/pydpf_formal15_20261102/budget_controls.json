@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "synthetic_only": true,
+  "actual_GPU_forecast_available": false,
+  "cases_checked": [
+    "15fits",
+    "full_and_tail_training_counts",
+    "shape_specific_validation_test_counts",
+    "bridge_cost_once",
+    "GPU_seconds_to_hours",
+    "minute_rounding",
+    "JSON_recompute_equality"
+  ],
+  "refused": [
+    "failed_audit",
+    "running_allocation",
+    "over_safety_ceiling"
+  ],
+  "model_calls": 0,
+  "GPU_calls": 0
+}

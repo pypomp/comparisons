@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "archive": "artifacts/validation/pydpf_maze_formal15_preparation_20261102.tar.gz",
+  "sha256": "5295a315ef0d25883f1b3f87bc2a6e8f050480f46bf1e217402bdbb1bc40cd84",
+  "bytes": 29688,
+  "members_verified": 22,
+  "GPU_results_included": false,
+  "model_calls": 0,
+  "parent_frozen_source_archive": "artifacts/validation/pydpf_maze_formal_preparation_20261102.tar.gz",
+  "parent_archive_sha256": "11f41baa87aa089c90b0b268f8209bc7bd2e780b0aba81f675276a18bdfcd452"
+}

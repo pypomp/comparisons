@@ -1,0 +1,31 @@
+{
+  "method": "Upstream basic particle_filter + multinomial resampling, directly differentiated; documented biased gradient",
+  "method_source": "https://pfjax.readthedocs.io/en/latest/notebooks/gradient_comparisons.html",
+  "T": 600,
+  "J": 5000,
+  "starts": 6,
+  "repeats": 2,
+  "Adam_updates": 400,
+  "coordinates": 23,
+  "checkpoint": true,
+  "A": "Original common start + native basic-PF autodiff + external Optax Adam",
+  "B": "Saved public-IF2 endpoint, identical to existing C + same native basic-PF autodiff + same Adam",
+  "C": "Existing alpha .97 results retained, not recomputed",
+  "native_alpha_argument": false,
+  "added_resampling_derivative_correction": false,
+  "training_seed_root": 25081000,
+  "scoring_seed_root": 95181000,
+  "training_pairing": "Same planned case/iteration keys as earlier comparison; intentional pairing",
+  "score": "Unchanged original PyPOMP J5000 R36/72/144/288, MCSE<=1 ESS>=10, floor and failures retained",
+  "failure": "Preserve rejected proposal and last valid state; no retry, best-loss selection or replay",
+  "budget": {
+    "preflight_seconds": 900,
+    "per_case_seconds": 1800,
+    "cases": 12,
+    "total_cap_GPU_seconds": 22500
+  },
+  "baseline_scope": "One explicitly documented native method, not all PFJAX methods or its best possible performance",
+  "earlier_OT": "Default implicit derivative solver failed at T600/J64; unrolled100 was nonfinite. Preserved, not repeated or generalized.",
+  "density_routes": "Native score/RB require transition density not supplied by the original monthly simulator interface; no surrogate density invented.",
+  "comparison_limit": "B versus existing C changes native gradient construction to added discounted correction; it is not an isolated alpha1 versus .97 experiment."
+}

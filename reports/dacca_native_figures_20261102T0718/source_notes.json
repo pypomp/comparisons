@@ -1,0 +1,64 @@
+{
+  "sources": [
+    {
+      "source": "DMOP plot",
+      "path": "/Users/mac/Documents/Codex/2026-09-03/si-s7-sharper-bias-variance-analysis/work/dmop-spx/code/global_search/precise_report.qmd",
+      "sha256": "0e4f2cf543c2b5fd2e8245c7a0cde0fffb75a5dea40bb3976887ab0d041eb83b",
+      "lines": [
+        77,
+        175
+      ]
+    },
+    {
+      "source": "Aaron analysis",
+      "path": "/Users/mac/Documents/Codex/2026-10-22/cloud-gl/work/implementation-comparison-20261030/reference_test_review_20261101/references/pyMeasles/lab/model_001b/search_002/compare_arms.py",
+      "sha256": "9a20c0ceb9f73e04e32c41d954250efbe1c831780152fc45d67da9bd1e518d9c",
+      "lines": [
+        150,
+        178
+      ],
+      "revision": "747ce9a43cb56ebfc9801e3ce4f0f6fafa5a0077"
+    },
+    {
+      "source": "Meeting",
+      "path": "/Users/mac/Documents/Zoom/2026-10-29 16.02.12 dmop etc/dmop etc transcript_2026-10-29_16.02.38.txt",
+      "sha256": "a78fbae9f0718988cebe40dedbc654255a8782449d9937854c996b9612c5f9c6",
+      "lines": [
+        715,
+        740
+      ],
+      "speaker": "Kevin Tan",
+      "date": "2026-10-29",
+      "times": [
+        "15:23:10",
+        "15:23:18",
+        "15:23:32",
+        "15:23:41"
+      ]
+    }
+  ],
+  "adapted": [
+    "DMOP horizontal half violin, box and points",
+    "Aaron-style separate PF evaluation, paired contrasts and time"
+  ],
+  "not_attributed": [
+    "Aaron authorship of this raincloud design",
+    "Kevin or Aaron approval of this implementation"
+  ],
+  "snapshot_UTC": "2026-11-02T07:22:25.345731+00:00",
+  "native_PFJAX_cases": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "native_comparison_review_sha256": "916feaebc550c9d5f9fef13e4861a65db6e48bffcf9c2a8d5237d385193361da"
+}

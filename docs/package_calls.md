@@ -1,19 +1,33 @@
-# Package functions and our changes
+# Original functions, additions and optimizers
 
-This table describes the modified code under `packages/`. Here, an original function means one provided by the recorded package version. An added function is code we wrote. Calling an original PF does not make an external optimizer or an added derivative correction a package-provided method.
+"Original" means the package version recorded for this study. The table separates its functions from our model callbacks, IF2 additions and external optimizers. An experiment can call the original filter while using an optimization interface that we wrote.
 
-The [source review](../archive/README.md) and [source locations](../archive/README.md) show the calls. The [earlier table](../archive/README.md) and [Chinese notes](../archive/README.md) describe previous experiments. In particular, earlier PFJAX IF2 used our own monthly filtering loop; its new interface calls the original full PF. Cuthbert uses the original PF update functions through a loop we added.
+The [upstream contribution review](upstream_review.md) checks patch application, installation, examples and the remaining changes needed for independent forks.
 
-| Package | Original package functions used | Code added or modified locally | Parameter optimization |
+| Package and current A/B gradient | Original calls | Local additions | External optimizer |
 |---|---|---|---|
-| Cuthbert v3 | Original PF update functions returned by `particle_filter.build_filter`; original resampling functions; original `stop_gradient_decorator` at α=1 | A parameter vector stored with each state particle, perturbations, cooling and outer IF2 iterations; new `scan_final` loop over observation times calling original `filter_prepare` / `filter_combine`, rather than the top-level `cuthbert.filter`; new `dmop.log_likelihood` and gradient discounting for α<1 | The experiment driver calls the new IF2 and `dmop.log_likelihood`, with external Optax `scale_by_adam`; it does not call the complete `ifad.fit` interface |
-| PFJAX v2 | The full original `particle_filter` time loop and `resample_multinomial`; our Dacca model is called through `pf_init` / `pf_step` | An `initial_particles` argument to the original PF; `iterated_filter` wraps states and parameters, applies perturbations and cooling, and repeats the original PF; `particle_filter_mop` adds a resampling gradient correction, including at α=1 | External Optax Adam. The α=1 correction is also added code, not PFJAX's native optimal-transport method |
-| PyDPF v1 | Original `ParticleFilter`, `SIS.forward`, `FilteringModel`, resampling and likelihood calculations; the existing `StopGradientDPF` correction | New `IteratedFiltering` model wrappers jointly resample states and parameters, retain the full parameter population, and add perturbations and cooling; an `alpha` argument to `StopGradientDPF` / `StopGradientResampler` | An external `torch.optim.Adam` loop, not a pre-existing package MLE interface |
-| TFP v1 | Original `sequential_monte_carlo`, `SequentialMonteCarlo.one_step`, `WeightedParticles` and resampling; the existing differentiable `particle_filter` | New `iterated_filter` wraps parameterized models and repeats the original SMC loop; a new `gradient_discount` argument is passed from `particle_filter` to SMC and applied to weight derivatives | External Keras Adam; the model supplies simulation and observation-density callbacks |
-| particles v1 | Original `SMC.run` time loop, `Bootstrap` model calls, resampling and `logLt` | New `iterated_filtering` and `_PerturbedBootstrap` carry parameters with states, apply perturbations and cooling, and pass the full parameter population between iterations; existing Python files are unchanged | New experiment A uses the original PF with external SciPy Nelder-Mead; B first uses the new IF2 and then the same external optimizer |
-| PyPOMP | Earlier paper experiments call `functional.mif`, `functional.train` and its Adam implementation; endpoint evaluation calls the fixed original PF | Model code, parameter settings and experiment programs; the package source is unchanged | Package optimization and independent PF evaluation are recorded separately |
-| pypfilt | Earlier experiments call `pypfilt.fit` to run the original PF | Dacca model callbacks, likelihood-increment recording, external optimization and experiment records | External SciPy Nelder-Mead; this experiment does not compare native IF2, IFAD or a native MLE interface |
+| [Cuthbert](../packages/cuthbert/README.md): native stop-gradient correction | `particle_filter.build_filter`, `filter_prepare`, `filter_combine`, resampling and `stop_gradient_decorator` at α=1 | Parameter/state augmentation, perturbation/cooling and IF2; `scan_final` observation loop; `dmop.log_likelihood` and α<1 discounting | Optax `scale_by_adam`; the driver does not call the complete `ifad.fit` interface |
+| [PFJAX native supplement](../experiments/dacca/pfjax_native_20261102/README.md): basic-PF direct autodiff | Unchanged full `particle_filter`, `resample_multinomial`, JAX autodiff | Dacca callbacks and external training driver; B reuses the earlier IF2 endpoint | Optax Adam; basic-PF gradient is biased, not the package's optimal-transport estimator |
+| [PyDPF](../packages/pydpf/README.md): `StopGradientDPF` | `ParticleFilter`, `SIS.forward`, `FilteringModel`, resampling/likelihood and original stop-gradient correction | `IteratedFiltering`, state/parameter wrappers, perturbation/cooling and full swarm retention; an `alpha` argument | `torch.optim.Adam`; not an upstream MLE interface |
+| [TFP](../packages/tfp/README.md): differentiable `particle_filter` | `sequential_monte_carlo`, `SequentialMonteCarlo.one_step`, `WeightedParticles`, resampling and `particle_filter(unbiased_gradients=True)` | `iterated_filter` parameter/model wrappers and `gradient_discount`; α=1 retains the original derivative expression | Keras Adam |
+| [particles](../packages/particles/README.md): no gradient arm | `SMC.run`, `Bootstrap`, resampling and `logLt` | `iterated_filtering`, `_PerturbedBootstrap`, joint state/parameter resampling and perturbation/cooling; existing Python files unchanged | SciPy Nelder-Mead; B adds IF2 |
 
-These additions have not been accepted upstream. Each modified package includes the complete diff, source locations and checks of unchanged original code. Dynamax is excluded from the current comparison; its previous records remain in the history.
+Each gradient method has twelve runs. C starts from the same parameters as B and uses our discounted gradient with α=0.97. We added IF2 to each package. See the [design](../reports/dacca_comparison.md) and [final results](../reports/optimization.md) for the settings and limitations.
 
-Final optimization scores come from the fixed original PyPOMP PF, with random streams separate from training. Training losses and perturbed IF2 likelihoods are not used as final scores. The small interface examples use package PFs to check the implementation.
+## Earlier PFJAX extension
+
+The [PFJAX package diff](../packages/pfjax/review/full.patch) adds `initial_particles` for IF2 and `particle_filter_mop` for resampling derivative correction, including α=1. That extension's original A/B results are not native PFJAX A/B. They remain in [their report](../reports/pfjax_20261101/report.md) and the [five-method comparison](../reports/optimization.md#pfjax-native-baseline-and-the-earlier-extension).
+
+Native B and C differ in both gradient calculation and α. Comparing our α=1 B with C isolates the discount within our added correction. We report native A/B separately from A/B using our correction.
+
+## Model callbacks and later performance work
+
+We wrote the Dacca model callbacks separately from the filter changes. The [later PyDPF forward/backward optimization](../reports/pydpf_backward_fusion_20261102.md) changes these callbacks and leaves the package's filter unchanged. We compared individual calls with the old and new callbacks, without rerunning the completed fits. The maze study uses a different model and objective.
+
+Each package README links the version, changed files, complete diff and test programs. [Experiment source locations](../experiments/dacca/README.md) identify the code copies retained here and the archives containing the full code for each completed experiment. The changes are local and have not been accepted upstream. [Correctness](../reports/correctness.md) describes the limitations and failed checks.
+
+## Evaluation and earlier experiments
+
+Final endpoint evaluation uses the unchanged original [PyPOMP scorer](../experiments/dacca/score.py), separate from training. It computes log(mean likelihood), retains all raw values and applies the recorded MCSE/ESS checks. Perturbed IF2 likelihoods are not final scores.
+
+Earlier PyPOMP experiments used its `functional.mif` / `functional.train` and Adam. Earlier pypfilt experiments used `pypfilt.fit` for filtering with external Nelder-Mead. That interface did not provide native MLE, IF2 or IFAD. These experiments and the earlier Dynamax records remain in [the archive](../archive/README.md). Their results do not validate the package functions added later.

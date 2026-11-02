@@ -1,0 +1,15 @@
+{
+  "path": "artifacts/validation/package_standalone_revisions_20261102.tar.gz",
+  "bytes": 127611151,
+  "sha256": "655c0ec083614abca2121059a9d72af24de88120fe53f49a73a62c2340fe7b7e",
+  "members": 4413,
+  "all_member_hashes_verified": true,
+  "restored_source_files": {
+    "cuthbert": 255,
+    "pfjax": 200,
+    "pydpf": 58,
+    "particles": 108,
+    "tfp": 1516
+  },
+  "source": "Independent local package revisions, complete upstream source and checks; no Dacca rerun"
+}

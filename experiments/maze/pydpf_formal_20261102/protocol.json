@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "created_UTC": "2026-11-02T18:03:41.900326+00:00",
+  "authorization": "User requested formal Ed maze experiment and selected native DPF / StopGradientDPF / alpha .97, with held-out localization error as primary.",
+  "scope": "Supervised maze comparison inside PyDPF; not MLE, IF2, IFAD or PyPOMP speed comparison",
+  "arms": [
+    "native_dpf",
+    "native_stop",
+    "discount097"
+  ],
+  "initialization_seeds": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50
+  ],
+  "training_repetitions": 2,
+  "cases": 12,
+  "fits": 36,
+  "epochs": 100,
+  "particles": 100,
+  "time_extent": 99,
+  "T": 100,
+  "batch_size": 64,
+  "training_batches_per_epoch": 15,
+  "updates_per_complete_fit": 1500,
+  "split": {
+    "seed": 20261101,
+    "train": 900,
+    "validation": 400,
+    "test": 700
+  },
+  "normalization": "Original scalar image normalization, using training images only; no validation or test images in estimated mean/std",
+  "native_settings": {
+    "optimizer": "AdamW",
+    "encoder_lr": 0.005,
+    "flow_prior_lr": 0.001,
+    "weight_decay": 0.01,
+    "betas": [
+      0.8,
+      0.99
+    ],
+    "eps": 1e-09,
+    "scheduler": "ExponentialLR",
+    "gamma": 0.99,
+    "loss": "Mean all-time normalized position squared error + sine/cosine direction error + image reconstruction MSE",
+    "dtype": "float32",
+    "strict_determinism": true,
+    "tf32_matmul": false,
+    "tf32_cudnn": true,
+    "cudnn_benchmark": false
+  },
+  "selection": "Lowest validation final-time position MSE; earliest epoch on ties. Common original ordinary PF with systematic resampling. Test never used for selection.",
+  "evaluation": {
+    "filter": "upstream ParticleFilter + SystematicResampler",
+    "J": 100,
+    "repetitions": 3,
+    "primary": "sqrt(mean squared final-time position distance across 700 trajectories and 3 independent PF streams)); original coordinate units",
+    "secondary": [
+      "RMSE at each PF repeat",
+      "training failure count",
+      "validation RMSE by epoch",
+      "actual full allocation cost"
+    ],
+    "baseline_untrained": false
+  },
+  "pairing": "Same initialization for both repetitions at each seed. Same minibatch order, private RNG and default RNG across arms per case. Training repetitions use distinct streams. Same validation and test streams across arms.",
+  "seeds": {
+    "order": 210000000,
+    "train": 310000000,
+    "validation": 410000000,
+    "test": 510000000,
+    "default_offset": 1000000000
+  },
+  "execution": "External four-FCNN CUDA Graph adapter only; native filter/model/loss unchanged. Separate cached graph per B=64 and B=4; inference delegates to original forward.",
+  "equivalence": {
+    "forward_loss_state_RNG": "bitwise",
+    "gradient_relative_L2": 2e-06,
+    "gradient_max_abs": 2e-06,
+    "finite": true,
+    "optimizer_parameters_and_moments_after_step": "bitwise",
+    "updated_parameter_and_tail_batch": true
+  },
+  "resources": {
+    "scope_cap_GPU_seconds": 108000,
+    "bridge_cap_seconds": 1200,
+    "per_formal_fit_cap_seconds": 2700,
+    "planned_maximum_GPU_seconds": 98400,
+    "validation_distinct_from_formal": true,
+    "cost_acceptance": "1.35 * (1400 * max warm B64 train-step + 100 * max B4 train-step + 700 * max validation batch + 33 * max test batch) + 600 <=2700 per arm; measured driver/serialization included in train-step timer",
+    "automatic_retry": false
+  },
+  "failures": "Retain exceptions, nonfinite gradients/proposals and last valid checkpoint. No retries or selecting successful runs. If a completed validation checkpoint exists, evaluate it once and flag incomplete fit; otherwise test unavailable.",
+  "reporting": "All 12 cases per arm retained. Show RMSE distribution and paired differences. Descriptive six-initialization/two-repetition results; no expected ordering or universal superiority. Equal epochs/updates, not equal runtime.",
+  "data": {
+    "csv": "/scratch/ionides_root/ionides1/hkunyang/model024_20261006/pydpf_maze_20261101/data/maze_data.csv",
+    "csv_sha256": "481223e5c6a6e3d7a947b1396a0efa6cd8b36d6e2304c931c477aa19d5b3b0cb",
+    "doi": "10.5281/zenodo.23039951",
+    "upstream_commit": "a7487ce1c344c70e1a244e75725b950deb15e146"
+  },
+  "preflight": "New CPU saved optimizer-chain checks and one GPU bridge/cost allocation, all three arms B64/B4 and evaluation/restore; formal jobs only after saved audit and cost pass. No extension of old completed budgets."
+}

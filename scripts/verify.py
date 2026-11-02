@@ -7,9 +7,10 @@ import tarfile
 import tempfile
 import zipfile
 from pathlib import Path
-from repository import ROOT, PACKAGES, history, relative, sha
+from repository import ROOT, PACKAGES, history, relative, sha, saved_bytes, recent_history
 from prepare import prepare
 from reproduce import tables
+from summarize_current import saved_summary
 
 
 def main():
@@ -33,7 +34,16 @@ def main():
     assert seen == set(files) and len(seen) == 8527
     copies = json.loads((ROOT / 'archive/copies.json').read_text())
     for name, original in copies.items():
-        assert sha(ROOT / name) == files[original]['sha256'], name
+        assert hashlib.sha256(saved_bytes(name)).hexdigest() == files[original]['sha256'], name
+    recent, recent_files = recent_history()
+    assert sha(ROOT / recent['path']) == recent['sha256']
+    assert sha(ROOT / recent['manifest']) == recent['manifest_sha256']
+    with tarfile.open(ROOT / recent['path']) as tf:
+        assert set(tf.getnames()) == set(recent_files)
+        for m in tf:
+            rec = recent_files[m.name]
+            assert m.isfile() and m.size == rec['bytes']
+            assert hashlib.sha256(tf.extractfile(m).read()).hexdigest() == rec['sha256'], m.name
     archives = json.loads((ROOT / 'archive/catalog.json').read_text())
     for rec in archives:
         path = ROOT / rec['path']
@@ -58,13 +68,18 @@ def main():
             patches.append(prepare(pkg, Path(tmp) / pkg))
     saved_tables = tables()
     for name, data in saved_tables.items():
-        assert data == (ROOT / 'results' / name).read_bytes(), name
+        assert data == saved_bytes('results/' + name), name
+    current_summaries = saved_summary()
+    for name, data in current_summaries.items():
+        assert data == (ROOT / 'results/overview_20261102' / name).read_bytes(), name
     assert sha(ROOT / 'experiments/dacca/score.py') == '8aec1ba02982a1ad9bff227b300806eaafa972a1e9fd00b71bef2c5f0ebdc508'
     current = json.loads((ROOT / 'results/cuthbert/current_results.json').read_text())
     result = dict(passed=True, retained_files_checked=len(checksums), archived_files_checked=len(seen),
+                  recent_archive_files_checked=len(recent_files),
                   unchanged_copies_checked=len(copies), archive_checksums_checked=len(archives),
                   archives_fully_read=len(archives) if a.archives else 1, patched_sources=patches,
                   result_tables_rebuilt=len(saved_tables), old_endpoints_preserved=968, old_raw_PF_repetitions=37584,
+                  current_summary_files_rebuilt=len(current_summaries),
                   new_particles_endpoints=24, new_particles_raw_PF_repetitions=1692,
                   new_Cuthbert_endpoints=current['audited_endpoints'],
                   new_Cuthbert_raw_PF_repetitions=current['original_PF_repetitions'],

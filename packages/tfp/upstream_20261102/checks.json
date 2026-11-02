@@ -1,0 +1,20 @@
+{
+  "base": "v0.25.0",
+  "patch_sha256": "f9fd8e0acb223acda15b2c55e5d312afeb329d92f82ea20854d56c39ed577aae",
+  "changed_files": {
+    "PARAMETER_ESTIMATION.md": "67c81b10414f9e2bc69b667ed4fa2853f999eb61dcf9526c996b7f4049384468",
+    "tensorflow_probability/examples/if2_and_discount.py": "dfb8a4fc039cc3d5b07205d4af3133477166a622a7b8a858d63b5ae90f566633",
+    "tensorflow_probability/g3doc/_book.yaml": "1503f2523cf5c35005b9bf988b103b8443528495168e5793da3e8d0c058b519f",
+    "tensorflow_probability/g3doc/experimental/iterated_filter.md": "cff2f1254198bc4b427a187f017267a9f0fcd6a34b4845ff44626669073d0371",
+    "tensorflow_probability/python/experimental/mcmc/BUILD": "4a8cd024c0a62de87a92ac56a5a4402ce1fd2156413c980d3a52bf9e0488b4a2",
+    "tensorflow_probability/python/experimental/mcmc/__init__.py": "e60e1fa9171456e540a624c0dbc93f66ca3fbf69b4e006db0d226b05b3bae475",
+    "tensorflow_probability/python/experimental/mcmc/iterated_filter.py": "383dcc407e350360783f4e56d4035b3550c56b2e06d5f10b806919ef9f359dd5",
+    "tensorflow_probability/python/experimental/mcmc/iterated_filter_test.py": "a20c2a427031f5ef16629ff0ba80f92e20a30799e1255adf7d4ce59bb9b512d2",
+    "tensorflow_probability/python/experimental/mcmc/particle_filter.py": "20fca0ddfb96c910c28d982f1b6f68567643a6f1669a3fead7bc21d1ff276df8",
+    "tensorflow_probability/python/experimental/mcmc/sequential_monte_carlo_kernel.py": "c4a643082971a5e2d81c16b58c34d61bed9dc4a4aa72ee058b5265806ce71b64",
+    "tensorflow_probability/python/experimental/mcmc/testdata/upstream_reference.json": "495e15de03aecb39ef8be2bca621c478b8ec1126f5e384ebfcdcb8efc8eee708",
+    "tensorflow_probability/python/experimental/mcmc/testdata/upstream_reference.npz": "9f09bf1639adcb3cec751f432757eb892b1b7bbc848c12ca9dc1c3936db1e2f8"
+  },
+  "clean_application_exact": true,
+  "library_code_identical_to_experiment_revision": true
+}

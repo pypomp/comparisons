@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "archive": "artifacts/experiments/dacca/pypomp_pf_timing_A40_keyfix_20261102.tar.gz",
+  "sha256": "f87eec20381b1a2234454d18027ba364c807751303bc0edb9034fab6f049f6b7",
+  "bytes": 25935783,
+  "members": 278,
+  "all_member_hashes_verified": true,
+  "restored_audit_byte_identical": true,
+  "numerical_calls": 0
+}

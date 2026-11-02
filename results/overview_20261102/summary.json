@@ -1,0 +1,34 @@
+{
+  "selection": "Native gradient baselines for four GPU packages; CPU particles shown separately",
+  "distinct_starts": 6,
+  "repetitions_per_start": 2,
+  "endpoints": 168,
+  "raw_repetitions": 7920,
+  "failed_fits": 3,
+  "floor_scores": 2,
+  "low_precision_scores": 7,
+  "precise_nonfloor_scores": 159,
+  "source_sha256": {
+    "reports/dacca_native_figures_20261102T0718/figure_data.json": "d9f99276f5ab625a5d7257ee3903b4eba7f442fb2a752d3c6f119ec5351f2fc6",
+    "reports/dacca_native_figures_20261102T0718/summary.json": "b34f27615a52ad1be0dd8248ac2cb3818c2ba3cdba6d18c10637b88b5c67b48d",
+    "reports/pydpf_20261102/summary.json": "eff4e0da97f2649e760f3259241a92cb2681d57d6446c8ff6612e1ded77f28b0",
+    "reports/tfp_20261101/summary.json": "9199868cfd573db457bb8459a725930dd8b7f9f7f9c3c2ff4db874cdc3c2a3cc",
+    "results/cuthbert/endpoints.csv": "145a318face5801954601435ff321cfaffb24a0f351885f45a8116da03ae3700",
+    "results/particles/endpoints.csv": "a19c76d709e01f00e2ed9de54dbeafa64eb5f69fa04bc11712a027461e9978d3",
+    "results/pfjax/endpoints.csv": "0e4e3f66baca6f2968ba39c3fd696e820eaa909e17b7e2b1899044374e3cc29e",
+    "results/pfjax_native/final_audit_20261102.json": "916feaebc550c9d5f9fef13e4861a65db6e48bffcf9c2a8d5237d385193361da",
+    "results/pfjax_native/final_comparison_20261102.csv": "d01b5a6ff3a51e548a785735bc32f87f8589479c1f9454155a531cd307223cc2",
+    "results/pfjax_native/native_and_extension_20261102.csv": "3bf477fdb64ad0829a0681500e1b2222f5171ae298733fdd14580a5d833096ec",
+    "results/pydpf/endpoints.csv": "43cdd4a54b61dd852e63f888c2ce2fd124afc015f3c352f04c50c88835febadb",
+    "results/tfp/endpoints.csv": "3c7966bb6b0ac2b87b4928a20ef9e3a6a95641d97eb03bb370ac5f33a5dc376f"
+  },
+  "PF_calls": 0,
+  "optimizer_updates": 0,
+  "limitations": [
+    "These are saved-data summaries, not new scientific audits.",
+    "Fit failure and score categories can overlap.",
+    "A/B workloads differ; batch times are not per-endpoint times.",
+    "Native PFJAX B versus C changes gradient construction and alpha.",
+    "Earlier PFJAX alpha=1 A/B are separate and retained."
+  ]
+}

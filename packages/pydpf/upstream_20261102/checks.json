@@ -1,0 +1,20 @@
+{
+  "base": "a7487ce1c344c70e1a244e75725b950deb15e146",
+  "patch_sha256": "236844d15bb9a607a2ef47e83d1639da3b42bfbc1c749cfd2a7d80d9f3c74554",
+  "changed_files": {
+    "PARAMETER_ESTIMATION.md": "f6b4f3467ace89810eb7a13dbf23068aac67c7ed216710924bc3c9a85a641079",
+    "docs/source/index.rst": "da8d75c497ba40bd42d7a32da128cead39f50a92bbd80054af0e76a18cfcf630",
+    "docs/source/iterated_filtering.rst": "deceeb6d140a3c586c96388e502b91c59b556038342de85d433f1c6acf6af7ad",
+    "docs/source/tutorial.rst": "51a47625b8adac0e4cc1a083d10e9c83041b656dab1f9607d8ff2f3a5e7086da",
+    "examples/if2_and_discount.py": "2b101c5899376d71f66d19796cdb1899724651b28c41a96e112d9834f2cfc058",
+    "pydpf/pydpf/__init__.py": "6f74e2c703f210784529cb4f1a89bf4a7244034d9afa5cf1e1ed35a4f07809a1",
+    "pydpf/pydpf/filtering.py": "c251165f1e67ee919c48894c29c880f9298dc773fb609644ad3fdbd556e81293",
+    "pydpf/pydpf/iterated_filtering.py": "a679101c80eb66afa66835df8ab637c4de59aeb25f38f833bab1c6d69f228efe",
+    "pydpf/pydpf/resampling.py": "df3855c4d43f22686588190627ffe26dc103b27597fafce533a75fe87f8b6d96",
+    "tests/data/upstream_reference.json": "eadc8cd515762ac73a14407d914236f496b9d2d757c5d77b9ceec65f76a87a35",
+    "tests/data/upstream_reference.npz": "21e4a24bf997109b2cc902048a93a6ee591848a48729d8598169232f98127c49",
+    "tests/test_estimation_extension.py": "746f163556fe897a87588f14e31d1c107b832af8078135cb61d9bba5648616d5"
+  },
+  "clean_application_exact": true,
+  "library_code_identical_to_experiment_revision": true
+}

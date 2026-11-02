@@ -1,0 +1,28 @@
+{
+  "base": "c737efe3098b2b5ecaa7d8b976e7cea246998b17",
+  "patch_sha256": "6c88c9fc027f9fa7282226ec0c52a14ecb9826fad13025ee4da8caaf969ab9ae",
+  "changed_files": {
+    "PARAMETER_ESTIMATION.md": "53370967464bac62e8bf7fd7e98e4a7739127f228b7b4bb8e71b80624a26eb17",
+    "cuthbert/smc/README.md": "822d39d922a77e19fe8c36109104cc6d2d9b64b3efbb5de5ef33990006a6bd82",
+    "cuthbert/smc/_estimation.py": "413e1043bcec32052f1c5a3b7b964a0430683d8b5641b21dc70966f363c70a2c",
+    "cuthbert/smc/dmop.py": "63f3252a690aa3c5a39685fe873d2be60e3efb79ba18cd7f1ac9ae43a511ce4a",
+    "cuthbert/smc/ifad.py": "ceef31b925a7acfc5dffe8801233c519f60d7e0369cfa3440ced99ad3bd68acf",
+    "cuthbert/smc/iterated_filtering.py": "b0a34c33133ca607d42fe88629b1494277bffa298d520f455a5227f5f036e10f",
+    "cuthbertlib/resampling/README.md": "799697c50d66a1fa224b2027b343c791c01289046a9e2b6ba89dcbce14e9cf95",
+    "cuthbertlib/resampling/__init__.py": "70b13445f6a73a9bb38a29d421b75856c1281e2bf6c7928dcaaa46e97ff56f58",
+    "cuthbertlib/resampling/autodiff.py": "3855bdd584e3ecd0f413933ef437388ccd11396ef8a2d16aa050e48052778956",
+    "docs/api_cuthbert/smc/dmop.md": "49f698982e877d6359d1645646e6836ce5507d14bdf0f0ef5ff49c3573cb3f29",
+    "docs/api_cuthbert/smc/ifad.md": "96a1bfa13cd65a9216b3c9b3ff22379f75e3a6082f5e89a557a9ffe6b75b16d6",
+    "docs/api_cuthbert/smc/index.md": "932b24b185986cd89bc4dbfd3bb2cab03a5e26cd5150a7a92a52948548919edd",
+    "docs/api_cuthbert/smc/iterated_filtering.md": "d25e18b518d0e157e081054a8e295d18757385d46b553ec58c075a2795bf175f",
+    "docs/examples/factorial_football.md": "1cbbe558d8098ea1a288ec8374d7752d1ee6581bca26dd02a48eb9f4f4085fe4",
+    "docs/examples/index.md": "a904d54ac0bd7f11933fde62a1826ff715b6b083c918b52beb1394462a090e0d",
+    "docs/examples/parameter_estimation_ifad.md": "be557964db5003fe5629db77f18ca5a4181550a9c87a99d4e5566ca19f25b202",
+    "examples_scripts/parameter_estimation_ifad.py": "fb3e02899ed4a9e7f5e635d09decd64951e5d0e9811b2f0ebf32c4b51ce539e4",
+    "pkg/cuthbert/pyproject.toml": "d05f209d7f9537e52527bbec8293e683cc82d3c8c73efe4aad2f2f8ce821db48",
+    "tests/cuthbert/smc/test_parameter_estimation.py": "ff9acf3755868da3d2cbf2e70002dc3fd14bebe41bea04948e6d634151fd6539",
+    "zensical.toml": "c028867bd250ec9a9671a83984d6171e438578836bc4253d7c8e7e736abc3c98"
+  },
+  "clean_application_exact": true,
+  "library_code_identical_to_experiment_revision": true
+}
